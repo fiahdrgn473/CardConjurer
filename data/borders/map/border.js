@@ -23,14 +23,14 @@ var textX = 89
 var textY = 662
 var textWidth = 660
 //Power Toughness
-var ptFont = "39px belerenb"
+var ptFont = "32px belerenb"
 var ptFontSpacing = "0.3px"
-var ptTextX = 645
-var ptTextY = 936
-var ptX = 571
-var ptY = 929
-var ptWidth = 137
-var ptHeight = 75
+var ptTextX = 374.5
+var ptTextY = 933
+var ptX = 300
+var ptY = 920
+var ptWidth = 150
+var ptHeight = 70
 //Bottom Info
 var eighthInfo = false
 var eighthInfoY = 992
