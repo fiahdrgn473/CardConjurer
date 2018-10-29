@@ -47,4 +47,4 @@ loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 
-updateBorder()
+finishTemplate()

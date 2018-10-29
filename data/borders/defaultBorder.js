@@ -7,8 +7,19 @@ var nyxBorder = false
 var miracleBorder = false
 var stampBorder = false
 var flipBorder = false
+var creatureBorder = true
+var thirdBorder = true
+var secondBorder = true
+//Shifted text
 titleRightShift = 0
 typeRightShift = 0
+//Aligned text
+var titleAlign = "left"
+var typeAlign = "left"
+//Image alignment
+var centerSetSymbol = 1 //1=not centered, 2=centered
+var artX = 58
+var artY = 118
 //Loads the correct border data
 borderPath = "data/borders/" + document.getElementById("borderSelection").value
 loadScript(borderPath + "border.js")

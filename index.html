@@ -19,36 +19,38 @@
 				<div class="toggler" onclick="toggleSection(this)">Card Border</div>
 				<div class="togglee shown">
 					Border
-					<select id="borderSelection" onchange="changeBorder()">
+					<select id="borderSelection" onchange="changeTemplate()">
+						<option value="map/">Map (Ixalan)</option>
 						<option value="m15/">M15</option>
+						
 						<option value="8th/">8th</option>
 					</select>
 					<br/>
 					Color
-					<select id="colorSelection" onchange="updateColor()">
+					<select id="colorSelection" onchange="updateBorder()">
 						<option value="white">White</option>
 					</select>
 					<br/>
-					<input type="checkbox" id="checkboxSecondColor" onchange="updateColor()">Second Color <select id="secondColorSelection" onchange="updateColor()"></select></input>
+					<input type="checkbox" id="checkboxSecondColor" onchange="updateBorder()">Second Color <select id="secondColorSelection" onchange="updateBorder()"></select></input>
 					<br/>
-					<input type="checkbox" id="checkboxThirdColor" onchange="updateColor()">Third Color <select id="thirdColorSelection" onchange="updateColor()"></select></input>
+					<input type="checkbox" id="checkboxThirdColor" onchange="updateBorder()">Third Color <select id="thirdColorSelection" onchange="updateBorder()"></select></input>
 					<br/>
-					<input type="checkbox" id="checkboxCreature" onchange="updateColor()">Power/Toughness
+					<input type="checkbox" id="checkboxCreature" onchange="updateBorder()">Power/Toughness
 					<input id="inputPowerToughness" value="" type="text"></input>
 				</div>
 			</div>
 			<div class="section">
 				<div class="toggler" onclick="toggleSection(this)">Border (Advanced)</div>
 				<div class="togglee">
-					<input type="checkbox" id="checkboxLegendary" onchange="updateColor()">Legendary</input>
+					<input type="checkbox" id="checkboxLegendary" onchange="updateBorder()">Legendary</input>
 					<br/>
-					<input type="checkbox" id="checkboxNyx" onchange="updateColor()">Nyx</input>
+					<input type="checkbox" id="checkboxNyx" onchange="updateBorder()">Nyx</input>
 					<br/>
-					<input type="checkbox" id="checkboxMiracle" onchange="updateColor()">Miracle</input>
+					<input type="checkbox" id="checkboxMiracle" onchange="updateBorder()">Miracle</input>
 					<br/>
-					<input type="checkbox" id="checkboxRareStamp" onchange="updateColor()">Rare Stamp</input>
+					<input type="checkbox" id="checkboxRareStamp" onchange="updateBorder()">Rare Stamp</input>
 					<br/>
-					<input type="checkbox" id="checkboxFlipIcon" onchange="updateColor()">Flip Icon <select id="inputFlipIcon" onchange="updateColor()">
+					<input type="checkbox" id="checkboxFlipIcon" onchange="updateBorder()">Flip Icon <select id="inputFlipIcon" onchange="updateBorder()">
 						<option value="blank.png">Blank</option>
 						<option value="day.png">Day</option>
 						<option value="night.png">Night</option>
@@ -58,19 +60,19 @@
 						<option value="planeswalker.png">Planeswalker</option>
 					</select></input>
 					<br/>
-					<input type="checkbox" id="checkboxFlipTip" onchange="updateColor()">Flip Tip
+					<input type="checkbox" id="checkboxFlipTip" onchange="updateBorder()">Flip Tip
 					<input id="inputFlipTip" value="" type="text"></input>
 					<br/>
-					<input type="checkbox" id="checkboxFlippedDark" onchange="updateColor()">Flipped (Darker)</input>
+					<input type="checkbox" id="checkboxFlippedDark" onchange="updateBorder()">Flipped (Darker)</input>
 					<br/>
-					<input type="checkbox" id="checkboxSilverBorder">Silver Border</input>
+					<input type="checkbox" id="checkboxSilverBorder" onchange="updateBorder()">Silver Border</input>
 					<br/>
-					<input type="color" id="inputColor"> Border Color</input>
+					<input type="color" id="inputColor" onchange="updateBorder()"> Border Color</input>
 					<br/>
 					<input type="checkbox" id="checkboxFoil">Foil</input>
 					<br/>
-					<input type="checkbox" id="checkboxIdentity">Color Identity
-					<input id="inputIdentity"type="text"></input>
+					<input type="checkbox" id="checkboxIdentity" onchange="updateBorder()">Color Identity
+					<input id="inputIdentity" type="text" onchange="updateBorder()"></input>
 				</div>
 			</div>
 			<div class="section">
@@ -427,8 +429,12 @@ a:active {
 
 
 <script crossorigin="anonymous">
+//Create the canvas for creating the border image
+var borderCanvas = document.createElement("canvas")
+borderCanvas.width = 749; borderCanvas.height = 1044
+var border = borderCanvas.getContext("2d")
 //Load the initial border (m15)
-changeBorder()
+changeTemplate()
 //set up initial variables
 var borderPath
 var secondColor
@@ -439,13 +445,13 @@ var typeRightShift = 0
 var canvas = document.getElementById("canvas")
 var card = canvas.getContext("2d")
 //Load dynamic images
-var dynamicImageList = ["borderColor", "secondBorderColor", "thirdBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "art", "setSymbol", "watermark", "multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark"]
+var dynamicImageList = ["art", "setSymbol", "watermark", "multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "border", "borderColor", "secondBorderColor", "thirdBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark", "artMask"]
 for (i = 0; i < dynamicImageList.length; i ++) {
 	var imgName = "img" + dynamicImageList[i].charAt(0).toUpperCase() + dynamicImageList[i].slice(1)
 	window[imgName] = new Image()
 }
 //Load static images
-var staticImageList = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "artMask", "bar", "identity"]
+var staticImageList = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
 for (i = 0; i < staticImageList.length; i ++) {
 	var imgName = "img" + staticImageList[i].charAt(0).toUpperCase() + staticImageList[i].slice(1)
 	window[imgName] = new Image()
@@ -470,19 +476,17 @@ document.getElementById("secondWatermarkColorSelection").innerHTML = document.ge
 function cardClock() {
 		//Insures that the corners of the final image are transparent
 		card.globalCompositeOperation = "source-over"
-		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, imgCardMask, false, false)
+		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, card, imgCardMask, false, false)
 		card.globalCompositeOperation = "source-atop"
 		//Draws the card image, then...
 		drawPicture()
-		//redraws the colored border in case the image is too big.
-		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, imgCardMask, imgArtMask, false)
-		//draws the card frames
-		drawBorder()
+		//draws the card frame on top
+		drawMask(imgBorder, 0, 0, canvas.width, canvas.height, card, imgArtMask, false, false)
 		//draws the set symbol, mana cost, and watermark
 		drawSetSymbol()
 		drawManaCost()
 		drawWatermark()
-		//writes all the text. name, type, rules...
+		//writes all the text: name, type, rules...
 		writeText()
 		//m15 and 8th edition have different info at the bottom of the cards and require completely different functions
 		if (m15Info == true) {
@@ -502,20 +506,22 @@ function cardClock() {
 		// card.lineTo(688, 1044)
 		// card.stroke()
 		//Horizontal Line
-		//card.beginPath()
-		//card.moveTo(0, setSymbolY)
-		//card.lineTo(749, setSymbolY)
-		//card.stroke()
+		// card.beginPath()
+		// card.moveTo(0, setSymbolY)
+		// card.lineTo(749, setSymbolY)
+		// card.stroke()
 	}
+//Sets up the initial clock
 var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
-
-
-//The two following functions load different types of borders
-function changeBorder() {
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//The two following functions load border images
+function changeTemplate() {
 	//the loadScript function is located in data/scripts/loadScript.js. It sets values to variables such as set symbol coordinates or title font
 	loadScript("data/borders/defaultBorder.js")
 }
-function updateBorder() {
+function finishTemplate() {
 	//This is a seperate function to insure that the border.js file finishes running before running a few last commands
 	document.getElementById("colorSelection").value = "white"
 	imgMultiMask.src = borderPath + "multiMask.png"
@@ -527,10 +533,10 @@ function updateBorder() {
 	} else if (eighthInfo == true) {
 		imgBorderMask.src = borderPath + "frameMask.png"
 	}
-	updateColor()
+	updateBorder()
 }
 //Loads the images for the card frame, power toughness box, and rare stamp
-function updateColor() {
+function updateBorder() {
 	borderPath = "data/borders/" + document.getElementById("borderSelection").value
 	secondColor = document.getElementById("checkboxSecondColor").checked
 	thirdColor = document.getElementById("checkboxThirdColor").checked
@@ -538,14 +544,15 @@ function updateColor() {
 	var secondColorPath = borderPath + document.getElementById("secondColorSelection").value
 	var thirdColorPath = borderPath + document.getElementById("thirdColorSelection").value
 	var altframe = ""
+	imgArtMask.src = borderPath + "artMask.png"
+	imgBorderColor.src = firstColorPath + "/frame.png"
+	imgSecondBorderColor.src = secondColorPath + "/frame.png"
+	imgThirdBorderColor.src = thirdColorPath + "/frame.png"
 	if (document.getElementById("checkboxFlippedDark").checked == true && flipBorder == true) {
 		altframe = "dark"
 	} else {
 		altframe = ""
 	}
-	imgBorderColor.src = firstColorPath + "/frame.png"
-	imgSecondBorderColor.src = secondColorPath + "/frame.png"
-	imgThirdBorderColor.src = thirdColorPath + "/frame.png"
 	if (thirdColor == true) {
 		imgBorderCreature.src = thirdColorPath + "/" +  altframe + "pt.png"
 	} else if (secondColor == true) {
@@ -592,90 +599,85 @@ function updateColor() {
 		imgBorderFlipCircle.src = firstColorPath + "/flipCircle.png"
 		imgBorderFlipIcon.src = "data/borders/icons/" + document.getElementById("inputFlipIcon").value
 	}
-}
-//Draw Picture
-function drawPicture() {
-	//scales the card art and draws it
-	var imageScale = document.getElementById("imageSize").value * 0.01
-	var imageLeftShift = parseInt(document.getElementById("imageLeft").value)
-	var imageUpShift = parseInt(document.getElementById("imageUp").value)
-	if (imgArt.width > 0) {
-		//drawMask(imgArt, 58 - imageLeftShift, 118 - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale, imgArtMask, false, false)
+	//This creates a short pause in order to allow all images to finish loading
+	imgBorderColor.onload = function() {
+		setTimeout(createBorder, 50)
 	}
-	card.drawImage(imgArt, 58 - imageLeftShift, 118 - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale)
 }
-//Draw Border
-function drawBorder() {
-	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order such that when multiple border colors are used the gradients overlap correctly
+//Once the border images have finished loading, they are all drawn into a temporary canvas then saved to a single image
+function createBorder() {
+	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order so that when multiple border colors are used the gradients overlap correctly
+	//BACKGROUND COLOR
+	drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgCardMask, false, false)
 	//MAIN CARD FRAME
-	drawMask(imgBorderColor, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
-	if (secondColor == true) {
-		drawMask(imgSecondBorderColor, 0, 0, canvas.width, canvas.height, imgFrameMask, imgMultiGradient, "reverseSecond")
+	drawMask(imgBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+	if (secondColor == true && secondBorder == true) {
+		drawMask(imgSecondBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 	}
-	if (thirdColor == true) {
-		drawMask(imgThirdBorderColor, 0, 0, canvas.width, canvas.height, imgFrameMask, imgMultiMask, false)
+	if (thirdColor == true && thirdBorder == true) {
+		drawMask(imgThirdBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiMask, false)
 	}
 	//Draws the silver border usually on un-cards
 	if (document.getElementById("checkboxSilverBorder").checked == true) {
-		drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, imgBorderMask, imgFrameMask, "reverseSecond")
+		drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgFrameMask, "reverseSecond")
 	}
 	//NYX
 	if (document.getElementById("checkboxNyx").checked == true && nyxBorder == true) {
 		if (thirdColor == true) {
-			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, imgFrameMask, imgMultiMask, false)
+			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiMask, false)
 		} else {
-			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
+			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 			if (secondColor == true) {
-				drawMask(imgSecondBorderNyx, 0, 0, canvas.width, canvas.height, imgFrameMask, imgMultiGradient, "reverseSecond")
+				drawMask(imgSecondBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 			}
 		}	
 	}
 	//MIRACLE
 	if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true) {
 		if (thirdColor == true) {
-			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
+			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 		} else {
-			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
+			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 			if (secondColor == true) {
-				drawMask(imgSecondBorderMiracle, 0, 0, canvas.width, canvas.height, imgFrameMask, imgMultiGradient, "reverseSecond")
+				drawMask(imgSecondBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 			}
 		}
 	}
 	//LEGENDARY
 	if (document.getElementById("checkboxLegendary").checked == true && legendaryBorder == true) {
-		drawMask(imgBorderLegendary, 0, 0, canvas.width, canvas.height, imgLegendFrameMask, false, false)
+		drawMask(imgBorderLegendary, 0, 0, canvas.width, canvas.height, border, imgLegendFrameMask, false, false)
 		if (secondColor == true) {
-			drawMask(imgSecondBorderLegendary, 0, 0, canvas.width, canvas.height, imgLegendFrameMask, imgMultiGradient, "reverseSecond")
+			drawMask(imgSecondBorderLegendary, 0, 0, canvas.width, canvas.height, border, imgLegendFrameMask, imgMultiGradient, "reverseSecond")
 		}
 		//redraws the custom-color border to match the legendary frame
-		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, imgBorderMask, imgLegendFrameMask, "reverseSecond")
+		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
 		//redraws the silver border usually on un-cards to match the legendary frame
 		if (document.getElementById("checkboxSilverBorder").checked == true) {
-			drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, imgBorderMask, imgLegendFrameMask, "reverseSecond")
+			drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
 		}
 	}
 	//FLIP CARDS
 	if (flipBorder == true) {
 		if (document.getElementById("checkboxFlippedDark").checked == true && flipBorder == true) {
 			if (thirdColor == true) {
-				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
+				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 			} else {
-				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, imgFrameMask, false, false)
+				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 				if (secondColor == true) {
-					drawMask(imgSecondBorderFlippedDark, 0, 0, canvas.width, canvas.height, imgSecondBorderFlippedDark, imgMultiGradient, "reverseSecond")
+					drawMask(imgSecondBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgSecondBorderFlippedDark, imgMultiGradient, "reverseSecond")
 				}
 			}
 		}
 		if (document.getElementById("checkboxFlipIcon").checked == true) {
-			card.drawImage(imgBorderFlipCircle, 0, 0, canvas.width, canvas.height)
-			card.drawImage(imgBorderFlipIcon, 39, 51, 60, 60)
+			border.drawImage(imgBorderFlipCircle, 0, 0, canvas.width, canvas.height)
+			border.drawImage(imgBorderFlipIcon, 39, 51, 60, 60)
 		}
 		if (document.getElementById("checkboxFlipTip").checked == true) {
-			card.drawImage(imgBorderFlipTip, 0, 0, canvas.width, canvas.height)
-			card.fillStyle="#666"
+			border.drawImage(imgBorderFlipTip, 0, 0, canvas.width, canvas.height)
+			border.fillStyle="#666"
 			canvas.style.letterSpacing = "0px"
-			card.font = "28px belerenb"
-			card.fillText(document.getElementById("inputFlipTip").value, 688 - card.measureText(document.getElementById("inputFlipTip").value).width, 880)
+			border.font = "28px belerenb"
+			border.fillText(document.getElementById("inputFlipTip").value, 688 - border.measureText(document.getElementById("inputFlipTip").value).width, 880)
 		}
 		if (document.getElementById("checkboxFlipIcon").checked == true || document.getElementById("checkboxFlippedDark").checked == true) {
 			titleRightShift = 50
@@ -692,70 +694,82 @@ function drawBorder() {
 		var identityY = typeY + 21
 		switch (identityList.length) {
 			case 1:
-				var originAngle = 0
-				break;
+			var originAngle = 0
+			break;
 			case 2:
-				var originAngle = 3 * Math.PI / 4
-				break;
+			var originAngle = 3 * Math.PI / 4
+			break;
 			case 3:
-				var originAngle = 7 * Math.PI / 6
-				break;
+			var originAngle = 7 * Math.PI / 6
+			break;
 			case 4:
-				var originAngle = 3 * Math.PI / 2
-				break;
+			var originAngle = 3 * Math.PI / 2
+			break;
 			case 5:
-				var originAngle = 13 * Math.PI / 10
-				break;
+			var originAngle = 13 * Math.PI / 10
+			break;
 			default:
-				var originAngle = 0
+			var originAngle = 0
 		}
 		for (i = 0; i < identityList.length; i ++) {
 			switch (identityList[i]) {
 				case "w":
-					card.fillStyle = "#f3f2ef"
-					break;
+				border.fillStyle = "#f3f2ef"
+				break;
 				case "u":
-					card.fillStyle = "#1d7097"
-					break;
+				border.fillStyle = "#1d7097"
+				break;
 				case "b":
-					card.fillStyle = "#31302e"
-					break;
+				border.fillStyle = "#31302e"
+				break;
 				case "r":
-					card.fillStyle = "#bf544c"
-					break;
+				border.fillStyle = "#bf544c"
+				break;
 				case "g":
-					card.fillStyle = "#1c6449"
-					break;
+				border.fillStyle = "#1c6449"
+				break;
 				case "m":
-					card.fillStyle = "#e3d591"
-					break;
+				border.fillStyle = "#e3d591"
+				break;
 				default:
-					card.fillStyle = "#e0e0e0"
+				border.fillStyle = "#e0e0e0"
 			}
 			var startAngle = originAngle + i * angleSize
-			card.beginPath()
-			card.moveTo(identityX, identityY)
-			card.arc(identityX, identityY, identityRadius, startAngle, startAngle + angleSize)
-			card.lineTo(identityX, identityY)
-			card.fill()
+			border.beginPath()
+			border.moveTo(identityX, identityY)
+			border.arc(identityX, identityY, identityRadius, startAngle, startAngle + angleSize)
+			border.lineTo(identityX, identityY)
+			border.fill()
 		}
-		card.drawImage(imgIdentity, identityX - identityRadius, identityY - identityRadius, 2 * identityRadius, 2 * identityRadius)
+		border.drawImage(imgIdentity, identityX - identityRadius, identityY - identityRadius, 2 * identityRadius, 2 * identityRadius)
 		typeRightShift = 33
 	} else {
 		typeRightShift = 0
 	}
 	//RARE STAMP
 	if (document.getElementById("checkboxRareStamp").checked == true && stampBorder == true) {
-		card.drawImage(imgBorderRareStamp, 329, rareStampY - 15, 90, 50)
+		border.drawImage(imgBorderRareStamp, 329, rareStampY - 15, 90, 50)
 
 		if (document.getElementById("checkboxSecondColor").checked == true) {
-			drawMask(imgSecondBorderRareStamp, 329, rareStampY - 15, 90, 50, imgSecondBorderRareStamp, imgStampGradient, "reverseSecond")
+			drawMask(imgSecondBorderRareStamp, 329, rareStampY - 15, 90, 50, border, imgSecondBorderRareStamp, imgStampGradient, "reverseSecond")
 		}
-		//Draws over the rare stamp (part that's usually back) to match custom border color
-		drawMask(document.getElementById("inputColor").value, 329, rareStampY - 15, 90, 50, imgRareStampMask, false, false)
+		//Draws over the rare stamp (part that's usually black) to match custom border color
+		drawMask(document.getElementById("inputColor").value, 329, rareStampY - 15, 90, 50, border, imgRareStampMask, false, false)
 		//This is when the holo stamp is drawn
-		card.drawImage(imgRareStamp, 340, rareStampY, 70, 37)
+		border.drawImage(imgRareStamp, 340, rareStampY, 70, 37)
 	}
+	imgBorder.src = borderCanvas.toDataURL()
+}
+//Draw Picture
+function drawPicture() {
+	//scales the card art and draws it
+	var imageScale = document.getElementById("imageSize").value * 0.01
+	var imageLeftShift = parseInt(document.getElementById("imageLeft").value)
+	var imageUpShift = parseInt(document.getElementById("imageUp").value)
+	if (imgArt.width > 0) {
+		//drawMask(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale, card, imgArtMask, false, false)
+	}
+	card.drawImage(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale)
 }
 //Draw Set Symbol
 function drawSetSymbol() {
@@ -770,7 +784,7 @@ function drawSetSymbol() {
 		height *= document.getElementById("setSymbolSize").value / 100
 		width *= document.getElementById("setSymbolSize").value / 100
 		var y = setSymbolY - height / 2
-		var x = setSymbolRight - width
+		var x = setSymbolRight - width / centerSetSymbol
 		card.drawImage(imgSetSymbol, x, y, width, height)
 	}
 }
@@ -790,10 +804,10 @@ function drawWatermark() {
 		card.globalAlpha = 0.4
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
 	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
-	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, imgWatermark, imgMultiGradient, false)
-	    	drawMask(document.getElementById("secondWatermarkColorSelection").value, x, y, width, height, imgWatermark, imgMultiGradient, "reverseSecond")
+	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, card, imgWatermark, imgMultiGradient, false)
+	    	drawMask(document.getElementById("secondWatermarkColorSelection").value, x, y, width, height, card, imgWatermark, imgMultiGradient, "reverseSecond")
 	    } else {
-	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, imgWatermark, false, false)
+	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, card, imgWatermark, false, false)
 	    }
 	    card.globalAlpha = 1
 	}
@@ -825,14 +839,17 @@ function writeText() {
 		card.fillStyle = "Black"
 	}
 	//Title
+	card.textAlign = titleAlign
 	canvas.style.letterSpacing = titleFontSpacing
 	card.font = titleFont	
 	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY)
 	//Type
+	card.textAlign = typeAlign
 	canvas.style.letterSpacing = typeFontSpacing
 	card.font = typeFont
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
+	card.textAlign = "left"
 	if (document.getElementById("checkboxCreature").checked == true) {
 		card.drawImage(imgBorderCreature, ptX, ptY, ptWidth, ptHeight)
 		canvas.style.letterSpacing = ptFontSpacing
@@ -860,7 +877,7 @@ function bottomInfoM15() {
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	card.fillText(bottomLine, 48, m15InfoY)
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-	drawMask(card.fillStyle, artistBrushShift, m15InfoY + 5, 21, 13, imgArtistBrush, false, false)
+	drawMask(card.fillStyle, artistBrushShift, m15InfoY + 5, 21, 13, card, imgArtistBrush, false, false)
 	canvas.style.letterSpacing = "1.3px"
 	card.font = "19.5px relaymedium"
 	card.fillText(document.getElementById("inputNumber").value, 49, m15InfoY - 20)
@@ -974,7 +991,7 @@ function drawText(text, xCoord, yCoord) {
 						textXShift = 0
 						y += 2 * lineSpace + textSize + 3
 					} else {
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0])], x + textXShift + textSize * 0.054, y + textSize * 0.19, textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0])], x + textXShift + textSize * 0.054, y + textSize * 0.17, textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
 					}
 					if (megaSplit[1] != "") {
