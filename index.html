@@ -20,6 +20,7 @@
 				<div class="togglee shown">
 					Border
 					<select id="borderSelection" onchange="changeTemplate()">
+						<option value="plane/">Plane</option>
 						<option value="m15/">M15</option>
 						<option value="map/">Map (Ixalan)</option>
 						<option value="8th/">8th</option>
@@ -150,7 +151,7 @@
 					<input type="checkbox" id="checkboxSetSymbol" checked="true">Set Symbol</input>
 					<br>
 					Set Code
-					<input type="text" onchange="loadSetSymbol()" value="HM" id="setSymbolCode"></input>
+					<input type="text" onchange="loadSetSymbol()" value="pca" id="setSymbolCode"></input>
 					<br>
 					Set Symbol Rarity
 					<input type="text" onchange="loadSetSymbol()" value="C" id="setSymbolRarity"></input>
@@ -432,6 +433,7 @@ a:active {
 var borderCanvas = document.createElement("canvas")
 borderCanvas.width = 749; borderCanvas.height = 1044
 var border = borderCanvas.getContext("2d")
+document.body.appendChild(borderCanvas)
 //Load the initial border (m15)
 changeTemplate()
 //set up initial variables
@@ -480,7 +482,11 @@ function cardClock() {
 		//Draws the card image, then...
 		drawPicture()
 		//draws the card frame on top
-		drawMask(imgBorder, 0, 0, canvas.width, canvas.height, card, imgArtMask, false, false)
+		if (transparentBorder == false) {
+			drawMask(imgBorder, 0, 0, canvas.width, canvas.height, card, imgArtMask, false, false)
+		} else {
+			card.drawImage(imgBorder, 0, 0, canvas.width, canvas.height)
+		}
 		//draws the set symbol, mana cost, and watermark
 		drawSetSymbol()
 		drawManaCost()
@@ -552,12 +558,14 @@ function updateBorder() {
 	} else {
 		altframe = ""
 	}
-	if (thirdColor == true) {
-		imgBorderCreature.src = thirdColorPath + "/" +  altframe + "pt.png"
-	} else if (secondColor == true) {
-		imgBorderCreature.src = secondColorPath + "/" +  altframe + "pt.png"
-	} else {
-		imgBorderCreature.src = firstColorPath + "/" +  altframe + "pt.png"
+	if (creatureBorder == true) {
+		if (thirdColor == true) {
+			imgBorderCreature.src = thirdColorPath + "/" +  altframe + "pt.png"
+		} else if (secondColor == true) {
+			imgBorderCreature.src = secondColorPath + "/" +  altframe + "pt.png"
+		} else {
+			imgBorderCreature.src = firstColorPath + "/" +  altframe + "pt.png"
+		}
 	}
 	if (legendaryBorder == true) {
 		imgBorderLegendary.src = firstColorPath + "/legendary.png"
@@ -607,7 +615,8 @@ function updateBorder() {
 function createBorder() {
 	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order so that when multiple border colors are used the gradients overlap correctly
 	//BACKGROUND COLOR
-	drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgCardMask, false, false)
+	border.clearRect(0, 0, canvas.width, canvas.height)
+	drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgArtMask, false, false)
 	//MAIN CARD FRAME
 	drawMask(imgBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
 	if (secondColor == true && secondBorder == true) {
@@ -766,9 +775,9 @@ function drawPicture() {
 	var imageLeftShift = parseInt(document.getElementById("imageLeft").value)
 	var imageUpShift = parseInt(document.getElementById("imageUp").value)
 	if (imgArt.width > 0) {
+		card.drawImage(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale)
 		//drawMask(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale, card, imgArtMask, false, false)
 	}
-	card.drawImage(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale)
 }
 //Draw Set Symbol
 function drawSetSymbol() {
@@ -849,7 +858,7 @@ function writeText() {
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
 	card.textAlign = "left"
-	if (document.getElementById("checkboxCreature").checked == true) {
+	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
 		card.drawImage(imgBorderCreature, ptX, ptY, ptWidth, ptHeight)
 		canvas.style.letterSpacing = ptFontSpacing
 		card.font = ptFont
@@ -969,12 +978,12 @@ function drawText(text, xCoord, yCoord) {
 						card.font = "normal " + textSize + textFont
 					} else if (megaSplit[0] == "center") {
 						card.textAlign="center"
-						x = 749/2
+						x = canvas.width / 2
 						tempTextWidth = textWidth * 1.5
 					} else if (megaSplit[0] == "right") {
 						card.textAlign="right"
 						tempTextWidth = textWidth * 1.9
-						x = 749 - xCoord
+						x = canvas.width - xCoord
 					} else if (megaSplit[0] == "left") {
 						card.textAlign="left"
 						tempTextWidth = textWidth
@@ -1039,7 +1048,7 @@ function toggleSection(target) {
 
 //Resizes anything that may need to be resized
 function resizeThings() {
-	if (window.innerWidth > 1100) {
+	if (window.innerWidth > 1100 && canvas.width <= 770) {
 		document.getElementById("optionsColumn").style = "width: calc(100% - 777px)"
 	} else {
 		document.getElementById("optionsColumn").style = "width: 100%"
