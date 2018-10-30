@@ -1,7 +1,7 @@
 <!DOCTYPE html5>
 <html>
 <head>
-	<title>Card Conjurer v1.3.4</title>
+	<title>Card Conjurer</title>
 	<script src="data/scripts/loadScript.js"></script>
 	<script src="data/scripts/loadImage.js"></script>
 	<script src="data/scripts/loadColors.js"></script>
@@ -111,6 +111,8 @@
 					Image
 					<input type="file" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
 					<br/>
+					<input type="text" placeholder="Or use a URL" onchange="imageURL(this, imgArt)"></input>
+					<br/>
 					Image Zoom
 					<input id="imageSize" type="number" value="100" step="0.1"></input>
 					<br/>
@@ -159,6 +161,8 @@
 					Custom Set Symbol
 					<input type="file" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
 					<br/>
+					<input type="text" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)"></input>
+					<br/>
 					Scale Set Symbol
 					<input id="setSymbolSize" type="number" value="100" step="0.5"></input>
 					<br/><br/>
@@ -166,6 +170,8 @@
 					Watermark
 					<br/>
 					<input type="file" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
+					<br/>
+					<input type="text" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
 					<br/>
 					Watermark Color
 					<br/>
@@ -519,9 +525,10 @@ function cardClock() {
 		//m15 and 8th edition have different info at the bottom of the cards and require completely different functions
 		if (m15Info == true) {
 			bottomInfoM15()
-		}
-		if (eighthInfo == true) {
+		} else if (eighthInfo == true) {
 			bottomInfo8th()
+		}else if (planechaseInfo == true) {
+			bottomInfoPlanechase()
 		}
 		//A shiny foil overlay!
 		if(document.getElementById("checkboxFoil").checked == true) {
@@ -1100,6 +1107,11 @@ function resizeThings() {
 function loadSetSymbol() {
 	imgSetSymbol.crossOrigin = "Anonymous"
 	imgSetSymbol.src = "https://raw.githubusercontent.com/ImKyle4815/MTG-Set-Symbols/master/setSymbols/" + document.getElementById("setSymbolCode").value.toUpperCase() + "_" + document.getElementById("setSymbolRarity").value.toUpperCase() + ".png"
+}
+
+//Loads an image from URL
+function imageURL(input, URL) {
+	URL.src = input.value
 }
 
 //Best for last - downloads the image!

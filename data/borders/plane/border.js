@@ -23,20 +23,8 @@ var textX = 124
 var textY = 535
 var textWidth = 925
 document.getElementById("textSize").value = 26
-// //Power Toughness
-// var ptFont = "39px belerenb"
-// var ptFontSpacing = "0.3px"
-// var ptTextX = 645
-// var ptTextY = 936
-// var ptX = 571
-// var ptY = 929
-// var ptWidth = 137
-// var ptHeight = 75
 //Bottom Info
-var eighthInfo = false
-var eighthInfoY = 992
-var m15Info = true
-var m15InfoY = 993
+var planechaseInfo = true
 //Set Symbol
 var setSymbolY = 519
 var setSymbolRight = 814
@@ -66,3 +54,44 @@ transparentBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom
+function bottomInfoPlanechase() {
+	card.textAlign = "left"
+	if (document.getElementById("checkboxArtistColor").checked == true) {
+		card.fillStyle = "black"
+	} else {
+		card.fillStyle = "white"
+	}
+	var bottomLineFirst = document.getElementById("inputNumber").value + " " + document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
+	var bottomLineSecond
+	var artistBrushShift = 0
+	if (document.getElementById("inputInfo").value != "") {
+		bottomLineSecond = "CC \u2014 " + document.getElementById("inputInfo").value
+		if (bottomLineSecond == "CC \u2014 secretcode") {
+			var date = new Date()
+			var year = date.getFullYear()
+			bottomLineSecond = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
+		}
+	}
+	var artist = document.getElementById("inputArtist").value
+	//Artist
+	canvas.style.letterSpacing = "-0.2px"
+	card.font = "16px matrixbsc"
+	var artistLineWidth = (card.measureText(artist).width + 18) / 2
+	drawMask(card.fillStyle, canvas.width / 2 - artistLineWidth, 706, 15, 10, card, imgArtistBrush, false, false)
+	card.fillText(artist, canvas.width / 2 - artistLineWidth + 18, 704)
+	//Left and Right side
+	canvas.style.letterSpacing = "0px"
+	card.font = "16px relaymedium"
+	var firstWidth = card.measureText(bottomLineFirst).width + 15
+	canvas.style.letterSpacing = "-0.7px"
+	card.font = "13px mplantin"
+	var secondWidth = card.measureText(bottomLineSecond).width
+
+	canvas.style.letterSpacing = "0px"
+	card.font = "16px relaymedium"
+	card.fillText(bottomLineFirst, canvas.width / 2 - ((secondWidth + firstWidth) / 2) - 8, 717)
+
+	canvas.style.letterSpacing = "-0.7px"
+	card.font = "14px mplantin"
+	card.fillText(bottomLineSecond, canvas.width / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - 8, 718)
+}
