@@ -18,8 +18,8 @@ var typeY = 502
 var typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
-var textFontSpacing = 0.3
-var textX = 125
+var textFontSpacing = 0.2
+var textX = 124
 var textY = 535
 var textWidth = 925
 document.getElementById("textSize").value = 26
