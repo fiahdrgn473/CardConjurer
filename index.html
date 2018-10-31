@@ -203,83 +203,8 @@
 	</div>
 	<div class="row text">
 		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
-		<div class="column" style="width: 100px">
-			w - <img id="w"><br/>
-			u - <img id="u"><br/>
-			b - <img id="b"><br/>
-			r - <img id="r"><br/>
-			g - <img id="g"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			pw - <img id="pw"><br/>
-			pu - <img id="pu"><br/>
-			pb - <img id="pb"><br/>
-			pr - <img id="pr"><br/>
-			pg - <img id="pg"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			2w - <img id="2w"><br/>
-			2u - <img id="2u"><br/>
-			2b - <img id="2b"><br/>
-			2r - <img id="2r"><br/>
-			2g - <img id="2g"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			w - <img id="wu"><br/>
-			u - <img id="wb"><br/>
-			b - <img id="ub"><br/>
-			r - <img id="ur"><br/>
-			g - <img id="br"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			w - <img id="bg"><br/>
-			u - <img id="rg"><br/>
-			b - <img id="rw"><br/>
-			r - <img id="gw"><br/>
-			g - <img id="gu"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			0 - <img id="0"><br/>
-			1 - <img id="1"><br/>
-			2 - <img id="2"><br/>
-			3 - <img id="3"><br/>
-			4 - <img id="4"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			5 - <img id="5"><br/>
-			6 - <img id="6"><br/>
-			7 - <img id="7"><br/>
-			8 - <img id="8"><br/>
-			9 - <img id="9"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			10 - <img id="10"><br/>
-			11 - <img id="11"><br/>
-			12 - <img id="12"><br/>
-			13 - <img id="13"><br/>
-			14 - <img id="14"><br/>
-		</div>
-		<div class="column" style="width: 100px">
-			15 - <img id="15"><br/>
-			16 - <img id="16"><br/>
-			17 - <img id="17"><br/>
-			18 - <img id="18"><br/>
-			19 - <img id="19"><br/>
-		</div>
-		<div class="column" style="width: 120px">
-			20 - <img id="20"><br/>
-			c - <img id="c"><br/>
-			x - <img id="x"><br/>
-			t - <img id="t"><br/>
-			untap - <img id="untap"><br/>
-		</div>
-		<div class="column" style="width: 120px">
-			snow - <img id="snow"><br/>
-			e - <img id="e"><br/>
-			<br/>
-			<br/>
-			<br/>
-		</div>
+		
+		<div id="symbolList"></div>
 		<br/><br/><br/><br/><br/><br/><br/> <!-- Not quite sure why I needed so many linebreaks here! -->
 		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
 	</div>
@@ -399,6 +324,14 @@ select {
 	padding: 0px 0px 0px 0px !important;
 	margin: 0px;
 }
+#symbolList {
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid rgb(128, 255, 128);
+	background-color: rgba(0, 0, 0, 0.5);
+	white-space: normal;
+	display: inline-block;
+}
 body {
 	color: rgb(255,255,255);
 	font-family: mplantin;
@@ -488,14 +421,16 @@ for (i = 0; i < imgListStatic.length; i ++) {
 	window[imgName].src = "data/borders/" + imgListStatic[i] + ".png"
 }
 //Mana symbol Array setup
-var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "infinity", "chaos"]
+var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos"]
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
 	manaSymbolImages[i].src = "data/manaSymbols/" + i + ".png"
-	if (document.getElementById(manaSymbolCode[i]) != null) {
-		document.getElementById(manaSymbolCode[i]).src = "data/manaSymbols/" + i + ".png"
-	}
+	document.getElementById("symbolList").innerHTML += manaSymbolCode[i] + "\u2192"
+	var tempImage = document.createElement("img")
+	tempImage.src = manaSymbolImages[i].src
+	document.getElementById("symbolList").appendChild(tempImage)
+	document.getElementById("symbolList").innerHTML += ", "
 }
 //load first set symbol
 loadSetSymbol()
