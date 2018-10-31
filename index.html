@@ -201,10 +201,10 @@
 			<!--END-->
 		</div>
 	</div>
-	<div class="row text">
+	<div class="text">
 		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
 		
-		<div id="symbolList"></div>
+		<div id="symbolList" class="row"></div>
 		<br/><br/><br/><br/><br/><br/><br/> <!-- Not quite sure why I needed so many linebreaks here! -->
 		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
 	</div>
@@ -423,15 +423,22 @@ for (i = 0; i < imgListStatic.length; i ++) {
 //Mana symbol Array setup
 var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos"]
 var manaSymbolImages = new Array()
+var symbolList = ""
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
 	manaSymbolImages[i].src = "data/manaSymbols/" + i + ".png"
-	document.getElementById("symbolList").innerHTML += manaSymbolCode[i] + "\u2192"
-	var tempImage = document.createElement("img")
-	tempImage.src = manaSymbolImages[i].src
-	document.getElementById("symbolList").appendChild(tempImage)
-	document.getElementById("symbolList").innerHTML += ", "
+	//
+	if (i%5 == 0) {
+		document.getElementById("symbolList").innerHTML += "<div class='column' style='width: 120px'>"
+		symbolList += "<div class='column' style='width: 120px'>"
+	}
+	symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "/><br/>"
+	if (i%5 == 4) {
+		document.getElementById("symbolList").innerHTML += "</div>"
+		symbolList += "</div>"
+	}
 }
+document.getElementById("symbolList").innerHTML = symbolList
 //load first set symbol
 loadSetSymbol()
 //fill second watermark dropdown menu
