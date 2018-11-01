@@ -205,10 +205,18 @@
 		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
 		
 		<div id="symbolList" class="row"></div>
-		<br/><br/><br/><br/><br/><br/><br/> <!-- Not quite sure why I needed so many linebreaks here! -->
+		<br/>
 		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
+		<br/>
+		Check out some samples!
 	</div>
-	<div class="info">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
+	<div class="clearfix">
+		<img id="sampleCardA" src="sampleCards/sample-card-1.png" style="float: left; width: 33.33%; padding: 5px;"></img>
+		<img id="sampleCardB" src="sampleCards/sample-card-2.png" style="float: left; width: 33.33%; padding: 5px;"></img>
+		<img id="sampleCardC" src="sampleCards/sample-card-3.png" style="float: left; width: 33.33%; padding: 5px;"></img>
+	</div>
+	<br/>
+	<div class="info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
 </body>
 
 
@@ -312,17 +320,11 @@ select {
 }
 .text {
 	padding: 10px;
-	text-align: left;
 	color: rgb(128, 128, 128);
 	font-family: beleren;
 	font-size: 25px;
-}
-.text img {
-	position: relative;
-	top: 8px;
-	width: 30px;
-	padding: 0px 0px 0px 0px !important;
-	margin: 0px;
+	margin: auto;
+	text-align: center;
 }
 #symbolList {
 	margin: 5px;
@@ -331,6 +333,14 @@ select {
 	background-color: rgba(0, 0, 0, 0.5);
 	white-space: normal;
 	display: inline-block;
+}
+#symbolList img {
+	position: relative;
+	top: 8px;
+	width: 30px;
+	padding: 0px 0px 0px 0px !important;
+	margin: 1px;
+	background-color: rgba(128,255,128, 0.1);
 }
 body {
 	color: rgb(255,255,255);
@@ -347,6 +357,14 @@ html {
 canvas {
 	float: left;
 	padding: 10px;
+}
+* {
+    box-sizing: border-box;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 a:link {
 	color: rgb(128,128,128); 
@@ -421,24 +439,12 @@ for (i = 0; i < imgListStatic.length; i ++) {
 	window[imgName].src = "data/borders/" + imgListStatic[i] + ".png"
 }
 //Mana symbol Array setup
-var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos"]
+var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane"]
 var manaSymbolImages = new Array()
-var symbolList = ""
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
 	manaSymbolImages[i].src = "data/manaSymbols/" + i + ".png"
-	//
-	if (i%5 == 0) {
-		document.getElementById("symbolList").innerHTML += "<div class='column' style='width: 120px'>"
-		symbolList += "<div class='column' style='width: 120px'>"
-	}
-	symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "/><br/>"
-	if (i%5 == 4) {
-		document.getElementById("symbolList").innerHTML += "</div>"
-		symbolList += "</div>"
-	}
 }
-document.getElementById("symbolList").innerHTML = symbolList
 //load first set symbol
 loadSetSymbol()
 //fill second watermark dropdown menu
@@ -1043,6 +1049,18 @@ function resizeThings() {
 	} else {
 		document.getElementById("optionsColumn").style = "width: 100%"
 	}
+	var symbolList = ""
+	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 120))
+	for (var i = 0; i < manaSymbolCode.length; i++) {
+		if (i%rowCount == 0) {
+			symbolList += "<div class='column' style='width: 120px'>"
+		}
+		symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img><br/>"
+		if (i%rowCount == rowCount - 1) {
+			symbolList += "</div>"
+		}
+	}
+	document.getElementById("symbolList").innerHTML = symbolList
 }
 
 //Loads the set symbol from my seperate repository
