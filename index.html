@@ -407,6 +407,7 @@ for (i = 0; i < imgListUser.length; i ++) {
 	var imgName = "img" + imgListUser[i].charAt(0).toUpperCase() + imgListUser[i].slice(1)
 	window[imgName] = new Image()
 }
+imgArt.crossOrigin = "anonymous"
 //Load static images
 var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
 for (i = 0; i < imgListStatic.length; i ++) {
@@ -1066,7 +1067,7 @@ function downloadCardImage(linkElement) {
 }
 
 //Randomizes the sample cards at the bottom of the page. Runs it here too
-randomizeSampleCards(6)
+randomizeSampleCards(3)
 function randomizeSampleCards(count) {
 	var cardNumbers = []
 	while (cardNumbers.length < 3) {
