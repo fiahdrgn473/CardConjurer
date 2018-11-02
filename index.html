@@ -201,22 +201,20 @@
 			<!--END-->
 		</div>
 	</div>
-	<div class="text">
+	<div class="row">
 		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
-		
-		<div id="symbolList" class="row"></div>
-		<br/>
+	</div>
+	<div id="symbolList" class="row"></div>
+	<div class="row">
 		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
-		<br/>
-		Check out some samples!
 	</div>
-	<div class="clearfix">
-		<img id="sampleCardA" src="sampleCards/sample-card-1.png" style="float: left; width: 33.33%; padding: 5px;"></img>
-		<img id="sampleCardB" src="sampleCards/sample-card-2.png" style="float: left; width: 33.33%; padding: 5px;"></img>
-		<img id="sampleCardC" src="sampleCards/sample-card-3.png" style="float: left; width: 33.33%; padding: 5px;"></img>
+	<div class="row" style="background-color: rgba(0, 0, 0, 0.5); border: 1px solid rgba(128, 255, 128, 0.1); padding-top: 5px">
+		Check out some samples! <br/>
+		<img id="sampleCardA" src="sampleCards/sample-card-1.png" style="width: calc(33.33%);" class="column"></img>
+		<img id="sampleCardB" src="sampleCards/sample-card-2.png" style="width: calc(33.33%);" class="column"></img>
+		<img id="sampleCardC" src="sampleCards/sample-card-3.png" style="width: calc(33.33%);" class="column"></img>
 	</div>
-	<br/>
-	<div class="info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
+	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
 </body>
 
 
@@ -255,97 +253,88 @@
 	font-family: mplantini;
 	src: url("data/fonts/mplantin-i.ttf");
 }
+* {
+	text-align: center;
+	font-family: belerenb;
+	font-size: 20px;
+	color: rgb(128, 128, 128);
+}
 .title {
 	text-align: center;
 	color: rgb(128,255,128);
 	font-family: belerenbsc;
 	font-size: 60px;
 }
-.info {
-	text-align: center;
-	color: rgb(96,96,96);
-	font-family: belerenbsc;
-	font-size: 16px;
-}
-.section {
-	border: 1px solid rgb(128, 255, 128);
-	background-color: rgba(0, 0, 0, 0.5);
-}
-.toggler {
-	text-align: center;
-	color: rgb(255, 255, 255);
-	font-family: belerenbsc;
-	font-size: 20px;
-	width: 100%;
-	padding: 5px;
-	
-}
-.toggler:hover {
-	color: rgb(128, 255, 128);
-}
-.togglee {
-	width: calc(100% - 12px);
-	padding: 5px;
-	border-width: 1px;
-	border-color: rgb(128, 255, 128);
-	border-style: dashed solid solid solid;
-	font-size: 20px;
-	color: rgb(255,255,255);
-	font-family: belerenbsc;
-	display: none;
-}
-.shown {
-	display: block;
-}
-.shown * {
-	font-family: mplantin;
-	font-size: 20px;
-}
-input[type="text"] {
-	width: 99%;
-}
-input[type="number"] {
-	width: 99%;
-}
-select {
-	width: 100%;
-}
-.column {
-	float: left;
+
+.row {
+	margin-bottom: 5;
 }
 .row:after{
 	content: "";
 	display: table;
 	clear: both;
 }
-.text {
-	padding: 10px;
-	color: rgb(128, 128, 128);
-	font-family: beleren;
-	font-size: 25px;
-	margin: auto;
-	text-align: center;
-}
-#symbolList {
-	margin: 5px;
+.row * {
+	box-sizing: border-box;
 	padding: 5px;
-	border: 1px solid rgb(128, 255, 128);
+	
+}
+.column {
+	float: left;
+}
+
+.section {
+	border: 1px solid rgba(128, 255, 128, 0.1);
 	background-color: rgba(0, 0, 0, 0.5);
-	white-space: normal;
-	display: inline-block;
+	padding: 0px;
+}
+.section * {
+	color: rgb(255, 255, 255);
+}
+.toggler {
+	width: 100%;
+}
+.toggler:hover {
+	color: rgb(128, 255, 128);
+}
+.togglee {
+	width: 100%;
+	text-align: left;
+	border-width: 1px;
+	border-color: rgba(128, 255, 128, 0.1);
+	border-style: dashed solid solid solid;
+	display: none;
+}
+.shown {
+	display: block;
+}
+input[type="text"], input[type="number"] {
+	text-align: left;
+	color: black;
+	width: 99%;
+}
+select, select * {
+	color: black;
+	width: 100%;
+}
+
+#symbolList {
+	border: 1px solid rgba(128, 255, 128, 0.1);
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-bottom: 10px;
 }
 #symbolList img {
+	padding: 0px;
 	position: relative;
 	top: 8px;
 	width: 30px;
-	padding: 0px 0px 0px 0px !important;
-	margin: 1px;
+	/*padding: 0px 0px 0px 0px !important;*/
 	background-color: rgba(128,255,128, 0.1);
 }
-body {
-	color: rgb(255,255,255);
-	font-family: mplantin;
-	font-size: 18px;
+.info, .info * {
+	color: rgb(96,96,96);
+	font-family: belerenbsc;
+	font-size: 16px;
 }
 html {
 	background:url(data/background.png) no-repeat center center fixed;
@@ -354,30 +343,16 @@ html {
 	-o-background-size: cover;
 	background-size: cover;
 }
-canvas {
-	float: left;
-	padding: 10px;
-}
-* {
-    box-sizing: border-box;
-}
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+
 a:link {
 	color: rgb(128,128,128); 
 }
-
 a:visited {
 	color: rgb(128,128,128);
 }
-
 a:hover {
 	color: rgb(128,255,128);
 }
-
 a:active {
 	color: rgb(128,255,128);
 }
@@ -1081,6 +1056,22 @@ function downloadCardImage(linkElement) {
 		alert("Sorry, it seems that you cannot download your card. Please try using a different browser/device.")
 	}
 	linkElement.href = cardImageData
+}
+
+//Randomizes the sample cards at the bottom of the page. Runs it here too
+randomizeSampleCards(6)
+function randomizeSampleCards(count) {
+	var cardNumbers = []
+	while (cardNumbers.length < 3) {
+		var randomNumber = Math.floor(Math.random() * count) + 1
+		if (cardNumbers.indexOf(randomNumber) > -1) {
+			continue
+		}
+		cardNumbers[cardNumbers.length] = randomNumber
+	}
+	document.getElementById("sampleCardA").src = "sampleCards/sample-card-" + cardNumbers[0] + ".png"
+	document.getElementById("sampleCardB").src = "sampleCards/sample-card-" + cardNumbers[1] + ".png"
+	document.getElementById("sampleCardC").src = "sampleCards/sample-card-" + cardNumbers[2] + ".png"
 }
 </script>
 <html>
