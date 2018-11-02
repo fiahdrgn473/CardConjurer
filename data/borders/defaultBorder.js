@@ -23,10 +23,8 @@ var centerSetSymbol = 1 //1=not centered, 2=centered
 var artX = 58
 var artY = 118
 //card size
-canvas.width = 749
-canvas.height = 1044
-borderCanvas.width = 749
-borderCanvas.height = 1044
+cardWidth = 749
+cardHeight = 1044
 //Loads the correct border data
 borderPath = "data/borders/" + document.getElementById("borderSelection").value
 loadScript(borderPath + "border.js")

@@ -1,55 +1,52 @@
 //Plane Border
 //Anything to do with...
+//Card Size
+cardWidth = 1074
+cardHeight = 749
 //Card Title
-var titleFont = "34px belerenb"
-var titleFontSpacing = "0.15px"
-var titleX = 522
-var titleY = 40
+var titleFont = cardHeight * 0.0454 + "px belerenb" //34
+var titleFontSpacing = cardWidth * 0.00014 + "px" //0.15
+var titleX = cardWidth * 0.5000 //522
+var titleY = cardHeight * 0.0534 //40
 var titleAlign = "center"
 //Mana Cost
 var manaCostRadius = 0
-var manaCostX = 1000
-var manaCostY = 1000
+var manaCostX = 0
+var manaCostY = 0
 //Card Type
-var typeFont = "26px belerenb"
-var typeFontSpacing = "0px"
-var typeX = 522
-var typeY = 502
+var typeFont = cardHeight * 0.0347 + "px belerenb" //26
+var typeFontSpacing = "0px" //0
+var typeX = cardWidth * 0.5000 //522
+var typeY = cardHeight * 0.6702 //502
 var typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
-var textFontSpacing = 0.2
-var textX = 124
-var textY = 535
-var textWidth = 925
-document.getElementById("textSize").value = 26
+var textFontSpacing = cardWidth * 0.0002 //0.2
+var textX = cardWidth * 0.1188 //124
+var textY = cardHeight * 0.7143 //535
+var textWidth = cardWidth * 0.8860 //925
+document.getElementById("textSize").value = Math.floor(cardHeight * 0.0348) //26
 //Bottom Info
 var planechaseInfo = true
 //Set Symbol
-var setSymbolY = 519
-var setSymbolRight = 814
-var setSymbolWidth = 42
-var setSymbolHeight = 24
+var setSymbolY = cardHeight * 0.6929 //519
+var setSymbolRight = cardWidth * 0.7797 //814
+var setSymbolWidth = cardWidth * 0.0402 //42
+var setSymbolHeight = cardHeight * 0.0320 //24
 //Watermark
 var watermarkWidth =  0 //520
 var watermarkHeight = 0 //250
-var watermarkY = 600
-// //Rare Stamp
-// var rareStampY = 958
+var watermarkY = 600 //600
 //Color Options
 loadColors("white-Regular,high-Bottom,mid-Middle,low-Top,none-Single")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 //Other
-canvas.width = 1044
-canvas.height = 749
-borderCanvas.width = 1044
-borderCanvas.height = 749
 var creatureBorder = false
 var thirdBorder = false
 var secondBorder = false
-var artX = 33
-var artY = 33
+var artX = cardWidth * 0.0316 //33
+var artY = cardHeight * 0.0441 //33
 transparentBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
@@ -63,7 +60,6 @@ function bottomInfoPlanechase() {
 	}
 	var bottomLineFirst = document.getElementById("inputNumber").value + " " + document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	var bottomLineSecond
-	var artistBrushShift = 0
 	if (document.getElementById("inputInfo").value != "") {
 		bottomLineSecond = "CC \u2014 " + document.getElementById("inputInfo").value
 		if (bottomLineSecond == "CC \u2014 secretcode") {
@@ -74,24 +70,24 @@ function bottomInfoPlanechase() {
 	}
 	var artist = document.getElementById("inputArtist").value
 	//Artist
-	canvas.style.letterSpacing = "-0.2px"
-	card.font = "16px matrixbsc"
-	var artistLineWidth = (card.measureText(artist).width + 18) / 2
-	drawMask(card.fillStyle, canvas.width / 2 - artistLineWidth, 706, 15, 10, card, imgArtistBrush, false, false)
-	card.fillText(artist, canvas.width / 2 - artistLineWidth + 18, 704)
+	canvas.style.letterSpacing = cardWidth * -0.0002 + "px" //-0.2
+	card.font = "16px matrixbsc" //16
+	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
+	drawMask(card.fillStyle, cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134, card, imgArtistBrush, false, false) //706, 15, 10
+	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9400) //18, 704
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"
-	card.font = "16px relaymedium"
-	var firstWidth = card.measureText(bottomLineFirst).width + 15
-	canvas.style.letterSpacing = "-0.7px"
-	card.font = "13px mplantin"
+	card.font = cardHeight * 0.0187 + "px relaymedium" //14
+	var firstWidth = card.measureText(bottomLineFirst).width + cardWidth * 0.0144 //15
+	canvas.style.letterSpacing = cardWidth * -0.0007 + "px" //-0.7
+	card.font = cardHeight * 0.0187 + "px mplantin" //14
 	var secondWidth = card.measureText(bottomLineSecond).width
 
 	canvas.style.letterSpacing = "0px"
-	card.font = "16px relaymedium"
-	card.fillText(bottomLineFirst, canvas.width / 2 - ((secondWidth + firstWidth) / 2) - 8, 717)
+	card.font = cardHeight * 0.0187 + "px relaymedium" //14
+	card.fillText(bottomLineFirst, cardWidth / 2 - ((secondWidth + firstWidth) / 2) - cardWidth * 0.0077, cardHeight * 0.9586) //8, 718
 
-	canvas.style.letterSpacing = "-0.7px"
-	card.font = "14px mplantin"
-	card.fillText(bottomLineSecond, canvas.width / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - 8, 718)
+	canvas.style.letterSpacing = cardWidth * -0.0007 + "px" //-0.7
+	card.font = cardHeight * 0.0187 + "px mplantin" //14
+	card.fillText(bottomLineSecond, cardWidth / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - cardWidth * 0.0077, cardHeight * 0.9586) //8, 718
 }

@@ -210,9 +210,9 @@
 	</div>
 	<div class="row" style="background-color: rgba(0, 0, 0, 0.5); border: 1px solid rgba(128, 255, 128, 0.1); padding-top: 5px">
 		Check out some samples! <br/>
-		<img id="sampleCardA" src="sampleCards/sample-card-1.png" style="width: calc(33.33%);" class="column"></img>
-		<img id="sampleCardB" src="sampleCards/sample-card-2.png" style="width: calc(33.33%);" class="column"></img>
-		<img id="sampleCardC" src="sampleCards/sample-card-3.png" style="width: calc(33.33%);" class="column"></img>
+		<img id="sampleCardA" style="width: 33.33%;" class="column"></img>
+		<img id="sampleCardB" style="width: 33.33%;" class="column"></img>
+		<img id="sampleCardC" style="width: 33.33%;" class="column"></img>
 	</div>
 	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
 </body>
@@ -221,6 +221,7 @@
 
 <!--CSS-->
 <style>
+/*fonts*/
 @font-face {
 	font-family: relaymedium;
 	src: url("data/fonts/relay-medium.ttf");
@@ -253,19 +254,13 @@
 	font-family: mplantini;
 	src: url("data/fonts/mplantin-i.ttf");
 }
+/*Applies to most elements (with rows and columns)*/
 * {
 	text-align: center;
 	font-family: belerenb;
-	font-size: 20px;
+	font-size: 22px;
 	color: rgb(128, 128, 128);
 }
-.title {
-	text-align: center;
-	color: rgb(128,255,128);
-	font-family: belerenbsc;
-	font-size: 60px;
-}
-
 .row {
 	margin-bottom: 5;
 }
@@ -277,19 +272,15 @@
 .row * {
 	box-sizing: border-box;
 	padding: 5px;
-	
 }
 .column {
 	float: left;
 }
-
+/*Style for sections, togglers, and togglees*/
 .section {
 	border: 1px solid rgba(128, 255, 128, 0.1);
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 0px;
-}
-.section * {
-	color: rgb(255, 255, 255);
 }
 .toggler {
 	width: 100%;
@@ -308,16 +299,21 @@
 .shown {
 	display: block;
 }
-input[type="text"], input[type="number"] {
+/*Specific input element styles*/
+input[type="text"], input[type="number"], textarea {
 	text-align: left;
 	color: black;
 	width: 99%;
 }
-select, select * {
+input[type="color"] {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+select, option {
 	color: black;
 	width: 100%;
 }
-
+/*List of all mana symbols and their associated codes*/
 #symbolList {
 	border: 1px solid rgba(128, 255, 128, 0.1);
 	background-color: rgba(0, 0, 0, 0.5);
@@ -329,7 +325,13 @@ select, select * {
 	top: 8px;
 	width: 30px;
 	/*padding: 0px 0px 0px 0px !important;*/
-	background-color: rgba(128,255,128, 0.1);
+}
+/*Other*/
+.title {
+	text-align: center;
+	color: rgb(128,255,128);
+	font-family: belerenbsc;
+	font-size: 60px;
 }
 .info, .info * {
 	color: rgb(96,96,96);
@@ -343,7 +345,7 @@ html {
 	-o-background-size: cover;
 	background-size: cover;
 }
-
+/*Hyperlinks*/
 a:link {
 	color: rgb(128,128,128); 
 }
@@ -363,7 +365,6 @@ a:active {
 <script crossorigin="anonymous">
 //Create the canvas for creating the border image
 var borderCanvas = document.createElement("canvas")
-borderCanvas.width = 749; borderCanvas.height = 1044
 var border = borderCanvas.getContext("2d")
 //document.body.appendChild(borderCanvas)
 //Load the initial border (m15)
@@ -429,15 +430,15 @@ document.getElementById("secondWatermarkColorSelection").innerHTML = document.ge
 function cardClock() {
 		//Insures that the corners of the final image are transparent
 		card.globalCompositeOperation = "source-over"
-		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, card, imgCardMask, false, false)
+		drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, card, imgCardMask, false, false)
 		card.globalCompositeOperation = "source-atop"
 		//Draws the card image, then...
 		drawPicture()
 		//draws the card frame on top
 		if (transparentBorder == false) {
-			drawMask(imgBorder, 0, 0, canvas.width, canvas.height, card, imgArtMask, false, false)
+			drawMask(imgBorder, 0, 0, cardWidth, cardHeight, card, imgArtMask, false, false)
 		} else {
-			card.drawImage(imgBorder, 0, 0, canvas.width, canvas.height)
+			card.drawImage(imgBorder, 0, 0, cardWidth, cardHeight)
 		}
 		//draws the set symbol, mana cost, and watermark
 		drawSetSymbol()
@@ -455,7 +456,7 @@ function cardClock() {
 		}
 		//A shiny foil overlay!
 		if(document.getElementById("checkboxFoil").checked == true) {
-			card.drawImage(imgFoil, 0, 0, canvas.width, canvas.height)
+			card.drawImage(imgFoil, 0, 0, cardWidth, cardHeight)
 		}
 		//These are for pinpointing coordinates while adjusting values for new border types
 		//Vertical Line
@@ -481,6 +482,11 @@ function changeTemplate() {
 }
 function finishTemplate() {
 	//This is a seperate function to insure that the border.js file finishes running before running a few last commands
+	canvas.width = cardWidth
+	canvas.height = cardHeight
+	borderCanvas.width = cardWidth
+	borderCanvas.height = cardHeight
+	resizeThings()
 	document.getElementById("colorSelection").value = "white"
 	imgMultiMask.src = borderPath + "multiMask.png"
 	imgFrameMask.src = borderPath + "frameMask.png"
@@ -577,73 +583,73 @@ function updateBorder() {
 function createBorder() {
 	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order so that when multiple border colors are used the gradients overlap correctly
 	//BACKGROUND COLOR
-	border.clearRect(0, 0, canvas.width, canvas.height)
-	drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgArtMask, false, false)
+	border.clearRect(0, 0, cardWidth, cardHeight)
+	drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, border, imgArtMask, false, false)
 	//MAIN CARD FRAME
-	drawMask(imgBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+	drawMask(imgBorderColor, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 	if (secondColor == true && secondBorder == true) {
-		drawMask(imgSecondBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
+		drawMask(imgSecondBorderColor, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 	}
 	if (thirdColor == true && thirdBorder == true) {
-		drawMask(imgThirdBorderColor, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiMask, false)
+		drawMask(imgThirdBorderColor, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiMask, false)
 	}
 	//Draws the silver border usually on un-cards
 	if (document.getElementById("checkboxSilverBorder").checked == true) {
-		drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgFrameMask, "reverseSecond")
+		drawMask("#a3aeb7", 0, 0, cardWidth, cardHeight, border, imgBorderMask, imgFrameMask, "reverseSecond")
 	}
 	//NYX
 	if (document.getElementById("checkboxNyx").checked == true && nyxBorder == true) {
 		if (thirdColor == true) {
-			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiMask, false)
+			drawMask(imgBorderNyx, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiMask, false)
 		} else {
-			drawMask(imgBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+			drawMask(imgBorderNyx, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 			if (secondColor == true) {
-				drawMask(imgSecondBorderNyx, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
+				drawMask(imgSecondBorderNyx, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 			}
 		}	
 	}
 	//MIRACLE
 	if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true) {
 		if (thirdColor == true) {
-			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+			drawMask(imgBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 		} else {
-			drawMask(imgBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+			drawMask(imgBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 			if (secondColor == true) {
-				drawMask(imgSecondBorderMiracle, 0, 0, canvas.width, canvas.height, border, imgFrameMask, imgMultiGradient, "reverseSecond")
+				drawMask(imgSecondBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiGradient, "reverseSecond")
 			}
 		}
 	}
 	//LEGENDARY
 	if (document.getElementById("checkboxLegendary").checked == true && legendaryBorder == true) {
-		drawMask(imgBorderLegendary, 0, 0, canvas.width, canvas.height, border, imgLegendFrameMask, false, false)
+		drawMask(imgBorderLegendary, 0, 0, cardWidth, cardHeight, border, imgLegendFrameMask, false, false)
 		if (secondColor == true) {
-			drawMask(imgSecondBorderLegendary, 0, 0, canvas.width, canvas.height, border, imgLegendFrameMask, imgMultiGradient, "reverseSecond")
+			drawMask(imgSecondBorderLegendary, 0, 0, cardWidth, cardHeight, border, imgLegendFrameMask, imgMultiGradient, "reverseSecond")
 		}
 		//redraws the custom-color border to match the legendary frame
-		drawMask(document.getElementById("inputColor").value, 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
+		drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
 		//redraws the silver border usually on un-cards to match the legendary frame
 		if (document.getElementById("checkboxSilverBorder").checked == true) {
-			drawMask("#a3aeb7", 0, 0, canvas.width, canvas.height, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
+			drawMask("#a3aeb7", 0, 0, cardWidth, cardHeight, border, imgBorderMask, imgLegendFrameMask, "reverseSecond")
 		}
 	}
 	//FLIP CARDS
 	if (flipBorder == true) {
 		if (document.getElementById("checkboxFlippedDark").checked == true && flipBorder == true) {
 			if (thirdColor == true) {
-				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+				drawMask(imgBorderFlippedDark, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 			} else {
-				drawMask(imgBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgFrameMask, false, false)
+				drawMask(imgBorderFlippedDark, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 				if (secondColor == true) {
-					drawMask(imgSecondBorderFlippedDark, 0, 0, canvas.width, canvas.height, border, imgSecondBorderFlippedDark, imgMultiGradient, "reverseSecond")
+					drawMask(imgSecondBorderFlippedDark, 0, 0, cardWidth, cardHeight, border, imgSecondBorderFlippedDark, imgMultiGradient, "reverseSecond")
 				}
 			}
 		}
 		if (document.getElementById("checkboxFlipIcon").checked == true) {
-			border.drawImage(imgBorderFlipCircle, 0, 0, canvas.width, canvas.height)
+			border.drawImage(imgBorderFlipCircle, 0, 0, cardWidth, cardHeight)
 			border.drawImage(imgBorderFlipIcon, 39, 51, 60, 60)
 		}
 		if (document.getElementById("checkboxFlipTip").checked == true) {
-			border.drawImage(imgBorderFlipTip, 0, 0, canvas.width, canvas.height)
+			border.drawImage(imgBorderFlipTip, 0, 0, cardWidth, cardHeight)
 			border.fillStyle="#666"
 			canvas.style.letterSpacing = "0px"
 			border.font = "28px belerenb"
@@ -768,7 +774,7 @@ function drawWatermark() {
 			width = watermarkWidth
 			height = imgWatermark.height * (width / imgWatermark.width)
 		}
-		var x = canvas.width / 2 - width / 2
+		var x = cardWidth / 2 - width / 2
 		var y = watermarkY - height / 2
 		//globalAlpha insures that the watermark is drawn partially transparent. This value may not be perfect but the watermark colors are calibrated to it
 		card.globalAlpha = 0.4
@@ -819,14 +825,15 @@ function writeText() {
 	card.font = typeFont
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
-	card.textAlign = "left"
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
+		card.textAlign = "center"
 		card.drawImage(imgBorderCreature, ptX, ptY, ptWidth, ptHeight)
 		canvas.style.letterSpacing = ptFontSpacing
 		card.font = ptFont
 		powerToughness = document.getElementById("inputPowerToughness").value
-		card.fillText(powerToughness, ptTextX - (card.measureText(powerToughness).width / 2), ptTextY)
+		card.fillText(powerToughness, ptTextX, ptTextY)
 	}
+	card.textAlign = "left"
 	card.fillStyle = "Black"
 	//Rules Text
 	canvas.style.letterSpacing = textFontSpacing + "px"
@@ -940,12 +947,12 @@ function drawText(text, xCoord, yCoord) {
 						card.font = "normal " + textSize + textFont
 					} else if (megaSplit[0] == "center") {
 						card.textAlign="center"
-						x = canvas.width / 2
+						x = cardWidth / 2
 						tempTextWidth = textWidth * 1.5
 					} else if (megaSplit[0] == "right") {
 						card.textAlign="right"
 						tempTextWidth = textWidth * 1.9
-						x = canvas.width - xCoord
+						x = cardWidth - xCoord
 					} else if (megaSplit[0] == "left") {
 						card.textAlign="left"
 						tempTextWidth = textWidth
@@ -957,7 +964,7 @@ function drawText(text, xCoord, yCoord) {
 						textXShift = 0
 						y += textSize + 1
 					} else if (megaSplit[0] == "bar") {
-						card.drawImage(imgBar, canvas.width / 2 - imgBar.width / 2, y + textSize + lineSpace + 5)
+						card.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, y + textSize + lineSpace + 5)
 						textXShift = 0
 						y += 2 * lineSpace + textSize + 3
 					} else if (megaSplit[0] == "chaos") {
@@ -1019,8 +1026,8 @@ function toggleSection(target) {
 
 //Resizes anything that may need to be resized
 function resizeThings() {
-	if (window.innerWidth > 1100 && canvas.width <= 770) {
-		document.getElementById("optionsColumn").style = "width: calc(100% - 777px)"
+	if (window.innerWidth > 809 + 300 && cardWidth <= 749) {
+		document.getElementById("optionsColumn").style = "width: calc(100% - 769px)"
 	} else {
 		document.getElementById("optionsColumn").style = "width: 100%"
 	}
