@@ -1054,7 +1054,7 @@ function loadSetSymbol() {
 
 //Loads an image from URL
 function imageURL(input, URL) {
-	URL.src = input.value
+	URL.src = "https://cors-anywhere.herokuapp.com/" + input.value
 }
 
 //Best for last - downloads the image!
@@ -1065,7 +1065,6 @@ function downloadCardImage(linkElement) {
 	}
 	linkElement.href = cardImageData
 }
-
 //Randomizes the sample cards at the bottom of the page. Runs it here too
 randomizeSampleCards(3)
 function randomizeSampleCards(count) {
