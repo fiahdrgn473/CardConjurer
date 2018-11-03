@@ -5,6 +5,7 @@ function loadImage(event, destination, arg) {
 		reader.onload = function() {
 			var dataURL = reader.result
 			destination.src = dataURL
+			destination.cropped = false
 		}
 		reader.readAsDataURL(input.files[0])
 	}

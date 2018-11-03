@@ -6,7 +6,7 @@
 	<script src="data/scripts/loadImage.js"></script>
 	<script src="data/scripts/loadColors.js"></script>
 	<script src="data/scripts/mask.js"></script>
-	<!--<script src="data/scripts/autocrop.js"></script> This is no longer required, but possibly could be in the future -->
+	<script src="data/scripts/autocrop.js"></script> <!-- This script may not be currently used -->
 	<div class="title">Card Conjurer</div>
 </head>
 <!-- <img src="data/background.png"></img> -->
@@ -406,8 +406,14 @@ var imgListUser = ["art", "setSymbol", "watermark", "border"]
 for (i = 0; i < imgListUser.length; i ++) {
 	var imgName = "img" + imgListUser[i].charAt(0).toUpperCase() + imgListUser[i].slice(1)
 	window[imgName] = new Image()
+	window[imgName].crossOrigin = "anonymous"
+	window[imgName].onload = function() {
+		if (this.cropped == false) {
+			this.cropped = true
+			autocrop(this.src, this)
+		}
+	}
 }
-imgArt.crossOrigin = "anonymous"
 //Load static images
 var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
 for (i = 0; i < imgListStatic.length; i ++) {
@@ -768,7 +774,7 @@ function drawSetSymbol() {
 //Draw Watermark
 function drawWatermark() {
 	//The watermark is centered/scaled just like the set symbol
-	if (imgWatermark.src != "" && document.getElementById("checkboxWatermark").checked == true) {
+	if (imgWatermark.width > 0 && document.getElementById("checkboxWatermark").checked == true) {
 		var height = watermarkHeight
 		var width = imgWatermark.width * (height / imgWatermark.height)
 		if (width > watermarkWidth) {
@@ -786,8 +792,8 @@ function drawWatermark() {
 	    } else {
 	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, card, imgWatermark, false, false)
 	    }
-	    card.globalAlpha = 1
 	}
+	card.globalAlpha = 1
 }
 //Mana cost
 function drawManaCost() {
@@ -1053,8 +1059,9 @@ function loadSetSymbol() {
 }
 
 //Loads an image from URL
-function imageURL(input, URL) {
-	URL.src = "https://cors-anywhere.herokuapp.com/" + input.value
+function imageURL(input, targetImage) {
+	targetImage.cropped = false
+	targetImage.src = "https://cors-anywhere.herokuapp.com/" + input.value
 }
 
 //Best for last - downloads the image!

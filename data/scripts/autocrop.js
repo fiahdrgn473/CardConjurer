@@ -8,6 +8,7 @@
         function autocrop(url, destination) {
             //Create image, size canvas, draw image
             var imgTempSetSymbol = new Image()
+            imgTempSetSymbol.crossOrigin = "anonymous"
             imgTempSetSymbol.src = url
             imgTempSetSymbol.onload = function() {
                 if (imgTempSetSymbol.width > 0 && imgTempSetSymbol.height > 0) {
@@ -41,8 +42,8 @@
                 height = pix.y[n] - pix.y[0]
                 var cropped = cropContext.getImageData(pix.x[0], pix.y[0], width + 1, height + 1)
                 //Resizes the canvas and draws cropped image
-                cropCanvas.width = width
-                cropCanvas.height = height
+                cropCanvas.width = width + 1
+                cropCanvas.height = height + 1
                 cropContext.putImageData(cropped, 0, 0)
                 //Saves the newly cropped image to the given image
                 destination.src = cropCanvas.toDataURL()
