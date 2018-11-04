@@ -7,7 +7,6 @@
 	<script src="data/scripts/loadColors.js"></script>
 	<script src="data/scripts/mask.js"></script>
 	<script src="data/scripts/autocrop.js"></script>
-	<script src="data/scripts/whiteToTransparent.js"></script>
 	<div class="title">Card Conjurer</div>
 </head>
 <!-- <img src="data/background.png"></img> -->
@@ -241,6 +240,8 @@
 					<br/>
 					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
 					<br/>
+					<input type="text" class="input" placeholder="Or use a set code" onchange="loadSetSymbolWatermark()" id="inputWatermarkSetCode"></input>
+					<br/>
 					Watermark Color
 					<br/>
 					<select class="input" id="watermarkColorSelection">
@@ -333,7 +334,7 @@
 	--dark-text-color: rgb(96, 96, 96);					/*DARK*/
 	--hover-text-color: rgb(100, 200, 50);				/*HOVER*/
 	--section-background-color: rgba(0, 0, 0, 0.5);		/*BACKGROUND*/
-	--section-border-color: rgba(128, 255, 128, 0.1);	/*BORDER*/
+	--section-border-color: rgba(128, 255, 128, 0.25);	/*BORDER*/
 }
 /*Applies to most elements (with rows and columns)*/
 * {
@@ -518,7 +519,11 @@ for (i = 0; i < imgListUser.length; i ++) {
 	window[imgName] = new Image()
 	window[imgName].crossOrigin = "anonymous"
 	window[imgName].onload = function() {
-		if (this.cropped == false) {
+		//If both tasks are required, it will make white pixels transparent first. That way they also get cropped out.
+		if (this.whiteToTransparent == false) {
+			this.whiteToTransparent = true
+			whiteToTransparent(imgWatermark)
+		} else if (this.cropped == false) {
 			this.cropped = true
 			autocrop(this.src, this)
 		}
@@ -1164,9 +1169,18 @@ function loadSetSymbol() {
 	imgSetSymbol.cropped = false
 	imgSetSymbol.src = "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("setSymbolCode").value.toUpperCase() + "&size=large&rarity=" + document.getElementById("setSymbolRarity").value.toUpperCase()
 }
+//Set Image to watermark!!!
+function loadSetSymbolWatermark() {
+	imgWatermark.whiteToTransparent = false
+	imgWatermark.cropped = false
+	imgWatermark.src = "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputWatermarkSetCode").value.toUpperCase() + "&size=large&rarity=C"
+}
 //Loads an image from URL
 function imageURL(input, targetImage) {
 	targetImage.cropped = false
+	if (targetImage == imgWatermark) {
+		imgWatermark.whiteToTransparent = false
+	}
 	targetImage.src = "https://cors-anywhere.herokuapp.com/" + input.value
 }
 //Randomizes the sample cards at the bottom of the page. Runs it here too
@@ -1192,5 +1206,7 @@ function downloadCardImage(linkElement) {
 	}
 	linkElement.href = cardImageData
 }
+
 </script>
+<script src="data/scripts/whiteToTransparent.js"></script>
 <html>

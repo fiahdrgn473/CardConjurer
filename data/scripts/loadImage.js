@@ -6,6 +6,9 @@ function loadImage(event, destination, arg) {
 			var dataURL = reader.result
 			destination.src = dataURL
 			destination.cropped = false
+			if (destination == imgWatermark) {
+				imgWatermark.whiteToTransparent = false
+			}
 		}
 		reader.readAsDataURL(input.files[0])
 	}
