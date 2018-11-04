@@ -18,45 +18,40 @@
 			<div class="section">
 				<div class="toggler" onclick="toggleSection(this)">Card Border</div>
 				<div class="togglee shown">
-
-
-
-
-					<!-- <div class="checkbox">
-						<input type="checkbox" id="testCheckbox" />
-      					<label for="testCheckbox" />
-      					<div>Label hmmm</div>
-					</div> -->
-
-
-
-
 					Border
-					<select class="input" id="borderSelection" onchange="changeTemplate()">
-						<option value="m15/">M15</option>
-						<option value="map/">Map (Ixalan)</option>
-						<option value="plane/">Plane</option>
-						<option value="8th/">8th</option>
-					</select>
+					<span class="dropdown">
+						<select id="borderSelection" onchange="changeTemplate()">
+							<option value="m15/">M15</option>
+							<option value="map/">Map (Ixalan)</option>
+							<option value="plane/">Plane</option>
+							<option value="8th/">8th</option>
+						</select>
+					</span>
 					<br/>
 					Color
-					<select class="input" id="colorSelection" onchange="updateBorder()">
-						<option value="white">White</option>
-					</select>
+					<span class="dropdown">
+						<select id="colorSelection" onchange="updateBorder()">
+							<option value="white">White</option>
+						</select>
+					</span>
 					<br/>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxSecondColor" onchange="updateBorder()" />
       					<label for="checkboxSecondColor" />
       					<div>Second Color</div>
 					</div>
-					<select class="input" id="secondColorSelection" onchange="updateBorder()"></select>
+					<span class="dropdown">
+						<select id="secondColorSelection" onchange="updateBorder()"></select>
+					</span>
 					<br/>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxThirdColor" onchange="updateBorder()" />
       					<label for="checkboxThirdColor" />
       					<div>Third Color</div>
 					</div>
-					<select class="input" id="thirdColorSelection" onchange="updateBorder()"></select>
+					<span class="dropdown">
+						<select id="thirdColorSelection" onchange="updateBorder()"></select>
+					</span>
 					<br/>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxCreature" />
@@ -94,15 +89,17 @@
       					<label for="checkboxFlipIcon" />
       					<div>Flip Icon</div>
 					</div>
-					<select class="input" id="inputFlipIcon" onchange="updateBorder()">
-						<option value="blank.png">Blank</option>
-						<option value="day.png">Day</option>
-						<option value="night.png">Night</option>
-						<option value="compass.png">Compass</option>
-						<option value="moon.png">Moon</option>
-						<option value="eldrazi.png">Eldrazi</option>
-						<option value="planeswalker.png">Planeswalker</option>
-					</select>
+					<span class="dropdown">
+						<select id="inputFlipIcon" onchange="updateBorder()">
+							<option value="blank.png">Blank</option>
+							<option value="day.png">Day</option>
+							<option value="night.png">Night</option>
+							<option value="compass.png">Compass</option>
+							<option value="moon.png">Moon</option>
+							<option value="eldrazi.png">Eldrazi</option>
+							<option value="planeswalker.png">Planeswalker</option>
+						</select>
+					</span>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxFlipTip" onchange="updateBorder()" />
       					<label for="checkboxFlipTip" />
@@ -244,22 +241,26 @@
 					<br/>
 					Watermark Color
 					<br/>
-					<select class="input" id="watermarkColorSelection">
-						<option value="#afa360">White</option>
-						<option value="#04527c">Blue</option>
-						<option value="#494949">Black</option>
-						<option value="#a3280d">Red</option>
-						<option value="#0f4f14">Green</option>
-						<option value="#7f5f00">Gold</option>
-						<option value="#616b72">Artifact/Colorless</option>
-					</select>
+					<span class="dropdown">
+						<select id="watermarkColorSelection">
+							<option value="#afa360">White</option>
+							<option value="#04527c">Blue</option>
+							<option value="#494949">Black</option>
+							<option value="#a3280d">Red</option>
+							<option value="#0f4f14">Green</option>
+							<option value="#7f5f00">Gold</option>
+							<option value="#616b72">Artifact/Colorless</option>
+						</select>
+					</span>
 					<br/>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxSecondWatermarkColor" />
       					<label for="checkboxSecondWatermarkColor" />
       					<div>Second Watermark Color</div>
 					</div>
-					<select class="input" id="secondWatermarkColorSelection"></select></input>
+					<span class="dropdown">
+						<select id="secondWatermarkColorSelection"></select></input>
+					</span>
 				</div>
 			</div>
 			<div class="section">
@@ -335,6 +336,7 @@
 	--hover-text-color: rgb(100, 200, 50);				/*HOVER*/
 	--section-background-color: rgba(0, 0, 0, 0.5);		/*BACKGROUND*/
 	--section-border-color: rgba(128, 255, 128, 0.25);	/*BORDER*/
+	--solid-border-color: rgb(39, 71, 39);				/*Opaque Border*/
 }
 /*Applies to most elements (with rows and columns)*/
 * {
@@ -424,6 +426,35 @@ input[type="color"] {
 	top: -8px;
 	left: 18px;
 }
+/* Custom select box (dropdown)*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+}
+.dropdown select {
+	width: inherit;
+	background-color:  var(--section-border-color);
+	color: var(--title-text-color);
+	border: none;
+	-moz-appearance: none;
+	-webkit-appearance:none;
+	appearance: none;
+}
+.dropdown select option {
+	color: var(--title-text-color);
+	background-color: var(--solid-border-color);
+}
+.dropdown::after {
+	content: "\25BC";
+	font-size: 10px;
+	position: absolute;
+	pointer-events: none;
+	color: var(--title-text-color);
+ 	right: 3%;
+ 	top: 38%;
+}
 /*List of all mana symbols and their associated codes*/
 #symbolList img {
 	padding: 0px;
@@ -438,11 +469,6 @@ input[type="color"] {
 	color: var(--title-text-color);
 	font-family: belerenbsc;
 	font-size: 60px;
-	position: sticky;
-	top: 0px;
-	z-index: 1;
-	background-color: var(--section-background-color);
-	border: 1px solid var(--section-border-color);
 }
 .info, .info * {
 	color: var(--dark-text-color);

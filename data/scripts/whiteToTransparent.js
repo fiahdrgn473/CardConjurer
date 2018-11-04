@@ -1,6 +1,5 @@
 var transparentCanvas = document.createElement("canvas")
 var transparentContext = transparentCanvas.getContext("2d")
-document.body.appendChild(transparentCanvas)
 
 //Function that auto  the image
 function whiteToTransparent(targetImage) {
