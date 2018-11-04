@@ -148,7 +148,7 @@
 				<div class="togglee">
 					Rules Text
 					<br/>
-					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 99%; resize: none; height: 200px"></textarea>
+					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px"></textarea>
 					<br/>
 					Rules Text Font Size
 					<input id="textSize" type="number" class="input" min="0" max="100" value="37" step="0.5"></input>
@@ -164,7 +164,7 @@
 				<div class="toggler" onclick="toggleSection(this)">Card Art</div>
 				<div class="togglee">
 					Image
-					<input type="file" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
 					<br/>
 					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)"></input>
 					<br/>
@@ -221,7 +221,7 @@
 					<input type="text" onchange="loadSetSymbol()" value="C" id="setSymbolRarity" class="input"></input>
 					<br>
 					Custom Set Symbol
-					<input type="file" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
 					<br/>
 					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)"></input>
 					<br/>
@@ -233,7 +233,7 @@
       					<label for="checkboxWatermark" />
       					<div>Watermark</div>
 					</div>
-					<input type="file" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
 					<br/>
 					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
 					<br/>
@@ -342,7 +342,7 @@
 * {
 	text-align: center;
 	font-family: belerenb;
-	font-size: 22px;
+	font-size: 24px;
 	color: var(--main-text-color);
 	user-select: none;
 }
@@ -390,7 +390,7 @@
 	border: none;
 	background-color: var(--section-border-color);
 	color: var(--input-text-color);
-	width: 99%;
+	width: 100%;
 }
 input[type="color"] {
 	border: none;
@@ -426,7 +426,7 @@ input[type="color"] {
 	top: -8px;
 	left: 18px;
 }
-/* Custom select box (dropdown)*/
+/*Custom select box (dropdown)*/
 .dropdown {
   position: relative;
   display: inline-block;
@@ -452,7 +452,7 @@ input[type="color"] {
 	position: absolute;
 	pointer-events: none;
 	color: var(--title-text-color);
- 	right: 3%;
+ 	right: 10px;
  	top: 38%;
 }
 /*List of all mana symbols and their associated codes*/
@@ -1178,10 +1178,10 @@ function resizeThings() {
 		document.getElementById("optionsColumn").style = "width: 100%"
 	}
 	var symbolList = ""
-	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 120))
+	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 130))
 	for (var i = 0; i < manaSymbolCode.length; i++) {
 		if (i%rowCount == 0) {
-			symbolList += "<div class='column' style='width: 120px'>"
+			symbolList += "<div class='column' style='width: 130px'>"
 		}
 		symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img><br/>"
 		if (i%rowCount == rowCount - 1) {
