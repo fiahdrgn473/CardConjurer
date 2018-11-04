@@ -577,7 +577,6 @@ document.getElementById("secondWatermarkColorSelection").innerHTML = document.ge
 //Runs ten times every second (main loop)
 function cardClock() {
 	//fixes the global alpha just incase...
-	card.globalAlpha = 1
 	//Insures that the corners of the final image are transparent
 	card.globalCompositeOperation = "source-over"
 	drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, card, imgCardMask, false, false)
@@ -936,6 +935,7 @@ function drawWatermark() {
 	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, card, imgWatermark, false, false)
 	    }
 	}
+	card.globalAlpha = 1
 }
 //Mana cost
 function drawManaCost() {

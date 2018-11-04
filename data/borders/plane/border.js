@@ -34,9 +34,9 @@ var setSymbolRight = cardWidth * 0.7797 //814
 var setSymbolWidth = cardWidth * 0.0402 //42
 var setSymbolHeight = cardHeight * 0.0320 //24
 //Watermark
-var watermarkWidth =  0 //520
-var watermarkHeight = 0 //250
-var watermarkY = 600 //600
+var watermarkWidth =  cardWidth * 0.8787 //920
+var watermarkHeight = cardHeight * 0.2000 //150
+var watermarkY = cardHeight * 0.8225 //616
 //Color Options
 loadColors("white-Regular,high-Bottom,mid-Middle,low-Top,none-Single")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
