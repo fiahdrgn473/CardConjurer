@@ -1228,7 +1228,7 @@ function imageURL(input, targetImage) {
 	targetImage.src = "https://cors-anywhere.herokuapp.com/" + input.value
 }
 //Randomizes the sample cards at the bottom of the page. Runs it here too
-randomizeSampleCards(6)
+randomizeSampleCards(7) //The number in here should always be set to the number of sample cards that are available
 function randomizeSampleCards(count) {
 	var cardNumbers = []
 	while (cardNumbers.length < 3) {
