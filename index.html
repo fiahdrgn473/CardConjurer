@@ -758,7 +758,10 @@ function createBorder() {
 		}	
 	}
 	//MIRACLE
-	if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true) {
+	if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true && (document.getElementById("checkboxFlippedDark").checked == false || flipBorder == false)) {
+		if (document.getElementById("checkboxFlippedDark").checked == true) {
+			alert("hmmm")
+		}
 		if (thirdColor == true) {
 			drawMask(imgBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 		} else {
@@ -793,7 +796,18 @@ function createBorder() {
 				}
 			}
 		}
-		if (document.getElementById("checkboxFlipIcon").checked == true) {
+		//redraws the miracle border if required to match with the newer darker overlay
+		if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true && (document.getElementById("checkboxLegendary").checked == false || legendaryBorder == false)) {
+			if (thirdColor == true) {
+				drawMask(imgBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
+			} else {
+				drawMask(imgBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
+				if (secondColor == true) {
+					drawMask(imgSecondBorderMiracle, 0, 0, cardWidth, cardHeight, border, imgFrameMask, imgMultiGradient, "reverseSecond")
+				}
+			}
+		}
+		if (document.getElementById("checkboxFlipIcon").checked == true || document.getElementById("checkboxFlippedDark").checked == true) {
 			border.drawImage(imgBorderFlipCircle, 0, 0, cardWidth, cardHeight)
 			border.drawImage(imgBorderFlipIcon, 39, 51, 60, 60)
 		}
@@ -975,6 +989,9 @@ function writeText() {
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
+		if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png") {
+			card.fillStyle = "White"
+		}
 		card.textAlign = "center"
 		card.drawImage(imgBorderCreature, ptX, ptY, ptWidth, ptHeight)
 		canvas.style.letterSpacing = ptFontSpacing

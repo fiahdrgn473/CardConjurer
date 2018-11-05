@@ -25,9 +25,9 @@ var textWidth = 660
 //Power Toughness
 var ptFont = "32px belerenb"
 var ptFontSpacing = "0.3px"
-var ptTextX = 374.5
+var ptTextX = 635
 var ptTextY = 933
-var ptX = 300
+var ptX = 560
 var ptY = 920
 var ptWidth = 150
 var ptHeight = 70
