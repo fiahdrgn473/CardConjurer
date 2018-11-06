@@ -1,0 +1,19 @@
+{
+    "name": "Card Conjurer",
+    "short_name": "Card Conjurer",
+    "icons": [
+        {
+            "src": "https://imkyle4815.github.io/cardconjurer/data/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://imkyle4815.github.io/cardconjurer/data/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#64ca2f",
+    "background_color": "#64ca2f",
+    "display": "standalone"
+}
