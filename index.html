@@ -19,7 +19,6 @@
 	<meta name="msapplication-config" content="https://imkyle4815.github.io/cardconjurer/data/favicons/browserconfig.xml">
 	<meta name="theme-color" content="#64ca2f">
 </head>
-<!-- <link rel="shortcut icon" href="data/background.png" /> -->
 <!-- <img src="data/background.png"></img> -->
 <body onresize="resizeThings()" onload="resizeThings()">
 	<div class="row">
@@ -254,6 +253,13 @@
 					<br/>
 					<span class="dropdown">
 						<select id="watermarkColorSelection">
+							<!-- <option value="#f3f2ef">White</option>
+							<option value="#1d7097">Blue</option>
+							<option value="#31302e">Black</option>
+							<option value="#bf544c">Red</option>
+							<option value="#1c6449">Green</option>
+							<option value="#e3d591">Gold</option>
+							<option value="#e0e0e0">Artifact/Colorless</option> -->
 							<option value="#afa360">White</option>
 							<option value="#04527c">Blue</option>
 							<option value="#494949">Black</option>
@@ -272,6 +278,8 @@
 					<span class="dropdown">
 						<select id="secondWatermarkColorSelection"></select></input>
 					</span>
+					Watermark Opacity
+					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01"></input>
 				</div>
 			</div>
 			<div class="section">
@@ -951,7 +959,7 @@ function drawWatermark() {
 		var x = cardWidth / 2 - width / 2
 		var y = watermarkY - height / 2
 		//globalAlpha insures that the watermark is drawn partially transparent. This value may not be perfect but the watermark colors are calibrated to it
-		card.globalAlpha = 0.4
+		card.globalAlpha = document.getElementById("inputWatermarkOpacity").value
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
 	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
 	    	drawMask(document.getElementById("watermarkColorSelection").value, x, y, width, height, card, imgWatermark, imgMultiGradient, false)
@@ -1261,7 +1269,6 @@ function downloadCardImage(linkElement) {
 	}
 	linkElement.href = cardImageData
 }
-
 </script>
 <script src="data/scripts/whiteToTransparent.js"></script>
 <html>
