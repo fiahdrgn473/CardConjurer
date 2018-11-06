@@ -3,12 +3,12 @@
     "short_name": "Card Conjurer",
     "icons": [
         {
-            "src": "https://imkyle4815.github.io/cardconjurer/data/android-chrome-192x192.png",
+            "src": "https://imkyle4815.github.io/cardconjurer/data/favicons/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "https://imkyle4815.github.io/cardconjurer/data/android-chrome-256x256.png",
+            "src": "https://imkyle4815.github.io/cardconjurer/data/favicons/android-chrome-256x256.png",
             "sizes": "256x256",
             "type": "image/png"
         }
