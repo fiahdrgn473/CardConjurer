@@ -612,7 +612,8 @@ function cardClock() {
 	//Draws the card image, then...
 	drawPicture()
 	//draws the card frame on top
-	if (transparentBorder == false) {
+	if (transparentBorder != true) {
+        //console.log(cardWidth + " " + cardHeight)
 		drawMask(imgBorder, 0, 0, cardWidth, cardHeight, card, imgArtMask, false, false)
 	} else {
 		card.drawImage(imgBorder, 0, 0, cardWidth, cardHeight)

@@ -15,6 +15,7 @@ function drawMask(img, x, y, width, height, targetContext, imgMask, secondMask, 
 			maskContext.globalCompositeOperation = "source-in"
 		}
 	}
+    console.log(width + ", " + height + " --- " + imgMask.width + ", " + imgMask.height + " --- " + img.width + ", " + img.height)
 	maskContext.drawImage(imgMask, 0, 0, width, height)
 	maskContext.globalCompositeOperation = "source-in"
 	if (img.src == undefined) {
