@@ -552,12 +552,14 @@ var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMa
 for (i = 0; i < imgListTemplate.length; i ++) {
 	var imgName = "img" + imgListTemplate[i].charAt(0).toUpperCase() + imgListTemplate[i].slice(1)
 	window[imgName] = new Image()
+    window[imgName].crossOrigin = "anonymous"
 }
 //Load border images (images that are determined by border settings)
 var imgListBorder = ["borderColor", "secondBorderColor", "thirdBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark"]
 for (i = 0; i < imgListBorder.length; i ++) {
 	var imgName = "img" + imgListBorder[i].charAt(0).toUpperCase() + imgListBorder[i].slice(1)
 	window[imgName] = new Image()
+    window[imgName].crossOrigin = "anonymous"
 	imgListBorder[i] = window[imgName]
 	imgListBorder[i].onload = function() {
 		if (this.hasToLoad == true) {
@@ -591,6 +593,7 @@ var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "r
 for (i = 0; i < imgListStatic.length; i ++) {
 	var imgName = "img" + imgListStatic[i].charAt(0).toUpperCase() + imgListStatic[i].slice(1)
 	window[imgName] = new Image()
+    window[imgName].crossOrigin = "anonymous"
 	window[imgName].src = "data/borders/" + imgListStatic[i] + ".png"
 }
 //Mana symbol Array setup
@@ -598,6 +601,7 @@ var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
+    window[imgName].crossOrigin = "anonymous"
 	manaSymbolImages[i].src = "data/manaSymbols/" + i + ".png"
 }
 //load first set symbol
