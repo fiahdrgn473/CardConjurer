@@ -417,6 +417,7 @@
 }
 /*Specific input element styles*/
 .input {
+	border-radius: 10px;
 	text-align: left;
 	border: none;
 	background-color: var(--section-border-color);
@@ -424,6 +425,7 @@
 	width: 100%;
 }
 input[type="color"] {
+	border-radius: 10px;
 	border: none;
 	background-color: var(--section-border-color);
 	padding-top: 0px;
@@ -431,14 +433,15 @@ input[type="color"] {
 }
 /*Custom checkboxes!*/
 .checkbox {
-	top: 4px;
+	padding-top: 12px;
+	top: 7px;
 	position: relative;
 }
 .checkbox label {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	border-radius: 100%;
+	border-radius: 33%;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -454,7 +457,7 @@ input[type="color"] {
 .checkbox div {
 	white-space: pre;
 	position: absolute;
-	top: -8px;
+	top: -9px;
 	left: 18px;
 }
 /*Custom select box (dropdown)*/
@@ -465,6 +468,7 @@ input[type="color"] {
 	padding: 0px;
 }
 .dropdown select {
+	border-radius: 10px;
 	width: inherit;
 	background-color:  var(--section-border-color);
 	color: var(--title-text-color);
@@ -474,6 +478,7 @@ input[type="color"] {
 	appearance: none;
 }
 .dropdown select option {
+	border-radius: 10px;
 	color: var(--title-text-color);
 	background-color: var(--solid-border-color);
 }
