@@ -1,3 +1,4 @@
+//Allows javascript files to be loaded through javascript code
 function loadScript(scriptName){
 	var script = document.createElement("script")
 	script.setAttribute("type","text/javascript")

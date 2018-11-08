@@ -1,4 +1,7 @@
 //Default Border
+//card size
+var cardWidth = 749
+var cardHeight = 1044
 //Sets the correct values to anything that may have been changed from an out of the ordinary border
 var eighthInfo = false
 var m15Info = false
@@ -22,9 +25,6 @@ var typeAlign = "left"
 var centerSetSymbol = 1 //1=not centered, 2=centered
 var artX = 58
 var artY = 118
-//card size
-cardWidth = 749
-cardHeight = 1044
 //Loads the correct border data
 borderPath = "data/borders/" + document.getElementById("borderSelection").value
 loadScript(borderPath + "border.js")

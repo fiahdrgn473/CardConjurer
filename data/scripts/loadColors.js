@@ -1,4 +1,4 @@
-//loadColors("white-White,blue-Blue,colorlessLand-Colorless Land,gold-Gold")
+//loadColors("white-White,blue-Blue,colorlessLand-Colorless Land,gold-Gold"), this is an example of how to use the function
 function loadColors(colors) {
 	var endResult = ""
 	var colorList = colors.split(",")

@@ -1,3 +1,4 @@
+//Create a canvas to work on when making white pixels transparent
 var transparentCanvas = document.createElement("canvas")
 var transparentContext = transparentCanvas.getContext("2d")
 
