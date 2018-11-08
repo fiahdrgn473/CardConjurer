@@ -5,6 +5,16 @@
 //              Initialization                //
 //============================================//
 //The following bits of code are run immediatly to initialize the program while allowing the variables to remain global.
+//Setup viewport!
+var minimumWidth = 769
+var viewport = document.createElement("meta")
+viewport.setAttribute("name", "viewport")
+if (screen.width < minimumWidth) {
+	viewport.setAttribute("content", "width=" + minimumWidth)
+} else {
+	viewport.setAttribute("content", "width=device-width", "initial-scale=1")
+}
+document.head.appendChild(viewport)
 //Define initial variables
 var borderPath
 var secondColor
