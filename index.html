@@ -1,6 +1,5 @@
 <!DOCTYPE html5>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 	<title>Card Conjurer</title>
 	<div class="title">Card Conjurer</div>
@@ -26,300 +25,302 @@
 </head>
 <!-- <img src="data/background.png"></img> -->
 <body onresize="resizeThings()" onload="resizeThings()">
-	<div class="row">
-		<div class="column"><canvas id="canvas" width="749" height="1044"></canvas></div>
-		<div class="column" id="optionsColumn">
-			<!--OPTIONS-->
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Card Border</div>
-				<div class="togglee shown">
-					Border
-					<span class="dropdown">
-						<select id="borderSelection" onchange="changeTemplate()">
-							<option value="m15/">M15</option>
-							<option value="map/">Map (Ixalan)</option>
-							<option value="plane/">Plane</option>
-							<option value="8th/">8th</option>
-						</select>
-					</span>
-					<br/>
-					Color
-					<span class="dropdown">
-						<select id="colorSelection" onchange="updateBorder()">
-							<option value="white">White</option>
-						</select>
-					</span>
-					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxSecondColor" onchange="updateBorder()" />
-						<label for="checkboxSecondColor" />
-						<div>Second Color</div>
-					</div>
-					<span class="dropdown">
-						<select id="secondColorSelection" onchange="updateBorder()"></select>
-					</span>
-					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxThirdColor" onchange="updateBorder()" />
-						<label for="checkboxThirdColor" />
-						<div>Third Color</div>
-					</div>
-					<span class="dropdown">
-						<select id="thirdColorSelection" onchange="updateBorder()"></select>
-					</span>
-					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxCreature" />
-						<label for="checkboxCreature" />
-						<div>Power/Toughness</div>
-					</div>
-					<input id="inputPowerToughness" class="input" value="" type="text"></input>
-				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Border (Advanced)</div>
-				<div class="togglee">
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxLegendary" onchange="updateBorder()" />
-						<label for="checkboxLegendary" />
-						<div>Legendary</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxNyx" onchange="updateBorder()" />
-						<label for="checkboxNyx" />
-						<div>Nyx</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxMiracle" onchange="updateBorder()" />
-						<label for="checkboxMiracle" />
-						<div>Miracle</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxRareStamp" onchange="updateBorder()" />
-						<label for="checkboxRareStamp" />
-						<div>Rare Stamp</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxFlipIcon" onchange="updateBorder()" />
-						<label for="checkboxFlipIcon" />
-						<div>Flip Icon</div>
-					</div>
-					<span class="dropdown">
-						<select id="inputFlipIcon" onchange="updateBorder()">
-							<option value="blank.png">Blank</option>
-							<option value="day.png">Day</option>
-							<option value="night.png">Night</option>
-							<option value="compass.png">Compass</option>
-							<option value="moon.png">Moon</option>
-							<option value="eldrazi.png">Eldrazi</option>
-							<option value="planeswalker.png">Planeswalker</option>
-						</select>
-					</span>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxFlipTip" onchange="updateBorder()" />
-						<label for="checkboxFlipTip" />
-						<div>Flip Tip</div>
-					</div>
-					<input id="inputFlipTip" value="" type="text" class="input"></input>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxFlippedDark" onchange="updateBorder()" />
-						<label for="checkboxFlippedDark" />
-						<div>Flipped (Darker)</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxSilverBorder" onchange="updateBorder()" />
-						<label for="checkboxSilverBorder" />
-						<div>Silver Border</div>
-					</div>
-					<input type="color" id="inputColor" onchange="updateBorder()"> Border Color</input>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxFoil" />
-						<label for="checkboxFoil" />
-						<div>Foil</div>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxIdentity" onchange="updateBorder()" />
-						<label for="checkboxIdentity" />
-						<div>Color Identity</div>
-					</div>
-					<input id="inputIdentity" type="text" class="input" onchange="updateBorder()"></input>
-				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Name, Mana Cost, Type</div>
-				<div class="togglee">
-					Name
-					<input id="inputName" type="text" class="input"></input>
-					<br/>
-					Mana Cost
-					<input id="inputCost" type="text" class="input"></input>
-					<br/>
-					Type
-					<input id="inputType" type="text" class="input"></input>
-				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Rules Text</div>
-				<div class="togglee">
-					Rules Text
-					<br/>
-					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px"></textarea>
-					<br/>
-					Rules Text Font Size
-					<input id="textSize" type="number" class="input" min="0" max="100" value="37" step="0.5"></input>
-					<br/>
-					Pixels Between Paragraphs
-					<input id="textShift" type="number" class="input" min="0" max="300" value="13"></input>
-					<br/>
-					Shift All Text Down
-					<input id="textDown" type="number" class="input" min="0" max="300" value="0"></input>
-				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Card Art</div>
-				<div class="togglee">
-					Image
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
-					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)"></input>
-					<br/>
-					Image Zoom
-					<input id="imageSize" type="number" class="input" value="100" step="0.1"></input>
-					<br/>
-					Image Left
-					<input id="imageLeft" type="number" class="input" value="0" step="1"></input>
-					<br/>
-					Image Up
-					<input id="imageUp" type="number" class="input" value="0" step="1"></input>
-				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Bottom Information</div>
-				<div class="togglee">
-					Other Info
-					<input id="inputInfo" value="Not A Real Card" type="text" class="input"></input>
-					<br/>
-					Card Number
-					<input id="inputNumber" value="001/001" type="text" class="input"></input>
-					<br/>
-					Rarity
-					<input id="inputRarity" value="C" type="text" class="input"></input>
-					<br/>
-					Set Abbreviation
-					<input id="inputSet" value="MTG" type="text" class="input"></input>
-					<br/>
-					Language
-					<input id="inputLanguage" value="EN" type="text" class="input"></input>
-					<br/>
-					Artist Credit
-					<input id="inputArtist" value="" type="text" class="input"></input>
-					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxArtistColor" />
-						<label for="checkboxArtistColor" />
-						<div>Make Artist Credit font black</div>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<div class="row">
+			<div class="column"><canvas id="canvas" width="749" height="1044"></canvas></div>
+			<div class="column" id="optionsColumn">
+				<!--OPTIONS-->
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Card Border</div>
+					<div class="togglee shown">
+						Border
+						<span class="dropdown">
+							<select id="borderSelection" onchange="changeTemplate()">
+								<option value="m15/">M15</option>
+								<option value="map/">Map (Ixalan)</option>
+								<option value="plane/">Plane</option>
+								<option value="8th/">8th</option>
+							</select>
+						</span>
+						<br/>
+						Color
+						<span class="dropdown">
+							<select id="colorSelection" onchange="updateBorder()">
+								<option value="white">White</option>
+							</select>
+						</span>
+						<br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxSecondColor" onchange="updateBorder()" />
+							<label for="checkboxSecondColor" />
+							<div>Second Color</div>
+						</div>
+						<span class="dropdown">
+							<select id="secondColorSelection" onchange="updateBorder()"></select>
+						</span>
+						<br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxThirdColor" onchange="updateBorder()" />
+							<label for="checkboxThirdColor" />
+							<div>Third Color</div>
+						</div>
+						<span class="dropdown">
+							<select id="thirdColorSelection" onchange="updateBorder()"></select>
+						</span>
+						<br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxCreature" />
+							<label for="checkboxCreature" />
+							<div>Power/Toughness</div>
+						</div>
+						<input id="inputPowerToughness" class="input" value="" type="text"></input>
 					</div>
 				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Set Symbol and Watermark</div>
-				<div class="togglee">
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxSetSymbol" checked="true" />
-						<label for="checkboxSetSymbol" />
-						<div>Set Symbol</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Border (Advanced)</div>
+					<div class="togglee">
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxLegendary" onchange="updateBorder()" />
+							<label for="checkboxLegendary" />
+							<div>Legendary</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxNyx" onchange="updateBorder()" />
+							<label for="checkboxNyx" />
+							<div>Nyx</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxMiracle" onchange="updateBorder()" />
+							<label for="checkboxMiracle" />
+							<div>Miracle</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxRareStamp" onchange="updateBorder()" />
+							<label for="checkboxRareStamp" />
+							<div>Rare Stamp</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxFlipIcon" onchange="updateBorder()" />
+							<label for="checkboxFlipIcon" />
+							<div>Flip Icon</div>
+						</div>
+						<span class="dropdown">
+							<select id="inputFlipIcon" onchange="updateBorder()">
+								<option value="blank.png">Blank</option>
+								<option value="day.png">Day</option>
+								<option value="night.png">Night</option>
+								<option value="compass.png">Compass</option>
+								<option value="moon.png">Moon</option>
+								<option value="eldrazi.png">Eldrazi</option>
+								<option value="planeswalker.png">Planeswalker</option>
+							</select>
+						</span>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxFlipTip" onchange="updateBorder()" />
+							<label for="checkboxFlipTip" />
+							<div>Flip Tip</div>
+						</div>
+						<input id="inputFlipTip" value="" type="text" class="input"></input>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxFlippedDark" onchange="updateBorder()" />
+							<label for="checkboxFlippedDark" />
+							<div>Flipped (Darker)</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxSilverBorder" onchange="updateBorder()" />
+							<label for="checkboxSilverBorder" />
+							<div>Silver Border</div>
+						</div>
+						<input type="color" id="inputColor" onchange="updateBorder()"> Border Color</input>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxFoil" />
+							<label for="checkboxFoil" />
+							<div>Foil</div>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxIdentity" onchange="updateBorder()" />
+							<label for="checkboxIdentity" />
+							<div>Color Identity</div>
+						</div>
+						<input id="inputIdentity" type="text" class="input" onchange="updateBorder()"></input>
 					</div>
-					Set Code
-					<input type="text" onchange="loadSetSymbol()" value="hm" id="setSymbolCode" class="input"></input>
-					<br>
-					Set Symbol Rarity
-					<input type="text" onchange="loadSetSymbol()" value="C" id="setSymbolRarity" class="input"></input>
-					<br>
-					Custom Set Symbol
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
-					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)"></input>
-					<br/>
-					Scale Set Symbol
-					<input id="setSymbolSize" type="number" class="input" value="100" step="0.5"></input>
-					<br/><br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxWatermark" checked="true" />
-						<label for="checkboxWatermark" />
-						<div>Watermark</div>
-					</div>
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
-					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
-					<br/>
-					<input type="text" class="input" placeholder="Or use a set code" onchange="loadSetSymbolWatermark()" id="inputWatermarkSetCode"></input>
-					<br/>
-					Watermark Color
-					<br/>
-					<span class="dropdown">
-						<select id="watermarkColorSelection">
-							<!-- <option value="#f3f2ef">White</option>
-							<option value="#1d7097">Blue</option>
-							<option value="#31302e">Black</option>
-							<option value="#bf544c">Red</option>
-							<option value="#1c6449">Green</option>
-							<option value="#e3d591">Gold</option>
-							<option value="#e0e0e0">Artifact/Colorless</option> -->
-							<option value="#afa360">White</option>
-							<option value="#04527c">Blue</option>
-							<option value="#494949">Black</option>
-							<option value="#a3280d">Red</option>
-							<option value="#0f4f14">Green</option>
-							<option value="#7f5f00">Gold</option>
-							<option value="#616b72">Artifact/Colorless</option>
-						</select>
-					</span>
-					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxSecondWatermarkColor" />
-						<label for="checkboxSecondWatermarkColor" />
-						<div>Second Watermark Color</div>
-					</div>
-					<span class="dropdown">
-						<select id="secondWatermarkColorSelection">
-							<option value="#afa360">White</option>
-							<option value="#04527c">Blue</option>
-							<option value="#494949">Black</option>
-							<option value="#a3280d">Red</option>
-							<option value="#0f4f14">Green</option>
-							<option value="#7f5f00">Gold</option>
-							<option value="#616b72">Artifact/Colorless</option>
-						</select>
-					</span>
-					Watermark Opacity
-					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01"></input>
 				</div>
-			</div>
-			<div class="section">
-				<div class="toggler" onclick="toggleSection(this)">Download/Options</div>
-				<div class="togglee">
-					Frame Rate
-					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)"></input>
-					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Name, Mana Cost, Type</div>
+					<div class="togglee">
+						Name
+						<input id="inputName" type="text" class="input"></input>
+						<br/>
+						Mana Cost
+						<input id="inputCost" type="text" class="input"></input>
+						<br/>
+						Type
+						<input id="inputType" type="text" class="input"></input>
+					</div>
 				</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Rules Text</div>
+					<div class="togglee">
+						Rules Text
+						<br/>
+						<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px"></textarea>
+						<br/>
+						Rules Text Font Size
+						<input id="textSize" type="number" class="input" min="0" max="100" value="37" step="0.5"></input>
+						<br/>
+						Pixels Between Paragraphs
+						<input id="textShift" type="number" class="input" min="0" max="300" value="13"></input>
+						<br/>
+						Shift All Text Down
+						<input id="textDown" type="number" class="input" min="0" max="300" value="0"></input>
+					</div>
+				</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Card Art</div>
+					<div class="togglee">
+						Image
+						<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
+						<br/>
+						<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)"></input>
+						<br/>
+						Image Zoom
+						<input id="imageSize" type="number" class="input" value="100" step="0.1"></input>
+						<br/>
+						Image Left
+						<input id="imageLeft" type="number" class="input" value="0" step="1"></input>
+						<br/>
+						Image Up
+						<input id="imageUp" type="number" class="input" value="0" step="1"></input>
+					</div>
+				</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Bottom Information</div>
+					<div class="togglee">
+						Other Info
+						<input id="inputInfo" value="Not A Real Card" type="text" class="input"></input>
+						<br/>
+						Card Number
+						<input id="inputNumber" value="001/001" type="text" class="input"></input>
+						<br/>
+						Rarity
+						<input id="inputRarity" value="C" type="text" class="input"></input>
+						<br/>
+						Set Abbreviation
+						<input id="inputSet" value="MTG" type="text" class="input"></input>
+						<br/>
+						Language
+						<input id="inputLanguage" value="EN" type="text" class="input"></input>
+						<br/>
+						Artist Credit
+						<input id="inputArtist" value="" type="text" class="input"></input>
+						<br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxArtistColor" />
+							<label for="checkboxArtistColor" />
+							<div>Make Artist Credit font black</div>
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Set Symbol and Watermark</div>
+					<div class="togglee">
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxSetSymbol" checked="true" />
+							<label for="checkboxSetSymbol" />
+							<div>Set Symbol</div>
+						</div>
+						Set Code
+						<input type="text" onchange="loadSetSymbol()" value="hm" id="setSymbolCode" class="input"></input>
+						<br>
+						Set Symbol Rarity
+						<input type="text" onchange="loadSetSymbol()" value="C" id="setSymbolRarity" class="input"></input>
+						<br>
+						Custom Set Symbol
+						<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
+						<br/>
+						<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)"></input>
+						<br/>
+						Scale Set Symbol
+						<input id="setSymbolSize" type="number" class="input" value="100" step="0.5"></input>
+						<br/><br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxWatermark" checked="true" />
+							<label for="checkboxWatermark" />
+							<div>Watermark</div>
+						</div>
+						<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
+						<br/>
+						<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
+						<br/>
+						<input type="text" class="input" placeholder="Or use a set code" onchange="loadSetSymbolWatermark()" id="inputWatermarkSetCode"></input>
+						<br/>
+						Watermark Color
+						<br/>
+						<span class="dropdown">
+							<select id="watermarkColorSelection">
+								<!-- <option value="#f3f2ef">White</option>
+								<option value="#1d7097">Blue</option>
+								<option value="#31302e">Black</option>
+								<option value="#bf544c">Red</option>
+								<option value="#1c6449">Green</option>
+								<option value="#e3d591">Gold</option>
+								<option value="#e0e0e0">Artifact/Colorless</option> -->
+								<option value="#afa360">White</option>
+								<option value="#04527c">Blue</option>
+								<option value="#494949">Black</option>
+								<option value="#a3280d">Red</option>
+								<option value="#0f4f14">Green</option>
+								<option value="#7f5f00">Gold</option>
+								<option value="#616b72">Artifact/Colorless</option>
+							</select>
+						</span>
+						<br/>
+						<div class="checkbox">
+							<input type="checkbox" id="checkboxSecondWatermarkColor" />
+							<label for="checkboxSecondWatermarkColor" />
+							<div>Second Watermark Color</div>
+						</div>
+						<span class="dropdown">
+							<select id="secondWatermarkColorSelection">
+								<option value="#afa360">White</option>
+								<option value="#04527c">Blue</option>
+								<option value="#494949">Black</option>
+								<option value="#a3280d">Red</option>
+								<option value="#0f4f14">Green</option>
+								<option value="#7f5f00">Gold</option>
+								<option value="#616b72">Artifact/Colorless</option>
+							</select>
+						</span>
+						Watermark Opacity
+						<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01"></input>
+					</div>
+				</div>
+				<div class="section">
+					<div class="toggler" onclick="toggleSection(this)">Download/Options</div>
+					<div class="togglee">
+						Frame Rate
+						<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)"></input>
+						<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+					</div>
+				</div>
+				<!--END-->
 			</div>
-			<!--END-->
 		</div>
-	</div>
-	<div class="row">
-		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
-	</div>
-	<div id="symbolList" class="row section"></div>
-	<div class="row">
-		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
-	</div>
-	<div class="row section">
-		Check out some samples! <br/>
-		<img id="sampleCardA" style="width: 33.33%;" class="column"></img>
-		<img id="sampleCardB" style="width: 33.33%;" class="column"></img>
-		<img id="sampleCardC" style="width: 33.33%;" class="column"></img>
-	</div>
-	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
+		<div class="row">
+			Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
+		</div>
+		<div id="symbolList" class="row section"></div>
+		<div class="row">
+			When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
+		</div>
+		<div class="row section">
+			Check out some samples! <br/>
+			<img id="sampleCardA" style="width: 33.33%;" class="column"></img>
+			<img id="sampleCardB" style="width: 33.33%;" class="column"></img>
+			<img id="sampleCardC" style="width: 33.33%;" class="column"></img>
+		</div>
+		<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
+	</meta>
 </body>
 
 
