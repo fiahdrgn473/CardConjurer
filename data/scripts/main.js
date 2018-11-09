@@ -357,7 +357,7 @@ function createBorder() {
 	}
 	//COLOR IDENTITY
 	if (document.getElementById("checkboxIdentity").checked == true) {
-		var identityList = document.getElementById("inputIdentity").value.split(" ")
+		var identityList = document.getElementById("inputIdentity").value.toLowerCase().split(" ")
 		var angleSize = Math.PI * 2 / identityList.length
 		var identityRadius = 14
 		var identityX = typeX + 8
@@ -494,7 +494,7 @@ function drawWatermark() {
 function drawManaCost() {
 	//the symbols string splits the mana cost input into an array of strings which is then put into a for loop that draws the appropriate set symbol then adjusts the xShift so the set symbols are spaced properly
 	card.fillStyle = "Black"
-	var symbols = document.getElementById("inputCost").value.split(" ")
+	var symbols = document.getElementById("inputCost").value.toLowerCase().split(" ")
 	var xShift = 0
 	for (n = symbols.length; n > -1; n--) {
 		if (manaSymbolCode.indexOf(symbols[n]) != -1) {
@@ -689,8 +689,9 @@ function drawText(text, xCoord, yCoord) {
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0])], x + textXShift + textSize * 0.054, y + textSize * 0.17, textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0])], x + textXShift + textSize * 0.054, y + textSize * 0.17 + parseInt(document.getElementById("inputSymbolDown").value), textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
+						console.log(y + textSize * 0.17)
 					}
 					if (megaSplit[1] != "") {
 						plainWord = megaSplit[1] + " "
@@ -741,16 +742,11 @@ function toggleSection(target) {
 }
 //Resizes anything that may need to be resized
 function resizeThings() {
-	if (window.innerWidth > 809 + 300 && cardWidth <= 749) {
-		document.getElementById("optionsColumn").style = "width: calc(100% - 769px)"
-	} else {
-		document.getElementById("optionsColumn").style = "width: 100%"
-	}
 	var symbolList = ""
-	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 130))
+	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 150))
 	for (var i = 0; i < manaSymbolCode.length; i++) {
 		if (i%rowCount == 0) {
-			symbolList += "<div class='column' style='width: 130px'>"
+			symbolList += "<div class='column-4' style='width: 150px'>"
 		}
 		symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img><br/>"
 		if (i%rowCount == rowCount - 1) {

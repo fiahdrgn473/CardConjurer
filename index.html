@@ -26,8 +26,8 @@
 <!-- <img src="data/background.png"></img> -->
 <body onresize="resizeThings()" onload="resizeThings()">
 	<div class="row">
-		<div class="column"><canvas id="canvas" width="749" height="1044"></canvas></div>
-		<div class="column" id="optionsColumn">
+		<div class="column-1"><canvas id="canvas" width="749" height="1044"></canvas></div>
+		<div class="column-2" id="optionsColumn">
 			<!--OPTIONS-->
 			<div class="section">
 				<div class="toggler" onclick="toggleSection(this)">Card Border</div>
@@ -172,6 +172,9 @@
 					<br/>
 					Shift All Text Down
 					<input id="textDown" type="number" class="input" min="0" max="300" value="0"></input>
+					<br/>
+					Shift All Mana Symbols Down
+					<input id="inputSymbolDown" type="number" class="input" value="0"></input>
 				</div>
 			</div>
 			<div class="section">
@@ -216,7 +219,7 @@
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxArtistColor" />
 						<label for="checkboxArtistColor" />
-						<div>Make Artist Credit font black</div>
+						<div>Black Bottom Info</div>
 					</div>
 				</div>
 			</div>
@@ -314,11 +317,11 @@
 	</div>
 	<div class="row section">
 		Check out some samples! <br/>
-		<img id="sampleCardA" class="column sampleImage"></img>
-		<img id="sampleCardB" class="column sampleImage"></img>
-		<img id="sampleCardC" class="column sampleImage"></img>
+		<img id="sampleCardA" class="column-3"></img>
+		<img id="sampleCardB" class="column-3"></img>
+		<img id="sampleCardC" class="column-3"></img>
 	</div>
-	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the Github page</a>.</div>
+	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank" class="info">the Github page</a>.</div>
 </body>
 
 
@@ -373,44 +376,32 @@
 * {
 	text-align: center;
 	font-family: belerenb;
-	font-size: 24px;
+	font-size: 25px;
 	color: var(--main-text-color);
 	user-select: none;
+	box-sizing: border-box;
 }
-.row {
-	margin-bottom: 5;
-}
-.row:after{
+.row::after{
 	content: "";
-	display: table;
+	display: block;
 	clear: both;
 }
-.row * {
-	box-sizing: border-box;
-	padding: 5px;
-}
-.column {
+[class*="column-"] {
+	width: 100%;
 	float: left;
-}
-.sampleImage {
-	width: 33.33%;
+	padding: 0.2em;
 }
 /*Style for sections, togglers, and togglees*/
 .section {
-	border: 1px solid var(--section-border-color);
+	border: 0.04em solid var(--section-border-color);
 	background-color: var(--section-background-color);
-	padding: 0px;
-}
-.toggler {
-	width: 100%;
 }
 .toggler:hover {
 	color: var(--hover-text-color);
 }
 .togglee {
-	width: 100%;
 	text-align: left;
-	border-width: 1px;
+	border-width: 0.04em;
 	border-color: var(--section-border-color);
 	border-style: dashed solid solid solid;
 	display: none;
@@ -420,7 +411,7 @@
 }
 /*Specific input element styles*/
 .input {
-	border-radius: 10px;
+	border-radius: 0.25em;
 	text-align: left;
 	border: none;
 	background-color: var(--section-border-color);
@@ -460,7 +451,7 @@ input[type="color"] {
 .checkbox div {
 	white-space: pre;
 	position: absolute;
-	top: -9px;
+	top: -5px;
 	left: 18px;
 }
 /*Custom select box (dropdown)*/
@@ -496,10 +487,9 @@ input[type="color"] {
 }
 /*List of all mana symbols and their associated codes*/
 #symbolList img {
-	padding: 0px;
 	position: relative;
-	top: 8px;
-	width: 30px;
+	top: 0.25em;
+	width: 1.2em;
 	/*padding: 0px 0px 0px 0px !important;*/
 }
 /*Other*/
@@ -509,10 +499,10 @@ input[type="color"] {
 	font-family: belerenbsc;
 	font-size: 60px;
 }
-.info, .info * {
+.info {
 	color: var(--dark-text-color);
 	font-family: belerenbsc;
-	font-size: 16px;
+	font-size: 0.75rem;
 }
 html {
 	background:url(data/background.png) no-repeat center center fixed;
@@ -533,6 +523,24 @@ a:hover {
 }
 a:active {
 	color: var(--hover-text-color);
+}
+/*Adjustments For Desktop*/
+@media only screen and (min-width: 850px) {
+	/*Nothing for now :)*/
+}
+@media only screen and (min-width: 1150px) {
+	.column-1 {
+		width: 769px;
+	}
+	.column-2 {
+		width: calc(100% - 769px);
+	}
+	.column-3 {
+		width: 33.33%;
+	}
+	.column-4 {
+
+	}
 }
 </style>
 <script src="data/scripts/loadScript.js"></script>
