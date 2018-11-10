@@ -418,6 +418,9 @@
 	user-select: none;
 	box-sizing: border-box;
 }
+html {
+	background-color: rgb(16, 16, 16);
+}
 /*Applies to most elements (with rows and columns)*/
 .row::after{
 	content: "";
@@ -549,13 +552,6 @@ input[type="color"] {
 	font-family: belerenbsc;
 	font-size: 0.75rem;
 }
-html {
-	background:url(data/background.png) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
 /*Hyperlinks*/
 a:link {
 	color: var(--main-text-color);
@@ -570,8 +566,10 @@ a:hover {
 a:active {
 	color: var(--title-text-color);
 }
+.column-2 {
+	margin-bottom: 20px;
+}
 /*Adjustments For Desktop*/
-/*Chrome's JS Debugger gives a width 1.1 times greater than it should be*/
 @media only screen and (orientation: landscape) {
 	* {
 		font-size: 25px;
@@ -581,7 +579,19 @@ a:active {
 @media only screen and (min-width: 1130px) {
 	/*The card manipulator menu can be side-by-side with the card*/
 	.column-1 {width: 769px;}
-	.column-2 {width: calc(100% - 769px);}
+	.column-2 {
+		width: calc(100% - 769px);
+		margin-bottom: 0px;
+	}
+}
+@media only screen and (min-width: 801px) {
+	html {
+		background:url(data/background.png) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
 }
 </style>
 <script src="data/scripts/loadScript.js"></script>

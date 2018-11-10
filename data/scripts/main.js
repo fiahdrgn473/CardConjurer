@@ -6,7 +6,7 @@
 //============================================//
 //The following bits of code are run immediatly to initialize the program while allowing the variables to remain global.
 //Setup viewport!
-var minimumWidth = 783
+var minimumWidth = 800
 var viewport = document.createElement("meta")
 viewport.setAttribute("name", "viewport")
 if (screen.width < minimumWidth) {
