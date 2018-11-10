@@ -376,7 +376,7 @@
 * {
 	text-align: center;
 	font-family: belerenb;
-	font-size: 25px;
+	font-size: 5vw;
 	color: var(--main-text-color);
 	user-select: none;
 	box-sizing: border-box;
@@ -495,6 +495,9 @@ input[type="color"] {
 	top: 0.25em;
 	height: 1.2em;
 }
+.column-4 {
+	width: 5.5em;
+}
 /*Other*/
 .title {
 	text-align: center;
@@ -530,6 +533,9 @@ a:active {
 /*Adjustments For Desktop*/
 /*Chrome's JS Debugger gives a width 1.1 times greater than it should be*/
 @media only screen and (orientation: landscape) {
+	* {
+		font-size: 25px;
+	}
 	.column-3 {width: 33.33%;}
 }
 @media only screen and (min-width: 1130px) {

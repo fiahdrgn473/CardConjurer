@@ -108,7 +108,7 @@ var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("i
 //It's easier to generate the mana symbol list via js, so do it here
 var symbolList = ""
 	for (var i = 0; i < manaSymbolCode.length; i++) {
-		symbolList += "<div class='column-4' style='width: auto'>" + manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img></div>"
+		symbolList += "<div class='column-4'>" + manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img></div>"
 	}
 document.getElementById("symbolList").innerHTML = symbolList
 
