@@ -22,6 +22,7 @@
 	<meta name="msapplication-TileColor" content="#00a300">
 	<meta name="msapplication-config" content="browserconfig.xml">
 	<meta name="theme-color" content="#64ca2f">
+	<meta charset="UTF-8">
 </head>
 <!-- <img src="data/background.png"></img> -->
 <body>
@@ -309,18 +310,55 @@
 		</div>
 	</div>
 	<div class="row">
-		Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after.<br/>
+		<div class="column-4">
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Mana Symbol Codes</div>
+				<div class="togglee shown">
+					Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after. These codes are caps sensative.<br/>
+					<div id="symbolList" style="overflow: hidden;"></div>
+				</div>
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Other Codes</div>
+				<div class="togglee">
+					Like the mana symbols, each of the following codes must include '<' before each code and '>' after. These codes are also caps sensative.<br/>
+					&#8226 line &#8594 Skips to the next line<br/>
+					&#8226 bar &#8594 Just like line, except adds the bar that usually seperates flavor text<br/>
+					&#8226 lineNoSpace &#8594 Just like line, except stays closer to the previous line<br/>
+					&#8226 i &#8594 Text is italicized<br/>
+					&#8226 /i &#8594 Text returns to normal<br/>
+					&#8226 left &#8594 Text aligns to the left<br/>
+					&#8226 center &#8594 Text aligns to the center<br/>
+					&#8226 right &#8594 Text aligns to the right<br/>
+					&#8226 plane &#8594 Creates a large <img src="data/manaSymbols/56.png" style="height: 1em; background-color: var(--main-text-color);"></img> and shifts the following text to the right. This is designed for planar cards.
+				</div>
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Set Abbreviations</div>
+				<div class="togglee">
+					Every set in Magic: The Gathering has an associated 2-3 letter code. For example, Homelands is HM and Innistrad is ISD. This program uses the codes from <a href="http://gatherer.wizards.com" target="_blank">The Gatherer</a>, the official Magic card database. A handy list of all sets and their codes can be found on <a href="https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets" target="_blank">Wikipedia</a>
+				</div>
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Choosing Your Border</div>
+				<div class="togglee">
+					Under the 'Card Border' tab use the following guidelines:<br/>
+					&#8226 Border &#8594 Selects the border style, such as planar card, m15 card, etc...<br/>
+					&#8226 Color &#8594 Selects the card's primary color<br/>
+					&#8226 Second Color &#8594 Selects the card's secondary color which only affects the right half of the card. This creates the same effect as seen on hybrid cards.<br/>
+					&#8226 Third Color &#8594 Selects the card's tertiary color which will affect the entire card, including power and toughness. This is used to create two-colored gold cards.<br/>
+					Under the 'Border (Advanced)' tab the checkboxes are fairly straightforward. Try each feature out to see what it does.
+				</div>
+			</div>
+			<div class="section" style="overflow: hidden; border-top: hidden;">
+				Check out some samples! <br/>
+				<img id="sampleCardA" class="column-3"></img>
+				<img id="sampleCardB" class="column-3"></img>
+				<img id="sampleCardC" class="column-3"></img>
+			</div>
+		</div>
 	</div>
-	<div id="symbolList" class="row section"></div>
-	<div class="row">
-		When selecting the card's color, use 'Second Color' for hybrid cards, and 'Third Color' for non-hybrid two-colored cards.
-	</div>
-	<div class="row section">
-		Check out some samples! <br/>
-		<img id="sampleCardA" class="column-3"></img>
-		<img id="sampleCardB" class="column-3"></img>
-		<img id="sampleCardC" class="column-3"></img>
-	</div>
+	
 	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank" class="info">the Github page</a>.</div>
 </body>
 
@@ -367,7 +405,6 @@
 	--main-text-color: rgb(150, 150, 150);				/*REGULAR*/
 	--input-text-color: rgb(100, 200, 50);				/*INPUTS*/
 	--dark-text-color: rgb(96, 96, 96);					/*DARK*/
-	--hover-text-color: rgb(100, 200, 50);				/*HOVER*/
 	--section-background-color: rgba(0, 0, 0, 0.5);		/*BACKGROUND*/
 	--section-border-color: rgba(128, 255, 128, 0.25);	/*BORDER*/
 	--solid-border-color: rgb(39, 71, 39);				/*Opaque Border*/
@@ -400,7 +437,7 @@
 	width: 100%;
 }
 .toggler:hover {
-	color: var(--hover-text-color);
+	color: var(--title-text-color);
 }
 .togglee {
 	text-align: left;
@@ -408,6 +445,7 @@
 	border-color: var(--section-border-color);
 	border-style: dashed solid solid solid;
 	display: none;
+	padding: 5px;
 }
 .shown {
 	display: block;
@@ -495,7 +533,8 @@ input[type="color"] {
 	top: 0.25em;
 	height: 1.2em;
 }
-.column-4 {
+#symbolList div {
+	float: left;
 	width: 5.5em;
 }
 /*Other*/
@@ -519,16 +558,17 @@ html {
 }
 /*Hyperlinks*/
 a:link {
-	color: var(--main-text-color); 
+	color: var(--main-text-color);
+	background-color: rgba(100, 200, 0, 0.1);
 }
 a:visited {
 	color: var(--main-text-color);
 }
 a:hover {
-	color: var(--hover-text-color);
+	color: var(--title-text-color);
 }
 a:active {
-	color: var(--hover-text-color);
+	color: var(--title-text-color);
 }
 /*Adjustments For Desktop*/
 /*Chrome's JS Debugger gives a width 1.1 times greater than it should be*/
