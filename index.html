@@ -24,7 +24,7 @@
 	<meta name="theme-color" content="#64ca2f">
 </head>
 <!-- <img src="data/background.png"></img> -->
-<body onresize="resizeThings()" onload="resizeThings()">
+<body>
 	<div class="row">
 		<div class="column-1"><canvas id="canvas" width="749" height="1044"></canvas></div>
 		<div class="column-2" id="optionsColumn">
@@ -173,7 +173,7 @@
 					Shift All Text Down
 					<input id="textDown" type="number" class="input" min="0" max="300" value="0"></input>
 					<br/>
-					Shift All Mana Symbols Down
+					Shift Mana Symbols Down
 					<input id="inputSymbolDown" type="number" class="input" value="0"></input>
 				</div>
 			</div>
@@ -372,7 +372,7 @@
 	--section-border-color: rgba(128, 255, 128, 0.25);	/*BORDER*/
 	--solid-border-color: rgb(39, 71, 39);				/*Opaque Border*/
 }
-/*Applies to most elements (with rows and columns)*/
+/*General style things*/
 * {
 	text-align: center;
 	font-family: belerenb;
@@ -381,20 +381,23 @@
 	user-select: none;
 	box-sizing: border-box;
 }
+/*Applies to most elements (with rows and columns)*/
 .row::after{
 	content: "";
 	display: block;
 	clear: both;
+	margin-bottom: 5px;
 }
 [class*="column-"] {
 	width: 100%;
 	float: left;
-	padding: 0.2em;
+	padding: 5px;
 }
 /*Style for sections, togglers, and togglees*/
 .section {
 	border: 0.04em solid var(--section-border-color);
 	background-color: var(--section-background-color);
+	width: 100%;
 }
 .toggler:hover {
 	color: var(--hover-text-color);
@@ -412,6 +415,7 @@
 /*Specific input element styles*/
 .input {
 	border-radius: 0.25em;
+	padding-left: 0.25em;
 	text-align: left;
 	border: none;
 	background-color: var(--section-border-color);
@@ -419,7 +423,7 @@
 	width: 100%;
 }
 input[type="color"] {
-	border-radius: 10px;
+	border-radius: 0.25em;
 	border: none;
 	background-color: var(--section-border-color);
 	padding-top: 0px;
@@ -427,15 +431,15 @@ input[type="color"] {
 }
 /*Custom checkboxes!*/
 .checkbox {
-	padding-top: 12px;
-	top: 7px;
+	height: 1em;
+	margin: 5px 0px;
 	position: relative;
 }
 .checkbox label {
 	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border-radius: 33%;
+	width: 1em;
+	height: 1em;
+	border-radius: 0.25em;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -450,21 +454,21 @@ input[type="color"] {
 }
 .checkbox div {
 	white-space: pre;
-	position: absolute;
-	top: -5px;
-	left: 18px;
+	position: relative;
+	top: -0.1em;
+	left: 1.1em;
 }
 /*Custom select box (dropdown)*/
 .dropdown {
 	position: relative;
 	display: inline-block;
 	width: 100%;
-	padding: 0px;
 }
 .dropdown select {
-	border-radius: 10px;
+	border-radius: 0.25em;
+	padding-left: 0.25em;
 	width: inherit;
-	background-color:  var(--section-border-color);
+	background-color: var(--section-border-color);
 	color: var(--title-text-color);
 	border: none;
 	-moz-appearance: none;
@@ -472,25 +476,24 @@ input[type="color"] {
 	appearance: none;
 }
 .dropdown select option {
-	border-radius: 10px;
+	border-radius: 0.25em;
 	color: var(--title-text-color);
 	background-color: var(--solid-border-color);
 }
 .dropdown::after {
 	content: "\25BC";
-	font-size: 10px;
+	font-size: 0.5em;
 	position: absolute;
 	pointer-events: none;
 	color: var(--title-text-color);
-	right: 10px;
-	top: 38%;
+	right: 0.65em;
+	top: 0.65em;
 }
 /*List of all mana symbols and their associated codes*/
 #symbolList img {
 	position: relative;
 	top: 0.25em;
-	width: 1.2em;
-	/*padding: 0px 0px 0px 0px !important;*/
+	height: 1.2em;
 }
 /*Other*/
 .title {
@@ -525,22 +528,14 @@ a:active {
 	color: var(--hover-text-color);
 }
 /*Adjustments For Desktop*/
-@media only screen and (min-width: 850px) {
-	/*Nothing for now :)*/
+/*Chrome's JS Debugger gives a width 1.1 times greater than it should be*/
+@media only screen and (orientation: landscape) {
+	.column-3 {width: 33.33%;}
 }
-@media only screen and (min-width: 1150px) {
-	.column-1 {
-		width: 769px;
-	}
-	.column-2 {
-		width: calc(100% - 769px);
-	}
-	.column-3 {
-		width: 33.33%;
-	}
-	.column-4 {
-
-	}
+@media only screen and (min-width: 1130px) {
+	/*The card manipulator menu can be side-by-side with the card*/
+	.column-1 {width: 769px;}
+	.column-2 {width: calc(100% - 769px);}
 }
 </style>
 <script src="data/scripts/loadScript.js"></script>

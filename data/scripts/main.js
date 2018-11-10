@@ -6,7 +6,7 @@
 //============================================//
 //The following bits of code are run immediatly to initialize the program while allowing the variables to remain global.
 //Setup viewport!
-var minimumWidth = 769
+var minimumWidth = 783
 var viewport = document.createElement("meta")
 viewport.setAttribute("name", "viewport")
 if (screen.width < minimumWidth) {
@@ -105,6 +105,13 @@ randomizeSampleCards(7)
 //Set up the initial clock!
 var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
 
+//It's easier to generate the mana symbol list via js, so do it here
+var symbolList = ""
+	for (var i = 0; i < manaSymbolCode.length; i++) {
+		symbolList += "<div class='column-4' style='width: auto'>" + manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img></div>"
+	}
+document.getElementById("symbolList").innerHTML = symbolList
+
 
 //============================================//
 //       Card clock and changing frames!      //
@@ -166,7 +173,6 @@ function finishTemplate() {
 	canvas.height = cardHeight
 	borderCanvas.width = cardWidth
 	borderCanvas.height = cardHeight
-	resizeThings()
 	document.getElementById("colorSelection").value = "white"
 	imgMultiMask.src = borderPath + "multiMask.png"
 	imgFrameMask.src = borderPath + "frameMask.png"
@@ -739,21 +745,6 @@ function toggleSection(target) {
 		}
 	}
 	target.parentElement.childNodes[3].classList.toggle("shown")
-}
-//Resizes anything that may need to be resized
-function resizeThings() {
-	var symbolList = ""
-	var rowCount = Math.ceil(manaSymbolCode.length / Math.floor((window.innerWidth - 30) / 150))
-	for (var i = 0; i < manaSymbolCode.length; i++) {
-		if (i%rowCount == 0) {
-			symbolList += "<div class='column-4' style='width: 150px'>"
-		}
-		symbolList += manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img><br/>"
-		if (i%rowCount == rowCount - 1) {
-			symbolList += "</div>"
-		}
-	}
-	document.getElementById("symbolList").innerHTML = symbolList
 }
 //Randomizes the sample cards at the bottom of the page. Runs it here too
 function randomizeSampleCards(count) {
