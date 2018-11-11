@@ -102,7 +102,7 @@ loadScript("data/borders/defaultBorder.js")
 loadSetSymbol()
 
 //Randomize the sample cards at the bottom
-randomizeSampleCards(7)
+randomizeSampleCards(8)
 
 //Set up the initial clock!
 var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
