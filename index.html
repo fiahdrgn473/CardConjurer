@@ -4,24 +4,15 @@
 	<title>Card Conjurer</title>
 	<div class="title">Card Conjurer</div>
 	<!-- Favicon craziness! -->
-	<!-- <link rel="apple-touch-icon" sizes="180x180" href="https://imkyle4815.github.io/cardconjurer/data/favicons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="https://imkyle4815.github.io/cardconjurer/data/favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://imkyle4815.github.io/cardconjurer/data/favicons/favicon-16x16.png">
-	<link rel="manifest" href="https://imkyle4815.github.io/cardconjurer/data/favicons/site.webmanifest">
-	<link rel="mask-icon" href="https://imkyle4815.github.io/cardconjurer/data/favicons/safari-pinned-tab.svg" color="#64ca2f">
-	<link rel="shortcut icon" href="https://imkyle4815.github.io/cardconjurer/data/favicons/favicon.ico">
-	<meta name="msapplication-TileColor" content="#00a300">
-	<meta name="msapplication-config" content="https://imkyle4815.github.io/cardconjurer/data/favicons/browserconfig.xml">
-	<meta name="theme-color" content="#64ca2f"> -->
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<!-- 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 	<link rel="manifest" href="site.webmanifest">
-	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#64ca2f">
-	<link rel="shortcut icon" href="favicon.ico">
-	<meta name="msapplication-TileColor" content="#00a300">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#64ca2f"> -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<!-- 	<meta name="msapplication-TileColor" content="#00a300">
 	<meta name="msapplication-config" content="browserconfig.xml">
-	<meta name="theme-color" content="#64ca2f">
+	<meta name="theme-color" content="#64ca2f"> -->
 	<meta charset="UTF-8">
 </head>
 <!-- <img src="data/background.png"></img> -->
@@ -565,6 +556,7 @@ input[type="color"] {
 a:link {
 	color: var(--main-text-color);
 	background-color: rgba(100, 200, 0, 0.1);
+	border-radius: 0.25em;
 }
 a:visited {
 	color: var(--main-text-color);
@@ -592,11 +584,10 @@ a:active {
 }
 @media only screen and (min-width: 1455px) {
 	/*The card manipulator menu can be side-by-side with the wide card*/
-	.column-1.wide {width: auto; cursor: crosshair;}
+	.column-1.wide {width: auto;}
 	.column-2.wide {
 		width: calc(100% - 1084px);
 		margin-bottom: 0px;
-		cursor: crosshair;
 	}
 }
 @media only screen and (min-width: 801px) {
@@ -609,6 +600,7 @@ a:active {
 	}
 	* {
 		font-size: 25px;
+		cursor: url(images/cursor.png), auto;
 	}
 }
 </style>
