@@ -368,7 +368,7 @@
 		</div>
 	</div>
 	
-	<div class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank" class="info">the Github page</a>.</div>
+	<footer class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank" class="info">the Github page</a>.</footer>
 </body>
 
 
@@ -580,17 +580,23 @@ a:active {
 }
 /*Adjustments For Desktop*/
 @media only screen and (orientation: landscape) {
-	* {
-		font-size: 25px;
-	}
 	.column-3 {width: 33.33%;}
 }
 @media only screen and (min-width: 1130px) {
-	/*The card manipulator menu can be side-by-side with the card*/
-	.column-1 {width: 769px;}
-	.column-2 {
-		width: calc(100% - 769px);
+	/*The card manipulator menu can be side-by-side with the regular card*/
+	.column-1:not(.wide) {width: auto;}
+	.column-2:not(.wide) {
+		width: calc(100% - 759px);
 		margin-bottom: 0px;
+	}
+}
+@media only screen and (min-width: 1455px) {
+	/*The card manipulator menu can be side-by-side with the wide card*/
+	.column-1.wide {width: auto; cursor: crosshair;}
+	.column-2.wide {
+		width: calc(100% - 1084px);
+		margin-bottom: 0px;
+		cursor: crosshair;
 	}
 }
 @media only screen and (min-width: 801px) {
@@ -600,6 +606,9 @@ a:active {
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
+	}
+	* {
+		font-size: 25px;
 	}
 }
 </style>

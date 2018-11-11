@@ -2,6 +2,8 @@
 //card size
 var cardWidth = 749
 var cardHeight = 1044
+document.getElementsByClassName("column-1")[0].classList.remove("wide")
+document.getElementsByClassName("column-2")[0].classList.remove("wide")
 //Sets the correct values to anything that may have been changed from an out of the ordinary border
 var eighthInfo = false
 var m15Info = false

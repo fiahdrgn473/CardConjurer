@@ -3,6 +3,8 @@
 //Card Size
 cardWidth = 1074
 cardHeight = 749
+document.getElementsByClassName("column-1")[0].classList.add("wide")
+document.getElementsByClassName("column-2")[0].classList.add("wide")
 //Card Title
 var titleFont = cardHeight * 0.0454 + "px belerenb" //34
 var titleFontSpacing = cardWidth * 0.00014 + "px" //0.15

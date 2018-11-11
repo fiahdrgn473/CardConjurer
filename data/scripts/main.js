@@ -80,7 +80,6 @@ var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "r
 for (i = 0; i < imgListStatic.length; i ++) {
 	var imgName = "img" + imgListStatic[i].charAt(0).toUpperCase() + imgListStatic[i].slice(1)
 	window[imgName] = new Image()
-	window[imgName].crossOrigin = "anonymous"
 	window[imgName].src = "data/borders/" + imgListStatic[i] + ".png"
 }
 
@@ -89,8 +88,11 @@ var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
-	window[imgName].crossOrigin = "anonymous"
 	manaSymbolImages[i].src = "data/manaSymbols/" + i + ".png"
+	manaSymbolImages[i].name = i
+	manaSymbolImages[i].onload = function() {
+		document.getElementById(this.name).src = this.src
+	}
 }
 
 //Go ahead and load the first border
@@ -108,7 +110,7 @@ var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("i
 //It's easier to generate the mana symbol list via js, so do it here
 var symbolList = ""
 	for (var i = 0; i < manaSymbolCode.length; i++) {
-		symbolList += "<div class='column-4'>" + manaSymbolCode[i] + "\u2192" + "<img src=" + manaSymbolImages[i].src + "></img></div>"
+		symbolList += "<div class='column-4' alt='...'>" + manaSymbolCode[i] + "\u2192" + "<img id='" + i + "'></img></div>"
 	}
 document.getElementById("symbolList").innerHTML = symbolList
 
@@ -691,7 +693,7 @@ function drawText(text, xCoord, yCoord) {
 						textXShift += textSize * 1
 					} else if (megaSplit[0] == "plane") {
 						//This draws the large chaos symbol found on planar cards and permenantly shifts the text over
-						card.drawImage(manaSymbolImages[56], x, y + 6, 48, 42)
+						card.drawImage(manaSymbolImages[57], x, y + 6, 48, 42)
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
@@ -755,10 +757,19 @@ function randomizeSampleCards(count) {
 			continue
 		}
 		cardNumbers[cardNumbers.length] = randomNumber
+		var imgName = "sampleCard" + cardNumbers.length
+		window[imgName] = new Image()
+		window[imgName].src = "sampleCards/sample-card-" + randomNumber + ".png"
 	}
-	document.getElementById("sampleCardA").src = "sampleCards/sample-card-" + cardNumbers[0] + ".png"
-	document.getElementById("sampleCardB").src = "sampleCards/sample-card-" + cardNumbers[1] + ".png"
-	document.getElementById("sampleCardC").src = "sampleCards/sample-card-" + cardNumbers[2] + ".png"
+	sampleCard1.onload = function() {
+		document.getElementById("sampleCardA").src = sampleCard1.src
+	}
+	sampleCard2.onload = function() {
+		document.getElementById("sampleCardB").src = sampleCard2.src
+	}
+	sampleCard3.onload = function() {
+		document.getElementById("sampleCardC").src = sampleCard3.src
+	}
 }
 
 
