@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Card Conjurer</title>
-	<div class="title"><img src="images/title.png"></div>
+	<img src="images/title.png" height="auto" style="max-height: 100px;">
 	<!-- Favicon craziness! -->
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -15,25 +15,15 @@
 	<meta name="theme-color" content="#64ca2f">
 	<meta charset="UTF-8">
 </head>
+<!-- <img src="data/background.png"></img> -->
 <body>
-	<div class="grid mainGrid">
-		<div class="canvasContainer">
-			<canvas id="canvas" width="749" height="1044"></canvas>
-		</div>
-		<div>
-			<div class="grid selectionGrid">
-				<div onclick="toggleView('color', 'cmm')">Color</div>
-				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
-				<div onclick="toggleView('general', 'cmm')">General</div>
-				<div onclick="toggleView('text', 'cmm')">Text</div>
-				<div onclick="toggleView('info', 'cmm')">Info</div>
-				<div onclick="toggleView('art', 'cmm')">Art</div>
-				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
-				<div onclick="toggleView('set', 'cmm')">Set</div>
-				<div onclick="toggleView('download', 'cmm')">Download</div>
-			</div>
-			<div class="cardManipulationMenu">
-				<div class="cmm shown" id="cmm-color">
+	<div class="row">
+		<div class="column-1"><canvas id="canvas" width="749" height="1044"></canvas></div>
+		<div class="column-2" id="optionsColumn">
+			<!--OPTIONS-->
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Card Border</div>
+				<div class="togglee shown">
 					Border
 					<span class="dropdown">
 						<select id="borderSelection" onchange="changeTemplate()">
@@ -68,8 +58,18 @@
 					<span class="dropdown">
 						<select id="thirdColorSelection" onchange="updateBorder()"></select>
 					</span>
+					<br/>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxCreature" />
+						<label for="checkboxCreature" />
+						<div>Power/Toughness</div>
+					</div>
+					<input id="inputPowerToughness" class="input" value="" type="text"></input>
 				</div>
-				<div class="cmm" id="cmm-advanced">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Border (Advanced)</div>
+				<div class="togglee">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxLegendary" onchange="updateBorder()" />
 						<label for="checkboxLegendary" />
@@ -144,7 +144,10 @@
 					</div>
 					<input id="inputIdentity" type="text" class="input" onchange="updateBorder()"></input>
 				</div>
-				<div class="cmm" id="cmm-general">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Name, Mana Cost, Type</div>
+				<div class="togglee">
 					Name
 					<input id="inputName" type="text" class="input"></input>
 					<br/>
@@ -153,14 +156,11 @@
 					<br/>
 					Type
 					<input id="inputType" type="text" class="input"></input>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxCreature" />
-						<label for="checkboxCreature" />
-						<div>Power/Toughness</div>
-					</div>
-					<input id="inputPowerToughness" class="input" value="" type="text"></input>
 				</div>
-				<div class="cmm" id="cmm-text">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Rules Text</div>
+				<div class="togglee">
 					Rules Text
 					<br/>
 					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px"></textarea>
@@ -177,7 +177,10 @@
 					Shift Mana Symbols Down
 					<input id="inputSymbolDown" type="number" class="input" value="0"></input>
 				</div>
-				<div class="cmm" id="cmm-art">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Card Art</div>
+				<div class="togglee">
 					Image
 					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
 					<br/>
@@ -192,7 +195,10 @@
 					Image Up
 					<input id="imageUp" type="number" class="input" value="0" step="1"></input>
 				</div>
-				<div class="cmm" id="cmm-info">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Bottom Information</div>
+				<div class="togglee">
 					Other Info
 					<input id="inputInfo" value="Not A Real Card" type="text" class="input"></input>
 					<br/>
@@ -217,7 +223,10 @@
 						<div>Black Bottom Info</div>
 					</div>
 				</div>
-				<div class="cmm" id="cmm-set">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Set Symbol and Watermark</div>
+				<div class="togglee">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxSetSymbol" checked="true" />
 						<label for="checkboxSetSymbol" />
@@ -236,13 +245,7 @@
 					<br/>
 					Scale Set Symbol
 					<input id="setSymbolSize" type="number" class="input" value="100" step="0.5"></input>
-				</div>
-				<div class="cmm" id="cmm-download">
-					Frame Rate
-					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)"></input>
-					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
-				</div>
-				<div class="cmm" id="cmm-watermark">
+					<br/><br/>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxWatermark" checked="true" />
 						<label for="checkboxWatermark" />
@@ -258,6 +261,13 @@
 					<br/>
 					<span class="dropdown">
 						<select id="watermarkColorSelection">
+							<!-- <option value="#f3f2ef">White</option>
+							<option value="#1d7097">Blue</option>
+							<option value="#31302e">Black</option>
+							<option value="#bf544c">Red</option>
+							<option value="#1c6449">Green</option>
+							<option value="#e3d591">Gold</option>
+							<option value="#e0e0e0">Artifact/Colorless</option> -->
 							<option value="#afa360">White</option>
 							<option value="#04527c">Blue</option>
 							<option value="#494949">Black</option>
@@ -271,7 +281,7 @@
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxSecondWatermarkColor" />
 						<label for="checkboxSecondWatermarkColor" />
-						<div>Second Color</div>
+						<div>Second Watermark Color</div>
 					</div>
 					<span class="dropdown">
 						<select id="secondWatermarkColorSelection">
@@ -288,23 +298,29 @@
 					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01"></input>
 				</div>
 			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Download/Options</div>
+				<div class="togglee">
+					Frame Rate
+					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)"></input>
+					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+				</div>
+			</div>
+			<!--END-->
 		</div>
 	</div>
-	<div class="grid">
-		<div>
-			<div class="grid selectionGrid">
-				<div onclick="toggleView('symbolList', 'extras')">Symbols</div>
-				<div onclick="toggleView('codes', 'extras')">Other Codes</div>
-				<div onclick="toggleView('set', 'extras')">Set Codes</div>
-				<div onclick="toggleView('border', 'extras')">Colors</div>
-			</div>
-			<div class="extrasMenu">
-				<div class="extras shown" id="extras-symbolList">
-					<div class="symbolGrid grid" id="symbolList">
-						loading...
-					</div>
+	<div class="row">
+		<div class="column-4">
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Mana Symbol Codes</div>
+				<div class="togglee shown">
+					Use the following codes to get the respective symbol in the card's mana cost and rules text. In the mana cost, make sure to include spaces in between the codes, and in the rules text include '<' before each code and '>' after. These codes are caps sensative.<br/>
+					<div id="symbolList" style="overflow: hidden;"></div>
 				</div>
-				<div class="extras" id="extras-codes">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Other Codes</div>
+				<div class="togglee">
 					Like the mana symbols, each of the following codes must include '<' before each code and '>' after. These codes are also caps sensative.<br/>
 					&#8226 line &#8594 Skips to the next line<br/>
 					&#8226 bar &#8594 Just like line, except adds the bar that usually seperates flavor text<br/>
@@ -314,32 +330,38 @@
 					&#8226 left &#8594 Text aligns to the left<br/>
 					&#8226 center &#8594 Text aligns to the center<br/>
 					&#8226 right &#8594 Text aligns to the right<br/>
-					&#8226 plane &#8594 Creates a large <img src="data/manaSymbols/56.png" style="height: 1em;"></img> and shifts the following text to the right. This is designed for planar cards.
+					&#8226 plane &#8594 Creates a large <img src="data/manaSymbols/56.png" style="height: 1em; background-color: var(--main-text-color);"></img> and shifts the following text to the right. This is designed for planar cards.
 				</div>
-				<div class="extras" id="extras-set">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Set Abbreviations</div>
+				<div class="togglee">
 					Every set in Magic: The Gathering has an associated 2-3 letter code. For example, Homelands is HM and Innistrad is ISD. This program uses the codes from <a href="http://gatherer.wizards.com" target="_blank">The Gatherer</a>, the official Magic card database. A handy list of all sets and their codes can be found on <a href="https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets" target="_blank">Wikipedia</a>
 				</div>
-				<div class="extras" id="extras-border">
+			</div>
+			<div class="section">
+				<div class="toggler" onclick="toggleSection(this)">Choosing Your Border</div>
+				<div class="togglee">
 					Under the 'Card Border' tab use the following guidelines:<br/>
 					&#8226 Border &#8594 Selects the border style, such as planar card, m15 card, etc...<br/>
-					&#8226 Color &#8594 Primary color<br/>
-					&#8226 Second Color &#8594 Secondary color. Only affects the right half of the card, as seen on hybrid cards.<br/>
-					&#8226 Third Color &#8594 Tertiary color. Affects the entire card, including power and toughness, as seen on two-colored gold cards.<br/><br/>
+					&#8226 Color &#8594 Selects the card's primary color<br/>
+					&#8226 Second Color &#8594 Selects the card's secondary color which only affects the right half of the card. This creates the same effect as seen on hybrid cards.<br/>
+					&#8226 Third Color &#8594 Selects the card's tertiary color which will affect the entire card, including power and toughness. This is used to create two-colored gold cards.<br/>
 					Under the 'Border (Advanced)' tab the checkboxes are fairly straightforward. Try each feature out to see what it does.
 				</div>
 			</div>
-		</div>
-		<div class="sampleGrid grid text">
-			Check out some samples<br/>
-			<div class="noBorder">
-				<img id="sampleCardA" class="sampleCard"></img>
-				<img id="sampleCardB" class="sampleCard"></img>
-				<img id="sampleCardC" class="sampleCard"></img>
+			<div class="section" style="overflow: hidden; border-top: hidden;">
+				Check out some samples! <br/>
+				<img id="sampleCardA" class="column-3"></img>
+				<img id="sampleCardB" class="column-3"></img>
+				<img id="sampleCardC" class="column-3"></img>
 			</div>
 		</div>
 	</div>
+	
+	<footer class="row info" style="">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank" class="info">the Github page</a>.</footer>
 </body>
-<footer class="info">For Terms of Use and Disclaimer, see <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">the&nbspGithub&nbsppage</a>.</footer>
+
 
 
 <!--CSS-->
@@ -377,116 +399,78 @@
 	font-family: mplantini;
 	src: url("data/fonts/mplantin-i.ttf");
 }
-
 /*Color Palette*/
 :root {
-	/*Green*/
-	/*--color-a: #13c800;
-	--color-b: #13c80080;
-	--color-c: #034e10;
-	--color-d: #013d0b80;
-	--color-e: #013d0b;*/
-	/*Regular*/
-	--color-a: #073c00;
-	--color-b: #073c0040;
-	--color-c: #095700;
-	--color-d: #0e720040;
-	--color-e: #0e7200;
+	--title-text-color: rgb(100, 200, 50);				/*TITLE*/
+	--main-text-color: rgb(150, 150, 150);				/*REGULAR*/
+	--input-text-color: rgb(100, 200, 50);				/*INPUTS*/
+	--dark-text-color: rgb(96, 96, 96);					/*DARK*/
+	--section-background-color: rgba(0, 0, 0, 0.5);		/*BACKGROUND*/
+	--section-border-color: rgba(128, 255, 128, 0.25);	/*BORDER*/
+	--solid-border-color: rgb(39, 71, 39);				/*Opaque Border*/
 }
-
-/*Page-wide styling*/
+/*General style things*/
 * {
+	text-align: center;
 	font-family: belerenb;
-	font-size: 6vw;
+	font-size: 5vw;
+	color: var(--main-text-color);
 	user-select: none;
-	color: #dddddd;
+	box-sizing: border-box;
 }
 html {
-	/*background: linear-gradient(#252522, #101010) no-repeat center center fixed;*/
-	background: url("data/background.png") no-repeat center center fixed;
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
- 	-o-background-size: cover;
- 	background-size: cover;
+	background-color: rgb(16, 16, 16);
 }
-
-/*Grid styling*/
-.grid {
+/*Applies to most elements (with rows and columns)*/
+.row::after{
+	content: "";
+	display: block;
+	clear: both;
 	margin-bottom: 5px;
-	display: grid;
-	grid-gap: 4px;
 }
-.mainGrid {
-	grid-gap: 12px;
+[class*="column-"] {
+	width: 100%;
+	float: left;
+	padding: 5px;
 }
-.selectionGrid {
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
-	text-align: center;
+/*Style for sections, togglers, and togglees*/
+.section {
+	border: 0.04em solid var(--section-border-color);
+	background-color: var(--section-background-color);
+	width: 100%;
 }
-.grid > div {
-	padding: 8px;
-	border-radius: 36px;
+.toggler:hover {
+	color: var(--title-text-color);
 }
-.grid > div:not(.noBorder) {
-	border: 1px solid var(--color-c);
-	background: var(--color-d);
-}
-
-/*Card manipulation menu grid*/
-.selectionGrid > div {
-	font-family: belerenbsc;
-	cursor: pointer;
-}
-.selectionGrid > div:nth-child(odd) {
-	background-color: var(--color-c);
-}
-.cardManipulationMenu, .extrasMenu {
-	margin-top: 4px;
-	padding: 24px;
-	border-radius: 36px;
-	border: 1px solid var(--color-c);
-	background-color: var(--color-b);
-}
-.cmm, .extras {
+.togglee {
+	text-align: left;
+	border-width: 0.04em;
+	border-color: var(--section-border-color);
+	border-style: dashed solid solid solid;
 	display: none;
+	padding: 5px;
 }
 .shown {
 	display: block;
 }
-.sampleCard {
-	width: 100%;
-}
-
-/*Inputs and more*/
-/*dropdown*/
-.dropdown {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-.dropdown select {
+/*Specific input element styles*/
+.input {
 	border-radius: 0.25em;
 	padding-left: 0.25em;
-	width: inherit;
-	background-color: var(--color-e);
+	text-align: left;
 	border: none;
-	cursor: pointer;
-	-moz-appearance: none;
-	-webkit-appearance:none;
-	appearance: none;
+	background-color: var(--section-border-color);
+	color: var(--input-text-color);
+	width: 100%;
 }
-.dropdown select option {
-	/*nothing for now :)*/
+input[type="color"] {
+	border-radius: 0.25em;
+	border: none;
+	background-color: var(--section-border-color);
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
-.dropdown::after {
-	content: "\25BC";
-	font-size: 0.6em;
-	position: absolute;
-	pointer-events: none;
-	right: 0.6em;
-	top: 0.6em;
-}
-/*checkbox*/
+/*Custom checkboxes!*/
 .checkbox {
 	height: 1em;
 	margin: 5px 0px;
@@ -500,18 +484,11 @@ html {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: var(--color-d);
-	cursor: pointer;
+	z-index: 1;
+	background: var(--section-border-color);
 }
-.checkbox input:checked ~ label:after {
-	display: block;
-}
-.checkbox label:after {
-	content: "X";
-    position: absolute;
-    display: none;
-    left: 0.2em;
-    top: -0.05em;
+.checkbox input[type=checkbox]:checked + label {
+	background: var(--title-text-color);
 }
 .checkbox input {
 	opacity: 0;
@@ -522,90 +499,111 @@ html {
 	top: -0.1em;
 	left: 1.1em;
 }
-/*other inputs*/
-input[type="text"], input[type="number"], textarea, input[type="file"] {
+/*Custom select box (dropdown)*/
+.dropdown {
+	position: relative;
+	display: inline-block;
 	width: 100%;
-	border: none;
-	background: var(--color-e);
+}
+.dropdown select {
 	border-radius: 0.25em;
 	padding-left: 0.25em;
-}
-/*color selector*/
-input[type="color"] {
-	padding: 0px;
+	width: inherit;
+	background-color: var(--section-border-color);
+	color: var(--title-text-color);
 	border: none;
-	background: var(--color-d);
+	-moz-appearance: none;
+	-webkit-appearance:none;
+	appearance: none;
 }
-
+.dropdown select option {
+	border-radius: 0.25em;
+	color: var(--title-text-color);
+	background-color: var(--solid-border-color);
+}
+.dropdown::after {
+	content: "\25BC";
+	font-size: 0.5em;
+	position: absolute;
+	pointer-events: none;
+	color: var(--title-text-color);
+	right: 0.65em;
+	top: 0.65em;
+}
+/*List of all mana symbols and their associated codes*/
+#symbolList img {
+	position: relative;
+	top: 0.25em;
+	height: 1.2em;
+}
+#symbolList div {
+	float: left;
+	width: 5.5em;
+}
+/*Other*/
+.title {
+	text-align: center;
+	color: var(--title-text-color);
+	font-family: belerenbsc;
+	font-size: 60px;
+}
+.info {
+	color: var(--dark-text-color);
+	font-family: belerenbsc;
+	font-size: 0.75rem;
+}
 /*Hyperlinks*/
-a:link, a:visited {
-	color: #fff;
+a:link {
+	color: var(--main-text-color);
+	background-color: rgba(100, 200, 0, 0.1);
+	border-radius: 0.25em;
 }
-a:hover, a:active {
-	color: #999;
+a:visited {
+	color: var(--main-text-color);
 }
-
-/*Desktop*/
+a:hover {
+	color: var(--title-text-color);
+}
+a:active {
+	color: var(--title-text-color);
+}
+.column-2 {
+	margin-bottom: 20px;
+}
+/*Adjustments For Desktop*/
+@media only screen and (orientation: landscape) {
+	.column-3 {width: 33.33%;}
+}
 @media only screen and (min-width: 1130px) {
-	.mainGrid:not(.plane) {
-		grid-template-columns: calc(749px + 0.7em) auto;
+	/*The card manipulator menu can be side-by-side with the regular card*/
+	.column-1:not(.wide) {width: auto;}
+	.column-2:not(.wide) {
+		width: calc(100% - 759px);
+		margin-bottom: 0px;
 	}
 }
 @media only screen and (min-width: 1455px) {
-	.mainGrid.plane {
-		grid-template-columns: calc(1074px + 0.7em) auto;
-	}
-}
-@media only screen and (orientation: landscape) {
-	.sampleCard {
-		width: 32.8%;
+	/*The card manipulator menu can be side-by-side with the wide card*/
+	.column-1.wide {width: auto;}
+	.column-2.wide {
+		width: calc(100% - 1084px);
+		margin-bottom: 0px;
 	}
 }
 @media only screen and (min-width: 801px) {
 	html {
-		/*background*/
+		background:url(data/background.png) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
 	}
 	* {
-		font-size: 24px;
+		font-size: 25px;
+		cursor: url(images/cursor.png), auto;
 	}
 }
-
-/*Text and stuff :)*/
-.info, .title {
-	text-align: center;
-	font-size: 0.75em;
-}
-.info > * {
-	font-size: inherit;
-}
-
-/*symbol grid*/
-.manaSymbol > img {
-	position: relative;
-	top: 0.15em;
-	height: 1em;
-}
-.symbolGrid {
-	margin-top: 8px;
-	grid-template-columns: repeat(auto-fit, minmax(5.6em, 1fr));
-	text-align: center;
-}
-
-/*Title*/
-.title > img {
-	margin-bottom: 20px;
-	margin-top: 0px;
-	max-height: 80px;
-	width: auto;
-}
-
-/*Sitewide text (bottom of the page)*/
-.text {
-	text-align: center;
-}
-
 </style>
-
 <script src="data/scripts/loadScript.js"></script>
 <script src="data/scripts/loadImage.js"></script>
 <script src="data/scripts/loadColors.js"></script>
@@ -614,11 +612,3 @@ a:hover, a:active {
 <script src="data/scripts/whiteToTransparent.js"></script>
 <script src="data/scripts/main.js"></script>
 <html>
-<!--
-References 
-
-<div class="cmm" id="cmm-targetId">
-	...
-</div>
-
--->
