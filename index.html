@@ -20,7 +20,7 @@
 		window.onload = function() {
 		    if (screen.width < 800) {
 		        var myViewPort = document.getElementById("pageViewport");
-		        //myViewPort.setAttribute("content", "user-scalable=no,width=800");
+		        myViewPort.setAttribute("content", "user-scalable=no,width=800");
 		    }
 		}
 	</script>
@@ -429,6 +429,9 @@ html {
 }
 .mainGrid {
 	grid-gap: 12px;
+}
+.canvasContainer {
+	justify-self: center;
 }
 .selectionGrid {
 	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
