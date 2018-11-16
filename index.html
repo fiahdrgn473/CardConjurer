@@ -13,7 +13,17 @@
 	<meta name="msapplication-TileColor" content="#00a300">
 	<meta name="msapplication-config" content="browserconfig.xml">
 	<meta name="theme-color" content="#64ca2f">
+	<!-- Other things -->
 	<meta charset="UTF-8">
+	<meta id="pageViewport" name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		window.onload = function() {
+		    if (screen.width < 800) {
+		        var myViewPort = document.getElementById("pageViewport");
+		        myViewPort.setAttribute("content", "user-scalable=no,width=800");
+		    }
+		}
+	</script>
 </head>
 <body>
 	<div class="grid mainGrid">
@@ -398,8 +408,9 @@
 * {
 	font-family: belerenb;
 	font-size: 6vw;
+	/*font-size: 24px;*/
 	user-select: none;
-	color: #dddddd;
+	color: #ddd;
 }
 html {
 	/*background: linear-gradient(#252522, #101010) no-repeat center center fixed;*/
@@ -500,7 +511,7 @@ html {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: var(--color-d);
+	background: var(--color-e);
 	cursor: pointer;
 }
 .checkbox input:checked ~ label:after {
@@ -510,8 +521,8 @@ html {
 	content: "X";
     position: absolute;
     display: none;
-    left: 0.2em;
-    top: -0.05em;
+    left: 0.18em;
+    top: -0.075em;
 }
 .checkbox input {
 	opacity: 0;
