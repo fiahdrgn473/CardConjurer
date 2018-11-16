@@ -310,8 +310,9 @@
 			</div>
 			<div class="extrasMenu">
 				<div class="extras shown" id="extras-symbolList">
+					Each of the following codes must include '<' before each code and '>' after. These codes aren't caps sensative.
 					<div class="symbolGrid grid" id="symbolList">
-						loading...
+						
 					</div>
 				</div>
 				<div class="extras" id="extras-codes">
@@ -521,11 +522,11 @@ html {
 	display: block;
 }
 .checkbox label:after {
-	content: "X";
+	content: "\2718";
     position: absolute;
     display: none;
-    left: 0.18em;
-    top: -0.075em;
+    left: 0.1em;
+    top: -0.25em;
 }
 .checkbox input {
 	opacity: 0;
@@ -598,10 +599,11 @@ a:hover, a:active {
 	position: relative;
 	top: 0.15em;
 	height: 1em;
+	margin-bottom: 0.25em;
 }
 .symbolGrid {
 	margin-top: 8px;
-	grid-template-columns: repeat(auto-fit, minmax(5.6em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(3.5em, 1fr));
 	text-align: center;
 }
 

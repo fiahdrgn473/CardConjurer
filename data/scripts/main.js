@@ -5,16 +5,6 @@
 //              Initialization                //
 //============================================//
 //The following bits of code are run immediatly to initialize the program while allowing the variables to remain global.
-//Setup viewport!
-// var minimumWidth = 800
-// var viewport = document.createElement("meta")
-// viewport.setAttribute("name", "viewport")
-// if (screen.width < minimumWidth) {
-// 	viewport.setAttribute("content", "width=" + minimumWidth)
-// } else {
-// 	viewport.setAttribute("content", "width=device-width", "initial-scale=1")
-// }
-// document.head.appendChild(viewport)
 //Define initial variables
 var borderPath
 var secondColor
@@ -84,7 +74,7 @@ for (i = 0; i < imgListStatic.length; i ++) {
 }
 
 //Mana symbol Array setup
-var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane"]
+var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane"]
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
@@ -110,9 +100,9 @@ var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("i
 //It's easier to generate the mana symbol list via js, so do it here
 var symbolList = ""
 	for (var i = 0; i < manaSymbolCode.length; i++) {
-		symbolList += "<div class='manaSymbol' alt='...'>" + manaSymbolCode[i] + "\u2192" + "<img id='" + i + "'></img></div>"
+		symbolList += "<div class='manaSymbol' alt='...'>" + manaSymbolCode[i] + "<br/>" + "<img id='" + i + "'></img></div>"
 	}
-document.getElementById("symbolList").innerHTML = symbolList
+document.getElementById("symbolList").innerHTML += symbolList
 
 
 //============================================//
@@ -664,7 +654,7 @@ function drawText(text, xCoord, yCoord) {
 						card.font = textSize + textFont + "i"
 					} else if (megaSplit[0] == "/i") {
 						canvas.style.letterSpacing = textFontSpacing + "px"
-						card.font = "normal " + textSize + textFont
+						card.font = textSize + textFont
 					} else if (megaSplit[0] == "center") {
 						card.textAlign="center"
 						x = cardWidth / 2
@@ -687,7 +677,7 @@ function drawText(text, xCoord, yCoord) {
 						card.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, y + textSize + lineSpace + 5)
 						textXShift = 0
 						y += 2 * lineSpace + textSize + 3
-					} else if (megaSplit[0] == "chaos") {
+					} else if (megaSplit[0].toLowerCase() == "chaos") {
 						//The chaos symbol (on planar cards) needs to be a bit bigger
 						card.drawImage(manaSymbolImages[56], x + textXShift + textSize * 0.054, y + textSize * 0.17, textSize, manaSymbolImages[56].height * textSize / manaSymbolImages[56].width)
 						textXShift += textSize * 1
@@ -697,9 +687,8 @@ function drawText(text, xCoord, yCoord) {
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0])], x + textXShift + textSize * 0.054, y + textSize * 0.17 + parseInt(document.getElementById("inputSymbolDown").value), textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.17 + parseInt(document.getElementById("inputSymbolDown").value), textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
-						console.log(y + textSize * 0.17)
 					}
 					if (megaSplit[1] != "") {
 						plainWord = megaSplit[1] + " "
@@ -739,14 +728,11 @@ function drawText(text, xCoord, yCoord) {
 //       Various website-related code         //
 //============================================//
 //Toggles the visibility of predetermined sections of the input boxes
-function toggleSection(target) {
-	for (i = 0; i < target.parentElement.parentElement.childNodes.length; i++) {
-		var targetChild = target.parentElement.parentElement.childNodes[i].childNodes[3]
-		if (targetChild != undefined && targetChild.classList.contains("shown") == true) {
-			targetChild.classList.toggle("shown")
-		}
+function toggleView(targetId, targetClass) {
+	for (i = 0; i < document.getElementsByClassName(targetClass).length; i++) {
+		document.getElementsByClassName(targetClass)[i].classList.remove("shown")
 	}
-	target.parentElement.childNodes[3].classList.toggle("shown")
+	document.getElementById(targetClass + "-" + targetId).classList.add("shown")
 }
 //Randomizes the sample cards at the bottom of the page. Runs it here too
 function randomizeSampleCards(count) {
@@ -819,10 +805,3 @@ console.log("The main.js file has finished loading.")
 //============================================//
 //                    WIP                     //
 //============================================//
-function toggleView(targetId, targetClass) {
-	// console.log(targetId.split(" ")[0])
-	for (i = 0; i < document.getElementsByClassName(targetClass).length; i++) {
-		document.getElementsByClassName(targetClass)[i].classList.remove("shown")
-	}
-	document.getElementById(targetClass + "-" + targetId).classList.add("shown")
-}
