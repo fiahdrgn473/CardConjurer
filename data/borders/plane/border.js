@@ -1,5 +1,8 @@
 //Plane Border
 //Anything to do with...
+//Loading Images
+imgFrameMask.src = borderPath + "frameMask.png"
+imgBorderMask.src = borderPath + "borderMask.png"
 //Card Size
 cardWidth = 1074
 cardHeight = 749
@@ -52,6 +55,7 @@ transparentBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom
+var uniqueFunctionName = "bottomInfoPlanechase"
 function bottomInfoPlanechase() {
 	card.textAlign = "left"
 	if (document.getElementById("checkboxArtistColor").checked == true) {

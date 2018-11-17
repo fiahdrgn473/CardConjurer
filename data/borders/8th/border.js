@@ -1,3 +1,7 @@
+imgMultiMask.src = borderPath + "multiMask.png"
+imgFrameMask.src = borderPath + "frameMask.png"
+imgBorderMask.src = borderPath + "frameMask.png"
+
 var titleFont = "44px matrixb"
 var titleFontSpacing = "0.5px"
 var titleX = 66
@@ -27,10 +31,7 @@ var ptY = 920.5
 var ptWidth = 162
 var ptHeight = 84
 
-var eighthInfo = true
-var eighthInfoY = 956
-var m15Info = false
-var m15InfoY = 992
+var infoY = 956
 
 var setSymbolY = 615
 var setSymbolRight = 689
@@ -48,3 +49,18 @@ document.getElementById("secondColorSelection").innerHTML = document.getElementB
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 
 finishTemplate()
+
+var uniqueFunctionName = "bottomInfo8th"
+function bottomInfo8th() {
+	if (document.getElementById("checkboxArtistColor").checked == true) {
+		card.fillStyle = "black"
+	} else {
+		card.fillStyle = "white"
+	}
+	canvas.style.letterSpacing = "1px"
+	card.font = "25px matrixb"
+	card.fillText(document.getElementById("inputArtist").value, 116, infoY)
+	canvas.style.letterSpacing = "0.5px"
+	card.font = "16px mplantin"
+	card.fillText("CC \u2014 " + document.getElementById("inputInfo").value + " " + document.getElementById("inputNumber").value, 62, infoY + 31)
+}

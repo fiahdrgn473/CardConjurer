@@ -1,5 +1,11 @@
 //M15 Border
 //Anything to do with...
+//Loading Images
+imgMultiMask.src = borderPath + "multiMask.png"
+imgFrameMask.src = borderPath + "frameMask.png"
+imgLegendFrameMask.src = borderPath + "legendFrameMask.png"
+imgRareStampMask.src = borderPath + "rareStampMask.png"
+imgBorderMask.src = borderPath + "borderMask.png"
 //Card Title
 var titleFont = "40px belerenb" //40
 var titleFontSpacing = "0.15px" //0.15
@@ -30,8 +36,7 @@ var ptY = 929 //929
 var ptWidth = 137 //137
 var ptHeight = 75 //75
 //Bottom Info
-var m15Info = true
-var m15InfoY = 993 //993
+var infoY = 993 //993
 //Set Symbol
 var setSymbolY = 616 //616
 var setSymbolRight = 693 //693
@@ -47,7 +52,7 @@ var rareStampY = 958 //958
 loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-Black,blackLand-Black Land,red-Red,redLand-Red Land,green-Green,greenLand-Green Land,gold-Gold,goldLand-Gold Land,colorless-Colorless,colorlessLand-Colorless Land,artifact-Artifact,vehicle-Vehicle")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
-//Other
+//Things The Card Can Do
 legendaryBorder = true
 stampBorder = true
 nyxBorder = true
@@ -56,3 +61,4 @@ flipBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom
+var uniqueFunctionName = "bottomInfoM15"

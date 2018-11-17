@@ -4,8 +4,6 @@ var cardWidth = 749
 var cardHeight = 1044
 document.getElementsByClassName("mainGrid")[0].classList.remove("plane")
 //Sets the correct values to anything that may have been changed from an out of the ordinary border
-var eighthInfo = false
-var m15Info = false
 var planechaseInfo = false
 var legendaryBorder = false
 var nyxBorder = false

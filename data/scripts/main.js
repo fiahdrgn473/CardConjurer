@@ -129,14 +129,8 @@ function cardClock() {
 	drawWatermark()
 	//writes all the text: name, type, rules...
 	writeText()
-	//m15 and 8th edition have different info at the bottom of the cards and require completely different functions
-	if (m15Info == true) {
-		bottomInfoM15()
-	} else if (eighthInfo == true) {
-		bottomInfo8th()
-	}else if (planechaseInfo == true) {
-		bottomInfoPlanechase()
-	}
+	//Runs any special function that a card may have, including bottom information.
+	window[uniqueFunctionName]()
 	//A shiny foil overlay!
 	if(document.getElementById("checkboxFoil").checked == true) {
 		card.drawImage(imgFoil, 0, 0, cardWidth, cardHeight)
@@ -157,6 +151,7 @@ function cardClock() {
 //The two following functions load border images
 function changeTemplate() {
 	//the loadScript function is located in data/scripts/loadScript.js. It sets values to variables such as set symbol coordinates or title font
+	borderPath = "data/borders/" + document.getElementById("borderSelection").value
 	loadScript("data/borders/defaultBorder.js")
 }
 function finishTemplate() {
@@ -166,20 +161,10 @@ function finishTemplate() {
 	borderCanvas.width = cardWidth
 	borderCanvas.height = cardHeight
 	document.getElementById("colorSelection").value = "white"
-	imgMultiMask.src = borderPath + "multiMask.png"
-	imgFrameMask.src = borderPath + "frameMask.png"
-	if (m15Info == true) {
-		imgLegendFrameMask.src = borderPath + "legendFrameMask.png"
-		imgRareStampMask.src = borderPath + "rareStampMask.png"
-		imgBorderMask.src = borderPath + "borderMask.png"
-	} else if (eighthInfo == true) {
-		imgBorderMask.src = borderPath + "frameMask.png"
-	}
 	updateBorder()
 }
 //Loads the images for the card frame, power toughness box, and rare stamp
 function updateBorder() {
-	borderPath = "data/borders/" + document.getElementById("borderSelection").value
 	secondColor = document.getElementById("checkboxSecondColor").checked
 	thirdColor = document.getElementById("checkboxThirdColor").checked
 	var firstColorPath = borderPath + document.getElementById("colorSelection").value
@@ -557,19 +542,19 @@ function bottomInfoM15() {
 	canvas.style.letterSpacing = "0.8px"
 	card.font = "19.5px relaymedium"
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
-	card.fillText(bottomLine, 48, m15InfoY)
+	card.fillText(bottomLine, 48, infoY)
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-	drawMask(card.fillStyle, artistBrushShift, m15InfoY + 5, 21, 13, card, imgArtistBrush, false, false)
+	drawMask(card.fillStyle, artistBrushShift, infoY + 5, 21, 13, card, imgArtistBrush, false, false)
 	canvas.style.letterSpacing = "1.3px"
 	card.font = "19.5px relaymedium"
-	card.fillText(document.getElementById("inputNumber").value, 49, m15InfoY - 20)
-	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, m15InfoY - 20)
+	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20)
+	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20)
 	if (442 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
 		shiftInfo = artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width + 5
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "24px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, m15InfoY + 2)
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY + 2)
 	if (442 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
@@ -584,25 +569,11 @@ function bottomInfoM15() {
 			bottomInfo = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
 		}
 		if (document.getElementById("checkboxCreature").checked == true) {
-			card.fillText(bottomInfo, shiftInfo, m15InfoY + 3)
+			card.fillText(bottomInfo, shiftInfo, infoY + 3)
 		} else {
-			card.fillText(bottomInfo, shiftInfo, m15InfoY - 17)
+			card.fillText(bottomInfo, shiftInfo, infoY - 17)
 		}
 	}
-}
-//Bottom info on 8th edition cards
-function bottomInfo8th() {
-	if (document.getElementById("checkboxArtistColor").checked == true) {
-		card.fillStyle = "black"
-	} else {
-		card.fillStyle = "white"
-	}
-	canvas.style.letterSpacing = "1px"
-	card.font = "25px matrixb"
-	card.fillText(document.getElementById("inputArtist").value, 116, eighthInfoY)
-	canvas.style.letterSpacing = "0.5px"
-	card.font = "16px mplantin"
-	card.fillText("CC \u2014 " + document.getElementById("inputInfo").value + " " + document.getElementById("inputNumber").value, 62, eighthInfoY + 31)
 }
 
 

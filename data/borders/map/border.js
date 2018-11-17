@@ -1,5 +1,8 @@
 //Map Border
 //Anything to do with...
+//Loading Images
+imgFrameMask.src = borderPath + "frameMask.png"
+imgBorderMask.src = borderPath + "borderMask.png"
 //Card Title
 var titleFont = "40px belerenbsc"
 var titleFontSpacing = "0.1px"
@@ -32,10 +35,7 @@ var ptY = 920
 var ptWidth = 150
 var ptHeight = 70
 //Bottom Info
-var eighthInfo = false
-var eighthInfoY = 992
-var m15Info = true
-var m15InfoY = 993
+var infoY = 993
 //Set Symbol
 var setSymbolY = 123
 var setSymbolRight = 374.5
@@ -57,3 +57,4 @@ var artY = 116
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom
+var uniqueFunctionName = "bottomInfoM15"
