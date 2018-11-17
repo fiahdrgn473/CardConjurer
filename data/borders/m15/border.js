@@ -40,7 +40,7 @@ var infoY = 993 //993
 //Set Symbol
 var setSymbolY = 616 //616
 var setSymbolRight = 693 //693
-var setSymbolWidth = 77 //77
+var setSymbolWidth = 84 //77
 var setSymbolHeight = 44 //44
 //Watermark
 var watermarkWidth = 520 //520

@@ -22,7 +22,7 @@ var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
 
 //load template images (images that may change based off of the selected template)
-var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask"]
+var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven", "loyaltyUp", "loyaltyDown", "loyaltyZero"]
 for (i = 0; i < imgListTemplate.length; i ++) {
 	var imgName = "img" + imgListTemplate[i].charAt(0).toUpperCase() + imgListTemplate[i].slice(1)
 	window[imgName] = new Image()
@@ -74,7 +74,7 @@ for (i = 0; i < imgListStatic.length; i ++) {
 }
 
 //Mana symbol Array setup
-var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "snow", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane"]
+var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane"]
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
@@ -118,11 +118,7 @@ function cardClock() {
 	//Draws the card image, then...
 	drawPicture()
 	//draws the card frame on top
-	if (transparentBorder != true) {
-        drawMask(imgBorder, 0, 0, cardWidth, cardHeight, card, imgArtMask, false, false)
-    } else {
-    	card.drawImage(imgBorder, 0, 0, cardWidth, cardHeight)
-    }
+    card.drawImage(imgBorder, 0, 0, cardWidth, cardHeight)
 	//draws the set symbol, mana cost, and watermark
 	drawSetSymbol()
 	drawManaCost()
@@ -160,6 +156,7 @@ function finishTemplate() {
 	canvas.height = cardHeight
 	borderCanvas.width = cardWidth
 	borderCanvas.height = cardHeight
+	imgArtMask.src = borderPath + "artMask.png"
 	document.getElementById("colorSelection").value = "white"
 	updateBorder()
 }
@@ -171,7 +168,6 @@ function updateBorder() {
 	var secondColorPath = borderPath + document.getElementById("secondColorSelection").value
 	var thirdColorPath = borderPath + document.getElementById("thirdColorSelection").value
 	var altframe = ""
-	imgArtMask.src = borderPath + "artMask.png"
 	imgBorderColor.src = firstColorPath + "/frame.png"
 	imgSecondBorderColor.src = secondColorPath + "/frame.png"
 	imgThirdBorderColor.src = thirdColorPath + "/frame.png"
@@ -402,7 +398,6 @@ function createBorder() {
 	//RARE STAMP
 	if (document.getElementById("checkboxRareStamp").checked == true && stampBorder == true) {
 		border.drawImage(imgBorderRareStamp, 329, rareStampY - 15, 90, 50)
-
 		if (document.getElementById("checkboxSecondColor").checked == true) {
 			drawMask(imgSecondBorderRareStamp, 329, rareStampY - 15, 90, 50, border, imgSecondBorderRareStamp, imgStampGradient, "reverseSecond")
 		}
@@ -512,7 +507,7 @@ function writeText() {
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
-		if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png") {
+		if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png" || borderPath == "data/borders/planeswalker/") {
 			card.fillStyle = "White"
 		}
 		card.textAlign = "center"

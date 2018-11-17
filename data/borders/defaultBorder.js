@@ -1,4 +1,6 @@
 //Default Border
+//Fixes images
+imgMultiGradient.src = "data/borders/multiGradient.png"
 //card size
 var cardWidth = 749
 var cardHeight = 1044
