@@ -67,6 +67,7 @@ var artY = 106
 finishTemplate()
 //Any special functions go at the bottom
 var uniqueFunctionName = "planeswalkerCustomFunction"
+
 function planeswalkerCustomFunction() {
 	//Bottom info is important
 	bottomInfoM15()
@@ -95,6 +96,7 @@ function planeswalkerCustomFunction() {
 		abilityLineY += abilityLines[i]
 	}
 }
+
 var savedFrameMask = new Image()
 savedFrameMask.src = borderPath + "frameMask.png"
 var abilityLineCanvas = document.createElement("canvas")
@@ -144,4 +146,4 @@ imgFrameMask.onload = function() {
 //Reveals the planeswalker card manipulation menu section
 document.getElementById("cmmPlaneswalker").style.display = "block"
 //After a second the first ability lines will be generated
-setTimeout(function(){planeswalkerAbilityLines()}, 1000)
+setTimeout(function(){planeswalkerAbilityLines()}, 2000)
