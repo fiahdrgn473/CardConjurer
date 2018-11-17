@@ -79,13 +79,13 @@ function planeswalkerCustomFunction() {
 			card.fillStyle = "white"
 			card.textAlign = "center"
 			card.font = "31px belerenbsc"
-			if (loyaltyValue.charAt(0) == "-") {
+			if (loyaltyValue.charAt(0) == "-" && imgLoyaltyDown.width > 0) {
 				card.drawImage(imgLoyaltyDown, 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
 				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 22)
-			} else if (loyaltyValue.charAt(0) == "+") {
+			} else if (loyaltyValue.charAt(0) == "+" && imgLoyaltyUp.width > 0) {
 				card.drawImage(imgLoyaltyUp, 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
 				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 24)
-			} else {
+			} else if (imgLoyaltyZero.width > 0) {
 				card.drawImage(imgLoyaltyZero, 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
 				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 21)
 			}
@@ -146,4 +146,4 @@ imgFrameMask.onload = function() {
 //Reveals the planeswalker card manipulation menu section
 document.getElementById("cmmPlaneswalker").style.display = "block"
 //After a second the first ability lines will be generated
-setTimeout(function(){planeswalkerAbilityLines()}, 2000)
+setTimeout(function(){planeswalkerAbilityLines()}, 1000)
