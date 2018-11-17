@@ -15,12 +15,12 @@
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
 	<meta charset="UTF-8">
-	<meta id="pageViewport" name="viewport" content="width=device-width, initial-scale=1">
+	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=800">
 	<script>
 		window.onload = function() {
-		    if (screen.width < 800) {
+		    if (screen.width > 800) {
 		        var myViewPort = document.getElementById("pageViewport");
-		        myViewPort.setAttribute("content", "user-scalable=no,width=800");
+		        myViewPort.setAttribute("content", "width=device-width, initial-scale=1");
 		    }
 		}
 	</script>
