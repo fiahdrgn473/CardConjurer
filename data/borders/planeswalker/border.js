@@ -9,7 +9,7 @@ imgBorderMask.src = borderPath + "borderMask.png"
 imgAbilityLineOdd.src = borderPath + "abilityLineOdd.png"
 imgAbilityLineEven.src = borderPath + "abilityLineEven.png"
 imgLoyaltyUp.src = borderPath + "loyaltyUp.png"
-imgLoyaltyDown.src = borderPath + "LoyaltyDown.png"
+imgLoyaltyDown.src = borderPath + "loyaltyDown.png"
 imgLoyaltyZero.src = borderPath + "loyaltyZero.png"
 document.getElementById("textSize").value = 33
 //Card Title
