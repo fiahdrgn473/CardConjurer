@@ -21,7 +21,7 @@ var typeY = 598
 var typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
-var textFontSpacing = 1.1
+var textFontSpacing = 0.7
 var textX = 89
 var textY = 662
 var textWidth = 660

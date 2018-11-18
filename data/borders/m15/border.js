@@ -22,7 +22,7 @@ var typeX = 62 //62
 var typeY = 595 //595
 //Rules/Flavor Text
 var textFont = "px mplantin"
-var textFontSpacing = 1.3 //1.3
+var textFontSpacing = 0.7 //0.7
 var textX = 66 //66
 var textY = 656 //656
 var textWidth = 682 //682
