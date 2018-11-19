@@ -28,3 +28,21 @@ function drawMask(img, x, y, width, height, targetContext, imgMask, secondMask, 
         targetContext.drawImage(mask, x, y, width, height)
     }
 }
+
+CanvasRenderingContext2D.prototype.mask = function(content, x, y, width, height) {
+    mask.width = width
+    mask.height = height
+    maskContext.clearRect(0, 0, width, height)
+    var contentList = content.split(";")
+    for (i = 0; i < contentList.length; i ++) {
+        var currentContent = contentList[i].split(",")
+        maskContext.globalCompositeOperation = currentContent[1]
+        if (window[currentContent[0]] != undefined) {
+            maskContext.drawImage(window[currentContent[0]], 0, 0, width, height)
+        } else {
+            maskContext.fillStyle = currentContent[0]
+            maskContext.fillRect(0, 0, width, height)
+        }
+    }
+    this.drawImage(mask, x, y, width, height)
+}

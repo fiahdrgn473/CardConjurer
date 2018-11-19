@@ -146,4 +146,4 @@ imgFrameMask.onload = function() {
 //Reveals the planeswalker card manipulation menu section
 document.getElementById("cmmPlaneswalker").style.display = "block"
 //After a second the first ability lines will be generated
-setTimeout(function(){planeswalkerAbilityLines()}, 1000)
+setTimeout(function(){if (document.getElementById("borderSelection").value == "planeswalker/") {planeswalkerAbilityLines()}}, 1000)

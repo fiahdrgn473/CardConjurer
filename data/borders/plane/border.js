@@ -78,7 +78,7 @@ function bottomInfoPlanechase() {
 	canvas.style.letterSpacing = cardWidth * -0.0002 + "px" //-0.2
 	card.font = "16px matrixbsc" //16
 	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
-	drawMask(card.fillStyle, cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134, card, imgArtistBrush, false, false) //706, 15, 10
+	card.mask("imgArtistBrush,source-over;" + card.fillStyle + ",source-in", cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
 	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9400) //18, 704
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"
