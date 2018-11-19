@@ -244,7 +244,9 @@ function createBorder() {
 	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order so that when multiple border colors are used the gradients overlap correctly
 	//BACKGROUND COLOR
 	border.clearRect(0, 0, cardWidth, cardHeight)
-	drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, border, imgArtMask, false, false)
+	if (document.getElementById("checkboxBorderless").checked == false) {
+		drawMask(document.getElementById("inputColor").value, 0, 0, cardWidth, cardHeight, border, imgArtMask, false, false)
+	}
 	//MAIN CARD FRAME
 	drawMask(imgBorderColor, 0, 0, cardWidth, cardHeight, border, imgFrameMask, false, false)
 	if (secondColor == true && secondBorder == true) {

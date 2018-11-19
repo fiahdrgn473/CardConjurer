@@ -139,22 +139,27 @@
 						<div>Flipped (Darker)</div>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" id="checkboxSilverBorder" onchange="updateBorder()" />
+						<input type="checkbox" id="checkboxSilverBorder" onchange="createBorder()" />
 						<label for="checkboxSilverBorder" />
 						<div>Silver Border</div>
 					</div>
-					<input type="color" id="inputColor" onchange="updateBorder()"> Border Color</input>
+					<input type="color" id="inputColor" onchange="createBorder()"> Border Color</input>
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxFoil" />
 						<label for="checkboxFoil" />
 						<div>Foil</div>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" id="checkboxIdentity" onchange="updateBorder()" />
+						<input type="checkbox" id="checkboxIdentity" onchange="createBorder()" />
 						<label for="checkboxIdentity" />
 						<div>Color Identity</div>
 					</div>
-					<input id="inputIdentity" type="text" class="input" onchange="updateBorder()"></input>
+					<input id="inputIdentity" type="text" class="input" onchange="createBorder()"></input>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxBorderless" onchange="createBorder()" />
+						<label for="checkboxBorderless" />
+						<div>Borderless</div>
+					</div>
 				</div>
 				<div class="cmm" id="cmm-general">
 					Name
