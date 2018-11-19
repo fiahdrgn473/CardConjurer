@@ -8,9 +8,6 @@ imgRareStampMask.src = borderPath + "rareStampMask.png"
 imgBorderMask.src = borderPath + "borderMask.png"
 imgAbilityLineOdd.src = borderPath + "abilityLineOdd.png"
 imgAbilityLineEven.src = borderPath + "abilityLineEven.png"
-imgLoyaltyUp.src = borderPath + "loyaltyUp.png"
-imgLoyaltyDown.src = borderPath + "loyaltyDown.png"
-imgLoyaltyZero.src = borderPath + "loyaltyZero.png"
 document.getElementById("textSize").value = 33
 //Card Title
 var titleFont = "40px belerenb" //40
@@ -79,14 +76,14 @@ function planeswalkerCustomFunction() {
 			card.fillStyle = "white"
 			card.textAlign = "center"
 			card.font = "31px belerenbsc"
-			if (loyaltyValue.charAt(0) == "-" && imgLoyaltyDown.width > 0) {
-				card.drawImage(imgLoyaltyDown, 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
+			if (loyaltyValue.charAt(0) == "-") {
+				card.drawImage(manaSymbolImages[58], 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
 				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 22)
-			} else if (loyaltyValue.charAt(0) == "+" && imgLoyaltyUp.width > 0) {
-				card.drawImage(imgLoyaltyUp, 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
+			} else if (loyaltyValue.charAt(0) == "+") {
+				card.drawImage(manaSymbolImages[59], 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
 				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 24)
-			} else if (imgLoyaltyZero.width > 0) {
-				card.drawImage(imgLoyaltyZero, 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
+			} else {
+				card.drawImage(manaSymbolImages[60], 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
 				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 21)
 			}
 			card.font = "37px mplantin"

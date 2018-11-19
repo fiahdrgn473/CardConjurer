@@ -23,8 +23,8 @@ var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
 
 //load template images (images that may change based off of the selected template)
-var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven", "loyaltyUp", "loyaltyDown", "loyaltyZero"]
-for (i = 0; i < imgListTemplate.length; i ++) {
+var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven"]
+for (var i = 0; i < imgListTemplate.length; i ++) {
 	var imgName = "img" + imgListTemplate[i].charAt(0).toUpperCase() + imgListTemplate[i].slice(1)
 	window[imgName] = new Image()
 	window[imgName].crossOrigin = "anonymous"
@@ -32,7 +32,7 @@ for (i = 0; i < imgListTemplate.length; i ++) {
 
 //Load border images (images that are determined by border settings)
 var imgListBorder = ["borderColor", "secondBorderColor", "thirdBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark"]
-for (i = 0; i < imgListBorder.length; i ++) {
+for (var i = 0; i < imgListBorder.length; i ++) {
 	var imgName = "img" + imgListBorder[i].charAt(0).toUpperCase() + imgListBorder[i].slice(1)
 	window[imgName] = new Image()
 	window[imgName].crossOrigin = "anonymous"
@@ -50,7 +50,7 @@ for (i = 0; i < imgListBorder.length; i ++) {
 
 //Load dynamic images (images that are input by the user)
 var imgListUser = ["art", "setSymbol", "watermark", "border"]
-for (i = 0; i < imgListUser.length; i ++) {
+for (var i = 0; i < imgListUser.length; i ++) {
 	var imgName = "img" + imgListUser[i].charAt(0).toUpperCase() + imgListUser[i].slice(1)
 	window[imgName] = new Image()
 	window[imgName].crossOrigin = "anonymous"
@@ -68,14 +68,14 @@ for (i = 0; i < imgListUser.length; i ++) {
 
 //Load static images
 var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
-for (i = 0; i < imgListStatic.length; i ++) {
+for (var i = 0; i < imgListStatic.length; i ++) {
 	var imgName = "img" + imgListStatic[i].charAt(0).toUpperCase() + imgListStatic[i].slice(1)
 	window[imgName] = new Image()
 	window[imgName].src = "data/borders/" + imgListStatic[i] + ".png"
 }
 
 //Mana symbol Array setup
-var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane"]
+var manaSymbolCode = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0"]
 var manaSymbolImages = new Array()
 for (var i = 0; i < manaSymbolCode.length; i++) {
 	manaSymbolImages[i] = new Image()
@@ -229,7 +229,7 @@ function updateBorder() {
 	//This allows all the images to be loaded
 	imagesToLoad = 0
 	//Makes a count of all images that are loading, also tags them
-	for (i = 0; i < imgListBorder.length; i++) {
+	for (var i = 0; i < imgListBorder.length; i++) {
 		if (imgListBorder[i].complete == false) {
 			imagesToLoad ++
 			imgListBorder[i].hasToLoad = true
@@ -361,7 +361,7 @@ function createBorder() {
 			default:
 			var originAngle = 0
 		}
-		for (i = 0; i < identityList.length; i ++) {
+		for (var i = 0; i < identityList.length; i ++) {
 			switch (identityList[i]) {
 				case "w":
 				border.fillStyle = "#f3f2ef"
@@ -474,7 +474,7 @@ function drawManaCost() {
 	card.fillStyle = "Black"
 	var symbols = document.getElementById("inputCost").value.toLowerCase().split(" ")
 	var xShift = 0
-	for (n = symbols.length; n > -1; n--) {
+	for (var n = symbols.length; n > -1; n--) {
 		if (manaSymbolCode.indexOf(symbols[n]) != -1) {
 			card.beginPath()
 			card.arc(manaCostX + xShift + manaCostRadius - 1, manaCostY + manaCostRadius + 3.5, manaCostRadius, 0, 6.29, false)
@@ -585,7 +585,7 @@ function drawText(text, xCoord, yCoord) {
 	var words = (text).split(" ")
 	var line = ""
 	var tempTextWidth = textWidth
-	for (wordIndex = 0; wordIndex < words.length; wordIndex ++) {
+	for (var wordIndex = 0; wordIndex < words.length; wordIndex ++) {
 		if (words[wordIndex].includes("<") == false || words[wordIndex].includes(">") == false) {
 			//Just a regular old word
 			testLine = line + words[wordIndex]
@@ -606,7 +606,7 @@ function drawText(text, xCoord, yCoord) {
 		} else {
 			//Symbols and more!
 			var splitWord = words[wordIndex].split("<")
-			for (splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
+			for (var splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
 				//Write what's there first!
 				card.fillText(line, x + textXShift, y)
 				textXShift += card.measureText(line).width
@@ -695,7 +695,7 @@ function drawText(text, xCoord, yCoord) {
 //============================================//
 //Toggles the visibility of predetermined sections of the input boxes
 function toggleView(targetId, targetClass) {
-	for (i = 0; i < document.getElementsByClassName(targetClass).length; i++) {
+	for (var i = 0; i < document.getElementsByClassName(targetClass).length; i++) {
 		document.getElementsByClassName(targetClass)[i].classList.remove("shown")
 	}
 	document.getElementById(targetClass + "-" + targetId).classList.add("shown")
@@ -774,7 +774,7 @@ CanvasRenderingContext2D.prototype.mask = function(content, x, y, width, height)
     mask.height = height
     maskContext.clearRect(0, 0, width, height)
     var contentList = content.split(";")
-    for (i = 0; i < contentList.length; i ++) {
+    for (var i = 0; i < contentList.length; i ++) {
         var currentContent = contentList[i].split(",")
         maskContext.globalCompositeOperation = currentContent[1]
         if (window[currentContent[0]] != undefined) {
@@ -879,7 +879,7 @@ function whiteToTransparent(targetImage) {
 function loadColors(colors) {
 	var endResult = ""
 	var colorList = colors.split(",")
-	for (i = 0; i < colorList.length; i++) {
+	for (var i = 0; i < colorList.length; i++) {
 		endResult += "<option value='" + colorList[i].split("-")[0] + "'>" + colorList[i].split("-")[1] + "</option>"
 	}
 	document.getElementById("colorSelection").innerHTML = endResult
