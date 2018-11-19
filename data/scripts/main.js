@@ -18,13 +18,6 @@ var canvas = document.getElementById("canvas")
 var card = canvas.getContext("2d")
 card.textBaseLine = "alphabetical"
 
-//Creates a canvas for testing purposes
-var testCanvas = document.createElement("canvas")
-var testCard = testCanvas.getContext("2d")
-document.body.appendChild(testCanvas)
-testCanvas.width = 749
-testCanvas.height = 1044
-
 //Create the canvas for creating the border image
 var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
