@@ -114,7 +114,7 @@ function cardClock() {
 	//fixes the global alpha just incase...
 	//Insures that the corners of the final image are transparent
 	card.globalCompositeOperation = "source-over"
-	card.mask("imgCardMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 0, 0, cardWidth, cardHeight)
+	card.mask("imgCardMask,source-over", "none",document.getElementById("inputColor").value)
 	card.globalCompositeOperation = "source-atop"
 	//Draws the card image, then...
 	drawPicture()
@@ -143,7 +143,6 @@ function cardClock() {
 	// card.moveTo(0, setSymbolY)
 	// card.lineTo(749, setSymbolY)
 	// card.stroke()
-	// card.mask("imgFrameMask,source-over;#00ff00,source-in", 10, 10, 500, 500)
 }
 
 //The two following functions load border images
@@ -158,6 +157,8 @@ function finishTemplate() {
 	canvas.height = cardHeight
 	borderCanvas.width = cardWidth
 	borderCanvas.height = cardHeight
+	maskCanvas.width = cardWidth
+	maskCanvas.height = cardHeight
 	imgArtMask.src = borderPath + "artMask.png"
 	document.getElementById("colorSelection").value = "white"
 	updateBorder()
@@ -246,75 +247,75 @@ function createBorder() {
 	//BACKGROUND COLOR
 	border.clearRect(0, 0, cardWidth, cardHeight)
 	if (document.getElementById("checkboxBorderless").checked == false) {
-		border.mask("imgArtMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgArtMask,source-over", "none", document.getElementById("inputColor").value)
 	}
 	//Draws the silver border usually on un-cards
 	if (document.getElementById("checkboxSilverBorder").checked == true) {
-		border.mask("imgBorderMask,source-over;#a3aeb7,source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgBorderMask,source-over", "none", "#a3aeb7")
 	}
 	//MAIN CARD FRAME
-	border.mask("imgFrameMask,source-over;imgBorderColor,source-in", 0, 0, cardWidth, cardHeight)
+	border.mask("imgFrameMask,source-over", imgBorderColor)
 	if (secondColor == true && secondBorder == true) {
-		border.mask("imgMultiGradient,source-over;imgFrameMask,source-in;imgSecondBorderColor,source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderColor)
 	}
 	if (thirdColor == true && thirdBorder == true) {
-		border.mask("imgMultiMask,source-over;imgFrameMask,source-in;imgThirdBorderColor,source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgMultiMask,source-over;imgFrameMask,source-in", imgThirdBorderColor)
 	}
 	//NYX
 	if (document.getElementById("checkboxNyx").checked == true && nyxBorder == true) {
 		if (thirdColor == true) {
-			border.mask("imgMultiMask,source-over;imgFrameMask,source-in;imgBorderNyx,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgMultiMask,source-over;imgFrameMask,source-in", imgBorderNyx)
 		} else {
-			border.mask("imgFrameMask,source-over;imgBorderNyx,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgFrameMask,source-over", imgBorderNyx)
 			if (secondColor == true) {
-				border.mask("imgMultiGradient,source-over;imgFrameMask,source-in;imgSecondBorderNyx,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderNyx)
 			}
 		}	
 	}
 	//MIRACLE
 	if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true && (document.getElementById("checkboxFlippedDark").checked == false || flipBorder == false)) {
 		if (thirdColor == true) {
-			border.mask("imgFrameMask,source-over;imgBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgFrameMask,source-over", imgBorderMiracle)
 		} else {
-			border.mask("imgFrameMask,source-over;imgBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgFrameMask,source-over", imgBorderMiracle)
 			if (secondColor == true) {
-				border.mask("imgMultiGradient,source-over;imgFrameMask,source-in;imgSecondBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderMiracle)
 			}
 		}
 	}
 	//LEGENDARY
 	if (document.getElementById("checkboxLegendary").checked == true && legendaryBorder == true) {
-		border.mask("imgLegendFrameMask,source-over;imgBorderLegendary,source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgLegendFrameMask,source-over", imgBorderLegendary)
 		if (secondColor == true) {
-			border.mask("imgMultiGradient,source-over;imgLegendFrameMask,source-in;imgSecondBorderLegendary,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgMultiGradient,source-over;imgLegendFrameMask,source-in", imgSecondBorderLegendary)
 		}
 		//redraws the custom-color border to match the legendary frame
-		border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out;" + document.getElementById("inputColor").value + ",source-in", 0, 0, cardWidth, cardHeight)
+		border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out", "none", document.getElementById("inputColor").value)
 		//redraws the silver border usually on un-cards to match the legendary frame
 		if (document.getElementById("checkboxSilverBorder").checked == true) {
-			border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out;#a3aeb7,source-in", 0, 0, cardWidth, cardHeight)
+			border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out", "none", "#a3aeb7")
 		}
 	}
 	//FLIP CARDS
 	if (flipBorder == true) {
 		if (document.getElementById("checkboxFlippedDark").checked == true && flipBorder == true) {
 			if (thirdColor == true) {
-				border.mask("imgFrameMask,source-over;imgBorderFlippedDark,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgFrameMask,source-over", imgBorderFlippedDark)
 			} else {
-				border.mask("imgFrameMask,source-over;imgBorderFlippedDark,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgFrameMask,source-over", imgBorderFlippedDark)
 				if (secondColor == true) {
-					border.mask("imgMultiGradient,source-over;imgSecondBorderFlippedDark,source-in", 0, 0, cardWidth, cardHeight)
+					border.mask("imgMultiGradient,source-over", imgSecondBorderFlippedDark)
 				}
 			}
 		}
 		//redraws the miracle border if required to match with the newer darker overlay
 		if (document.getElementById("checkboxMiracle").checked == true && miracleBorder == true && (document.getElementById("checkboxLegendary").checked == false || legendaryBorder == false)) {
 			if (thirdColor == true) {
-				border.mask("imgFrameMask,source-over;imgBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgFrameMask,source-over", imgBorderMiracle)
 			} else {
-				border.mask("imgFrameMask,source-over;imgBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+				border.mask("imgFrameMask,source-over", imgBorderMiracle)
 				if (secondColor == true) {
-					border.mask("imgMultiGradient,source-over;imgFrameMask,source-in;imgSecondBorderMiracle,source-in", 0, 0, cardWidth, cardHeight)
+					border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderMiracle)
 				}
 			}
 		}
@@ -400,10 +401,12 @@ function createBorder() {
 	if (document.getElementById("checkboxRareStamp").checked == true && stampBorder == true) {
 		border.drawImage(imgBorderRareStamp, 329, rareStampY - 15, 90, 50)
 		if (document.getElementById("checkboxSecondColor").checked == true) {
-			border.mask("imgStampGradient,source-over;imgSecondBorderRareStamp,source-in", 329, rareStampY - 15, 90, 50)
+			// border.mask("imgStampGradient,source-over;imgSecondBorderRareStamp,source-in", 329, rareStampY - 15, 90, 50)attention
+			border.mask("imgStampGradient,source-over", imgSecondBorderRareStamp)
 		}
 		//Draws over the rare stamp (part that's usually black) to match custom border color
-		border.mask("imgRareStampMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 329, rareStampY - 15, 90, 50)
+		// border.mask("imgRareStampMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 329, rareStampY - 15, 90, 50)attention
+		border.mask("imgRareStampMask,source-over", "none", document.getElementById("inputColor").value)
 		//This is when the holo stamp is drawn
 		border.drawImage(imgRareStamp, 340, rareStampY, 70, 37)
 	}
@@ -459,10 +462,10 @@ function drawWatermark() {
 		card.globalAlpha = document.getElementById("inputWatermarkOpacity").value
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
 	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
-	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-out;" + document.getElementById("watermarkColorSelection").value + ",source-in", x, y, width, height)
-	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-in;" + document.getElementById("secondWatermarkColorSelection").value + ",source-in", x, y, width, height)
+	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-out;", "none", document.getElementById("watermarkColorSelection").value) //attention
+	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-in;", "none", document.getElementById("secondWatermarkColorSelection").value)
 	    } else {
-	    	card.mask("imgWatermark,source-over;" + document.getElementById("watermarkColorSelection").value + ",source-in", x, y, width, height)
+	    	card.mask("imgWatermark,source-over", "none", document.getElementById("watermarkColorSelection").value)
 	    }
 	}
 	card.globalAlpha = 1
@@ -527,6 +530,7 @@ function writeText() {
 }
 
 //Bottom info on M15 cards
+document.body.appendChild(borderCanvas)
 function bottomInfoM15() {
 	if (document.getElementById("checkboxArtistColor").checked == true) {
 		card.fillStyle = "black"
@@ -539,7 +543,12 @@ function bottomInfoM15() {
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	card.fillText(bottomLine, 48, infoY)
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-	card.mask("imgArtistBrush,source-over;" + card.fillStyle + ",source-in", artistBrushShift, infoY + 5, 21, 13)
+	// card.mask("imgArtistBrush,source-over;" + card.fillStyle + ",source-in", artistBrushShift, infoY + 5, 21, 13) attention
+	imgArtistBrush.imgW = 21
+	imgArtistBrush.imgH = 13
+	imgArtistBrush.imgX = artistBrushShift
+	imgArtistBrush.imgY = infoY + 5
+	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
 	canvas.style.letterSpacing = "1.3px"
 	card.font = "19.5px relaymedium"
 	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20)
@@ -767,24 +776,35 @@ function loadImage(event, destination, arg) {
 //============================================//
 //              Image Processing              //
 //============================================//
-var mask = document.createElement("canvas")
-var maskContext = mask.getContext("2d")
-CanvasRenderingContext2D.prototype.mask = function(content, x, y, width, height) {
-    mask.width = width
-    mask.height = height
-    maskContext.clearRect(0, 0, width, height)
-    var contentList = content.split(";")
-    for (var i = 0; i < contentList.length; i ++) {
-        var currentContent = contentList[i].split(",")
-        maskContext.globalCompositeOperation = currentContent[1]
-        if (window[currentContent[0]] != undefined) {
-            maskContext.drawImage(window[currentContent[0]], 0, 0, width, height)
+var maskCanvas = document.createElement("canvas")
+var maskContext = maskCanvas.getContext("2d")
+CanvasRenderingContext2D.prototype.mask = function(masks, image, color) {
+	if (image.imgX == undefined) {
+		x = 0; y = 0; w = cardWidth; h = cardHeight;
+	} else {
+		x = image.imgX; y = image.imgY; w = image.imgW; h = image.imgH;
+	}
+    maskContext.clearRect(0, 0, cardWidth, cardHeight)
+    var maskList = masks.split(";")
+    for (var i = 0; i < maskList.length; i ++) {
+        var currentMask = maskList[i].split(",")
+        maskContext.globalCompositeOperation = currentMask[1]
+        if (window[currentMask[0]] != undefined) {
+            maskContext.drawImage(window[currentMask[0]], 0, 0, cardWidth, cardHeight)
         } else {
-            maskContext.fillStyle = currentContent[0]
-            maskContext.fillRect(0, 0, width, height)
+            maskContext.fillStyle = currentMask[0]
+            maskContext.fillRect(0, 0, cardWidth, cardHeight)
         }
     }
-    this.drawImage(mask, x, y, width, height)
+    maskContext.globalCompositeOperation = "source-in"
+    if (image != "none") {
+    	maskContext.drawImage(image, x, y, w, h)
+    }
+    if (color != undefined) {
+    	maskContext.fillStyle = color
+        maskContext.fillRect(0, 0, cardWidth, cardHeight)
+    }
+    this.drawImage(maskCanvas, 0, 0, cardWidth, cardHeight)
 }
 //Create canvas for cropping the image
 var cropCanvas = document.createElement("canvas")
