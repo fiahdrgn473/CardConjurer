@@ -96,7 +96,10 @@ loadSetSymbol()
 randomizeSampleCards(8)
 
 //Set up the initial clock!
-var cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
+var cardClockInterval
+setTimeout(function() {
+    cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
+}, 1000)
 
 //It's easier to generate the mana symbol list via js, so do it here
 var symbolList = ""
@@ -458,14 +461,15 @@ function drawWatermark() {
 		}
 		var x = cardWidth / 2 - width / 2
 		var y = watermarkY - height / 2
+        imgWatermark.imgValues(x, y, width, height)
 		//globalAlpha insures that the watermark is drawn partially transparent. This value may not be perfect but the watermark colors are calibrated to it
 		card.globalAlpha = document.getElementById("inputWatermarkOpacity").value
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
 	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
-	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-out;", "none", document.getElementById("watermarkColorSelection").value) //attention
-	    	card.mask("imgMultiGradient,source-over;imgWatermark,source-in;", "none", document.getElementById("secondWatermarkColorSelection").value)
+            card.mask("imgMultiGradient,source-over;imgCardMask,source-out", imgWatermark, document.getElementById("watermarkColorSelection").value) //attention
+	    	card.mask("imgMultiGradient,source-over", imgWatermark, document.getElementById("secondWatermarkColorSelection").value)
 	    } else {
-	    	card.mask("imgWatermark,source-over", "none", document.getElementById("watermarkColorSelection").value)
+	    	card.mask("imgCardMask,source-over", imgWatermark, document.getElementById("watermarkColorSelection").value)
 	    }
 	}
 	card.globalAlpha = 1
@@ -543,11 +547,7 @@ function bottomInfoM15() {
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	card.fillText(bottomLine, 48, infoY)
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-	// card.mask("imgArtistBrush,source-over;" + card.fillStyle + ",source-in", artistBrushShift, infoY + 5, 21, 13) attention
-	imgArtistBrush.imgW = 21
-	imgArtistBrush.imgH = 13
-	imgArtistBrush.imgX = artistBrushShift
-	imgArtistBrush.imgY = infoY + 5
+    imgArtistBrush.imgValues(artistBrushShift, infoY + 5, 21, 13)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
 	canvas.style.letterSpacing = "1.3px"
 	card.font = "19.5px relaymedium"
@@ -776,6 +776,12 @@ function loadImage(event, destination, arg) {
 //============================================//
 //              Image Processing              //
 //============================================//
+Image.prototype.imgValues = function(x, y, w, h) {
+    this.imgX = x
+    this.imgY = y
+    this.imgW = w
+    this.imgH = h
+}
 var maskCanvas = document.createElement("canvas")
 var maskContext = maskCanvas.getContext("2d")
 CanvasRenderingContext2D.prototype.mask = function(masks, image, color) {
