@@ -402,14 +402,17 @@ function createBorder() {
 	}
 	//RARE STAMP
 	if (document.getElementById("checkboxRareStamp").checked == true && stampBorder == true) {
-		border.drawImage(imgBorderRareStamp, 329, rareStampY - 15, 90, 50)
+        imgBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50)
+        imgSecondBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50)
+        imgRareStampMask.imgValues(329, rareStampY - 15, 90, 50)
+		border.mask("imgCardMask,source-over", imgBorderRareStamp)
 		if (document.getElementById("checkboxSecondColor").checked == true) {
 			// border.mask("imgStampGradient,source-over;imgSecondBorderRareStamp,source-in", 329, rareStampY - 15, 90, 50)attention
-			border.mask("imgStampGradient,source-over", imgSecondBorderRareStamp)
+			border.mask("imgMultiGradient,source-over", imgSecondBorderRareStamp)
 		}
 		//Draws over the rare stamp (part that's usually black) to match custom border color
 		// border.mask("imgRareStampMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 329, rareStampY - 15, 90, 50)attention
-		border.mask("imgRareStampMask,source-over", "none", document.getElementById("inputColor").value)
+        border.mask("imgCardMask,source-over", imgRareStampMask, document.getElementById("inputColor").value)
 		//This is when the holo stamp is drawn
 		border.drawImage(imgRareStamp, 340, rareStampY, 70, 37)
 	}
@@ -466,7 +469,7 @@ function drawWatermark() {
 		card.globalAlpha = document.getElementById("inputWatermarkOpacity").value
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
 	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
-            card.mask("imgMultiGradient,source-over;imgCardMask,source-out", imgWatermark, document.getElementById("watermarkColorSelection").value) //attention
+            card.mask("imgMultiGradient,source-over;imgCardMask,source-out", imgWatermark, document.getElementById("watermarkColorSelection").value)
 	    	card.mask("imgMultiGradient,source-over", imgWatermark, document.getElementById("secondWatermarkColorSelection").value)
 	    } else {
 	    	card.mask("imgCardMask,source-over", imgWatermark, document.getElementById("watermarkColorSelection").value)
@@ -534,7 +537,6 @@ function writeText() {
 }
 
 //Bottom info on M15 cards
-document.body.appendChild(borderCanvas)
 function bottomInfoM15() {
 	if (document.getElementById("checkboxArtistColor").checked == true) {
 		card.fillStyle = "black"
