@@ -45,23 +45,22 @@ var watermarkHeight = 250 //250
 var watermarkY = 805 //805
 //Rare Stamp
 var rareStampY = 958 //958
-//imgValues
-imgBorderMiracle.imgValues(30, 30, 689, 511, "imgSecondBorderMiracle")
-imgBorderFlipCircle.imgValues(26, 44, 78, 71)
-imgBorderFlippedDark.imgValues(44, 50, 661, 915, "imgSecondBorderFlippedDark")
-imgBorderFlipTip.imgValues(685, 877, 36, 48)
-imgBorderNyx.imgValues(30, 30, 690, 586, "imgSecondBorderNyx")
-imgBorderLegendary.imgValues(20, 20, 714, 186, "imgSecondBorderLegendary")
 //Color Options
 loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-Black,blackLand-Black Land,red-Red,redLand-Red Land,green-Green,greenLand-Green Land,gold-Gold,goldLand-Gold Land,colorless-Colorless,colorlessLand-Colorless Land,artifact-Artifact,vehicle-Vehicle")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 //Things The Card Can Do
 legendaryBorder = true
-stampBorder = true
+imgBorderLegendary.imgValues(20, 20, 714, 186, "imgSecondBorderLegendary")
 nyxBorder = true
+imgBorderNyx.imgValues(30, 30, 690, 586, "imgSecondBorderNyx")
 miracleBorder = true
+imgBorderMiracle.imgValues(30, 30, 689, 511, "imgSecondBorderMiracle")
 flipBorder = true
+imgBorderFlipCircle.imgValues(26, 44, 78, 71)
+imgBorderFlippedDark.imgValues(44, 50, 661, 915, "imgSecondBorderFlippedDark")
+imgBorderFlipTip.imgValues(685, 877, 36, 48)
+stampBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom
