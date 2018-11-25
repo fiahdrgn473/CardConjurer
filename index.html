@@ -33,13 +33,13 @@
 		<div>
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('color', 'cmm')">Color</div>
-				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('general', 'cmm')">General</div>
 				<div onclick="toggleView('text', 'cmm')">Text</div>
-				<div onclick="toggleView('info', 'cmm')">Info</div>
 				<div onclick="toggleView('art', 'cmm')">Art</div>
-				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
+				<div onclick="toggleView('info', 'cmm')">Info</div>
 				<div onclick="toggleView('set', 'cmm')">Set</div>
+				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
+				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 			</div>
@@ -132,7 +132,7 @@
 						<label for="checkboxFlipTip" />
 						<div>Flip Tip</div>
 					</div>
-					<input id="inputFlipTip" value="" type="text" class="input"></input>
+					<input id="inputFlipTip" value="" type="text" class="input">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxFlippedDark" onchange="updateBorder()" />
 						<label for="checkboxFlippedDark" />
@@ -143,7 +143,7 @@
 						<label for="checkboxSilverBorder" />
 						<div>Silver Border</div>
 					</div>
-                    <input type="color" id="inputColor" onchange="createBorder()" value="#000000"> Border Color</input>
+                    <input type="color" id="inputColor" onchange="createBorder()" value="#000000"> Border Color
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxFoil" />
 						<label for="checkboxFoil" />
@@ -154,28 +154,47 @@
 						<label for="checkboxIdentity" />
 						<div>Color Identity</div>
 					</div>
-					<input id="inputIdentity" type="text" class="input" onchange="createBorder()"></input>
+					<input id="inputIdentity" type="text" class="input" onchange="createBorder()">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxBorderless" onchange="createBorder()" />
 						<label for="checkboxBorderless" />
 						<div>Borderless</div>
 					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxTitleVisibility" checked="true" onchange="createBorder()">
+						<label for="checkboxTitleVisibility" />
+						<div>Title Visibility</div>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxTypeVisibility" checked="true" onchange="createBorder()">
+						<label for="checkboxTypeVisibility" />
+						<div>Type Visibility</div>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxRulesVisibility" checked="true" onchange="createBorder()">
+						<label for="checkboxRulesVisibility" />
+						<div>Rules Visibility</div>
+					</div>
+					<input type="color" id="inputTitleColor" value="#000000"> Title Color<br/>
+					<input type="color" id="inputTypeColor" value="#000000"> Type Color<br/>
+					<input type="color" id="inputRulesColor" value="#000000"> Rules Color<br/>
+					<input type="color" id="inputCreatureColor" value="#000000"> Power/Toughness Color<br/>
 				</div>
 				<div class="cmm" id="cmm-general">
 					Name
-					<input id="inputName" type="text" class="input"></input>
+					<input id="inputName" type="text" class="input">
 					<br/>
 					Mana Cost
-					<input id="inputCost" type="text" class="input"></input>
+					<input id="inputCost" type="text" class="input">
 					<br/>
 					Type
-					<input id="inputType" type="text" class="input"></input>
+					<input id="inputType" type="text" class="input">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxCreature" />
 						<label for="checkboxCreature" />
 						<div>Power/Toughness</div>
 					</div>
-					<input id="inputPowerToughness" class="input" type="text"></input>
+					<input id="inputPowerToughness" class="input" type="text">
 				</div>
 				<div class="cmm" id="cmm-text">
 					Rules Text
@@ -183,80 +202,76 @@
 					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px"></textarea>
 					<br/>
 					Rules Text Font Size
-					<input id="textSize" type="number" class="input" min="0" max="100" value="37" step="0.5"></input>
+					<input id="textSize" type="number" class="input" min="0" max="100" value="37" step="0.5">
 					<br/>
 					Pixels Between Paragraphs
-					<input id="textShift" type="number" class="input" min="0" max="300" value="13"></input>
+					<input id="textShift" type="number" class="input" min="0" max="300" value="13">
 					<br/>
 					Shift All Text Down
-					<input id="textDown" type="number" class="input" min="0" max="300" value="0"></input>
+					<input id="textDown" type="number" class="input" min="0" max="300" value="0">
 					<br/>
 					Shift Mana Symbols Down
-					<input id="inputSymbolDown" type="number" class="input" value="0"></input>
+					<input id="inputSymbolDown" type="number" class="input" value="0">
 				</div>
 				<div class="cmm" id="cmm-art">
 					Image
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgArt, true)" id="inputPicture">
 					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)"></input>
+					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)">
 					<br/>
 					Image Zoom
-					<input id="imageSize" type="number" class="input" value="100" step="0.1"></input>
+					<input id="imageSize" type="number" class="input" value="100" step="0.1">
 					<br/>
 					Image Left
-					<input id="imageLeft" type="number" class="input" value="0" step="1"></input>
+					<input id="imageLeft" type="number" class="input" value="0" step="1">
 					<br/>
 					Image Up
-					<input id="imageUp" type="number" class="input" value="0" step="1"></input>
+					<input id="imageUp" type="number" class="input" value="0" step="1">
 				</div>
 				<div class="cmm" id="cmm-info">
 					Other Info
-					<input id="inputInfo" value="Not A Real Card" type="text" class="input"></input>
+					<input id="inputInfo" value="Not A Real Card" type="text" class="input">
 					<br/>
 					Card Number
-					<input id="inputNumber" value="001/001" type="text" class="input"></input>
+					<input id="inputNumber" value="001/001" type="text" class="input">
 					<br/>
 					Rarity
-					<input id="inputRarity" value="C" type="text" class="input"></input>
+					<input id="inputRarity" value="C" type="text" class="input">
 					<br/>
 					Set Abbreviation
-					<input id="inputSet" value="MTG" type="text" class="input"></input>
+					<input id="inputSet" value="MTG" type="text" class="input">
 					<br/>
 					Language
-					<input id="inputLanguage" value="EN" type="text" class="input"></input>
+					<input id="inputLanguage" value="EN" type="text" class="input">
 					<br/>
 					Artist Credit
-					<input id="inputArtist" value="" type="text" class="input"></input>
+					<input id="inputArtist" value="" type="text" class="input">
 					<br/>
-					<div class="checkbox">
-						<input type="checkbox" id="checkboxArtistColor" />
-						<label for="checkboxArtistColor" />
-						<div>Black Bottom Info</div>
-					</div>
+					<input type="color" id="inputInfoColor" value="#ffffff"> Info Color<br/>
 				</div>
 				<div class="cmm" id="cmm-set">
 					<div class="checkbox">
-						<input type="checkbox" id="checkboxSetSymbol" checked="true" />
+						<input type="checkbox" id="checkboxSetSymbol" checked="true">
 						<label for="checkboxSetSymbol" />
 						<div>Set Symbol</div>
 					</div>
 					Set Code
-					<input type="text" onchange="loadSetSymbol()" value="hm" id="setSymbolCode" class="input"></input>
+					<input type="text" onchange="loadSetSymbol()" value="hm" id="setSymbolCode" class="input">
 					<br>
 					Set Symbol Rarity
-					<input type="text" onchange="loadSetSymbol()" value="c" id="setSymbolRarity" class="input"></input>
+					<input type="text" onchange="loadSetSymbol()" value="c" id="setSymbolRarity" class="input">
 					<br>
 					Custom Set Symbol
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol, true)" id="inputSetSymbol">
 					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)"></input>
+					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgSetSymbol)">
 					<br/>
 					Scale Set Symbol
-					<input id="setSymbolSize" type="number" class="input" value="100" step="0.5"></input>
+					<input id="setSymbolSize" type="number" class="input" value="100" step="0.5">
 				</div>
 				<div class="cmm" id="cmm-download">
 					Frame Rate
-					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)"></input>
+					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)">
 					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
 				</div>
 				<div class="cmm" id="cmm-watermark">
@@ -265,11 +280,11 @@
 						<label for="checkboxWatermark" />
 						<div>Watermark</div>
 					</div>
-					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark"></input>
+					<input type="file" class="input" accept="image/*" onchange="loadImage(event, imgWatermark, true)" id="inputWatermark">
 					<br/>
-					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)"></input>
+					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgWatermark)">
 					<br/>
-					<input type="text" class="input" placeholder="Or use a set code" onchange="loadSetSymbolWatermark()" id="inputWatermarkSetCode"></input>
+					<input type="text" class="input" placeholder="Or use a set code" onchange="loadSetSymbolWatermark()" id="inputWatermarkSetCode">
 					<br/>
 					Watermark Color
 					<br/>
@@ -302,7 +317,7 @@
 						</select>
 					</span>
 					Watermark Opacity
-					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01"></input>
+					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01">
 				</div>
 				<div class="cmm" id="cmm-planeswalker">
 					Planeswalker Ability Line Height
@@ -561,7 +576,7 @@ input[type="text"], input[type="number"], textarea, input[type="file"] {
 input[type="color"] {
 	padding: 0px;
 	border: none;
-	background: var(--color-d);
+	background: var(--color-e);
 }
 
 /*Hyperlinks*/

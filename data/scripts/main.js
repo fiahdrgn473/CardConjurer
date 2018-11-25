@@ -23,7 +23,7 @@ var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
 
 //load template images (images that may change based off of the selected template)
-var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven"]
+var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven", "rulesMask", "typeMask", "titleMask"]
 for (var i = 0; i < imgListTemplate.length; i ++) {
 	var imgName = "img" + imgListTemplate[i].charAt(0).toUpperCase() + imgListTemplate[i].slice(1)
 	window[imgName] = new Image()
@@ -67,7 +67,7 @@ for (var i = 0; i < imgListUser.length; i ++) {
 }
 
 //Load static images
-var imgListStatic = ["artistBrush", "foil", "stampGradient", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
+var imgListStatic = ["artistBrush", "foil", "multiGradient", "rareStamp", "cardMask", "bar", "identity"]
 for (var i = 0; i < imgListStatic.length; i ++) {
 	var imgName = "img" + imgListStatic[i].charAt(0).toUpperCase() + imgListStatic[i].slice(1)
 	window[imgName] = new Image()
@@ -93,7 +93,7 @@ loadScript("data/borders/defaultBorder.js")
 loadSetSymbol()
 
 //Randomize the sample cards at the bottom
-randomizeSampleCards(8)
+randomizeSampleCards(9)
 
 //Set up the initial clock!
 var cardClockInterval
@@ -293,7 +293,9 @@ function createBorder() {
 			border.mask("imgMultiGradient,source-over;imgLegendFrameMask,source-in", imgSecondBorderLegendary)
 		}
 		//redraws the custom-color border to match the legendary frame
-		border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out", "none", document.getElementById("inputColor").value)
+		if (document.getElementById("checkboxBorderless").checked != true) {
+			border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out", "none", document.getElementById("inputColor").value)
+		}
 		//redraws the silver border usually on un-cards to match the legendary frame
 		if (document.getElementById("checkboxSilverBorder").checked == true) {
 			border.mask("imgLegendFrameMask,source-over;imgBorderMask,source-out", "none", "#a3aeb7")
@@ -339,6 +341,21 @@ function createBorder() {
 			titleRightShift = 0
 		}
 	}
+	//CLEAR ANYTHING UNWANTED
+	border.globalCompositeOperation = "destination-out"
+	if (document.getElementById("checkboxRulesVisibility").checked == false && imgRulesMask.width > 0) {
+		border.drawImage(imgRulesMask, 0, 0, cardWidth, cardHeight)
+	}
+	if (document.getElementById("checkboxTypeVisibility").checked == false && imgTypeMask.width > 0) {
+		border.drawImage(imgTypeMask, 0, 0, cardWidth, cardHeight)
+	}
+	if (document.getElementById("checkboxTitleVisibility").checked == false && imgTitleMask.width > 0) {
+		border.drawImage(imgTitleMask, 0, 0, cardWidth, cardHeight)
+	}
+	// if (document.getElementById("checkboxLegendary").checked == true && legendaryBorder == true && document.getElementById("checkboxBorderless").checked == true && document.getElementById("checkboxSilverBorder").checked == false) {
+	// 	border.drawImage(imgBorderMask, 0, 0, cardWidth, cardHeight)
+	// }
+	border.globalCompositeOperation = "source-over"
 	//COLOR IDENTITY
 	if (document.getElementById("checkboxIdentity").checked == true) {
 		var identityList = document.getElementById("inputIdentity").value.toLowerCase().split(" ")
@@ -405,12 +422,12 @@ function createBorder() {
         imgBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50, "imgSecondBorderRareStamp,imgRareStampMask")
 		border.mask("imgCardMask,source-over", imgBorderRareStamp)
 		if (document.getElementById("checkboxSecondColor").checked == true) {
-			// border.mask("imgStampGradient,source-over;imgSecondBorderRareStamp,source-in", 329, rareStampY - 15, 90, 50)attention
 			border.mask("imgMultiGradient,source-over", imgSecondBorderRareStamp)
 		}
-		//Draws over the rare stamp (part that's usually black) to match custom border color
-		// border.mask("imgRareStampMask,source-over;" + document.getElementById("inputColor").value + ",source-in", 329, rareStampY - 15, 90, 50)attention
-        border.mask("imgCardMask,source-over", imgRareStampMask, document.getElementById("inputColor").value)
+		if (document.getElementById("checkboxBorderless").checked != true) {
+			//Draws over the rare stamp (part that's usually black) to match custom border color
+	        border.mask("imgCardMask,source-over", imgRareStampMask, document.getElementById("inputColor").value)
+	    }
 		//This is when the holo stamp is drawn
 		border.drawImage(imgRareStamp, 340, rareStampY, 70, 37)
 	}
@@ -498,26 +515,29 @@ function writeText() {
 	//Draws the entered text onto the card, also draws the power/toughness box if necessary
 	//All use these:
 	card.textBaseline = "top"
-	if (flipBorder == true && document.getElementById("checkboxFlippedDark").checked == true) {
-		card.fillStyle = "White"
-	} else {
-		card.fillStyle = "Black"
-	}
+	// if (flipBorder == true && document.getElementById("checkboxFlippedDark").checked == true) {
+	// 	card.fillStyle = "White"//attention
+	// } else {
+	// 	card.fillStyle = "Black"
+	// }
 	//Title
+	card.fillStyle = document.getElementById("inputTitleColor").value
 	card.textAlign = titleAlign
 	canvas.style.letterSpacing = titleFontSpacing
 	card.font = titleFont	
 	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY)
 	//Type
+	card.fillStyle = document.getElementById("inputTypeColor").value
 	card.textAlign = typeAlign
 	canvas.style.letterSpacing = typeFontSpacing
 	card.font = typeFont
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY)
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
-		if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png" || borderPath == "data/borders/planeswalker/") {
-			card.fillStyle = "White"
-		}
+		// if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png" || borderPath == "data/borders/planeswalker/") {
+		// 	card.fillStyle = "White"//attention
+		// }
+		card.fillStyle = document.getElementById("inputCreatureColor").value
 		card.textAlign = "center"
 		card.drawImage(imgBorderCreature, imgBorderCreature.imgX, imgBorderCreature.imgY, imgBorderCreature.imgW, imgBorderCreature.imgH)
 		canvas.style.letterSpacing = ptFontSpacing
@@ -526,8 +546,9 @@ function writeText() {
 		card.fillText(powerToughness, ptTextX, ptTextY)
 	}
 	card.textAlign = "left"
-	card.fillStyle = "Black"
+	// card.fillStyle = "Black"//attention
 	//Rules Text
+	card.fillStyle = document.getElementById("inputRulesColor").value
 	canvas.style.letterSpacing = textFontSpacing + "px"
 	card.font = document.getElementById("textSize").value + textFont
 	var text = document.getElementById("inputText").value
@@ -536,11 +557,7 @@ function writeText() {
 
 //Bottom info on M15 cards
 function bottomInfoM15() {
-	if (document.getElementById("checkboxArtistColor").checked == true) {
-		card.fillStyle = "black"
-	} else {
-		card.fillStyle = "white"
-	}
+	card.fillStyle = document.getElementById("inputInfoColor").value
 	var shiftInfo = 442
 	canvas.style.letterSpacing = "0.8px"
 	card.font = "19.5px relaymedium"

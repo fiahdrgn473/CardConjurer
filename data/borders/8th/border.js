@@ -26,10 +26,7 @@ var ptFont = "bold 48px matrix"
 var ptFontSpacing = "0.3px"
 var ptTextX = 626
 var ptTextY = 936
-var ptX = 541
-var ptY = 920.5
-var ptWidth = 162
-var ptHeight = 84
+imgBorderCreature.imgValues(541, 920.5, 162, 84)
 
 var infoY = 956
 
@@ -52,11 +49,7 @@ finishTemplate()
 
 var uniqueFunctionName = "bottomInfo8th"
 function bottomInfo8th() {
-	if (document.getElementById("checkboxArtistColor").checked == true) {
-		card.fillStyle = "black"
-	} else {
-		card.fillStyle = "white"
-	}
+	card.fillStyle = document.getElementById("inputInfoColor").value
 	canvas.style.letterSpacing = "1px"
 	card.font = "25px matrixb"
 	card.fillText(document.getElementById("inputArtist").value, 116, infoY)

@@ -30,10 +30,7 @@ var ptFont = "32px belerenb"
 var ptFontSpacing = "0.3px"
 var ptTextX = 635
 var ptTextY = 933
-var ptX = 560
-var ptY = 920
-var ptWidth = 150
-var ptHeight = 70
+imgBorderCreature.imgValues(560, 920, 150, 70)
 //Bottom Info
 var infoY = 993
 //Set Symbol

@@ -58,11 +58,7 @@ finishTemplate()
 var uniqueFunctionName = "bottomInfoPlanechase"
 function bottomInfoPlanechase() {
 	card.textAlign = "left"
-	if (document.getElementById("checkboxArtistColor").checked == true) {
-		card.fillStyle = "black"
-	} else {
-		card.fillStyle = "white"
-	}
+	card.fillStyle = document.getElementById("inputInfoColor").value
 	var bottomLineFirst = document.getElementById("inputNumber").value + " " + document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	var bottomLineSecond
 	if (document.getElementById("inputInfo").value != "") {
@@ -78,7 +74,8 @@ function bottomInfoPlanechase() {
 	canvas.style.letterSpacing = cardWidth * -0.0002 + "px" //-0.2
 	card.font = "16px matrixbsc" //16
 	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
-	card.mask("imgArtistBrush,source-over;" + card.fillStyle + ",source-in", cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
+	imgArtistBrush.imgValues(cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
+	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
 	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9400) //18, 704
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"

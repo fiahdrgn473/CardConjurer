@@ -9,6 +9,7 @@ imgBorderMask.src = borderPath + "borderMask.png"
 imgAbilityLineOdd.src = borderPath + "abilityLineOdd.png"
 imgAbilityLineEven.src = borderPath + "abilityLineEven.png"
 document.getElementById("textSize").value = 33
+document.getElementById("inputCreatureColor").value = "#ffffff"
 //Card Title
 var titleFont = "40px belerenb" //40
 var titleFontSpacing = "-0.1px" //-0.1
@@ -34,10 +35,7 @@ var ptFont = "39px belerenb" //39
 var ptFontSpacing = "0.3px" //0.3
 var ptTextX = 655 //655
 var ptTextY = 935 //935
-var ptX = 598 //598
-var ptY = 920 //920
-var ptWidth = 118 //1318
-var ptHeight = 75 //75
+imgBorderCreature.imgValues(598, 920, 118, 75)
 //Bottom Info
 var infoY = 993 //993
 //Set Symbol

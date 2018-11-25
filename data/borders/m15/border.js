@@ -6,6 +6,9 @@ imgFrameMask.src = borderPath + "frameMask.png"
 imgLegendFrameMask.src = borderPath + "legendFrameMask.png"
 imgRareStampMask.src = borderPath + "rareStampMask.png"
 imgBorderMask.src = borderPath + "borderMask.png"
+imgRulesMask.src = borderPath + "rulesMask.png"
+imgTypeMask.src = borderPath + "typeMask.png"
+imgTitleMask.src = borderPath + "titleMask.png"
 //Card Title
 var titleFont = "40px belerenb" //40
 var titleFontSpacing = "0.15px" //0.15
