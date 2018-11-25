@@ -323,11 +323,11 @@ function createBorder() {
 			}
 		}
 		if (document.getElementById("checkboxFlipIcon").checked == true || document.getElementById("checkboxFlippedDark").checked == true) {
-			border.drawImage(imgBorderFlipCircle, 0, 0, cardWidth, cardHeight)
+			border.drawImage(imgBorderFlipCircle, imgBorderFlipCircle.imgX, imgBorderFlipCircle.imgY, imgBorderFlipCircle.imgW, imgBorderFlipCircle.imgH)
 			border.drawImage(imgBorderFlipIcon, 39, 51, 60, 60)
 		}
 		if (document.getElementById("checkboxFlipTip").checked == true) {
-			border.drawImage(imgBorderFlipTip, 0, 0, cardWidth, cardHeight)
+			border.drawImage(imgBorderFlipTip, imgBorderFlipTip.imgX, imgBorderFlipTip.imgY, imgBorderFlipTip.imgW, imgBorderFlipTip.imgH)
 			border.fillStyle="#666"
 			canvas.style.letterSpacing = "0px"
 			border.font = "28px belerenb"
@@ -402,9 +402,7 @@ function createBorder() {
 	}
 	//RARE STAMP
 	if (document.getElementById("checkboxRareStamp").checked == true && stampBorder == true) {
-        imgBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50)
-        imgSecondBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50)
-        imgRareStampMask.imgValues(329, rareStampY - 15, 90, 50)
+        imgBorderRareStamp.imgValues(329, rareStampY - 15, 90, 50, "imgSecondBorderRareStamp,imgRareStampMask")
 		border.mask("imgCardMask,source-over", imgBorderRareStamp)
 		if (document.getElementById("checkboxSecondColor").checked == true) {
 			// border.mask("imgStampGradient,source-over;imgSecondBorderRareStamp,source-in", 329, rareStampY - 15, 90, 50)attention
@@ -521,7 +519,7 @@ function writeText() {
 			card.fillStyle = "White"
 		}
 		card.textAlign = "center"
-		card.drawImage(imgBorderCreature, ptX, ptY, ptWidth, ptHeight)
+		card.drawImage(imgBorderCreature, imgBorderCreature.imgX, imgBorderCreature.imgY, imgBorderCreature.imgW, imgBorderCreature.imgH)
 		canvas.style.letterSpacing = ptFontSpacing
 		card.font = ptFont
 		powerToughness = document.getElementById("inputPowerToughness").value
@@ -778,11 +776,21 @@ function loadImage(event, destination, arg) {
 //============================================//
 //              Image Processing              //
 //============================================//
-Image.prototype.imgValues = function(x, y, w, h) {
+Image.prototype.imgValues = function(x, y, w, h , otherImages) {
     this.imgX = x
     this.imgY = y
     this.imgW = w
     this.imgH = h
+    if (otherImages != undefined) {
+    	otherImageList = otherImages.split(",")
+    	for (i = 0; i < otherImageList.length; i ++) {
+    		otherImage = window[otherImageList[i]]
+    		otherImage.imgX = x
+  	  		otherImage.imgY = y
+   			otherImage.imgW = w
+    		otherImage.imgH = h
+    	}
+    }
 }
 var maskCanvas = document.createElement("canvas")
 var maskContext = maskCanvas.getContext("2d")

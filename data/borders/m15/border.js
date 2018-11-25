@@ -31,10 +31,7 @@ var ptFont = "39px belerenb" //39
 var ptFontSpacing = "0.3px" //0.3
 var ptTextX = 645 //645
 var ptTextY = 936 //936
-var ptX = 571 //571
-var ptY = 929 //929
-var ptWidth = 137 //137
-var ptHeight = 75 //75
+imgBorderCreature.imgValues(571, 929, 137, 75)
 //Bottom Info
 var infoY = 993 //993
 //Set Symbol
@@ -48,6 +45,13 @@ var watermarkHeight = 250 //250
 var watermarkY = 805 //805
 //Rare Stamp
 var rareStampY = 958 //958
+//imgValues
+imgBorderMiracle.imgValues(30, 30, 689, 511, "imgSecondBorderMiracle")
+imgBorderFlipCircle.imgValues(26, 44, 78, 71)
+imgBorderFlippedDark.imgValues(44, 50, 661, 915, "imgSecondBorderFlippedDark")
+imgBorderFlipTip.imgValues(685, 877, 36, 48)
+imgBorderNyx.imgValues(30, 30, 690, 586, "imgSecondBorderNyx")
+imgBorderLegendary.imgValues(20, 20, 714, 186, "imgSecondBorderLegendary")
 //Color Options
 loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-Black,blackLand-Black Land,red-Red,redLand-Red Land,green-Green,greenLand-Green Land,gold-Gold,goldLand-Gold Land,colorless-Colorless,colorlessLand-Colorless Land,artifact-Artifact,vehicle-Vehicle")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
