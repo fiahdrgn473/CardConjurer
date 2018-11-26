@@ -441,12 +441,14 @@ function createBorder() {
 //Draw card art
 function drawPicture() {
 	//scales the card art and draws it
+	card.rotate(document.getElementById("imageRotation").value * Math.PI / 180);
 	var imageScale = document.getElementById("imageSize").value * 0.01
 	var imageLeftShift = parseInt(document.getElementById("imageLeft").value)
 	var imageUpShift = parseInt(document.getElementById("imageUp").value)
 	if (imgArt.width > 0) {
 		card.drawImage(imgArt, artX - imageLeftShift, artY - imageUpShift, imgArt.width * imageScale, imgArt.height * imageScale)
 	}
+	card.rotate(document.getElementById("imageRotation").value * Math.PI / -180);
 }
 
 //Draw the set symbol
