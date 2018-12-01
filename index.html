@@ -30,7 +30,7 @@
 		<div class="canvasContainer">
 			<canvas id="canvas" width="749" height="1044"></canvas>
 		</div>
-		<div>
+		<div class="cmmArea">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('color', 'cmm')">Color</div>
 				<div onclick="toggleView('general', 'cmm')">General</div>
@@ -40,8 +40,8 @@
 				<div onclick="toggleView('set', 'cmm')">Set</div>
 				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
-				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
+				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 			</div>
 			<div class="cardManipulationMenu">
 				<div class="cmm shown" id="cmm-color">
@@ -339,9 +339,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="grid">
-		<div>
+		<div class="tutorialArea">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('symbolList', 'extras')">Symbols</div>
 				<div onclick="toggleView('codes', 'extras')">Other Codes</div>
@@ -433,10 +431,11 @@
 :root {
 	/*Regular*/
 	--color-a: #073c00;
-	--color-b: #073c0040;
+	--color-b: #073c0040; /*073c0040*/
 	--color-c: #095700;
-	--color-d: #0e720040;
+	--color-d: #0e720040; /*0e720040*/
 	--color-e: #0e7200;
+	--color-gray: #00000080;
 }
 
 /*Page-wide styling*/
@@ -456,12 +455,11 @@ html {
 
 /*Grid styling*/
 .grid {
-	margin-bottom: 5px;
 	display: grid;
-	grid-gap: 4px;
+	grid-gap: 3px;
 }
 .mainGrid {
-	grid-gap: 12px;
+	grid-gap: 0px 4px;
 }
 .canvasContainer {
 	justify-self: center;
@@ -473,10 +471,14 @@ html {
 .grid > div {
 	padding: 8px;
 	border-radius: 36px;
+	/*margin: 5px 5px 5px 0px;*/
 }
 .grid > div:not(.noBorder) {
-	border: 1px solid var(--color-c);
+	border: 5px solid var(--color-d);
 	background: var(--color-d);
+}
+.mainGrid > div {
+	background: var(--color-gray) !important;
 }
 
 /*Card manipulation menu grid*/
@@ -484,9 +486,12 @@ html {
 	font-family: belerenbsc;
 	cursor: pointer;
 }
-.selectionGrid > div:nth-child(odd) {
-	background-color: var(--color-c);
+.selectionGrid > div:hover {
+	background-color: var(--color-c) !important;
 }
+/*.selectionGrid > div:nth-child(odd) {
+	
+}*/
 .cardManipulationMenu, .extrasMenu {
 	margin-top: 4px;
 	padding: 24px;
@@ -515,7 +520,7 @@ html {
 	border-radius: 0.25em;
 	padding-left: 0.25em;
 	width: inherit;
-	background-color: var(--color-e);
+	background-color: var(--color-c);
 	border: none;
 	cursor: pointer;
 	-moz-appearance: none;
@@ -547,7 +552,7 @@ html {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: var(--color-e);
+	background: var(--color-c);
 	cursor: pointer;
 }
 .checkbox input:checked ~ label:after {
@@ -573,7 +578,7 @@ html {
 input[type="text"], input[type="number"], textarea, input[type="file"] {
 	width: 100%;
 	border: none;
-	background: var(--color-e);
+	background: var(--color-c);
 	border-radius: 0.25em;
 	padding-left: 0.25em;
 }
@@ -581,7 +586,7 @@ input[type="text"], input[type="number"], textarea, input[type="file"] {
 input[type="color"] {
 	padding: 0px;
 	border: none;
-	background: var(--color-e);
+	background: var(--color-c);
 }
 
 /*Hyperlinks*/
@@ -596,6 +601,18 @@ a:hover, a:active {
 @media only screen and (min-width: 1130px) {
 	.mainGrid:not(.plane) {
 		grid-template-columns: calc(749px + 0.7em) auto;
+	}
+	.tutorialArea {
+		grid-column: 1 / span 2;
+	}
+	.sampleGrid {
+		grid-column: 1 / span 2;
+	}
+	.mainGrid.plane > .cmmArea {
+		grid-column: 1 / span 2;
+	}
+	.mainGrid.plane > .canvasContainer {
+		grid-column: 1 / span 2;
 	}
 }
 @media only screen and (min-width: 1455px) {
