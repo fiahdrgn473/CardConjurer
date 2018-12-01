@@ -1,4 +1,4 @@
-//M15 Border
+//Token Text
 //Anything to do with...
 //Loading Images
 var artX = 56
@@ -7,6 +7,9 @@ imgMultiMask.src = borderPath + "multiMask.png"
 imgFrameMask.src = borderPath + "frameMask.png"
 imgLegendFrameMask.src = borderPath + "legendFrameMask.png"
 imgBorderMask.src = borderPath + "borderMask.png"
+imgRulesMask.src = borderPath + "rulesMask.png"
+imgTypeMask.src = borderPath + "typeMask.png"
+imgTitleMask.src = borderPath + "titleMask.png"
 //Card Title
 document.getElementById("inputTitleColor").value = "#ffe886"
 var titleFont = "40px belerenbsc" //40

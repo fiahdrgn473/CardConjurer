@@ -570,6 +570,9 @@ function bottomInfoM15() {
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
 	canvas.style.letterSpacing = "1.3px"
 	card.font = "19.5px relaymedium"
+	if (card.measureText(document.getElementById("inputNumber").value).width > artistBrushShift - 58) {
+		artistBrushShift = card.measureText(document.getElementById("inputNumber").value).width + 58
+	}
 	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20)
 	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20)
 	if (442 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
