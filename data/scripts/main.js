@@ -99,7 +99,7 @@ randomizeSampleCards(9)
 var cardClockInterval
 setTimeout(function() {
     cardClockInterval = setInterval(cardClock, 1000 / document.getElementById("inputFPS").value)
-}, 1000)
+}, 200)
 
 //It's easier to generate the mana symbol list via js, so do it here
 var symbolList = ""
