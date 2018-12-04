@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Card Conjurer</title>
-	<div class="title"><img src="images/title.png"></div>
 	<!-- Favicon craziness! -->
 	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
@@ -14,7 +13,7 @@
 	<meta name="msapplication-config" content="favicons/browserconfig.xml">
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
-	<meta name="description" content="Card Conjurer - A free online tool that creates custom Magic: The Gathering Cards. Easy, fast, and offers a wide variety of card frames and other customizations.">
+	<!-- <meta name="description" content="Card Conjurer - A free online tool that creates custom Magic: The Gathering Cards. Easy, fast, and offers a wide variety of card frames and other customizations."> -->
 	<meta charset="UTF-8">
 	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=800">
 	<script>
@@ -26,7 +25,8 @@
 		}
 	</script>
 </head>
-<body>
+<body itemscope itemtype="http://schema.org/Thing">
+	<div class="title"><img itemprop="image" src="images/title.png"></div>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
 			<canvas id="canvas" width="749" height="1044"></canvas>
@@ -355,7 +355,7 @@
 						Welcome to Card Conjurer! 
 					</div>
 					<div class="paragraph">
-						Card Conjurer is a program that creates custom Magic: The Gathering cards. There are already plenty of Magic card makers, but what sets Card Conjurer apart from the rest is its live-edit capabilities. Users can immediately see the effects of any change they make, which makes card customization easier and more enjoyable. Additionally, Card Conjurer offers more borders than any other website, including flip cards, planar cards, Ixalan maps, and so much more.
+						<span itemprop="name">Card Conjurer</span> is a <span itemprop="description">program that creates custom Magic: The Gathering cards.</span> There are already plenty of Magic card makers, but what sets Card Conjurer apart from the rest is its live-edit capabilities. Users can immediately see the effects of any change they make, which makes card customization easier and more enjoyable. Additionally, Card Conjurer offers more borders than any other website, including flip cards, planar cards, Ixalan maps, and so much more.
 					</div>
 					<br>
 					<div class="text">
