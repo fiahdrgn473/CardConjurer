@@ -64,6 +64,7 @@ imgBorderFlipCircle.imgValues(26, 44, 78, 71)
 imgBorderFlippedDark.imgValues(44, 50, 661, 915, "imgSecondBorderFlippedDark")
 imgBorderFlipTip.imgValues(685, 877, 36, 48)
 stampBorder = true
+artifactBorder = true
 //With all the new values in place, the program will update it's border images
 finishTemplate()
 //Any special functions go at the bottom

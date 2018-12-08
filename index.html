@@ -1,5 +1,5 @@
 <!DOCTYPE html5>
-<html>
+<html itemscope itemtype="http://schema.org/Thing">
 <head>
 	<title>Card Conjurer</title>
 	<!-- Favicon craziness! -->
@@ -25,7 +25,7 @@
 		}
 	</script>
 </head>
-<body itemscope itemtype="http://schema.org/Thing">
+<body>
 	<div class="title"><img itemprop="image" src="images/title.png"></div>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
@@ -85,6 +85,12 @@
 					<span class="dropdown">
 						<select id="thirdColorSelection" onchange="updateBorder()"></select>
 					</span>
+					<br>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxArtifact" onchange="updateBorder()" />
+						<label for="checkboxArtifact" />
+						<div>Artifact</div>
+					</div>
 				</div>
 				<div class="cmm" id="cmm-advanced">
 					<div class="checkbox">

@@ -31,7 +31,7 @@ for (var i = 0; i < imgListTemplate.length; i ++) {
 }
 
 //Load border images (images that are determined by border settings)
-var imgListBorder = ["borderColor", "secondBorderColor", "thirdBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark"]
+var imgListBorder = ["borderColor", "secondBorderColor", "thirdBorderColor", "artifactBorderColor", "borderCreature", "borderLegendary", "secondBorderLegendary", "borderRareStamp", "secondBorderRareStamp", "borderNyx", "secondBorderNyx", "borderMiracle", "secondBorderMiracle", "borderFlipIcon", "borderFlipCircle", "borderFlipTip", "borderFlippedDark", "secondBorderFlippedDark"]
 for (var i = 0; i < imgListBorder.length; i ++) {
 	var imgName = "img" + imgListBorder[i].charAt(0).toUpperCase() + imgListBorder[i].slice(1)
 	window[imgName] = new Image()
@@ -177,6 +177,9 @@ function updateBorder() {
 	imgBorderColor.src = firstColorPath + "/frame.png"
 	imgSecondBorderColor.src = secondColorPath + "/frame.png"
 	imgThirdBorderColor.src = thirdColorPath + "/frame.png"
+	if (artifactBorder == true) {
+		imgArtifactBorderColor.src = borderPath + "artifact/frame.png"
+	}
 	if (document.getElementById("checkboxFlippedDark").checked == true && flipBorder == true) {
 		altframe = "dark"
 	} else {
@@ -200,7 +203,9 @@ function updateBorder() {
 		imgSecondBorderRareStamp.src = secondColorPath + "/stamp.png"
 	}
 	if (nyxBorder == true) {
-		if (thirdColor == true) {
+		if (artifactBorder == true && document.getElementById("checkboxArtifact").checked == true) {
+			imgBorderNyx.src = borderPath + "artifact/nyx.png"
+		} else if (thirdColor == true) {
 			imgBorderNyx.src = thirdColorPath + "/nyx.png"
 		} else {
 			imgBorderNyx.src = firstColorPath + "/nyx.png"
@@ -264,9 +269,12 @@ function createBorder() {
 	if (thirdColor == true && thirdBorder == true) {
 		border.mask("imgMultiMask,source-over;imgFrameMask,source-in", imgThirdBorderColor)
 	}
+	if (artifactBorder == true && document.getElementById("checkboxArtifact").checked == true) {
+		border.mask("imgMultiMask,source-over;imgFrameMask,source-in;imgTitleMask,destination-out;imgTypeMask,destination-out", imgArtifactBorderColor)
+	}
 	//NYX
 	if (document.getElementById("checkboxNyx").checked == true && nyxBorder == true) {
-		if (thirdColor == true) {
+		if (thirdColor == true || (document.getElementById("checkboxArtifact").checked == true && artifactBorder == true)) {
 			border.mask("imgMultiMask,source-over;imgFrameMask,source-in", imgBorderNyx)
 		} else {
 			border.mask("imgFrameMask,source-over", imgBorderNyx)

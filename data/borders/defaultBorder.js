@@ -16,6 +16,7 @@ var creatureBorder = true
 var thirdBorder = true
 var secondBorder = true
 var transparentBorder = false
+var artifactBorder = false
 //Shifted text
 titleRightShift = 0
 typeRightShift = 0
