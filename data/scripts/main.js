@@ -656,7 +656,7 @@ function drawText(text, xCoord, yCoord) {
 					//series of if statements to determine an action based off of the given code
 					if (megaSplit[0] == "i") {
 						canvas.style.letterSpacing = textFontSpacing * 1/3 + "px"
-						card.font = textSize + textFont + "i"
+						card.font = textSize * italicSize + textFont + "i"
 					} else if (megaSplit[0] == "/i") {
 						canvas.style.letterSpacing = textFontSpacing + "px"
 						card.font = textSize + textFont

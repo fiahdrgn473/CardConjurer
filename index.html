@@ -75,6 +75,7 @@
 				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
+				<div onclick="toggleView('vanguard', 'cmm')" style="display: none;" id="cmmVanguard">Vanguard</div>
 				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 			</div>
 			<div class="cardManipulationMenu">
@@ -90,6 +91,7 @@
 							<option value="tokenTall/">Token (Tall)</option>
 							<option value="map/">Treasure Map</option>
 							<option value="plane/">Plane</option>
+							<option value="vanguard/">Vanguard</option>
 							<option value="8th/">8th</option>
 						</select>
 					</span>
@@ -291,7 +293,7 @@
 					<input id="inputLanguage" value="EN" type="text" class="input">
 					<br>
 					Artist Credit
-					<input id="inputArtist" value="" type="text" class="input">
+					<input id="inputArtist" type="text" class="input">
 					<br>
 					<input type="color" id="inputInfoColor" value="#ffffff"> Info Color<br>
 				</div>
@@ -377,6 +379,12 @@
 					<input type="text" id="abilityValue1" value="0">
 					<input type="text" id="abilityValue2" value="-1">
 					<input type="text" id="abilityValue3" value="">
+				</div>
+				<div class="cmm" id="cmm-vanguard">
+					Hand Size Modifier
+					<input type="text" id="inputVanguardHandMod">
+					Life Total Modifier
+					<input type="text" id="inputVanguardLifeMod">
 				</div>
 			</div>
 		</div>

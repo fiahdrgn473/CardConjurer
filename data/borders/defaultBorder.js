@@ -23,6 +23,7 @@ typeRightShift = 0
 //Aligned text
 var titleAlign = "left"
 var typeAlign = "left"
+var italicSize = 1
 //Image alignment
 var centerSetSymbol = 1 //1=not centered, 2=centered
 var artX = 58
