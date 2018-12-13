@@ -416,12 +416,13 @@
 						Donate?
 					</div>
 					<div class="paragraph" style="margin-bottom: 0.5em">
-						I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation.
+						I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation or using a referral link... Or you can check out my friend's youtube channel: Izzet Right?
 					</div>
-					<div class="grid selectionGrid text">
-						<a href="https://www.paypal.me/kyleburtondonate" target="blank"><img src="images/paypal.png"></img></a>
-						<a href="https://www.patreon.com/KyleBurton" target="blank"><img src="images/patreon.png"></img></a>
-						<a href="https://pucatrade.com/invite/gift/186748" target="blank"><img src="images/pucatrade.png"></img></a>
+					<div class="grid donateGrid">
+						<div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="images/paypal.png"></img></div>
+						<div onclick="window.open('https://www.patreon.com/KyleBurton', '_blank');" style="color:rgb(255,89,0);">Patreon<img src="images/patreon.png"></img></div>
+						<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="images/pucatrade.png"></img></div>
+						<div onclick="window.open('https://www.youtube.com/channel/UC95Pd8lc8UWEkI96Nq_THvw', '_blank');" style="color:rgb(255,0,0);">Izzet Right?<img src="images/izzetright.png"></img></div>
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
@@ -564,7 +565,7 @@ html {
 	cursor: pointer;
 }
 .selectionGrid > div:hover {
-	background-color: var(--color-c) !important;
+	background: var(--color-c);
 }
 /*.selectionGrid > div:nth-child(odd) {
 	
@@ -747,6 +748,26 @@ a:hover, a:active {
 }
 .paragraph {
 	text-indent: 2em;
+}
+/*Donation buttons!*/
+.donateGrid {
+	grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+	text-align: center;
+}
+.donateGrid.grid > div {
+	background: var(--color-gray);
+	font-size: 1.7em;
+	cursor: pointer;
+	padding: 0px;
+}
+.donateGrid.grid > div:hover {
+	background: black;
+}
+.donateGrid > div > img {
+	position: relative;
+	top: 0.25em;
+	left: 0.5em;
+	height: 1.7em;
 }
 
 </style>
