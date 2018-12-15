@@ -514,11 +514,11 @@
 :root {
 	/*Regular*/
 	--color-a: #073c00;
-	--color-b: #073c0040; /*073c0040*/
+	--color-b: #073c0020; /*073c0020*/
 	--color-c: #095700;
 	--color-d: #0e720040; /*0e720040*/
 	--color-e: #0e7200;
-	--color-gray: #00000080;
+	--color-gray: #00000060;
 }
 
 /*Page-wide styling*/
@@ -579,8 +579,8 @@ html {
 	margin-top: 4px;
 	padding: 24px;
 	border-radius: 36px;
-	border: 1px solid var(--color-c);
-	background-color: var(--color-b);
+	border: 2px solid var(--color-d);
+	background-color: var(--color-gray);
 }
 .cmm, .extras {
 	display: none;
@@ -760,13 +760,13 @@ a:hover, a:active {
 	text-align: center;
 }
 .donateGrid.grid > div {
-	background: var(--color-gray);
+	background: black;
 	font-size: 1.7em;
 	cursor: pointer;
 	padding: 0px;
 }
 .donateGrid.grid > div:hover {
-	background: black;
+	background: var(--color-b);
 }
 .donateGrid > div > img {
 	position: relative;

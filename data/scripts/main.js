@@ -14,6 +14,18 @@ var typeRightShift = 0
 var textBaselineShift = 0
 var imagesToLoad
 
+//Determine browser
+var isChrome = navigator.userAgent.indexOf('Chrome') > -1
+var isExplorer = navigator.userAgent.indexOf('MSIE') > -1
+var isFirefox = navigator.userAgent.indexOf('Firefox') > -1
+var isSafari = navigator.userAgent.indexOf("Safari") > -1
+if (isChrome == true && isSafari == true) {
+	isSafari = false
+}
+if (isSafari == true) {
+	textBaselineShift = -6
+}
+
 //Set up canvas
 var canvas = document.getElementById("canvas")
 var card = canvas.getContext("2d")
@@ -148,6 +160,7 @@ function cardClock() {
 		card.moveTo(0, titleX)
 		card.lineTo(cardWidth, titleX)
 		card.stroke()
+		console.log("debugging")
 	}
 }
 
