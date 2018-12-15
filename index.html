@@ -318,9 +318,14 @@
 					<input id="setSymbolSize" type="number" class="input" value="100" step="0.5">
 				</div>
 				<div class="cmm" id="cmm-download">
+					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
 					Frame Rate
 					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)">
-					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxDebuggerLine" />
+						<label for="checkboxDebuggerLine" />
+						<div>Debugger Lines</div>
+					</div>
 				</div>
 				<div class="cmm" id="cmm-watermark">
 					<div class="checkbox">
