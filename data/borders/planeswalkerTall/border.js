@@ -14,7 +14,7 @@ document.getElementById("inputCreatureColor").value = "#ffffff"
 var titleFont = "40px belerenb" //40
 var titleFontSpacing = "-0.1px" //-0.1
 var titleX = 62 //62
-var titleY = 42 //42
+var titleY = 48 //42
 //Mana Cost
 var manaCostRadius = 17.5 //17.5
 var manaCostX = 657 //657
@@ -23,21 +23,21 @@ var manaCostY = 46 //46
 var typeFont = "33.5px belerenb" //33.5
 var typeFontSpacing = "0.05px" //0.05
 var typeX = 62 //62
-var typeY = 526 //596
+var typeY = 532 //532
 //Rules/Flavor Text
 var textFont = "px mplantin"
 var textFontSpacing = -0.4 //-0.4
 var textX = 134 //134
-var textY = 580 //650
+var textY = 586 //586
 var textWidth = 682 //682
 //Power Toughness
 var ptFont = "39px belerenb" //39
 var ptFontSpacing = "0.3px" //0.3
 var ptTextX = 655 //655
-var ptTextY = 935 //935
+var ptTextY = 940 //940
 imgBorderCreature.imgValues(598, 920, 118, 75)
 //Bottom Info
-var infoY = 993 //993
+var infoY = 999 //999
 //Set Symbol
 var setSymbolY = 545 //615
 var setSymbolRight = 695 //695
@@ -76,17 +76,17 @@ function planeswalkerTallCustomFunction() {
 			card.font = "31px belerenbsc"
 			if (loyaltyValue.charAt(0) == "-") {
 				card.drawImage(manaSymbolImages[58], 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
-				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 22)
+				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 17)
 			} else if (loyaltyValue.charAt(0) == "+") {
 				card.drawImage(manaSymbolImages[59], 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 24)
+				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 19)
 			} else {
 				card.drawImage(manaSymbolImages[60], 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 21)
+				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 16)
 			}
 			card.font = "37px mplantin"
 			card.fillStyle = "black"
-			card.fillText(":", 124, abilityLineY + abilityLines[i] / 2 - 28)
+			card.fillText(":", 124, abilityLineY + abilityLines[i] / 2 - 23)
 		}
 		abilityLineY += abilityLines[i]
 	}

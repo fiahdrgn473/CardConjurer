@@ -7,7 +7,7 @@ imgBorderMask.src = borderPath + "borderMask.png"
 var titleFont = "40px belerenbsc"
 var titleFontSpacing = "0.1px"
 var titleX = 374.5
-var titleY = 52
+var titleY = 58
 var titleAlign = "center"
 //Mana Cost
 var manaCostRadius = 17.5
@@ -17,22 +17,22 @@ var manaCostY = 59
 var typeFont = "33.5px belerenb"
 var typeFontSpacing = "0.05px"
 var typeX = 374.5
-var typeY = 598
+var typeY = 604
 var typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
 var textFontSpacing = 0.7
 var textX = 89
-var textY = 662
+var textY = 668
 var textWidth = 660
 //Power Toughness
 var ptFont = "32px belerenb"
 var ptFontSpacing = "0.3px"
 var ptTextX = 635
-var ptTextY = 933
+var ptTextY = 939
 imgBorderCreature.imgValues(560, 920, 150, 70)
 //Bottom Info
-var infoY = 993
+var infoY = 999
 //Set Symbol
 var setSymbolY = 123
 var setSymbolRight = 374.5

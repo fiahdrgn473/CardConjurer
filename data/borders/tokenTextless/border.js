@@ -12,7 +12,7 @@ document.getElementById("inputTitleColor").value = "#ffe886"
 var titleFont = "40px belerenbsc" //40
 var titleFontSpacing = "0.15px" //0.15
 var titleX = 374.5 //62
-var titleY = 56 //56
+var titleY = 59 //59
 var titleAlign = "center"
 //Mana Cost
 var manaCostRadius = 17.5 //17.5
@@ -21,22 +21,22 @@ var manaCostY = 59 //59
 //Card Type
 var typeFont = "33.5px belerenb" //33.5
 var typeFontSpacing = "0.05px" //0.05
-var typeX = 60 //62
-var typeY = 862 //595
+var typeX = 60 //60
+var typeY = 868 //868
 // Rules/Flavor Text
 var textFont = "px mplantin"
 var textFontSpacing = 0.7 //0.7
 var textX = 66 //66
-var textY = 260 //656
+var textY = 266 //656
 var textWidth = 682 //682
 //Power Toughness
 var ptFont = "39px belerenb" //39
 var ptFontSpacing = "0.3px" //0.3
 var ptTextX = 645 //645
-var ptTextY = 933 //936
+var ptTextY = 939 //939
 imgBorderCreature.imgValues(571, 926, 137, 75)
 //Bottom Info
-var infoY = 993 //993
+var infoY = 999 //999
 //Set Symbol
 var setSymbolY = 883 //616
 var setSymbolRight = 693 //693

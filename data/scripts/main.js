@@ -16,7 +16,6 @@ var imagesToLoad
 //Set up canvas
 var canvas = document.getElementById("canvas")
 var card = canvas.getContext("2d")
-card.textBaseLine = "alphabetical"
 
 //Create the canvas for creating the border image
 var borderCanvas = document.createElement("canvas")

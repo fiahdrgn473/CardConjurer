@@ -11,7 +11,7 @@ document.getElementsByClassName("mainGrid")[0].classList.add("plane")
 var titleFont = cardHeight * 0.0454 + "px belerenb" //34
 var titleFontSpacing = cardWidth * 0.00014 + "px" //0.15
 var titleX = cardWidth * 0.5000 //522
-var titleY = cardHeight * 0.0534 //40
+var titleY = cardHeight * 0.0614 //46
 var titleAlign = "center"
 //Mana Cost
 var manaCostRadius = 0
@@ -21,13 +21,13 @@ var manaCostY = 0
 var typeFont = cardHeight * 0.0347 + "px belerenb" //26
 var typeFontSpacing = "0px" //0
 var typeX = cardWidth * 0.5000 //522
-var typeY = cardHeight * 0.6702 //502
+var typeY = cardHeight * 0.6729 //508
 var typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
 var textFontSpacing = cardWidth * 0.0002 //0.2
 var textX = cardWidth * 0.1188 //124
-var textY = cardHeight * 0.7143 //535
+var textY = cardHeight * 0.7223 //541
 var textWidth = cardWidth * 0.8860 //925
 document.getElementById("textSize").value = Math.floor(cardHeight * 0.0348) //26
 //Bottom Info
@@ -76,7 +76,7 @@ function bottomInfoPlanechase() {
 	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
 	imgArtistBrush.imgValues(cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
-	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9400) //18, 704
+	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9479) //18, 710
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"
 	card.font = cardHeight * 0.0187 + "px relaymedium" //14
@@ -87,9 +87,9 @@ function bottomInfoPlanechase() {
 
 	canvas.style.letterSpacing = "0px"
 	card.font = cardHeight * 0.0187 + "px relaymedium" //14
-	card.fillText(bottomLineFirst, cardWidth / 2 - ((secondWidth + firstWidth) / 2) - cardWidth * 0.0077, cardHeight * 0.9586) //8, 718
+	card.fillText(bottomLineFirst, cardWidth / 2 - ((secondWidth + firstWidth) / 2) - cardWidth * 0.0077, cardHeight * 0.9666) //8, 724
 
 	canvas.style.letterSpacing = cardWidth * -0.0007 + "px" //-0.7
 	card.font = cardHeight * 0.0187 + "px mplantin" //14
-	card.fillText(bottomLineSecond, cardWidth / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - cardWidth * 0.0077, cardHeight * 0.9586) //8, 718
+	card.fillText(bottomLineSecond, cardWidth / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - cardWidth * 0.0077, cardHeight * 0.9666) //8, 724
 }

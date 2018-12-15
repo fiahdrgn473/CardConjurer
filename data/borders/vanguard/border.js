@@ -21,7 +21,7 @@ var manaCostY = 59 //59
 var typeFont = "33.5px matrix" //33.5
 var typeFontSpacing = "0.05px" //0.05
 var typeX = cardWidth / 2
-var typeY = 612 //595
+var typeY = 612 //612
 typeAlign = "center"
 //Rules/Flavor Text
 var textFont = "px mplantin"
@@ -41,7 +41,7 @@ var ptTextX = 645 //645
 var ptTextY = 936 //936
 imgBorderCreature.imgValues(571, 929, 137, 75)
 //Bottom Info
-var infoY = 930 //993
+var infoY = 930 //930
 //Set Symbol
 var setSymbolY = cardHeight * 2 //616
 var setSymbolRight = 693 //693
