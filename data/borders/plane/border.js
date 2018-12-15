@@ -76,7 +76,7 @@ function bottomInfoPlanechase() {
 	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
 	imgArtistBrush.imgValues(cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
-	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9479) //18, 710
+	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9479 + textBaselineShift) //18, 710
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"
 	card.font = cardHeight * 0.0187 + "px relaymedium" //14
@@ -87,9 +87,9 @@ function bottomInfoPlanechase() {
 
 	canvas.style.letterSpacing = "0px"
 	card.font = cardHeight * 0.0187 + "px relaymedium" //14
-	card.fillText(bottomLineFirst, cardWidth / 2 - ((secondWidth + firstWidth) / 2) - cardWidth * 0.0077, cardHeight * 0.9666) //8, 724
+	card.fillText(bottomLineFirst, cardWidth / 2 - ((secondWidth + firstWidth) / 2) - cardWidth * 0.0077, cardHeight * 0.9666 + textBaselineShift) //8, 724
 
 	canvas.style.letterSpacing = cardWidth * -0.0007 + "px" //-0.7
 	card.font = cardHeight * 0.0187 + "px mplantin" //14
-	card.fillText(bottomLineSecond, cardWidth / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - cardWidth * 0.0077, cardHeight * 0.9666) //8, 724
+	card.fillText(bottomLineSecond, cardWidth / 2 - ((secondWidth + firstWidth) / 2) + firstWidth - cardWidth * 0.0077, cardHeight * 0.9666 + textBaselineShift) //8, 724
 }

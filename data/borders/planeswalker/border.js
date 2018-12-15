@@ -76,17 +76,17 @@ function planeswalkerCustomFunction() {
 			card.font = "31px belerenbsc"
 			if (loyaltyValue.charAt(0) == "-") {
 				card.drawImage(manaSymbolImages[58], 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
-				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 17)
+				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 17 + textBaselineShift)
 			} else if (loyaltyValue.charAt(0) == "+") {
 				card.drawImage(manaSymbolImages[59], 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 19)
+				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 19 + textBaselineShift)
 			} else {
 				card.drawImage(manaSymbolImages[60], 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 16)
+				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 16 + textBaselineShift)
 			}
 			card.font = "37px mplantin"
 			card.fillStyle = "black"
-			card.fillText(":", 124, abilityLineY + abilityLines[i] / 2 - 23)
+			card.fillText(":", 124, abilityLineY + abilityLines[i] / 2 - 23 + textBaselineShift)
 		}
 		abilityLineY += abilityLines[i]
 	}

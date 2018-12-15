@@ -66,7 +66,7 @@ function bottomInfoVanguard() {
 	// card.fillStyle = document.getElementById("inputInfoColor").value
 	canvas.style.letterSpacing = "1px"
 	card.font = "20px matrix"
-	card.fillText("Illus. " + document.getElementById("inputArtist").value, cardWidth / 2, infoY)
+	card.fillText("Illus. " + document.getElementById("inputArtist").value, cardWidth / 2, infoY + textBaselineShift)
 	canvas.style.letterSpacing = "0.5px"
 	card.font = "12px mplantin"
 	var vanguardInfo = "CC \u2014 " + document.getElementById("inputInfo").value
@@ -75,10 +75,10 @@ function bottomInfoVanguard() {
 		var year = date.getFullYear()
 		vanguardInfo = "\u2122 & \u00a9 1993-" + year + " Wizards of the Coast, Inc."
 	}
-	card.fillText(vanguardInfo, cardWidth / 2, infoY + 22)
+	card.fillText(vanguardInfo, cardWidth / 2, infoY + 22 + textBaselineShift)
 	//Now for the hand/life modifiers, not quite at the bottom but might as well go in this same function
 	canvas.style.letterSpacing = "0px"
 	card.font = "25px mplantin"
-	card.fillText(document.getElementById("inputVanguardHandMod").value, 111, 886)
-	card.fillText(document.getElementById("inputVanguardLifeMod").value, 631, 886)
+	card.fillText(document.getElementById("inputVanguardHandMod").value, 111, 886 + textBaselineShift)
+	card.fillText(document.getElementById("inputVanguardLifeMod").value, 631, 886 + textBaselineShift)
 }

@@ -52,8 +52,8 @@ function bottomInfo8th() {
 	card.fillStyle = document.getElementById("inputInfoColor").value
 	canvas.style.letterSpacing = "1px"
 	card.font = "25px matrixb"
-	card.fillText(document.getElementById("inputArtist").value, 116, infoY)
+	card.fillText(document.getElementById("inputArtist").value, 116, infoY + textBaselineShift)
 	canvas.style.letterSpacing = "0.5px"
 	card.font = "16px mplantin"
-	card.fillText("CC \u2014 " + document.getElementById("inputInfo").value + " " + document.getElementById("inputNumber").value, 62, infoY + 31)
+	card.fillText("CC \u2014 " + document.getElementById("inputInfo").value + " " + document.getElementById("inputNumber").value, 62, infoY + 31 + textBaselineShift)
 }
