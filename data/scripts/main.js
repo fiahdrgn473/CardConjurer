@@ -708,7 +708,7 @@ function drawText(text, xCoord, yCoord) {
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.17 + parseInt(document.getElementById("inputSymbolDown").value), textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift, textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
 					}
 					if (megaSplit[1] != "") {
