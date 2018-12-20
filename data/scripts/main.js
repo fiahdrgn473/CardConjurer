@@ -354,10 +354,6 @@ function createBorder() {
 		}
 		if (document.getElementById("checkboxFlipTip").checked == true) {
 			border.drawImage(imgBorderFlipTip, imgBorderFlipTip.imgX, imgBorderFlipTip.imgY, imgBorderFlipTip.imgW, imgBorderFlipTip.imgH)
-			border.fillStyle="#666"
-			canvas.style.letterSpacing = "0px"
-			border.font = "28px belerenb"
-			border.fillText(document.getElementById("inputFlipTip").value, 688 - border.measureText(document.getElementById("inputFlipTip").value).width, 880 + textBaselineShift)
 		}
 		if (document.getElementById("checkboxFlipIcon").checked == true || document.getElementById("checkboxFlippedDark").checked == true) {
 			titleRightShift = 50
@@ -579,33 +575,42 @@ function writeText() {
 	card.font = document.getElementById("textSize").value + textFont
 	var text = document.getElementById("inputText").value
 	drawText(text, textX, textY)
+	//Flip Tip?
+	if (document.getElementById("checkboxFlipTip").checked == true && flipBorder == true) {
+		card.textAlign = "right"
+		card.fillStyle="#666"
+		canvas.style.letterSpacing = "0px"
+		card.font = "28px belerenb"
+		card.fillText(document.getElementById("inputFlipTip").value, 688, 886 + textBaselineShift)
+		card.textAlign = "left"
+	}
 }
 
 //Bottom info on M15 cards
 function bottomInfoM15() {
 	card.fillStyle = document.getElementById("inputInfoColor").value
-	var shiftInfo = 442
-	canvas.style.letterSpacing = "0.8px"
-	card.font = "19.5px relaymedium"
+	var shiftInfo = 446
+	canvas.style.letterSpacing = "1.5px"
+	card.font = "19px relaymedium"
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	card.fillText(bottomLine, 48, infoY + textBaselineShift)
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-    imgArtistBrush.imgValues(artistBrushShift, infoY + 5, 21, 13)
+    imgArtistBrush.imgValues(artistBrushShift, infoY + 1, 21, 13)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
-	canvas.style.letterSpacing = "1.3px"
-	card.font = "19.5px relaymedium"
+	card.font = "18px relaymedium"
+	canvas.style.letterSpacing = "2px"
 	if (card.measureText(document.getElementById("inputNumber").value).width > artistBrushShift - 58) {
 		artistBrushShift = card.measureText(document.getElementById("inputNumber").value).width + 58
 	}
 	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20 + textBaselineShift)
 	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20 + textBaselineShift)
-	if (442 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
+	if (446 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
 		shiftInfo = artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width + 5
 	}
 	canvas.style.letterSpacing = "-0.1px"
-	card.font = "24px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY + 2 + textBaselineShift)
-	if (442 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
+	card.font = "22px matrixbsc"
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1 + textBaselineShift)
+	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
 	//This is where "CC —" is hardcoded. The only reason is to prevent users from easily typing in the trademark and copyright that's usually on real cards. It's also there so I can see if a card was created with my program, it makes me feel good :)
@@ -619,7 +624,7 @@ function bottomInfoM15() {
 			bottomInfo = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
 		}
 		if (document.getElementById("checkboxCreature").checked == true) {
-			card.fillText(bottomInfo, shiftInfo, infoY + 3 + textBaselineShift)
+			card.fillText(bottomInfo, shiftInfo, infoY + 1 + textBaselineShift)
 		} else {
 			card.fillText(bottomInfo, shiftInfo, infoY - 17 + textBaselineShift)
 		}

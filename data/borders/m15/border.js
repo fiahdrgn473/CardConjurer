@@ -13,16 +13,16 @@ imgTitleMask.src = borderPath + "titleMask.png"
 var titleFont = "40px belerenb" //40
 var titleFontSpacing = "0.15px" //0.15
 var titleX = 62 //62
-var titleY = 62 //56 + 6
+var titleY = 61 //56 + 6
 //Mana Cost
 var manaCostRadius = 17.5 //17.5
-var manaCostX = 657 //657
+var manaCostX = 658 //657
 var manaCostY = 59 //59
 //Card Type
 var typeFont = "33.5px belerenb" //33.5
-var typeFontSpacing = "0.05px" //0.05
+var typeFontSpacing = "-0.4px" //0.05
 var typeX = 62 //62
-var typeY = 601 //595 + 6
+var typeY = 600 //595 + 6
 //Rules/Flavor Text
 var textFont = "px mplantin"
 var textFontSpacing = 0.7 //0.7
@@ -36,12 +36,12 @@ var ptTextX = 645 //645
 var ptTextY = 942 //936 + 6
 imgBorderCreature.imgValues(571, 929, 137, 75)
 //Bottom Info
-var infoY = 999 //993 + 6
+var infoY = 996 //993 + 6
 //Set Symbol
-var setSymbolY = 616 //616
-var setSymbolRight = 693 //693
+var setSymbolY = 618 //616
+var setSymbolRight = 688 //693
 var setSymbolWidth = 84 //77
-var setSymbolHeight = 44 //44
+var setSymbolHeight = 42 //44
 //Watermark
 var watermarkWidth = 520 //520
 var watermarkHeight = 250 //250
