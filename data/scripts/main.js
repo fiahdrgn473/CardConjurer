@@ -816,9 +816,6 @@ function loadSetSymbolWatermark() {
 }
 //Loads an image from URL
 function imageURL(input, targetImage) {
-	if (targetImage.crossOrigin == null) {
-		targetImage.crossOrigin = "anonymous"
-	}
 	targetImage.cropped = false
 	if (targetImage == imgWatermark) {
 		imgWatermark.whiteToTransparent = false
@@ -827,9 +824,6 @@ function imageURL(input, targetImage) {
 }
 function loadImage(event, destination, arg) {
 	if (arg != false) {
-		if (isMobile == true) {
-			destination.crossOrigin = null
-		}
 		var input = event.target
 		var reader = new FileReader()
 		reader.onload = function() {
