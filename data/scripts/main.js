@@ -11,10 +11,15 @@ var secondColor
 var thirdColor
 var titleRightShift = 0
 var typeRightShift = 0
-var textBaselineShift = 0
+var textBaselineShift = [0, 0] //[regular,eighthArtistCredit]
 var imagesToLoad
 
 //Determine browser
+if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ) {
+	var isMobile = true
+} else {
+	var isMobile = false
+}
 var isChrome = navigator.userAgent.indexOf('Chrome') > -1
 var isExplorer = navigator.userAgent.indexOf('MSIE') > -1
 var isFirefox = navigator.userAgent.indexOf('Firefox') > -1
@@ -22,15 +27,17 @@ var isSafari = navigator.userAgent.indexOf("Safari") > -1
 if (isChrome == true && isSafari == true) {
 	isSafari = false
 }
+//Now act on different browser craziness...
 if (isSafari == true) {
-    textBaselineShift = -0.17
+	if (isMobile == true) {
+		//Safari for iOS
+		textBaselineShift = [-0.17, -0.08]
+	} else {
+		//Safari for macOS
+		textBaselineShift = [-0.17, 0]
+	}
 }
-if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ) {
-	alert("You're using a Mobile Device.")
-	var isMobile = true
-} else {
-	var isMobile = false
-}
+
 
 //Set up canvas
 var canvas = document.getElementById("canvas")
@@ -555,13 +562,13 @@ function writeText() {
 	card.textAlign = titleAlign
 	canvas.style.letterSpacing = titleFontSpacing
 	card.font = titleFont	
-	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift[0] * card.font.split("px")[0])
 	//Type
 	card.fillStyle = document.getElementById("inputTypeColor").value
 	card.textAlign = typeAlign
 	canvas.style.letterSpacing = typeFontSpacing
 	card.font = typeFont
-	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift[0] * card.font.split("px")[0])
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
 		// if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png" || borderPath == "data/borders/planeswalker/") {
@@ -573,7 +580,7 @@ function writeText() {
 		canvas.style.letterSpacing = ptFontSpacing
 		card.font = ptFont
 		powerToughness = document.getElementById("inputPowerToughness").value
-		card.fillText(powerToughness, ptTextX, ptTextY + textBaselineShift * card.font.split("px")[0])
+		card.fillText(powerToughness, ptTextX, ptTextY + textBaselineShift[0] * card.font.split("px")[0])
 	}
 	card.textAlign = "left"
 	// card.fillStyle = "Black"//attention
@@ -589,7 +596,7 @@ function writeText() {
 		card.fillStyle="#666"
 		canvas.style.letterSpacing = "0px"
 		card.font = "28px belerenb"
-		card.fillText(document.getElementById("inputFlipTip").value, 688, 886 + textBaselineShift * card.font.split("px")[0])
+		card.fillText(document.getElementById("inputFlipTip").value, 688, 886 + textBaselineShift[0] * card.font.split("px")[0])
 		card.textAlign = "left"
 	}
 }
@@ -601,7 +608,7 @@ function bottomInfoM15() {
 	canvas.style.letterSpacing = "1.5px"
 	card.font = "19px relaymedium"
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
-	card.fillText(bottomLine, 48, infoY + textBaselineShift * card.font.split("px")[0])
+	card.fillText(bottomLine, 48, infoY + textBaselineShift[0] * card.font.split("px")[0])
 	var artistBrushShift = card.measureText(bottomLine).width + 58
     imgArtistBrush.imgValues(artistBrushShift, infoY + 2, 21, 13)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
@@ -610,14 +617,14 @@ function bottomInfoM15() {
 	if (card.measureText(document.getElementById("inputNumber").value).width > artistBrushShift - 58) {
 		artistBrushShift = card.measureText(document.getElementById("inputNumber").value).width + 58
 	}
-	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20 + textBaselineShift * card.font.split("px")[0])
-	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20 + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20 + textBaselineShift[0] * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20 + textBaselineShift[0] * card.font.split("px")[0])
 	if (446 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
 		shiftInfo = artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width + 5
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "22px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY + textBaselineShift[1] * card.font.split("px")[0])
 	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
@@ -632,9 +639,9 @@ function bottomInfoM15() {
 			bottomInfo = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
 		}
 		if (document.getElementById("checkboxCreature").checked == true) {
-			card.fillText(bottomInfo, shiftInfo, infoY + 1 + textBaselineShift * card.font.split("px")[0])
+			card.fillText(bottomInfo, shiftInfo, infoY + 1 + textBaselineShift[0] * card.font.split("px")[0])
 		} else {
-			card.fillText(bottomInfo, shiftInfo, infoY - 17 + textBaselineShift * card.font.split("px")[0])
+			card.fillText(bottomInfo, shiftInfo, infoY - 17 + textBaselineShift[0] * card.font.split("px")[0])
 		}
 	}
 }
@@ -660,7 +667,7 @@ function drawText(text, xCoord, yCoord) {
 			var lineWidth = card.measureText(testLine).width
 			if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 				//Word is too big
-				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
+				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 				line = words[wordIndex] + " "
 				y += textSize + 1
 				textXShift = 0
@@ -669,14 +676,14 @@ function drawText(text, xCoord, yCoord) {
 				line = testLine + " "
 			}
 			if (wordIndex + 1 == words.length) {
-				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
+				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 			}
 		} else {
 			//Symbols and more!
 			var splitWord = words[wordIndex].split("<")
 			for (var splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
 				//Write what's there first!
-				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
+				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 				textXShift += card.measureText(line).width
 				line = ""
 				if (splitWord[splitIndex].includes(">")) {
@@ -721,7 +728,7 @@ function drawText(text, xCoord, yCoord) {
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift * card.font.split("px")[0], textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift[0] * card.font.split("px")[0], textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
 					}
 					if (megaSplit[1] != "") {
@@ -738,7 +745,7 @@ function drawText(text, xCoord, yCoord) {
 					var lineWidth = card.measureText(testLine).width
 					if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 						//Word is too big
-						card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
+						card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 						line = plainWord
 						y += textSize + 1
 						textXShift = 0
@@ -747,7 +754,7 @@ function drawText(text, xCoord, yCoord) {
 						line = testLine
 					}
 					if (wordIndex + 1 == words.length) {
-						card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
+						card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 					}
 				}
 			}
@@ -809,6 +816,9 @@ function loadSetSymbolWatermark() {
 }
 //Loads an image from URL
 function imageURL(input, targetImage) {
+	if (targetImage.crossOrigin == null) {
+		targetImage.crossOrigin = "anonymous"
+	}
 	targetImage.cropped = false
 	if (targetImage == imgWatermark) {
 		imgWatermark.whiteToTransparent = false
@@ -817,6 +827,9 @@ function imageURL(input, targetImage) {
 }
 function loadImage(event, destination, arg) {
 	if (arg != false) {
+		if (isMobile == true) {
+			destination.crossOrigin = null
+		}
 		var input = event.target
 		var reader = new FileReader()
 		reader.onload = function() {
