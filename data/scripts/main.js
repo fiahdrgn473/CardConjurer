@@ -612,7 +612,7 @@ function bottomInfoM15() {
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "22px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY)
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY + textBaselineShift * card.font.split("px")[0])
 	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
