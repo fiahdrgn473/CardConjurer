@@ -598,7 +598,7 @@ function bottomInfoM15() {
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
 	card.fillText(bottomLine, 48, infoY + textBaselineShift * card.font.split("px")[0])
 	var artistBrushShift = card.measureText(bottomLine).width + 58
-    imgArtistBrush.imgValues(artistBrushShift, infoY + 1, 21, 13)
+    imgArtistBrush.imgValues(artistBrushShift, infoY + 2, 21, 13)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
 	card.font = "18px relaymedium"
 	canvas.style.letterSpacing = "2px"
@@ -612,7 +612,7 @@ function bottomInfoM15() {
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "22px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1)
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY)
 	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
