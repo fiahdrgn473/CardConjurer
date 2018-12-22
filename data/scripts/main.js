@@ -25,6 +25,12 @@ if (isChrome == true && isSafari == true) {
 if (isSafari == true) {
     textBaselineShift = -0.17
 }
+if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ) {
+	alert("You're using a Mobile Device.")
+	var isMobile = true
+} else {
+	var isMobile = false
+}
 
 //Set up canvas
 var canvas = document.getElementById("canvas")
@@ -33,7 +39,6 @@ var card = canvas.getContext("2d")
 //Create the canvas for creating the border image
 var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
-document.body.appendChild(borderCanvas)
 
 //load template images (images that may change based off of the selected template)
 var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven", "rulesMask", "typeMask", "titleMask"]
