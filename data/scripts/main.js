@@ -23,7 +23,7 @@ if (isChrome == true && isSafari == true) {
 	isSafari = false
 }
 if (isSafari == true) {
-	textBaselineShift = -0.15
+    textBaselineShift = -0.17
 }
 
 //Set up canvas
@@ -612,7 +612,7 @@ function bottomInfoM15() {
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "22px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1 + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1)
 	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
