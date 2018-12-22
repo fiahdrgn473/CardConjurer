@@ -49,7 +49,7 @@ var watermarkY = 805 //805
 //Rare Stamp
 var rareStampY = 958 //958
 //Color Options
-loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-Black,blackLand-Black Land,red-Red,redLand-Red Land,green-Green,greenLand-Green Land,gold-Gold,goldLand-Gold Land,colorless-Colorless,colorlessLand-Colorless Land,artifact-Artifact,vehicle-Vehicle")
+loadColors("white-White,whiteLand-White Land,blue-Blue,blueLand-Blue Land,black-Black,blackLand-Black Land,red-Red,redLand-Red Land,green-Green,greenLand-Green Land,gold-Gold,goldLand-Gold Land,colorless-Colorless,colorlessLand-Colorless Land,artifact-Artifact,vehicle-Vehicle,clear-Clear")
 document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
 //Things The Card Can Do

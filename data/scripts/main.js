@@ -23,7 +23,7 @@ if (isChrome == true && isSafari == true) {
 	isSafari = false
 }
 if (isSafari == true) {
-	textBaselineShift = -6
+	textBaselineShift = -0.15
 }
 
 //Set up canvas
@@ -33,6 +33,7 @@ var card = canvas.getContext("2d")
 //Create the canvas for creating the border image
 var borderCanvas = document.createElement("canvas")
 var border = borderCanvas.getContext("2d")
+document.body.appendChild(borderCanvas)
 
 //load template images (images that may change based off of the selected template)
 var imgListTemplate = ["multiMask", "rareStampMask", "frameMask", "legendFrameMask", "borderMask", "artMask", "abilityLineOdd", "abilityLineEven", "rulesMask", "typeMask", "titleMask"]
@@ -270,7 +271,9 @@ function createBorder() {
 	//These if else statements check to see whether or not to draw different parts of the card, like the legendary border or rare stamp, and draws them in the appropriate order so that when multiple border colors are used the gradients overlap correctly
 	//BACKGROUND COLOR
 	border.clearRect(0, 0, cardWidth, cardHeight)
-	if (document.getElementById("checkboxBorderless").checked == false) {
+	if (document.getElementById("colorSelection").value.includes("clear") == true) {
+		border.mask("imgArtMask,source-over;imgFrameMask,destination-out", "none", document.getElementById("inputColor").value)
+	} else if (document.getElementById("checkboxBorderless").checked == false) {
 		border.mask("imgArtMask,source-over", "none", document.getElementById("inputColor").value)
 	}
 	//Draws the silver border usually on un-cards
@@ -547,13 +550,13 @@ function writeText() {
 	card.textAlign = titleAlign
 	canvas.style.letterSpacing = titleFontSpacing
 	card.font = titleFont	
-	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift)
+	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift * card.font.split("px")[0])
 	//Type
 	card.fillStyle = document.getElementById("inputTypeColor").value
 	card.textAlign = typeAlign
 	canvas.style.letterSpacing = typeFontSpacing
 	card.font = typeFont
-	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift)
+	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift * card.font.split("px")[0])
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
 		// if (imgBorderCreature.src.substr(imgBorderCreature.src.length - 14) == "vehicle/pt.png" || borderPath == "data/borders/planeswalker/") {
@@ -565,7 +568,7 @@ function writeText() {
 		canvas.style.letterSpacing = ptFontSpacing
 		card.font = ptFont
 		powerToughness = document.getElementById("inputPowerToughness").value
-		card.fillText(powerToughness, ptTextX, ptTextY + textBaselineShift)
+		card.fillText(powerToughness, ptTextX, ptTextY + textBaselineShift * card.font.split("px")[0])
 	}
 	card.textAlign = "left"
 	// card.fillStyle = "Black"//attention
@@ -581,7 +584,7 @@ function writeText() {
 		card.fillStyle="#666"
 		canvas.style.letterSpacing = "0px"
 		card.font = "28px belerenb"
-		card.fillText(document.getElementById("inputFlipTip").value, 688, 886 + textBaselineShift)
+		card.fillText(document.getElementById("inputFlipTip").value, 688, 886 + textBaselineShift * card.font.split("px")[0])
 		card.textAlign = "left"
 	}
 }
@@ -593,7 +596,7 @@ function bottomInfoM15() {
 	canvas.style.letterSpacing = "1.5px"
 	card.font = "19px relaymedium"
 	var bottomLine = document.getElementById("inputSet").value + " \u00b7 " + document.getElementById("inputLanguage").value
-	card.fillText(bottomLine, 48, infoY + textBaselineShift)
+	card.fillText(bottomLine, 48, infoY + textBaselineShift * card.font.split("px")[0])
 	var artistBrushShift = card.measureText(bottomLine).width + 58
     imgArtistBrush.imgValues(artistBrushShift, infoY + 1, 21, 13)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
@@ -602,14 +605,14 @@ function bottomInfoM15() {
 	if (card.measureText(document.getElementById("inputNumber").value).width > artistBrushShift - 58) {
 		artistBrushShift = card.measureText(document.getElementById("inputNumber").value).width + 58
 	}
-	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20 + textBaselineShift)
-	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20 + textBaselineShift)
+	card.fillText(document.getElementById("inputNumber").value, 49, infoY - 20 + textBaselineShift * card.font.split("px")[0])
+	card.fillText(document.getElementById("inputRarity").value, artistBrushShift - 1, infoY - 20 + textBaselineShift * card.font.split("px")[0])
 	if (446 < artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width && document.getElementById("checkboxCreature").checked == false) {
 		shiftInfo = artistBrushShift  + card.measureText(document.getElementById("inputRarity").value).width + 5
 	}
 	canvas.style.letterSpacing = "-0.1px"
 	card.font = "22px matrixbsc"
-	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1 + textBaselineShift)
+	card.fillText(document.getElementById("inputArtist").value, artistBrushShift + 21, infoY - 1 + textBaselineShift * card.font.split("px")[0])
 	if (446 < artistBrushShift + 21 + card.measureText(document.getElementById("inputArtist").value).width && document.getElementById("checkboxCreature").checked == true) {
 		shiftInfo = artistBrushShift + card.measureText(document.getElementById("inputArtist").value).width + 26
 	}
@@ -624,9 +627,9 @@ function bottomInfoM15() {
 			bottomInfo = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
 		}
 		if (document.getElementById("checkboxCreature").checked == true) {
-			card.fillText(bottomInfo, shiftInfo, infoY + 1 + textBaselineShift)
+			card.fillText(bottomInfo, shiftInfo, infoY + 1 + textBaselineShift * card.font.split("px")[0])
 		} else {
-			card.fillText(bottomInfo, shiftInfo, infoY - 17 + textBaselineShift)
+			card.fillText(bottomInfo, shiftInfo, infoY - 17 + textBaselineShift * card.font.split("px")[0])
 		}
 	}
 }
@@ -652,7 +655,7 @@ function drawText(text, xCoord, yCoord) {
 			var lineWidth = card.measureText(testLine).width
 			if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 				//Word is too big
-				card.fillText(line, x + textXShift, y + textBaselineShift)
+				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
 				line = words[wordIndex] + " "
 				y += textSize + 1
 				textXShift = 0
@@ -661,14 +664,14 @@ function drawText(text, xCoord, yCoord) {
 				line = testLine + " "
 			}
 			if (wordIndex + 1 == words.length) {
-				card.fillText(line, x + textXShift, y + textBaselineShift)
+				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
 			}
 		} else {
 			//Symbols and more!
 			var splitWord = words[wordIndex].split("<")
 			for (var splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
 				//Write what's there first!
-				card.fillText(line, x + textXShift, y + textBaselineShift)
+				card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
 				textXShift += card.measureText(line).width
 				line = ""
 				if (splitWord[splitIndex].includes(">")) {
@@ -713,7 +716,7 @@ function drawText(text, xCoord, yCoord) {
 						x += 58
 					} else {
 						//It's an image (mana symbol, tap, etc...)
-						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift, textSize * 0.77, textSize * 0.77)
+						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift * card.font.split("px")[0], textSize * 0.77, textSize * 0.77)
 						textXShift += textSize * 0.84
 					}
 					if (megaSplit[1] != "") {
@@ -730,7 +733,7 @@ function drawText(text, xCoord, yCoord) {
 					var lineWidth = card.measureText(testLine).width
 					if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 						//Word is too big
-						card.fillText(line, x + textXShift, y + textBaselineShift)
+						card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
 						line = plainWord
 						y += textSize + 1
 						textXShift = 0
@@ -739,7 +742,7 @@ function drawText(text, xCoord, yCoord) {
 						line = testLine
 					}
 					if (wordIndex + 1 == words.length) {
-						card.fillText(line, x + textXShift, y + textBaselineShift)
+						card.fillText(line, x + textXShift, y + textBaselineShift * card.font.split("px")[0])
 					}
 				}
 			}
