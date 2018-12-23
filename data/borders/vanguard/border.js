@@ -66,7 +66,7 @@ function bottomInfoVanguard() {
 	// card.fillStyle = document.getElementById("inputInfoColor").value
 	canvas.style.letterSpacing = "1px"
 	card.font = "20px matrix"
-	card.fillText("Illus. " + document.getElementById("inputArtist").value, cardWidth / 2, infoY + textBaselineShift[0] * card.font.split("px")[0])
+	card.fillText("Illus. " + document.getElementById("inputArtist").value, cardWidth / 2, infoY + textBaselineShift[1] * card.font.split("px")[0])
 	canvas.style.letterSpacing = "0.5px"
 	card.font = "12px mplantin"
 	var vanguardInfo = "CC \u2014 " + document.getElementById("inputInfo").value
