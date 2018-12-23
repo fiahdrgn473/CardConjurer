@@ -1014,37 +1014,35 @@ console.log("The main.js file has finished loading.")
 //============================================//
 //                  Cookies!                  //
 //============================================//
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+function setCookie(cookieName, cookieValue) {
+  	var tempDate = new Date();
+  	tempDate.setTime(tempDate.getTime() + (31 * 24 * 60 * 60 * 1000)); //days*hours*minutes*seconds*milliseconds
+  	var expires = "expires=" + tempDate.toUTCString();
+  	document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+}
+function getCookie(cookieName) {
+  	var name = cookieName + "=";
+  	var cookieArray = document.cookie.split(";");
+  	for(var i = 0; i < cookieArray.length; i++) {
+    	var tempCookie = cookieArray[i];
+    	while (tempCookie.charAt(0) == " ") {
+      		tempCookie = tempCookie.substring(1);
+    	}
+    	if (tempCookie.indexOf(name) == 0) {
+     		return tempCookie.substring(name.length, tempCookie.length);
+    	}
+  	}
+  	return "";
+}
+function checkCookies() {
+	if (getCookie("visited") != true) {
+		setCookie("visited", "true")
+		if (isMobile == true) {
+			alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
+		}
+	} else {
+		console.log("Welcome back to Card Conjurer!")
+	}
 }
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-function checkCookie() {
-  var user = getCookie("username");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-    user = prompt("(don't worry, this is for testing purposes and will be removed shortly) Please enter your name:", "");
-    if (user != "" && user != null) {
-      setCookie("username", user, 365);
-    }
-  }
-}
-checkCookie()
+checkCookies()
