@@ -21,9 +21,9 @@ if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) 
 } else {
 	var isMobile = false
 }
-var isChrome = navigator.userAgent.indexOf('Chrome') > -1
-var isExplorer = navigator.userAgent.indexOf('MSIE') > -1
-var isFirefox = navigator.userAgent.indexOf('Firefox') > -1
+var isChrome = navigator.userAgent.indexOf("Chrome") > -1
+var isExplorer = navigator.userAgent.indexOf("MSIE") > -1
+var isFirefox = navigator.userAgent.indexOf("Firefox") > -1
 var isSafari = navigator.userAgent.indexOf("Safari") > -1
 if (isChrome == true && isSafari == true) {
 	isSafari = false
@@ -1036,10 +1036,10 @@ function getCookie(cookieName) {
 }
 function checkCookies() {
 	if (getCookie("visited") != "true") {
-		setCookie("visited", "true")
 		if (isMobile == true) {
-			alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
+            alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally. (cookie result: " + getCookie("visited") + ")")
 		}
+        setCookie("visited", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
 	}
