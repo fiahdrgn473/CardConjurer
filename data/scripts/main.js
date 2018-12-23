@@ -1037,8 +1037,10 @@ function getCookie(cookieName) {
 function checkCookies() {
 	if (getCookie("visited") != "true") {
 		if (isMobile == true) {
-            alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally. (cookie result: " + getCookie("visited") + ")")
-		}
+            alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
+        } else if (isSafari == false && isChrome == false) {
+            alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Safari or Chrome. Everything may work perfectly, but if you notice that the cards look odd try using Safari or Chrome.")
+        }
         setCookie("visited", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
