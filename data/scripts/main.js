@@ -13,6 +13,7 @@ var titleRightShift = 0
 var typeRightShift = 0
 var textBaselineShift = [0, 0] //[regular,eighthArtistCredit]
 var imagesToLoad
+var date = new Date()
 
 //Determine browser
 if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ) {
@@ -78,7 +79,7 @@ var imgListUser = ["art", "setSymbol", "watermark", "border"]
 for (var i = 0; i < imgListUser.length; i ++) {
 	var imgName = "img" + imgListUser[i].charAt(0).toUpperCase() + imgListUser[i].slice(1)
 	window[imgName] = new Image()
-	window[imgName].crossOrigin = "anonymous"
+	// window[imgName].crossOrigin = "anonymous"
 	window[imgName].onload = function() {
 		//If both tasks are required, it will make white pixels transparent first. That way they also get cropped out.
 		if (this.whiteToTransparent == false) {
@@ -117,8 +118,8 @@ loadScript("data/borders/defaultBorder.js")
 //load first set symbol
 loadSetSymbol()
 
-//Randomize the sample cards at the bottom
-randomizeSampleCards(12)
+//Randomize the sample cards at the bottom //samplecount
+randomizeSampleCards(13)
 
 //Set up the initial clock!
 var cardClockInterval
@@ -634,7 +635,6 @@ function bottomInfoM15() {
 		card.font = "17px mplantin"
 		var bottomInfo = "CC \u2014 " + document.getElementById("inputInfo").value
 		if (bottomInfo == "CC \u2014 secretcode") {
-			var date = new Date()
 			var year = date.getFullYear()
 			bottomInfo = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
 		}
@@ -1009,3 +1009,42 @@ function downloadCardImage(linkElement) {
 //                  Log it!                   //
 //============================================//
 console.log("The main.js file has finished loading.")
+
+
+//============================================//
+//                  Cookies!                  //
+//============================================//
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var user = getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+    user = prompt("(don't worry, this is for testing purposes and will be removed shortly) Please enter your name:", "");
+    if (user != "" && user != null) {
+      setCookie("username", user, 365);
+    }
+  }
+}
+checkCookie()
