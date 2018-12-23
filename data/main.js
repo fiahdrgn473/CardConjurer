@@ -263,7 +263,7 @@ function updateBorder() {
 			imgBorderFlipTip.src = firstColorPath + "/flipTip.png"
 		}
 		imgBorderFlipCircle.src = firstColorPath + "/flipCircle.png"
-		imgBorderFlipIcon.src = "data/borders/icons/" + document.getElementById("inputFlipIcon").value
+		imgBorderFlipIcon.src = "data/icons/" + document.getElementById("inputFlipIcon").value
 	}
 	//This allows all the images to be loaded
 	imagesToLoad = 0
@@ -786,7 +786,7 @@ function randomizeSampleCards(count) {
 		cardNumbers[cardNumbers.length] = randomNumber
 		var imgName = "sampleCard" + cardNumbers.length
 		window[imgName] = new Image()
-		window[imgName].src = "sampleCards/sample-card-" + randomNumber + ".png"
+		window[imgName].src = "images/sampleCards/sample-card-" + randomNumber + ".png"
 	}
 	sampleCard1.onload = function() {
 		document.getElementById("sampleCardA").src = sampleCard1.src
