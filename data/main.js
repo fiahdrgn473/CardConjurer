@@ -79,7 +79,7 @@ var imgListUser = ["art", "setSymbol", "watermark", "border"]
 for (var i = 0; i < imgListUser.length; i ++) {
 	var imgName = "img" + imgListUser[i].charAt(0).toUpperCase() + imgListUser[i].slice(1)
 	window[imgName] = new Image()
-	// window[imgName].crossOrigin = "anonymous"
+    window[imgName].crossOrigin = "anonymous"
 	window[imgName].onload = function() {
 		//If both tasks are required, it will make white pixels transparent first. That way they also get cropped out.
 		if (this.whiteToTransparent == false) {
