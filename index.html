@@ -320,7 +320,7 @@
 				<div class="cmm" id="cmm-download">
 					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
 					Frame Rate
-					<input type="number" class="input" id="inputFPS" value="10" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)">
+					<input type="number" class="input" id="inputFPS" value="5" min="0" onchange="window.clearInterval(cardClockInterval); cardClockInterval = setInterval(cardClock, 1000 / document.getElementById('inputFPS').value)">
 					<div class="checkbox">
 						<input type="checkbox" id="checkboxDebuggerLine" />
 						<label for="checkboxDebuggerLine" />
