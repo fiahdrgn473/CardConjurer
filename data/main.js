@@ -528,7 +528,9 @@ function drawWatermark() {
 		//globalAlpha insures that the watermark is drawn partially transparent. This value may not be perfect but the watermark colors are calibrated to it
 		card.globalAlpha = document.getElementById("inputWatermarkOpacity").value
 	    //if the following if statement is true, the watermark will be drawn in two halves of the chosen colors. Otherwise, a single watermark of the first chosen color is drawn.
-	    if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
+	    if (document.getElementById("checkboxOriginalWatermark").checked == true) {
+	    	card.mask("imgCardMask,source-over", imgWatermark)
+	    } else if (document.getElementById("checkboxSecondWatermarkColor").checked == true) {
             card.mask("imgMultiGradient,source-over;imgCardMask,source-out", imgWatermark, document.getElementById("watermarkColorSelection").value)
 	    	card.mask("imgMultiGradient,source-over", imgWatermark, document.getElementById("secondWatermarkColorSelection").value)
 	    } else {

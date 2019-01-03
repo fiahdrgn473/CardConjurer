@@ -84,6 +84,7 @@
 					<span class="dropdown">
 						<select id="borderSelection" onchange="changeTemplate()">
 							<option value="m15/">M15</option>
+							<option value="fullArtLandM15/">Full Art Land (Regular)</option>
 							<option value="fullArtLandUnstable/">Full Art Land (Unstable)</option>
 							<option value="planeswalker/">Planeswalker</option>
 							<option value="planeswalkerTall/">Planeswalker (Tall)</option>
@@ -372,6 +373,11 @@
 					</span>
 					Watermark Opacity
 					<input type="number" id="inputWatermarkOpacity" class="input" value="0.4" max="1" min="0" step="0.01">
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxOriginalWatermark" />
+						<label for="checkboxOriginalWatermark" />
+						<div>Use Original Colors</div>
+					</div>
 				</div>
 				<div class="cmm" id="cmm-planeswalker">
 					Planeswalker Ability Line Height
