@@ -119,7 +119,7 @@ loadScript("data/borders/defaultBorder.js")
 loadSetSymbol()
 
 //Randomize the sample cards at the bottom //samplecount
-randomizeSampleCards(13)
+randomizeSampleCards(15)
 
 //Set up the initial clock!
 var cardClockInterval
