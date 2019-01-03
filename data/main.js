@@ -294,7 +294,11 @@ function createBorder() {
 		border.mask("imgBorderMask,source-over", "none", "#a3aeb7")
 	}
 	//MAIN CARD FRAME
-	border.mask("imgFrameMask,source-over", imgBorderColor)
+	if (secondColor == true && secondBorder == true && transparentBorder == true) {
+		border.mask("imgMultiGradient,source-over;imgFrameMask,source-out", imgBorderColor)
+	} else {
+		border.mask("imgFrameMask,source-over", imgBorderColor)
+	}
 	if (secondColor == true && secondBorder == true) {
 		border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderColor)
 	}
@@ -397,7 +401,10 @@ function createBorder() {
 		var identityList = document.getElementById("inputIdentity").value.toLowerCase().split(" ")
 		var angleSize = Math.PI * 2 / identityList.length
 		var identityRadius = 14
-		var identityX = typeX + 8
+		var identityX = typeX
+		if (typeAlign == "left") {
+			identityX += 8
+		}
 		var identityY = typeY + 15
 		switch (identityList.length) {
 			case 1:
