@@ -30,6 +30,7 @@ document.getElementById("inputTypeColor").value = "#000000"
 document.getElementById("inputRulesColor").value = "#000000"
 document.getElementById("inputCreatureColor").value = "#000000"
 //Image alignment
+var watermarkX = cardWidth / 2
 var centerSetSymbol = 1 //1=not centered, 2=centered
 var artX = 58
 var artY = 118

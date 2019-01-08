@@ -522,7 +522,7 @@ function drawWatermark() {
 			width = watermarkWidth
 			height = imgWatermark.height * (width / imgWatermark.width)
 		}
-		var x = cardWidth / 2 - width / 2
+		var x = watermarkX - width / 2
 		var y = watermarkY - height / 2
         imgWatermark.imgValues(x, y, width, height)
 		//globalAlpha insures that the watermark is drawn partially transparent. This value may not be perfect but the watermark colors are calibrated to it
@@ -571,13 +571,23 @@ function writeText() {
 	card.fillStyle = document.getElementById("inputTitleColor").value
 	card.textAlign = titleAlign
 	canvas.style.letterSpacing = titleFontSpacing
-	card.font = titleFont	
+	card.font = titleFont
+	if (document.getElementById("checkboxTitleOutline").checked == true) {
+		card.strokeStyle = document.getElementById("inputTitleOutlineColor").value
+		card.lineWidth = 2
+		card.strokeText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift[0] * card.font.split("px")[0])
+	}
 	card.fillText(document.getElementById("inputName").value, titleX + titleRightShift, titleY + textBaselineShift[0] * card.font.split("px")[0])
 	//Type
 	card.fillStyle = document.getElementById("inputTypeColor").value
 	card.textAlign = typeAlign
 	canvas.style.letterSpacing = typeFontSpacing
 	card.font = typeFont
+	if (document.getElementById("checkboxTypeOutline").checked == true) {
+		card.strokeStyle = document.getElementById("inputTypeOutlineColor").value
+		card.lineWidth = 2
+		card.strokeText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift[0] * card.font.split("px")[0])
+	}
 	card.fillText(document.getElementById("inputType").value, typeX + typeRightShift, typeY + textBaselineShift[0] * card.font.split("px")[0])
 	//Power/Toughness
 	if (document.getElementById("checkboxCreature").checked == true && creatureBorder == true) {
@@ -669,6 +679,12 @@ function drawText(text, xCoord, yCoord) {
 	var words = (text).split(" ")
 	var line = ""
 	var tempTextWidth = textWidth
+	var outlineRulesText
+	if (document.getElementById("checkboxRulesOutline").checked == true) {
+		outlineRulesText = true
+		card.strokeStyle = document.getElementById("inputRulesOutlineColor").value
+		card.lineWidth = 2
+	}
 	for (var wordIndex = 0; wordIndex < words.length; wordIndex ++) {
 		if (words[wordIndex].includes("<") == false || words[wordIndex].includes(">") == false) {
 			//Just a regular old word
@@ -676,6 +692,9 @@ function drawText(text, xCoord, yCoord) {
 			var lineWidth = card.measureText(testLine).width
 			if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 				//Word is too big
+				if (outlineRulesText == true) {
+					card.strokeText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
+				}
 				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 				line = words[wordIndex] + " "
 				y += textSize + 1
@@ -685,6 +704,9 @@ function drawText(text, xCoord, yCoord) {
 				line = testLine + " "
 			}
 			if (wordIndex + 1 == words.length) {
+				if (outlineRulesText == true) {
+					card.strokeText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
+				}
 				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 			}
 		} else {
@@ -692,6 +714,9 @@ function drawText(text, xCoord, yCoord) {
 			var splitWord = words[wordIndex].split("<")
 			for (var splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
 				//Write what's there first!
+				if (outlineRulesText == true) {
+					card.strokeText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
+				}
 				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 				textXShift += card.measureText(line).width
 				line = ""
@@ -754,6 +779,9 @@ function drawText(text, xCoord, yCoord) {
 					var lineWidth = card.measureText(testLine).width
 					if (lineWidth + textXShift + x > tempTextWidth && wordIndex > 0) {
 						//Word is too big
+						if (outlineRulesText == true) {
+							card.strokeText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
+						}
 						card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 						line = plainWord
 						y += textSize + 1
@@ -763,6 +791,9 @@ function drawText(text, xCoord, yCoord) {
 						line = testLine
 					}
 					if (wordIndex + 1 == words.length) {
+						if (outlineRulesText == true) {
+							card.strokeText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
+						}
 						card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 					}
 				}

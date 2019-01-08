@@ -94,6 +94,7 @@
 							<option value="map/">Treasure Map</option>
 							<option value="plane/">Plane</option>
 							<option value="vanguard/">Vanguard</option>
+							<option value="contraption/">Contraption</option>
 							<option value="8th/">8th</option>
 						</select>
 					</span>
@@ -223,9 +224,24 @@
 						<label for="checkboxRulesVisibility" />
 						<div>Rules Visibility</div>
 					</div>
-					<input type="color" id="inputTitleColor" value="#000000"> Title Color<br>
-					<input type="color" id="inputTypeColor" value="#000000"> Type Color<br>
-					<input type="color" id="inputRulesColor" value="#000000"> Rules Color<br>
+					Title Color <input type="color" id="inputTitleColor" value="#000000"> Outline <input type="color" id="inputTitleOutlineColor" value="#ffffff">
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxTitleOutline">
+						<label for="checkboxTitleOutline" />
+						<div>Title Outline</div>
+					</div>
+					Type Color <input type="color" id="inputTypeColor" value="#000000"> Outline <input type="color" id="inputTypeOutlineColor" value="#ffffff">
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxTypeOutline">
+						<label for="checkboxTypeOutline" />
+						<div>Type Outline</div>
+					</div>
+					Rules Color <input type="color" id="inputRulesColor" value="#000000"> Outline <input type="color" id="inputRulesOutlineColor" value="#ffffff">
+					<div class="checkbox">
+						<input type="checkbox" id="checkboxRulesOutline">
+						<label for="checkboxRulesOutline" />
+						<div>Rules Outline</div>
+					</div>
 					<input type="color" id="inputCreatureColor" value="#000000"> Power/Toughness Color<br>
 				</div>
 				<div class="cmm" id="cmm-general">
