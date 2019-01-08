@@ -631,7 +631,7 @@ function bottomInfoM15() {
 	card.fillText(bottomLine, 48, infoY + textBaselineShift[0] * card.font.split("px")[0])
 	var artistBrushShift = card.measureText(bottomLine).width + 58
     imgArtistBrush.imgValues(artistBrushShift, infoY + 2, 21, 13)
-	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
+	card.mask("imgCardMask,source-over", imgArtistBrush, card.fillStyle)
 	card.font = "18px relaymedium"
 	canvas.style.letterSpacing = "2px"
 	if (card.measureText(document.getElementById("inputNumber").value).width > artistBrushShift - 58) {
