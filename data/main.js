@@ -119,7 +119,7 @@ loadScript("data/borders/defaultBorder.js")
 loadSetSymbol()
 
 //Randomize the sample cards at the bottom //samplecount
-randomizeSampleCards(16)
+randomizeSampleCards(15)
 
 //Set up the initial clock!
 var cardClockInterval
@@ -544,7 +544,7 @@ function drawWatermark() {
 function drawManaCost() {
 	//the symbols string splits the mana cost input into an array of strings which is then put into a for loop that draws the appropriate set symbol then adjusts the xShift so the set symbols are spaced properly
 	card.fillStyle = "Black"
-	var symbols = document.getElementById("inputCost").value.toLowerCase().split(" ")
+	var symbols = document.getElementById("inputCost").value.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split(" ")
 	var xShift = 0
 	for (var n = symbols.length; n > -1; n--) {
 		if (manaSymbolCode.indexOf(symbols[n]) != -1) {
@@ -686,7 +686,7 @@ function drawText(text, xCoord, yCoord) {
 		card.lineWidth = 2
 	}
 	for (var wordIndex = 0; wordIndex < words.length; wordIndex ++) {
-		if (words[wordIndex].includes("<") == false || words[wordIndex].includes(">") == false) {
+		if (words[wordIndex].includes("{") == false || words[wordIndex].includes("}") == false) {
 			//Just a regular old word
 			testLine = line + words[wordIndex]
 			var lineWidth = card.measureText(testLine).width
@@ -711,7 +711,7 @@ function drawText(text, xCoord, yCoord) {
 			}
 		} else {
 			//Symbols and more!
-			var splitWord = words[wordIndex].split("<")
+			var splitWord = words[wordIndex].split("{")
 			for (var splitIndex = 0; splitIndex < splitWord.length; splitIndex ++) {
 				//Write what's there first!
 				if (outlineRulesText == true) {
@@ -720,9 +720,9 @@ function drawText(text, xCoord, yCoord) {
 				card.fillText(line, x + textXShift, y + textBaselineShift[0] * card.font.split("px")[0])
 				textXShift += card.measureText(line).width
 				line = ""
-				if (splitWord[splitIndex].includes(">")) {
+				if (splitWord[splitIndex].includes("}")) {
 					var plainWord = ""
-					var megaSplit = splitWord[splitIndex].split(">")
+					var megaSplit = splitWord[splitIndex].split("}")
 					//series of if statements to determine an action based off of the given code
 					if (megaSplit[0] == "i") {
 						canvas.style.letterSpacing = textFontSpacing * 1/3 + "px"
