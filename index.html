@@ -283,6 +283,8 @@
 					<br>
 					<input type="text" class="input" placeholder="Or use a URL" onchange="imageURL(this, imgArt)">
 					<br>
+					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" class="input" type="text" placeholder="Or try using a card name"></input>
+					<br>
 					Image Zoom
 					<input id="imageSize" type="number" class="input" value="100" step="0.1">
 					<br>
@@ -453,9 +455,6 @@
 						<div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">Twitter<img src="images/twitter.png"></img></div>
 						<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="images/massdrop.png"></img></div>
 						<div onclick="window.open('https://www.youtube.com/channel/UC95Pd8lc8UWEkI96Nq_THvw', '_blank');" style="color:rgb(255,0,0);">Izzet Right?<img src="images/izzetright.png"></img></div>
-
-
-						
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
@@ -580,7 +579,7 @@ body {
 .canvasContainer {
 	text-align: center;
 	background-color: none !important;
-	width: calc(100% - 18px);
+	width: calc(100% - 14px);
 }
 .selectionGrid {
 	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));

@@ -877,6 +877,32 @@ function loadImage(event, destination, arg) {
 		reader.readAsDataURL(input.files[0])
 	}
 }
+//Loads card art from Scryfall via their api!
+var savedArtistName
+function inputCardArtName(cardArtNameInput) {
+	var xhttp = new XMLHttpRequest()
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var originalResponse = this.responseText
+			var editedResponse = originalResponse.slice(originalResponse.indexOf('"art_crop":"') + 12, originalResponse.indexOf('","border_crop"'))
+			// alert(editedResponse)
+			imgArt.src = editedResponse
+			if (document.getElementById("inputArtist").value == "" || document.getElementById("inputArtist").value == savedArtistName) {
+				savedArtistName = originalResponse.slice(originalResponse.indexOf('"artist":"') + 10, originalResponse.indexOf('","border_color":'))
+				document.getElementById("inputArtist").value = savedArtistName
+			}
+			if (document.getElementById("imageSize").value == 100) {
+				document.getElementById("imageSize").value = 100.8
+			}
+		} else {
+			if (this.readyState == 4 && this.status == 404) {
+				alert("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'")
+			}
+		}
+	}
+	xhttp.open("GET", "https://api.scryfall.com/cards/named?fuzzy=" + cardArtNameInput.replace(/ /g, "+"), true)
+	xhttp.send()
+}
 
 
 //============================================//
