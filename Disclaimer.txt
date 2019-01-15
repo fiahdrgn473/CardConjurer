@@ -10,7 +10,6 @@ following sources under the Creative Commons BY-NC-SA 2.5 License:
 
   MTG Gamepedia (https://mtg.gamepedia.com/Main_Page)
   Magic Set Editor (http://magicseteditor.boards.net/)
-  Scryfall (scryfall.com)
 
 Changes have been made to some of the images.
 -----------------------------------------------------------------------
