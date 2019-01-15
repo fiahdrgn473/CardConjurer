@@ -724,39 +724,39 @@ function drawText(text, xCoord, yCoord) {
 					var plainWord = ""
 					var megaSplit = splitWord[splitIndex].split("}")
 					//series of if statements to determine an action based off of the given code
-					if (megaSplit[0] == "i") {
+					if (megaSplit[0].toLowerCase() == "i") {
 						canvas.style.letterSpacing = textFontSpacing * 1/3 + "px"
 						card.font = textSize * italicSize + textFont + "i"
-					} else if (megaSplit[0] == "/i") {
+					} else if (megaSplit[0].toLowerCase() == "/i") {
 						canvas.style.letterSpacing = textFontSpacing + "px"
 						card.font = textSize + textFont
-					} else if (megaSplit[0] == "center") {
+					} else if (megaSplit[0].toLowerCase() == "center") {
 						card.textAlign="center"
 						x = cardWidth / 2
 						tempTextWidth = textWidth * 1.5
-					} else if (megaSplit[0] == "right") {
+					} else if (megaSplit[0].toLowerCase() == "right") {
 						card.textAlign="right"
 						tempTextWidth = textWidth * 1.9
 						x = cardWidth - xCoord
-					} else if (megaSplit[0] == "left") {
+					} else if (megaSplit[0].toLowerCase() == "left") {
 						card.textAlign="left"
 						tempTextWidth = textWidth
 						x = xCoord
-					} else if (megaSplit[0] == "line") {
+					} else if (megaSplit[0].toLowerCase() == "line") {
 						textXShift = 0
 						y += lineSpace + textSize + 1
-					} else if (megaSplit[0] == "lineNoSpace") {
+					} else if (megaSplit[0].toLowerCase() == "lineNoSpace") {
 						textXShift = 0
 						y += textSize + 1
-					} else if (megaSplit[0] == "bar") {
-						card.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, y + textSize + lineSpace + 5)
+					} else if (megaSplit[0].toLowerCase() == "bar") {
+						card.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, y + textSize + lineSpace)
 						textXShift = 0
 						y += 2 * lineSpace + textSize + 3
 					} else if (megaSplit[0].toLowerCase() == "chaos") {
 						//The chaos symbol (on planar cards) needs to be a bit bigger
 						card.drawImage(manaSymbolImages[56], x + textXShift + textSize * 0.054, y + textSize * 0.17, textSize, manaSymbolImages[56].height * textSize / manaSymbolImages[56].width)
 						textXShift += textSize * 1
-					} else if (megaSplit[0] == "plane") {
+					} else if (megaSplit[0].toLowerCase() == "plane") {
 						//This draws the large chaos symbol found on planar cards and permenantly shifts the text over
 						card.drawImage(manaSymbolImages[57], x, y + 6, 48, 42)
 						x += 58
