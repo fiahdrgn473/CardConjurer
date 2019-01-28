@@ -878,30 +878,35 @@ function loadImage(event, destination, arg) {
 	}
 }
 //Loads card art from Scryfall via their api!
-var savedArtistName
+var savedArtList
 function inputCardArtName(cardArtNameInput) {
 	var xhttp = new XMLHttpRequest()
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var originalResponse = this.responseText
-			var editedResponse = originalResponse.slice(originalResponse.indexOf('"art_crop":"') + 12, originalResponse.indexOf('","border_crop"'))
-			// alert(editedResponse)
-			imgArt.src = editedResponse
-			if (document.getElementById("inputArtist").value == "" || document.getElementById("inputArtist").value == savedArtistName) {
-				savedArtistName = originalResponse.slice(originalResponse.indexOf('"artist":"') + 10, originalResponse.indexOf('","border_color":'))
-				document.getElementById("inputArtist").value = savedArtistName
-			}
-			if (document.getElementById("imageSize").value == 100) {
-				document.getElementById("imageSize").value = 100.8
-			}
-		} else {
-			if (this.readyState == 4 && this.status == 404) {
-				alert("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'")
-			}
+			savedArtList = originalResponse.split('"art_crop":"')
+			savedArtList.splice(0, 1)
+			document.getElementById("inputCardArtNameNumber").max = savedArtList.length
+			document.getElementById("inputCardArtNameNumber").value = 1
+			inputCardArtNameNumber(1)
+		} else if (this.readyState == 4 && this.status == 404) {
+			alert("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'")
 		}
 	}
-	xhttp.open("GET", "https://api.scryfall.com/cards/named?fuzzy=" + cardArtNameInput.replace(/ /g, "+"), true)
+	xhttp.open("GET", "https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D" + cardArtNameInput.replace(/ /g, "_"), true)
 	xhttp.send()
+}
+function inputCardArtNameNumber(cardArtNameNumberInput) {
+	var tempArtUrlList = []
+	for (i = 0; i < savedArtList.length; i ++) {
+		tempArtUrlList[i] = savedArtList[i].split('","border_crop":')[0]
+	}
+	imgArt.src = "https://cors-anywhere.herokuapp.com/" + tempArtUrlList[cardArtNameNumberInput - 1]
+	var tempArtArtistList = []
+	for (i = 0; i < savedArtList.length; i ++) {
+		tempArtArtistList[i] = savedArtList[i].slice(savedArtList[i].indexOf('"artist":"') + 10, savedArtList[i].indexOf('","border_color":'))
+	}
+	document.getElementById("inputArtist").value = tempArtArtistList[cardArtNameNumberInput - 1]
 }
 
 
