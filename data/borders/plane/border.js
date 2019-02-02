@@ -76,7 +76,7 @@ function bottomInfoPlanechase() {
 	var artistLineWidth = (card.measureText(artist).width + cardWidth * 0.01724) / 2 //18
 	imgArtistBrush.imgValues(cardWidth / 2 - artistLineWidth, cardHeight * 0.9426, cardWidth * 0.0144, cardHeight * 0.0134)
 	card.mask("imgArtMask,source-over", imgArtistBrush, card.fillStyle)
-	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9479 + textBaselineShift[0] * card.font.split("px")[0]) //18, 710
+	card.fillText(artist, cardWidth / 2 - artistLineWidth + cardWidth * 0.01724, cardHeight * 0.9419 + textBaselineShift[0] * card.font.split("px")[0]) //18, 710
 	//Left and Right side
 	canvas.style.letterSpacing = "0px"
 	card.font = cardHeight * 0.0187 + "px relaymedium" //14
