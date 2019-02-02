@@ -745,7 +745,7 @@ function drawText(text, xCoord, yCoord) {
 					} else if (megaSplit[0].toLowerCase() == "line") {
 						textXShift = 0
 						y += lineSpace + textSize + 1
-					} else if (megaSplit[0].toLowerCase() == "lineNoSpace") {
+					} else if (megaSplit[0].toLowerCase() == "linenospace") {
 						textXShift = 0
 						y += textSize + 1
 					} else if (megaSplit[0].toLowerCase() == "bar") {

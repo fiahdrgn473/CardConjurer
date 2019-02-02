@@ -30,7 +30,7 @@ var textX = cardWidth / 2
 var textY = 656 //656
 var textWidth = 575 //682
 if (document.getElementById("inputText").value == "") {
-	document.getElementById("inputText").value = "<center>"
+	document.getElementById("inputText").value = "{center}"
 }
 document.getElementById("textSize").value = 25
 italicSize = 2/3
