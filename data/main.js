@@ -760,6 +760,14 @@ function drawText(text, xCoord, yCoord) {
 						//This draws the large chaos symbol found on planar cards and permenantly shifts the text over
 						card.drawImage(manaSymbolImages[57], x, y + 6, 48, 42)
 						x += 58
+					} else if (megaSplit[0].toLowerCase().slice(0, 2) == "up") {
+						y -= parseInt(megaSplit[0].toLowerCase().slice(2, megaSplit[0].length))
+					} else if (megaSplit[0].toLowerCase().slice(0, 4) == "down") {
+						y += parseInt(megaSplit[0].toLowerCase().slice(4, megaSplit[0].length))
+					} else if (megaSplit[0].toLowerCase().slice(0, 4) == "left") {
+						x -= parseInt(megaSplit[0].toLowerCase().slice(4, megaSplit[0].length))
+					} else if (megaSplit[0].toLowerCase().slice(0, 5) == "right") {
+						x += parseInt(megaSplit[0].toLowerCase().slice(5, megaSplit[0].length))
 					} else {
 						//It's an image (mana symbol, tap, etc...)
 						card.drawImage(manaSymbolImages[manaSymbolCode.indexOf(megaSplit[0].toLowerCase())], x + textXShift + textSize * 0.054, y + textSize * 0.075 + parseInt(document.getElementById("inputSymbolDown").value) + textBaselineShift[0] * card.font.split("px")[0], textSize * 0.77, textSize * 0.77)
