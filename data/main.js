@@ -298,6 +298,7 @@ function createBorder() {
 		border.mask("imgMultiGradient,source-over;imgFrameMask,source-out", imgBorderColor)
 	} else {
 		border.mask("imgFrameMask,source-over", imgBorderColor)
+		// border.mask("imgMultiGradient,source-over;imgFrameMask,source-out", imgBorderColor)
 	}
 	if (secondColor == true && secondBorder == true) {
 		border.mask("imgMultiGradient,source-over;imgFrameMask,source-in", imgSecondBorderColor)

@@ -128,6 +128,7 @@ function planeswalkerAbilityLines() {
 		}
 		abilityLineY += abilityLines[i]
 	}
+	abilityLineContext.clearRect(0, 0, 93, cardHeight)
 	abilityLineContext.drawImage(savedFrameMask, 0, 0, cardWidth, cardHeight)
     imgFrameMask.src = abilityLineCanvas.toDataURL()
     imgFrameMask.hasToLoad = true
