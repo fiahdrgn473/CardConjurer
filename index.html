@@ -13,7 +13,6 @@
 	<meta name="msapplication-config" content="favicons/browserconfig.xml">
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
-	<!-- <meta name="description" content="Card Conjurer: A free online tool that creates custom Magic: The Gathering Cards. Fast, easy, and offers a wide variety of card frames and other customizations. Planar cards, Ixalan maps, Planeswalkers, and more!"> -->
 	<meta charset="UTF-8">
 	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=800">
 	<PageMap>
@@ -62,11 +61,18 @@
 	<div class="title"><img src="images/title.png"></div>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
-			<canvas id="canvas" width="749" height="1044"></canvas>
+			<canvas id="cardCanvas" width="750" height="1050"></canvas>
 		</div>
 		<div class="cmmArea">
 			<div class="grid selectionGrid">
-				<div onclick="toggleView('color', 'cmm')">Color</div>
+				<div onclick="toggleView('frame', 'cmm')">Frame</div>
+				<div onclick="toggleView('text', 'cmm')">Text</div>
+				<div onclick="toggleView('info', 'cmm')">Info</div>
+				<div onclick="toggleView('art', 'cmm')">Art</div>
+				<div onclick="toggleView('set', 'cmm')">Set Symbol</div>
+				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
+				<div onclick="toggleView('download', 'cmm')">Download</div>
+				<!-- <div onclick="toggleView('color', 'cmm')">Color</div>
 				<div onclick="toggleView('general', 'cmm')">General</div>
 				<div onclick="toggleView('text', 'cmm')">Text</div>
 				<div onclick="toggleView('art', 'cmm')">Art</div>
@@ -76,27 +82,139 @@
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 				<div onclick="toggleView('vanguard', 'cmm')" style="display: none;" id="cmmVanguard">Vanguard</div>
-				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
+				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div> -->
 			</div>
 			<div class="cardManipulationMenu">
-				<div class="cmm shown" id="cmm-color">
+				<div class="cmm shown" id="cmm-frame">
+					Frame
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgFrame.load(this.value + 'frame.png')"></select>
+					</span>
+					<br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxFrameRight" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxFrameRight"/>
+						<div>Frame (right)</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgFrameRight.load(this.value + 'frame.png')"></select>
+					</span>
+					<br><br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxTitleTypeBoxes" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxTitleTypeBoxes"/>
+						<div>Title and Type Boxes</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgTitleTypeBoxes.load(this.value + 'frame.png')"></select>
+					</span>
+					<br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxTitleTypeBoxesRight" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxTitleTypeBoxesRight"/>
+						<div>Title and Type Boxes (right)</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgTitleTypeBoxesRight.load(this.value + 'frame.png')"></select>
+					</span>
+					<br><br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxRulesBox" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxRulesBox"/>
+						<div>Rules Box</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgRulesBox.load(this.value + 'frame.png')"></select>
+					</span>
+					<br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxRulesBoxRight" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxRulesBoxRight"/>
+						<div>Rules Box (right)</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgRulesBoxRight.load(this.value + 'frame.png')"></select>
+					</span>
+					<br><br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxPinline" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxPinline"/>
+						<div>Pinline</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgPinline.load(this.value + 'frame.png')"></select>
+					</span>
+					<br>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxPinlineRight" onchange="sectionFrameFunction()">
+						<label for="inputCheckboxPinlineRight"/>
+						<div>Pinline (right)</div>
+					</div>
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgPinlineRight.load(this.value + 'frame.png')"></select>
+					</span>
+				</div>
+				<div class="cmm" id="cmm-text">
+					Name
+					<input id="inputName" type="text" class="input" value="Battle Mastery" oninput="textFunction()">
+					<br>
+					Mana Cost
+					<input id="inputCost" type="text" class="input" value="2 w" oninput="textFunction()">
+					<br>
+					Type
+					<input id="inputType" type="text" class="input" value="Enchantment — Aura" oninput="textFunction()">
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxCreature" onchange="sectionFrameFunction()" />
+						<label for="inputCheckboxCreature" />
+						<div>Power/Toughness</div>
+					</div>
+					<input id="inputPowerToughness" class="input" type="text" oninput="textFunction()">
+					<br><br>
+					Rules Text
+					<br>
+					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="textFunction()">Enchant creature {line}Enchanted creature has double strike. {i}(It deals both first-strike and regular combat damage.) {line}“Boom! Boom! Boots the size of oxcarts, then an axe like a falling sun. Elves scattered. Trees scattered. Even the hills ran for the hills!” {/i}{lineNoSpace}—Clachan Tales</textarea>
+					<br>
+					Rules Text Font Size
+					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="0.5" oninput="textFunction()">
+					<br>
+					Pixels Between Paragraphs
+					<input id="inputTextShift" type="number" class="input" min="0" value="13" oninput="textFunction()">
+					<br>
+					Shift All Text Down
+					<input id="inputTextDown" type="number" class="input" value="0" oninput="textFunction()">
+				</div>
+				<div class="cmm" id="cmm-info">
+
+				</div>
+				<div class="cmm" id="cmm-art">
+					Upload an Image
+					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this, imgCardArt)">
+					Image Zoom
+					<input id="inputCardArtZoom" type="number" class="input" value="100" step="0.1" oninput="drawCard()">
+					<br>
+					Image X
+					<input id="inputCardArtX" type="number" class="input" value="0" step="1" oninput="drawCard()">
+					<br>
+					Image Y
+					<input id="inputCardArtY" type="number" class="input" value="0" step="1" oninput="drawCard()">
+					<br>
+					<!-- Image Rotation
+					<input id="inputCardArtRotation" type="number" class="input" value="0" step="1" min="0" max="360" oninput="drawCard()"> -->
+				</div>
+				<div class="cmm" id="cmm-set">
+
+				</div>
+				<div class="cmm" id="cmm-watermark">
+
+				</div>
+				<div class="cmm" id="cmm-download">
+					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
+				</div>
+				<!-- <div class="cmm shown" id="cmm-color">
 					Border
 					<span class="dropdown">
 						<select id="borderSelection" onchange="changeTemplate()">
 							<option value="m15/">M15</option>
-							<option value="fullArtLandM15/">Full Art Land (Regular)</option>
-							<option value="fullArtLandUnstable/">Full Art Land (Unstable)</option>
-							<option value="planeswalker/">Planeswalker</option>
-							<option value="planeswalkerTall/">Planeswalker (Tall)</option>
-							<option value="tokenTextless/">Token (Textless)</option>
-							<option value="tokenText/">Token (Text)</option>
-							<option value="tokenTall/">Token (Tall)</option>
-							<option value="map/">Treasure Map</option>
-							<option value="plane/">Plane</option>
-							<option value="miniPlane/">Mini-Plane</option>
-							<option value="vanguard/">Vanguard</option>
-							<option value="contraption/">Contraption</option>
-							<option value="8th/">8th</option>
 						</select>
 					</span>
 					<br>
@@ -419,7 +537,7 @@
 					<input type="text" id="inputVanguardHandMod">
 					Life Total Modifier
 					<input type="text" id="inputVanguardLifeMod">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="tutorialArea">
