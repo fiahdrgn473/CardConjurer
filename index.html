@@ -71,6 +71,7 @@
 				<div onclick="toggleView('art', 'cmm')">Art</div>
 				<div onclick="toggleView('set', 'cmm')">Set Symbol</div>
 				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
+				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 				<!-- <div onclick="toggleView('color', 'cmm')">Color</div>
 				<div onclick="toggleView('general', 'cmm')">General</div>
@@ -86,109 +87,196 @@
 			</div>
 			<div class="cardManipulationMenu">
 				<div class="cmm shown" id="cmm-frame">
+					Border
+					<span class="dropdown">
+						<select onchange="loadScript('data/borders/' + this.value + '/border.js')">
+							<option value="m15">M15</option>
+							<option value="fullArtLandUnstable">Full Art Land (Unstable)</option>
+						</select>
+					</span>
+					<br><br>
 					Frame
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgFrame.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesFrame" onchange="imgFrame.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxFrameRight" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxFrameRight" onchange="sectionFrameFunction()" class="changesFrame">
 						<label for="inputCheckboxFrameRight"/>
 						<div>Frame (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgFrameRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesFrame" onchange="imgFrameRight.load(this.value + 'frame.png')"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxTitleTypeBoxes" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxTitleTypeBoxes" onchange="sectionFrameFunction()" class="changesTitleType">
 						<label for="inputCheckboxTitleTypeBoxes"/>
 						<div>Title and Type Boxes</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgTitleTypeBoxes.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesTitleType" onchange="imgTitleTypeBoxes.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxTitleTypeBoxesRight" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxTitleTypeBoxesRight" onchange="sectionFrameFunction()" class="changesTitleType">
 						<label for="inputCheckboxTitleTypeBoxesRight"/>
 						<div>Title and Type Boxes (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgTitleTypeBoxesRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesTitleType" onchange="imgTitleTypeBoxesRight.load(this.value + 'frame.png')"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxRulesBox" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxRulesBox" onchange="sectionFrameFunction()" class="changesRulesBox">
 						<label for="inputCheckboxRulesBox"/>
 						<div>Rules Box</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgRulesBox.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesRulesBox" onchange="imgRulesBox.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxRulesBoxRight" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxRulesBoxRight" onchange="sectionFrameFunction()" class="changesRulesBox">
 						<label for="inputCheckboxRulesBoxRight"/>
 						<div>Rules Box (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgRulesBoxRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesRulesBox" onchange="imgRulesBoxRight.load(this.value + 'frame.png')"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxPinline" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxPinline" onchange="sectionFrameFunction()" class="changesPinline">
 						<label for="inputCheckboxPinline"/>
 						<div>Pinline</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgPinline.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesPinline" onchange="imgPinline.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxPinlineRight" onchange="sectionFrameFunction()">
+						<input type="checkbox" id="inputCheckboxPinlineRight" onchange="sectionFrameFunction()" class="changesPinline">
 						<label for="inputCheckboxPinlineRight"/>
 						<div>Pinline (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgPinlineRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesPinline" onchange="imgPinlineRight.load(this.value + 'frame.png')"></select>
 					</span>
+				</div>
+				<div class="cmm" id="cmm-advanced">
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxLegendary" onchange="loadLegendaryImages()" />
+						<label for="inputCheckboxLegendary" />
+						<div>Legendary</div>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxRareStamp" onchange="loadRareStampImages()" />
+						<label for="inputCheckboxRareStamp" />
+						<div>Rare Stamp</div>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxNyx" onchange="loadNyxImages()" />
+						<label for="inputCheckboxNyx" />
+						<div>Nyx</div>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxMiracle" onchange="loadMiracleImages()" />
+						<label for="inputCheckboxMiracle" />
+						<div>Miracle</div>
+					</div>
+					<br>
+					Frame Opacity
+					<input id="inputFrameOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
+					<br>
+					Title/Type Opacity
+					<input id="inputTitleTypeOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
+					<br>
+					Rules Box Opacity
+					<input id="inputRulesBoxOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
+					<br>
+					Pinline Opacity
+					<input id="inputPinlineOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
+					<br><br>
+					Title Color <input type="color" id="inputTitleColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTitleOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxTitleOutline" onchange="sectionTextFunction()">
+						<label for="inputCheckboxTitleOutline" />
+						<div>Title Outline</div>
+					</div>
+					Type Color <input type="color" id="inputTypeColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTypeOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxTypeOutline" onchange="sectionTextFunction()">
+						<label for="inputCheckboxTypeOutline" />
+						<div>Type Outline</div>
+					</div>
+					Rules Color <input type="color" id="inputRulesColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputRulesOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxRulesOutline" onchange="sectionTextFunction()">
+						<label for="inputCheckboxRulesOutline" />
+						<div>Rules Outline</div>
+					</div>
+					<input type="color" id="inputCreatureColor" value="#000000" onchange="sectionTextFunction()"> Power/Toughness Color<br>
 				</div>
 				<div class="cmm" id="cmm-text">
 					Name
-					<input id="inputName" type="text" class="input" value="Battle Mastery" oninput="textFunction()">
+					<input id="inputName" type="text" class="input" value="" oninput="sectionTextFunction()">
 					<br>
 					Mana Cost
-					<input id="inputCost" type="text" class="input" value="2 w" oninput="textFunction()">
+					<input id="inputCost" type="text" class="input" value="" oninput="sectionTextFunction()">
 					<br>
 					Type
-					<input id="inputType" type="text" class="input" value="Enchantment — Aura" oninput="textFunction()">
+					<input id="inputType" type="text" class="input" value="" oninput="sectionTextFunction()">
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxCreature" onchange="sectionFrameFunction()" />
-						<label for="inputCheckboxCreature" />
+						<input type="checkbox" id="inputCheckboxPowerToughness" onchange="sectionTextFunction()" />
+						<label for="inputCheckboxPowerToughness" />
 						<div>Power/Toughness</div>
 					</div>
-					<input id="inputPowerToughness" class="input" type="text" oninput="textFunction()">
+					<span class="dropdown">
+						<select class="selectColor" onchange="imgPowerToughness.load(this.value + 'pt.png')"></select>
+					</span>
+					<input id="inputPowerToughness" class="input" type="text" oninput="sectionTextFunction()">
 					<br><br>
 					Rules Text
 					<br>
-					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="textFunction()">Enchant creature {line}Enchanted creature has double strike. {i}(It deals both first-strike and regular combat damage.) {line}“Boom! Boom! Boots the size of oxcarts, then an axe like a falling sun. Elves scattered. Trees scattered. Even the hills ran for the hills!” {/i}{lineNoSpace}—Clachan Tales</textarea>
+					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()"></textarea>
 					<br>
 					Rules Text Font Size
-					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="0.5" oninput="textFunction()">
+					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="0.5" oninput="sectionTextFunction()">
 					<br>
 					Pixels Between Paragraphs
-					<input id="inputTextShift" type="number" class="input" min="0" value="13" oninput="textFunction()">
+					<input id="inputTextShift" type="number" class="input" min="0" value="13" oninput="sectionTextFunction()">
 					<br>
 					Shift All Text Down
-					<input id="inputTextDown" type="number" class="input" value="0" oninput="textFunction()">
+					<input id="inputTextDown" type="number" class="input" value="0" oninput="sectionTextFunction()">
 				</div>
 				<div class="cmm" id="cmm-info">
-
+					Collector's Number
+					<input id="inputInfoNumber" type="text" class="input" value="001/001" oninput="sectionTextFunction()">
+					<br>
+					Rarity
+					<input id="inputInfoRarity" type="text" class="input" value="S" oninput="sectionTextFunction()">
+					<br>
+					Set Abbreviation
+					<input id="inputInfoSet" type="text" class="input" value="MTG" oninput="sectionTextFunction()">
+					<br>
+					Language
+					<input id="inputInfoLanguage" type="text" class="input" value="EN" oninput="sectionTextFunction()">
+					<br>
+					Artist Credit
+					<input id="inputInfoArtist" type="text" class="input" value="" oninput="sectionTextFunction()">
+					<br>
+					Other Information
+					<input id="inputInfoCopyright" type="text" class="input" value="Not a Real Card" oninput="sectionTextFunction()">
 				</div>
 				<div class="cmm" id="cmm-art">
 					Upload an Image
-					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this, imgCardArt)">
+					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this.value, imgCardArt, 'none')">
+					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" class="input" type="text" placeholder="Via Card Name"></input>
+					<input type="file" name="inputCardArt" class="input" accept="image/*" onchange="loadImage(event, imgCardArt)" id="inputPicture" placeholder="Via File Upload">
+					<br>
+					Card Name Result:
+					<input id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" class="input" type="number" value="1" min="1" max="3">
+					<br>
 					Image Zoom
 					<input id="inputCardArtZoom" type="number" class="input" value="100" step="0.1" oninput="drawCard()">
 					<br>
@@ -202,10 +290,64 @@
 					<input id="inputCardArtRotation" type="number" class="input" value="0" step="1" min="0" max="360" oninput="drawCard()"> -->
 				</div>
 				<div class="cmm" id="cmm-set">
-
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxSetSymbol" checked="true" onchange="sectionOtherFunction()" />
+						<label for="inputCheckboxSetSymbol" />
+						<div>Set Symbol</div>
+					</div>
+					Set Code
+					<input id="inputSetSymbolCode" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetSymbolCode").value.toUpperCase() + "&size=large&rarity=" + document.getElementById("inputSetSymbolRarity").value.toUpperCase(), imgSetSymbol, "needsCrop")' value="LRW">
+					Rarity
+					<input id="inputSetSymbolRarity" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetSymbolCode").value.toUpperCase() + "&size=large&rarity=" + document.getElementById("inputSetSymbolRarity").value.toUpperCase(), imgSetSymbol, "needsCrop")' value="U">
+					Or Upload an Image
+					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this.value, imgSetSymbol, 'needsCrop')">
+					<input type="file" name="inputCardArt" class="input" accept="image/*" onchange="loadImage(event, imgSetSymbol)" id="inputPicture" placeholder="Via File Upload">
+					<br>
+					Scale Set Symbol
+					<input id="inputSetSymbolScale" type="number" class="input" min="0" value="100" step="0.1" oninput="sectionOtherFunction()">
 				</div>
 				<div class="cmm" id="cmm-watermark">
-
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxWatermark" checked="true" onchange="sectionOtherFunction()" />
+						<label for="inputCheckboxWatermark" />
+						<div>Watermark</div>
+					</div>
+					Set Code
+					<input id="inputWatermarkCode" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + this.value.toUpperCase() + "&size=large&rarity=C", imgWatermark, "needsBoth")'>
+					Or Upload an Image
+					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this.value, imgWatermark, 'needsBoth')">
+					<input type="file" name="inputCardArt" class="input" accept="image/*" onchange="loadImage(event, imgWatermark)" id="inputPicture" placeholder="Via File Upload">
+					<br>
+					Watermark Color
+					<span class="dropdown">
+						<select onchange="sectionOtherFunction()" id="inputWatermarkColor">
+							<option value="none">default</option>
+							<option value="#afa360">White</option>
+							<option value="#04527c">Blue</option>
+							<option value="#494949">Black</option>
+							<option value="#a3280d">Red</option>
+							<option value="#0f4f14">Green</option>
+							<option value="#7f5f00">Gold</option>
+							<option value="#616b72">Artifact/Colorless</option>
+						</select>
+					</span>
+					<div class="checkbox">
+						<input type="checkbox" id="inputCheckboxSecondWatermark" onchange="sectionOtherFunction()" />
+						<label for="inputCheckboxSecondWatermark" />
+						<div>Second WatermarkColor</div>
+					</div>
+					<span class="dropdown">
+						<select onchange="sectionOtherFunction()" id="inputSecondWatermarkColor">
+							<option value="none">default</option>
+							<option value="#afa360">White</option>
+							<option value="#04527c">Blue</option>
+							<option value="#494949">Black</option>
+							<option value="#a3280d">Red</option>
+							<option value="#0f4f14">Green</option>
+							<option value="#7f5f00">Gold</option>
+							<option value="#616b72">Artifact/Colorless</option>
+						</select>
+					</span>
 				</div>
 				<div class="cmm" id="cmm-download">
 					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
@@ -547,7 +689,6 @@
 				<div onclick="toggleView('symbolList', 'extras')">Mana Symbols</div>
 				<div onclick="toggleView('codes', 'extras')">Other Codes</div>
 				<div onclick="toggleView('set', 'extras')">Set Codes</div>
-				<div onclick="toggleView('border', 'extras')">Card Colors</div>
 			</div>
 			<div class="extrasMenu">
 				<div class="extras shown" id="extras-about">
@@ -581,13 +722,13 @@
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
-					Each of the following codes must include '{' before each code and '}' after. These codes aren't caps sensitive.
+					Each of the following codes must include '{' before each code and '}' after.
 					<div class="symbolGrid grid" id="symbolList">
 						
 					</div>
 				</div>
 				<div class="extras" id="extras-codes">
-					Like the mana symbols, each of the following codes must include '{' before each code and '}' after. These codes are caps sensitive.<br>
+					Like the mana symbols, each of the following codes must include '{' before each code and '}' after. If a code doesn't work, try putting a space before and/or after the code.<br>
 					&#8226 line &#8594 Skips to the next line<br>
 					&#8226 bar &#8594 Just like line, except adds the bar that usually seperates flavor text<br>
 					&#8226 lineNoSpace &#8594 Just like line, except stays closer to the previous line<br>
@@ -600,20 +741,13 @@
 					&#8226 downX &#8594 Shifts the following text X pixels down<br>
 					&#8226 leftX &#8594 Shifts the following text X pixels left<br>
 					&#8226 rightX &#8594 Shifts the following text X pixels right<br>
-					&#8226 plane &#8594 Creates a large <img src="data/manaSymbols/56.png" style="height: 1em; background-color: white;"></img> and shifts the following text to the right. This is designed for planar cards.
 				</div>
 				<div class="extras" id="extras-set">
-					Every set in Magic: The Gathering has an associated 2-3 letter code. For example, Homelands is HM and Innistrad is ISD. This program uses the codes from <a href="http://gatherer.wizards.com" target="_blank">The Gatherer</a>, the official Magic card database. A handy list of all sets and their codes can be found on <a href="https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets" target="_blank">Wikipedia</a>. These codes aren't caps sensitive.
-				</div>
-				<div class="extras" id="extras-border">
-					Under the 'Card Border' tab use the following guidelines:<br>
-					&#8226 Border &#8594 Selects the border style, such as planar card, m15 card, etc...<br>
-					&#8226 Color &#8594 Primary color<br>
-					&#8226 Second Color &#8594 Secondary color. Only affects the right half of the card, as seen on hybrid cards.<br>
-					&#8226 Third Color &#8594 Tertiary color. Affects the entire card, including power and toughness, as seen on two-colored gold cards.<br><br>
-					Under the 'Border (Advanced)' tab the checkboxes are fairly straightforward. Try each feature out to see what it does.
+					Every set in Magic: The Gathering has an associated 2-3 letter code. For example, Homelands is HM and Innistrad is ISD. This program uses the codes from <a href="http://gatherer.wizards.com" target="_blank">The Gatherer</a>, the official Magic card database. A handy list of all sets and their codes can be found on <a href="https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets" target="_blank">Wikipedia</a>.
 				</div>
 				<div class="extras" id="extras-tutorial">
+					Card Conjurer has gone under some major changes since the making of this video, but it can still help to give a general idea of how to use the program:
+					<br><br>
 					<iframe src="https://www.youtube.com/embed/Uh9Qr35u49I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: calc(100vw - 94px); height: calc((100vw - 94px) * 9/16)"></iframe>
 				</div>
 			</div>
@@ -638,6 +772,10 @@
 	src: url("data/fonts/relay-medium.ttf");
 }
 @font-face {
+	font-family: gothammedium;
+	src: url("data/fonts/gotham-medium.ttf");
+}
+@font-face {
 	font-family: belerenb;
 	src: url("data/fonts/beleren-b.ttf");
 }
@@ -646,16 +784,16 @@
 	src: url("data/fonts/beleren-bsc.ttf");
 }
 @font-face {
-	font-family: matrixbsc;
-	src: url("data/fonts/matrix-bsc.ttf");
-}
-@font-face {
 	font-family: matrix;
 	src: url("data/fonts/matrix.ttf");
 }
 @font-face {
 	font-family: matrixb;
 	src: url("data/fonts/matrix-b.ttf");
+}
+@font-face {
+	font-family: matrixbsc;
+	src: url("data/fonts/matrix-bsc.ttf");
 }
 @font-face {
 	font-family: mplantin;
@@ -682,6 +820,8 @@
 	font-size: 6vw;
 	user-select: none;
 	color: #eee;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
 }
 html {
 	background: url("images/background.png") no-repeat center center fixed;
