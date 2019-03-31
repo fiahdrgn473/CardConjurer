@@ -18,32 +18,57 @@ var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
 //Create the object that stores data for convencience :) It's what keeps track of values necessary to change between card frames
 var defaultCardData = {
 	version:"m15",
-	manaSymbolX:659, manaSymbolY:60, manaSymbolRadius:17.5, manaSymbolDirection:"left",
-	titleX:63, titleY:94, titleRight:687, titleFont:"belerenb", titleFontSize:40,
-	typeX:63, typeY:630, typeRight:687, typeFont:"belerenb", typeFontSize:34,
-	textX:63, textY:690, textRight:690, textFont:"mplantin",
-	ptFont:"39px belerenb", ptX:645, ptY:975,
-	ptBoxX:571, ptBoxY:929, ptBoxWidth:135, ptBoxHeight:76,
-	setSymbolWidth:77, setSymbolHeight:42, setSymbolX:693, setSymbolY:620,
-	watermarkWidth:520, watermarkHeight:250, watermarkY:815,
-	cardArtX:58, cardArtY:118
+	manaSymbolX:cwidth(659), manaSymbolY:cheight(60), manaSymbolRadius:cwidth(17.5), manaSymbolDirection:"left",
+	titleX:cwidth(63), titleY:cheight(94), titleRight:cwidth(687), titleFont:"belerenb", titleFontSize:cwidth(40), titleAlignment:"left",
+	typeX:cwidth(63), typeY:cheight(630), typeRight:cwidth(687), typeFont:"belerenb", typeFontSize:cwidth(34), typeAlignment:"left",
+	textX:cwidth(63), textY:cheight(690), textRight:cwidth(690), textFont:"mplantin",
+	ptFont:"39px belerenb", ptX:cwidth(645), ptY:cheight(975),
+	ptBoxX:cwidth(571), ptBoxY:cheight(929), ptBoxWidth:cwidth(135), ptBoxHeight:cheight(76),
+	setSymbolWidth:cwidth(77), setSymbolHeight:cheight(42), setSymbolX:cwidth(693), setSymbolY:cheight(620), setSymbolAlignment:"right",
+	watermarkWidth:cwidth(520), watermarkHeight:cheight(250), watermarkY:cheight(815),
+	cardArtX:cwidth(58), cardArtY:cheight(118),
+	miracle:true, nyx:true, legendary:true, creature:true, rulesBox:true, pinline:true, rareStamp:true, titleTypeBoxes:true,
+	transparency:false
 }
-var cardData = defaultCardData
+var cardData = {}
+Object.assign(cardData, defaultCardData)
 //Function that restores image values for various things :)
-function defaultImageValues() {
-	imgLegendary.load("none", 20, 20, 714, 186)
-	imgLegendaryRight.load("none", 20, 20, 714, 186)
-	imgRareStamp.load("none", 329, 949, 90, 50)
-	imgRareStampRight.load("none", 329, 949, 90, 50)
-	imgStamp.load("none", 340, 965, 70, 37)
-	imgNyx.load("none", 30, 30, 690, 586)
-	imgNyxRight.load("none", 30, 30, 690, 586)
-	imgMiracle.load("none", 30, 30, 689, 511)
-	imgMiracleRight.load("none", 30, 30, 689, 511)
+function backToDefault(version) {
+	//Default image values
+	imgLegendary.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
+	imgLegendaryRight.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
+	imgRareStamp.load("none", cwidth(329), cheight(949), cwidth(90), cheight(50))
+	imgRareStampRight.load("none", cwidth(329), cheight(949), cwidth(90), cheight(50))
+	imgStamp.load("none", cwidth(340), cheight(965), cwidth(70), cheight(37))
+	imgNyx.load("none", cwidth(30), cheight(30), cwidth(690), cheight(586))
+	imgNyxRight.load("none", cwidth(30), cheight(30), cwidth(690), cheight(586))
+	imgMiracle.load("none", cwidth(30), cheight(30), cwidth(689), cheight(511))
+	imgMiracleRight.load("none", cwidth(30), cheight(30), cwidth(689), cheight(511))
+	//Default card data, correct card version
+	Object.assign(cardData, defaultCardData)
+	cardData.version = version
+	//Default masks
+	for (var i = 0; i < frameMaskList.length; i++) {
+		if (window[frameMaskList[i]].src.includes("data/borders/m15/" + frameMaskList[i] + ".png") == false) {
+			window[frameMaskList[i]].load("data/borders/m15/" + frameMaskList[i] + ".png")
+		}
+	}
+	//Loads correct frame images
+	for (var i = 0; i < frameImageList.length; i++) {
+		window[frameImageList[i]].load("data/borders/" + cardData.version + "/white/frame.png")
+	}
+	//Fixes default font Colors
+	for (var i = 0; i < document.getElementsByClassName("fontColor").length; i++) {
+		document.getElementsByClassName("fontColor")[i].value = "#000000"
+	}
+	//Runs the finishing script
+	loadScript('data/borders/' + version + '/border.js')
 }
 
 //Set up canvases
 var cardCanvas = document.getElementById("cardCanvas")
+cardCanvas.width = cardWidth
+cardCanvas.height = cardHeight
 var card = cardCanvas.getContext("2d")
 function newCanvas(name) {
 	window[(name + "Canvas")] = document.createElement("canvas")
@@ -98,12 +123,12 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, opacity 
 }
 
 //Text processor... kind of...
-CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor) {
+CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor, textAlignment = "left") {
 	this.font = textFontSize + "px " + textFont
 	this.fillStyle = textColor
 	this.strokeStyle = outlineColor
 	this.lineWidth = 2
-	this.textAlign = "left"
+	this.textAlign = textAlignment
 	var x = inputX
 	var y = inputY
 	var rightLimit = inputRightLimit
@@ -132,6 +157,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 				this.fillText(currentString, currentX, currentY)
 				currentX += this.measureText(currentString).width
 				currentString = ""
+				//Then grind through the string for codes
 				while(splitText[i] != "") {
 					//There may be codes within! split up the string further incase there are multiple codes/words
 					var wordToWrite = ""
@@ -191,14 +217,14 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 						splitText[i] = splitText[i].substr(possibleCode.length)
 					} else {
 						//It begins with a word. Write it.
-						if (splitText[i].includes("{")) {
+						if (splitText[i].includes("{") && splitText[i].charAt(0) != "{") {
 							//There still could be codes, leave those be.
 							wordToWrite = splitText[i].slice(0, splitText[i].indexOf("{"))
-						} else {
+						} else if (splitText[i] != "" && splitText != " ") {
 							//There aren't any codes left. Finish up.
 							wordToWrite = splitText[i] + " "
 						}
-						splitText[i] = splitText[i].substr(splitText[i].length)
+						splitText[i] = splitText[i].substring(wordToWrite.length)
 					}
 					//After extracting a word to write, write it (if it exists)
 					if (wordToWrite != "") {
@@ -218,7 +244,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 							currentX += this.measureText(wordToWrite).width
 						}
 					}
-				}
+				} //WHILE LOOP ENDS HERE
 			} else if (this.measureText(currentString + " " + splitText[i]).width + currentX > rightLimit) {
 				//There aren't any codes, but the text doesn't fit. Finish writing the current line and move to the next one.
 				if (outline) {
@@ -249,20 +275,24 @@ CanvasRenderingContext2D.prototype.manaCost = function(input, x, y, size, path) 
 	var currentX = x
 	var currentY = y
 	var manaCostList = input.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split(" ")
-	var manaSymbolWidth = 0
-	for (var i = manaCostList.length - 1; i >= 0; i--) {
-		if (manaSymbolCodeList.indexOf(manaCostList[i]) != -1) {
-			this.beginPath()
-			this.arc(currentX + size - 1, currentY + size + 3.5, size, 0, 6.29, false)
-			this.fill()
-			this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i])], currentX, currentY, size * 2, size * 2)
-			if (path == "left") {
-				currentX -= 39
-				manaSymbolWidth += 39
+	if (cardData.manaSymbolDirection == "left") {
+		var manaSymbolWidth = 0
+		for (var i = manaCostList.length - 1; i >= 0; i--) {
+			if (manaSymbolCodeList.indexOf(manaCostList[i]) != -1) {
+				this.beginPath()
+				this.arc(currentX + size - 1, currentY + size + 3.5, size, 0, 6.29, false)
+				this.fill()
+				this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i])], currentX, currentY, size * 2, size * 2)
+				if (path == "left") {
+					currentX -= 39
+					manaSymbolWidth += 39
+				}
 			}
 		}
+		return manaSymbolWidth
+	} else {
+		return 0
 	}
-	return manaSymbolWidth
 }
 
 //Function that autocrops the image
@@ -410,7 +440,7 @@ for (var i = 0; i < frameImageList.length; i++) {
 createImage("imgPowerToughness", "sectionText")
 imgPowerToughness.load("data/borders/m15/white/pt.png")
 //masks for the card frame
-var frameMaskList = ["imgTypeMask", "imgTitleMask", "imgPinlineMask", "imgRulesMask", "imgFrameMask", "imgArtMask"]
+var frameMaskList = ["imgTypeMask", "imgTitleMask", "imgPinlineMask", "imgRulesMask", "imgFrameMask", "imgArtMask", "imgBorderMask"]
 for (var i = 0; i < frameMaskList.length; i++) {
 	createImage(frameMaskList[i], "sectionFrame")
 	window[frameMaskList[i]].load("data/borders/m15/" + frameMaskList[i] + ".png")
@@ -457,8 +487,6 @@ for (var i = 0; i < manaSymbolCodeList.length; i++) {
 		document.getElementById(this.name).src = this.src
 	}
 }
-//changeme
-imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetSymbolCode").value.toUpperCase() + "&size=large&rarity=" + document.getElementById("inputSetSymbolRarity").value.toUpperCase(), imgSetSymbol, "needsBoth")
 
 //============================================//
 //             Draw The Sections!             //
@@ -467,35 +495,39 @@ function sectionFrameFunction() {
 	//Whenever images for the card from finish loading this function will run
 	//Draw the primary frame stuff!
 	frameContext.clearRect(0, 0, cardWidth, cardHeight)
-	frameContext.mask(imgFrame)
+	if (cardData.transparency && document.getElementById("inputCheckboxFrameRight").checked) {
+		frameContext.mask(imgFrame, "imgMultiGradient,source-over;imgWhite,source-out")
+	} else {
+		frameContext.mask(imgFrame)
+	}
 	if (document.getElementById("inputCheckboxFrameRight").checked) {
 		frameContext.mask(imgFrameRight, "imgMultiGradient,source-over")
 	}
-	if (document.getElementById("inputCheckboxRulesBox").checked) {
+	if (document.getElementById("inputCheckboxRulesBox").checked && cardData.rulesBox) {
 		frameContext.mask(imgRulesBox, "imgRulesMask,source-over")
 		if (document.getElementById("inputCheckboxRulesBoxRight").checked) {
 			frameContext.mask(imgRulesBoxRight, "imgRulesMask,source-over;imgMultiGradient,source-in")
 		}
 	}
-	if (document.getElementById("inputCheckboxTitleTypeBoxes").checked) {
+	if (document.getElementById("inputCheckboxTitleTypeBoxes").checked && cardData.titleTypeBoxes) {
 		frameContext.mask(imgTitleTypeBoxes, "imgTitleMask,source-over;imgTypeMask,source-over")
 		if (document.getElementById("inputCheckboxTitleTypeBoxesRight").checked) {
 			frameContext.mask(imgTitleTypeBoxesRight, "imgTitleMask,source-over;imgTypeMask,source-over;imgMultiGradient,source-in")
 		}
 	}
-	if (document.getElementById("inputCheckboxNyx").checked) {
+	if (document.getElementById("inputCheckboxNyx").checked && cardData.nyx) {
 		frameContext.mask(imgNyx)
 		if (document.getElementById("inputCheckboxFrameRight").checked) {
 			frameContext.mask(imgNyxRight, "imgMultiGradient,source-over")
 		}
 	}
-	if (document.getElementById("inputCheckboxPinline").checked) {
+	if (document.getElementById("inputCheckboxPinline").checked && cardData.pinline) {
 		frameContext.mask(imgPinline, "imgPinlineMask,source-over")
 		if (document.getElementById("inputCheckboxPinlineRight").checked) {
 			frameContext.mask(imgPinlineRight, "imgPinlineMask,source-over;imgMultiGradient,source-in")
 		}
 	}
-	if (document.getElementById("inputCheckboxMiracle").checked) {
+	if (document.getElementById("inputCheckboxMiracle").checked && cardData.miracle) {
 		if ((document.getElementById("inputCheckboxTitleTypeBoxes").checked && document.getElementById("inputCheckboxTitleTypeBoxesRight").checked) || (document.getElementById("inputCheckboxFrameRight").checked && document.getElementById("inputCheckboxTitleTypeBoxes").checked == false)) {
 			frameContext.mask(imgMiracle) //changeme
 			frameContext.mask(imgMiracleRight, "imgMultiGradient,source-over")
@@ -503,7 +535,8 @@ function sectionFrameFunction() {
 			frameContext.mask(imgMiracle)
 		}
 	}
-	if (document.getElementById("inputCheckboxLegendary").checked) {
+	frameContext.mask(imgBorderMask, "none", document.getElementById("inputBorderColor").value)
+	if (document.getElementById("inputCheckboxLegendary").checked && cardData.legendary) {
 		frameContext.fillStyle = "black"
 		frameContext.fillRect(0, 0, cardWidth, 50)
 		frameContext.mask(imgLegendary, "imgTitleMask,source-over;imgWhite,source-out")
@@ -511,8 +544,7 @@ function sectionFrameFunction() {
 			frameContext.mask(imgLegendaryRight, "imgTitleMask,source-over;imgMultiGradient,source-out")
 		}
 	}
-	
-	if (document.getElementById("inputCheckboxRareStamp").checked) {
+	if (document.getElementById("inputCheckboxRareStamp").checked && cardData.rareStamp) {
 		frameContext.mask(imgRareStamp)
 		if ((document.getElementById("inputCheckboxPinline").checked && document.getElementById("inputCheckboxPinlineRight").checked) || (document.getElementById("inputCheckboxFrameRight").checked && document.getElementById("inputCheckboxPinline").checked == false)) {
 			frameContext.mask(imgRareStampRight, "imgMultiGradient,source-over")
@@ -521,7 +553,7 @@ function sectionFrameFunction() {
 	}
 	//Erase anything if needed (includes opacity fun)
 	frameContext.globalCompositeOperation = "destination-out"
-	frameContext.mask(imgArtMask)
+	// frameContext.mask(imgArtMask)
 	frameContext.mask(imgCornerMask)
 	frameContext.mask(imgWhite, "imgTitleMask,source-over;imgTypeMask,source-over", "none", 1 - (parseInt(document.getElementById("inputTitleTypeOpacity").value) / 100))
 	frameContext.mask(imgWhite, "imgRulesMask,source-over", "none", 1 - (parseInt(document.getElementById("inputRulesBoxOpacity").value) / 100))
@@ -537,11 +569,11 @@ function sectionTextFunction() {
 	textContext.clearRect(0, 0, cardWidth, cardHeight)
 	//mana cost, name, type, text
 	var manaSymbolWidth = textContext.manaCost(document.getElementById("inputCost").value, cardData.manaSymbolX, cardData.manaSymbolY, cardData.manaSymbolRadius, cardData.manaSymbolDirection)
-	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleRight - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, false, document.getElementById("inputCheckboxTitleOutline").checked, document.getElementById("inputTitleOutlineColor").value)
-	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeRight, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, false, document.getElementById("inputCheckboxTypeOutline").checked, document.getElementById("inputTypeOutlineColor").value)
+	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleRight - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, false, document.getElementById("inputCheckboxTitleOutline").checked, document.getElementById("inputTitleOutlineColor").value, cardData.titleAlignment)
+	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeRight, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, false, document.getElementById("inputCheckboxTypeOutline").checked, document.getElementById("inputTypeOutlineColor").value, cardData.typeAlignment)
 	textContext.writeText(document.getElementById("inputText").value, cardData.textX, cardData.textY + parseInt(document.getElementById("inputTextDown").value), cardData.textRight, cardData.textFont, parseInt(document.getElementById("inputTextSize").value), document.getElementById("inputRulesColor").value, true, document.getElementById("inputCheckboxRulesOutline").checked, document.getElementById("inputRulesOutlineColor").value)
 	//Power Toughness
-	if (document.getElementById("inputCheckboxPowerToughness").checked) {
+	if (document.getElementById("inputCheckboxPowerToughness").checked && cardData.creature) {
 		imgPowerToughness.xVal = cardData.ptBoxX
 		imgPowerToughness.yVal = cardData.ptBoxY
 		imgPowerToughness.wVal = cardData.ptBoxWidth
@@ -587,22 +619,29 @@ function sectionTextFunction() {
 		infoCopyright = ""
 	}
 	var copyrightY = 997
-	if (document.getElementById("inputCheckboxPowerToughness").checked) {
+	if (document.getElementById("inputCheckboxPowerToughness").checked && cardData.creature) {
 		copyrightY = 1016
 	}
 	textContext.fillText(infoCopyright, 700, copyrightY)
 	textContext.textAlign = "left"
 	drawCard()
 }
-//changeme
-setTimeout(function(){sectionTextFunction()}, 500)
-setTimeout(function(){sectionTextFunction()}, 1000)
 
 function sectionOtherFunction() {
 	//clears the 'other' canvas
 	otherContext.clearRect(0, 0, cardWidth, cardHeight)
 	if (document.getElementById("inputCheckboxSetSymbol").checked) {
 		//Set Symbol
+		switch(cardData.setSymbolAlignment) {
+			case "left":
+				setSymbolAlignment = -1
+				break
+			case "center":
+				setSymbolAlignment = 1/2
+				break
+			default:
+				setSymbolAlignment = 1
+		}
 		var setSymbolWidth = cardData.setSymbolWidth
 		var setSymbolHeight = imgSetSymbol.height / imgSetSymbol.width * setSymbolWidth
 		if (setSymbolHeight > cardData.setSymbolHeight) {
@@ -611,7 +650,7 @@ function sectionOtherFunction() {
 		}
 		setSymbolWidth *= parseInt(document.getElementById("inputSetSymbolScale").value) / 100
 		setSymbolHeight *= parseInt(document.getElementById("inputSetSymbolScale").value) / 100
-		otherContext.drawImage(imgSetSymbol, cardData.setSymbolX - setSymbolWidth, cardData.setSymbolY - setSymbolHeight / 2, setSymbolWidth, setSymbolHeight)
+		otherContext.drawImage(imgSetSymbol, cardData.setSymbolX - setSymbolWidth * setSymbolAlignment, cardData.setSymbolY - setSymbolHeight / 2, setSymbolWidth, setSymbolHeight)
 	}
 	if (document.getElementById("inputCheckboxWatermark").checked) {
 		//Watermark
@@ -639,7 +678,8 @@ function sectionOtherFunction() {
 
 function drawCard() {
 	//Clears the card
-	card.clearRect(0, 0, cardWidth, cardHeight)
+	// card.clearRect(0, 0, cardWidth, cardHeight)
+	card.mask(imgWhite, "none", document.getElementById("inputBorderColor").value)
 	//Draws the card art
 	card.drawImage(imgCardArt, parseInt(document.getElementById("inputCardArtX").value) + cardData.cardArtX, parseInt(document.getElementById("inputCardArtY").value) + cardData.cardArtY, imgCardArt.width * document.getElementById("inputCardArtZoom").value / 100, imgCardArt.height * document.getElementById("inputCardArtZoom").value / 100)
 	//Draws the card frame
@@ -781,35 +821,43 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 //           Special Image Loading            //
 //============================================//
 function loadLegendaryImages() {
-	if (document.getElementById("inputCheckboxPinline").checked) {
-		imgLegendary.load(imgPinline.src.replace("frame.png", "legendary.png"))
-		imgLegendaryRight.load(imgPinlineRight.src.replace("frame.png", "legendary.png"))
-	} else {
-		imgLegendary.load(imgFrame.src.replace("frame.png", "legendary.png"))
-		imgLegendaryRight.load(imgFrameRight.src.replace("frame.png", "legendary.png"))
+	if (cardData.legendary) {
+		if (document.getElementById("inputCheckboxPinline").checked) {
+			imgLegendary.load(imgPinline.src.replace("frame.png", "legendary.png"))
+			imgLegendaryRight.load(imgPinlineRight.src.replace("frame.png", "legendary.png"))
+		} else {
+			imgLegendary.load(imgFrame.src.replace("frame.png", "legendary.png"))
+			imgLegendaryRight.load(imgFrameRight.src.replace("frame.png", "legendary.png"))
+		}
 	}
 }
 function loadRareStampImages() {
-	if (document.getElementById("inputCheckboxPinline").checked) {
-		imgRareStamp.load(imgPinline.src.replace("frame.png", "stamp.png"))
-		imgRareStampRight.load(imgPinlineRight.src.replace("frame.png", "stamp.png"))
-	} else {
-		imgRareStamp.load(imgFrame.src.replace("frame.png", "stamp.png"))
-		imgRareStampRight.load(imgFrameRight.src.replace("frame.png", "stamp.png"))
+	if (cardData.rareStamp) {
+		if (document.getElementById("inputCheckboxPinline").checked) {
+			imgRareStamp.load(imgPinline.src.replace("frame.png", "stamp.png"))
+			imgRareStampRight.load(imgPinlineRight.src.replace("frame.png", "stamp.png"))
+		} else {
+			imgRareStamp.load(imgFrame.src.replace("frame.png", "stamp.png"))
+			imgRareStampRight.load(imgFrameRight.src.replace("frame.png", "stamp.png"))
+		}
 	}
 }
 function loadMiracleImages() {
-	if (document.getElementById("inputCheckboxTitleTypeBoxes").checked) {
-		imgMiracle.load(imgTitleTypeBoxes.src.replace("frame.png", "miracle.png"))
-		imgMiracleRight.load(imgTitleTypeBoxesRight.src.replace("frame.png", "miracle.png"))
-	} else {
-		imgMiracle.load(imgFrame.src.replace("frame.png", "miracle.png"))
-		imgMiracleRight.load(imgFrameRight.src.replace("frame.png", "miracle.png"))
+	if (cardData.miracle) {
+		if (document.getElementById("inputCheckboxTitleTypeBoxes").checked) {
+			imgMiracle.load(imgTitleTypeBoxes.src.replace("frame.png", "miracle.png"))
+			imgMiracleRight.load(imgTitleTypeBoxesRight.src.replace("frame.png", "miracle.png"))
+		} else {
+			imgMiracle.load(imgFrame.src.replace("frame.png", "miracle.png"))
+			imgMiracleRight.load(imgFrameRight.src.replace("frame.png", "miracle.png"))
+		}
 	}
 }
 function loadNyxImages() {
-	imgNyx.load(imgFrame.src.replace("frame.png", "nyx.png"))
-	imgNyxRight.load(imgFrameRight.src.replace("frame.png", "nyx.png"))
+	if (cardData.nyx) {
+		imgNyx.load(imgFrame.src.replace("frame.png", "nyx.png"))
+		imgNyxRight.load(imgFrameRight.src.replace("frame.png", "nyx.png"))
+	}
 }
 for (var i = 0; i < document.getElementsByClassName("changesFrame").length; i++) {
 	document.getElementsByClassName("changesFrame")[i].addEventListener("change", function() {loadLegendaryImages(); loadRareStampImages(); loadNyxImages(); loadMiracleImages()}, false)
@@ -821,8 +869,88 @@ for (var i = 0; i < document.getElementsByClassName("changesPinline").length; i+
 	document.getElementsByClassName("changesPinline")[i].addEventListener("change", function() {loadLegendaryImages(); loadRareStampImages()}, false)
 }
 
+//============================================//
+//                Brower Stuff!               //
+//============================================//
+//Determine browser
+if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ) {
+	var isMobile = true
+} else {
+	var isMobile = false
+}
+var isChrome = navigator.userAgent.indexOf("Chrome") > -1
+var isExplorer = navigator.userAgent.indexOf("MSIE") > -1
+var isFirefox = navigator.userAgent.indexOf("Firefox") > -1
+var isSafari = navigator.userAgent.indexOf("Safari") > -1
+if (isChrome == true && isSafari == true) {
+	isSafari = false
+}
+//Now act on different browser craziness...
+if (isSafari == true) {
+	if (isMobile == true) {
+		//Safari for iOS
+		textBaselineShift = [-0.17, -0.08]
+	} else {
+		//Safari for macOS
+		textBaselineShift = [-0.17, 0]
+	}
+}
+function setCookie(cookieName, cookieValue) {
+  	var tempDate = new Date();
+  	tempDate.setTime(tempDate.getTime() + (31 * 24 * 60 * 60 * 1000)); //days*hours*minutes*seconds*milliseconds
+  	var expires = "expires=" + tempDate.toUTCString();
+  	document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+}
+function getCookie(cookieName) {
+  	var name = cookieName + "=";
+  	var cookieArray = document.cookie.split(";");
+  	for(var i = 0; i < cookieArray.length; i++) {
+    	var tempCookie = cookieArray[i];
+    	while (tempCookie.charAt(0) == " ") {
+      		tempCookie = tempCookie.substring(1);
+    	}
+    	if (tempCookie.indexOf(name) == 0) {
+     		return tempCookie.substring(name.length, tempCookie.length);
+    	}
+  	}
+  	return "";
+}
+function checkCookies() {
+	if (getCookie("visited") != "true") {
+		if (isMobile == true) {
+            alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
+        } else if (isSafari == false && isChrome == false) {
+            alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Safari or Chrome. Everything may work perfectly, but if you notice that the cards look odd try using Safari or Chrome.")
+        }
+        setCookie("visited", "true")
+	} else {
+		console.log("Welcome back to Card Conjurer!")
+	}
+}
+
+//============================================//
+//                    OTHER                   //
+//============================================//
+//changeme (FIND A BETTER PLACE FOR THIS)
+function cwidth(originalValue = 750, originalCardWidth = 750) {
+	return (originalValue / originalCardWidth * cardWidth)
+}
+function cheight(originalValue = 1050, originalCardHeight = 1050) {
+	return (originalValue / originalCardHeight * cardHeight)
+}
+
 //Runs stuff at the very end (once everything is set up)
-defaultImageValues()
+checkCookies()
+backToDefault("m15")
+loadScript("data/other/setCodeList.js")
+//changeme
+setTimeout(function(){sectionTextFunction()}, 100)
+setTimeout(function(){sectionTextFunction()}, 250)
+//Only for working on frames n' stuff :)
+// setTimeout(function(){
+// 	document.getElementById("inputCardVersion").value = "fullArtLandUnstable"
+// 	document.getElementById("inputCardVersion").onchange()
+// }, 50)
 
 //============================================//
 //            RIP OLD CARD CONJURER           //

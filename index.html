@@ -61,7 +61,7 @@
 	<div class="title"><img src="images/title.png"></div>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
-			<canvas id="cardCanvas" width="750" height="1050"></canvas>
+			<canvas id="cardCanvas"></canvas>
 		</div>
 		<div class="cmmArea">
 			<div class="grid selectionGrid">
@@ -89,7 +89,7 @@
 				<div class="cmm shown" id="cmm-frame">
 					Border
 					<span class="dropdown">
-						<select onchange="loadScript('data/borders/' + this.value + '/border.js')">
+						<select onchange="backToDefault(this.value)" id="inputCardVersion">
 							<option value="m15">M15</option>
 							<option value="fullArtLandUnstable">Full Art Land (Unstable)</option>
 						</select>
@@ -97,7 +97,7 @@
 					<br><br>
 					Frame
 					<span class="dropdown">
-						<select class="selectColor changesFrame" onchange="imgFrame.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesFrame" onchange="imgFrame.load(this.value + 'frame.png')" id="inputFrameColor"></select>
 					</span>
 					<br>
 					<div class="checkbox">
@@ -197,25 +197,27 @@
 					Pinline Opacity
 					<input id="inputPinlineOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
 					<br><br>
-					Title Color <input type="color" id="inputTitleColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTitleOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					Title Color <input type="color" id="inputTitleColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTitleOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxTitleOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxTitleOutline" />
 						<div>Title Outline</div>
 					</div>
-					Type Color <input type="color" id="inputTypeColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTypeOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					Type Color <input type="color" id="inputTypeColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTypeOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxTypeOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxTypeOutline" />
 						<div>Type Outline</div>
 					</div>
-					Rules Color <input type="color" id="inputRulesColor" value="#000000" onchange="sectionTextFunction()"> Outline <input type="color" id="inputRulesOutlineColor" value="#ffffff" onchange="sectionTextFunction()">
+					Rules Color <input type="color" id="inputRulesColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputRulesOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxRulesOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxRulesOutline" />
 						<div>Rules Outline</div>
 					</div>
-					<input type="color" id="inputCreatureColor" value="#000000" onchange="sectionTextFunction()"> Power/Toughness Color<br>
+					<input type="color" id="inputCreatureColor" value="#000000" onchange="sectionTextFunction()"> Power/Toughness Color
+					<br><br>
+					<input type="color" id="inputBorderColor" value="#000000" onchange="sectionFrameFunction()"> Border Color
 				</div>
 				<div class="cmm" id="cmm-text">
 					Name
