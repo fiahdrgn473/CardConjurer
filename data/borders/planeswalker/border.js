@@ -5,12 +5,9 @@
 cardData.miracle = false
 cardData.nyx = false
 cardData.legendary = false
-// cardData.creature = false
-// cardData.rulesBox = false
-cardData.rareStamp = false
 //Specific Values
 cardData.textX = cwidth(134)
-cardData.textY = cheight(656)
+cardData.textY = cheight(687)
 cardData.textRight = cwidth(682)
 cardData.cardArtX = cwidth(52)
 cardData.cardArtY = cheight(106)
@@ -32,7 +29,8 @@ cardData.setSymbolRight = cwidth(695)
 //Images
 imgPowerToughness.load("data/borders/planeswalker/white/pt.png")
 imgArtMask.load("data/borders/planeswalker/imgArtMask.png")
-// imgFrameMask.load("data/borders/fullArtLandM15/imgFrameMask.png")
+imgFrameMask.load("data/borders/planeswalker/imgFrameMask.png")
+imgBorderMask.load("data/borders/planeswalker/imgBorderMask.png")
 imgPinlineMask.load("data/borders/planeswalker/imgPinlineMask.png")
 imgTitleMask.load("data/borders/planeswalker/imgTitleMask.png")
 imgTypeMask.load("data/borders/planeswalker/imgTypeMask.png")
