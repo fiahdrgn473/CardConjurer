@@ -28,7 +28,8 @@ var defaultCardData = {
 	watermarkWidth:cwidth(520), watermarkHeight:cheight(250), watermarkY:cheight(815),
 	cardArtX:cwidth(58), cardArtY:cheight(118),
 	miracle:true, nyx:true, legendary:true, creature:true, rulesBox:true, pinline:true, rareStamp:true, titleTypeBoxes:true,
-	transparency:false
+	transparency:false,
+	specialImageA:false
 }
 var cardData = {}
 Object.assign(cardData, defaultCardData)
@@ -82,13 +83,15 @@ newCanvas("text")
 newCanvas("other")
 newCanvas("transparent")
 newCanvas("crop")
+newCanvas("specialA")
+newCanvas("specialB")
 
 //============================================//
 //          Custom Canvas Functions           //
 //============================================//
 //Create custom canvas functions
 //Image masks
-CanvasRenderingContext2D.prototype.mask = function(image, masks, color, opacity = 1) {
+CanvasRenderingContext2D.prototype.mask = function(image, masks, color, maskOpacity = 1) {
 	//Clear the mask canvas
     maskContext.clearRect(0, 0, cardWidth, cardHeight)
     maskContext.globalCompositeOperation = "source-over"
@@ -108,7 +111,8 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, opacity 
 	    //Now all the masks are applied. Draw the image, if provided.
    		maskContext.globalCompositeOperation = "source-in"
     }
-    maskContext.globalAlpha = opacity
+    maskContext.globalAlpha = maskOpacity
+
     if (image != "none") {
     	maskContext.drawImage(image, image.xVal, image.yVal, image.wVal, image.hVal)
     }
@@ -122,7 +126,7 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, opacity 
     this.drawImage(maskCanvas, 0, 0, cardWidth, cardHeight)
 }
 
-//Text processor... kind of...
+//Text processor... kind of?
 CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor, textAlignment = "left") {
 	this.font = textFontSize + "px " + textFont
 	this.fillStyle = textColor
@@ -133,6 +137,10 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 	var y = inputY
 	var rightLimit = inputRightLimit
 	var splitText = text.split(" ")
+	for (var i = 0; i < splitText.length - 1; i ++) {
+		//adds a space to the end of every word (they used to have one until the split command took out all the spaces)
+		splitText[i] += " "
+	}
 	if (skipLines == false) {
 		//The text is condensed into one line
 		while(this.measureText(text).width + x > rightLimit) {
@@ -222,7 +230,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 							wordToWrite = splitText[i].slice(0, splitText[i].indexOf("{"))
 						} else if (splitText[i] != "" && splitText != " ") {
 							//There aren't any codes left. Finish up.
-							wordToWrite = splitText[i] + " "
+							wordToWrite = splitText[i] //+ " "
 						}
 						splitText[i] = splitText[i].substring(wordToWrite.length)
 					}
@@ -245,18 +253,18 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 						}
 					}
 				} //WHILE LOOP ENDS HERE
-			} else if (this.measureText(currentString + " " + splitText[i]).width + currentX > rightLimit) {
+			} else if (this.measureText(currentString /*+ " "*/ + splitText[i]).width + currentX > rightLimit) {
 				//There aren't any codes, but the text doesn't fit. Finish writing the current line and move to the next one.
 				if (outline) {
 					this.strokeText(currentString, currentX, currentY)
 				}
 				this.fillText(currentString, currentX, currentY)
-				currentString = splitText[i] + " "
+				currentString = splitText[i] //+ " "
 				currentY += textFontSize
 				currentX = x
 			} else {
 				//No codes and the word fits. Add it to the current line.
-				currentString += splitText[i] + " "
+				currentString += splitText[i] //+ " "
 			}
 			if (i == splitText.length - 1) {
 				if (outline) {
@@ -476,6 +484,12 @@ for (var i = 0; i < userInputImageList.length; i++) {
 		}
 	}
 }
+//Any images that may or may not be used
+var staticImageList = ["imgAbilityLineEven", "imgAbilityLineOdd"]
+for (var i = 0; i < staticImageList.length; i++) {
+	createImage(staticImageList[i], "none")
+	window[staticImageList[i]].load("data/borders/imgBlank.png")
+}
 //Mana symbol Array setup
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0"]
 var manaSymbolImageList = new Array()
@@ -496,12 +510,12 @@ function sectionFrameFunction() {
 	//Draw the primary frame stuff!
 	frameContext.clearRect(0, 0, cardWidth, cardHeight)
 	if (cardData.transparency && document.getElementById("inputCheckboxFrameRight").checked) {
-		frameContext.mask(imgFrame, "imgMultiGradient,source-over;imgWhite,source-out")
+		frameContext.mask(imgFrame, "imgMultiGradient,source-over;imgWhite,source-out;imgArtMask,destination-out")
 	} else {
-		frameContext.mask(imgFrame)
+		frameContext.mask(imgFrame, "imgArtMask,source-over;imgWhite,source-out")
 	}
 	if (document.getElementById("inputCheckboxFrameRight").checked) {
-		frameContext.mask(imgFrameRight, "imgMultiGradient,source-over")
+		frameContext.mask(imgFrameRight, "imgMultiGradient,source-over;imgArtMask,destination-out")
 	}
 	if (document.getElementById("inputCheckboxRulesBox").checked && cardData.rulesBox) {
 		frameContext.mask(imgRulesBox, "imgRulesMask,source-over")
@@ -537,7 +551,7 @@ function sectionFrameFunction() {
 	}
 	frameContext.mask(imgBorderMask, "none", document.getElementById("inputBorderColor").value)
 	if (document.getElementById("inputCheckboxLegendary").checked && cardData.legendary) {
-		frameContext.fillStyle = "black"
+		frameContext.fillStyle = document.getElementById("inputBorderColor").value
 		frameContext.fillRect(0, 0, cardWidth, 50)
 		frameContext.mask(imgLegendary, "imgTitleMask,source-over;imgWhite,source-out")
 		if ((document.getElementById("inputCheckboxPinline").checked && document.getElementById("inputCheckboxPinlineRight").checked) || (document.getElementById("inputCheckboxFrameRight").checked && document.getElementById("inputCheckboxPinline").checked == false)) {
@@ -664,7 +678,7 @@ function sectionOtherFunction() {
 		imgWatermark.yVal = cardData.watermarkY - watermarkHeight / 2
 		imgWatermark.wVal = watermarkWidth
 		imgWatermark.hVal = watermarkHeight
-		otherContext.globalAlpha = 0.4
+		otherContext.globalAlpha = parseInt(document.getElementById("inputWatermarkOpacity").value) / 100
 		if (document.getElementById("inputCheckboxSecondWatermark").checked) {
 			otherContext.mask(imgWatermark, "imgMultiGradient,source-over;imgWhite,source-out", document.getElementById("inputWatermarkColor").value)
 			otherContext.mask(imgWatermark, "imgMultiGradient,source-over", document.getElementById("inputSecondWatermarkColor").value)
@@ -682,8 +696,16 @@ function drawCard() {
 	card.mask(imgWhite, "none", document.getElementById("inputBorderColor").value)
 	//Draws the card art
 	card.drawImage(imgCardArt, parseInt(document.getElementById("inputCardArtX").value) + cardData.cardArtX, parseInt(document.getElementById("inputCardArtY").value) + cardData.cardArtY, imgCardArt.width * document.getElementById("inputCardArtZoom").value / 100, imgCardArt.height * document.getElementById("inputCardArtZoom").value / 100)
+	//Might do something special? Usually the ability lines for planeswalkers
+	if (cardData.specialImageA == true) {
+		card.drawImage(specialACanvas, 0, 0, cardWidth, cardHeight)
+	}
 	//Draws the card frame
 	card.drawImage(frameCanvas, 0, 0, cardWidth, cardHeight)
+	//Might do something special? Usually the ability icons for planeswalkers
+	if (cardData.specialImageB == true) {
+		card.drawImage(specialBCanvas, 0, 0, cardWidth, cardHeight)
+	}
 	//Draws the card text
 	card.drawImage(textCanvas, 0, 0, cardWidth, cardHeight)
 	//Draws the other stuff
@@ -944,13 +966,13 @@ checkCookies()
 backToDefault("m15")
 loadScript("data/other/setCodeList.js")
 //changeme
-setTimeout(function(){sectionTextFunction()}, 100)
 setTimeout(function(){sectionTextFunction()}, 250)
+setTimeout(function(){sectionTextFunction()}, 500)
 //Only for working on frames n' stuff :)
-// setTimeout(function(){
-// 	document.getElementById("inputCardVersion").value = "fullArtLandUnstable"
-// 	document.getElementById("inputCardVersion").onchange()
-// }, 50)
+setTimeout(function(){
+	document.getElementById("inputCardVersion").value = "planeswalker"
+	document.getElementById("inputCardVersion").onchange()
+}, 500)
 
 //============================================//
 //            RIP OLD CARD CONJURER           //

@@ -73,6 +73,7 @@
 				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
+				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 				<!-- <div onclick="toggleView('color', 'cmm')">Color</div>
 				<div onclick="toggleView('general', 'cmm')">General</div>
 				<div onclick="toggleView('text', 'cmm')">Text</div>
@@ -91,6 +92,8 @@
 					<span class="dropdown">
 						<select onchange="backToDefault(this.value)" id="inputCardVersion">
 							<option value="m15">M15</option>
+							<option value="planeswalker">Planeswalker</option>
+							<option value="fullArtLandM15">Full Art Land (M15)</option>
 							<option value="fullArtLandUnstable">Full Art Land (Unstable)</option>
 						</select>
 					</span>
@@ -229,7 +232,7 @@
 					Type
 					<input id="inputType" type="text" class="input" value="" oninput="sectionTextFunction()">
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxPowerToughness" onchange="sectionTextFunction()" />
+						<input type="checkbox" id="inputCheckboxPowerToughness" onchange="sectionTextFunction()">
 						<label for="inputCheckboxPowerToughness" />
 						<div>Power/Toughness</div>
 					</div>
@@ -314,6 +317,9 @@
 						<label for="inputCheckboxWatermark" />
 						<div>Watermark</div>
 					</div>
+					Watermark Opacity
+					<input id="inputWatermarkOpacity" type="number" class="input" min="0" max="100" value="40" step="1" oninput="sectionOtherFunction()">
+					<br>
 					Set Code
 					<input id="inputWatermarkCode" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + this.value.toUpperCase() + "&size=large&rarity=C", imgWatermark, "needsBoth")'>
 					Or Upload an Image
@@ -353,6 +359,18 @@
 				</div>
 				<div class="cmm" id="cmm-download">
 					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
+				</div>
+				<div class="cmm" id="cmm-planeswalker">
+					Planeswalker Ability Line Height
+					<input type="number" id="inputAbilityLine1" value="104" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" id="inputAbilityLine2" value="104" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" id="inputAbilityLine3" value="104" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" id="inputAbilityLine4" value="0" min="0" oninput="planeswalkerAbilityLines()">
+					Planeswalker Ability Values
+					<input type="text" id="inputAbilityValue0" value="+1" oninput="planeswalkerAbilityIcons()">
+					<input type="text" id="inputAbilityValue1" value="0" oninput="planeswalkerAbilityIcons()">
+					<input type="text" id="inputAbilityValue2" value="-1" oninput="planeswalkerAbilityIcons()">
+					<input type="text" id="inputAbilityValue3" value="" oninput="planeswalkerAbilityIcons()">
 				</div>
 				<!-- <div class="cmm shown" id="cmm-color">
 					Border
