@@ -86,5 +86,5 @@ function randomSet() {
 	}
 	document.getElementById("inputSetSymbolCode").value = set
 	document.getElementById("inputSetSymbolRarity").value = rarity
-	imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + set + "&size=large&rarity=" + rarity, imgSetSymbol, "needsBoth")
+	imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + set + "&size=large&rarity=" + rarity, imgSetSymbol, "needsCrop")
 }

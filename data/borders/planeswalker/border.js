@@ -83,20 +83,20 @@ function planeswalkerAbilityLines() {
 function planeswalkerAbilityIcons() {
 	switch (abilityLines.length) {
 		case 4:
-			abilityIconSpacing = 75
-			abilityIconStartShift = 12
+			abilityIconSpacing = cheight(75)
+			abilityIconStartShift = cheight(12)
 			break;
 		case 3:
-			abilityIconSpacing = 94
-			abilityIconStartShift = 0
+			abilityIconSpacing = cheight(94)
+			abilityIconStartShift = cheight(0)
 			break;
 		case 2:
-			abilityIconSpacing = 125
-			abilityIconStartShift = -32
+			abilityIconSpacing = cheight(135)
+			abilityIconStartShift = cheight(-35)
 			break;
 		case 1:
-			abilityIconSpacing = 0
-			abilityIconStartShift = -100
+			abilityIconSpacing = cheight(0)
+			abilityIconStartShift = cheight(-100)
 			break;
 	}
 	specialBContext.clearRect(0, 0, cardWidth, cardHeight)

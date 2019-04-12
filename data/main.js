@@ -6,7 +6,7 @@
 //============================================//
 //     Anything I Like to Change Often :)     //
 //============================================//
-randomizeSampleCards(4)
+randomizeSampleCards(5)
 
 //============================================//
 //         Setup Variables/Canvases           //
@@ -29,7 +29,7 @@ var defaultCardData = {
 	cardArtX:cwidth(58), cardArtY:cheight(118),
 	miracle:true, nyx:true, legendary:true, creature:true, rulesBox:true, pinline:true, rareStamp:true, titleTypeBoxes:true,
 	transparency:false,
-	specialImageA:false
+	specialImageA:false, specialImageB:false
 }
 var cardData = {}
 Object.assign(cardData, defaultCardData)
@@ -969,10 +969,10 @@ loadScript("data/other/setCodeList.js")
 setTimeout(function(){sectionTextFunction()}, 250)
 setTimeout(function(){sectionTextFunction()}, 500)
 //Only for working on frames n' stuff :)
-setTimeout(function(){
-	document.getElementById("inputCardVersion").value = "planeswalker"
-	document.getElementById("inputCardVersion").onchange()
-}, 500)
+// setTimeout(function(){
+// 	document.getElementById("inputCardVersion").value = "planeswalker"
+// 	document.getElementById("inputCardVersion").onchange()
+// }, 500)
 
 //============================================//
 //            RIP OLD CARD CONJURER           //
