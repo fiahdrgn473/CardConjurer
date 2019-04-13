@@ -1,145 +1,141 @@
-//Planeswalker Border
-//Anything to do with...
-//Loading Images
-imgMultiGradient.src = borderPath + "multiGradient.png"
-imgMultiMask.src = borderPath + "multiMask.png"
-imgFrameMask.src = borderPath + "frameMask.png"
-imgRareStampMask.src = borderPath + "rareStampMask.png"
-imgBorderMask.src = borderPath + "borderMask.png"
-imgAbilityLineOdd.src = borderPath + "abilityLineOdd.png"
-imgAbilityLineEven.src = borderPath + "abilityLineEven.png"
-document.getElementById("textSize").value = 33
+//============================================//
+//                 M15 Border                 //
+//============================================//
+//General Booleans
+cardData.miracle = false
+cardData.nyx = false
+cardData.legendary = false
+//Specific Values
+cardData.textX = cwidth(134)
+cardData.textY = cheight(687)
+cardData.textRight = cwidth(682)
+cardData.cardArtX = cwidth(52)
+cardData.cardArtY = cheight(106)
+cardData.titleFontSize = cwidth(40)
+cardData.titleX = cwidth(62)
+cardData.titleY = cheight(79)
+cardData.manaSymbolY = cheight(46)
+cardData.ptBoxX = cwidth(599)
+cardData.ptBoxY = cheight(922)
+cardData.ptBoxWidth = cwidth(120)
+cardData.ptBoxHeight = cheight(78)
+cardData.ptX = cwidth(657)
+cardData.ptY = cheight(974)
+cardData.watermarkY = cheight(805)
+cardData.watermarkWidth = cwidth(520)
+cardData.watermarkHeight = cheight(250)
+cardData.setSymbolY = cheight(618)
+cardData.setSymbolRight = cwidth(695)
+imgRareStamp.load("none", cwidth(329), cheight(945), cwidth(90), cheight(50))
+imgRareStampRight.load("none", cwidth(329), cheight(945), cwidth(90), cheight(50))
+imgStamp.load("none", cwidth(340), cheight(961), cwidth(70), cheight(37))
+//Images
+imgPowerToughness.load("data/borders/planeswalker/white/pt.png")
+imgArtMask.load("data/borders/planeswalker/imgArtMask.png")
+imgFrameMask.load("data/borders/planeswalker/imgFrameMask.png")
+imgBorderMask.load("data/borders/planeswalker/imgBorderMask.png")
+imgPinlineMask.load("data/borders/planeswalker/imgPinlineMask.png")
+imgTitleMask.load("data/borders/planeswalker/imgTitleMask.png")
+imgTypeMask.load("data/borders/planeswalker/imgTypeMask.png")
+imgAbilityLineEven.load("data/borders/planeswalker/imgAbilityLineEven.png")
+imgAbilityLineOdd.load("data/borders/planeswalker/imgAbilityLineOdd.png")
+//Loads the Colors
+loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,colorless-Colorless")
+//Anything special
 document.getElementById("inputCreatureColor").value = "#ffffff"
-//Card Title
-var titleFont = "40px belerenb" //40
-var titleFontSpacing = "-0.1px" //-0.1
-var titleX = 62 //62
-var titleY = 48 //48
-//Mana Cost
-var manaCostRadius = 17.5 //17.5
-var manaCostX = 657 //657
-var manaCostY = 46 //46
-//Card Type
-var typeFont = "33.5px belerenb" //33.5
-var typeFontSpacing = "0.05px" //0.05
-var typeX = 62 //62
-var typeY = 602 //602
-//Rules/Flavor Text
-var textFont = "px mplantin"
-var textFontSpacing = -0.4 //-0.4
-var textX = 134 //134
-var textY = 656 //656
-var textWidth = 682 //682
-//Power Toughness
-var ptFont = "39px belerenb" //39
-var ptFontSpacing = "0.3px" //0.3
-var ptTextX = 655 //655
-var ptTextY = 940 //940
-imgBorderCreature.imgValues(598, 920, 118, 75)
-//Bottom Info
-var infoY = 999 //993
-//Set Symbol
-var setSymbolY = 615 //615
-var setSymbolRight = 695 //695
-var setSymbolWidth = 90 //90
-var setSymbolHeight = 42 //42
-//Watermark
-var watermarkWidth = 520 //520
-var watermarkHeight = 250 //250
-var watermarkY = 805 //805
-//Rare Stamp
-var rareStampY = 955 //955
-//Color Options
-loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,colorless-Colorless,artifact-Artifact")
-document.getElementById("secondColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
-document.getElementById("thirdColorSelection").innerHTML = document.getElementById("colorSelection").innerHTML
-//"Being a Planeswalker is being able to do what a card do"
-// —Unknown AP English Student
-stampBorder = true
-var artX = 52
-var artY = 106
-//With all the new values in place, the program will update it's border images
-finishTemplate()
-//Any special functions go at the bottom
-var uniqueFunctionName = "planeswalkerCustomFunction"
+cardData.specialImageA = true
+cardData.specialImageB = true
+//Runs the things!
+sectionTextFunction()
+sectionFrameFunction()
+sectionOtherFunction()
 
-function planeswalkerCustomFunction() {
-	//Bottom info is important
-	bottomInfoM15()
-	//But now it has to draw/write the loyalty things!
-	var abilityLineY = 650
-	for (i = 0; i < abilityLines.length; i ++) {
-		var loyaltyValue = document.getElementById("abilityValue" + i).value
-		if (loyaltyValue != "") {
-			card.fillStyle = "white"
-			card.textAlign = "center"
-			card.font = "31px belerenbsc"
-			if (loyaltyValue.charAt(0) == "-") {
-				card.drawImage(manaSymbolImages[58], 34, abilityLineY + abilityLines[i] / 2 - 28, 84, 64)
-				card.fillText(loyaltyValue, 76, abilityLineY + abilityLines[i] / 2 - 17 + textBaselineShift[0] * card.font.split("px")[0])
-			} else if (loyaltyValue.charAt(0) == "+") {
-				card.drawImage(manaSymbolImages[59], 34, abilityLineY + abilityLines[i] / 2 - 38, 82, 62)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 19 + textBaselineShift[0] * card.font.split("px")[0])
-			} else {
-				card.drawImage(manaSymbolImages[60], 34, abilityLineY + abilityLines[i] / 2 - 28, 82, 56)
-				card.fillText(loyaltyValue, 74, abilityLineY + abilityLines[i] / 2 - 16 + textBaselineShift[0] * card.font.split("px")[0])
-			}
-			card.font = "37px mplantin"
-			card.fillStyle = "black"
-			card.fillText(":", 124, abilityLineY + abilityLines[i] / 2 - 23 + textBaselineShift[0] * card.font.split("px")[0])
-		}
-		abilityLineY += abilityLines[i]
-	}
-}
-
-var savedFrameMask = new Image()
-savedFrameMask.src = borderPath + "frameMask.png"
-var abilityLineCanvas = document.createElement("canvas")
-abilityLineCanvas.width = cardWidth
-abilityLineCanvas.height = cardHeight
-var abilityLineContext = abilityLineCanvas.getContext("2d")
+var abilityLineThickness = cheight(6)
 var abilityLines = []
 function planeswalkerAbilityLines() {
 	abilityLines = []
-	if (document.getElementById("abilityLine1").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("abilityLine1").value)}
-	if (document.getElementById("abilityLine2").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("abilityLine2").value)}
-	if (document.getElementById("abilityLine3").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("abilityLine3").value)}
-	if (document.getElementById("abilityLine4").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("abilityLine4").value)}
-	abilityLineContext.clearRect(0, 0, cardWidth, cardHeight)
-	var abilityLineY = 645
-	for (i = 0; i < abilityLines.length; i ++) {
-		if (i == abilityLines.length - 1) {
-			// abilityLines[i] += cardHeight - abilityLines[i]
-			if (i % 2 === 0) {
-				abilityLineContext.fillStyle = "#95959595"
-			} else {
-				abilityLineContext.fillStyle = "#6a6a6a6a"
-			}
-			abilityLineContext.fillRect(50, abilityLineY + 5, cardWidth - 100, cardHeight - abilityLineY - 90)
+	if (document.getElementById("inputAbilityLine1").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("inputAbilityLine1").value)}
+	if (document.getElementById("inputAbilityLine2").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("inputAbilityLine2").value)}
+	if (document.getElementById("inputAbilityLine3").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("inputAbilityLine3").value)}
+	if (document.getElementById("inputAbilityLine4").value > 0) {abilityLines[abilityLines.length] = parseInt(document.getElementById("inputAbilityLine4").value)}
+	specialAContext.clearRect(0, 0, cardWidth, cardHeight)
+	//Start with the background
+	var abilityLineCurrentY = cheight(655) - abilityLineThickness
+	for (var i = 0; i < abilityLines.length; i ++) {
+		//determine the correct color
+		if (i % 2 === 0) {
+			specialAContext.fillStyle = "#d3d3d3d3"
 		} else {
-			if (i % 2 === 0) {
-				abilityLineContext.fillStyle = "#95959595"
-				abilityLineContext.drawImage(imgAbilityLineOdd, 93, abilityLineY + abilityLines[i] - 5, 596, 10)
-			} else {
-				abilityLineContext.fillStyle = "#6a6a6a6a"
-				abilityLineContext.drawImage(imgAbilityLineEven, 93, abilityLineY + abilityLines[i] - 5, 596, 10)
-			}
-			abilityLineContext.fillRect(50, abilityLineY + 5, cardWidth - 100, abilityLines[i] - 10)
+			specialAContext.fillStyle = "#a8a8a8a8"
 		}
-		abilityLineY += abilityLines[i]
+		if (i == abilityLines.length - 1) {
+			//This is the last line
+			specialAContext.fillRect(cwidth(50), abilityLineCurrentY + abilityLineThickness, cwidth(649), cardHeight - abilityLineCurrentY - cheight(89) - abilityLineThickness)
+		} else {
+			specialAContext.fillRect(cwidth(50), abilityLineCurrentY + abilityLineThickness, cwidth(649), abilityLines[i] - abilityLineThickness * 2)
+			if (i % 2 === 0) {
+				specialAContext.drawImage(imgAbilityLineOdd, cwidth(92), abilityLineCurrentY + abilityLines[i] - abilityLineThickness, cwidth(599), abilityLineThickness * 2)
+			} else {
+				specialAContext.drawImage(imgAbilityLineEven, cwidth(92), abilityLineCurrentY + abilityLines[i] - abilityLineThickness, cwidth(599), abilityLineThickness * 2)
+			}
+		}
+		abilityLineCurrentY += abilityLines[i]
 	}
-	abilityLineContext.clearRect(0, 0, 93, cardHeight)
-	abilityLineContext.drawImage(savedFrameMask, 0, 0, cardWidth, cardHeight)
-    imgFrameMask.src = abilityLineCanvas.toDataURL()
-    imgFrameMask.hasToLoad = true
+	planeswalkerAbilityIcons()
 }
-imgFrameMask.onload = function() {
-	if (imgFrameMask.hasToLoad == true) {
-		imgFrameMask.hasToLoad = false
-		createBorder()
+function planeswalkerAbilityIcons() {
+	switch (abilityLines.length) {
+		case 4:
+			abilityIconSpacing = cheight(75)
+			abilityIconStartShift = cheight(12)
+			break;
+		case 3:
+			abilityIconSpacing = cheight(94)
+			abilityIconStartShift = cheight(0)
+			break;
+		case 2:
+			abilityIconSpacing = cheight(135)
+			abilityIconStartShift = cheight(-35)
+			break;
+		case 1:
+			abilityIconSpacing = cheight(0)
+			abilityIconStartShift = cheight(-100)
+			break;
 	}
+	specialBContext.clearRect(0, 0, cardWidth, cardHeight)
+	//Now the loyalty ability icons
+	var abilityLineCurrentY = cheight(705) - abilityIconStartShift
+	for (var i = 0; i < abilityLines.length; i ++) {
+		var loyaltyValue = document.getElementById("inputAbilityValue" + i).value
+		if (loyaltyValue != "") {
+			specialBContext.fillStyle = "white"
+			specialBContext.textAlign = "center"
+			specialBContext.font = cwidth(31) + "px belerenbsc"
+			if (loyaltyValue.charAt(0) == "-") {
+				specialBContext.drawImage(manaSymbolImageList[58], cwidth(35), abilityLineCurrentY - cheight(28), cwidth(86), cheight(64))
+				specialBContext.fillText(loyaltyValue, cwidth(76), abilityLineCurrentY + cheight(8))
+				specialBContext.font = cwidth(38) + "px mplantin"
+				specialBContext.fillStyle = "black"
+				specialBContext.fillText(":", cwidth(125), abilityLineCurrentY + cheight(5))
+			} else if (loyaltyValue.charAt(0) == "+") {
+				specialBContext.drawImage(manaSymbolImageList[59], cwidth(35), abilityLineCurrentY - cheight(36), cwidth(86), cheight(63))
+				specialBContext.fillText(loyaltyValue, cwidth(76), abilityLineCurrentY + cheight(9))
+				specialBContext.font = cwidth(38) + "px mplantin"
+				specialBContext.fillStyle = "black"
+				specialBContext.fillText(":", cwidth(125), abilityLineCurrentY + cheight(7))
+			} else {
+				specialBContext.drawImage(manaSymbolImageList[60], cwidth(35), abilityLineCurrentY - cheight(27), cwidth(85), cheight(56))
+				specialBContext.fillText(loyaltyValue, cwidth(76), abilityLineCurrentY + cheight(9))
+				specialBContext.font = cwidth(38) + "px mplantin"
+				specialBContext.fillStyle = "black"
+				specialBContext.fillText(":", cwidth(125), abilityLineCurrentY + cheight(5))
+			}
+			
+		}
+		abilityLineCurrentY += abilityIconSpacing
+	}
+	drawCard()
 }
-//Reveals the planeswalker card manipulation menu section
+
+setTimeout(function() {planeswalkerAbilityLines()}, 500)
 document.getElementById("cmmPlaneswalker").style.display = "block"
-//After a second the first ability lines will be generated
-setTimeout(function(){if (document.getElementById("borderSelection").value == "planeswalker/") {planeswalkerAbilityLines()}}, 1000)
