@@ -26,6 +26,9 @@ cardData.watermarkWidth = cwidth(520)
 cardData.watermarkHeight = cheight(250)
 cardData.setSymbolY = cheight(618)
 cardData.setSymbolRight = cwidth(695)
+imgRareStamp.load("none", cwidth(329), cheight(945), cwidth(90), cheight(50))
+imgRareStampRight.load("none", cwidth(329), cheight(945), cwidth(90), cheight(50))
+imgStamp.load("none", cwidth(340), cheight(961), cwidth(70), cheight(37))
 //Images
 imgPowerToughness.load("data/borders/planeswalker/white/pt.png")
 imgArtMask.load("data/borders/planeswalker/imgArtMask.png")
@@ -61,9 +64,9 @@ function planeswalkerAbilityLines() {
 	for (var i = 0; i < abilityLines.length; i ++) {
 		//determine the correct color
 		if (i % 2 === 0) {
-			specialAContext.fillStyle = "#95959595"
+			specialAContext.fillStyle = "#d3d3d3d3"
 		} else {
-			specialAContext.fillStyle = "#6a6a6a6a"
+			specialAContext.fillStyle = "#a8a8a8a8"
 		}
 		if (i == abilityLines.length - 1) {
 			//This is the last line
