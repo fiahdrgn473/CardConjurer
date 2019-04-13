@@ -14,7 +14,7 @@
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
 	<meta charset="UTF-8">
-	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=800">
+	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=780">
 	<PageMap>
     	<DataObject type="thumbnail">
       		<Attribute name="src" value="https://imkyle4815.github.io/cardconjurer/sampleCards/sample-card-6.png"/>
@@ -25,7 +25,7 @@
 	<meta name="thumbnail" content="https://imkyle4815.github.io/cardconjurer/sampleCards/sample-card-6.png">
 	<script>
 		window.onload = function() {
-		    if (screen.width > 800) {
+		    if (screen.width > 780) {
 		        var myViewPort = document.getElementById("pageViewport");
 		        myViewPort.setAttribute("content", "width=device-width, initial-scale=1");
 		    }
@@ -57,13 +57,21 @@
 	}
 	</script>
 </head>
+
+
+
+
+
+<header>
+	<div class="title"><img src="images/title.png" id="header"></div>
+</header>
+
 <body>
-	<div class="title"><img src="images/title.png"></div>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
 			<canvas id="cardCanvas"></canvas>
 		</div>
-		<div class="cmmArea">
+		<div class="cmmArea noVerticalPadding">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('frame', 'cmm')">Frame</div>
 				<div onclick="toggleView('text', 'cmm')">Text</div>
@@ -74,19 +82,8 @@
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
-				<!-- <div onclick="toggleView('color', 'cmm')">Color</div>
-				<div onclick="toggleView('general', 'cmm')">General</div>
-				<div onclick="toggleView('text', 'cmm')">Text</div>
-				<div onclick="toggleView('art', 'cmm')">Art</div>
-				<div onclick="toggleView('info', 'cmm')">Info</div>
-				<div onclick="toggleView('set', 'cmm')">Set</div>
-				<div onclick="toggleView('watermark', 'cmm')">Watermark</div>
-				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
-				<div onclick="toggleView('download', 'cmm')">Download</div>
-				<div onclick="toggleView('vanguard', 'cmm')" style="display: none;" id="cmmVanguard">Vanguard</div>
-				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div> -->
 			</div>
-			<div class="cardManipulationMenu">
+			<div class="selectionGridTarget">
 				<div class="cmm shown" id="cmm-frame">
 					Border
 					<span class="dropdown">
@@ -168,22 +165,22 @@
 				</div>
 				<div class="cmm" id="cmm-advanced">
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxLegendary" onchange="loadLegendaryImages()" />
+						<input type="checkbox" id="inputCheckboxLegendary" onchange="loadLegendaryImages()">
 						<label for="inputCheckboxLegendary" />
 						<div>Legendary</div>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxRareStamp" onchange="loadRareStampImages()" />
+						<input type="checkbox" id="inputCheckboxRareStamp" onchange="loadRareStampImages()">
 						<label for="inputCheckboxRareStamp" />
 						<div>Rare Stamp</div>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxNyx" onchange="loadNyxImages()" />
+						<input type="checkbox" id="inputCheckboxNyx" onchange="loadNyxImages()">
 						<label for="inputCheckboxNyx" />
 						<div>Nyx</div>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxMiracle" onchange="loadMiracleImages()" />
+						<input type="checkbox" id="inputCheckboxMiracle" onchange="loadMiracleImages()">
 						<label for="inputCheckboxMiracle" />
 						<div>Miracle</div>
 					</div>
@@ -276,7 +273,7 @@
 				<div class="cmm" id="cmm-art">
 					Upload an Image
 					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this.value, imgCardArt, 'none')">
-					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" class="input" type="text" placeholder="Via Card Name"></input>
+					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" class="input" type="text" placeholder="Via Card Name">
 					<input type="file" name="inputCardArt" class="input" accept="image/*" onchange="loadImage(event, imgCardArt)" id="inputPicture" placeholder="Via File Upload">
 					<br>
 					Card Name Result:
@@ -296,7 +293,7 @@
 				</div>
 				<div class="cmm" id="cmm-set">
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxSetSymbol" checked="true" onchange="sectionOtherFunction()" />
+						<input type="checkbox" id="inputCheckboxSetSymbol" checked="true" onchange="sectionOtherFunction()">
 						<label for="inputCheckboxSetSymbol" />
 						<div>Set Symbol</div>
 					</div>
@@ -313,7 +310,7 @@
 				</div>
 				<div class="cmm" id="cmm-watermark">
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxWatermark" checked="true" onchange="sectionOtherFunction()" />
+						<input type="checkbox" id="inputCheckboxWatermark" checked="true" onchange="sectionOtherFunction()">
 						<label for="inputCheckboxWatermark" />
 						<div>Watermark</div>
 					</div>
@@ -340,9 +337,9 @@
 						</select>
 					</span>
 					<div class="checkbox">
-						<input type="checkbox" id="inputCheckboxSecondWatermark" onchange="sectionOtherFunction()" />
+						<input type="checkbox" id="inputCheckboxSecondWatermark" onchange="sectionOtherFunction()">
 						<label for="inputCheckboxSecondWatermark" />
-						<div>Second WatermarkColor</div>
+						<div>Second Watermark Color</div>
 					</div>
 					<span class="dropdown">
 						<select onchange="sectionOtherFunction()" id="inputSecondWatermarkColor">
@@ -358,7 +355,11 @@
 					</span>
 				</div>
 				<div class="cmm" id="cmm-download">
-					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br>
+					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+					<br>
+					<div class="adspace">
+						Ads?
+					</div>
 				</div>
 				<div class="cmm" id="cmm-planeswalker">
 					Planeswalker Ability Line Height
@@ -374,7 +375,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="tutorialArea">
+		<div class="adspace">
+			Ads?
+		</div>
+		<div class="tutorialArea noVerticalPadding">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('about', 'extras')">About</div>
 				<div onclick="toggleView('tutorial', 'extras')">Tutorial</div>
@@ -382,7 +386,7 @@
 				<div onclick="toggleView('codes', 'extras')">Other Codes</div>
 				<div onclick="toggleView('set', 'extras')">Set Codes</div>
 			</div>
-			<div class="extrasMenu">
+			<div class="selectionGridTarget">
 				<div class="extras shown" id="extras-about">
 					<div class="text">
 						Welcome to Card Conjurer! 
@@ -405,12 +409,12 @@
 						I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation or using a referral link... Or you can check out my friend's youtube channel: Izzet Right?
 					</div><br>
 					<div class="grid donateGrid selectionGrid">
-						<div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="images/paypal.png"></img></div>
-						<!-- <div onclick="window.open('https://www.patreon.com/KyleBurton', '_blank');" style="color:rgb(255,89,0);">Patreon<img src="images/patreon.png"></img></div> -->
-						<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="images/pucatrade.png"></img></div>
-						<div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">Twitter<img src="images/twitter.png"></img></div>
-						<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="images/massdrop.png"></img></div>
-						<div onclick="window.open('https://www.youtube.com/channel/UC95Pd8lc8UWEkI96Nq_THvw', '_blank');" style="color:rgb(255,0,0);">Izzet Right?<img src="images/izzetright.png"></img></div>
+						<div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="images/paypal.png"></div>
+						<!-- <div onclick="window.open('https://www.patreon.com/KyleBurton', '_blank');" style="color:rgb(255,89,0);">Patreon<img src="images/patreon.png"></div> -->
+						<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="images/pucatrade.png"></div>
+						<div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">Twitter<img src="images/twitter.png"></div>
+						<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="images/massdrop.png"></div>
+						<div onclick="window.open('https://www.youtube.com/channel/UC95Pd8lc8UWEkI96Nq_THvw', '_blank');" style="color:rgb(255,0,0);">Izzet Right?<img src="images/izzetright.png"></div>
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
@@ -443,17 +447,25 @@
 				</div>
 			</div>
 		</div>
+		<div class="adspace">
+			Ads?
+		</div>
 		<div class="sampleGrid grid text">
 			Check out some samples<br>
 			<div class="noBorder">
-				<img id="sampleCardA" class="sampleCard"></img>
-				<img id="sampleCardB" class="sampleCard"></img>
-				<img id="sampleCardC" class="sampleCard"></img>
+				<img id="sampleCardA" class="sampleCard">
+				<img id="sampleCardB" class="sampleCard">
+				<img id="sampleCardC" class="sampleCard">
 			</div>
 		</div>
 	</div>
 </body>
+
 <footer class="info"><a href="https://imkyle4815.github.io/cardconjurer/TermsOfUse.txt" target="_blank">Terms&nbspof&nbspUse</a> &#8226 <a href="https://imkyle4815.github.io/cardconjurer/Disclaimer.txt" target="_blank">Disclaimer</a> &#8226 <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">Github&nbsppage</a> &#8226 <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">Contact</a></footer>
+
+
+
+
 
 <!--CSS-->
 <style>
@@ -500,7 +512,8 @@
 	/*Regular*/
 	--color-hover-grid: #0b6b00;
 	--color-border-selection-grid: #0f820040;
-	--color-gray: #00000088;
+	--color-gray: #00000077;
+	--color-gray-darker: #000000aa;
 	--color-border-main: #073c00;
 	--color-input: #073c00;
 }
@@ -511,15 +524,11 @@
 	font-size: 6vw;
 	user-select: none;
 	color: #eee;
-	-webkit-transition: 0.5s;
-  	transition: 0.5s;
+	-webkit-transition: 0.3333s;
+  	transition: 0.3333s;
 }
 html {
-	background: url("images/background.png") no-repeat center center fixed;
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
- 	-o-background-size: cover;
- 	background-size: cover;
+	background: #333;
 }
 body {
 	margin: 0;
@@ -528,47 +537,49 @@ body {
 /*Grid styling*/
 .grid {
 	display: grid;
-	grid-gap: 4px;
 }
-.mainGrid {
-	grid-gap: 0px 0px;
+.mainGrid > div {
+	border-style: solid;
+	border-color: var(--color-border-main);
+	border-width: 1px 1px 0px 1px;
+	width: calc(100% - 2px);
+	
 }
-.mainGrid > div, body, footer, .title {
-	border: 3px solid var(--color-border-main);
+.mainGrid > div:not(.noVerticalPadding) {
+	padding: 8px 0px;
 }
-.canvasContainer {
+.mainGrid > div:nth-child(odd) {
+	background: var(--color-gray);
+}
+.mainGrid > div:nth-child(even) {
+	background: var(--color-gray-darker);
+}
+.mainGrid > div.canvasContainer {
 	text-align: center;
-	background-color: none !important;
-	width: calc(100% - 14px);
+	width: calc(100% - 1px);
 }
 .selectionGrid {
 	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
 	text-align: center;
 }
-.grid > div {
-	padding: 4px;
-}
-.grid > div:not(.noBorder) {
-	background: var(--color-gray);
-}
 
 /*Card manipulation menu grid*/
 .selectionGrid > div {
+	font-size: 1.1em;
 	font-family: belerenbsc;
 	cursor: pointer;
-	border-radius: 36px;
-	border: 4px solid var(--color-border-selection-grid);
-	/*background-color: #0008 !important;*/
+	padding: 3px;
+	border: 1px solid var(--color-border-selection-grid);
+	background-color: var(--color-gray);
 }
 .selectionGrid > div:hover {
-	border-color: var(--color-hover-grid);
+	border: 4px solid var(--color-hover-grid);
+	/*background-color: var(--color-border-selection-grid);*/
+	padding: 0px;
 }
-.cardManipulationMenu, .extrasMenu {
-	margin-top: 4px;
+.selectionGridTarget {
 	padding: 24px;
-	border-radius: 36px;
-	border: 4px solid var(--color-border-selection-grid);
-	background-color: var(--color-gray);
+	/*border: 4px solid var(--color-border-selection-grid);*/
 }
 .cmm, .extras {
 	display: none;
@@ -578,6 +589,9 @@ body {
 }
 .sampleCard {
 	width: 100%;
+}
+.mainGrid.grid > .sampleGrid {
+	border-bottom-width: 1px;
 }
 
 /*Inputs and more*/
@@ -598,7 +612,7 @@ body {
 	-webkit-appearance:none;
 	appearance: none;
 }
-.dropdown select option {
+.dropdown select option::hover {
 	/*nothing for now :)*/
 }
 .dropdown::after {
@@ -607,43 +621,36 @@ body {
 	position: absolute;
 	pointer-events: none;
 	right: 0.6em;
-	top: 0.6em;
+	top: 0.5em;
 }
 /*checkbox*/
 .checkbox {
 	height: 1em;
-	margin: 5px 0px;
+	margin: 0.1em 0px 0.3em 0px;
 	position: relative;
 }
 .checkbox label {
 	display: inline-block;
-	width: 1em;
-	height: 1em;
+	width: calc(1.2em - 6px);
+	height: calc(1.2em - 6px);
+	border: 3px solid var(--color-input);
 	border-radius: 0.25em;
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: var(--color-input);
 	cursor: pointer;
 }
-.checkbox input:checked ~ label:after {
-	display: block;
+.checkbox input:checked ~ label {
+	background: var(--color-hover-grid);
 }
-.checkbox label:after {
-	content: "\2718";
-    position: absolute;
-    display: none;
-    left: 0.1em;
-    top: -0.25em;
-}
-.checkbox input {
+.checkbox > input {
 	opacity: 0;
 }
 .checkbox div {
 	white-space: pre;
 	position: relative;
 	top: -0.1em;
-	left: 1.1em;
+	left: 1.3em;
 }
 /*other inputs*/
 input[type="text"], input[type="number"], textarea, input[type="file"] {
@@ -668,13 +675,20 @@ a:hover, a:active {
 	color: #999;
 }
 
+.adspace {
+	display: none;
+}
+
 /*Desktop*/
-@media only screen and (min-width: 1130px) {
+@media only screen and (min-width: 1195px) {
 	.canvasContainer {
 		width: auto;
 	}
 	.mainGrid:not(.plane) {
-		grid-template-columns: calc(749px + 0.7em) auto;
+		grid-template-columns: calc(750px + 0.7em) auto;
+	}
+	.adspace {
+		grid-column: 1 / span 2;
 	}
 	.tutorialArea {
 		grid-column: 1 / span 2;
@@ -688,10 +702,31 @@ a:hover, a:active {
 	.mainGrid.plane > .canvasContainer {
 		grid-column: 1 / span 2;
 	}
+	header {
+		top: 0;
+	}
+	footer {
+		bottom: 0;
+	}
+	header, footer {
+		position: fixed;
+		width: 100%;
+		z-index: 1000;
+	}
+	#header {
+		-webkit-transition: 0s;
+  		transition: 0s;
+		max-height: 100px;
+		width: auto;
+	}
+	.mainGrid {
+		margin-top: 110px;
+		margin-bottom: 1.1em;
+	}
 }
 @media only screen and (min-width: 1455px) {
 	.mainGrid.plane {
-		grid-template-columns: calc(1074px + 0.7em) auto;
+		grid-template-columns: calc(1050px + 0.7em) auto;
 	}
 }
 @media only screen and (orientation: landscape) {
@@ -699,12 +734,16 @@ a:hover, a:active {
 		width: 32.8%;
 	}
 }
-@media only screen and (min-width: 801px) {
+@media only screen and (min-width: 781px) {
 	html {
-		/*background*/
+		background: url("images/background.png") no-repeat center center fixed;
+	  	-webkit-background-size: cover;
+	  	-moz-background-size: cover;
+	 	-o-background-size: cover;
+	 	background-size: cover;
 	}
 	* {
-		font-size: 24px;
+		font-size: 28px;
 	}
 }
 
@@ -713,18 +752,18 @@ a:hover, a:active {
 	font-size: inherit;
 }
 .info {
-	font-size: 0.75em;
+	font-size: 0.6em;
 }
 
 /*Title*/
-.title > img {
+#header {
 	max-height: 80px;
 	width: auto;
 }
-.title, .info {
+header, .info {
 	text-align: center;
 	background-color: black;
-	padding: 10px;
+	padding: 5px;
 }
 
 /*symbol grid*/
@@ -740,7 +779,7 @@ a:hover, a:active {
 .symbolGrid > div {
 	border: 4px solid var(--color-border-main);
 	border-radius: 36px;
-	background-color: var(--color-border-selection-grid) !important;
+	background-color: var(--color-border-selection-grid);
 }
 
 /*Sitewide text (bottom of the page)*/
@@ -756,7 +795,6 @@ a:hover, a:active {
 }
 .donateGrid.grid > div {
 	font-size: 1.7em;
-	padding: 0px;
 }
 .donateGrid > div > img {
 	position: relative;

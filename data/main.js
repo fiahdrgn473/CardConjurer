@@ -2,6 +2,21 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //Hi there :D
+window.onscroll = function() {scrollFunction()};
+window.onresize = function() {scrollFunction()}
+
+function scrollFunction() {
+	if (window.innerWidth > 900) {
+		if (document.body.scrollTop < 70) {
+    		document.getElementById("header").style.maxHeight =  100 - document.body.scrollTop + "px";
+  		} else {
+    		document.getElementById("header").style.maxHeight = "30px";
+  		}
+	} else {
+		document.getElementById("header").style.maxHeight = "80px";
+	}
+}
+scrollFunction()
 
 //============================================//
 //     Anything I Like to Change Often :)     //
