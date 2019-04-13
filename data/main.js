@@ -955,7 +955,6 @@ function checkCookies() {
 		console.log("There are no new updates since your last visit.")
 	}
 }
-checkCookies()
 
 //============================================//
 //                    OTHER                   //
