@@ -6,7 +6,7 @@
 //============================================//
 //     Anything I Like to Change Often :)     //
 //============================================//
-randomizeSampleCards(5)
+randomizeSampleCards(6)
 
 //============================================//
 //         Setup Variables/Canvases           //
@@ -974,6 +974,7 @@ loadScript("data/other/setCodeList.js")
 //changeme
 setTimeout(function(){sectionTextFunction()}, 250)
 setTimeout(function(){sectionTextFunction()}, 500)
+setTimeout(function(){sectionTextFunction()}, 1000)
 //Only for working on frames n' stuff :)
 // setTimeout(function(){
 // 	document.getElementById("inputCardVersion").value = "planeswalker"
