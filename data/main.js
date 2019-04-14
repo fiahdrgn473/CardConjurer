@@ -949,7 +949,7 @@ if (isSafari == true) {
 }
 function setCookie(cookieName, cookieValue) {
   	var tempDate = new Date();
-  	tempDate.setTime(tempDate.getTime() + (12 * 31 * 24 * 60 * 60 * 1000)); //months*days*hours*minutes*seconds*milliseconds
+  	tempDate.setTime(tempDate.getTime() + (5 * 365 * 24 * 60 * 60 * 1000)); //years*days*hours*minutes*seconds*milliseconds
   	var expires = "expires=" + tempDate.toUTCString();
   	document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
 }
