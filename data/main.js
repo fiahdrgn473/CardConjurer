@@ -979,7 +979,7 @@ function checkCookies() {
 		console.log("Welcome back to Card Conjurer!")
 		if (getCookie("updated_2") != "true") {
 			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Mini-Plane")
-   	    	setCookie("updated_1", "true")
+   	    	setCookie("updated_2", "true")
 		} else {
 			console.log("There are no new updates since your last visit.")
 			if (getCookie("donationRequest") != "true") {
