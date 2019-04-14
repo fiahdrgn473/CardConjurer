@@ -968,23 +968,23 @@ function getCookie(cookieName) {
   	return "";
 }
 function checkCookies() {
-	if (getCookie("visited") != true) {
+	if (getCookie("visited") != "true") {
 		if (isMobile == true) {
             alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
         } else if (isChrome == false) {
             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
-        setCookie("visited", true)
+        setCookie("visited", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
-		if (getCookie("updated_2") != true) {
+		if (getCookie("updated_2") != "true") {
 			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Mini-Plane")
-   	    	setCookie("updated_1", true)
+   	    	setCookie("updated_1", "true")
 		} else {
 			console.log("There are no new updates since your last visit.")
-			if (getCookie("donationRequest") != true) {
+			if (getCookie("donationRequest") != "true") {
 				alert("Card Conjurer is now hosted with the custom domain cardconjurer.com! That means that running this website currently costs $10 per year. It's not much, but any donation, even if it's just dollar, would be greatly appreciated :)  \r\n\r\nAnyways, thanks for using Card Conjurer! I hope you enjoy making some sweet custom Magic cards!")
-				setCookie("donationRequest", true)
+				setCookie("donationRequest", "true")
 			} else {
 				console.log("I hope you enjoy making custom cards!")
 			}
