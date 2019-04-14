@@ -661,6 +661,7 @@ function bottomInfoM15() {
 	}
 	textContext.fillText(infoCopyright, 700, copyrightY)
 	textContext.textAlign = "left"
+	drawCard()
 }
 
 function sectionOtherFunction() {
@@ -903,8 +904,15 @@ function loadNyxImages() {
 		imgNyxRight.load(imgFrameRight.src.replace("frame.png", "nyx.png"))
 	}
 }
+function changePowerToughnessColor() {
+	if (document.getElementById("inputCheckboxFrameRight").checked) {
+		imgPowerToughness.load(document.getElementById("inputFrameRightColor").value + 'pt.png')
+	} else {
+		imgPowerToughness.load(document.getElementById("inputFrameColor").value + 'pt.png')
+	}
+}
 for (var i = 0; i < document.getElementsByClassName("changesFrame").length; i++) {
-	document.getElementsByClassName("changesFrame")[i].addEventListener("change", function() {loadLegendaryImages(); loadRareStampImages(); loadNyxImages(); loadMiracleImages()}, false)
+	document.getElementsByClassName("changesFrame")[i].addEventListener("change", function() {loadLegendaryImages(); loadRareStampImages(); loadNyxImages(); loadMiracleImages(); changePowerToughnessColor()}, false)
 }
 for (var i = 0; i < document.getElementsByClassName("changesTitleType").length; i++) {
 	document.getElementsByClassName("changesTitleType")[i].addEventListener("change", function() {loadMiracleImages()}, false)
