@@ -1004,7 +1004,7 @@ function cheight(originalValue = 1050, originalCardHeight = 1050) {
 }
 
 //Runs stuff at the very end (once everything is set up)
-checkCookies()
+setTimeout(function(){checkCookies()}, 1005)
 backToDefault("m15")
 loadScript("data/other/setCodeList.js")
 //changeme
