@@ -40,7 +40,7 @@ imgTypeMask.load("data/borders/planeswalker/imgTypeMask.png")
 imgAbilityLineEven.load("data/borders/planeswalker/imgAbilityLineEven.png")
 imgAbilityLineOdd.load("data/borders/planeswalker/imgAbilityLineOdd.png")
 //Loads the Colors
-loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,colorless-Colorless")
+loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,artifact-Artifact,colorless-Colorless")
 //Anything special
 document.getElementById("inputCreatureColor").value = "#ffffff"
 cardData.specialImageA = true
