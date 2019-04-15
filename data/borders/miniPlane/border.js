@@ -35,9 +35,9 @@ cardData.cardArtX = cwidth(28)
 cardData.cardArtY = cheight(46)
 cardData.bottomInfoFunction = "bottomInfoPlanechase"
 //Images
-imgArtMask.load("data/borders/miniplane/imgArtMask.png")
-imgFrameMask.load("data/borders/miniplane/imgFrameMask.png")
-imgBorderMask.load("data/borders/miniplane/imgBorderMask.png")
+imgArtMask.load("data/borders/miniPlane/imgArtMask.png")
+imgFrameMask.load("data/borders/miniPlane/imgFrameMask.png")
+imgBorderMask.load("data/borders/miniPlane/imgBorderMask.png")
 //Loads the Colors
 loadColors("white-White")
 //Runs the things!
