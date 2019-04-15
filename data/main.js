@@ -975,6 +975,7 @@ function checkCookies() {
             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
         setCookie("visited", "true")
+        setCookie("updated_2", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
 		if (getCookie("updated_2") != "true") {
