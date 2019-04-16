@@ -5,6 +5,7 @@
 cardData.miracle = false
 cardData.nyx = false
 cardData.rareStamp = false
+cardData.rulesBox = false
 //Specific Values
 cardData.cardArtX = cwidth(56)
 cardData.cardArtY = cheight(124)
@@ -13,13 +14,15 @@ document.getElementById("inputTitleColor").value = "#ffe886"
 cardData.titleX = cardWidth / 2
 cardData.titleAlignment = "center"
 cardData.titleFont = "belerenbsc"
+cardData.typeY = cheight(901)
+cardData.setSymbolY = cheight(889)
+cardData.textY = cheight(296)
 //Images
-imgArtMask.load("data/borders/tokenTall/imgArtMask.png")
-imgFrameMask.load("data/borders/tokenTall/imgFrameMask.png")
-imgPinlineMask.load("data/borders/tokenTall/imgPinlineMask.png")
-imgTitleMask.load("data/borders/tokenTall/imgTitleMask.png")
-imgTypeMask.load("data/borders/tokenTall/imgTypeMask.png")
-imgRulesMask.load("data/borders/tokenTall/imgRulesMask.png")
+imgArtMask.load("data/borders/tokenTextless/imgArtMask.png")
+imgFrameMask.load("data/borders/tokenTextless/imgFrameMask.png")
+imgPinlineMask.load("data/borders/tokenTextless/imgPinlineMask.png")
+imgTitleMask.load("data/borders/tokenTextless/imgTitleMask.png")
+imgTypeMask.load("data/borders/tokenTextless/imgTypeMask.png")
 imgLegendary.load("none", cwidth(26), cheight(20), cwidth(697), cheight(112))
 imgLegendaryRight.load("none", cwidth(26), cheight(20), cwidth(697), cheight(112))
 //Loads the Colors

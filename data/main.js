@@ -159,6 +159,11 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 	}
 	if (skipLines == false) {
 		//The text is condensed into one line
+		if (textAlignment == "center") {
+			rightLimit = rightLimit + (rightLimit - x)
+		} else if (textAlignment == "right") {
+			rightLimit = 2 * x - rightLimit
+		}
 		while(this.measureText(text).width + x > rightLimit) {
 			textFontSize -= 0.5
 			this.font = textFontSize + "px " + textFont
@@ -975,12 +980,12 @@ function checkCookies() {
             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
         setCookie("visited", "true")
-        setCookie("updated_2", "true")
+        setCookie("cookieUpdated3", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
-		if (getCookie("updated_2") != "true") {
-			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Mini-Plane")
-   	    	setCookie("updated_2", "true")
+		if (getCookie("cookieUpdated3") != "true") {
+			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Tokens")
+   	    	setCookie("cookieUpdated3", "true")
 		} else {
 			console.log("There are no new updates since your last visit.")
 			if (getCookie("donationRequest") != "true") {
@@ -1014,7 +1019,7 @@ setTimeout(function(){sectionTextFunction()}, 500)
 setTimeout(function(){sectionTextFunction()}, 1000)
 // Only for working on frames n' stuff :)
 // setTimeout(function(){
-// 	document.getElementById("inputCardVersion").value = "miniplane"
+// 	document.getElementById("inputCardVersion").value = "tokenTextless"
 // 	document.getElementById("inputCardVersion").onchange()
 // }, 500)
 
@@ -1086,42 +1091,3 @@ setTimeout(function(){sectionTextFunction()}, 1000)
 // 	} else {
 // 		typeRightShift = 0
 // 	}
-
-
-// //============================================//
-// //                  Cookies!                  //
-// //============================================//
-// function setCookie(cookieName, cookieValue) {
-//   	var tempDate = new Date();
-//   	tempDate.setTime(tempDate.getTime() + (31 * 24 * 60 * 60 * 1000)); //days*hours*minutes*seconds*milliseconds
-//   	var expires = "expires=" + tempDate.toUTCString();
-//   	document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-// }
-// function getCookie(cookieName) {
-//   	var name = cookieName + "=";
-//   	var cookieArray = document.cookie.split(";");
-//   	for(var i = 0; i < cookieArray.length; i++) {
-//     	var tempCookie = cookieArray[i];
-//     	while (tempCookie.charAt(0) == " ") {
-//       		tempCookie = tempCookie.substring(1);
-//     	}
-//     	if (tempCookie.indexOf(name) == 0) {
-//      		return tempCookie.substring(name.length, tempCookie.length);
-//     	}
-//   	}
-//   	return "";
-// }
-// function checkCookies() {
-// 	if (getCookie("visited") != "true") {
-// 		if (isMobile == true) {
-//             alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
-//         } else if (isSafari == false && isChrome == false) {
-//             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Safari or Chrome. Everything may work perfectly, but if you notice that the cards look odd try using Safari or Chrome.")
-//         }
-//         setCookie("visited", "true")
-// 	} else {
-// 		console.log("Welcome back to Card Conjurer!")
-// 	}
-// }
-
-// checkCookies()
