@@ -7,13 +7,17 @@ window.onscroll = function() {scrollFunction()}
 window.onresize = function() {scrollFunction()}
 
 function scrollFunction() {
+	var scrollHeight = document.body.scrollTop
+	if (scrollHeight < 0) {
+		scrollHeight = 0
+	}
 	var titleHeight = parseInt(window.innerWidth * 141 / 1236 - 10);
 	if (window.innerWidth >= 750) {
 		if (window.innerWidth >= 970) {
 			titleHeight = 100
 		}
-		if (document.body.scrollTop < titleHeight - 30) {
-    		document.getElementById("header").style.maxHeight =  titleHeight - document.body.scrollTop
+		if (scrollHeight < titleHeight - 30) {
+    		document.getElementById("header").style.maxHeight =  titleHeight - scrollHeight
   		} else {
     		document.getElementById("header").style.maxHeight = "30px"
   		}
@@ -970,7 +974,6 @@ for (var i = 0; i < document.getElementsByClassName("changesTitleType").length; 
 for (var i = 0; i < document.getElementsByClassName("changesPinline").length; i++) {
 	document.getElementsByClassName("changesPinline")[i].addEventListener("change", function() {loadLegendaryImages(); loadRareStampImages()}, false)
 }
-
 //============================================//
 //                Brower Stuff!               //
 //============================================//
