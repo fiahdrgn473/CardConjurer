@@ -29,7 +29,7 @@ function scrollFunction() {
 }
 
 function textAreaKeyPressed() {
-	if (event.keyCode == 13) {
+	if (event.key == "Enter" || event.key == "Return") {
 		setTimeout(function() {
 			cursorIndex = document.getElementById("inputText").selectionStart
 			document.getElementById("inputText").value = document.getElementById("inputText").value.slice(0, cursorIndex) + "{line}" + document.getElementById("inputText").value.slice(cursorIndex, 0)
