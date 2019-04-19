@@ -31,7 +31,7 @@ function scrollFunction() {
 //============================================//
 //     Anything I Like to Change Often :)     //
 //============================================//
-randomizeSampleCards(6)
+randomizeSampleCards(7)
 
 //============================================//
 //         Setup Variables/Canvases           //
