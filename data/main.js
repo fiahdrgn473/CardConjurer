@@ -2,21 +2,31 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //Hi there :D
-window.onscroll = function() {scrollFunction()};
+//changeme new location
+window.onscroll = function() {scrollFunction()}
 window.onresize = function() {scrollFunction()}
 
 function scrollFunction() {
-	if (window.innerWidth > 900) {
-		if (document.body.scrollTop < 70) {
-    		document.getElementById("header").style.maxHeight =  100 - document.body.scrollTop + "px";
+	var titleHeight = parseInt(window.innerWidth * 141 / 1236 - 10);
+	if (window.innerWidth >= 750) {
+		if (window.innerWidth >= 970) {
+			titleHeight = 100
+		}
+		if (document.body.scrollTop < titleHeight - 30) {
+    		document.getElementById("header").style.maxHeight =  titleHeight - document.body.scrollTop
   		} else {
-    		document.getElementById("header").style.maxHeight = "30px";
+    		document.getElementById("header").style.maxHeight = "30px"
   		}
+  		document.getElementsByClassName("mainGrid")[0].style.marginTop = titleHeight + 10
 	} else {
-		document.getElementById("header").style.maxHeight = "80px";
+		document.getElementsByClassName("mainGrid")[0].style.marginTop = 0
+		document.getElementById("header").style.maxHeight = titleHeight
 	}
 }
-scrollFunction()
+
+
+
+
 
 //============================================//
 //     Anything I Like to Change Often :)     //
@@ -45,12 +55,16 @@ var defaultCardData = {
 	miracle:true, nyx:true, legendary:true, creature:true, rulesBox:true, pinline:true, rareStamp:true, titleTypeBoxes:true,
 	transparency:false,
 	specialImageA:false, specialImageB:false,
-	bottomInfoFunction:"bottomInfoM15"
+	bottomInfoFunction:"bottomInfoM15",
+	horizontal:false
 }
 var cardData = {}
 Object.assign(cardData, defaultCardData)
 //Function that restores image values for various things :)
 function backToDefault(version) {
+	if (cardWidth != 750 || cardHeight != 1050) {
+		changeCanvasSize(750, 1050)
+	}
 	//Default image values
 	imgLegendary.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
 	imgLegendaryRight.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
@@ -83,24 +97,26 @@ function backToDefault(version) {
 }
 
 //Set up canvases
-var cardCanvas = document.getElementById("cardCanvas")
-cardCanvas.width = cardWidth
-cardCanvas.height = cardHeight
-var card = cardCanvas.getContext("2d")
-function newCanvas(name) {
-	window[(name + "Canvas")] = document.createElement("canvas")
-	window[(name + "Context")] = window[(name + "Canvas")].getContext("2d")
-	window[(name + "Canvas")].width = cardWidth
-	window[(name + "Canvas")].height = cardHeight
+var canvas = document.getElementById("canvas")
+var context = canvas.getContext("2d")
+var canvasList = ["card", "mask", "frame", "text", "other", "transparent", "crop", "specialA", "specialB"]
+for (var i = 0; i < canvasList.length; i ++) {
+	window[(canvasList[i] + "Canvas")] = document.createElement("canvas")
+	window[(canvasList[i] + "Context")] = window[(canvasList[i] + "Canvas")].getContext("2d")
+	window[(canvasList[i] + "Canvas")].width = cardWidth
+	window[(canvasList[i] + "Canvas")].height = cardHeight
 }
-newCanvas("mask")
-newCanvas("frame")
-newCanvas("text")
-newCanvas("other")
-newCanvas("transparent")
-newCanvas("crop")
-newCanvas("specialA")
-newCanvas("specialB")
+function changeCanvasSize(width, height) {
+	cardWidth = width
+	cardHeight = height
+	for (var i = 0; i < canvasList.length; i ++) {
+		window[(canvasList[i] + "Canvas")].width = cardWidth
+		window[(canvasList[i] + "Canvas")].height = cardHeight
+	}
+	imgCornerMask.load("none")
+	imgWhite.load("none")
+	imgBlank.load("none")
+}
 
 //============================================//
 //          Custom Canvas Functions           //
@@ -131,6 +147,7 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, maskOpac
 
     if (image != "none") {
     	maskContext.drawImage(image, image.xVal, image.yVal, image.wVal, image.hVal)
+    	// console.log(image.yVal)
     }
     //If a color is provided, fill that in too.
     if (color != undefined && color != "none") {
@@ -234,10 +251,18 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 						} else if (possibleCodeLower.slice(0, 6) == "{right" && possibleCodeLower.charAt(possibleCodeLower.length - 1) == "}") {
 							currentX += parseInt(possibleCodeLower.slice(6, possibleCodeLower.length - 1))
 							x += parseInt(possibleCodeLower.slice(6, possibleCodeLower.length - 1))
+						} else if (possibleCodeLower == "{plane}") {
+							this.drawImage(manaSymbolImageList[56], currentX + cheight(5), currentY - cheight(25), cheight(67), cheight(60))
+							currentX += cheight(85)
+							x += cheight(85)
 						} else if (manaSymbolCodeList.includes((possibleCodeLower.replace("{", "").replace("}", "")))) {
 							//It's a mana symbol! Draw it.
-							this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.replace("{", "").replace("}", ""))], currentX + textFontSize * 0.054, currentY - textFontSize * 0.7, textFontSize * 0.77, textFontSize * 0.77)
-							currentX += textFontSize * 0.84
+							var extraWidth = 1
+							if (possibleCodeLower.replace("{", "").replace("}", "") == "chaos") {
+								extraWidth = 1.15
+							}
+							this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.replace("{", "").replace("}", ""))], currentX + textFontSize * 0.054, currentY - textFontSize * 0.7, textFontSize * 0.77 * extraWidth, textFontSize * 0.77)
+							currentX += textFontSize * 0.77 * extraWidth + textFontSize * 0.07
 						} else {
 							//It's not a code. treat it like a regular word.
 							wordToWrite = possibleCode
@@ -416,6 +441,7 @@ function createImage(name, section) {
 	window[name].yVal = 0
 	window[name].wVal = cardWidth
 	window[name].hVal = cardHeight
+	window[name].name = name
 	if (section != undefined) {
 		window[name].cardSection = section
 	} else {
@@ -427,8 +453,14 @@ function createImage(name, section) {
 		this.loadingStatus = false
 		if (this.cardSection != "none") {
 			window[this.cardSection] -= 1
+			if (this.cardSection == "sectionFrame") {
+				//console.log("Finished loading. Current total: " + window[this.cardSection] + " " + this.name)
+			}
 			if (window[this.cardSection] <= 0) {
 				//Once all the images under a certain section have loaded, that section's function will be run
+				if (this.cardSection == "sectionFrame") {
+					//console.log("We're all done loading!\n\n\n\n\n")
+				}
 				window[this.cardSection + "Function"]()
 			}
 		}
@@ -440,14 +472,17 @@ Image.prototype.load = function(source, x, y, w, h) {
 	if (source != "none") {
 		if (this.loadingStatus != true && this.cardSection != "none") {
 			window[this.cardSection] += 1
+			if (this.cardSection == "sectionFrame") {
+				//console.log("Starting to load. Current total: " + window[this.cardSection] + " " + this.name)
+			}
 		}
 		this.loadingStatus = true
 		this.src = source
 	}
-	if (x != undefined) {this.xVal = x} else if (this.xVal == undefined) {this.xVal = 0}
-	if (y != undefined) {this.yVal = y} else if (this.yVal == undefined) {this.yVal = 0}
-	if (w != undefined) {this.wVal = w} else if (this.wVal == undefined) {this.wVal = cardWidth}
-	if (h != undefined) {this.hVal = h} else if (this.hVal == undefined) {this.hVal = cardHeight}
+	if (x != undefined) {this.xVal = x} else /*if (this.xVal == undefined)*/ {this.xVal = 0}
+	if (y != undefined) {this.yVal = y} else /*if (this.yVal == undefined)*/ {this.yVal = 0}
+	if (w != undefined) {this.wVal = w} else /*if (this.wVal == undefined)*/ {this.wVal = cardWidth}
+	if (h != undefined) {this.hVal = h} else /*if (this.hVal == undefined)*/ {this.hVal = cardHeight}
 }
 
 //Loads images via URL
@@ -720,28 +755,36 @@ function sectionOtherFunction() {
 
 function drawCard() {
 	//Clears the card
-	// card.clearRect(0, 0, cardWidth, cardHeight)
-	card.mask(imgWhite, "none", document.getElementById("inputBorderColor").value)
+	cardContext.mask(imgWhite, "none", document.getElementById("inputBorderColor").value)
 	//Draws the card art
-	card.drawImage(imgCardArt, parseInt(document.getElementById("inputCardArtX").value) + cardData.cardArtX, parseInt(document.getElementById("inputCardArtY").value) + cardData.cardArtY, imgCardArt.width * document.getElementById("inputCardArtZoom").value / 100, imgCardArt.height * document.getElementById("inputCardArtZoom").value / 100)
+	cardContext.drawImage(imgCardArt, parseInt(document.getElementById("inputCardArtX").value) + cardData.cardArtX, parseInt(document.getElementById("inputCardArtY").value) + cardData.cardArtY, imgCardArt.width * document.getElementById("inputCardArtZoom").value / 100, imgCardArt.height * document.getElementById("inputCardArtZoom").value / 100)
 	//Might do something special? Usually the ability lines for planeswalkers
 	if (cardData.specialImageA == true) {
-		card.drawImage(specialACanvas, 0, 0, cardWidth, cardHeight)
+		cardContext.drawImage(specialACanvas, 0, 0, cardWidth, cardHeight)
 	}
 	//Draws the card frame
-	card.drawImage(frameCanvas, 0, 0, cardWidth, cardHeight)
+	cardContext.drawImage(frameCanvas, 0, 0, cardWidth, cardHeight)
 	//Might do something special? Usually the ability icons for planeswalkers
 	if (cardData.specialImageB == true) {
-		card.drawImage(specialBCanvas, 0, 0, cardWidth, cardHeight)
+		cardContext.drawImage(specialBCanvas, 0, 0, cardWidth, cardHeight)
 	}
 	//Draws the card text
-	card.drawImage(textCanvas, 0, 0, cardWidth, cardHeight)
+	cardContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight)
 	//Draws the other stuff
-	card.drawImage(otherCanvas, 0, 0, cardWidth, cardHeight)
+	cardContext.drawImage(otherCanvas, 0, 0, cardWidth, cardHeight)
 	//Erase anything if needed
-	card.globalCompositeOperation = "destination-out"
-	card.mask(imgCornerMask)
-	card.globalCompositeOperation = "source-over"
+	cardContext.globalCompositeOperation = "destination-out"
+	cardContext.mask(imgCornerMask)
+	cardContext.globalCompositeOperation = "source-over"
+	//Draws the card onto the visible canvas
+	context.clearRect(0, 0, canvas.width, canvas.height)
+	if (cardData.horizontal) {
+		context.rotate(-90 * Math.PI / 180)
+		context.drawImage(cardCanvas, -canvas.height, 0, canvas.height, canvas.width)
+		context.rotate(90 * Math.PI / 180)
+	} else {
+		context.drawImage(cardCanvas, 0, 0, canvas.width, canvas.height)
+	}
 }
 
 //============================================//
@@ -910,10 +953,12 @@ function loadNyxImages() {
 	}
 }
 function changePowerToughnessColor() {
-	if (document.getElementById("inputCheckboxFrameRight").checked) {
-		imgPowerToughness.load(document.getElementById("inputFrameRightColor").value + 'pt.png')
-	} else {
-		imgPowerToughness.load(document.getElementById("inputFrameColor").value + 'pt.png')
+	if (cardData.creature) {
+		if (document.getElementById("inputCheckboxFrameRight").checked) {
+			imgPowerToughness.load(document.getElementById("inputFrameRightColor").value + 'pt.png')
+		} else {
+			imgPowerToughness.load(document.getElementById("inputFrameColor").value + 'pt.png')
+		}
 	}
 }
 for (var i = 0; i < document.getElementsByClassName("changesFrame").length; i++) {
@@ -980,12 +1025,12 @@ function checkCookies() {
             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
         setCookie("visited", "true")
-        setCookie("cookieUpdated3", "true")
+        setCookie("cookieUpdated4", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
-		if (getCookie("cookieUpdated3") != "true") {
-			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Tokens")
-   	    	setCookie("cookieUpdated3", "true")
+		if (getCookie("cookieUpdated4") != "true") {
+			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Plane")
+   	    	setCookie("cookieUpdated4", "true")
 		} else {
 			console.log("There are no new updates since your last visit.")
 			if (getCookie("donationRequest") != "true") {
@@ -1013,13 +1058,14 @@ function cheight(originalValue = 1050, originalCardHeight = 1050) {
 setTimeout(function(){checkCookies()}, 1005)
 backToDefault("m15")
 loadScript("data/other/setCodeList.js")
+scrollFunction()
 //changeme
 setTimeout(function(){sectionTextFunction()}, 250)
 setTimeout(function(){sectionTextFunction()}, 500)
 setTimeout(function(){sectionTextFunction()}, 1000)
 // Only for working on frames n' stuff :)
 // setTimeout(function(){
-// 	document.getElementById("inputCardVersion").value = "tokenTextless"
+// 	document.getElementById("inputCardVersion").value = "plane"
 // 	document.getElementById("inputCardVersion").onchange()
 // }, 500)
 

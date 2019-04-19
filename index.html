@@ -14,7 +14,7 @@
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
 	<meta charset="UTF-8">
-	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=780">
+<!-- 	<meta id="pageViewport" name="viewport" content="user-scalable=no,width=780"> -->
 	<PageMap>
     	<DataObject type="thumbnail">
       		<Attribute name="src" value="https://imkyle4815.github.io/cardconjurer/sampleCards/sample-card-6.png"/>
@@ -23,14 +23,14 @@
    		</DataObject>
   	</PageMap>
 	<meta name="thumbnail" content="https://imkyle4815.github.io/cardconjurer/sampleCards/sample-card-6.png">
-	<script>
+<!-- 	<script>
 		window.onload = function() {
 		    if (screen.width > 780) {
 		        var myViewPort = document.getElementById("pageViewport");
 		        myViewPort.setAttribute("content", "width=device-width, initial-scale=1");
 		    }
 		}
-	</script>
+	</script> -->
 	<!-- Here is the stuff that does things? -->
 	<script type='application/ld+json'>
 	{
@@ -69,7 +69,7 @@
 <body>
 	<div class="grid mainGrid">
 		<div class="canvasContainer">
-			<canvas id="cardCanvas"></canvas>
+			<canvas id="canvas" width="750" height="1050"></canvas>
 		</div>
 		<div class="cmmArea noVerticalPadding">
 			<div class="grid selectionGrid">
@@ -89,13 +89,14 @@
 					<span class="dropdown">
 						<select onchange="backToDefault(this.value)" id="inputCardVersion">
 							<option value="m15">M15</option>
+							<option value="planeswalker">Planeswalker (M15)</option>
 							<option value="tokenTextless">Token (Textless)</option>
 							<option value="tokenText">Token (Regular)</option>
 							<option value="tokenTall">Token (Tall)</option>
-							<option value="miniPlane">Mini-Plane</option>
-							<option value="planeswalker">Planeswalker (M15)</option>
 							<option value="fullArtLandM15">Full Art Land (M15)</option>
 							<option value="fullArtLandUnstable">Full Art Land (Unstable)</option>
+							<option value="plane">Plane</option>
+							<option value="miniPlane">Mini-Plane</option>
 						</select>
 					</span>
 					<br><br>
@@ -382,9 +383,9 @@
 				</div> -->
 			</div>
 		</div>
-		<div class="adspace">
+		<!-- <div class="adspace">
 			Ads?
-		</div>
+		</div> -->
 		<div class="tutorialArea noVerticalPadding">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('about', 'extras')">About</div>
@@ -399,18 +400,18 @@
 						Welcome to Card Conjurer! 
 					</div>
 					<div class="paragraph">
-						Card Conjurer is a program that creates custom Magic: The Gathering cards. There are already plenty of Magic card makers, but what sets Card Conjurer apart from the rest is its live-edit capabilities. Users can immediately see the effects of any change they make, which makes card customization easier and more enjoyable. Additionally, Card Conjurer offers more borders than any other website, including full art lands, planeswalkers, miracle and nyx borders, and so much more.
+						Card Conjurer is a program that creates custom Magic: The Gathering cards. There are already plenty of Magic card makers, but what sets Card Conjurer apart from the rest is its live-edit capabilities. Users can immediately see the effects of any change they make, which makes card customization easier and more enjoyable. Additionally, Card Conjurer offers more borders than any other website, including full art lands, planechase cards, miracle and nyx borders, and so much more.
 					</div>
 					<br>
 					<div class="text">
 						About Me
 					</div>
 					<div class="paragraph">
-						My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology.</a> During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager. (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>) It was pretty simple but I soon began to add more border images like Miracle or Nyx. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github.
+						Hi! My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology.</a> During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager. (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>) It was pretty simple but I soon began to add more border images like Miracle or Nyx. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github, and then in April of 2019 I bought the domain <a href="#header" onclick="alert('You\'re already there, silly!')">cardconjurer.com</a>.
 					</div>
 					<br>
 					<div class="text">
-						Donate?
+						How You Can Help
 					</div>
 					<div class="paragraph">
 						I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation or using a referral link... Or you can check out my friend's youtube channel: Izzet Right?
@@ -425,7 +426,7 @@
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
-					Each of the following codes must include '{' before each code and '}' after.
+					Each of the following codes must be sandwhiched between curly brackets (e.g., '{t}')
 					<div class="symbolGrid grid" id="symbolList">
 						
 					</div>
@@ -454,9 +455,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="adspace">
+		<!-- <div class="adspace">
 			Ads?
-		</div>
+		</div> -->
 		<div class="sampleGrid grid text">
 			Check out some samples<br>
 			<div class="noBorder">
@@ -528,14 +529,12 @@
 /*Page-wide styling*/
 * {
 	font-family: belerenb;
-	font-size: 6vw;
+	font-size: 32px;
 	user-select: none;
 	color: #eee;
-	-webkit-transition: 0.3333s;
-  	transition: 0.3333s;
 }
 html {
-	background: #333;
+	background-color: #333;
 }
 body {
 	margin: 0;
@@ -550,7 +549,6 @@ body {
 	border-color: var(--color-border-main);
 	border-width: 1px 1px 0px 1px;
 	width: calc(100% - 2px);
-	
 }
 .mainGrid > div:not(.noVerticalPadding) {
 	padding: 8px 0px;
@@ -561,13 +559,20 @@ body {
 .mainGrid > div:nth-child(even) {
 	background: var(--color-gray-darker);
 }
-.mainGrid > div.canvasContainer {
-	text-align: center;
-	width: calc(100% - 1px);
-}
 .selectionGrid {
 	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
 	text-align: center;
+}
+.mainGrid > div.canvasContainer {
+	padding: 0;
+	text-align: center;
+}
+#canvas {
+	display: block;
+	max-width:750px;
+	width: 100%;
+	height: auto;
+	margin: 0px auto;
 }
 
 /*Card manipulation menu grid*/
@@ -578,6 +583,8 @@ body {
 	padding: 3px;
 	border: 1px solid var(--color-border-selection-grid);
 	background-color: var(--color-gray);
+	-webkit-transition: 0.3333s;
+  	transition: 0.3333s;
 }
 .selectionGrid > div:hover {
 	border: 4px solid var(--color-hover-grid);
@@ -646,6 +653,8 @@ body {
 	top: 0px;
 	left: 0px;
 	cursor: pointer;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
 }
 .checkbox input:checked ~ label {
 	background: var(--color-hover-grid);
@@ -681,18 +690,50 @@ a:link, a:visited {
 a:hover, a:active {
 	color: #999;
 }
+a {
+	-webkit-transition: 0.3333s;
+  	transition: 0.3333s;
+}
 
 .adspace {
 	display: none;
 }
 
 /*Desktop*/
-@media only screen and (min-width: 1195px) {
-	.canvasContainer {
+@media only screen and (min-width: 750px) {
+	html {
+		background: url("images/background.png") no-repeat center center fixed;
+	  	-webkit-background-size: cover;
+	  	-moz-background-size: cover;
+	 	-o-background-size: cover;
+	 	background-size: cover;
+	}
+	* {
+		font-size: 28px;
+	}
+	header {
+		top: 0;
+	}
+	footer {
+		bottom: 0;
+	}
+	header, footer {
+		position: fixed;
+		width: 100%;
+		z-index: 1000;
+	}
+	#header {
+		max-height: 100px;
 		width: auto;
 	}
+	.mainGrid {
+		margin-top: 110px;
+		margin-bottom: 1.1em;
+	}
+}
+@media only screen and (min-width: 1175px) {
 	.mainGrid:not(.plane) {
-		grid-template-columns: calc(750px + 0.7em) auto;
+		grid-template-columns: 750px auto;
 	}
 	.adspace {
 		grid-column: 1 / span 2;
@@ -709,48 +750,10 @@ a:hover, a:active {
 	.mainGrid.plane > .canvasContainer {
 		grid-column: 1 / span 2;
 	}
-	header {
-		top: 0;
-	}
-	footer {
-		bottom: 0;
-	}
-	header, footer {
-		position: fixed;
-		width: 100%;
-		z-index: 1000;
-	}
-	#header {
-		-webkit-transition: 0s;
-  		transition: 0s;
-		max-height: 100px;
-		width: auto;
-	}
-	.mainGrid {
-		margin-top: 110px;
-		margin-bottom: 1.1em;
-	}
-}
-@media only screen and (min-width: 1455px) {
-	.mainGrid.plane {
-		grid-template-columns: calc(1050px + 0.7em) auto;
-	}
 }
 @media only screen and (orientation: landscape) {
 	.sampleCard {
 		width: 32.8%;
-	}
-}
-@media only screen and (min-width: 781px) {
-	html {
-		background: url("images/background.png") no-repeat center center fixed;
-	  	-webkit-background-size: cover;
-	  	-moz-background-size: cover;
-	 	-o-background-size: cover;
-	 	background-size: cover;
-	}
-	* {
-		font-size: 28px;
 	}
 }
 
@@ -764,13 +767,13 @@ a:hover, a:active {
 
 /*Title*/
 #header {
-	max-height: 80px;
+	/*max-height: 80px;*/
 	width: auto;
 }
 header, .info {
 	text-align: center;
 	background-color: black;
-	padding: 5px;
+	padding: 5px 0px;
 }
 
 /*symbol grid*/
