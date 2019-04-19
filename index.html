@@ -246,7 +246,7 @@
 					<br><br>
 					Rules Text
 					<br>
-					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()"></textarea>
+					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()" onkeypress="textAreaKeyPressed()"></textarea>
 					<br>
 					Rules Text Font Size
 					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="0.5" oninput="sectionTextFunction()">
