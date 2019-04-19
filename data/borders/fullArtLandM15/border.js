@@ -24,7 +24,5 @@ imgTitleMask.load("data/borders/fullArtLandM15/imgTitleMask.png")
 imgTypeMask.load("data/borders/fullArtLandM15/imgTypeMask.png")
 //Loads the Colors
 loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,colorless-Colorless")
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+//Finishes loading the border style
+finishChangingBorder()

@@ -39,11 +39,9 @@ imgArtMask.load("data/borders/miniPlane/imgArtMask.png")
 imgFrameMask.load("data/borders/miniPlane/imgFrameMask.png")
 imgBorderMask.load("data/borders/miniPlane/imgBorderMask.png")
 //Loads the Colors
-loadColors("white-White")
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+loadColors("white-Regular")
+//Finishes loading the border style
+finishChangingBorder()
 
 function bottomInfoPlanechase() {
 	var infoNumber = document.getElementById("inputInfoNumber").value

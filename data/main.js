@@ -29,7 +29,7 @@ function scrollFunction() {
 }
 
 function textAreaKeyPressed() {
-	if (event.key == "Enter" || event.key == "Return") {
+	if (event.key == "Enter" || event.key == "Return" || event.keyCode == 13) {
 		setTimeout(function() {
 			cursorIndex = document.getElementById("inputText").selectionStart
 			document.getElementById("inputText").value = document.getElementById("inputText").value.slice(0, cursorIndex) + "{line}" + document.getElementById("inputText").value.slice(cursorIndex, 0)
@@ -75,9 +75,13 @@ var cardData = {}
 Object.assign(cardData, defaultCardData)
 //Function that restores image values for various things :)
 function backToDefault(version) {
+	//Fixes canvas size
 	if (cardWidth != 750 || cardHeight != 1050) {
 		changeCanvasSize(750, 1050)
 	}
+	//Default card data, correct card version
+	Object.assign(cardData, defaultCardData)
+	cardData.version = version
 	//Default image values
 	imgLegendary.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
 	imgLegendaryRight.load("none", cwidth(20), cheight(20), cwidth(714), cheight(186))
@@ -88,16 +92,13 @@ function backToDefault(version) {
 	imgNyxRight.load("none", cwidth(30), cheight(30), cwidth(690), cheight(586))
 	imgMiracle.load("none", cwidth(30), cheight(30), cwidth(689), cheight(511))
 	imgMiracleRight.load("none", cwidth(30), cheight(30), cwidth(689), cheight(511))
-	//Default card data, correct card version
-	Object.assign(cardData, defaultCardData)
-	cardData.version = version
 	//Default masks
 	for (var i = 0; i < frameMaskList.length; i++) {
 		if (window[frameMaskList[i]].src.includes("data/borders/m15/" + frameMaskList[i] + ".png") == false) {
 			window[frameMaskList[i]].load("data/borders/m15/" + frameMaskList[i] + ".png")
 		}
 	}
-	//Loads correct frame images
+	//Loads default frame images
 	for (var i = 0; i < frameImageList.length; i++) {
 		window[frameImageList[i]].load("data/borders/" + cardData.version + "/white/frame.png")
 	}
@@ -107,6 +108,17 @@ function backToDefault(version) {
 	}
 	//Runs the finishing script
 	loadScript('data/borders/' + version + '/border.js')
+}
+function finishChangingBorder() {
+	loadLegendaryImages()
+	loadRareStampImages()
+	loadMiracleImages()
+	loadNyxImages()
+	changePowerToughnessColor()
+	//Runs the three main drawing functions
+	sectionTextFunction()
+	sectionFrameFunction()
+	sectionOtherFunction()
 }
 
 //Set up canvases
@@ -157,10 +169,8 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, maskOpac
    		maskContext.globalCompositeOperation = "source-in"
     }
     maskContext.globalAlpha = maskOpacity
-
     if (image != "none") {
-    	maskContext.drawImage(image, image.xVal, image.yVal, image.wVal, image.hVal)
-    	// console.log(image.yVal)
+    	maskContext.drawImage(image, image.xVal || 0, image.yVal || 0, image.wVal || cardWidth, image.hVal || cardHeight)
     }
     //If a color is provided, fill that in too.
     if (color != undefined && color != "none") {
@@ -450,10 +460,6 @@ function whiteToTransparent(targetImage) {
 function createImage(name, section) {
 	//Create the image and give it default values
 	window[name] = new Image()
-	window[name].xVal = 0
-	window[name].yVal = 0
-	window[name].wVal = cardWidth
-	window[name].hVal = cardHeight
 	window[name].name = name
 	if (section != undefined) {
 		window[name].cardSection = section
@@ -492,10 +498,11 @@ Image.prototype.load = function(source, x, y, w, h) {
 		this.loadingStatus = true
 		this.src = source
 	}
-	if (x != undefined) {this.xVal = x} else /*if (this.xVal == undefined)*/ {this.xVal = 0}
-	if (y != undefined) {this.yVal = y} else /*if (this.yVal == undefined)*/ {this.yVal = 0}
-	if (w != undefined) {this.wVal = w} else /*if (this.wVal == undefined)*/ {this.wVal = cardWidth}
-	if (h != undefined) {this.hVal = h} else /*if (this.hVal == undefined)*/ {this.hVal = cardHeight}
+
+	if (x != undefined) {this.xVal = x}
+	if (y != undefined) {this.yVal = y}
+	if (w != undefined) {this.wVal = w}
+	if (h != undefined) {this.hVal = h}
 }
 
 //Loads images via URL

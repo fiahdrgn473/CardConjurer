@@ -30,7 +30,5 @@ imgFrameMask.load("data/borders/fullArtLandUnstable/imgFrameMask.png")
 imgPinlineMask.load("data/borders/fullArtLandUnstable/imgPinlineMask.png")
 //Loads the Colors
 loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,colorless-Colorless")
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+//Finishes loading the border style
+finishChangingBorder()

@@ -45,10 +45,8 @@ loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,arti
 document.getElementById("inputCreatureColor").value = "#ffffff"
 cardData.specialImageA = true
 cardData.specialImageB = true
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+//Finishes loading the border style
+finishChangingBorder()
 
 var abilityLineThickness = cheight(6)
 var abilityLines = []

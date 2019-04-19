@@ -27,7 +27,5 @@ imgLegendary.load("none", cwidth(26), cheight(20), cwidth(697), cheight(112))
 imgLegendaryRight.load("none", cwidth(26), cheight(20), cwidth(697), cheight(112))
 //Loads the Colors
 loadColors("white-White,blue-Blue,black-Black,red-Red,green-Green,gold-Gold,artifact-Artifact,colorless-Colorless")
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+//Finishes loading the border style
+finishChangingBorder()

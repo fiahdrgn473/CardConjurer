@@ -9,9 +9,8 @@ cardData.miracle = false
 cardData.nyx = false
 cardData.legendary = false
 cardData.creature = false
-cardData.rulesBox = false
-cardData.titleTypeBoxes = false
 cardData.rareStamp = false
+cardData.pinline = false
 //Specific Values
 cardData.manaSymbolDirection = "none"
 cardData.titleAlignment = "center"
@@ -47,10 +46,8 @@ imgTypeMask.load("data/borders/plane/imgTypeMask.png")
 imgTitleMask.load("data/borders/plane/imgTitleMask.png")
 //Loads the Colors
 loadColors("white-Regular,high-High,mid-Middle,low-Low,none-Single")
-//Runs the things!
-sectionTextFunction()
-sectionFrameFunction()
-sectionOtherFunction()
+//Finishes loading the border style
+finishChangingBorder()
 
 function bottomInfoPlanechase() {
 	var infoNumber = document.getElementById("inputInfoNumber").value
