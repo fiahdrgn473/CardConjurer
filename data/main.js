@@ -820,6 +820,7 @@ function toggleView(targetId, targetClass) {
 
 //Downloads the image!
 function downloadCardImage(linkElement) {
+	linkElement.download = document.getElementById("inputName").value + ".png"
 	var cardImageData = cardCanvas.toDataURL()
 	if (cardImageData == undefined) {
 		alert("Sorry, it seems that you cannot download your card. Please try using a different browser/device.")
