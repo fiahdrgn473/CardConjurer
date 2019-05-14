@@ -5,8 +5,8 @@ Duplicates found and removed: ORI, W17, CED
 Sets not found: Astral, Deckmasters, Duels of the Planeswalkers
 The codes have been resourced from the following:
 https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets
-Last updated: 3-29-19
-Last set added: 
+Last updated: 5-13-19
+Last set added: WAR
 */
 //Common through Rare
 var setCodeListPreMythic = ['1E', '2E', '2U', '3E', '4E', '5E', '6E', '7E', '8ED', '9ED', '10E', 'AN', 
@@ -23,7 +23,7 @@ var setCodeListPostMythic = ['M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'ORI', 'M
 'EMA', 'MM3', 'IMA', 'A25', 'UMA', 'HOP', 'PC2', 'PCA', 'ARC', 'E01', 'CMD', 'CM1', 'C13', 'C14', 'C15', 
 'C16', 'CMA', 'C17', 'CM2', 'C18', 'CNS', 'CN2', 'E02', 'BBD', 'UST', 'VMA', 'TPR', 'W16', 'W17', 
 'GK1_IZZET', 'GK1_SELESN', 'GK1_BOROS', 'GK1_GOLGAR', 'GK2_RAKDOS', 'GK2_AZORIU', 'GK2_SIMIC', 
-'GK2_GRUUL', 'GK2_ORZHOV']
+'GK2_GRUUL', 'GK2_ORZHOV', 'WAR']
 //Only Rare
 var setCodeListRareOnly = ['DRB']
 //Only Mythic

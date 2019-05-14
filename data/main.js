@@ -52,6 +52,8 @@ randomizeSampleCards(7)
 //Define important variables
 var sectionFrame = 0, sectionText = 0, sectionOther = 0
 var cardWidth = 750, cardHeight = 1050
+var date = new Date()
+document.getElementById("inputInfoNumber").value = date.getFullYear()
 var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
 //Create the object that stores data for convencience :) It's what keeps track of values necessary to change between card frames
 var defaultCardData = {
@@ -688,38 +690,27 @@ function bottomInfoM15() {
 	var infoSet = document.getElementById("inputInfoSet").value
 	var infoLanguage = document.getElementById("inputInfoLanguage").value
 	var infoArtist = document.getElementById("inputInfoArtist").value
-	var infoCopyright = "CC \u2014 " + document.getElementById("inputInfoCopyright").value
+	var infoMessage = "*" + document.getElementById("inputInfoMessage").value + "*"
 	var infoSetLanguage = infoSet + " \u00b7 " + infoLanguage
 	textContext.font = "18px gothammedium"
 	textContext.fillStyle = "white"
-	textContext.fillText(infoNumber, 47, 997)
-	textContext.fillText(infoSetLanguage, 47, 1016)
-	//Takes the longer of the two strings and records its width
-	var rarityArtistShift = textContext.measureText(infoSetLanguage).width
-	if (rarityArtistShift < textContext.measureText(infoNumber).width) {
-		rarityArtistShift = textContext.measureText(infoNumber).width
-	}
-	rarityArtistShift += 7 + 47
-	textContext.fillText(infoRarity, rarityArtistShift, 997)
-	imgArtistBrush.load("none", rarityArtistShift, 1003, 21, 13)
+	textContext.fillText(infoNumber, cwidth(47), cheight(997))
+	textContext.fillText(infoRarity, cwidth(54) + textContext.measureText(infoNumber).width, cheight(997))
+	textContext.fillText(infoMessage, cwidth(61) + textContext.measureText(infoNumber).width + textContext.measureText(infoRarity).width, cheight(997))
+	textContext.fillText(infoSetLanguage, cwidth(47), cheight(1016))
+	var rarityArtistShift = textContext.measureText(infoSetLanguage).width + 54
+	imgArtistBrush.load("none", rarityArtistShift, cheight(1003), cwidth(21), cheight(13))
 	textContext.mask(imgArtistBrush, "none", textContext.fillStyle)
 	textContext.font = "18px belerenbsc"
-	textContext.fillText(infoArtist, rarityArtistShift + 25, 1016)
-	//"\u2122 & \u00a9 " + year + " Wizards of the Coast"
+	textContext.fillText(infoArtist, rarityArtistShift + cwidth(25), cheight(1016))
 	textContext.font = "18px mplantin"
 	textContext.textAlign = "right"
-	if (infoCopyright == "CC \u2014 secretcode") {
-		var date = new Date()
-		var year = date.getFullYear()
-		infoCopyright = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
-	} else if (infoCopyright == "CC \u2014 ") {
-		infoCopyright = ""
-	}
-	var copyrightY = 997
+	var copyrightMessage = "\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast"
+	var copyrightY = cheight(997)
 	if (document.getElementById("inputCheckboxPowerToughness").checked && cardData.creature) {
-		copyrightY = 1016
+		copyrightY = cheight(1016)
 	}
-	textContext.fillText(infoCopyright, 700, copyrightY)
+	textContext.fillText(copyrightMessage, cwidth(700), copyrightY)
 	textContext.textAlign = "left"
 	drawCard()
 }

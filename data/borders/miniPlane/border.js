@@ -10,6 +10,7 @@ cardData.rulesBox = false
 cardData.pinline = false
 cardData.titleTypeBoxes = false
 cardData.rareStamp = false
+cardData.transparency = true
 //Specific Values
 cardData.manaSymbolDirection = "none"
 cardData.titleAlignment = "center"
@@ -49,14 +50,7 @@ function bottomInfoPlanechase() {
 	var infoSet = document.getElementById("inputInfoSet").value
 	var infoLanguage = document.getElementById("inputInfoLanguage").value
 	var infoArtist = document.getElementById("inputInfoArtist").value
-	var infoCopyright = "CC \u2014 " + document.getElementById("inputInfoCopyright").value
-	if (infoCopyright == "CC \u2014 secretcode") {
-		var date = new Date()
-		var year = date.getFullYear()
-		infoCopyright = "\u2122 & \u00a9 " + year + " Wizards of the Coast"
-	} else if (infoCopyright == "CC \u2014 ") {
-		infoCopyright = ""
-	}
+	var infoCopyright = "\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast"
 	var infoNumberSetLanguage = infoNumber + " " + infoSet + " \u00b7 " + infoLanguage + "  "
 	textContext.fillStyle = "white"
 	textContext.font = cheight(15) + "px gothammedium"
