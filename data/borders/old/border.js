@@ -48,7 +48,7 @@ finishChangingBorder()
 
 function bottomInfoOld() {
 	var infoArtist = "Illus. " + document.getElementById("inputInfoArtist").value
-	var copyrightNumber = "\u2122 & \u00a9 1993-" + date.getFullYear() + " Wizards of the Coast, Inc. " + document.getElementById("inputInfoNumber").value
+	var copyrightNumber = "\u2122 & \u00a9 1993-" + date.getFullYear() + " Wizards of the Coast, Inc. *Not For Sale*" //+ document.getElementById("inputInfoNumber").value
 	textContext.textAlign = "center"
 	textContext.fillStyle = "black"
 	textContext.font = "31px mplantin"
