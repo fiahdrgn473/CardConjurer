@@ -44,7 +44,7 @@ function textAreaKeyPressed() {
 //============================================//
 //     Anything I Like to Change Often :)     //
 //============================================//
-randomizeSampleCards(7)
+randomizeSampleCards(8)
 
 //============================================//
 //         Setup Variables/Canvases           //

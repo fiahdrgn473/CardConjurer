@@ -27,6 +27,7 @@ cardData.typeX = cwidth(76)
 cardData.typeY = cheight(616)
 cardData.textX = cwidth(92)
 cardData.textY = cheight(657)
+cardData.textRight = cwidth(666)
 document.getElementById("inputCreatureColor").value = "#ffffff"
 cardData.ptFont = "46px mplantin"
 cardData.ptShadow = cwidth(2)
