@@ -59,10 +59,10 @@ var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
 var defaultCardData = {
 	version:"m15",
 	manaSymbolX:cwidth(659), manaSymbolY:cheight(60), manaSymbolRadius:cwidth(17.5), manaSymbolDirection:"left",
-	titleX:cwidth(63), titleY:cheight(94), titleRight:cwidth(687), titleFont:"belerenb", titleFontSize:cwidth(40), titleAlignment:"left",
-	typeX:cwidth(63), typeY:cheight(630), typeRight:cwidth(687), typeFont:"belerenb", typeFontSize:cwidth(34), typeAlignment:"left",
+	titleX:cwidth(63), titleY:cheight(94), titleRight:cwidth(687), titleFont:"belerenb", titleFontSize:cwidth(40), titleAlignment:"left", titleShadow:"none",
+	typeX:cwidth(63), typeY:cheight(630), typeRight:cwidth(687), typeFont:"belerenb", typeFontSize:cwidth(34), typeAlignment:"left", typeShadow:"none",
 	textX:cwidth(63), textY:cheight(690), textRight:cwidth(690), textFont:"mplantin",
-	ptFont:"39px belerenb", ptX:cwidth(645), ptY:cheight(975),
+	ptFont:"39px belerenb", ptX:cwidth(645), ptY:cheight(975), ptShadow:"none",
 	ptBoxX:cwidth(571), ptBoxY:cheight(929), ptBoxWidth:cwidth(135), ptBoxHeight:cheight(76),
 	setSymbolWidth:cwidth(77), setSymbolHeight:cheight(42), setSymbolX:cwidth(693), setSymbolY:cheight(620), setSymbolAlignment:"right",
 	watermarkWidth:cwidth(520), watermarkHeight:cheight(250), watermarkY:cheight(815),
@@ -185,7 +185,7 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, maskOpac
 }
 
 //Text processor... kind of?
-CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor, textAlignment = "left") {
+CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor, textAlignment = "left", shadow = "none") {
 	this.font = textFontSize + "px " + textFont
 	this.fillStyle = textColor
 	this.strokeStyle = outlineColor
@@ -209,6 +209,11 @@ CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, in
 		while(this.measureText(text).width + x > rightLimit) {
 			textFontSize -= 0.5
 			this.font = textFontSize + "px " + textFont
+		}
+		if (shadow != false) {
+			this.fillStyle = "black"
+			this.fillText(text, x + shadow, y + shadow)
+			this.fillStyle = textColor
 		}
 		if (outline) {
 			this.strokeText(text, x, y)
@@ -661,8 +666,8 @@ function sectionTextFunction() {
 	textContext.clearRect(0, 0, cardWidth, cardHeight)
 	//mana cost, name, type, text
 	var manaSymbolWidth = textContext.manaCost(document.getElementById("inputCost").value, cardData.manaSymbolX, cardData.manaSymbolY, cardData.manaSymbolRadius, cardData.manaSymbolDirection)
-	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleRight - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, false, document.getElementById("inputCheckboxTitleOutline").checked, document.getElementById("inputTitleOutlineColor").value, cardData.titleAlignment)
-	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeRight, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, false, document.getElementById("inputCheckboxTypeOutline").checked, document.getElementById("inputTypeOutlineColor").value, cardData.typeAlignment)
+	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleRight - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, false, document.getElementById("inputCheckboxTitleOutline").checked, document.getElementById("inputTitleOutlineColor").value, cardData.titleAlignment, cardData.titleShadow)
+	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeRight, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, false, document.getElementById("inputCheckboxTypeOutline").checked, document.getElementById("inputTypeOutlineColor").value, cardData.typeAlignment, cardData.typeShadow)
 	textContext.writeText(document.getElementById("inputText").value, cardData.textX, cardData.textY + parseInt(document.getElementById("inputTextDown").value), cardData.textRight, cardData.textFont, parseInt(document.getElementById("inputTextSize").value), document.getElementById("inputRulesColor").value, true, document.getElementById("inputCheckboxRulesOutline").checked, document.getElementById("inputRulesOutlineColor").value)
 	//Power Toughness
 	if (document.getElementById("inputCheckboxPowerToughness").checked && cardData.creature) {
@@ -674,6 +679,11 @@ function sectionTextFunction() {
 		textContext.textAlign = "center"
 		textContext.font = cardData.ptFont
 		textContext.fillStyle = document.getElementById("inputCreatureColor").value
+		if (cardData.ptShadow != "none") {
+			textContext.fillStyle = "black"
+			textContext.fillText(document.getElementById("inputPowerToughness").value, cardData.ptX + parseInt(cardData.ptShadow), cardData.ptY + parseInt(cardData.ptShadow))
+			textContext.fillStyle = document.getElementById("inputCreatureColor").value
+		}
 		textContext.fillText(document.getElementById("inputPowerToughness").value, cardData.ptX, cardData.ptY)
 		textContext.textAlign = "left"
 	}	
@@ -1036,20 +1046,14 @@ function checkCookies() {
             alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
         setCookie("visited", "true")
-        setCookie("cookieUpdated4", "true")
+        setCookie("cookieUpdated5", "true")
 	} else {
 		console.log("Welcome back to Card Conjurer!")
-		if (getCookie("cookieUpdated4") != "true") {
-			alert("Card Conjurer has been updated since your last visit. After reworking the system I haven't had time to add all the old border styles back, but feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Plane")
-   	    	setCookie("cookieUpdated4", "true")
+		if (getCookie("cookieUpdated5") != "true") {
+			alert("Card Conjurer has been updated since your last visit. Feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Old")
+   	    	setCookie("cookieUpdated5", "true")
 		} else {
 			console.log("There are no new updates since your last visit.")
-			if (getCookie("donationRequest") != "true") {
-				alert("Card Conjurer is now hosted with the custom domain cardconjurer.com! That means that running this website currently costs $10 per year. It's not much, but any donation, even if it's just dollar, would be greatly appreciated :)  \r\n\r\nAnyways, thanks for using Card Conjurer! I hope you enjoy making some sweet custom Magic cards!")
-				setCookie("donationRequest", "true")
-			} else {
-				console.log("I hope you enjoy making custom cards!")
-			}
 		}
 	}
 }
@@ -1076,7 +1080,7 @@ setTimeout(function(){sectionTextFunction()}, 500)
 setTimeout(function(){sectionTextFunction()}, 1000)
 // Only for working on frames n' stuff :)
 // setTimeout(function(){
-// 	document.getElementById("inputCardVersion").value = "plane"
+// 	document.getElementById("inputCardVersion").value = "old"
 // 	document.getElementById("inputCardVersion").onchange()
 // }, 500)
 

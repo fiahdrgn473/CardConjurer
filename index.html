@@ -88,6 +88,7 @@
 					<span class="dropdown">
 						<select onchange="backToDefault(this.value)" id="inputCardVersion">
 							<option value="m15">M15</option>
+							<option value="old">Old</option>
 							<option value="planeswalker">Planeswalker (M15)</option>
 							<option value="tokenTextless">Token (Textless)</option>
 							<option value="tokenText">Token (Regular)</option>
@@ -240,14 +241,14 @@
 					<span class="dropdown">
 						<select class="selectColor" onchange="imgPowerToughness.load(this.value + 'pt.png')"></select>
 					</span>
-					<input id="inputPowerToughness" class="input" type="text" oninput="sectionTextFunction()">
+					<input id="inputPowerToughness" class="input" type="text" value="" oninput="sectionTextFunction()">
 					<br><br>
 					Rules Text
 					<br>
 					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()" onkeypress="textAreaKeyPressed()"></textarea>
 					<br>
 					Rules Text Font Size
-					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="0.5" oninput="sectionTextFunction()">
+					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="1" oninput="sectionTextFunction()">
 					<br>
 					Pixels Between Paragraphs
 					<input id="inputTextShift" type="number" class="input" min="0" value="13" oninput="sectionTextFunction()">
@@ -476,10 +477,10 @@
 <!--CSS-->
 <style>
 /*fonts*/
-@font-face {
+/*@font-face {
 	font-family: relaymedium;
 	src: url("data/fonts/relay-medium.ttf");
-}
+}*/
 @font-face {
 	font-family: gothammedium;
 	src: url("data/fonts/gotham-medium.ttf");
@@ -512,6 +513,10 @@
 	font-family: mplantini;
 	src: url("data/fonts/mplantin-i.ttf");
 }
+@font-face {
+	font-family: goudymedieval;
+	src: url("data/fonts/goudy-medieval.ttf");
+}
 
 :root {
 	/*Color Palette*/
@@ -525,7 +530,7 @@
 /*Page-wide styling*/
 * {
 	font-family: belerenb;
-	font-size: 20pt; /*Master font size*/
+	font-size: 16pt; /*Master font size*/
 	user-select: none;
 	color: #eee;
 }
