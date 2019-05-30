@@ -86,7 +86,7 @@
 				<div class="cmm shown" id="cmm-frame">
 					Border
 					<span class="dropdown">
-						<select onchange="backToDefault(this.value)" id="inputCardVersion">
+						<select onchange="backToDefault(this.value)" class="input" id="inputCardVersion">
 							<option value="m15">M15</option>
 							<option value="old">Old</option>
 							<option value="planeswalker">Planeswalker (M15)</option>
@@ -102,7 +102,7 @@
 					<br><br>
 					Frame
 					<span class="dropdown">
-						<select class="selectColor changesFrame" onchange="imgFrame.load(this.value + 'frame.png')" id="inputFrameColor"></select>
+						<select class="selectColor changesFrame input" onchange="imgFrame.load(this.value + 'frame.png')" id="inputFrameColor"></select>
 					</span>
 					<br>
 					<div class="checkbox">
@@ -111,7 +111,7 @@
 						<div>Frame (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesFrame" onchange="imgFrameRight.load(this.value + 'frame.png')" id="inputFrameRightColor"></select>
+						<select class="selectColor changesFrame input" onchange="imgFrameRight.load(this.value + 'frame.png')" id="inputFrameRightColor"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
@@ -120,7 +120,7 @@
 						<div>Title and Type Boxes</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesTitleType" onchange="imgTitleTypeBoxes.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesTitleType input" onchange="imgTitleTypeBoxes.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
@@ -129,7 +129,7 @@
 						<div>Title and Type Boxes (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesTitleType" onchange="imgTitleTypeBoxesRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesTitleType input" onchange="imgTitleTypeBoxesRight.load(this.value + 'frame.png')"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
@@ -138,7 +138,7 @@
 						<div>Rules Box</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesRulesBox" onchange="imgRulesBox.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesRulesBox input" onchange="imgRulesBox.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
@@ -147,7 +147,7 @@
 						<div>Rules Box (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesRulesBox" onchange="imgRulesBoxRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesRulesBox input" onchange="imgRulesBoxRight.load(this.value + 'frame.png')"></select>
 					</span>
 					<br><br>
 					<div class="checkbox">
@@ -156,7 +156,7 @@
 						<div>Pinline</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesPinline" onchange="imgPinline.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesPinline input" onchange="imgPinline.load(this.value + 'frame.png')"></select>
 					</span>
 					<br>
 					<div class="checkbox">
@@ -165,7 +165,7 @@
 						<div>Pinline (right)</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor changesPinline" onchange="imgPinlineRight.load(this.value + 'frame.png')"></select>
+						<select class="selectColor changesPinline input" onchange="imgPinlineRight.load(this.value + 'frame.png')"></select>
 					</span>
 				</div>
 				<div class="cmm" id="cmm-advanced">
@@ -202,50 +202,50 @@
 					Pinline Opacity
 					<input id="inputPinlineOpacity" type="number" class="input" min="0" max="100" value="100" step="1" oninput="sectionFrameFunction()">
 					<br><br>
-					Title Color <input type="color" id="inputTitleColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTitleOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
+					Title Color <input type="color" id="inputTitleColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTitleOutlineColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxTitleOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxTitleOutline" />
 						<div>Title Outline</div>
 					</div>
-					Type Color <input type="color" id="inputTypeColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTypeOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
+					Type Color <input type="color" id="inputTypeColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()"> Outline <input type="color" id="inputTypeOutlineColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxTypeOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxTypeOutline" />
 						<div>Type Outline</div>
 					</div>
-					Rules Color <input type="color" id="inputRulesColor" value="#000000" class="fontColor" onchange="sectionTextFunction()"> Outline <input type="color" id="inputRulesOutlineColor" value="#000000" class="fontColor" onchange="sectionTextFunction()">
+					Rules Color <input type="color" id="inputRulesColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()"> Outline <input type="color" id="inputRulesOutlineColor" value="#000000" class="fontColor input" onchange="sectionTextFunction()">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxRulesOutline" onchange="sectionTextFunction()">
 						<label for="inputCheckboxRulesOutline" />
 						<div>Rules Outline</div>
 					</div>
-					<input type="color" id="inputCreatureColor" value="#000000" onchange="sectionTextFunction()"> Power/Toughness Color
+					<input type="color" id="inputCreatureColor" value="#000000" class="input" onchange="sectionTextFunction()"> Power/Toughness Color
 					<br><br>
-					<input type="color" id="inputBorderColor" value="#000000" onchange="sectionFrameFunction()"> Border Color
+					<input type="color" id="inputBorderColor" value="#000000" class="input" onchange="sectionFrameFunction()"> Border Color
 				</div>
 				<div class="cmm" id="cmm-text">
 					Name
-					<input id="inputName" type="text" class="input" value="" oninput="sectionTextFunction()">
+					<input id="inputName" type="text" class="input" value="" oninput="sectionTextFunction()" placeholder="Ajani's Chosen">
 					<br>
 					Mana Cost
-					<input id="inputCost" type="text" class="input" value="" oninput="sectionTextFunction()">
+					<input id="inputCost" type="text" class="input" value="" oninput="sectionTextFunction()" placeholder="2 w w   (include spaces)">
 					<br>
 					Type
-					<input id="inputType" type="text" class="input" value="" oninput="sectionTextFunction()">
+					<input id="inputType" type="text" class="input" value="" oninput="sectionTextFunction()" placeholder="Creature — Cat Soldier">
 					<div class="checkbox">
 						<input type="checkbox" id="inputCheckboxPowerToughness" onchange="sectionTextFunction()">
 						<label for="inputCheckboxPowerToughness" />
 						<div>Power/Toughness</div>
 					</div>
 					<span class="dropdown">
-						<select class="selectColor" onchange="imgPowerToughness.load(this.value + 'pt.png')"></select>
+						<select class="selectColor input" onchange="imgPowerToughness.load(this.value + 'pt.png')"></select>
 					</span>
-					<input id="inputPowerToughness" class="input" type="text" value="" oninput="sectionTextFunction()">
+					<input id="inputPowerToughness" class="input" type="text" value="" oninput="sectionTextFunction()" placeholder="3/3">
 					<br><br>
 					Rules Text
 					<br>
-					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets ('{' and '}') around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()" onkeypress="textAreaKeyPressed()"></textarea>
+					<textarea id="inputText" class="input" rows="5" cols="40" style="width: 100%; resize: none; height: 200px" placeholder="Remember to include curly brackets, '{' and '}', around each code. To skip to the next line use {line}. See 'Mana Symbols' and 'Other Codes' (below) for more information." oninput="sectionTextFunction()" onkeypress="textAreaKeyPressed()"></textarea>
 					<br>
 					Rules Text Font Size
 					<input id="inputTextSize" type="number" class="input" min="0" value="37" step="1" oninput="sectionTextFunction()">
@@ -270,10 +270,10 @@
 					<input id="inputInfoLanguage" type="text" class="input" value="EN" oninput="sectionTextFunction()">
 					<br>
 					Artist Credit
-					<input id="inputInfoArtist" type="text" class="input" value="" oninput="sectionTextFunction()">
+					<input id="inputInfoArtist" type="text" class="input" value="" oninput="sectionTextFunction()" placeholder="John Doe">
 					<br>
-					Other Information
-					<input id="inputInfoMessage" type="text" class="input" value="Not For Sale" oninput="sectionTextFunction()">
+					<!-- Other Information -->
+					<input id="inputInfoMessage" type="text" class="input" value="Not For Sale" oninput="sectionTextFunction()" style="display: none;">
 				</div>
 				<div class="cmm" id="cmm-art">
 					Upload an Image
@@ -323,14 +323,14 @@
 					<input id="inputWatermarkOpacity" type="number" class="input" min="0" max="100" value="40" step="1" oninput="sectionOtherFunction()">
 					<br>
 					Set Code
-					<input id="inputWatermarkCode" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + this.value.toUpperCase() + "&size=large&rarity=C", imgWatermark, "needsBoth")'>
+					<input id="inputWatermarkCode" type="text" class="input" onchange='imageURL("http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + this.value.toUpperCase() + "&size=large&rarity=C", imgWatermark, "needsBoth")' placeholder="WAR">
 					Or Upload an Image
 					<input type="text" class="input" placeholder="Via URL" onchange="imageURL(this.value, imgWatermark, 'needsBoth')">
 					<input type="file" name="inputCardArt" class="input" accept="image/*" onchange="loadImage(event, imgWatermark)" id="inputPicture" placeholder="Via File Upload">
 					<br>
 					Watermark Color
 					<span class="dropdown">
-						<select onchange="sectionOtherFunction()" id="inputWatermarkColor">
+						<select onchange="sectionOtherFunction()" class="input" id="inputWatermarkColor">
 							<option value="none">default</option>
 							<option value="#afa360">White</option>
 							<option value="#04527c">Blue</option>
@@ -347,7 +347,7 @@
 						<div>Second Watermark Color</div>
 					</div>
 					<span class="dropdown">
-						<select onchange="sectionOtherFunction()" id="inputSecondWatermarkColor">
+						<select onchange="sectionOtherFunction()" class="input" id="inputSecondWatermarkColor">
 							<option value="none">default</option>
 							<option value="#afa360">White</option>
 							<option value="#04527c">Blue</option>
@@ -369,15 +369,15 @@
 				</div>
 				<div class="cmm" id="cmm-planeswalker">
 					Planeswalker Ability Line Height
-					<input type="number" id="inputAbilityLine1" value="102" min="0" oninput="planeswalkerAbilityLines()">
-					<input type="number" id="inputAbilityLine2" value="96" min="0" oninput="planeswalkerAbilityLines()">
-					<input type="number" id="inputAbilityLine3" value="80" min="0" oninput="planeswalkerAbilityLines()">
-					<input type="number" id="inputAbilityLine4" value="0" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" class="input" id="inputAbilityLine1" value="102" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" class="input" id="inputAbilityLine2" value="96" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" class="input" id="inputAbilityLine3" value="80" min="0" oninput="planeswalkerAbilityLines()">
+					<input type="number" class="input" id="inputAbilityLine4" value="0" min="0" oninput="planeswalkerAbilityLines()">
 					Planeswalker Ability Values
-					<input type="text" id="inputAbilityValue0" value="+1" oninput="planeswalkerAbilityIcons()">
-					<input type="text" id="inputAbilityValue1" value="0" oninput="planeswalkerAbilityIcons()">
-					<input type="text" id="inputAbilityValue2" value="-1" oninput="planeswalkerAbilityIcons()">
-					<input type="text" id="inputAbilityValue3" value="" oninput="planeswalkerAbilityIcons()">
+					<input type="text" class="input" id="inputAbilityValue0" value="+1" oninput="planeswalkerAbilityIcons()">
+					<input type="text" class="input" id="inputAbilityValue1" value="0" oninput="planeswalkerAbilityIcons()">
+					<input type="text" class="input" id="inputAbilityValue2" value="-1" oninput="planeswalkerAbilityIcons()">
+					<input type="text" class="input" id="inputAbilityValue3" value="" oninput="planeswalkerAbilityIcons()">
 				</div>
 				<!-- <div class="adspace">
 					Ads?
@@ -612,11 +612,8 @@ body {
 	width: 100%;
 }
 .dropdown select {
-	border-radius: 0.25em;
 	padding-left: 0.25em;
 	width: inherit;
-	background-color: var(--color-primary);
-	border: none;
 	cursor: pointer;
 	-moz-appearance: none;
 	-webkit-appearance:none;
@@ -643,7 +640,7 @@ body {
 	display: inline-block;
 	width: calc(1.2em - 6px);
 	height: calc(1.2em - 6px);
-	border: 3px solid var(--color-primary);
+	border: 3px solid var(--color-select);
 	border-radius: 0.25em;
 	position: absolute;
 	top: 0px;
@@ -654,6 +651,7 @@ body {
 }
 .checkbox input:checked ~ label {
 	background: var(--color-select);
+	border: 3px solid var(--color-primary);
 }
 .checkbox > input {
 	opacity: 0;
@@ -667,16 +665,16 @@ body {
 /*other inputs*/
 input[type="text"], input[type="number"], textarea, input[type="file"] {
 	width: 100%;
-	border: none;
-	background: var(--color-primary);
-	border-radius: 0.25em;
 	padding-left: 0.25em;
 }
 /*color selector*/
 input[type="color"] {
 	padding: 0px;
-	border: none;
+}
+.input {
 	background: var(--color-primary);
+	border-radius: 0.25em;
+	border: 1px solid var(--color-select);
 }
 
 /*Hyperlinks*/
