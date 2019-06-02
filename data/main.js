@@ -3,31 +3,6 @@
 //============================================//
 //Hi there :D
 //changeme new location
-window.onscroll = function() {scrollFunction()}
-window.onresize = function() {scrollFunction()}
-
-function scrollFunction() {
-	var scrollHeight = document.body.scrollTop
-	if (scrollHeight < 0) {
-		scrollHeight = 0
-	}
-	var titleHeight = parseInt(window.innerWidth * 141 / 1236 - 10);
-	if (window.innerWidth >= 750) {
-		if (window.innerWidth >= 970) {
-			titleHeight = 100
-		}
-		if (scrollHeight < titleHeight - 30) {
-    		document.getElementById("header").style.maxHeight =  titleHeight - scrollHeight
-  		} else {
-    		document.getElementById("header").style.maxHeight = "30px"
-  		}
-  		document.getElementsByClassName("mainGrid")[0].style.marginTop = titleHeight + 10
-	} else {
-		document.getElementsByClassName("mainGrid")[0].style.marginTop = 0
-		document.getElementById("header").style.maxHeight = titleHeight
-	}
-}
-
 function textAreaKeyPressed() {
 	if (event.key == "Enter" || event.key == "Return" || event.keyCode == 13) {
 		setTimeout(function() {
@@ -808,26 +783,7 @@ function drawCard() {
 	}
 }
 
-//============================================//
-//                HTML Stuff                  //
-//============================================//
-//Toggles the visibility of predetermined sections of the input boxes
-function toggleView(targetId, targetClass) {
-	for (var i = 0; i < document.getElementsByClassName(targetClass).length; i++) {
-		document.getElementsByClassName(targetClass)[i].classList.remove("shown")
-	}
-	document.getElementById(targetClass + "-" + targetId).classList.add("shown")
-}
 
-//Downloads the image!
-function downloadCardImage(linkElement) {
-	linkElement.download = document.getElementById("inputName").value.toLowerCase() + ".png"
-	var cardImageData = cardCanvas.toDataURL()
-	if (cardImageData == undefined) {
-		alert("Sorry, it seems that you cannot download your card. Please try using a different browser/device.")
-	}
-	linkElement.href = cardImageData
-}
 
 //Gives all the select boxes the same color options to choose from
 //loadColors("white-White,blue-Blue,colorlessLand-Colorless Land,gold-Gold"), this is an example of how to use the function
@@ -875,20 +831,7 @@ function randomizeSampleCards(count) {
 	}
 }
 
-//Loads images from a file upload
-function loadImage(event, destination) {
-	var input = event.target
-	var reader = new FileReader()
-	reader.onload = function() {
-		var dataURL = reader.result
-		destination.src = dataURL
-		destination.cropped = false
-		if (destination == imgWatermark) {
-			imgWatermark.whiteToTransparent = false
-		}
-	}
-	reader.readAsDataURL(input.files[0])
-}
+
 
 //============================================//
 //                Misc Stuff                  //
@@ -930,6 +873,18 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 	imgCardArt.load("https://cors-anywhere.herokuapp.com/" + cardArtUrlList[cardArtNameNumberInput - 1])
 	document.getElementById("inputInfoArtist").value = cardArtArtistList[cardArtNameNumberInput - 1]
 	sectionTextFunction()
+}
+
+//Downloads the image!
+function downloadCardImage(linkElement) {
+	if (document.getElementById("inputName").value != "") {
+		linkElement.download = document.getElementById("inputName").value.toLowerCase() + ".png"
+	}
+	var cardImageData = cardCanvas.toDataURL()
+	if (cardImageData == undefined) {
+		alert("Sorry, it seems that you cannot download your card. Please try using a different browser/device.")
+	}
+	linkElement.href = cardImageData
 }
 
 //============================================//
@@ -1073,7 +1028,6 @@ function cheight(originalValue = 1050, originalCardHeight = 1050) {
 setTimeout(function(){checkCookies()}, 1005)
 backToDefault("m15")
 loadScript("data/other/setCodeList.js")
-scrollFunction()
 //changeme
 setTimeout(function(){sectionTextFunction()}, 250)
 setTimeout(function(){sectionTextFunction()}, 500)
