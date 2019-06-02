@@ -862,7 +862,7 @@ function randomizeSampleCards(count) {
 		cardNumbers[cardNumbers.length] = randomNumber
 		var imgName = "sampleCard" + cardNumbers.length
 		window[imgName] = new Image()
-		window[imgName].src = "images/sampleCards/sample" + randomNumber + ".png"
+		window[imgName].src = "data/site/sampleCards/sample" + randomNumber + ".png"
 	}
 	sampleCard1.onload = function() {
 		document.getElementById("sampleCardA").src = sampleCard1.src

@@ -3,6 +3,7 @@
 <head>
 	<title>Card Conjurer</title>
 	<!-- Favicon craziness! -->
+	<link rel="stylesheet" href="data/site/styles.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
@@ -15,14 +16,6 @@
 	<!-- Other things -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<PageMap>
-    	<DataObject type="thumbnail">
-      		<Attribute name="src" value="http://cardconjurer.com/images/sampleCards/sample1.png"/>
-      		<Attribute name="width" value="86"/>
-      		<Attribute name="height" value="120"/>
-   		</DataObject>
-  	</PageMap>
-	<meta name="thumbnail" content="http://cardconjurer.com/images/sampleCards/sample1.png">
 	<!-- Here's the stuff that does things? -->
 	<script type='application/ld+json'>
 	{
@@ -43,34 +36,24 @@
 		],
 		"typicalAgeRange": "All ages",
 		"description": "Card Conjurer: A free online tool that creates custom Magic: The Gathering Cards. Fast, easy, and offers a wide variety of card frames and other customizations. Planar cards, Ixalan maps, Planeswalkers, and more!",
-		"image": "http://cardconjurer.com/images/sampleCards/sample1.png",
+		"image": "http://cardconjurer.com/data/site/sampleCards/sample8.png",
 		"mainEntityOfPage": "cardconjurer.com",
 		"name": "Card Conjurer"
 	}
 	</script>
-	<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: "ca-pub-6359136885622932",
-	    	enable_page_level_ads: true
-	  	});
-	</script> -->
 </head>
-
-
-
-
-
 <header>
-	<div class="title"><img src="images/title.png" id="header"></div>
+	<div class="title"><img src="data/site/images/title.png" id="header"></div>
 </header>
+
 
 <body>
 	<div class="grid mainGrid">
+		<!-- from here -->
 		<div class="canvasContainer">
 			<canvas id="canvas" width="750" height="1050"></canvas>
 		</div>
-		<div class="cmmArea noVerticalPadding">
+		<div class="cmmArea">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('frame', 'cmm')">Frame</div>
 				<div onclick="toggleView('text', 'cmm')">Text</div>
@@ -82,7 +65,7 @@
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
 			</div>
-			<div class="selectionGridTarget">
+			<div class="selectionGridTarget padded">
 				<div class="cmm shown" id="cmm-frame">
 					Border
 					<span class="dropdown">
@@ -362,10 +345,6 @@
 				<div class="cmm" id="cmm-download">
 					<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a><br><br>
 					Remember to properly credit the artist (under 'Info') before downloading!
-					<br>
-					<!-- <div class="adspace">
-						Ads?
-					</div> -->
 				</div>
 				<div class="cmm" id="cmm-planeswalker">
 					Planeswalker Ability Line Height
@@ -379,15 +358,9 @@
 					<input type="text" class="input" id="inputAbilityValue2" value="-1" oninput="planeswalkerAbilityIcons()">
 					<input type="text" class="input" id="inputAbilityValue3" value="" oninput="planeswalkerAbilityIcons()">
 				</div>
-				<!-- <div class="adspace">
-					Ads?
-				</div> -->
 			</div>
 		</div>
-		<!-- <div class="adspace">
-			Ads?
-		</div> -->
-		<div class="tutorialArea noVerticalPadding">
+		<div class="tutorialArea">
 			<div class="grid selectionGrid">
 				<div onclick="toggleView('about', 'extras')">About</div>
 				<div onclick="toggleView('tutorial', 'extras')">Tutorial</div>
@@ -395,7 +368,7 @@
 				<div onclick="toggleView('codes', 'extras')">Other Codes</div>
 				<div onclick="toggleView('set', 'extras')">Set Codes</div>
 			</div>
-			<div class="selectionGridTarget">
+			<div class="selectionGridTarget padded">
 				<div class="extras shown" id="extras-about">
 					<div class="miniTitle">
 						Welcome to Card Conjurer! 
@@ -408,20 +381,6 @@
 					</div>
 					<div class="paragraph">
 						Hi! My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology.</a> During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager. (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>) It was pretty simple but I soon began to add more border images like Miracle or Nyx. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github, and then in April of 2019 I bought the domain <a href="#header" onclick="alert('You\'re already there, silly!')">cardconjurer.com</a>.
-					</div>
-					<div class="miniTitle">
-						How You Can Help
-					</div>
-					<div class="paragraph">
-						I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation or using a referral link:
-					</div>
-					<div class="grid donateGrid selectionGrid">
-						<div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="images/paypal.png"></div>
-						<!-- <div onclick="window.open('https://www.patreon.com/KyleBurton', '_blank');" style="color:rgb(255,89,0);">Patreon<img src="images/patreon.png"></div> -->
-						<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="images/pucatrade.png"></div>
-						<div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">@ImKyle4815<img src="images/twitter.png"></div>
-						<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="images/massdrop.png"></div>
-						<!-- <div onclick="window.open('https://www.youtube.com/channel/UC95Pd8lc8UWEkI96Nq_THvw', '_blank');" style="color:rgb(255,0,0);">Izzet Right?<img src="images/izzetright.png"></div> -->
 					</div>
 				</div>
 				<div class="extras" id="extras-symbolList">
@@ -454,366 +413,43 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="adspace">
-			Ads?
-		</div> -->
-		<div class="sampleGrid grid miniTitle">
-			Check out some samples<br>
+		<div class="sampleGrid grid paddedVertical">
+			<div class="miniTitle">
+				Check out some samples
+			</div>
 			<div class="noBorder">
 				<img id="sampleCardA" class="sampleCard">
 				<img id="sampleCardB" class="sampleCard">
 				<img id="sampleCardC" class="sampleCard">
 			</div>
 		</div>
+		<!-- to here -->
+		<div>
+			<div class="padded">
+				<div class="miniTitle">
+					How You Can Help
+				</div>
+				<div class="paragraph">
+					I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by making a small donation or using a referral link:
+				</div>
+				<div class="grid donateGrid selectionGrid">
+					<div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="data/site/icons/paypal.png"></div>
+					<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="data/site/icons/pucatrade.png"></div>
+					<div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">@ImKyle4815<img src="data/site/icons/twitter.png"></div>
+					<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="data/site/icons/massdrop.png"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
+
+
+
+
 <footer class="info"><a href="http://cardconjurer.com/TermsOfUse.txt" target="_blank">Terms&nbspof&nbspUse</a> &#8226 <a href="http://cardconjurer.com/Disclaimer.txt" target="_blank">Disclaimer</a> &#8226 <a href="https://github.com/ImKyle4815/CardConjurer" target="_blank">Github&nbsppage</a> &#8226 <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">Contact</a></footer>
 
-
-
-
-
-<!--CSS-->
-<style>
-/*fonts*/
-/*@font-face {
-	font-family: relaymedium;
-	src: url("data/fonts/relay-medium.ttf");
-}*/
-@font-face {
-	font-family: gothammedium;
-	src: url("data/fonts/gotham-medium.ttf");
-}
-@font-face {
-	font-family: belerenb;
-	src: url("data/fonts/beleren-b.ttf");
-}
-@font-face {
-	font-family: belerenbsc;
-	src: url("data/fonts/beleren-bsc.ttf");
-}
-@font-face {
-	font-family: matrix;
-	src: url("data/fonts/matrix.ttf");
-}
-@font-face {
-	font-family: matrixb;
-	src: url("data/fonts/matrix-b.ttf");
-}
-@font-face {
-	font-family: matrixbsc;
-	src: url("data/fonts/matrix-bsc.ttf");
-}
-@font-face {
-	font-family: mplantin;
-	src: url("data/fonts/mplantin.ttf");
-}
-@font-face {
-	font-family: mplantini;
-	src: url("data/fonts/mplantin-i.ttf");
-}
-@font-face {
-	font-family: goudymedieval;
-	src: url("data/fonts/goudy-medieval.ttf");
-}
-
-:root {
-	/*Color Palette*/
-	/*Regular*/
-	--color-background: #00000077;
-	--color-background-darker: #000000aa;
-	--color-primary: #073c00;
-	--color-select: #0b6b00;
-}
-
-/*Page-wide styling*/
-* {
-	font-family: belerenb;
-	font-size: 16pt; /*Master font size*/
-	user-select: none;
-	color: #eee;
-}
-html {
-	background-color: #333;
-}
-body {
-	margin: 0;
-}
-
-/*Grid styling*/
-.grid {
-	display: grid;
-}
-.mainGrid > div {
-	border-style: solid;
-	border-color: var(--color-primary);
-	border-width: 1px 1px 0px 1px;
-	width: calc(100% - 2px);
-}
-.mainGrid > div:not(.noVerticalPadding) {
-	padding: 0.25em 0px;
-}
-.mainGrid > div:nth-child(odd) {
-	background: var(--color-background);
-}
-.mainGrid > div:nth-child(even) {
-	background: var(--color-background-darker);
-}
-.selectionGrid {
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
-	text-align: center;
-}
-.mainGrid > div.canvasContainer {
-	padding: 0;
-	text-align: center;
-}
-#canvas {
-	display: block;
-	max-width:750px;
-	width: 100%;
-	height: auto;
-	margin: 0px auto;
-}
-
-/*Card manipulation menu grid*/
-.selectionGrid > div {
-	font-size: 1.1em;
-	font-family: belerenbsc;
-	cursor: pointer;
-	padding: 0.1em;
-	border: 0.05em solid var(--color-primary);
-	background-color: var(--color-background);
-	-webkit-transition: 0.3333s;
-  	transition: 0.3333s;
-}
-.selectionGrid > div:hover {
-	border: 0.15em solid var(--color-select);
-	padding: 0px;
-}
-.selectionGridTarget {
-	padding: 1em;
-}
-.cmm, .extras {
-	display: none;
-}
-.shown {
-	display: block;
-}
-.sampleCard {
-	width: 100%;
-}
-
-/*Inputs and more*/
-/*dropdown*/
-.dropdown {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-.dropdown select {
-	padding-left: 0.25em;
-	width: inherit;
-	cursor: pointer;
-	-moz-appearance: none;
-	-webkit-appearance:none;
-	appearance: none;
-}
-.dropdown select option::hover {
-	/*nothing for now :)*/
-}
-.dropdown::after {
-	content: "\25BC";
-	font-size: 0.6em;
-	position: absolute;
-	pointer-events: none;
-	right: 0.6em;
-	top: 0.5em;
-}
-/*checkbox*/
-.checkbox {
-	height: 1em;
-	margin: 0.1em 0px 0.3em 0px;
-	position: relative;
-}
-.checkbox label {
-	display: inline-block;
-	width: calc(1.2em - 6px);
-	height: calc(1.2em - 6px);
-	border: 3px solid var(--color-select);
-	border-radius: 0.25em;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	cursor: pointer;
-	-webkit-transition: 0.5s;
-  	transition: 0.5s;
-}
-.checkbox input:checked ~ label {
-	background: var(--color-select);
-	border: 3px solid var(--color-primary);
-}
-.checkbox > input {
-	opacity: 0;
-}
-.checkbox div {
-	white-space: pre;
-	position: relative;
-	top: -0.1em;
-	left: 1.3em;
-}
-/*other inputs*/
-input[type="text"], input[type="number"], textarea, input[type="file"] {
-	width: 100%;
-	padding-left: 0.25em;
-}
-/*color selector*/
-input[type="color"] {
-	padding: 0px;
-}
-.input {
-	background: var(--color-primary);
-	border-radius: 0.25em;
-	border: 1px solid var(--color-select);
-}
-
-/*Hyperlinks*/
-a:link, a:visited {
-	color: #fff;
-}
-a:hover, a:active {
-	color: #999;
-}
-a {
-	-webkit-transition: 0.3333s;
-  	transition: 0.3333s;
-}
-
-.adspace {
-	display: none;
-}
-
-/*Desktop*/
-@media only screen and (min-width: 750px) {
-	html {
-		background: url("images/background.png") no-repeat center center fixed;
-	  	-webkit-background-size: cover;
-	  	-moz-background-size: cover;
-	 	-o-background-size: cover;
-	 	background-size: cover;
-	}
-	* {
-		font-size: 20pt; /*Master font size*/
-	}
-	header {
-		top: 0;
-	}
-	footer {
-		bottom: 0;
-	}
-	header, footer {
-		position: fixed;
-		width: 100%;
-		z-index: 1000;
-	}
-	#header {
-		max-height: 100px;
-		width: auto;
-	}
-	.mainGrid {
-		margin-top: 110px;
-		margin-bottom: 1.1em;
-	}
-}
-@media only screen and (min-width: 1175px) {
-	.mainGrid {
-		grid-template-columns: 750px auto;
-	}
-	.adspace {
-		grid-column: 1 / span 2;
-	}
-	.tutorialArea {
-		grid-column: 1 / span 2;
-	}
-	.sampleGrid {
-		grid-column: 1 / span 2;
-	}
-}
-@media only screen and (orientation: landscape) {
-	.sampleCard {
-		width: 32.8%;
-	}
-}
-
-/*Text and stuff :)*/
-.info > * {
-	font-size: inherit;
-}
-.info {
-	font-size: 0.7em;
-	border-top: 1px solid var(--color-primary);
-}
-
-/*Title*/
-#header {
-	width: auto;
-}
-header {
-	border-bottom: 1px solid var(--color-primary);
-}
-header, .info {
-	text-align: center;
-	background-color: black;
-	padding: 5px 0px;
-}
-
-/*symbol grid*/
-.manaSymbol > img {
-	position: relative;
-	height: 1em;
-}
-.symbolGrid {
-	grid-template-columns: repeat(auto-fit, minmax(3.5em, 1fr));
-	text-align: center;
-}
-.symbolGrid > div {
-	border: 0.1em solid var(--color-background);
-	border-radius: 1em;
-	background-color: var(--color-primary);
-}
-
-/*Sitewide text (bottom of the page)*/
-.miniTitle {
-	text-align: center;
-	font-size: 1.2em;
-	padding-bottom: 0.125em;
-}
-.paragraph {
-	padding-bottom: 0.25em;
-	text-indent: 2em;
-}
-/*Donation buttons!*/
-.donateGrid {
-	grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
-}
-.donateGrid.grid > div {
-	font-size: 1.7em;
-}
-.donateGrid > div > img {
-	position: relative;
-	top: 0.25em;
-	left: 0.5em;
-	height: 1.7em;
-}
-
-</style>
 <script src="data/main.js"></script>
+
+
 <html>
-<!--
-References 
-
-<div class="cmm" id="cmm-targetId">
-	...
-</div>
-
--->
