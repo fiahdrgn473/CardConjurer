@@ -145,7 +145,7 @@ function whiteToTransparent(source, destination) {
             for (y = 0; y < height; y++) {
             	for (x = 0; x < width; x++) {
                     index = (y * width + x) * 4
-                    if (imageData.data[index] >= 250 && imageData.data[index + 1] >= 250 && imageData.data[index + 2] >= 250) {
+                    if (imageData.data[index] >= 240 && imageData.data[index + 1] >= 240 && imageData.data[index + 2] >= 240) {
                         imageData.data[index + 3] = 0
                     }
                 }
