@@ -5,8 +5,8 @@ Duplicates found and removed: ORI, W17, CED
 Sets not found: Astral, Deckmasters, Duels of the Planeswalkers
 The codes have been resourced from the following:
 https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets
-Last updated: 5-13-19
-Last set added: WAR
+Last updated: 6-23-19
+Last set added: MH1
 */
 //Common through Rare
 var setCodeListPreMythic = ['1E', '2E', '2U', '3E', '4E', '5E', '6E', '7E', '8ED', '9ED', '10E', 'AN', 
@@ -18,7 +18,7 @@ var setCodeListPreMythic = ['1E', '2E', '2U', '3E', '4E', '5E', '6E', '7E', '8ED
 var setCodeListPostMythic = ['M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'ORI', 'M19', 'ALA', 'CON', 
 'ARB', 'ZEN', 'WWK', 'ROE', 'SOM', 'MBS', 'NPH', 'ISD', 'DKA', 'AVR', 'RTR', 'GTC', 'DGM', 'THS', 'BNG', 
 'JOU', 'KTK', 'FRF', 'DTK', 'BFZ', 'OGW', 'SOI', 'EMN', 'KLD', 'AER', 'AKH', 'HOU', 'XLN', 'RIX', 'DOM', 
-'GRN', 'RNA', /*'MH1',*/ 'GS1', 'MD1', 'DD2', 'DDC', 'DDD', 'DDE', 'DDF', 'DDG', 'DDH', 'DDI', 'DDJ', 'DDK', 
+'GRN', 'RNA', 'MH1', 'GS1', 'MD1', 'DD2', 'DDC', 'DDD', 'DDE', 'DDF', 'DDG', 'DDH', 'DDI', 'DDJ', 'DDK', 
 'DDL', 'DDM', 'DDN', 'DDP', 'DDQ', 'DDR', 'DDS', 'DDT', 'DDU', 'SS1', 'H09', 'PD2', 'PD3', 'MMA', 'MM2', 
 'EMA', 'MM3', 'IMA', 'A25', 'UMA', 'PC2', 'PCA', 'ARC', 'E01', 'CMD', 'CM1', 'C13', 'C14', 'C15', 
 'C16', 'CMA', 'C17', 'CM2', 'C18', 'CNS', 'CN2', 'E02', 'BBD', 'UST', 'VMA', 'TPR', 'W16', 'W17', 

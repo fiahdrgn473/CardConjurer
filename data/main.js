@@ -20,6 +20,7 @@ function textAreaKeyPressed() {
 //     Anything I Like to Change Often :)     //
 //============================================//
 randomizeSampleCards(8)
+var cookieUpdate = "1"
 
 //============================================//
 //         Setup Variables/Canvases           //
@@ -973,9 +974,9 @@ if (isSafari == true) {
 		textBaselineShift = [-0.17, 0]
 	}
 }
-function setCookie(cookieName, cookieValue) {
+function setCookie(cookieName, cookieValue, cookieTime = (5 * 365 * 24 * 60 * 60 * 1000)) { //years*days*hours*minutes*seconds*milliseconds
   	var tempDate = new Date();
-  	tempDate.setTime(tempDate.getTime() + (5 * 365 * 24 * 60 * 60 * 1000)); //years*days*hours*minutes*seconds*milliseconds
+  	tempDate.setTime(tempDate.getTime() + cookieTime);
   	var expires = "expires=" + tempDate.toUTCString();
   	document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
 }
@@ -994,24 +995,30 @@ function getCookie(cookieName) {
   	return "";
 }
 function checkCookies() {
-	if (getCookie("visited") != "true") {
+	if (getCookie("visits") == "") {
 		if (isMobile == true) {
-            alert("Thanks for using Card Conjurer! Unfortunately some users have been experiencing difficulty on mobile devices when uploading pictures they took on that mobile device. An easy solution is to quickly edit that picture by cropping it slightly. Otherwise, images from URLs and other sources should work normally.")
+			createAlert("warning", "Card Conjurer is optimized for computers. Your mobile device should work fine, but if you notice any problems try switching to another device.")
         } else if (isChrome == false) {
-            alert("Thanks for using Card Conjurer! Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
+            createAlert("warning", "Unfortunately different browsers treat custom fonts differently and it appears that you are using a browser other than Chrome. Everything may work perfectly, but if you notice that the text looks odd try switching to Chrome.")
         }
-        setCookie("visited", "true")
-        setCookie("cookieUpdated5", "true")
+        setCookie("visits", "1")
+        setCookie("cookieUpdated", cookieUpdate)
 	} else {
-		console.log("Welcome back to Card Conjurer!")
-		if (getCookie("cookieUpdated5") != "true") {
-			alert("Card Conjurer has been updated since your last visit. Feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions. \r\n\r\nNewest border style: Old")
-   	    	setCookie("cookieUpdated5", "true")
+		var visitCount = parseInt(getCookie("visits"))
+		visitCount += 1
+		setCookie("visits", "" + visitCount)
+		if (getCookie("cookieUpdated") != cookieUpdate) {
+			createAlert("info", "Card Conjurer has been updated since your last visit and now features old borders! Feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions.")
+   	    	setCookie("cookieUpdated", cookieUpdate)
 		} else {
-			console.log("There are no new updates since your last visit.")
+			if (visitCount % 50 == 0) {
+				//every 50 visits:
+				createAlert("info", "Thanks for using Card Conjurer! I would love to see some of the custom cards you've made, feel free send some over to CardConjurerMTG@gmail.com")
+			}
 		}
 	}
 }
+
 
 //============================================//
 //                    OTHER                   //

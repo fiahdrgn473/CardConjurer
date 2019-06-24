@@ -49,5 +49,26 @@ function loadImage(event, destination) {
 	reader.readAsDataURL(input.files[0])
 }
 
+//closes alerts
+var close = document.getElementsByClassName("closebtn")
+for (var i = 0; i < close.length; i++) {
+	close[i].onclick = function() {
+		parentDiv = this.parentElement
+		parentDiv.style.opacity = "0"
+		setTimeout(function() {parentDiv.style.display = "none"}, 250)
+	}
+}
+
+function createAlert(type, message) {
+	var newAlert = document.createElement("DIV")
+	newAlert.innerHTML = message
+	newAlert.classList.add("alert", type)
+	document.getElementById("alertMenu").appendChild(newAlert)
+	newAlert.onclick = function() {
+		this.style.opacity = "0"
+		setTimeout(function() {newAlert.classList.add("hidden")}, 250)
+	}
+}
+
 //things to run at the end:
 scrollFunction()
