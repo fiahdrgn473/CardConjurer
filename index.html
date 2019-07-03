@@ -64,6 +64,7 @@
 				<div onclick="toggleView('advanced', 'cmm')">Advanced</div>
 				<div onclick="toggleView('download', 'cmm')">Download</div>
 				<div onclick="toggleView('planeswalker', 'cmm')" style="font-size: 85%; display: none;" id="cmmPlaneswalker">Planeswalker</div>
+				<div onclick="toggleView('vanguard', 'cmm')" style="display: none;" id="cmmVanguard">Vanguard</div>
 			</div>
 			<div class="selectionGridTarget padded">
 				<div class="cmm shown" id="cmm-frame">
@@ -78,6 +79,7 @@
 							<option value="tokenTall">Token (Tall)</option>
 							<option value="fullArtLandM15">Full Art Land (M15)</option>
 							<option value="fullArtLandUnstable">Full Art Land (Unstable)</option>
+							<option value="vanguard">Vanguard</option>
 							<option value="plane">Plane</option>
 							<option value="miniPlane">Mini-Plane</option>
 						</select>
@@ -357,6 +359,12 @@
 					<input type="text" class="input" id="inputAbilityValue1" value="0" oninput="planeswalkerAbilityIcons()">
 					<input type="text" class="input" id="inputAbilityValue2" value="-1" oninput="planeswalkerAbilityIcons()">
 					<input type="text" class="input" id="inputAbilityValue3" value="" oninput="planeswalkerAbilityIcons()">
+				</div>
+				<div class="cmm" id="cmm-vanguard">
+					Hand Size Modifier
+					<input type="text" class="input" id="inputVanguardHand" value="+1" oninput="sectionTextFunction()">
+					Starting Life Modifier
+					<input type="text" class="input" id="inputVanguardLife" value="+1" oninput="sectionTextFunction()">
 				</div>
 			</div>
 		</div>

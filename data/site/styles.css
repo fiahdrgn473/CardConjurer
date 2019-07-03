@@ -335,6 +335,7 @@ footer {
 	padding: 0.1em;
 }
 .alert.info {background-color: var(--color-primary);}
+.alert.conflict {background-color: #b37d07;}
 .alert.warning {background-color: #3b0000;}
 
 .hidden {

@@ -20,7 +20,7 @@ function textAreaKeyPressed() {
 //     Anything I Like to Change Often :)     //
 //============================================//
 randomizeSampleCards(8)
-var cookieUpdate = "1"
+var cookieUpdate = "2"
 
 //============================================//
 //         Setup Variables/Canvases           //
@@ -86,6 +86,8 @@ function backToDefault(version) {
 	}
 	//Runs the finishing script
 	loadScript('data/borders/' + version + '/border.js')
+	//Fixes some other values
+	document.getElementById("inputTextSize").value = 37
 }
 function finishChangingBorder() {
 	loadLegendaryImages()
@@ -704,7 +706,7 @@ function bottomInfoM15() {
 function sectionOtherFunction() {
 	//clears the 'other' canvas
 	otherContext.clearRect(0, 0, cardWidth, cardHeight)
-	if (document.getElementById("inputCheckboxSetSymbol").checked) {
+	if (document.getElementById("inputCheckboxSetSymbol").checked && cardData.setSymbolAlignment != "none") {
 		//Set Symbol
 		switch(cardData.setSymbolAlignment) {
 			case "left":
@@ -1008,7 +1010,7 @@ function checkCookies() {
 		visitCount += 1
 		setCookie("visits", "" + visitCount)
 		if (getCookie("cookieUpdated") != cookieUpdate) {
-			createAlert("info", "Card Conjurer has been updated since your last visit and now features old borders! Feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions.")
+			createAlert("info", "Card Conjurer has been updated since your last visit and now features Vanguard cards! (those old MTG ones, not the other game) Feel free to contact me at CardConjurerMTG@gmail.com if you would like to request a border style or have any questions.")
    	    	setCookie("cookieUpdated", cookieUpdate)
 		} else {
 			if (visitCount % 50 == 0) {
@@ -1041,7 +1043,7 @@ setTimeout(function(){sectionTextFunction()}, 500)
 setTimeout(function(){sectionTextFunction()}, 1000)
 // Only for working on frames n' stuff :)
 // setTimeout(function(){
-// 	document.getElementById("inputCardVersion").value = "old"
+// 	document.getElementById("inputCardVersion").value = "vanguard"
 // 	document.getElementById("inputCardVersion").onchange()
 // }, 500)
 
