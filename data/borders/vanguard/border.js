@@ -15,17 +15,18 @@ cardData.manaSymbolDirection = "none"
 cardData.setSymbolAlignment = "none"
 cardData.titleFont = "matrixb"
 cardData.titleFontSize = cwidth(54)
-cardData.titleX = cardWidth / 2
+cardData.titleX = cwidth(130)
+cardData.titleWidth = cwidth(490)
 cardData.titleY = cheight(98)
 cardData.titleAlignment = "center"
-cardData.titleRight = cwidth(616)
 cardData.typeFont = "matrix"
 cardData.typeFontSize = cwidth(32)
-cardData.typeX = cardWidth / 2
+cardData.typeX = cwidth(130)
+cardData.typeWidth = cwidth(490)
 cardData.typeY = cheight(640)
 cardData.typeAlignment = "center"
-cardData.textRight = cwidth(585)
 cardData.textX = cwidth(135)
+cardData.textWidth = cwidth(480)
 //Images
 imgArtMask.load("data/borders/vanguard/imgArtMask.png")
 imgFrameMask.load("data/borders/vanguard/imgFrameMask.png")
@@ -37,7 +38,6 @@ loadColors("white-White,blue-Blue,red-Red,green-Green")
 document.getElementById("cmmVanguard").style.display = "block"
 document.getElementById("inputTextSize").value = 28
 finishChangingBorder()
-createAlert("conflict", "The Vanguard card's centered rules text doesn't cooperate with my rules text code, so if you choose to use centered text any mana symbols or other codes may throw off the text. I apologize for any inconveniences. I hope to resolve this in the future :)")
 
 function bottomInfoVanguard() {
 	var infoArtist = "Illus. " + document.getElementById("inputInfoArtist").value

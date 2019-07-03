@@ -8,7 +8,7 @@ cardData.legendary = false
 //Specific Values
 cardData.textX = cwidth(134)
 cardData.textY = cheight(687)
-cardData.textRight = cwidth(682)
+cardData.textWidth = cwidth(550)
 cardData.cardArtX = cwidth(52)
 cardData.cardArtY = cheight(106)
 cardData.titleFontSize = cwidth(40)

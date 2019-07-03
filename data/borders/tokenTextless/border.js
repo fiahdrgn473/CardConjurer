@@ -11,7 +11,6 @@ cardData.cardArtX = cwidth(56)
 cardData.cardArtY = cheight(124)
 cardData.manaSymbolDirection = "none"
 document.getElementById("inputTitleColor").value = "#ffe886"
-cardData.titleX = cardWidth / 2
 cardData.titleAlignment = "center"
 cardData.titleFont = "belerenbsc"
 cardData.typeY = cheight(901)

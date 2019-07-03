@@ -13,9 +13,6 @@ function textAreaKeyPressed() {
 }
 
 
-
-
-
 //============================================//
 //     Anything I Like to Change Often :)     //
 //============================================//
@@ -35,9 +32,9 @@ var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
 var defaultCardData = {
 	version:"m15",
 	manaSymbolX:cwidth(659), manaSymbolY:cheight(60), manaSymbolRadius:cwidth(17.5), manaSymbolDirection:"left",
-	titleX:cwidth(63), titleY:cheight(94), titleRight:cwidth(687), titleFont:"belerenb", titleFontSize:cwidth(40), titleAlignment:"left", titleShadow:"none",
-	typeX:cwidth(63), typeY:cheight(630), typeRight:cwidth(687), typeFont:"belerenb", typeFontSize:cwidth(34), typeAlignment:"left", typeShadow:"none",
-	textX:cwidth(63), textY:cheight(690), textRight:cwidth(690), textFont:"mplantin",
+	titleX:cwidth(63), titleY:cheight(94), titleWidth:cwidth(630), titleFont:"belerenb", titleFontSize:cwidth(40), titleAlignment:"left", titleShadow:"none",
+	typeX:cwidth(63), typeY:cheight(630), typeWidth:cwidth(630), typeFont:"belerenb", typeFontSize:cwidth(34), typeAlignment:"left", typeShadow:"none",
+	textX:cwidth(63), textY:cheight(690), textWidth:cwidth(620), textFont:"mplantin",
 	ptFont:"39px belerenb", ptX:cwidth(645), ptY:cheight(975), ptShadow:"none",
 	ptBoxX:cwidth(571), ptBoxY:cheight(929), ptBoxWidth:cwidth(135), ptBoxHeight:cheight(76),
 	setSymbolWidth:cwidth(77), setSymbolHeight:cheight(42), setSymbolX:cwidth(693), setSymbolY:cheight(620), setSymbolAlignment:"right",
@@ -104,7 +101,7 @@ function finishChangingBorder() {
 //Set up canvases
 var canvas = document.getElementById("canvas")
 var context = canvas.getContext("2d")
-var canvasList = ["card", "mask", "frame", "text", "other", "transparent", "crop", "specialA", "specialB"]
+var canvasList = ["card", "mask", "frame", "text", "other", "transparent", "crop", "specialA", "specialB", "textLine"]
 for (var i = 0; i < canvasList.length; i ++) {
 	window[(canvasList[i] + "Canvas")] = document.createElement("canvas")
 	window[(canvasList[i] + "Context")] = window[(canvasList[i] + "Canvas")].getContext("2d")
@@ -162,175 +159,156 @@ CanvasRenderingContext2D.prototype.mask = function(image, masks, color, maskOpac
     this.drawImage(maskCanvas, 0, 0, cardWidth, cardHeight)
 }
 
-//Text processor... kind of?
-CanvasRenderingContext2D.prototype.writeText = function(text, inputX, inputY, inputRightLimit, textFont, textFontSize, textColor, skipLines, outline, outlineColor, textAlignment = "left", shadow = "none") {
-	this.font = textFontSize + "px " + textFont
-	this.fillStyle = textColor
-	this.strokeStyle = outlineColor
-	this.lineWidth = 2
-	this.textAlign = textAlignment
-	var x = inputX
-	var y = inputY
-	var rightLimit = inputRightLimit
-	var splitText = text.split(" ")
-	for (var i = 0; i < splitText.length - 1; i ++) {
-		//adds a space to the end of every word (they used to have one until the split command took out all the spaces)
-		splitText[i] += " "
+//Text processor... kind of? new and improved!
+CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, textY = 0, textWidth = 750, textFont = "matrixb", textFontSize = 37, textColor = "black", other = "") {
+	//Parses the 'other' parameter to determine any special values
+	var otherParameters = other.replace(/=/g, ",").split(",")
+	var outline = false
+	if (otherParameters.indexOf("outline") != -1) {
+		if (otherParameters[otherParameters.indexOf("outline") + 1] == "true") {
+			outline = true
+			textLineContext.strokeStyle = otherParameters[otherParameters.indexOf("outlineColor") + 1]
+		}
 	}
-	if (skipLines == false) {
-		//The text is condensed into one line
-		if (textAlignment == "center") {
-			rightLimit = rightLimit + (rightLimit - x)
-		} else if (textAlignment == "right") {
-			rightLimit = 2 * x - rightLimit
+	var textAlignment = "left"
+	if (otherParameters.indexOf("textAlignment") != -1) {
+		textAlignment = otherParameters[otherParameters.indexOf("textAlignment") + 1]
+	}
+	var shadow = 0
+	if (otherParameters.indexOf("shadow") != -1) {
+		shadow = parseInt(otherParameters[otherParameters.indexOf("shadow") + 1])
+	}
+	var skipLines = true
+	if (otherParameters.indexOf("oneLine") != -1) {
+		skipLines = false
+	}
+	//Assigns other parameters
+	textLineContext.font = textFontSize + "px " + textFont
+	textLineContext.fillStyle = textColor
+	textLineContext.lineWidth = 2
+	//Creates some of the important variables
+	var currentLineX = textX
+	var currentLineY = textY
+	//Processes the main string
+	textLineContext.clearRect(0, 0, cardWidth, cardHeight)
+	var uniqueSplitter = "f73f&3hF#jfJaeK8"
+	var splitString = text.replace(/ /g, uniqueSplitter +  " " + uniqueSplitter).replace(/{/g, uniqueSplitter + "{").replace(/}/g, "}" + uniqueSplitter).split(uniqueSplitter)
+	for (var i = 0; i < splitString.length; i ++) {
+		splitString[i] = splitString[i].replace(uniqueSplitter, "")
+		wordToWrite = ""
+		//determine if it's a word or a code!
+		if (splitString[i].includes("{") && splitString[i].includes("}")) {
+			//it may be a code... Go through all the codes, if it matches anything, act on it! Otherwise, it's a word.
+			var possibleCodeLower = splitString[i].replace("{", "").replace("}", "").toLowerCase()
+			if (possibleCodeLower == "i") {
+				textLineContext.font = "italic " + textFontSize + "px " + textFont
+			} else if (possibleCodeLower == "/i") {
+				textLineContext.font = textFontSize + "px " + textFont
+			} else if (possibleCodeLower.slice(0, 8) == "fontsize") {
+				textFontSize = parseInt(possibleCodeLower.replace("fontsize", ""))
+				if (textLineContext.font.includes("italic")) {
+					textLineContext.font = "italic " + textFontSize + "px " + textFont
+				} else {
+					textLineContext.font = textFontSize + "px " + textFont
+				}
+			} else if (possibleCodeLower == "line" || possibleCodeLower == "bar" || possibleCodeLower == "linenospace" && skipLines) {
+				//Whichever one it is, the code will require skipping a line.
+				this.drawImage(textLineCanvas, alignAdjust(textAlignment, textWidth, currentLineX - textX), 0, cardWidth, cardHeight)
+				textLineContext.clearRect(0, 0, cardWidth, cardHeight)
+				currentLineX = textX
+				currentLineY += textFontSize
+				if (possibleCodeLower == "line" && skipLines) {
+					currentLineY += parseInt(document.getElementById("inputTextShift").value)
+				} else if (possibleCodeLower == "bar" && skipLines) {
+					textLineContext.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, currentLineY - textFontSize + parseInt(document.getElementById("inputTextShift").value) + 6)
+					currentLineY += 2 * parseInt(document.getElementById("inputTextShift").value)
+				}
+			} else if (possibleCodeLower == "left") {
+				textAlignment = "left"
+			} else if (possibleCodeLower == "center") {
+				textAlignment = "center"
+			} else if (possibleCodeLower == "right") {
+				textAlignment = "right"
+			} else if (possibleCodeLower.slice(0, 2) == "up") {
+				currentLineY -= parseInt(possibleCodeLower.replace("up", ""))
+			} else if (possibleCodeLower.slice(0, 4) == "down") {
+				currentLineY += parseInt(possibleCodeLower.replace("down", ""))
+			} else if (possibleCodeLower.slice(0, 4) == "left") {
+				currentLineX -= parseInt(possibleCodeLower.replace("left", ""))
+				textX -= parseInt(possibleCodeLower.replace("left", ""))
+				textWidth += parseInt(possibleCodeLower.replace("right", ""))
+			} else if (possibleCodeLower.slice(0, 5) == "right") {
+				currentLineX += parseInt(possibleCodeLower.replace("right", ""))
+				textX += parseInt(possibleCodeLower.replace("right", ""))
+				textWidth -= parseInt(possibleCodeLower.replace("right", ""))
+			} else if (possibleCodeLower == "plane") {
+				textLineContext.drawImage(manaSymbolImageList[56], currentLineX + cheight(5), currentLineY - cheight(25), cheight(67), cheight(60))
+				currentLineX += cheight(85)
+				textX += cheight(85)
+				textWidth -= cheight(85)
+			} else if (manaSymbolCodeList.includes(possibleCodeLower)) {
+				//It's a mana symbol! Draw it.
+				var extraWidth = 1
+				if (possibleCodeLower == "chaos") {
+					extraWidth = 1.15
+				}
+				textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower)], currentLineX + textFontSize * 0.054, currentLineY - textFontSize * 0.7, textFontSize * 0.77 * extraWidth, textFontSize * 0.77)
+				currentLineX += textFontSize * 0.77 * extraWidth + textFontSize * 0.07
+			} else {
+				//It's not a code. treat it like a regular word.
+				wordToWrite = splitString[i]
+			}
+		} else {
+			//It's a word!
+			wordToWrite = splitString[i]
 		}
-		while(this.measureText(text).width + x > rightLimit) {
-			textFontSize -= 0.5
-			this.font = textFontSize + "px " + textFont
+		//If either path determined it was a word, write it:
+		if (textLineContext.measureText(wordToWrite).width + currentLineX - textX > textWidth) {
+			//The line is full. Write it, then clear everything up
+			//But if it needs to be contained to one line...
+			if (skipLines == false) {
+				textFontSize -= 1
+				textLineContext.font = textFontSize + "px " + textFont
+				textLineContext.clearRect(0, 0, cardWidth, cardHeight)
+				currentLineX = textX
+				currentLineY = textY
+				i = -1
+				continue;
+			}
+			this.drawImage(textLineCanvas, alignAdjust(textAlignment, textWidth, currentLineX - textX), 0, cardWidth, cardHeight)
+			textLineContext.clearRect(0, 0, cardWidth, cardHeight)
+			currentLineX = textX
+			currentLineY += textFontSize
 		}
-		if (shadow != false) {
-			this.fillStyle = "black"
-			this.fillText(text, x + shadow, y + shadow)
-			this.fillStyle = textColor
+		//Whatever happened, the current word to write needs to be added.
+		if (shadow != 0) {
+			textLineContext.fillStyle = "black"
+			textLineContext.fillText(wordToWrite, currentLineX + shadow, currentLineY + shadow)
+			textLineContext.fillStyle = textColor
 		}
 		if (outline) {
-			this.strokeText(text, x, y)
+			textLineContext.strokeText(wordToWrite, currentLineX, currentLineY)
 		}
-		this.fillText(text, x, y)
-	} else {
-		//Multiple lines and codes? Processing time!
-		var currentX = x
-		var currentY = y
-		var currentString = ""
-		for (var i = 0; i < splitText.length; i ++) {
-			if (splitText[i].includes("{") && splitText[i].includes("}")) {
-				//Codes or not, something will happen. First write what we already have.
-				if (outline) {
-					this.strokeText(currentString, currentX, currentY)
-				}
-				this.fillText(currentString, currentX, currentY)
-				currentX += this.measureText(currentString).width
-				currentString = ""
-				//Then grind through the string for codes
-				while(splitText[i] != "") {
-					//There may be codes within! split up the string further incase there are multiple codes/words
-					var wordToWrite = ""
-					if (splitText[i].charAt(0) == "{" && splitText[i].includes("}")) {
-						//It might be a code
-						var possibleCode = splitText[i].slice(0, splitText[i].indexOf("}") + 1)
-						var possibleCodeLower = possibleCode.toLowerCase()
-						//Go through all the codes and see if the possible code can do anything
-						if (possibleCodeLower == "{i}") {
-							this.font = textFontSize + "px " + textFont + "i"
-						} else if (possibleCodeLower == "{/i}") {
-							this.font = textFontSize + "px " + textFont
-						} else if (possibleCodeLower == "{line}") {
-							currentX = x
-							currentY += textFontSize + parseInt(document.getElementById("inputTextShift").value)
-						} else if (possibleCodeLower == "{bar}") {
-							this.drawImage(imgBar, cardWidth / 2 - imgBar.width / 2, currentY + parseInt(document.getElementById("inputTextShift").value) + 6)
-							currentX = x
-							currentY += textFontSize + 2 * parseInt(document.getElementById("inputTextShift").value)
-						} else if (possibleCodeLower == "{linenospace}") {
-							currentX = x
-							currentY += textFontSize
-						} else if (possibleCodeLower == "{left}") {
-							rightLimit = inputRightLimit
-							this.textAlign = "left"
-							x = inputX
-							currentX = x
-						} else if (possibleCodeLower == "{center}") {
-							rightLimit = 1.5 * inputRightLimit
-							this.textAlign = "center"
-							x = cardWidth / 2
-							currentX = x
-						} else if (possibleCodeLower == "{right}") {
-							rightLimit = 2 * inputRightLimit - inputX
-							this.textAlign = "right"
-							x = cardWidth - inputX
-							currentX = x
-						} else if (possibleCodeLower.slice(0, 3) == "{up" && possibleCodeLower.charAt(possibleCodeLower.length - 1) == "}") {
-							currentY -= parseInt(possibleCodeLower.slice(3, possibleCodeLower.length - 1))
-						} else if (possibleCodeLower.slice(0, 5) == "{down" && possibleCodeLower.charAt(possibleCodeLower.length - 1) == "}") {
-							currentY += parseInt(possibleCodeLower.slice(5, possibleCodeLower.length - 1))
-						} else if (possibleCodeLower.slice(0, 5) == "{left" && possibleCodeLower.charAt(possibleCodeLower.length - 1) == "}") {
-							currentX -= parseInt(possibleCodeLower.slice(5, possibleCodeLower.length - 1))
-							x -= parseInt(possibleCodeLower.slice(5, possibleCodeLower.length - 1))
-						} else if (possibleCodeLower.slice(0, 6) == "{right" && possibleCodeLower.charAt(possibleCodeLower.length - 1) == "}") {
-							currentX += parseInt(possibleCodeLower.slice(6, possibleCodeLower.length - 1))
-							x += parseInt(possibleCodeLower.slice(6, possibleCodeLower.length - 1))
-						} else if (possibleCodeLower == "{plane}") {
-							this.drawImage(manaSymbolImageList[56], currentX + cheight(5), currentY - cheight(25), cheight(67), cheight(60))
-							currentX += cheight(85)
-							x += cheight(85)
-						} else if (manaSymbolCodeList.includes((possibleCodeLower.replace("{", "").replace("}", "")))) {
-							//It's a mana symbol! Draw it.
-							var extraWidth = 1
-							if (possibleCodeLower.replace("{", "").replace("}", "") == "chaos") {
-								extraWidth = 1.15
-							}
-							this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.replace("{", "").replace("}", ""))], currentX + textFontSize * 0.054, currentY - textFontSize * 0.7, textFontSize * 0.77 * extraWidth, textFontSize * 0.77)
-							currentX += textFontSize * 0.77 * extraWidth + textFontSize * 0.07
-						} else {
-							//It's not a code. treat it like a regular word.
-							wordToWrite = possibleCode
-						}
-						//Whatever the result was, remove this part of the string.
-						splitText[i] = splitText[i].substr(possibleCode.length)
-					} else {
-						//It begins with a word. Write it.
-						if (splitText[i].includes("{") && splitText[i].charAt(0) != "{") {
-							//There still could be codes, leave those be.
-							wordToWrite = splitText[i].slice(0, splitText[i].indexOf("{"))
-						} else if (splitText[i] != "" && splitText != " ") {
-							//There aren't any codes left. Finish up.
-							wordToWrite = splitText[i] //+ " "
-						}
-						splitText[i] = splitText[i].substring(wordToWrite.length)
-					}
-					//After extracting a word to write, write it (if it exists)
-					if (wordToWrite != "") {
-						if (this.measureText(wordToWrite).width + currentX > rightLimit) {
-							//The word doesn't fit. Write the word on the next line.
-							currentY += textFontSize
-							if (outline) {
-								this.strokeText(wordToWrite, x, currentY)
-							}
-							this.fillText(wordToWrite, x, currentY)
-							currentX = x + this.measureText(wordToWrite).width
-						} else {
-							if (outline) {
-								this.strokeText(wordToWrite, currentX, currentY)
-							}
-							this.fillText(wordToWrite, currentX, currentY)
-							currentX += this.measureText(wordToWrite).width
-						}
-					}
-				} //WHILE LOOP ENDS HERE
-			} else if (this.measureText(currentString /*+ " "*/ + splitText[i]).width + currentX > rightLimit) {
-				//There aren't any codes, but the text doesn't fit. Finish writing the current line and move to the next one.
-				if (outline) {
-					this.strokeText(currentString, currentX, currentY)
-				}
-				this.fillText(currentString, currentX, currentY)
-				currentString = splitText[i] //+ " "
-				currentY += textFontSize
-				currentX = x
-			} else {
-				//No codes and the word fits. Add it to the current line.
-				currentString += splitText[i] //+ " "
-			}
-			if (i == splitText.length - 1) {
-				if (outline) {
-					this.strokeText(currentString, currentX, currentY)
-				}
-				this.fillText(currentString, currentX, currentY)
-			}
+		textLineContext.fillText(wordToWrite, currentLineX, currentLineY)
+		currentLineX += textLineContext.measureText(wordToWrite).width
+		if (i == splitString.length - 1) {
+			//writes the last bit :)
+			this.drawImage(textLineCanvas, alignAdjust(textAlignment, textWidth, currentLineX - textX), 0, cardWidth, cardHeight)
 		}
 	}
-	this.textAlign = "left"
 }
-
+function alignAdjust(alignment, fullWidth, width) {
+	switch(alignment) {
+		case "right":
+			return (fullWidth - width)
+			break;
+		case "center":
+			return (fullWidth - width) / 2
+			break;
+		default:
+			return 0
+	}
+}
 //Mana cost!
 CanvasRenderingContext2D.prototype.manaCost = function(input, x, y, size, path) {
 	this.fillStyle = "black"
@@ -644,9 +622,10 @@ function sectionTextFunction() {
 	textContext.clearRect(0, 0, cardWidth, cardHeight)
 	//mana cost, name, type, text
 	var manaSymbolWidth = textContext.manaCost(document.getElementById("inputCost").value, cardData.manaSymbolX, cardData.manaSymbolY, cardData.manaSymbolRadius, cardData.manaSymbolDirection)
-	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleRight - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, false, document.getElementById("inputCheckboxTitleOutline").checked, document.getElementById("inputTitleOutlineColor").value, cardData.titleAlignment, cardData.titleShadow)
-	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeRight, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, false, document.getElementById("inputCheckboxTypeOutline").checked, document.getElementById("inputTypeOutlineColor").value, cardData.typeAlignment, cardData.typeShadow)
-	textContext.writeText(document.getElementById("inputText").value, cardData.textX, cardData.textY + parseInt(document.getElementById("inputTextDown").value), cardData.textRight, cardData.textFont, parseInt(document.getElementById("inputTextSize").value), document.getElementById("inputRulesColor").value, true, document.getElementById("inputCheckboxRulesOutline").checked, document.getElementById("inputRulesOutlineColor").value)
+	
+	textContext.writeText(document.getElementById("inputName").value, cardData.titleX, cardData.titleY, cardData.titleWidth - manaSymbolWidth, cardData.titleFont, cardData.titleFontSize, document.getElementById("inputTitleColor").value, "oneLine,outline=" + document.getElementById("inputCheckboxTitleOutline").checked + ",outlineColor=" + document.getElementById("inputTitleOutlineColor").value + ",textAlignment=" + cardData.titleAlignment + ",shadow=" + cardData.titleShadow)
+	textContext.writeText(document.getElementById("inputType").value, cardData.typeX, cardData.typeY, cardData.typeWidth, cardData.typeFont, cardData.typeFontSize, document.getElementById("inputTypeColor").value, "oneLine,outline=" + document.getElementById("inputCheckboxTypeOutline").checked + ",outlineColor=" + document.getElementById("inputTypeOutlineColor").value + ",textAlignment=" + cardData.typeAlignment + ",shadow=" + cardData.typeShadow)
+	textContext.writeText(document.getElementById("inputText").value, cardData.textX, cardData.textY + parseInt(document.getElementById("inputTextDown").value), cardData.textWidth, cardData.textFont, parseInt(document.getElementById("inputTextSize").value), document.getElementById("inputRulesColor").value, "outline=" + document.getElementById("inputCheckboxRulesOutline").checked + ",outlineColor=" + document.getElementById("inputRulesOutlineColor").value)
 	//Power Toughness
 	if (document.getElementById("inputCheckboxPowerToughness").checked && cardData.creature) {
 		imgPowerToughness.xVal = cardData.ptBoxX
@@ -1111,7 +1090,7 @@ setTimeout(function(){sectionTextFunction()}, 1000)
 // 			border.fill()
 // 		}
 // 		border.drawImage(imgIdentity, identityX - identityRadius, identityY - identityRadius, 2 * identityRadius, 2 * identityRadius)
-// 		typeRightShift = 33
+// 		typeWidthShift = 33
 // 	} else {
-// 		typeRightShift = 0
+// 		typeWidthShift = 0
 // 	}
