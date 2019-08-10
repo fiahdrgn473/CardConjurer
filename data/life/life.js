@@ -6,6 +6,7 @@ var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = fa
 if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
 	isMobile = true
 }
+window.addEventListener("touchstart", switchToTouchEvents)
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
@@ -145,7 +146,6 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	document.getElementById("mainGrid").appendChild(this.canvas)
 	this.canvas.addEventListener("mousedown", decoyMouseDownFunction)
 	document.addEventListener("mouseup", decoyMouseUpFunction)
-	window.addEventListener("touchstart", switchToTouchEvents)
 }
 function decoyMouseDownFunction() {
 	alert("IT'S STILL CLICKING")
@@ -224,12 +224,14 @@ function updateBackgroundColor(color) {
 
 
 function switchToTouchEvents() {
-	document.removeEventListener("mousedown", decoyMouseDownFunction)
-	document.removeEventListener("mouseup", decoyMouseUpFunction)
-	document.addEventListener("touchstart", function() {
-		mouseDownPlayerBox(this, event.clientX, event.clientY)
-	})
-	document.addEventListener("touchend", function() {
-		mouseUpPlayerBox(this)
-	})
+	window.removeEventListener("touchstart", switchToTouchEvents)
+	for (var i = 1; i <= playerCount; i++) {
+		playerList[i - 1].canvas.removeEventListener("mousedown", decoyMouseDownFunction)
+		playerList[i - 1].canvas.addEventListener("touchstart", function() {
+			mouseDownPlayerBox(this, event.clientX, event.clientY)
+		})
+		playerList[i - 1].canvas.addEventListener("touchend", function() {
+			mouseUpPlayerBox(this)
+		})
+	}
 }
