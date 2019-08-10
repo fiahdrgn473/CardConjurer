@@ -3,7 +3,6 @@
 <head>
 	<title>Card Conjurer</title>
 	<!-- Favicon craziness! -->
-	<!-- <link rel="stylesheet" href="data/site/styles.css"> -->
 	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
@@ -15,7 +14,7 @@
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
 	<meta charset="UTF-8">
-	<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 	<!-- Here's the stuff that does things? -->
 	<script type='application/ld+json'>
 	{
@@ -47,7 +46,7 @@
 
 <body>
 	<div id="settings">
-		Number of players<br>
+		Number of Players<br>
 		<input id="inputPlayerCount" class="input" type="number" min="2" value="6" max="16"><br>
 		Starting Life Total<br>
 		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
@@ -127,13 +126,9 @@
 	.hidden {
 		display: none;
 	}
-	@viewport {  
-   		orientation: portrait;  
- 	}  
 </style>
 
 
 
 <script src="data/life/life.js"></script>
-<!-- <script src="data/site/main.js"></script> -->
 <html>
