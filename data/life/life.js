@@ -2,7 +2,7 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
@@ -16,7 +16,7 @@ function fullscreen() {
   	} else if (grid.msRequestFullscreen) {
     	grid.msRequestFullscreen()
   	} else {
-  		// alert("Unfortunately fullscreen is unavailable for your device. If it's an iPhone, I'd recommend tapping the share button and selecting 'Add to Home Screen.' Running it from your home screen should provide a much better experience.")
+  		isFullscreen = false
   		document.getElementById("return").classList.add("permaHidden")
   		document.getElementById("gridShell").classList.add("fullscreenUnavailable")
   	}
@@ -58,12 +58,20 @@ function startGame() {
 		playerList[i - 1] = new playerBox(i, rotation, wide)
 	}
 	//Determine the grid size
-	columnWidth = screen.width / 2 - 2
+	if (isFullscreen) {
+		columnWidth = screen.width / 2 - 2
+	} else {
+		columnWidth = window.innerWidth / 2 - 2
+	}
 	rowCount = (playerCount - playerCount % 2) / 2 + 1
 	if (playerCount == 2 || playerCount == 4) {
 		rowCount -= 1
 	}
-	rowHeight = screen.height / rowCount - 2
+	if (isFullscreen) {
+		rowHeight = screen.height / rowCount - 2
+	} else {
+		rowHeight = window.innerHeight / rowCount - 2
+	}
 	//Now that all the player boxes are made, they must be configured
 	for (var i = 1; i <= playerCount; i++) {
 		configurePlayerBox(i)
