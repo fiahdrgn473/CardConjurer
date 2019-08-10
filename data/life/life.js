@@ -224,7 +224,6 @@ function updateBackgroundColor(color) {
 
 
 function switchToTouchEvents() {
-	alert("switching to touch events!")
 	document.removeEventListener("mousedown")
 	document.removeEventListener("mouseup")
 	document.addEventListener("touchstart", function() {
