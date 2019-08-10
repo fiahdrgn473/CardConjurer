@@ -2,7 +2,10 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, isMobile = false
+if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
+	isMobile = true
+}
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
@@ -146,6 +149,9 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	document.addEventListener("mouseup", function() {
 		mouseUpPlayerBox(this)
 	})
+	window.addEventListener("touchstart", function() {
+		switchToTouchEvents()
+	})
 }
 function configurePlayerBox(playerBoxID) {
 	var currentPlayer = playerList[playerBoxID - 1]
@@ -223,3 +229,15 @@ function enableNoSleep() {
   	document.removeEventListener('touchstart', enableNoSleep, false);
 }
 document.addEventListener('touchstart', enableNoSleep, false);
+
+
+function switchToTouchEvents() {
+	document.removeEventListener("mousedown")
+	document.removeEventListener("mouseup")
+	document.addEventListener("touchstart", function() {
+		mouseDownPlayerBox(this, event.clientX, event.clientY)
+	})
+	document.addEventListener("touchend", function() {
+		mouseUpPlayerBox(this)
+	})
+}
