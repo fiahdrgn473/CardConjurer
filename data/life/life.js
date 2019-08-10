@@ -8,14 +8,19 @@ function fullscreen() {
 	//Full screen!
 	grid = document.getElementById("mainGrid")
 	if (grid.requestFullscreen) {
+		alert("regular")
     	grid.requestFullscreen()
   	} else if (grid.mozRequestFullScreen) {
+  		alert("moz")
     	grid.mozRequestFullScreen()
   	} else if (grid.webkitRequestFullscreen) {
+  		alert("webkit")
     	grid.webkitRequestFullscreen()
   	} else if (grid.msRequestFullscreen) {
+  		alert("ms")
     	grid.msRequestFullscreen()
   	} else {
+  		alert("none")
   		document.getElementById("return").classList.add("permaHidden")
   		document.getElementById("mainGrid").classList.add("fullscreenUnavailable")
   	}
