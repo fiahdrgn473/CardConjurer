@@ -65,7 +65,13 @@
 			<img class="menuExitButton" src="data/life/menuExitButton.png" onclick="document.getElementById('menu').classList.add('hidden')">
 			<div class="menuInterior">
 				<div class="menuOption" onclick="resetLife()">Reset Life Totals</div><br>
-				<div class="menuOption" onclick="location.reload()">Change Player Count</div>
+				<div class="menuOption" onclick="location.reload()">Change Player Count</div><br>
+				<div class="menuOption">
+					Change Background Color:<br>
+					<select id="inputPlayer" onchange="updateColorSelector()"></select><br>
+					<input type=color value="#222222" id="inputPlayerColor" onchange="updateBackgroundColor(this.value)"><br>
+					<button onclick="updateBackgroundColor('#222222')">Default</button>
+				</div><br>
 			</div>
 		</div>
 		<div id="mainGrid" class="mainGrid"></div>
@@ -187,8 +193,11 @@
 		display: table;
 	}
 	.menuInterior {
-		display: table-cell;
-		vertical-align: middle;
+		margin: 90pt 0px 0px 0px;
+		padding: 20pt;
+		overflow-y: scroll;
+		max-height: calc(100% - 180pt);
+		border: 1px solid white;
 	}
 	.menuOption {
 		font-size: 30pt;

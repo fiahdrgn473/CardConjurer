@@ -56,6 +56,7 @@ function startGame() {
 		}
 		if ((i == 1 && firstPlayerWide) || (i == playerCount && lastPlayerWide)) {wide = true}
 		playerList[i - 1] = new playerBox(i, rotation, wide)
+		document.getElementById("inputPlayer").innerHTML += "<option value='" + i + "'>Player " + i + "</option>"
 	}
 	//Determine the grid size
 	if (isFullscreen) {
@@ -101,20 +102,24 @@ function startGame() {
 			var tempFontSize = 100
 			context.font = "100pt belerenbsc"
 			var currentLife = playerList[context.customVarCanvas.customVarID - 1].life
-			context.fillStyle = "#222"
+			context.fillStyle = context.customVarCanvas.customVarColor
 			var tempCanvasHeight = context.customVarCanvas.height, tempCanvasWidth = context.customVarCanvas.width
 			if (playerList[context.customVarCanvas.customVarID - 1].rotation == 90 || playerList[context.customVarCanvas.customVarID - 1].rotation == 270) {
 				tempCanvasHeight = tempCanvasWidth
 				tempCanvasWidth = context.customVarCanvas.height
 			}
 			context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
-			context.fillStyle = "#eee"
+			context.fillStyle = "white"
 			while (context.measureText(currentLife).width >= tempCanvasWidth) {
 				tempFontSize -= 1
 				context.font = tempFontSize + "pt belerenbsc"
 			}
 			var horizontalShift = -1 * parseInt(context.measureText(currentLife).width) / 2
+			context.strokeStyle = "black"
+			context.lineWidth = 5
+			context.strokeText(currentLife, horizontalShift, 0)
 			context.fillText(currentLife, horizontalShift, 0)
+			
 		}
 	}, 100)
 }
@@ -127,6 +132,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.canvas.customVarMouseDown = "false"
 	this.canvas.customVarMouseDelay = 0
 	this.canvas.customVarID = playerBoxID
+	this.canvas.customVarColor = "#222222"
 	this.canvas.customVarContext = this.canvas.getContext("2d")
 	this.canvas.customVarContext.customVarCanvas = this.canvas
 	this.canvas.classList.add("playerBox")
@@ -201,4 +207,10 @@ function resetLife() {
 		playerList[i - 1].life = startingLifeTotal
 	}
 	document.getElementById('menu').classList.add('hidden')
+}
+function updateColorSelector() {
+	document.getElementById("inputPlayerColor").value = playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor
+}
+function updateBackgroundColor(color) {
+	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor = color
 }
