@@ -39,12 +39,12 @@ function startGame() {
 		playerList[i - 1] = new playerBox(i, rotation, wide)
 	}
 	//Determine the grid size
-	columnWidth = parseInt(getComputedStyle(document.querySelector(".mainGrid")).width) / 2
+	columnWidth = window.innerWidth / 2 - 2
 	rowCount = (playerCount - playerCount % 2) / 2 + 1
 	if (playerCount == 2 || playerCount == 4) {
 		rowCount -= 1
 	}
-	rowHeight = parseInt(getComputedStyle(document.querySelector(".mainGrid")).height) / rowCount
+	rowHeight = window.innerHeight / rowCount - 2
 	//Now that all the player boxes are made, they must be configured
 	for (var i = 1; i <= playerCount; i++) {
 		configurePlayerBox(i)
@@ -114,7 +114,7 @@ function configurePlayerBox(playerBoxID) {
 	var context = currentPlayer.canvas.customVarContext
 	currentPlayer.canvas.width = columnWidth
 	if (playerList[playerBoxID - 1].canvas.classList.contains("widePlayerBox")) {
-		currentPlayer.canvas.width *= 2
+		currentPlayer.canvas.width = columnWidth * 2 + 2
 	}
 	currentPlayer.canvas.height = rowHeight
 	context.translate(currentPlayer.canvas.width / 2, currentPlayer.canvas.height / 2)
