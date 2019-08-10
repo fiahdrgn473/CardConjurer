@@ -46,12 +46,13 @@
 
 <body>
 	<div id="settings">
-		Number of Players<br>
+		Number of Players:<br>
 		<input id="inputPlayerCount" class="input" type="number" min="2" value="6" max="16"><br>
-		Starting Life Total<br>
+		Starting Life Total:<br>
 		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
 		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button>
 	</div>
+	<div onclick="fullscreen()" class="hidden" id="return">CLICK ANYWHERE TO RETURN TO FULLSCREEN</div>
 	<div id="mainGrid" class="mainGrid">
 		
 	</div>
@@ -114,6 +115,11 @@
 		width: 100%;
 		height: 100%;
 		align-items: center;
+		display: none;
+	}
+	.mainGrid:fullscreen {
+		cursor: crosshair;
+		display: inline-block;
 	}
 	.playerBox {
 		/*background-color: #454;*/
@@ -127,6 +133,12 @@
 	}
 	.hidden {
 		display: none;
+	}
+	#return {
+		width: 100%;
+		height: 100%;
+		color: white;
+		font-size: 3vw;
 	}
 </style>
 

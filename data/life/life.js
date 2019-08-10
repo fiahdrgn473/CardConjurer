@@ -4,7 +4,22 @@
 //define variables
 var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0
 //This function sets everything up
+function fullscreen() {
+	//Full screen!
+	grid = document.getElementById("mainGrid")
+	if (grid.requestFullscreen) {
+    	grid.requestFullscreen()
+  	} else if (grid.mozRequestFullScreen) {
+    	grid.mozRequestFullScreen()
+  	} else if (grid.webkitRequestFullscreen) {
+    	grid.webkitRequestFullscreen()
+  	} else if (grid.msRequestFullscreen) {
+    	grid.msRequestFullscreen()
+  	}
+}
 function startGame() {
+	fullscreen()
+	document.getElementById("return").classList.remove("hidden")
 	//hide the settings and grab player count and starting life total
 	document.getElementById("settings").classList.add("hidden")
 	playerCount = parseInt(document.getElementById("inputPlayerCount").value)
@@ -39,12 +54,12 @@ function startGame() {
 		playerList[i - 1] = new playerBox(i, rotation, wide)
 	}
 	//Determine the grid size
-	columnWidth = window.innerWidth / 2 - 2
+	columnWidth = screen.width / 2 - 2
 	rowCount = (playerCount - playerCount % 2) / 2 + 1
 	if (playerCount == 2 || playerCount == 4) {
 		rowCount -= 1
 	}
-	rowHeight = window.innerHeight / rowCount - 2
+	rowHeight = screen.height / rowCount - 2
 	//Now that all the player boxes are made, they must be configured
 	for (var i = 1; i <= playerCount; i++) {
 		configurePlayerBox(i)
