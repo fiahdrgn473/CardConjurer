@@ -145,6 +145,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	document.getElementById("mainGrid").appendChild(this.canvas)
 	this.canvas.addEventListener("mousedown", function() {
 		mouseDownPlayerBox(this, event.clientX, event.clientY)
+		alert("It's still clicking!")
 	})
 	document.addEventListener("mouseup", function() {
 		mouseUpPlayerBox(this)
@@ -222,16 +223,8 @@ function updateBackgroundColor(color) {
 }
 
 
-//Wake lock!
-var noSleep = new NoSleep();
-function enableNoSleep() {
-  	noSleep.enable();
-  	document.removeEventListener('touchstart', enableNoSleep, false);
-}
-document.addEventListener('touchstart', enableNoSleep, false);
-
-
 function switchToTouchEvents() {
+	alert("switching to touch events!")
 	document.removeEventListener("mousedown")
 	document.removeEventListener("mouseup")
 	document.addEventListener("touchstart", function() {
