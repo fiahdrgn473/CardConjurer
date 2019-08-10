@@ -48,7 +48,7 @@
 	</script>
 </head>
 
-
+<script src="https://github.com/richtr/NoSleep.js/blob/master/dist/NoSleep.min.js"></script>
 
 <body>
 	<div id="settings" class="settings">
@@ -69,7 +69,7 @@
 				<div class="menuOption">
 					Change Background Color:<br>
 					<select id="inputPlayer" onchange="updateColorSelector()"></select><br>
-					<input type=color value="#222222" id="inputPlayerColor" onchange="updateBackgroundColor(this.value)"><br>
+					<input type="color" class="colorInput" value="#222222" id="inputPlayerColor" onchange="updateBackgroundColor(this.value)"><br>
 					<button onclick="updateBackgroundColor('#222222')">Default</button>
 				</div><br>
 			</div>
@@ -196,7 +196,7 @@
 		margin: 90pt 0px 0px 0px;
 		padding: 20pt;
 		overflow-y: scroll;
-		max-height: calc(100% - 180pt);
+		max-height: calc(100% - 90pt);
 		border: 1px solid white;
 	}
 	.menuOption {
@@ -206,6 +206,12 @@
 		display: inline-block;
 		margin-bottom: 15pt;
 		padding: 8pt;
+	}
+	.colorInput {
+		border: 0px;
+		padding: 0px;
+		width: 4.5em;
+		height: 2em;
 	}
 	.hidden {
 		display: none;

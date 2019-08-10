@@ -214,3 +214,12 @@ function updateColorSelector() {
 function updateBackgroundColor(color) {
 	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor = color
 }
+
+
+//Wake lock!
+var noSleep = new NoSleep();
+function enableNoSleep() {
+  	noSleep.enable();
+  	document.removeEventListener('touchstart', enableNoSleep, false);
+}
+document.addEventListener('touchstart', enableNoSleep, false);
