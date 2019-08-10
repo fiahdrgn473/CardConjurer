@@ -225,8 +225,10 @@ function updateBackgroundColor(color) {
 
 function switchToTouchEvents() {
 	window.removeEventListener("touchstart", switchToTouchEvents)
+	document.removeEventListener("mouseup", decoyMouseUpFunction)
+	alert("switch!!!!")
 	for (var i = 1; i <= playerCount; i++) {
-		playerList[i - 1].canvas.removeEventListener("mousedown", decoyMouseDownFunction)
+		alert(playerList[i - 1].canvas.removeEventListener("mousedown", decoyMouseDownFunction))
 		playerList[i - 1].canvas.addEventListener("touchstart", function() {
 			mouseDownPlayerBox(this, event.clientX, event.clientY)
 		})
