@@ -54,7 +54,7 @@ function startGame() {
 		for (var i = 1; i <= playerCount; i++) {
 			if (playerList[i - 1].canvas.customVarMouseDown != "false") {
 				playerList[i - 1].canvas.customVarMouseDelay += 1
-				if (playerList[i - 1].canvas.customVarMouseDelay > 5 || playerList[i - 1].canvas.customVarMouseDelay == 1) {
+				if (playerList[i - 1].canvas.customVarMouseDelay > 5) {
 					if (playerList[i - 1].canvas.customVarMouseDown == "up") {
 						playerList[i - 1].life += 1
 					} else {
@@ -119,7 +119,6 @@ function configurePlayerBox(playerBoxID) {
 	currentPlayer.canvas.height = rowHeight
 	context.translate(currentPlayer.canvas.width / 2, currentPlayer.canvas.height / 2)
 	context.rotate(Math.PI / 180 * currentPlayer.rotation)
-	// drawPlayerBox(context, 0, 0)
 }
 function mouseDownPlayerBox(canvas, clickX = 0, clickY = 0) {
 	if (clickX > 0 && clickY > 0) {
@@ -127,26 +126,34 @@ function mouseDownPlayerBox(canvas, clickX = 0, clickY = 0) {
 		if (playerList[canvas.customVarID - 1].rotation == 0) {
 			if (clickX > playerBoxBounds.width / 2 + playerBoxBounds.x) {
 				canvas.customVarMouseDown = "up"
+				playerList[canvas.customVarID - 1].life += 1
 			} else {
 				canvas.customVarMouseDown = "down"
+				playerList[canvas.customVarID - 1].life -= 1
 			}
 		} else if (playerList[canvas.customVarID - 1].rotation == 90) {
 			if (clickY > playerBoxBounds.height / 2 + playerBoxBounds.y) {
 				canvas.customVarMouseDown = "up"
+				playerList[canvas.customVarID - 1].life += 1
 			} else {
 				canvas.customVarMouseDown = "down"
+				playerList[canvas.customVarID - 1].life -= 1
 			}
 		} else if (playerList[canvas.customVarID - 1].rotation == 180) {
 			if (clickX > playerBoxBounds.width / 2 + playerBoxBounds.x) {
 				canvas.customVarMouseDown = "down"
+				playerList[canvas.customVarID - 1].life -= 1
 			} else {
 				canvas.customVarMouseDown = "up"
+				playerList[canvas.customVarID - 1].life += 1
 			}
 		} else {
 			if (clickY > playerBoxBounds.height / 2 + playerBoxBounds.y) {
 				canvas.customVarMouseDown = "down"
+				playerList[canvas.customVarID - 1].life -= 1
 			} else {
 				canvas.customVarMouseDown = "up"
+				playerList[canvas.customVarID - 1].life += 1
 			}
 		}
 	}
