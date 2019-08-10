@@ -143,16 +143,16 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 		this.canvas.classList.add("widePlayerBox")
 	}
 	document.getElementById("mainGrid").appendChild(this.canvas)
-	this.canvas.addEventListener("mousedown", function() {
-		mouseDownPlayerBox(this, event.clientX, event.clientY)
-		alert("It's still clicking!")
-	})
-	document.addEventListener("mouseup", function() {
-		mouseUpPlayerBox(this)
-	})
-	window.addEventListener("touchstart", function() {
-		switchToTouchEvents()
-	})
+	this.canvas.addEventListener("mousedown", decoyMouseDownFunction)
+	document.addEventListener("mouseup", decoyMouseUpFunction)
+	window.addEventListener("touchstart", switchToTouchEvents)
+}
+function decoyMouseDownFunction() {
+	alert("IT'S STILL CLICKING")
+	mouseDownPlayerBox(this, event.clientX, event.clientY)
+}
+function decoyMouseUpFunction() {
+	mouseUpPlayerBox(this)
 }
 function configurePlayerBox(playerBoxID) {
 	var currentPlayer = playerList[playerBoxID - 1]
@@ -224,8 +224,8 @@ function updateBackgroundColor(color) {
 
 
 function switchToTouchEvents() {
-	document.removeEventListener("mousedown")
-	document.removeEventListener("mouseup")
+	document.removeEventListener("mousedown", decoyMouseDownFunction)
+	document.removeEventListener("mouseup", decoyMouseUpFunction)
 	document.addEventListener("touchstart", function() {
 		mouseDownPlayerBox(this, event.clientX, event.clientY)
 	})
