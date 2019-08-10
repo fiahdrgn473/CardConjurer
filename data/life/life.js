@@ -12,10 +12,12 @@ function fullscreen() {
   	} else if (grid.mozRequestFullScreen) {
     	grid.mozRequestFullScreen()
   	} else if (grid.webkitRequestFullscreen) {
-  		alert("ok")
     	grid.webkitRequestFullscreen()
   	} else if (grid.msRequestFullscreen) {
     	grid.msRequestFullscreen()
+  	} else {
+  		document.getElementById("return").classList.add("permaHidden")
+  		document.getElementById("mainGrid").classList.add("fullscreenUnavailable")
   	}
 }
 function startGame() {
