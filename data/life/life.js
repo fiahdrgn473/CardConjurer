@@ -6,7 +6,7 @@ var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = fa
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
-	grid = document.getElementById("mainGrid")
+	grid = document.getElementById("gridShell")
 	if (grid.requestFullscreen) {
     	grid.requestFullscreen()
   	} else if (grid.mozRequestFullScreen) {
@@ -18,7 +18,7 @@ function fullscreen() {
   	} else {
   		// alert("Unfortunately fullscreen is unavailable for your device. If it's an iPhone, I'd recommend tapping the share button and selecting 'Add to Home Screen.' Running it from your home screen should provide a much better experience.")
   		document.getElementById("return").classList.add("permaHidden")
-  		document.getElementById("mainGrid").classList.add("fullscreenUnavailable")
+  		document.getElementById("gridShell").classList.add("fullscreenUnavailable")
   	}
 }
 function startGame() {
@@ -187,4 +187,10 @@ function mouseUpPlayerBox() {
 		playerList[i - 1].canvas.customVarMouseDown = "false"
 		playerList[i - 1].canvas.customVarMouseDelay = 0
 	}
+}
+function resetLife() {
+	for (var i = 1; i <= playerCount; i++) {
+		playerList[i - 1].life = startingLifeTotal
+	}
+	document.getElementById('menu').classList.add('hidden')
 }

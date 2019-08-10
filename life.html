@@ -50,7 +50,7 @@
 
 
 <body>
-	<div id="settings">
+	<div id="settings" class="settings">
 		Number of Players:<br>
 		<input id="inputPlayerCount" class="input" type="number" min="2" value="6" max="16"><br>
 		Starting Life Total:<br>
@@ -58,8 +58,16 @@
 		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button>
 	</div>
 	<div onclick="fullscreen()" class="hidden" id="return">CLICK ANYWHERE TO RETURN TO FULLSCREEN</div>
-	<div id="mainGrid" class="mainGrid">
-		
+	<div id="gridShell">
+		<img id="menuButton" class="menuButton" src="data/life/menuButton.png" onclick="document.getElementById('menu').classList.remove('hidden')">
+		<div id="menu" class="menu hidden">
+			<img class="menuExitButton" src="data/life/menuExitButton.png" onclick="document.getElementById('menu').classList.add('hidden')">
+			<div class="menuInterior">
+				<div class="menuOption" onclick="resetLife()">Reset Life Totals</div><br>
+				<div class="menuOption" onclick="location.reload()">Change Player Count</div>
+			</div>
+		</div>
+		<div id="mainGrid" class="mainGrid"></div>
 	</div>
 </body>
 
@@ -103,7 +111,9 @@
 		src: url("data/fonts/goudy-medieval.ttf");
 	}
 
-
+	.settings {
+		margin: 2vw;
+	}
 	* {
 		user-select: none;
 		font-family: belerenbsc;
@@ -121,12 +131,14 @@
 		width: 100%;
 		height: 100%;
 		align-items: center;
+	}
+	#gridShell {
 		display: none;
 	}
-	.mainGrid:fullscreen {
+	#gridShell:fullscreen {
 		display: inline-block;
 	}
-	.mainGrid.fullscreenUnavailable {
+	#gridShell.fullscreenUnavailable {
 		display: inline-block;
 	}
 	.playerBox {
@@ -139,17 +151,54 @@
 	.widePlayerBox {
 		grid-column: 1 / span 2;
 	}
-	.hidden {
-		display: none;
-	}
-	.permaHidden {
-		display: none;
-	}
 	#return {
 		width: 100%;
 		height: 100%;
 		color: white;
 		font-size: 3vw;
+	}
+	.menuButton {
+		position: fixed;
+		top: calc(50% - 7.5vw);
+		left: calc(50% - 7.5vw);
+		width: 15vw;
+		height: 15vw;
+		border: 1px solid white;
+	}
+	.menuExitButton {
+		position: fixed;
+		top: 1vw;
+		right: 1vw;
+		width: 15vw;
+		height: 15vw;
+	}
+	.menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000a;
+		text-align: center;
+		display: table;
+	}
+	.menuInterior {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.menuOption {
+		font-size: 4vw;
+		background-color: #333;
+		border-radius: 1em;
+		display: inline-block;
+		margin-bottom: 1vw;
+		padding: 1vw;
+	}
+	.hidden {
+		display: none;
+	}
+	.permaHidden {
+		display: none;
 	}
 </style>
 
