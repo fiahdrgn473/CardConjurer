@@ -71,6 +71,7 @@ function startGame() {
 			}
 			var context = playerList[i - 1].canvas.customVarContext
 			context.textBaseline = "middle"
+			var tempFontSize = 100
 			context.font = "100pt belerenbsc"
 			var currentLife = playerList[context.customVarCanvas.customVarID - 1].life
 			context.fillStyle = "#222"
@@ -81,6 +82,10 @@ function startGame() {
 			}
 			context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
 			context.fillStyle = "#eee"
+			while (context.measureText(currentLife).width >= tempCanvasWidth) {
+				tempFontSize -= 1
+				context.font = tempFontSize + "pt belerenbsc"
+			}
 			var horizontalShift = -1 * parseInt(context.measureText(currentLife).width) / 2
 			context.fillText(currentLife, horizontalShift, 0)
 		}

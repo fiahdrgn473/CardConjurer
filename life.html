@@ -46,9 +46,9 @@
 
 <body>
 	<div id="settings">
-		Number of Players:<br>
+		Number of Players<br>
 		<input id="inputPlayerCount" class="input" type="number" min="2" value="6" max="16"><br>
-		Starting Life Total:<br>
+		Starting Life Total<br>
 		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
 		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button>
 	</div>
@@ -120,6 +120,7 @@
 		border: 1px solid white;
 		width: auto;
 		height: auto;
+		touch-action: manipulation;
 	}
 	.widePlayerBox {
 		grid-column: 1 / span 2;
