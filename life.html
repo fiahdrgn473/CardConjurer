@@ -14,13 +14,11 @@
 	<meta name="theme-color" content="#64ca2f">
 	<!-- Other things -->
 	<meta charset="UTF-8">
-
 	<meta name="apple-mobile-web-app-title" content="LifeCounter">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 	<!-- Here's the stuff that does things? -->
 	<script type='application/ld+json'>
 	{
@@ -47,7 +45,6 @@
 	}
 	</script>
 </head>
-
 <body autocomplete="off">
 	<div id="settings" class="settings">
 		Number of Players:<br>
@@ -81,49 +78,13 @@
 		<div id="mainGrid" class="mainGrid"></div>
 	</div>
 </body>
-
-
-
 <style>
-	@font-face {
-		font-family: gothammedium;
-		src: url("data/fonts/gotham-medium.ttf");
-	}
-	@font-face {
-		font-family: belerenb;
-		src: url("data/fonts/beleren-b.ttf");
-	}
 	@font-face {
 		font-family: belerenbsc;
 		src: url("data/fonts/beleren-bsc.ttf");
 	}
-	@font-face {
-		font-family: matrix;
-		src: url("data/fonts/matrix.ttf");
-	}
-	@font-face {
-		font-family: matrixb;
-		src: url("data/fonts/matrix-b.ttf");
-	}
-	@font-face {
-		font-family: matrixbsc;
-		src: url("data/fonts/matrix-bsc.ttf");
-	}
-	@font-face {
-		font-family: mplantin;
-		src: url("data/fonts/mplantin.ttf");
-	}
-	@font-face {
-		font-family: mplantini;
-		src: url("data/fonts/mplantin-i.ttf");
-	}
-	@font-face {
-		font-family: goudymedieval;
-		src: url("data/fonts/goudy-medieval.ttf");
-	}
-
 	.settings {
-		margin: 2vw;
+		margin: 10pt;
 	}
 	* {
 		font-family: belerenbsc;
@@ -150,9 +111,9 @@
 	}
 	#gridShell {
 		display: none;
-		position: fixed;
+		/*position: fixed;
 		top: 0;
-		left: 0;
+		left: 0;*/
 	}
 	#gridShell:fullscreen {
 		display: inline-block;
@@ -161,11 +122,10 @@
 		display: inline-block;
 	}
 	.playerBox {
-		/*background-color: #454;*/
 		border: 1px solid white;
 		width: auto;
 		height: auto;
-		touch-action: manipulation;
+		touch-action: none;
 	}
 	.widePlayerBox {
 		grid-column: 1 / span 2;
@@ -182,14 +142,14 @@
 		left: calc(50% - 7.5vw);
 		width: 15vw;
 		height: 15vw;
-		border: 1px solid white;
+		border: 2px solid white;
 	}
 	.menuExitButton {
 		position: fixed;
 		top: 5pt;
-		right: 10pt;
-		width: 80pt;
-		height: 80pt;
+		right: 5pt;
+		width: 60pt;
+		height: 60pt;
 	}
 	.menu {
 		position: fixed;
@@ -202,18 +162,18 @@
 		display: table;
 	}
 	.menuInterior {
-		margin: 90pt 0px 0px 0px;
+		margin: 70pt 0px 0px 0px;
 		padding: 10pt;
-		overflow-y: scroll;
-		height: calc(100% - 90pt);
-		border: 1px solid white;
+		overflow-y: auto;
+		height: calc(100% - 70pt);
+		border: 2px solid white;
 	}
 	.menuOption {
-		font-size: 24pt;
+		font-size: 20pt;
 		background-color: #333;
 		border-radius: 1em;
 		display: inline-block;
-		margin-bottom: 15pt;
+		margin-bottom: 10pt;
 		padding: 8pt;
 	}
 	.colorInput {
@@ -231,9 +191,15 @@
 	input {
 		width: 7.5em;
 	}
+	@media (orientation: landscape) {
+		body {
+			-webkit-transform: rotate(-90deg);
+	    	-moz-transform: rotate(-90deg);
+	    	-o-transform: rotate(-90deg);
+	    	-ms-transform: rotate(-90deg);
+	    	transform: rotate(-90deg);
+		}
+	}
 </style>
-
-
-
 <script src="data/life/life.js"></script>
 <html>
