@@ -65,10 +65,16 @@
 				<div class="menuOption" onclick="resetLife()">Reset Life Totals</div><br>
 				<div class="menuOption" onclick="location.reload()">Change Player Count</div><br>
 				<div class="menuOption">
-					Change Background Color:<br>
+					Change Background:<br>
 					<select id="inputPlayer" onchange="updateColorSelector()"></select><br>
+					Color:<br>
 					<input type="color" class="colorInput" value="#222222" id="inputPlayerColor" onchange="updateBackgroundColor(this.value)"><br>
-					<button onclick="updateBackgroundColor('#222222')">Default</button>
+					<button onclick="updateBackgroundColor('#222222')">Default</button><br>
+					Image:<br>
+					<input type="file" accept="image/*" oninput="loadImage(event, playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage)" placeholder="Via File Upload"><br>
+					<input type="text" placeholder="Via URL" onchange="playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage.src = this.value"><br>
+					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" type="text" placeholder="Via Card Name"><br>
+					<input id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" type="number" value="1" min="1" max="1">
 				</div><br>
 			</div>
 		</div>

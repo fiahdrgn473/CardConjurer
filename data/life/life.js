@@ -112,7 +112,23 @@ function startGame() {
 				tempCanvasWidth = context.customVarCanvas.height
 			}
 			context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
-			context.fillStyle = "white"
+			if (context.customVarCanvas.customVarImage.src != "") {
+				var imageToDraw = context.customVarCanvas.customVarImage
+				if (imageToDraw.width / imageToDraw.height > tempCanvasWidth / tempCanvasHeight) {
+					//The image is wider and should be fitted to its height
+					context.drawImage(imageToDraw, tempCanvasHeight / imageToDraw.height * imageToDraw.width / -2, tempCanvasHeight / -2, tempCanvasHeight / imageToDraw.height * imageToDraw.width, tempCanvasHeight)
+				} else {
+					//The image is taller and should be fitted to its width
+					context.drawImage(imageToDraw, tempCanvasWidth / -2, tempCanvasWidth / imageToDraw.width * imageToDraw.height / -2, tempCanvasWidth, tempCanvasWidth / imageToDraw.width * imageToDraw.height)
+				}
+			}
+			if (currentLife < 1) {
+				context.fillStyle = "#0008"
+				context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
+				context.fillStyle = "#800"
+			} else {
+				context.fillStyle = "white"
+			}
 			while (context.measureText(currentLife).width >= tempCanvasWidth) {
 				tempFontSize -= 1
 				context.font = tempFontSize + "pt belerenbsc"
@@ -137,6 +153,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.canvas.customVarMouseDelay = 0
 	this.canvas.customVarID = playerBoxID
 	this.canvas.customVarColor = "#222222"
+	this.canvas.customVarImage = new Image()
 	this.canvas.customVarContext = this.canvas.getContext("2d")
 	this.canvas.customVarContext.customVarCanvas = this.canvas
 	this.canvas.classList.add("playerBox")
@@ -220,8 +237,6 @@ function updateColorSelector() {
 function updateBackgroundColor(color) {
 	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor = color
 }
-
-
 function switchToTouchEvents() {
 	window.removeEventListener("touchstart", switchToTouchEvents, true)
 	document.removeEventListener("mouseup", decoyMouseUpFunction, true)
@@ -236,4 +251,39 @@ function switchToTouchEvents() {
 			mouseUpPlayerBox(this)
 		}, true)
 	}
+}
+function loadImage(event, destination) {
+	var input = event.target
+	var reader = new FileReader()
+	reader.onload = function() {
+		var dataURL = reader.result
+		destination.src = dataURL
+	}
+	reader.readAsDataURL(input.files[0])
+}
+var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
+function inputCardArtName(cardArtNameInput) {
+	var xhttp = new XMLHttpRequest()
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			savedArtList = this.responseText.split('"art_crop":"')
+			savedArtList.splice(0, 1)
+			document.getElementById("inputCardArtNameNumber").max = savedArtList.length
+			document.getElementById("inputCardArtNameNumber").value = 1
+			for (i = 0; i < savedArtList.length; i ++) {
+				cardArtUrlList[i] = savedArtList[i].split('","border_crop":')[0]
+			}
+			for (i = 0; i < savedArtList.length; i ++) {
+				cardArtArtistList[i] = savedArtList[i].slice(savedArtList[i].indexOf('"artist":"') + 10, savedArtList[i].indexOf('","border_color":'))
+			}
+			inputCardArtNameNumber(1)
+		} else if (this.readyState == 4 && this.status == 404) {
+			// alert("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'")
+		}
+	}
+	xhttp.open("GET", "https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D" + cardArtNameInput.replace(/ /g, "_"), true)
+	xhttp.send()
+}
+function inputCardArtNameNumber(cardArtNameNumberInput) {
+	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage.src = cardArtUrlList[cardArtNameNumberInput - 1]
 }
