@@ -148,7 +148,6 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	document.addEventListener("mouseup", decoyMouseUpFunction, true)
 }
 function decoyMouseDownFunction() {
-	console.log("IT'S STILL CLICKING")
 	mouseDownPlayerBox(this, event.clientX, event.clientY)
 }
 function decoyMouseUpFunction() {
@@ -224,7 +223,6 @@ function updateBackgroundColor(color) {
 
 
 function switchToTouchEvents() {
-	console.log("switching!")
 	window.removeEventListener("touchstart", switchToTouchEvents, true)
 	document.removeEventListener("mouseup", decoyMouseUpFunction, true)
 	for (var i = 1; i <= playerCount; i++) {
@@ -239,5 +237,3 @@ function switchToTouchEvents() {
 		}, true)
 	}
 }
-
-// setTimeout(function(){switchToTouchEvents()}, 2000)
