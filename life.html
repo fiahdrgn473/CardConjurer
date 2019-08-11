@@ -51,7 +51,8 @@
 		<input id="inputPlayerCount" class="input" type="number" min="2" value="4" max="16"><br>
 		Starting Life Total:<br>
 		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
-		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button>
+		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br><br>
+		For a better experience, save this website to your home screen and open it from there.
 	</div>
 	<div onclick="fullscreen()" class="hidden" id="return">CLICK ANYWHERE TO RETURN TO FULLSCREEN</div>
 	<div id="gridShell">
@@ -75,8 +76,7 @@
 				</div><br>
 			</div>
 		</div>
-		<div id="mainGrid" class="mainGrid"></div><br>
-		For a better experience, save this website to your homepage and open it from there.
+		<div id="mainGrid" class="mainGrid"></div>
 	</div>
 </body>
 <style>
@@ -121,15 +121,15 @@
 	}
 	#gridShell {
 		display: none;
-		/*position: fixed;
+		position: fixed;
 		top: 0;
-		left: 0;*/
-		position: absolute;
+		left: 0;
+		/*position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		overflow: none;
+		overflow: none;*/
 	}
 	#gridShell:fullscreen {
 		display: inline-block;
