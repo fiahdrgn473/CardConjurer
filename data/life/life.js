@@ -230,7 +230,9 @@ function switchToTouchEvents() {
 	for (var i = 1; i <= playerCount; i++) {
 		playerList[i - 1].canvas.removeEventListener("mousedown", decoyMouseDownFunction, true)
 		playerList[i - 1].canvas.addEventListener("touchstart", function() {
-			mouseDownPlayerBox(this, event.clientX, event.clientY)
+			for (var i = 0; i < event.touches.length; i ++) {
+				mouseDownPlayerBox(this, event.touches[i].clientX, event.touches[i].clientY)
+			}
 		}, true)
 		playerList[i - 1].canvas.addEventListener("touchend", function() {
 			mouseUpPlayerBox(this)
