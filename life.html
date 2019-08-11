@@ -90,12 +90,17 @@
 		font-family: belerenbsc;
 		font-size: 24pt;
 		margin: 0px;
+		touch-action: none;
 	}
 	image, div, canvas {
 		user-select: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
+	}
+	html, body {
+		height: 100%;
+		overflow: hidden;
 	}
 	body {
 		background-color: #333;
@@ -108,12 +113,22 @@
 		width: 100%;
 		height: 100%;
 		align-items: center;
+		/*position: fixed;*/
+	}
+	canvas {
+		/*position: fixed;*/
 	}
 	#gridShell {
 		display: none;
 		/*position: fixed;
 		top: 0;
 		left: 0;*/
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow: none;
 	}
 	#gridShell:fullscreen {
 		display: inline-block;
@@ -125,7 +140,6 @@
 		border: 1px solid white;
 		width: auto;
 		height: auto;
-		touch-action: none;
 	}
 	.widePlayerBox {
 		grid-column: 1 / span 2;
@@ -167,6 +181,8 @@
 		overflow-y: auto;
 		height: calc(100% - 70pt);
 		border: 2px solid white;
+		touch-action: pan-y;
+		-webkit-overflow-scrolling: touch;
 	}
 	.menuOption {
 		font-size: 20pt;
@@ -190,15 +206,6 @@
 	}
 	input {
 		width: 7.5em;
-	}
-	@media (orientation: landscape) {
-		body {
-			-webkit-transform: rotate(-90deg);
-	    	-moz-transform: rotate(-90deg);
-	    	-o-transform: rotate(-90deg);
-	    	-ms-transform: rotate(-90deg);
-	    	transform: rotate(-90deg);
-		}
 	}
 </style>
 <script src="data/life/life.js"></script>
