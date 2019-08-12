@@ -288,7 +288,10 @@ function inputCardArtName(cardArtNameInput) {
 function inputCardArtNameNumber(cardArtNameNumberInput) {
 	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage.src = cardArtUrlList[cardArtNameNumberInput - 1]
 }
-// document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
-// 	event.preventDefault()
-// 	console.log("it ran?")
-// }, false)
+document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
+	event.preventDefault()
+	console.log("it ran?")
+}, false)
+function rollRNG() {
+	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
+}

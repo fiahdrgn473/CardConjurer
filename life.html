@@ -74,6 +74,13 @@
 					<input id="inputCardArtName" onchange="inputCardArtName(this.value)" type="text" placeholder="Via Card Name"><br>
 					<input id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" type="number" value="1" min="1" max="1">
 				</div><br>
+				<div class="menuOption">
+					RNG<br>
+					Min <input class="smallInput" type="number" id="inputRNGMin" min="0" value="1"><br>
+					Max <input class="smallInput" type="number" id="inputRNGMax" min="0" value="20"><br>
+					<div onclick="rollRNG()" class="rng"><div class="rngNumber" id="rngOutput"><div style="font-size: 30pt; margin-top: 0.75em;">Tap Me<br>To Roll</div></div></div>
+				</div><br>
+				<div class="menuOption">REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</div>
 			</div>
 		</div>
 		<div id="mainGrid" class="mainGrid"></div>
@@ -173,7 +180,8 @@
 		margin: 60pt 0px 0px 0px;
 		padding: 10pt;
 		overflow-y: auto;
-		height: calc(100% - 70pt);
+		max-width: calc(100vw - 23pt);
+		height: calc(100% - 60pt);
 		border: 2px solid white;
 		touch-action: pan-y;
 		-webkit-overflow-scrolling: touch;
@@ -185,6 +193,8 @@
 		display: inline-block;
 		margin-bottom: 10pt;
 		padding: 8pt;
+		max-width: calc(100% - 16pt);
+		overflow-x: hidden;
 	}
 	.colorInput {
 		border: 0px;
@@ -200,6 +210,20 @@
 	}
 	input {
 		width: 7.5em;
+	}
+	.smallInput {
+		width: 3em;
+	}
+	.rng {
+		margin-top: 6pt;
+		border: 1px solid white;
+		height: 5em;
+		min-width: 5em;
+		border-radius: 1em;
+		background-color: #222;
+	}
+	.rngNumber {
+		font-size: 4em;
 	}
 </style>
 <script src="data/life/life.js"></script>
