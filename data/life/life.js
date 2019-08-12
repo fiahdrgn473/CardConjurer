@@ -287,7 +287,7 @@ function inputCardArtName(cardArtNameInput) {
 function inputCardArtNameNumber(cardArtNameNumberInput) {
 	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage.src = cardArtUrlList[cardArtNameNumberInput - 1]
 }
-function cancelTouchMove(event) {
+document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
 	event.preventDefault()
-}
-document.documentElement.addEventListener("touchmove", cancelTouchMove(event), false)
+	console.log("it ran?")
+}, false)
