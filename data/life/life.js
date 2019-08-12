@@ -246,6 +246,7 @@ function switchToTouchEvents() {
 			for (var i = 0; i < event.touches.length; i ++) {
 				mouseDownPlayerBox(this, event.touches[i].clientX, event.touches[i].clientY)
 			}
+			window.scrollTo(0, 0)
 		}, true)
 		playerList[i - 1].canvas.addEventListener("touchend", function() {
 			mouseUpPlayerBox(this)
