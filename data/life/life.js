@@ -332,12 +332,15 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-	if  (!clicking) {
-		if (event.touches.length > 0) {
-			clicking = true
+	touchX = [], touchY = []
+	for (var i = 0; i < event.touches.length; i ++) {
+		touchX[i] = event.touches[i].clientX
+		touchY[i] = event.touches[i].clientY
+	}
+	if (event.touches.length > 0) {
+		if (!clicking) {
+			updatePlayerBoxes()
 		}
-		updatePlayerBoxes()
-	} else if (event.touches.length > 0) {
 		clicking = true
 	}
 }
@@ -349,6 +352,11 @@ function moveTouch() {
 	}
 }
 function endTouch() {
+	touchX = [], touchY = []
+	for (var i = 0; i < event.touches.length; i ++) {
+		touchX[i] = event.touches[i].clientX
+		touchY[i] = event.touches[i].clientY
+	}
 	clearTimeout(loop)
 	clearTimers()
 	if (event.touches.length < 1) {
