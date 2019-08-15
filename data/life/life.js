@@ -2,7 +2,7 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, isMobile = false
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop
 if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
 	isMobile = true
 }
@@ -80,97 +80,34 @@ function startGame() {
 	for (var i = 1; i <= playerCount; i++) {
 		configurePlayerBox(i)
 	}
-	//Set up the clock!
-	setInterval(function() {
-		for (var i = 1; i <= playerCount; i++) {
-			if (playerList[i - 1].canvas.customVarMouseDown != "false") {
-				playerList[i - 1].canvas.customVarMouseDelay += 1
-				if (playerList[i - 1].canvas.customVarMouseDelay > 5) {
-					if (playerList[i - 1].canvas.customVarMouseDown == "up") {
-						playerList[i - 1].life += 1
-					} else {
-						playerList[i - 1].life -= 1
-					}
-					if (playerList[i - 1].canvas.customVarMouseDelay > 50) {
-						if (playerList[i - 1].canvas.customVarMouseDown == "up") {
-							playerList[i - 1].life += 4
-						} else {
-							playerList[i - 1].life -= 4
-						}
-					}
-				}
-			}
-			var context = playerList[i - 1].canvas.customVarContext
-			context.textBaseline = "middle"
-			var tempFontSize = 100
-			context.font = "100pt belerenbsc"
-			var currentLife = playerList[context.customVarCanvas.customVarID - 1].life
-			context.fillStyle = context.customVarCanvas.customVarColor
-			var tempCanvasHeight = context.customVarCanvas.height, tempCanvasWidth = context.customVarCanvas.width
-			if (playerList[context.customVarCanvas.customVarID - 1].rotation == 90 || playerList[context.customVarCanvas.customVarID - 1].rotation == 270) {
-				tempCanvasHeight = tempCanvasWidth
-				tempCanvasWidth = context.customVarCanvas.height
-			}
-			context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
-			if (context.customVarCanvas.customVarImage.src != "") {
-				var imageToDraw = context.customVarCanvas.customVarImage
-				if (imageToDraw.width / imageToDraw.height > tempCanvasWidth / tempCanvasHeight) {
-					//The image is wider and should be fitted to its height
-					context.drawImage(imageToDraw, tempCanvasHeight / imageToDraw.height * imageToDraw.width / -2, tempCanvasHeight / -2, tempCanvasHeight / imageToDraw.height * imageToDraw.width, tempCanvasHeight)
-				} else {
-					//The image is taller and should be fitted to its width
-					context.drawImage(imageToDraw, tempCanvasWidth / -2, tempCanvasWidth / imageToDraw.width * imageToDraw.height / -2, tempCanvasWidth, tempCanvasWidth / imageToDraw.width * imageToDraw.height)
-				}
-			}
-			if (currentLife < 1) {
-				context.fillStyle = "#0008"
-				context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
-				context.fillStyle = "#800"
-			} else {
-				context.fillStyle = "white"
-			}
-			while (context.measureText(currentLife).width >= tempCanvasWidth) {
-				tempFontSize -= 1
-				context.font = tempFontSize + "pt belerenbsc"
-			}
-			var horizontalShift = -1 * parseInt(context.measureText(currentLife).width) / 2
-			context.strokeStyle = "black"
-			context.lineWidth = 5
-			context.strokeText(currentLife, horizontalShift, 0)
-			context.fillText(currentLife, horizontalShift, 0)
-			
-		}
-	}, 100)
-	window.addEventListener("touchstart", switchToTouchEvents, true)
+	drawAllPlayerBoxes()
 }
 
 function playerBox(playerBoxID, canvasRotation, wide) {
+	//Actually needed vars
 	this.id = playerBoxID
 	this.rotation = canvasRotation
 	this.life = startingLifeTotal
 	this.canvas = document.createElement("canvas")
-	this.canvas.customVarMouseDown = "false"
-	this.canvas.customVarMouseDelay = 0
+	this.direction = "false"
+	this.holdTime = 0
+	this.color = "#222222"
+	this.textColor = "#ffffff"
+	this.image = new Image()
+	//vars to make navigation easier
 	this.canvas.customVarID = playerBoxID
-	this.canvas.customVarColor = "#222222"
-	this.canvas.customVarImage = new Image()
 	this.canvas.customVarContext = this.canvas.getContext("2d")
 	this.canvas.customVarContext.customVarCanvas = this.canvas
+	//css classes
 	this.canvas.classList.add("playerBox")
 	if (wide) {
 		this.canvas.classList.add("widePlayerBox")
 	}
+	//add it to the html
 	document.getElementById("mainGrid").appendChild(this.canvas)
-	this.canvas.addEventListener("mousedown", decoyMouseDownFunction, true)
-	document.addEventListener("mouseup", decoyMouseUpFunction, true)
-}
-function decoyMouseDownFunction() {
-	mouseDownPlayerBox(this, event.clientX, event.clientY)
-}
-function decoyMouseUpFunction() {
-	mouseUpPlayerBox(this)
 }
 function configurePlayerBox(playerBoxID) {
+	//All of this configures the size/shape/orientation of the player boxes
 	var currentPlayer = playerList[playerBoxID - 1]
 	var context = currentPlayer.canvas.customVarContext
 	currentPlayer.canvas.width = columnWidth
@@ -181,77 +118,25 @@ function configurePlayerBox(playerBoxID) {
 	context.translate(currentPlayer.canvas.width / 2, currentPlayer.canvas.height / 2)
 	context.rotate(Math.PI / 180 * currentPlayer.rotation)
 }
-function mouseDownPlayerBox(canvas, clickX = 0, clickY = 0) {
-	if (clickX > 0 && clickY > 0) {
-		var playerBoxBounds = canvas.getBoundingClientRect()
-		if (playerList[canvas.customVarID - 1].rotation == 0) {
-			if (clickX > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-				canvas.customVarMouseDown = "up"
-				playerList[canvas.customVarID - 1].life += 1
-			} else {
-				canvas.customVarMouseDown = "down"
-				playerList[canvas.customVarID - 1].life -= 1
-			}
-		} else if (playerList[canvas.customVarID - 1].rotation == 90) {
-			if (clickY > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-				canvas.customVarMouseDown = "up"
-				playerList[canvas.customVarID - 1].life += 1
-			} else {
-				canvas.customVarMouseDown = "down"
-				playerList[canvas.customVarID - 1].life -= 1
-			}
-		} else if (playerList[canvas.customVarID - 1].rotation == 180) {
-			if (clickX > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-				canvas.customVarMouseDown = "down"
-				playerList[canvas.customVarID - 1].life -= 1
-			} else {
-				canvas.customVarMouseDown = "up"
-				playerList[canvas.customVarID - 1].life += 1
-			}
-		} else {
-			if (clickY > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-				canvas.customVarMouseDown = "down"
-				playerList[canvas.customVarID - 1].life -= 1
-			} else {
-				canvas.customVarMouseDown = "up"
-				playerList[canvas.customVarID - 1].life += 1
-			}
-		}
-	}
-}
-function mouseUpPlayerBox() {
-	for (var i = 1; i <= playerCount; i++) {
-		playerList[i - 1].canvas.customVarMouseDown = "false"
-		playerList[i - 1].canvas.customVarMouseDelay = 0
-	}
-}
+
 function resetLife() {
 	for (var i = 1; i <= playerCount; i++) {
 		playerList[i - 1].life = startingLifeTotal
 	}
 	document.getElementById('menu').classList.add('hidden')
+	drawAllPlayerBoxes()
 }
 function updateColorSelector() {
-	document.getElementById("inputPlayerColor").value = playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor
+	document.getElementById("inputPlayerColor").value = playerList[parseInt(document.getElementById("inputPlayer").value) - 1].color
+	document.getElementById("inputTextColor").value = playerList[parseInt(document.getElementById("inputPlayer").value) - 1].textColor
 }
 function updateBackgroundColor(color) {
-	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].canvas.customVarColor = color
+	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].color = color
+	drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))
 }
-function switchToTouchEvents() {
-	window.removeEventListener("touchstart", switchToTouchEvents, true)
-	document.removeEventListener("mouseup", decoyMouseUpFunction, true)
-	for (var i = 1; i <= playerCount; i++) {
-		playerList[i - 1].canvas.removeEventListener("mousedown", decoyMouseDownFunction, true)
-		playerList[i - 1].canvas.addEventListener("touchstart", function() {
-			for (var i = 0; i < event.touches.length; i ++) {
-				mouseDownPlayerBox(this, event.touches[i].clientX, event.touches[i].clientY)
-			}
-			window.scrollTo(0, 0)
-		}, true)
-		playerList[i - 1].canvas.addEventListener("touchend", function() {
-			mouseUpPlayerBox(this)
-		}, true)
-	}
+function updateTextColor(color) {
+	playerList[parseInt(document.getElementById("inputPlayer").value) - 1].textColor = color
+	drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))
 }
 function loadImage(event, destination) {
 	var input = event.target
@@ -259,6 +144,7 @@ function loadImage(event, destination) {
 	reader.onload = function() {
 		var dataURL = reader.result
 		destination.src = dataURL
+		setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 	}
 	reader.readAsDataURL(input.files[0])
 }
@@ -286,12 +172,186 @@ function inputCardArtName(cardArtNameInput) {
 	xhttp.send()
 }
 function inputCardArtNameNumber(cardArtNameNumberInput) {
-	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].canvas.customVarImage.src = cardArtUrlList[cardArtNameNumberInput - 1]
+	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].image.src = cardArtUrlList[cardArtNameNumberInput - 1]
+	setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 }
-document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
-	event.preventDefault()
-	console.log("it ran?")
-}, false)
+// document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
+// 	event.preventDefault()
+// 	console.log("it ran?")
+// }, false)
 function rollRNG() {
 	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
+}
+function updatePlayerBoxes() {
+	if (clicking) {
+		//Make a list of the touch locations
+		for (var i = 0; i < touchX.length; i++) {
+			for (var n = 1; n <= playerList.length; n ++) {
+				var playerBoxBounds = playerList[n - 1].canvas.getBoundingClientRect()
+				if (touchX[i] >= playerBoxBounds.left && touchX[i] <= playerBoxBounds.right && touchY[i] >= playerBoxBounds.top && touchY[i] <= playerBoxBounds.bottom) {
+					//This canvas is being clicked on! Do something about it.
+					var direction = "", lifeAdjust = 0
+					if (playerList[n - 1].rotation == 0) {
+						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+							direction = "up"
+							lifeAdjust = 1
+						} else {
+							direction = "down"
+							lifeAdjust = -1
+						}
+					} else if (playerList[n - 1].rotation == 90) {
+						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+							direction = "up"
+							lifeAdjust = 1
+						} else {
+							direction = "down"
+							lifeAdjust = -1
+						}
+					} else if (playerList[n - 1].rotation == 180) {
+						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+							direction = "down"
+							lifeAdjust = -1
+						} else {
+							direction = "up"
+							lifeAdjust = 1
+						}
+					} else {
+						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+							direction = "down"
+							lifeAdjust = -1
+						} else {
+							direction = "up"
+							lifeAdjust = 1
+						}
+					}
+					playerList[n - 1].holdTime += 1
+					if (playerList[n - 1].direction != direction) {
+						playerList[n - 1].holdTime = 0
+						playerList[n - 1].direction = direction
+					}
+					if (playerList[n - 1].holdTime != 0 && playerList[n - 1].holdTime < 5) {
+						lifeAdjust = 0
+					} else if (playerList[n - 1].holdTime > 28) {
+						lifeAdjust *= 5
+						if (playerList[n - 1].holdTime >= 60) {
+							lifeAdjust *= 2
+						}
+					}
+					playerList[n - 1].life += lifeAdjust
+					drawPlayerBox(n)
+					break
+				} else {
+					playerList[n - 1].firection = "none"
+					playerList[n - 1].holdTime = 0
+					continue
+				}
+			}
+			if (i == touchX.length - 1) {
+				//At the end, start the loop!
+				loop = setTimeout(updatePlayerBoxes, 100)
+			}
+		}
+	}
+}
+function clearTimers() {
+	for (var i = 1; i <= playerList.length; i ++) {
+		playerList[i - 1].direction = "none"
+		playerList[i - 1].holdTime = 0
+	}
+}
+function drawPlayerBox(playerBoxID) {
+	var currentPlayerBox = playerList[playerBoxID - 1]
+	var context = currentPlayerBox.canvas.customVarContext
+	context.textBaseline = "middle"
+	var tempFontSize = 100
+	context.font = "100pt belerenbsc"
+	context.fillStyle = currentPlayerBox.color
+	var tempCanvasHeight = currentPlayerBox.canvas.height, tempCanvasWidth = currentPlayerBox.canvas.width
+	if (playerList[playerBoxID - 1].rotation == 90 || playerList[playerBoxID - 1].rotation == 270) {
+		tempCanvasHeight = tempCanvasWidth
+		tempCanvasWidth = currentPlayerBox.canvas.height
+	}
+	context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
+	if (currentPlayerBox.image.src != "") {
+		var imageToDraw = currentPlayerBox.image
+		if (imageToDraw.width / imageToDraw.height > tempCanvasWidth / tempCanvasHeight) {
+			//The image is wider and should be fitted to its height
+			context.drawImage(imageToDraw, tempCanvasHeight / imageToDraw.height * imageToDraw.width / -2, tempCanvasHeight / -2, tempCanvasHeight / imageToDraw.height * imageToDraw.width, tempCanvasHeight)
+		} else {
+			//The image is taller and should be fitted to its width
+			context.drawImage(imageToDraw, tempCanvasWidth / -2, tempCanvasWidth / imageToDraw.width * imageToDraw.height / -2, tempCanvasWidth, tempCanvasWidth / imageToDraw.width * imageToDraw.height)
+		}
+	}
+	if (currentPlayerBox.life < 1) {
+		context.fillStyle = "#0008"
+		context.fillRect(tempCanvasWidth / -2, tempCanvasHeight / -2, tempCanvasWidth, tempCanvasHeight)
+		context.fillStyle = "#800"
+	} else {
+		context.fillStyle = playerList[playerBoxID - 1].textColor
+	}
+	while (context.measureText(currentPlayerBox.life).width >= tempCanvasWidth) {
+		tempFontSize -= 1
+		context.font = tempFontSize + "pt belerenbsc"
+	}
+	var horizontalShift = -1 * parseInt(context.measureText(currentPlayerBox.life).width) / 2
+	context.strokeStyle = "black"
+	context.lineWidth = 5
+	context.strokeText(currentPlayerBox.life, horizontalShift, 0)
+	context.fillText(currentPlayerBox.life, horizontalShift, 0)
+}
+function drawAllPlayerBoxes() {
+	for (var i = 1; i <= playerList.length; i ++) {
+		drawPlayerBox(i)
+	}
+}
+//Event Listener magic! (always records mouse/touch positions so the loop can work without events)
+var touchX = [], touchY = [], clicking = false
+document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoordinates, true)
+window.addEventListener("mousemove", updateMouseCoordinates, true)
+window.addEventListener("mouseup", endMouseCoordinates, true)
+window.addEventListener("mouseup", clearTimers)
+function startMouseCoordinates() {
+	clicking = true
+	updatePlayerBoxes()
+}
+function updateMouseCoordinates() {
+	touchX[0] = event.clientX
+	touchY[0] = event.clientY
+}
+function endMouseCoordinates() {
+	clearTimeout(loop)
+	clicking = false
+}
+window.addEventListener("touchstart", switchToTouchEvents, true)
+function switchToTouchEvents() {
+	window.removeEventListener("touchstart", switchToTouchEvents, true)
+	document.getElementById("mainGrid").removeEventListener("mousedown", startMouseCoordinates, true)
+	window.removeEventListener("mousemove", updateMouseCoordinates, true)
+	window.removeEventListener("mouseup", endMouseCoordinates, true)
+	document.getElementById("mainGrid").addEventListener("touchstart", startTouch, true)
+	window.addEventListener("touchmove", moveTouch, true)
+	window.addEventListener("touchend", endTouch, true)
+}
+function startTouch() {
+	if  (!clicking) {
+		if (event.touches.length > 0) {
+			clicking = true
+		}
+		updatePlayerBoxes()
+	} else if (event.touches.length > 0) {
+		clicking = true
+	}
+}
+function moveTouch() {
+	touchX = [], touchY = []
+	for (var i = 0; i < event.touches.length; i ++) {
+		touchX[i] = event.touches[i].clientX
+		touchY[i] = event.touches[i].clientY
+	}
+}
+function endTouch() {
+	clearTimeout(loop)
+	if (event.touches.length < 1) {
+		clicking = false
+	}
 }
