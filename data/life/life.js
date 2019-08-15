@@ -308,7 +308,6 @@ var touchX = [], touchY = [], clicking = false
 document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoordinates, true)
 window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
-window.addEventListener("mouseup", clearTimers)
 function startMouseCoordinates() {
 	clicking = true
 	updatePlayerBoxes()
