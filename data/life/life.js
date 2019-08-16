@@ -314,7 +314,8 @@ window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
 	clicking = true
-	singleClick()
+	// singleClick()
+	singleTap()
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
@@ -362,6 +363,73 @@ function endTouch() {
 		clearTimers()
 	}
 }
+
+
+
+
+
+
+
+
+function singleTap() {
+	var playerBoxBounds = event.target.getBoundingClientRect()
+	var tappedPlayerBox = playerList[event.target.customVarID - 1]
+	var lifeAdjust = 0
+	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
+		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+			lifeAdjust = 1
+		} else {
+			lifeAdjust = -1
+		}
+	} else {
+		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+			lifeAdjust = 1
+		} else {
+			lifeAdjust = -1
+		}
+	}
+	if (tappedPlayerBox.rotation == 180 || tappedPlayerBox.rotation == 270) {
+		lifeAdjust *= -1
+	}
+	direction = lifeAdjust + ""
+	tappedPlayerBox.life += lifeAdjust
+	drawPlayerBox(tappedPlayerBox.id)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function singleClick() {
@@ -480,4 +548,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated
+//Updated for real
