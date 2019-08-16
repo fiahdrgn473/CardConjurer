@@ -354,7 +354,8 @@ function moveTouch() {
 	}
 }
 function endTouch() {
-    console.log(event.target.id + " released")
+    console.log(event.changedTouches)
+    console.log(event.changedTouches[0])
 	moveTouch()
 	if (event.touches.length == 0) {
 		clicking = false
@@ -548,4 +549,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies!!! like actually... *SIGH* will it ever work?
+//Updated for realsies!!! like actually... *SIGH* will it ever work? COME ON
