@@ -336,6 +336,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
+	moveTouch()
 	if (!clicking) {
 		if (event.touches.length > 0) {
 			clicking = true
@@ -353,6 +354,7 @@ function moveTouch() {
 	}
 }
 function endTouch() {
+	moveTouch()
 	if (event.touches.length < 1) {
 		clicking = false
 		clearTimeout(loop)
