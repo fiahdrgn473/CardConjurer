@@ -354,8 +354,8 @@ function moveTouch() {
 	}
 }
 function endTouch() {
-    console.log(event.changedTouches)
-    console.log(event.changedTouches[0])
+//    console.log(event.changedTouches)
+    console.log(event.changedTouches[0].identifier)
 	moveTouch()
 	if (event.touches.length == 0) {
 		clicking = false
@@ -395,6 +395,7 @@ function singleTap() {
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
     console.log(tappedPlayerBox.id)
+    console.log(event.changedTouches[0].identifier)
 }
 
 
@@ -549,4 +550,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies!!! like actually... *SIGH* will it ever work? COME ON
+//Updated
