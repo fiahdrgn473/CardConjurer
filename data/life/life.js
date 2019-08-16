@@ -311,18 +311,15 @@ window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
 	clicking = true
 	updatePlayerBoxes()
-	alert("still clicking")
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
 	touchY[0] = event.clientY
-	alert("still clicking")
 }
 function endMouseCoordinates() {
 	clearTimeout(loop)
 	clearTimers()
 	clicking = false
-	alert("still clicking")
 }
 window.addEventListener("touchstart", switchToTouchEvents, true)
 function switchToTouchEvents() {
@@ -335,16 +332,15 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-	alert("start touch")
 	if (event.touches.length > 0) {
 		if (!clicking) {
 			updatePlayerBoxes()
+			alert("just ran it?")
 		}
 		clicking = true
 	}
 }
 function moveTouch() {
-	alert("move touch")
 	touchX = [], touchY = []
 	for (var i = 0; i < event.touches.length; i ++) {
 		touchX[i] = event.touches[i].clientX
@@ -352,10 +348,10 @@ function moveTouch() {
 	}
 }
 function endTouch() {
-	alert("end touch")
 	if (event.touches.length < 1) {
 		clicking = false
 		clearTimeout(loop)
 		clearTimers()
+		alert("just cancelled everything")
 	}
 }
