@@ -255,6 +255,7 @@ function updatePlayerBoxes() {
 			}
 		}
 	}
+	setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
 }
 function clearTimers() {
 	for (var i = 1; i <= playerList.length; i ++) {
@@ -355,7 +356,7 @@ function moveTouch() {
 }
 function endTouch() {
 	moveTouch()
-	if (event.touches.length < 1) {
+	if (event.touches.length == 0) {
 		clicking = false
 		clearTimeout(loop)
 		clearTimers()
