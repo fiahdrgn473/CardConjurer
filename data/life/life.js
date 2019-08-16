@@ -2,7 +2,7 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop, activePlayerBoxes = []
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop = false, activePlayerBoxes = []
 if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
 	isMobile = true
 }
@@ -324,6 +324,7 @@ function updateMouseCoordinates() {
 }
 function endMouseCoordinates() {
 	clearTimeout(loop)
+	loop = false
 	clearTimers()
 	clicking = false
 }
@@ -406,7 +407,9 @@ function singleClick() {
 			drawPlayerBox(i)
 		}
 	}
-	setTimeout(heldDown, 100)
+	if (loop == false) {
+		loop = setTimeout(heldDown, 100)
+	}
 }
 function heldDown() {
 	if (clicking) {
@@ -474,6 +477,6 @@ function heldDown() {
 				playerList[i - 1].holdTime = 0
 			}
 		}
-		setTimeout(heldDown, 100)
+		loop = setTimeout(heldDown, 100)
 	}
 }
