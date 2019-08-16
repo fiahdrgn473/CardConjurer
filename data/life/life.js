@@ -94,6 +94,8 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.color = "#222222"
 	this.textColor = "#ffffff"
 	this.image = new Image()
+	this.image.customVarID = playerBoxID
+	this.image.onload = function() {drawPlayerBox(this.customVarID)}
 	//vars to make navigation easier
 	this.canvas.customVarID = playerBoxID
 	this.canvas.customVarContext = this.canvas.getContext("2d")
@@ -144,7 +146,7 @@ function loadImage(event, destination) {
 	reader.onload = function() {
 		var dataURL = reader.result
 		destination.src = dataURL
-		setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
+		// setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 	}
 	reader.readAsDataURL(input.files[0])
 }
@@ -173,7 +175,7 @@ function inputCardArtName(cardArtNameInput) {
 }
 function inputCardArtNameNumber(cardArtNameNumberInput) {
 	playerList[parseInt(document.getElementById('inputPlayer').value) - 1].image.src = cardArtUrlList[cardArtNameNumberInput - 1]
-	setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
+	// setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 }
 document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
 	event.preventDefault()
