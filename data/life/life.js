@@ -341,12 +341,8 @@ function switchToTouchEvents() {
 }
 function startTouch() {
 	moveTouch()
-	if (!clicking) {
-		clicking = true
-		singleClick()
-	} else {
-		clicking = true
-	}
+    clicking = true
+    singleClick()
 }
 function moveTouch() {
 	touchX = [], touchY = []
@@ -550,4 +546,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies
+//Updated for realsies!!!
