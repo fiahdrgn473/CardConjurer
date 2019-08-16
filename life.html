@@ -113,7 +113,9 @@
 	body {
 		background-color: #333;
 		color: white;
-		touch-action: manipulation;
+	}
+	body, #gridShell, .mainGrid, canvas {
+		touch-action: manipulation !important;
 	}
 	.mainGrid {
 		display: grid;
