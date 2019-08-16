@@ -182,9 +182,9 @@ function rollRNG() {
 	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
 }
 function updatePlayerBoxes() {
-	alert("did I click?")
+	// alert("did I click?")
 	if (clicking) {
-		alert("yes I did!")
+		// alert("yes I did!")
 		//Make a list of the touch locations
 		for (var i = 0; i < touchX.length; i++) {
 			for (var n = 1; n <= playerList.length; n ++) {
@@ -239,8 +239,8 @@ function updatePlayerBoxes() {
 						}
 					}
 					playerList[n - 1].life += lifeAdjust
-					alert("I clicked on " + n + "!")
-					alert("Their life total is now " + playerList[n - 1].life)
+					// alert("I clicked on " + n + "!")
+					// alert("Their life total is now " + playerList[n - 1].life)
 					drawPlayerBox(n)
 					break
 				} else {
@@ -336,10 +336,12 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-	if (event.touches.length > 0) {
-		if (!clicking) {
-			updatePlayerBoxes()
+	if (!clicking) {
+		if (event.touches.length > 0) {
+			clicking = true
 		}
+		updatePlayerBoxes()
+	} else if (event.touches.length > 0) {
 		clicking = true
 	}
 }
