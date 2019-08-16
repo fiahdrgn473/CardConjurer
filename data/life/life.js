@@ -357,10 +357,10 @@ function endTouch() {
         if (playerList[i - 1].touchId == event.changedTouches[0].identifier) {
             playerList[i - 1].touchId = 0.5
             console.log(i + " no longer touching")
+        } else {
+            console.log(playerList[i - 1].touchId + " is not " + event.changedTouches[0].identifier)
         }
     }
-    console.log(event.changedTouches)
-    console.log(event.changedTouches[0].target.touchId)
 	moveTouch()
 	if (event.touches.length == 0) {
 		clicking = false
@@ -553,4 +553,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated!!!
+//Updated!!! Are we there yet?
