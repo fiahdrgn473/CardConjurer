@@ -91,7 +91,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.canvas = document.createElement("canvas")
 	this.direction = "false"
 	this.holdTime = 0
-//    this.touchId = 0.5
+    this.touchId = 0.5
 	this.color = "#222222"
 	this.textColor = "#ffffff"
 	this.image = new Image()
@@ -340,7 +340,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-    event.changedTouches[0].target.touchId = event.changedTouches[0].identifier
+    playerList[event.changedTouches[0].target.customVarID].touchId = event.changedTouches[0].identifier
 	moveTouch()
     clicking = true
     singleTap(event.changedTouches[0].target)
@@ -358,7 +358,7 @@ function endTouch() {
             playerList[i - 1].touchId = 0.5
             console.log(i + " no longer touching")
         } else {
-            console.log(playerList[i - 1].touchId + " is not " + event.changedTouches[0].identifier)
+//            console.log(playerList[i - 1].touchId + " is not " + event.changedTouches[0].identifier)
         }
     }
 	moveTouch()
@@ -553,4 +553,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated!!! Are we there yet?
+//Updated!!! Are we there yet? Ooh!
