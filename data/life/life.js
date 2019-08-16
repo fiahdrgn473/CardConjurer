@@ -91,7 +91,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.canvas = document.createElement("canvas")
 	this.direction = "false"
 	this.holdTime = 0
-    this.touchIndex = -1
+//    this.touchId = 0.5
 	this.color = "#222222"
 	this.textColor = "#ffffff"
 	this.image = new Image()
@@ -314,10 +314,8 @@ document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoor
 window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
-    console.log("click started")
 	clicking = true
-	// singleClick()
-	singleTap()
+	singleTap(event.target)
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
@@ -342,9 +340,10 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
+    event.changedTouches[0].target.touchId = event.changedTouches[0].identifier)
 	moveTouch()
     clicking = true
-    singleTap()
+    singleTap(event.changedTouches[0].target)
 }
 function moveTouch() {
 	touchX = [], touchY = []
@@ -354,8 +353,14 @@ function moveTouch() {
 	}
 }
 function endTouch() {
-//    console.log(event.changedTouches)
-    console.log(event.changedTouches[0].identifier)
+    for (var i = 1; i <= playerList.length; i++) {
+        if (playerList[i - 1].touchId == event.changedTouches[0].identifier) {
+            playerList[i - 1].touchId = 0.5
+            console.log(i + " no longer touching")
+        }
+    }
+    console.log(event.changedTouches)
+    console.log(event.changedTouches[0].target.touchId)
 	moveTouch()
 	if (event.touches.length == 0) {
 		clicking = false
@@ -371,9 +376,9 @@ function endTouch() {
 
 
 
-function singleTap() {
-	var playerBoxBounds = event.target.getBoundingClientRect()
-	var tappedPlayerBox = playerList[event.target.customVarID - 1]
+function singleTap(targetPlayerBox) {
+	var playerBoxBounds = targetPlayerBox.getBoundingClientRect()
+	var tappedPlayerBox = playerList[targetPlayerBox.customVarID - 1]
 	var lifeAdjust = 0
 	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
 		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
@@ -394,8 +399,6 @@ function singleTap() {
 	direction = lifeAdjust + ""
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
-    console.log(tappedPlayerBox.id)
-    console.log(event.changedTouches[0].identifier)
 }
 
 
@@ -550,4 +553,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated
+//Updated!!!
