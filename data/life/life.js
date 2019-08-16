@@ -91,6 +91,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.canvas = document.createElement("canvas")
 	this.direction = "false"
 	this.holdTime = 0
+    this.touchIndex = -1
 	this.color = "#222222"
 	this.textColor = "#ffffff"
 	this.image = new Image()
@@ -341,7 +342,6 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-    console.log("touch started")
 	moveTouch()
     clicking = true
     singleTap()
@@ -354,6 +354,7 @@ function moveTouch() {
 	}
 }
 function endTouch() {
+    console.log(event.target.id + " released")
 	moveTouch()
 	if (event.touches.length == 0) {
 		clicking = false
@@ -370,7 +371,6 @@ function endTouch() {
 
 
 function singleTap() {
-    console.log("a tap has occurred!")
 	var playerBoxBounds = event.target.getBoundingClientRect()
 	var tappedPlayerBox = playerList[event.target.customVarID - 1]
 	var lifeAdjust = 0
@@ -548,4 +548,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies!!! like actually... *SIGH*
+//Updated for realsies!!! like actually... *SIGH* will it ever work?
