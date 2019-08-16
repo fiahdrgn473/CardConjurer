@@ -241,19 +241,10 @@ function updatePlayerBoxes() {
 						}
 					}
 					playerList[n - 1].life += lifeAdjust
-					// console.log(lifeAdjust)
-					// alert("Their life total is now " + playerList[n - 1].life)
 					activePlayerBoxes[activePlayerBoxes.length] = n
 					drawPlayerBox(n)
-				} //else {
-				// 	playerList[n - 1].firection = "none"
-				// 	playerList[n - 1].holdTime = 0
-				// }
+				}
 			}
-			// if (i == touchX.length - 1) {
-			// 	//At the end, start the loop!
-			// 	loop = setTimeout(updatePlayerBoxes, 100)
-			// }
 		}
 		for (var i = 1; i <= playerList.length; i ++) {
 			if (!activePlayerBoxes.includes(i)) {
@@ -264,7 +255,6 @@ function updatePlayerBoxes() {
 		activePlayerBoxes = []
 		setTimeout(updatePlayerBoxes, 100)
 	}
-	// setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
 }
 function clearTimers() {
 	for (var i = 1; i <= playerList.length; i ++) {
@@ -324,7 +314,7 @@ window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
 	clicking = true
-	updatePlayerBoxes()
+	singleClick()
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
@@ -369,5 +359,121 @@ function endTouch() {
 		clicking = false
 		clearTimeout(loop)
 		clearTimers()
+	}
+}
+
+
+function singleClick() {
+	for (var i = 1; i <= playerList.length; i ++) {
+		var playerBoxBounds = playerList[i - 1].canvas.getBoundingClientRect()
+		if (touchX[touchX.length - 1] >= playerBoxBounds.left && touchX[touchX.length - 1] <= playerBoxBounds.right && touchY[touchY.length - 1] >= playerBoxBounds.top && touchY[touchY.length - 1] <= playerBoxBounds.bottom) {
+			//This canvas is being clicked on! Do something about it.
+			var direction = "", lifeAdjust = 0
+			if (playerList[i - 1].rotation == 0) {
+				if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+					direction = "up"
+					lifeAdjust = 1
+				} else {
+					direction = "down"
+					lifeAdjust = -1
+				}
+			} else if (playerList[i - 1].rotation == 90) {
+				if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+					direction = "up"
+					lifeAdjust = 1
+				} else {
+					direction = "down"
+					lifeAdjust = -1
+				}
+			} else if (playerList[i - 1].rotation == 180) {
+				if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+					direction = "down"
+					lifeAdjust = -1
+				} else {
+					direction = "up"
+					lifeAdjust = 1
+				}
+			} else {
+				if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+					direction = "down"
+					lifeAdjust = -1
+				} else {
+					direction = "up"
+					lifeAdjust = 1
+				}
+			}
+			playerList[i - 1].life += lifeAdjust
+			drawPlayerBox(i)
+		}
+	}
+	setTimeout(heldDown, 100)
+}
+function heldDown() {
+	if (clicking) {
+		for (var i = 0; i < touchX.length; i++) {
+			for (var n = 1; n <= playerList.length; n ++) {
+				var playerBoxBounds = playerList[n - 1].canvas.getBoundingClientRect()
+				if (touchX[i] >= playerBoxBounds.left && touchX[i] <= playerBoxBounds.right && touchY[i] >= playerBoxBounds.top && touchY[i] <= playerBoxBounds.bottom) {
+					//This canvas is being clicked on! Do something about it.
+					var direction = "", lifeAdjust = 0
+					if (playerList[n - 1].rotation == 0) {
+						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+							direction = "up"
+							lifeAdjust = 1
+						} else {
+							direction = "down"
+							lifeAdjust = -1
+						}
+					} else if (playerList[n - 1].rotation == 90) {
+						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+							direction = "up"
+							lifeAdjust = 1
+						} else {
+							direction = "down"
+							lifeAdjust = -1
+						}
+					} else if (playerList[n - 1].rotation == 180) {
+						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+							direction = "down"
+							lifeAdjust = -1
+						} else {
+							direction = "up"
+							lifeAdjust = 1
+						}
+					} else {
+						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+							direction = "down"
+							lifeAdjust = -1
+						} else {
+							direction = "up"
+							lifeAdjust = 1
+						}
+					}
+					playerList[n - 1].holdTime += 1
+					if (playerList[n - 1].direction != direction) {
+						playerList[n - 1].holdTime = 0
+						playerList[n - 1].direction = direction
+					}
+					if (playerList[n - 1].holdTime < 5) {
+						lifeAdjust = 0
+					} else if (playerList[n - 1].holdTime > 28) {
+						lifeAdjust *= 5
+						if (playerList[n - 1].holdTime >= 60) {
+							lifeAdjust *= 2
+						}
+					}
+					playerList[n - 1].life += lifeAdjust
+					activePlayerBoxes[activePlayerBoxes.length] = n
+					drawPlayerBox(n)
+				}
+			}
+		}
+		for (var i = 1; i <= playerList.length; i ++) {
+			if (!activePlayerBoxes.includes(i)) {
+				playerList[i - 1].firection = "none"
+				playerList[i - 1].holdTime = 0
+			}
+		}
+		setTimeout(heldDown, 100)
 	}
 }
