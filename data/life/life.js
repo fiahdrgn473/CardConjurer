@@ -344,7 +344,7 @@ function startTouch() {
     console.log("touch started")
 	moveTouch()
     clicking = true
-    singleClick()
+    singleTap()
 }
 function moveTouch() {
 	touchX = [], touchY = []
@@ -548,4 +548,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies!!! like actually
+//Updated for realsies!!! like actually... *SIGH*
