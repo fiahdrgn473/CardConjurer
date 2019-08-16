@@ -402,7 +402,7 @@ function singleTap(targetPlayerBox) {
 function clockCheck(tappedPlayerBox) {
     if (tappedPlayerBox.touchId != 0.5) {
         tappedPlayerBox.life += tappedPlayerBox.direction
-        drawPlayerBox(tappedPlayerBox)
+        drawPlayerBox(tappedPlayerBox.id)
         if (tappedPlayerBox.holdTime >= 300) {
             setTimeout(clockCheck.bind(null, tappedPlayerBox), 10)
         } else if (tappedPlayerBox.holdTime >= 50) {
@@ -564,4 +564,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated!!! Are we there yet? Ooh! Is this it?
+//Updated!!! Are we there yet? Ooh! Is this it? ermagerd?
