@@ -338,11 +338,9 @@ function switchToTouchEvents() {
 function startTouch() {
 	moveTouch()
 	if (!clicking) {
-		if (event.touches.length > 0) {
-			clicking = true
-		}
+		clicking = true
 		updatePlayerBoxes()
-	} else if (event.touches.length > 0) {
+	} else {
 		clicking = true
 	}
 }
