@@ -313,6 +313,7 @@ document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoor
 window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
+    console.log("click started")
 	clicking = true
 	// singleClick()
 	singleTap()
@@ -340,6 +341,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
+    console.log("touch started")
 	moveTouch()
     clicking = true
     singleClick()
@@ -546,4 +548,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated for realsies!!!
+//Updated for realsies!!! like actually
