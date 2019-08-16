@@ -89,7 +89,7 @@ function playerBox(playerBoxID, canvasRotation, wide) {
 	this.rotation = canvasRotation
 	this.life = startingLifeTotal
 	this.canvas = document.createElement("canvas")
-	this.direction = "false"
+	this.direction = 0
 	this.holdTime = 0
     this.touchId = 0.5
 	this.color = "#222222"
@@ -259,7 +259,7 @@ function updatePlayerBoxes() {
 }
 function clearTimers() {
 	for (var i = 1; i <= playerList.length; i ++) {
-		playerList[i - 1].direction = "none"
+		playerList[i - 1].direction = 0
 		playerList[i - 1].holdTime = 0
 	}
 }
@@ -340,7 +340,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-    playerList[event.changedTouches[0].target.customVarID].touchId = event.changedTouches[0].identifier
+    playerList[event.changedTouches[0].target.customVarID - 1].touchId = event.changedTouches[0].identifier
 	moveTouch()
     clicking = true
     singleTap(event.changedTouches[0].target)
@@ -356,9 +356,6 @@ function endTouch() {
     for (var i = 1; i <= playerList.length; i++) {
         if (playerList[i - 1].touchId == event.changedTouches[0].identifier) {
             playerList[i - 1].touchId = 0.5
-            console.log(i + " no longer touching")
-        } else {
-//            console.log(playerList[i - 1].touchId + " is not " + event.changedTouches[0].identifier)
         }
     }
 	moveTouch()
@@ -396,14 +393,28 @@ function singleTap(targetPlayerBox) {
 	if (tappedPlayerBox.rotation == 180 || tappedPlayerBox.rotation == 270) {
 		lifeAdjust *= -1
 	}
-	direction = lifeAdjust + ""
+	tappedPlayerBox.direction = lifeAdjust
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
+    setTimeout(clockCheck.bind(null, tappedPlayerBox), 500)
 }
 
-
-
-
+function clockCheck(tappedPlayerBox) {
+    if (tappedPlayerBox.touchId != 0.5) {
+        tappedPlayerBox.life += tappedPlayerBox.direction
+        drawPlayerBox(tappedPlayerBox)
+        if (tappedPlayerBox.holdTime >= 300) {
+            setTimeout(clockCheck.bind(null, tappedPlayerBox), 10)
+        } else if (tappedPlayerBox.holdTime >= 50) {
+            setTimeout(clockCheck.bind(null, tappedPlayerBox), 20)
+        } else {
+            setTimeout(clockCheck.bind(null, tappedPlayerBox), 100)
+        }
+        tappedPlayerBox.holdTime += 1
+    } else {
+        tappedPlayerBox.holdTime = 0
+    }
+}
 
 
 
@@ -553,4 +564,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
-//Updated!!! Are we there yet? Ooh!
+//Updated!!! Are we there yet? Ooh! Is this it?
