@@ -335,11 +335,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-	// touchX = [], touchY = []
-	// for (var i = 0; i < event.touches.length; i ++) {
-	// 	touchX[i] = event.touches[i].clientX
-	// 	touchY[i] = event.touches[i].clientY
-	// }
+	alert("start touch")
 	if (event.touches.length > 0) {
 		if (!clicking) {
 			updatePlayerBoxes()
@@ -348,6 +344,7 @@ function startTouch() {
 	}
 }
 function moveTouch() {
+	alert("move touch")
 	touchX = [], touchY = []
 	for (var i = 0; i < event.touches.length; i ++) {
 		touchX[i] = event.touches[i].clientX
@@ -355,11 +352,7 @@ function moveTouch() {
 	}
 }
 function endTouch() {
-	// touchX = [], touchY = []
-	// for (var i = 0; i < event.touches.length; i ++) {
-	// 	touchX[i] = event.touches[i].clientX
-	// 	touchY[i] = event.touches[i].clientY
-	// }
+	alert("end touch")
 	if (event.touches.length < 1) {
 		clicking = false
 		clearTimeout(loop)
