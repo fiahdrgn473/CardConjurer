@@ -311,15 +311,18 @@ window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
 	clicking = true
 	updatePlayerBoxes()
+	alert("still clicking")
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
 	touchY[0] = event.clientY
+	alert("still clicking")
 }
 function endMouseCoordinates() {
 	clearTimeout(loop)
 	clearTimers()
 	clicking = false
+	alert("still clicking")
 }
 window.addEventListener("touchstart", switchToTouchEvents, true)
 function switchToTouchEvents() {
