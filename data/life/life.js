@@ -2,7 +2,7 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop, activePlayerBoxes = []
 if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
 	isMobile = true
 }
@@ -243,6 +243,7 @@ function updatePlayerBoxes() {
 					playerList[n - 1].life += lifeAdjust
 					// console.log(lifeAdjust)
 					// alert("Their life total is now " + playerList[n - 1].life)
+					activePlayerBoxes[activePlayerBoxes.length] = n
 					drawPlayerBox(n)
 				} //else {
 				// 	playerList[n - 1].firection = "none"
@@ -254,6 +255,13 @@ function updatePlayerBoxes() {
 			// 	loop = setTimeout(updatePlayerBoxes, 100)
 			// }
 		}
+		for (var i = 1; i <= playerList.length; i ++) {
+			if (!activePlayerBoxes.includes(i)) {
+				playerList[i - 1].firection = "none"
+				playerList[i - 1].holdTime = 0
+			}
+		}
+		activePlayerBoxes = []
 		setTimeout(updatePlayerBoxes, 100)
 	}
 	// setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
@@ -321,6 +329,8 @@ function startMouseCoordinates() {
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
 	touchY[0] = event.clientY
+	// touchX[1] = 50
+	// touchY[1] = 50 //For testing purposes only
 }
 function endMouseCoordinates() {
 	clearTimeout(loop)
