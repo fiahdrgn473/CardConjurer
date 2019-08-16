@@ -239,13 +239,13 @@ function updatePlayerBoxes() {
 						}
 					}
 					playerList[n - 1].life += lifeAdjust
-					// alert("I clicked on " + n + "!")
+					// console.log(lifeAdjust)
 					// alert("Their life total is now " + playerList[n - 1].life)
 					drawPlayerBox(n)
-				} else {
-					playerList[n - 1].firection = "none"
-					playerList[n - 1].holdTime = 0
-				}
+				} //else {
+				// 	playerList[n - 1].firection = "none"
+				// 	playerList[n - 1].holdTime = 0
+				// }
 			}
 			// if (i == touchX.length - 1) {
 			// 	//At the end, start the loop!
