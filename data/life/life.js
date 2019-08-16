@@ -242,11 +242,9 @@ function updatePlayerBoxes() {
 					// alert("I clicked on " + n + "!")
 					// alert("Their life total is now " + playerList[n - 1].life)
 					drawPlayerBox(n)
-					break
 				} else {
 					playerList[n - 1].firection = "none"
 					playerList[n - 1].holdTime = 0
-					continue
 				}
 			}
 			if (i == touchX.length - 1) {
@@ -255,7 +253,7 @@ function updatePlayerBoxes() {
 			}
 		}
 	}
-	setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
+	// setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
 }
 function clearTimers() {
 	for (var i = 1; i <= playerList.length; i ++) {
