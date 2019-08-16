@@ -340,7 +340,7 @@ function switchToTouchEvents() {
 	window.addEventListener("touchend", endTouch, true)
 }
 function startTouch() {
-    event.changedTouches[0].target.touchId = event.changedTouches[0].identifier)
+    event.changedTouches[0].target.touchId = event.changedTouches[0].identifier
 	moveTouch()
     clicking = true
     singleTap(event.changedTouches[0].target)
