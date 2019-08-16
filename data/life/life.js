@@ -247,11 +247,12 @@ function updatePlayerBoxes() {
 					playerList[n - 1].holdTime = 0
 				}
 			}
-			if (i == touchX.length - 1) {
-				//At the end, start the loop!
-				loop = setTimeout(updatePlayerBoxes, 100)
-			}
+			// if (i == touchX.length - 1) {
+			// 	//At the end, start the loop!
+			// 	loop = setTimeout(updatePlayerBoxes, 100)
+			// }
 		}
+		setTimeout(updatePlayerBoxes, 100)
 	}
 	// setTimeout(function() {alert(touchX[0] + ", " + touchY[0] + " & " + touchX[1] + ", " + touchY[1])}, 1000)
 }
