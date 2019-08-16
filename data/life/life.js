@@ -357,9 +357,9 @@ function endTouch() {
 		touchX[i] = event.touches[i].clientX
 		touchY[i] = event.touches[i].clientY
 	}
-	clearTimeout(loop)
-	clearTimers()
 	if (event.touches.length < 1) {
 		clicking = false
+		clearTimeout(loop)
+		clearTimers()
 	}
 }
