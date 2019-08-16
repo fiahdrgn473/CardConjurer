@@ -342,7 +342,7 @@ function startTouch() {
 	moveTouch()
 	if (!clicking) {
 		clicking = true
-		updatePlayerBoxes()
+		singleClick()
 	} else {
 		clicking = true
 	}
