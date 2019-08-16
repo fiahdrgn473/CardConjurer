@@ -372,6 +372,7 @@ function endTouch() {
 
 
 function singleTap() {
+    console.log("a tap has occurred!")
 	var playerBoxBounds = event.target.getBoundingClientRect()
 	var tappedPlayerBox = playerList[event.target.customVarID - 1]
 	var lifeAdjust = 0
@@ -394,6 +395,7 @@ function singleTap() {
 	direction = lifeAdjust + ""
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
+    console.log(tappedPlayerBox.id)
 }
 
 
