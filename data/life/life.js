@@ -480,3 +480,4 @@ function heldDown() {
 		loop = setTimeout(heldDown, 100)
 	}
 }
+//Updated
