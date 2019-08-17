@@ -175,7 +175,7 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 	// setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 }
 document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
-	event.preventDefault()
+	// event.preventDefault()
 }, false)
 function rollRNG() {
 	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
