@@ -175,7 +175,7 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 	// setTimeout(function(){drawPlayerBox(parseInt(document.getElementById("inputPlayer").value))}, 500)
 }
 document.getElementById("mainGrid").addEventListener("touchmove", function(event) {
-	// event.preventDefault()
+	event.preventDefault()
 }, false)
 function rollRNG() {
 	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
@@ -259,12 +259,12 @@ function startTouch() {
     singleTap(event.changedTouches[0].target)
 }
 function moveTouch() {
-	// window.scrollTo(0, 0);
 	touchX = [], touchY = []
 	for (var i = 0; i < event.touches.length; i ++) {
 		touchX[i] = event.touches[i].clientX
 		touchY[i] = event.touches[i].clientY
 	}
+	window.scrollTo(0, 0);
 }
 function endTouch() {
     for (var i = 1; i <= playerList.length; i++) {
