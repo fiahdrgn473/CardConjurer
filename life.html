@@ -47,12 +47,14 @@
 </head>
 <body autocomplete="off">
 	<div id="settings" class="settings">
-		Number of Players:<br>
-		<input id="inputPlayerCount" class="input" type="number" min="2" value="4" max="16"><br>
-		Starting Life Total:<br>
-		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
-		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br><br>
-		For an optimal experience, save this website to your home screen and open it from there.<br><a href="https://cardconjurer.com">Check out my other website, Card Conjurer, to easily create custom Magic cards!</a>
+		<div class="innerSettings">
+			Number of Players:<br>
+			<input id="inputPlayerCount" class="input" type="number" min="2" value="4" max="16"><br>
+			Starting Life Total:<br>
+			<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
+			<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br><br>
+			For an optimal experience, save this website to your home screen and open it from there.<br>Check out my other website, <a href="https://cardconjurer.com">Card Conjurer</a>, to easily create custom Magic cards!
+		</div>
 	</div>
 	<div onclick="fullscreen()" class="hidden" id="return">CLICK ANYWHERE TO RETURN TO FULLSCREEN</div>
 	<div id="gridShell">
@@ -94,10 +96,11 @@
 	}
 	.settings {
 		margin: 10pt;
+	}
+	.innerSettings {
 		overflow-y: auto;
 		touch-action: pan-y;
 		-webkit-overflow-scrolling: touch;
-		height: calc(100% + 20pt);
 	}
 	* {
 		font-family: belerenbsc;
@@ -236,9 +239,9 @@
 	a {
 		color: white;
 	}
-	a:hover {
+	/*a:hover {
 		color: grey;
-	}
+	}*/
 </style>
 <script src="data/life/life.js"></script>
 <html>
