@@ -2,10 +2,7 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, touchscreen = false, loop = false, activePlayerBoxes = []
-if ((typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)) {
-	isMobile = true
-}
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
@@ -229,12 +226,13 @@ function drawAllPlayerBoxes() {
 	}
 }
 //Event Listener magic! (always records mouse/touch positions so the loop can work without events)
-var touchX = [], touchY = [], clicking = false
+var touchX = [], touchY = []
 document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoordinates, true)
 window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
-    playerList[event.target.customVarID - 1].touchId = 1
+	mouseClickId += 1
+    playerList[event.target.customVarID - 1].touchId = mouseClickId
 	singleTap(event.target)
 }
 function updateMouseCoordinates() {
@@ -299,22 +297,22 @@ function singleTap(targetPlayerBox) {
 	tappedPlayerBox.direction = lifeAdjust
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
-    setTimeout(clockCheck.bind(null, tappedPlayerBox), 500)
+    setTimeout(clockCheck.bind(null, tappedPlayerBox, tappedPlayerBox.touchId), 500)
 }
-function clockCheck(tappedPlayerBox) {
-    if (tappedPlayerBox.touchId != 0.5) {
+function clockCheck(tappedPlayerBox, lastTapID) {
+    if (tappedPlayerBox.touchId == lastTapID) {
         tappedPlayerBox.life += tappedPlayerBox.direction
         drawPlayerBox(tappedPlayerBox.id)
         if (tappedPlayerBox.holdTime >= 150) {
-            setTimeout(clockCheck.bind(null, tappedPlayerBox), 10)
+            setTimeout(clockCheck.bind(null, tappedPlayerBox, tappedPlayerBox.touchId), 10)
         } else if (tappedPlayerBox.holdTime >= 50) {
-            setTimeout(clockCheck.bind(null, tappedPlayerBox), 50)
+            setTimeout(clockCheck.bind(null, tappedPlayerBox, tappedPlayerBox.touchId), 50)
         } else {
-            setTimeout(clockCheck.bind(null, tappedPlayerBox), 100)
+            setTimeout(clockCheck.bind(null, tappedPlayerBox, tappedPlayerBox.touchId), 100)
         }
         tappedPlayerBox.holdTime += 1
     } else {
         tappedPlayerBox.holdTime = 0
     }
 }
-//Updated!!! Are we there yet? Ooh! Is this it? ermagerd?
+//Updated :D

@@ -41,7 +41,7 @@
 		"description": "Card Conjurer: A free online tool that creates custom Magic: The Gathering Cards. Fast, easy, and offers a wide variety of card frames and other customizations. Planar cards, Ixalan maps, Planeswalkers, and more!",
 		"image": "http://cardconjurer.com/data/site/sampleCards/sample8.png",
 		"mainEntityOfPage": "cardconjurer.com",
-		"name": "Card Conjurer"
+		"name": "Life Counter"
 	}
 	</script>
 </head>
@@ -52,7 +52,7 @@
 		Starting Life Total:<br>
 		<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
 		<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br><br>
-		For an optimal experience, save this website to your home screen and open it from there.
+		For an optimal experience, save this website to your home screen and open it from there.<br><a href="https://cardconjurer.com">Check out my other website, Card Conjurer, to easily create custom Magic cards!</a>
 	</div>
 	<div onclick="fullscreen()" class="hidden" id="return">CLICK ANYWHERE TO RETURN TO FULLSCREEN</div>
 	<div id="gridShell">
@@ -224,6 +224,12 @@
 	}
 	.rngNumber {
 		font-size: 4em;
+	}
+	a {
+		color: white;
+	}
+	a:hover {
+		color: grey;
 	}
 </style>
 <script src="data/life/life.js"></script>
