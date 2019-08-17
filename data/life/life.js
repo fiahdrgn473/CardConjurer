@@ -82,7 +82,6 @@ function startGame() {
 	}
 	drawAllPlayerBoxes()
 }
-
 function playerBox(playerBoxID, canvasRotation, wide) {
 	//Actually needed vars
 	this.id = playerBoxID
@@ -184,85 +183,6 @@ document.getElementById("mainGrid").addEventListener("touchmove", function(event
 function rollRNG() {
 	document.getElementById("rngOutput").innerHTML = Math.floor(Math.random() * (parseInt(document.getElementById("inputRNGMax").value) - parseInt(document.getElementById("inputRNGMin").value) + 1) + parseInt(document.getElementById("inputRNGMin").value))
 }
-function updatePlayerBoxes() {
-	// alert("did I click?")
-	if (clicking) {
-		// alert("yes I did!")
-		//Make a list of the touch locations
-		for (var i = 0; i < touchX.length; i++) {
-			for (var n = 1; n <= playerList.length; n ++) {
-				var playerBoxBounds = playerList[n - 1].canvas.getBoundingClientRect()
-				if (touchX[i] >= playerBoxBounds.left && touchX[i] <= playerBoxBounds.right && touchY[i] >= playerBoxBounds.top && touchY[i] <= playerBoxBounds.bottom) {
-					//This canvas is being clicked on! Do something about it.
-					var direction = "", lifeAdjust = 0
-					if (playerList[n - 1].rotation == 0) {
-						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-							direction = "up"
-							lifeAdjust = 1
-						} else {
-							direction = "down"
-							lifeAdjust = -1
-						}
-					} else if (playerList[n - 1].rotation == 90) {
-						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-							direction = "up"
-							lifeAdjust = 1
-						} else {
-							direction = "down"
-							lifeAdjust = -1
-						}
-					} else if (playerList[n - 1].rotation == 180) {
-						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-							direction = "down"
-							lifeAdjust = -1
-						} else {
-							direction = "up"
-							lifeAdjust = 1
-						}
-					} else {
-						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-							direction = "down"
-							lifeAdjust = -1
-						} else {
-							direction = "up"
-							lifeAdjust = 1
-						}
-					}
-					playerList[n - 1].holdTime += 1
-					if (playerList[n - 1].direction != direction) {
-						playerList[n - 1].holdTime = 0
-						playerList[n - 1].direction = direction
-					}
-					if (playerList[n - 1].holdTime != 0 && playerList[n - 1].holdTime < 5) {
-						lifeAdjust = 0
-					} else if (playerList[n - 1].holdTime > 28) {
-						lifeAdjust *= 5
-						if (playerList[n - 1].holdTime >= 60) {
-							lifeAdjust *= 2
-						}
-					}
-					playerList[n - 1].life += lifeAdjust
-					activePlayerBoxes[activePlayerBoxes.length] = n
-					drawPlayerBox(n)
-				}
-			}
-		}
-		for (var i = 1; i <= playerList.length; i ++) {
-			if (!activePlayerBoxes.includes(i)) {
-				playerList[i - 1].firection = "none"
-				playerList[i - 1].holdTime = 0
-			}
-		}
-		activePlayerBoxes = []
-		setTimeout(updatePlayerBoxes, 100)
-	}
-}
-function clearTimers() {
-	for (var i = 1; i <= playerList.length; i ++) {
-		playerList[i - 1].direction = 0
-		playerList[i - 1].holdTime = 0
-	}
-}
 function drawPlayerBox(playerBoxID) {
 	var currentPlayerBox = playerList[playerBoxID - 1]
 	var context = currentPlayerBox.canvas.customVarContext
@@ -314,20 +234,16 @@ document.getElementById("mainGrid").addEventListener("mousedown", startMouseCoor
 window.addEventListener("mousemove", updateMouseCoordinates, true)
 window.addEventListener("mouseup", endMouseCoordinates, true)
 function startMouseCoordinates() {
-	clicking = true
+    playerList[event.target.customVarID - 1].touchId = 1
 	singleTap(event.target)
 }
 function updateMouseCoordinates() {
 	touchX[0] = event.clientX
-	touchY[0] = event.clientY
-	// touchX[1] = 50
-	// touchY[1] = 50 //For testing purposes only
-}
+	touchY[0] = event.clientY}
 function endMouseCoordinates() {
-	clearTimeout(loop)
-	loop = false
-	clearTimers()
-	clicking = false
+    for (var i = 1; i <= playerList.length; i++) {
+        playerList[i - 1].touchId = 0.5
+    }
 }
 window.addEventListener("touchstart", switchToTouchEvents, true)
 function switchToTouchEvents() {
@@ -342,7 +258,6 @@ function switchToTouchEvents() {
 function startTouch() {
     playerList[event.changedTouches[0].target.customVarID - 1].touchId = event.changedTouches[0].identifier
 	moveTouch()
-    clicking = true
     singleTap(event.changedTouches[0].target)
 }
 function moveTouch() {
@@ -359,20 +274,8 @@ function endTouch() {
         }
     }
 	moveTouch()
-	if (event.touches.length == 0) {
-		clicking = false
-		clearTimeout(loop)
-		clearTimers()
-	}
 }
-
-
-
-
-
-
-
-
+//Tap (and click) functions
 function singleTap(targetPlayerBox) {
 	var playerBoxBounds = targetPlayerBox.getBoundingClientRect()
 	var tappedPlayerBox = playerList[targetPlayerBox.customVarID - 1]
@@ -398,15 +301,14 @@ function singleTap(targetPlayerBox) {
 	drawPlayerBox(tappedPlayerBox.id)
     setTimeout(clockCheck.bind(null, tappedPlayerBox), 500)
 }
-
 function clockCheck(tappedPlayerBox) {
     if (tappedPlayerBox.touchId != 0.5) {
         tappedPlayerBox.life += tappedPlayerBox.direction
         drawPlayerBox(tappedPlayerBox.id)
-        if (tappedPlayerBox.holdTime >= 300) {
+        if (tappedPlayerBox.holdTime >= 150) {
             setTimeout(clockCheck.bind(null, tappedPlayerBox), 10)
         } else if (tappedPlayerBox.holdTime >= 50) {
-            setTimeout(clockCheck.bind(null, tappedPlayerBox), 20)
+            setTimeout(clockCheck.bind(null, tappedPlayerBox), 50)
         } else {
             setTimeout(clockCheck.bind(null, tappedPlayerBox), 100)
         }
@@ -414,154 +316,5 @@ function clockCheck(tappedPlayerBox) {
     } else {
         tappedPlayerBox.holdTime = 0
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function singleClick() {
-	for (var i = 1; i <= playerList.length; i ++) {
-		var playerBoxBounds = playerList[i - 1].canvas.getBoundingClientRect()
-		if (touchX[touchX.length - 1] >= playerBoxBounds.left && touchX[touchX.length - 1] <= playerBoxBounds.right && touchY[touchY.length - 1] >= playerBoxBounds.top && touchY[touchY.length - 1] <= playerBoxBounds.bottom) {
-			//This canvas is being clicked on! Do something about it.
-			var direction = "", lifeAdjust = 0
-			if (playerList[i - 1].rotation == 0) {
-				if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-					direction = "up"
-					lifeAdjust = 1
-				} else {
-					direction = "down"
-					lifeAdjust = -1
-				}
-			} else if (playerList[i - 1].rotation == 90) {
-				if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-					direction = "up"
-					lifeAdjust = 1
-				} else {
-					direction = "down"
-					lifeAdjust = -1
-				}
-			} else if (playerList[i - 1].rotation == 180) {
-				if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-					direction = "down"
-					lifeAdjust = -1
-				} else {
-					direction = "up"
-					lifeAdjust = 1
-				}
-			} else {
-				if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-					direction = "down"
-					lifeAdjust = -1
-				} else {
-					direction = "up"
-					lifeAdjust = 1
-				}
-			}
-			playerList[i - 1].life += lifeAdjust
-			drawPlayerBox(i)
-		}
-	}
-	if (loop == false) {
-		loop = setTimeout(heldDown, 100)
-	}
-}
-function heldDown() {
-	if (clicking) {
-		for (var i = 0; i < touchX.length; i++) {
-			for (var n = 1; n <= playerList.length; n ++) {
-				var playerBoxBounds = playerList[n - 1].canvas.getBoundingClientRect()
-				if (touchX[i] >= playerBoxBounds.left && touchX[i] <= playerBoxBounds.right && touchY[i] >= playerBoxBounds.top && touchY[i] <= playerBoxBounds.bottom) {
-					//This canvas is being clicked on! Do something about it.
-					var direction = "", lifeAdjust = 0
-					if (playerList[n - 1].rotation == 0) {
-						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-							direction = "up"
-							lifeAdjust = 1
-						} else {
-							direction = "down"
-							lifeAdjust = -1
-						}
-					} else if (playerList[n - 1].rotation == 90) {
-						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-							direction = "up"
-							lifeAdjust = 1
-						} else {
-							direction = "down"
-							lifeAdjust = -1
-						}
-					} else if (playerList[n - 1].rotation == 180) {
-						if (touchX[i] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
-							direction = "down"
-							lifeAdjust = -1
-						} else {
-							direction = "up"
-							lifeAdjust = 1
-						}
-					} else {
-						if (touchY[i] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
-							direction = "down"
-							lifeAdjust = -1
-						} else {
-							direction = "up"
-							lifeAdjust = 1
-						}
-					}
-					playerList[n - 1].holdTime += 1
-					if (playerList[n - 1].direction != direction) {
-						playerList[n - 1].holdTime = 0
-						playerList[n - 1].direction = direction
-					}
-					if (playerList[n - 1].holdTime < 5) {
-						lifeAdjust = 0
-					} else if (playerList[n - 1].holdTime > 28) {
-						lifeAdjust *= 5
-						if (playerList[n - 1].holdTime >= 60) {
-							lifeAdjust *= 2
-						}
-					}
-					playerList[n - 1].life += lifeAdjust
-					activePlayerBoxes[activePlayerBoxes.length] = n
-					drawPlayerBox(n)
-				}
-			}
-		}
-		for (var i = 1; i <= playerList.length; i ++) {
-			if (!activePlayerBoxes.includes(i)) {
-				playerList[i - 1].firection = "none"
-				playerList[i - 1].holdTime = 0
-			}
-		}
-		loop = setTimeout(heldDown, 100)
-	}
 }
 //Updated!!! Are we there yet? Ooh! Is this it? ermagerd?
