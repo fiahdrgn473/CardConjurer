@@ -94,10 +94,6 @@
 	}
 	.settings {
 		margin: 10pt;
-		overflow-y: scroll;
-		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
-		touch-action: pan-y;
 	}
 	* {
 		font-family: belerenbsc;
@@ -117,6 +113,10 @@
 	body {
 		background-color: #333;
 		color: white;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		touch-action: pan-y;
 	}
 	body, #gridShell, .mainGrid, canvas {
 		touch-action: manipulation !important;
