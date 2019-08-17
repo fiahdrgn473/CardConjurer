@@ -259,6 +259,7 @@ function startTouch() {
     singleTap(event.changedTouches[0].target)
 }
 function moveTouch() {
+	window.scrollTo(0, 0);
 	touchX = [], touchY = []
 	for (var i = 0; i < event.touches.length; i ++) {
 		touchX[i] = event.touches[i].clientX
