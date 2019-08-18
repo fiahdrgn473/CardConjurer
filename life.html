@@ -53,7 +53,8 @@
 			<input id="inputPlayerCount" class="input" type="number" min="2" value="4" max="16"><br>
 			Starting Life Total:<br>
 			<input id="inputStartingLife" class="input" type="number" min="0" value="40"><br>
-			<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br><br>
+			<button id="buttonStartGame" class="input" onclick="startGame()">Game On!</button><br>
+            <input type="checkbox" id="inputWakeLock" checked="true">Enable Wake Lock</input><br><br>
             For an optimal experience, save this website to your home screen and open it from there.<br><br><div style="font-size: 0.75em">Check out my other website, <a style="font-size: inherit" href="https://cardconjurer.com">Card Conjurer</a>, to easily create custom Magic cards!</div>
 		</div>
 	</div>
@@ -124,6 +125,7 @@
 	body {
 		background-color: #333;
 		color: white;
+        touch-action: manipulation;
 	}
 	.mainGrid {
 		display: grid;
@@ -131,7 +133,7 @@
 		grid-auto-rows: 1fr;
 		width: 100%;
 		height: 100%;
-		/*align-items: center;*/
+		touch-action: manipulation;
 	}
 	.mainGrid {
 		/*position: fixed;
@@ -140,6 +142,7 @@
 	}
 	#gridShell {
 		display: none;
+        touch-action: manipulation;
 	}
     #gridShell:fullscreen {
 		display: inline-block;
@@ -225,6 +228,13 @@
 	input {
 		width: 7.5em;
 	}
+    #inputWakeLock {
+        position: relative;
+        top: -0.2em;
+        margin: 0.25em;
+        height: auto;
+        width: auto;
+    }
 	.smallInput {
 		width: 3em;
 	}
@@ -242,9 +252,8 @@
 	a {
 		color: white;
 	}
-	/*a:hover {
-		color: grey;
-	}*/
 </style>
+<script src="data/life/NoSleep.js"></script>
+<script src="https://gist.github.com/lucasdidthis/8a2ecf406634e9ad9ca1.js"></script>
 <script src="data/life/life.js"></script>
 <html>

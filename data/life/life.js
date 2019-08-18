@@ -2,7 +2,13 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0, noSleep = new NoSleep()
+//Setup the enabler for no sleep
+document.addEventListener("click", enableNoSleep, false);
+function enableNoSleep() {
+    document.removeEventListener("click", enableNoSleep, false);
+    noSleep.enable();
+}
 //This function sets everything up
 function fullscreen() {
 	//Full screen!
@@ -265,14 +271,7 @@ function moveTouch() {
 		touchY[i] = event.touches[i].clientY
 	}
 }
-//Attempt at getting past webkit's really annoying double tap zoom. Because it's been five years and they haven't added support for css's touch-action. Because I'm sure they have a really good excuse...
-var lastTouchEnd = 0
 function endTouch() {
-    var now = (new Date()).getTime()
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault()
-    }
-    lastTouchEnd = now
     for (var i = 1; i <= playerList.length; i++) {
         if (playerList[i - 1].touchId == event.changedTouches[0].identifier) {
             playerList[i - 1].touchId = 0.5
