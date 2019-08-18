@@ -96,12 +96,14 @@
 		font-family: belerenbsc;
 		src: url("data/fonts/beleren-bsc.ttf");
 	}
+    .settings {
+        overflow-y: auto;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        height: 100%
+    }
 	.innerSettings {
         margin: 10pt;
-		overflow-y: auto;
-		touch-action: pan-y;
-		-webkit-overflow-scrolling: touch;
-        height: calc(100% - 20pt)
 	}
 	* {
 		font-family: belerenbsc;
