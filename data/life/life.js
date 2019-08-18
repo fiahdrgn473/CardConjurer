@@ -264,7 +264,7 @@ function moveTouch() {
 		touchX[i] = event.touches[i].clientX
 		touchY[i] = event.touches[i].clientY
 	}
-	setTimeout(function(){window.scrollTo(0, 0)},50)
+//    setTimeout(function(){window.scrollTo(0, 0)},50)
 }
 function endTouch() {
     for (var i = 1; i <= playerList.length; i++) {
