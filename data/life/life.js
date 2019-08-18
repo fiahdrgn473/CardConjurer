@@ -2,12 +2,14 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 //define variables
-var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0, noSleep = new NoSleep()
+var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0, noSleep = new NoSleep(), canEnableNoSleep = false
 //Setup the enabler for no sleep
 document.addEventListener("click", enableNoSleep, false);
 function enableNoSleep() {
-    document.removeEventListener("click", enableNoSleep, false);
-    noSleep.enable();
+    if (canEnableNoSleep) {
+        document.removeEventListener("click", enableNoSleep, false);
+        noSleep.enable();
+    }
 }
 //This function sets everything up
 function fullscreen() {
@@ -28,6 +30,7 @@ function fullscreen() {
   	}
 }
 function startGame() {
+    canEnableNoSleep = document.getElementById("inputWakeLock").checked
 	fullscreen()
 	document.getElementById("return").classList.remove("hidden")
 	//hide the settings and grab player count and starting life total
