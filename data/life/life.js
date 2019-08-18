@@ -321,4 +321,13 @@ function clockCheck(tappedPlayerBox, lastTapID) {
         tappedPlayerBox.holdTime = 0
     }
 }
+//Hopefully stops the pesky double-tap zoom:
+var doubleTouchStartTimestamp = 0
+document.getElementById("mainGrid").addEventListener("touchstart", function() {
+    var now = +(new Date())
+    if (doubleTouchStartTimestamp + 500 > now){
+        event.preventDefault()
+    }
+    doubleTouchStartTimestamp = now
+})
 //Updated :D
