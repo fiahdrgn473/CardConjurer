@@ -44,18 +44,20 @@
 					<div>
 						Art
 					</div>
-					<div class="twoGrid">
-						<div>
-							<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the card art</span></div>
-							<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value"><span class="tooltiptext">Enter a URL for the card art</span></div>
-							<div class="tooltip"><input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name"><span class="tooltiptext">Enter a card name to use its art</span></div>
-							<div class="tooltip"><input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name"><span class="tooltiptext">Select which art to use (from the entered card name)</span></div>
-						</div>
-						<div>
-							<div style="text-align: center; margin: 0.18em 0px">Placement & Zoom:</div>
-							<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtX" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art to the right</span></div>
-							<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtY" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art down</span></div>
-							<div class="tooltip"><input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="updateCardCanvas()"><span class="tooltiptext">Art zoom level</span></div>
+					<div class="autoGrid">
+						<div class="twoGrid">
+							<div>
+								<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the card art</span></div>
+								<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value"><span class="tooltiptext">Enter a URL for the card art</span></div>
+								<div class="tooltip"><input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name"><span class="tooltiptext">Enter a card name to use its art</span></div>
+								<div class="tooltip"><input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name"><span class="tooltiptext">Select which art to use (from the entered card name)</span></div>
+							</div>
+							<div>
+								<div style="text-align: center; margin: 0.18em 0px">Placement & Zoom:</div>
+								<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtX" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art to the right</span></div>
+								<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtY" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art down</span></div>
+								<div class="tooltip"><input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="updateCardCanvas()"><span class="tooltiptext">Art zoom level</span></div>
+							</div>
 						</div>
 					</div>
 					<div class="bar"></div>
