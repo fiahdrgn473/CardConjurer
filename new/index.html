@@ -1,0 +1,120 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>Card Conjurer</title>
+	<!-- Other things -->
+	<link rel="stylesheet" href="data/site/styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="mainDiv">
+		<div class="mainGrid">
+			<div class="canvasContainer">
+				<canvas id="mainCanvas" class="canvas"></canvas>
+			</div>
+			<div class="cardMenu">
+				<div>
+					<div>
+						Card Frame
+					</div>
+					<div class="imageGrid">
+						<div class="autoGrid">
+							<div class="tooltip"><select class="select" id="inputImageType" onchange="hideShowColors()"></select><span class="tooltiptext">Select the part of the card frame</span></div>
+							<div class="tooltip"><select class="select" id="inputImageIndex" onchange="userLoadImage()"></select><span class="tooltiptext">Select the color of the current image type</span></div>
+							<button class="button tooltip" onclick="userEnterImage()">Enter<span class="tooltiptext">Add the selected image to the card</span></button>
+							<button class="button tooltip" onclick="userRemoveImage()">Remove<span class="tooltiptext">Remove the select image type from the card</span></button>
+						</div>
+						<div>
+							<div class="tooltip"><img id="imgPreview" class="imgPreview"><span class="tooltiptext">Preview of the selected image</span></div>
+						</div>
+					</div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
+						Text
+					</div>
+					<div class="tooltip"><select class="select" id="inputWhichText" onchange="changeWhichText()"></select><span class="tooltiptext">Select the text you want to edit</span></div>
+					<div class="tooltip"><textarea class="textarea tooltip" id="inputText" placeholder="" oninput="updateText()"></textarea><span class="tooltiptext">Edit the selected text</span></div>
+					<div class="tooltip"><input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="updateCardCanvas()" value=""><span class="tooltiptext">Enter the mana cost. Include spaces!</span></div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
+						Art
+					</div>
+					<div class="twoGrid">
+						<div>
+							<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the card art</span></div>
+							<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value"><span class="tooltiptext">Enter a URL for the card art</span></div>
+							<div class="tooltip"><input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name"><span class="tooltiptext">Enter a card name to use its art</span></div>
+							<div class="tooltip"><input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name"><span class="tooltiptext">Select which art to use (from the entered card name)</span></div>
+						</div>
+						<div>
+							<div style="text-align: center; margin: 0.18em 0px">Placement & Zoom:</div>
+							<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtX" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art to the right</span></div>
+							<div class="tooltip"><input type="number" class="input number" value="0" id="inputCardArtY" oninput="updateCardCanvas()"><span class="tooltiptext">Shift art down</span></div>
+							<div class="tooltip"><input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="updateCardCanvas()"><span class="tooltiptext">Art zoom level</span></div>
+						</div>
+					</div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
+						Collector's/Legal Information
+					</div>
+					<div class="autoGrid">
+						<div class="tooltip"><input type="text" class="input text" placeholder="Number" id="inputInfoNumber" oninput="updateBottomInfoCanvas()" value=""><span class="tooltiptext">Card Number</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Rarity" id="inputInfoRarity" oninput="updateBottomInfoCanvas()" value="P"><span class="tooltiptext">Rarity</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Set" id="inputInfoSet" oninput="updateBottomInfoCanvas()" value="MTG"><span class="tooltiptext">Set Code</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Language" id="inputInfoLanguage" oninput="updateBottomInfoCanvas()" value="EN"><span class="tooltiptext">Language</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Artist's Name" id="inputInfoArtist" oninput="updateBottomInfoCanvas()" value=""><span class="tooltiptext">Artist's Name<br>(necessary)</span></div>
+					</div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
+						Set Symbol
+					</div>
+					<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the set symbol</span></div>
+					<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)"><span class="tooltiptext">Enter a URL for the set symbol</span></div>
+					<div class="tooltip"><input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)"><span class="tooltiptext">Use a set code<br>(2-3 letters, as seen on the bottom of cards)</span></div>
+					<div class="tooltip"><input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)"><span class="tooltiptext">C, U, R, M, or S<br>(Not every set has every rarity)</span></div>
+					<div class="tooltip"><button class="button" onclick="randomSet()">Random</button><span class="tooltiptext">Use a random set symbol and rarity</span></div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
+						<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layer">
+			This is a layer!
+		</div>
+		<div class="layer">
+			This is another layer!
+		</div>
+		<div class="layer">
+			This is yet another layer!
+		</div>
+	</div>
+</body>
+<footer>
+	<div class="footerGrid">
+		<div>
+			Card Conjurer By Kyle Burton<br>
+			<input type="checkbox" checked="true" onchange="toggleTooltips(this.checked)" id="tooltipToggler"> Display tooltips
+		</div>
+		<div>
+			Here's some stuff<br>
+			And here's some more stuff!
+		</div>
+	</div>
+</footer>
+<script src="data/scripts/colors.js"></script>
+<script src="data/site/main.js"></script>
+<script src="data/scripts/setCodeList.js"></script>
+<html>
