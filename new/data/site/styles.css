@@ -157,6 +157,18 @@ canvas {
 		height: 1050px;
 	}
 }
+@media screen and (min-width: 1024px) {
+	.tooltip:hover .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}
+@media screen and (max-width: 1023px) {
+	.tooltip:focus .tooltiptext, div.tooltip > input:focus + .tooltiptext, div.tooltip > textarea:focus + .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}
 .tooltip {
 	position: relative;
 }
@@ -185,10 +197,6 @@ canvas {
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent var(--dark-color) transparent;
-}
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
 }
 .tooltip .tooltiptext:hover {
 	/*visibility: hidden;*/
