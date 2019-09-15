@@ -61,7 +61,7 @@ html {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	font-size: 6pt;
+	font-size: 8pt;
 }
 canvas {
 	width: calc(100%);
