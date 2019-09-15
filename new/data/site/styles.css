@@ -129,6 +129,7 @@ canvas {
 }
 .input.file {
 	padding: 0px;
+	height: 1.26em;
 }
 .tooltip {
 	position: relative;

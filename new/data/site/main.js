@@ -21,6 +21,8 @@ for (var i = 0; i < canvasList.length; i++) {
 //Create the arrays that keeps track of what parts of the card are what
 var cardMasterTypes = []
 var cardMasterImages = []
+var cardMasterOpacity = []
+var cardMasterOpacityValue = []
 //Mana symbol Array setup
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar"]
 var manaSymbolImageList = []
@@ -147,7 +149,15 @@ CanvasRenderingContext2D.prototype.mask = function(cardMasterIndex) {
 }
 //All the canvas functions
 function updateImageCanvas() {
-	//post processing?
+	imageContext.globalCompositeOperation = "destination-out"
+	for (var i = 0; i < cardMasterOpacity.length; i ++) {
+		imageContext.globalAlpha = 1 - cardMasterOpacityValue[i] / 100
+		//opacityc
+		opacityImage = window[version.currentVersion + "Mask" + cardMasterOpacity[i]].image
+		imageContext.drawImage(opacityImage, 0, 0, cardWidth, cardHeight)
+	}
+	imageContext.globalAlpha = 1
+	imageContext.globalCompositeOperation = "source-over"
 	updateBottomInfoCanvas()
 }
 function updateTextCanvas() {
@@ -248,13 +258,20 @@ function changeVersionTo(versionToChangeTo) {
 }
 function finishChangingVersion() {
 	document.getElementById("inputImageType").innerHTML = ""
+	document.getElementById("inputImageTypeOpacity").innerHTML = ""
 	for (var i = 0; i < version.typeOrder.length; i ++) {
 		document.getElementById("inputImageType").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
+		if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
+			document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
+			cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
+			cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
+		}
 	}
 	for (var i = 0; i < version.textList.length; i ++) {
 		document.getElementById("inputWhichText").innerHTML += "<option>" + version.textList[i][0] + "</option>"
 	}
 	hideShowColors(true)
+	loadOpacityValue()
 	updateText()
 	updateBottomInfoCanvas()
 	updateSetSymbolCanvas()
@@ -271,6 +288,14 @@ function hideShowColors(enter = false) {
 		userEnterImage()
 	}
 	userLoadImage()
+}
+//Loads the opacity value
+function loadOpacityValue() {
+	document.getElementById("inputOpacityValue").value = cardMasterOpacityValue[cardMasterOpacity.indexOf(document.getElementById("inputImageTypeOpacity").value)]
+}
+function opacityValueUpdated() {
+	cardMasterOpacityValue[cardMasterOpacity.indexOf(document.getElementById("inputImageTypeOpacity").value)] = document.getElementById("inputOpacityValue").value
+	cardMasterUpdated()
 }
 //Custom text function! This acts on any codes and makes things look nice :)
 CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, textY = 0, textWidth = cardWidth, textHeight = cardHeight, textFont = "belerenbsc", inputTextSize = 38, textColor="black", other="") {
@@ -631,3 +656,16 @@ function checkCookies() {
 		document.getElementById("tooltipToggler").checked = false
 	}
 }
+
+
+
+/*To do list:
+Opacity control
+watermarks
+
+
+
+
+
+possibly border color?
+*/

@@ -32,6 +32,10 @@
 							<div class="tooltip"><img id="imgPreview" class="imgPreview"><span class="tooltiptext">Preview of the selected image</span></div>
 						</div>
 					</div>
+					<div class="autoGrid">
+						<div class="tooltip"><select class="select" id="inputImageTypeOpacity" onchange="loadOpacityValue()"></select><span class="tooltiptext">Select the part of the card frame</span></div>
+						<div class="tooltip"><input type="number" class="input number" id="inputOpacityValue" min="0" max="100" oninput="opacityValueUpdated()"><span class="tooltiptext">Enter the opacity for the selected part of the frame</span></div>
+					</div>
 					<div class="bar"></div>
 				</div>
 				<div>
@@ -80,11 +84,13 @@
 					<div>
 						Set Symbol
 					</div>
-					<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the set symbol</span></div>
-					<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)"><span class="tooltiptext">Enter a URL for the set symbol</span></div>
-					<div class="tooltip"><input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)"><span class="tooltiptext">Use a set code<br>(2-3 letters, as seen on the bottom of cards)</span></div>
-					<div class="tooltip"><input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)"><span class="tooltiptext">C, U, R, M, or S<br>(Not every set has every rarity)</span></div>
-					<div class="tooltip"><button class="button" onclick="randomSet()">Random</button><span class="tooltiptext">Use a random set symbol and rarity</span></div>
+					<div class="autoGrid">
+						<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the set symbol</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)"><span class="tooltiptext">Enter a URL for the set symbol</span></div>
+						<div class="tooltip"><input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)"><span class="tooltiptext">Use a set code<br>(2-3 letters, as seen on the bottom of cards)</span></div>
+						<div class="tooltip"><input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)"><span class="tooltiptext">C, U, R, M, or S<br>(Not every set has every rarity)</span></div>
+						<div class="tooltip"><button class="button" onclick="randomSet()">Random</button><span class="tooltiptext">Use a random set symbol and rarity</span></div>
+					</div>
 					<div class="bar"></div>
 				</div>
 				<div>
@@ -95,13 +101,12 @@
 			</div>
 		</div>
 		<div class="layer">
-			This is a layer!
+			<div class="title">Welcome to Card Conjurer!</div>
 		</div>
 		<div class="layer">
-			This is another layer!
-		</div>
-		<div class="layer">
-			This is yet another layer!
+			<div class="paragraph indent">
+				This version of the website is currently a work in progress, so it doesn't have all the features the original Card Conjurer had, but it can still do quite a bit!
+			</div>
 		</div>
 	</div>
 </body>
