@@ -11,7 +11,7 @@ var mainCanvas = document.getElementById("mainCanvas")
 mainCanvas.width = cardWidth
 mainCanvas.height = cardHeight
 var mainContext = mainCanvas.getContext("2d")
-var canvasList = ["card", "mask", "image", "text", "paragraph", "line", "transparent", "crop", "bottomInfo", "setSymbol"]
+var canvasList = ["card", "mask", "image", "text", "paragraph", "line", "transparent", "crop", "bottomInfo", "setSymbol", "watermark", "temp"]
 for (var i = 0; i < canvasList.length; i++) {
 	window[canvasList[i] + "Canvas"] = document.createElement("canvas")
 	window[canvasList[i] + "Canvas"].width = cardWidth
@@ -27,14 +27,18 @@ var cardMasterOpacityValue = []
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar"]
 var manaSymbolImageList = []
 //Manually create a few important images
-var cardArt = new Image(), setSymbol = new Image()
+var cardArt = new Image(), setSymbol = new Image(), watermark = new Image()
 cardArt.crossOrigin = "anonymous"
 setSymbol.crossOrigin = "anonymous"
+watermark.crossOrigin = "anonymous"
+cardArt.onload = function() {
+	updateCardCanvas()
+}
 setSymbol.onload = function() {
 	updateSetSymbolCanvas()
 }
-cardArt.onload = function() {
-	updateCardCanvas()
+watermark.onload = function() {
+	updateWatermarkCanvas()
 }
 //Load the mana symbol images
 loadManaSymbolImages()
@@ -193,6 +197,40 @@ function updateSetSymbolCanvas() {
 	setSymbolContext.drawImage(setSymbol, setSymbolX, setSymbolY, setSymbolWidth, setSymbolHeight)
 	updateCardCanvas()
 }
+function updateWatermarkCanvas() {
+	if (document.getElementById("inputWatermarkPrimary").value != "none") {
+		watermarkContext.clearRect(0, 0, cardWidth, cardHeight)
+		var watermarkX, watermarkY, watermarkWidth, watermarkHeight
+		if (version.watermarkWidth / version.watermarkHeight < watermark.width / watermark.height) {
+			//wider
+			watermarkWidth = version.watermarkWidth
+			watermarkHeight = version.watermarkWidth / watermark.width * watermark.height
+			watermarkX = cardWidth / 2 - watermarkWidth / 2
+			watermarkY = version.watermarkY - watermarkHeight / 2
+		} else {
+			//taller
+			watermarkHeight = version.watermarkHeight
+			watermarkWidth = version.watermarkHeight / watermark.height * watermark.width
+			watermarkX = cardWidth / 2 - watermarkWidth / 2
+			watermarkY = version.watermarkY - watermarkHeight / 2
+		}
+		watermarkContext.drawImage(watermark, watermarkX, watermarkY, watermarkWidth, watermarkHeight)
+		watermarkContext.globalCompositeOperation = "source-atop"
+		watermarkContext.fillStyle = document.getElementById("inputWatermarkPrimary").value
+		watermarkContext.fillRect(0, 0, cardWidth, cardHeight)
+		if (document.getElementById("inputWatermarkSecondary").value != "none") {
+			tempContext.clearRect(0, 0, cardWidth, cardHeight)
+			tempContext.drawImage(window[nameArray[nameArray.indexOf("secondary")]].image, 0, 0, cardWidth, cardHeight)
+			tempContext.globalCompositeOperation = "source-atop"
+			tempContext.fillStyle = document.getElementById("inputWatermarkSecondary").value
+			tempContext.fillRect(0, 0, cardWidth, cardHeight)
+			tempContext.globalCompositeOperation = "source-over"
+			watermarkContext.drawImage(tempCanvas, 0, 0, cardWidth, cardHeight)
+		}
+		watermarkContext.globalCompositeOperation = "source-over"
+		updateCardCanvas()
+	}
+}
 //Does the bottom info function! This can be different depending on the version.
 function updateBottomInfoCanvas() {
 	window[version.bottomInfoFunction]()
@@ -201,9 +239,10 @@ function updateCardCanvas() {
 	//clear it
 	cardContext.fillStyle = "black"
 	cardContext.fillRect(0, 0, cardWidth, cardHeight)
-	//draw the art, frame, text, mana symbols, set symbol...
+	//draw the art, frame, text, mana symbols, set symbol, watermark...
 	cardContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
 	cardContext.drawImage(imageCanvas, 0, 0, cardWidth, cardHeight)
+	cardContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
 	cardContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight)
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	cardContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection)
@@ -472,6 +511,7 @@ function changeWhichText() {
 	document.getElementById("inputText").value = version.textList[whichTextIndex][1]
 }
 //Removes all the white pixels in an image
+var whiteThreshold = 240
 function whiteToTransparent(targetImage, source = targetImage.src) {
     //Create image, size canvas, draw image
     var imgTempTarget = new Image()
@@ -491,7 +531,7 @@ function whiteToTransparent(targetImage, source = targetImage.src) {
             for (y = 0; y < height; y++) {
             	for (x = 0; x < width; x++) {
                     index = (y * width + x) * 4
-                    if (imageData.data[index] >= 245 && imageData.data[index + 1] >= 245 && imageData.data[index + 2] >= 245) {
+                    if (imageData.data[index] >= whiteThreshold && imageData.data[index + 1] >= whiteThreshold && imageData.data[index + 2] >= whiteThreshold) {
                         imageData.data[index + 3] = 0
                     }
                 }
@@ -660,7 +700,6 @@ function checkCookies() {
 
 
 /*To do list:
-Opacity control
 watermarks
 
 

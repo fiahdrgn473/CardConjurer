@@ -20,6 +20,9 @@ version.rareStampX = cwidth(340)
 version.rareStampY = cheight(965)
 version.rareStampWidth = cwidth(70)
 version.rareStampHeight = cheight(38)
+version.watermarkWidth = cwidth(520)
+version.watermarkHeight = cheight(250)
+version.watermarkY = cheight(815)
 //Name, text, x, y, width, height, font, size, color, other
 version.textList = [
 	["Title", "", cwidth(62), cheight(87), cwidth(630), 0, "belerenb", 40, "black", "oneLine=true"],

@@ -95,6 +95,37 @@
 				</div>
 				<div>
 					<div>
+						Watermark
+					</div>
+					<div class="autoGrid">
+						<div class="tooltip"><input type="file" class="input file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload"><span class="tooltiptext">Upload an image for the watermark</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/' + this.value)"><span class="tooltiptext">Enter a URL for the watermark</span></div>
+						<div class="tooltip"><input type="text" class="input text" placeholder="Via Set Code" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large')"><span class="tooltiptext">Use a set code<br>(2-3 letters, as seen on the bottom of cards)</span></div>
+						<div class="tooltip"><select class="select" id="inputWatermarkPrimary" onchange="updateWatermarkCanvas()">
+							<option value="none">None</option>
+							<option value="#afa360" selected="selected">White</option>
+							<option value="#04527c">Blue</option>
+							<option value="#494949">Black</option>
+							<option value="#a3280d">Red</option>
+							<option value="#0f4f14">Green</option>
+							<option value="#7f5f00">Gold</option>
+							<option value="#616b72">Artifact/Colorless</option>
+						</select><span class="tooltiptext">Select the watermark color</span></div>
+						<div class="tooltip"><select class="select" id="inputWatermarkSecondary" onchange="updateWatermarkCanvas()">
+							<option value="none">None</option>
+							<option value="#afa360">White</option>
+							<option value="#04527c">Blue</option>
+							<option value="#494949">Black</option>
+							<option value="#a3280d">Red</option>
+							<option value="#0f4f14">Green</option>
+							<option value="#7f5f00">Gold</option>
+							<option value="#616b72">Artifact/Colorless</option>
+						</select><span class="tooltiptext">Select the secondary watermark color</span></div>
+					</div>
+					<div class="bar"></div>
+				</div>
+				<div>
+					<div>
 						<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
 					</div>
 				</div>
