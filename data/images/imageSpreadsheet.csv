@@ -39,3 +39,12 @@ m15,G,RareStamp,m15GRareStamp,Green,m15,0.4387,0.9039,0.12,0.0477,TRUE
 m15,M,RareStamp,m15MRareStamp,Multicolored,m15,0.4387,0.9039,0.12,0.0477,TRUE
 m15,A,RareStamp,m15ARareStamp,Artifact,m15,0.4387,0.9039,0.12,0.0477,TRUE
 m15,C,RareStamp,m15CRareStamp,Colorless,m15,0.4387,0.9039,0.12,0.0477,TRUE
+m15,V,PT,m15VPT,Vehicle,m15,0.7613,0.8898,0.183,0.0734,FALSE
+m15,V,Full,m15VFull,Vehicle,m15,0,0,1,1,TRUE
+m15,WL,Full,m15WLFull,White Land,m15,0,0,1,1,TRUE
+m15,UL,Full,m15ULFull,Blue Land,m15,0,0,1,1,TRUE
+m15,BL,Full,m15BLFull,Black Land,m15,0,0,1,1,TRUE
+m15,RL,Full,m15RLFull,Red Land,m15,0,0,1,1,TRUE
+m15,GL,Full,m15GLFull,Green Land,m15,0,0,1,1,TRUE
+m15,ML,Full,m15MLFull,Multicolored Land,m15,0,0,1,1,TRUE
+m15,CL,Full,m15CLFull,Colorless Land,m15,0,0,1,1,TRUE
