@@ -36,8 +36,8 @@
 	src: url("../fonts/goudy-medieval.ttf");
 }
 :root {
-	--shifting-color-1: rgb(128, 237, 18);
-	--shifting-color-1-light: rgb(255, 255, 168);
+	--shifting-color-1: #00c300;
+	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
 	--dark-color: #333;
 }

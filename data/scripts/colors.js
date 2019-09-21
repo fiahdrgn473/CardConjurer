@@ -1,22 +1,46 @@
 //Cycles through a rainbow!
 setInterval(changeColor, 100)
-var colorShiftingClock = 0
-var colorFrequency = 2 * Math.PI / 600
-var numberOfColors = 1
-var lightness = 120
-var lightAdjust = 120
+var regularAdjust = -60
+var lightAdjust = 100
+var lightLead = 100
+var colorJumps = 510
+var currentColorIndex = 0
 function changeColor() {
-	for (var i = 1; i <= numberOfColors; i ++) {
-		var rgbValues = indexToColor(colorShiftingClock + ((i - 1) * 2 * Math.PI / numberOfColors / colorFrequency), colorFrequency)
-		document.documentElement.style.setProperty("--shifting-color-" + i, "rgb(" + rgbValues[0] + "," + rgbValues[1] + "," + rgbValues[2] + ")")
-	}
-	var rgbLightValues = indexToColor(colorShiftingClock + ((i - 1) * 2 * Math.PI / numberOfColors / colorFrequency), colorFrequency)
-	document.documentElement.style.setProperty("--shifting-color-1-light", "rgb(" + parseInt(rgbLightValues[0] + lightAdjust) + "," + parseInt(rgbLightValues[1] + lightAdjust) + "," + parseInt(rgbLightValues[2] + lightAdjust) + ")")
-	colorShiftingClock += 1
+	var colors = indexToColor(currentColorIndex)
+	document.documentElement.style.setProperty("--shifting-color-1", "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")")
+	var lightColors = indexToColor(currentColorIndex + lightLead)
+	document.documentElement.style.setProperty("--shifting-color-1-light", "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")")
+	currentColorIndex += 255 / colorJumps
 }
-function indexToColor(colorIndex, frequency) {
-	var red = Math.sin(colorIndex * frequency + 0) * (255 - lightness) + lightness
-	var green = Math.sin(colorIndex * frequency + 2 * Math.PI / 3) * (255 - lightness) + lightness
-	var blue = Math.sin(colorIndex * frequency + 4 * Math.PI / 3) * (255 - lightness) + lightness
+function indexToColor(colorIndex) {
+	var red = 0, green = 0, blue = 0
+	var realColorIndex = colorIndex - Math.floor(colorIndex / 1530) * 1530
+	var colorStage = Math.floor(realColorIndex / 255)
+	switch(colorStage) {
+		case 0:
+			green = 255
+			red = realColorIndex - Math.floor(realColorIndex / 255) * 255
+			break
+		case 1:
+			red = 255
+			green = 255 - realColorIndex + Math.floor(realColorIndex / 255) * 255
+			break
+		case 2:
+			red = 255
+			blue = realColorIndex - Math.floor(realColorIndex / 255) * 255
+			break
+		case 3:
+			blue = 255
+			red = 255 - realColorIndex + Math.floor(realColorIndex / 255) * 255
+			break
+		case 4:
+			blue = 255
+			green = realColorIndex - Math.floor(realColorIndex / 255) * 255
+			break
+		case 5:
+			green = 255
+			blue = 255 - realColorIndex + Math.floor(realColorIndex / 255) * 255
+			break
+	}
 	return [red, green, blue]
 }
