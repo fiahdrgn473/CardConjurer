@@ -3,14 +3,13 @@ setInterval(changeColor, 100)
 var regularAdjust = -60
 var lightAdjust = 100
 var lightLead = 100
-var colorJumps = 510
 var currentColorIndex = 0
 function changeColor() {
 	var colors = indexToColor(currentColorIndex)
 	document.documentElement.style.setProperty("--shifting-color-1", "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")")
 	var lightColors = indexToColor(currentColorIndex + lightLead)
 	document.documentElement.style.setProperty("--shifting-color-1-light", "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")")
-	currentColorIndex += 255 / colorJumps
+	currentColorIndex += colorJumpSize = 153 / 60 //The second number is how many seconds it takes to do a full loop
 }
 function indexToColor(colorIndex) {
 	var red = 0, green = 0, blue = 0
