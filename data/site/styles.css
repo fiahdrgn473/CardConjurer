@@ -35,309 +35,228 @@
 	font-family: goudymedieval;
 	src: url("../fonts/goudy-medieval.ttf");
 }
-
 :root {
-	/*Color Palette*/
-	/*Regular*/
-	--color-background: #00000077;
-	--color-background-darker: #000000aa;
-	--color-primary: #073c00;
-	--color-select: #0b6b00;
-}
-
-/*Page-wide styling*/
-* {
-	font-family: belerenb;
-	font-size: 16pt; /*Master font size*/
-	user-select: none;
-	color: #eee;
-}
-html {
-	background-color: #333;
-}
-body {
-	margin: 0;
-}
-
-/*Grid styling*/
-.grid {
-	display: grid;
-}
-.mainGrid > div {
-	border-style: solid;
-	border-color: var(--color-primary);
-	border-width: 1px 1px 0px 1px;
-	width: calc(100% - 2px);
-}
-.mainGrid > div:nth-child(odd) {
-	background: var(--color-background);
-}
-.mainGrid > div:nth-child(even) {
-	background: var(--color-background-darker);
-}
-.selectionGrid {
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
-	text-align: center;
-}
-.mainGrid > div.canvasContainer {
-	padding: 0;
-	text-align: center;
-}
-#canvas {
-	display: block;
-	max-width:750px;
-	width: 100%;
-	height: auto;
-	margin: 0px auto;
-}
-
-/*Card manipulation menu grid*/
-.selectionGrid > div {
-	font-size: 1.1em;
-	font-family: belerenbsc;
-	cursor: pointer;
-	padding: 0.1em;
-	border: 0.05em solid var(--color-primary);
-	background-color: var(--color-background);
-	-webkit-transition: 0.3333s;
-  	transition: 0.3333s;
-}
-.selectionGrid > div:hover {
-	border: 0.15em solid var(--color-select);
-	padding: 0px;
-}
-.padded {
-	padding: 1em;
-}
-.paddedVertical {
-	padding: 1em 0px;
-}
-.cmm, .extras {
-	display: none;
-}
-.shown {
-	display: block;
-}
-.sampleCard {
-	width: 100%;
-}
-
-/*Inputs and more*/
-/*dropdown*/
-.dropdown {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-.dropdown select {
-	padding-left: 0.25em;
-	width: inherit;
-	cursor: pointer;
-	-moz-appearance: none;
-	-webkit-appearance:none;
-	appearance: none;
-}
-.dropdown select option::hover {
-	/*nothing for now :)*/
-}
-.dropdown::after {
-	content: "\25BC";
-	font-size: 0.6em;
-	position: absolute;
-	pointer-events: none;
-	right: 0.6em;
-	top: 0.5em;
-}
-/*checkbox*/
-.checkbox {
-	height: 1em;
-	margin: 0.1em 0px 0.3em 0px;
-	position: relative;
-}
-.checkbox label {
-	display: inline-block;
-	width: calc(1.2em - 6px);
-	height: calc(1.2em - 6px);
-	border: 3px solid var(--color-select);
-	border-radius: 0.25em;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	cursor: pointer;
-	-webkit-transition: 0.5s;
-  	transition: 0.5s;
-}
-.checkbox input:checked ~ label {
-	background: var(--color-select);
-	border: 3px solid var(--color-primary);
-}
-.checkbox > input {
-	opacity: 0;
-}
-.checkbox div {
-	white-space: pre;
-	position: relative;
-	top: -0.1em;
-	left: 1.3em;
-}
-/*other inputs*/
-input[type="text"], input[type="number"], textarea, input[type="file"] {
-	width: 100%;
-	padding-left: 0.25em;
-}
-/*color selector*/
-input[type="color"] {
-	padding: 0px;
-}
-.input {
-	background: var(--color-primary);
-	border-radius: 0.25em;
-	border: 1px solid var(--color-select);
-}
-
-/*Hyperlinks*/
-a:link, a:visited {
-	color: #fff;
-}
-a:hover, a:active {
-	color: #999;
-}
-a {
-	-webkit-transition: 0.3333s;
-  	transition: 0.3333s;
-}
-
-/*Desktop*/
-@media only screen and (min-width: 750px) {
-	html {
-		background: url("images/background.png") no-repeat center center fixed;
-	  	-webkit-background-size: cover;
-	  	-moz-background-size: cover;
-	 	-o-background-size: cover;
-	 	background-size: cover;
-	}
-	* {
-		font-size: 20pt; /*Master font size*/
-	}
-	header {
-		top: 0;
-	}
-	footer {
-		bottom: 0;
-	}
-	header, footer {
-		position: fixed;
-		width: 100%;
-		z-index: 1000;
-	}
-	footer > #alertMenu {
-		position: static;
-	}
-	#header {
-		max-height: 100px;
-		width: auto;
-	}
-	.mainGrid {
-		margin-top: 110px;
-		margin-bottom: 1.1em;
-	}
-}
-@media only screen and (min-width: 1175px) {
-	.mainGrid {
-		grid-template-columns: 750px auto;
-	}
-	.mainGrid > div:not(.canvasContainer):not(.cmmArea) {
-		grid-column: 1 / span 2;
-	}
-	/*.sampleGrid {
-		grid-column: 1 / span 2;
-	}*/
-}
-@media only screen and (orientation: landscape) {
-	.sampleCard {
-		width: 32.8%;
-	}
-}
-
-
-/*Header and Footer*/
-#header {
-	width: auto;
-}
-header, .footer {
-	text-align: center;
-	background-color: black;
-	padding: 5px 0px;
-}
-footer * {
-	font-size: inherit;
-	padding: 0.25em
+	--shifting-color-1: rgb(128, 237, 18);
+	--shifting-color-1-light: rgb(255, 255, 168);
+	--light-color: #eee;
+	--dark-color: #333;
 }
 footer {
-	font-size: 0.8em;
+	background-color: var(--dark-color);
+	padding: 2.5em;
+	font: 1.3em gothammedium;
+	color: var(--light-color);
 }
-
-/*symbol grid*/
-.manaSymbol > img {
-	position: relative;
+body {
+	margin: 0px;
+	background-image: url(images/lowpoly.png);
+	background-attachment: fixed;
+	background-size: cover;
+}
+html {
+	background-image: linear-gradient(to bottom right, var(--shifting-color-1), var(--shifting-color-1-light));
+	background-attachment: fixed;
+	overflow-x: hidden;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 8pt;
+}
+canvas {
+	width: calc(100%);
+	height: auto;
+	max-width: 750px;
+	max-height: 1050px;
+}
+.canvasContainer {
+	text-align: center;
+}
+.mainGrid {
+	padding: 0.3em;
+	display: grid;
+	grid-gap: 1.5em;
+	grid-template-columns: auto;
+	font: 1.6em mplantin;
+}
+.imageGrid {
+	display: grid;
+	grid-template-columns: auto 9em;
+	min-height: 12.5em;
+}
+.imgPreview {
+	width: 100%;
+}
+.bar {
+	background-image: url(../images/manaSymbols/63.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 2px;
+	width: 100%;
 	height: 1em;
 }
-.symbolGrid {
-	grid-template-columns: repeat(auto-fit, minmax(3.5em, 1fr));
+.cardMenu > div > div:nth-child(1) {
+	/*border: 1px solid blue;*/
 	text-align: center;
+	font: 1.5em belerenbsc;
 }
-.symbolGrid > div {
-	border: 0.1em solid var(--color-background);
-	border-radius: 1em;
-	background-color: var(--color-primary);
+.twoGrid {
+	display: grid;
+	grid-template-columns: 50% auto;
 }
-
-/*Sitewide text (bottom of the page)*/
-.miniTitle {
-	font-family: belerenbsc;
-	text-align: center;
-	font-size: 1.2em;
-	padding-bottom: 0.125em;
+.input, .textarea, .button, .select {
+	font: 1em mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaae;
+	border-radius: 0.2em;
+	padding: 0px 0.2em;
+	outline: none;
 }
-.paragraph {
-	padding-bottom: 0.25em;
-	text-indent: 2em;
+.textarea {
+	min-height: 6em;
+	max-height: 18em;
+	resize: vertical;
 }
-/*Donation buttons!*/
-.donateGrid {
-	grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+.select {
+    background: #fafafa url(../images/manaSymbols/49.png) no-repeat calc(100% - 0.1em) 50%;
+    background-size: 1em 1em;
+    -webkit-appearance: none;
 }
-.donateGrid.grid > div {
-	font-size: 1.7em;
+.autoGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-auto-rows: min-content;
 }
-.donateGrid > div > img {
+.input.file {
+	padding: 0px;
+	height: 1.26em;
+}
+.tooltip {
 	position: relative;
-	top: 0.25em;
-	left: 0.5em;
-	height: 1.7em;
 }
-
-
-
-#alertMenu {
-	position: fixed;
-	bottom: 0;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  top: calc(100% + 5px);
+  left: 0px;
+  max-width: calc(100% - 10px);
+  width: auto;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
-.alert {
-  	opacity: 1;
-  	padding: 0.25em;
-  	cursor: pointer;
-  	transition: 0.25s;
-  	border: 0px solid var(--color-select);
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--dark-color) transparent;
 }
-.alert:hover {
-	border-width: 0.15em;
-	padding: 0.1em;
+.tooltip .tooltiptext:hover {
+	/*visibility: hidden;*/
+	opacity: 0;
 }
-.alert.info {background-color: var(--color-primary);}
-.alert.conflict {background-color: #b37d07;}
-.alert.warning {background-color: #3b0000;}
-
+div.tooltip > * {
+	width: 100%;
+}
+a {
+	color: black;
+}
+a:hover {
+	color: var(--dark-color);
+}
+footer a {
+	color: white;
+}
+footer a:hover {
+	color: var(--shifting-color-1-light);
+}
 .hidden {
 	display: none;
+}
+.footerGrid {
+	display: grid;
+	grid-template-columns: auto;
+	grid-gap: 2em;
+}
+.layer {
+	padding: 2em 2em;
+	color: black;
+	font-size: 2em;
+	text-align: center;
+}
+.layer:nth-child(even) {
+	background-color: var(--light-color);
+	background-image: url(images/layerBackground.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.title {
+	font: 1.5em belerenbsc;
+}
+.pageTitle {
+	font: 5em belerenbsc;
+	text-align: center;
+	padding-top: 0.3em;
+}
+.paragraph {
+	font: 1em mplantin;
+	text-align: left;
+}
+.indent {
+	text-indent: 2em;
+}
+.leftMargin {
+	margin-left: 2em;
+}
+
+/*Controls the area taken by the canvas*/
+@media screen and (min-width: 888pt) {
+	/*Makes room for the canvas and controls to be side by side*/
+	.mainGrid {
+		padding: 1.5em;
+		grid-template-columns: calc(750px + 2px) auto;
+	}
+}
+@media screen and (min-width: calc(750px + 2em)) {
+	/*The canvas can be full size and doesn't have to scale anymore*/
+	canvas {
+		width: 750px;
+		height: 1050px;
+	}
+}
+/*The screen is big enough (larger than phone, likely) to use a larger font*/
+@media screen and (min-width: 263pt) {
+	html {
+		font-size: 10pt;
+	}
+}
+/*These control tooltips for mobile devices vs. desktops/laptops*/
+@media screen and (min-width: 1024px) {
+	.tooltip:hover .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}
+@media screen and (max-width: 1023px) {
+	.tooltip:focus .tooltiptext, div.tooltip > input:focus + .tooltiptext, div.tooltip > textarea:focus + .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}
+/*The footer can now fit horizontally!*/
+@media screen and (min-width: 375pt) {
+	.footerGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+		grid-gap: 1em;
+	}
 }

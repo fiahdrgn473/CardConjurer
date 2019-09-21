@@ -1,0 +1,343 @@
+/*fonts*/
+@font-face {
+	font-family: gothammedium;
+	src: url("../fonts/gotham-medium.ttf");
+}
+@font-face {
+	font-family: belerenb;
+	src: url("../fonts/beleren-b.ttf");
+}
+@font-face {
+	font-family: belerenbsc;
+	src: url("../fonts/beleren-bsc.ttf");
+}
+@font-face {
+	font-family: matrix;
+	src: url("../fonts/matrix.ttf");
+}
+@font-face {
+	font-family: matrixb;
+	src: url("../fonts/matrix-b.ttf");
+}
+@font-face {
+	font-family: matrixbsc;
+	src: url("../fonts/matrix-bsc.ttf");
+}
+@font-face {
+	font-family: mplantin;
+	src: url("../fonts/mplantin.ttf");
+}
+@font-face {
+	font-family: mplantini;
+	src: url("../fonts/mplantin-i.ttf");
+}
+@font-face {
+	font-family: goudymedieval;
+	src: url("../fonts/goudy-medieval.ttf");
+}
+
+:root {
+	/*Color Palette*/
+	/*Regular*/
+	--color-background: #00000077;
+	--color-background-darker: #000000aa;
+	--color-primary: #073c00;
+	--color-select: #0b6b00;
+}
+
+/*Page-wide styling*/
+* {
+	font-family: belerenb;
+	font-size: 16pt; /*Master font size*/
+	user-select: none;
+	color: #eee;
+}
+html {
+	background-color: #333;
+}
+body {
+	margin: 0;
+}
+
+/*Grid styling*/
+.grid {
+	display: grid;
+}
+.mainGrid > div {
+	border-style: solid;
+	border-color: var(--color-primary);
+	border-width: 1px 1px 0px 1px;
+	width: calc(100% - 2px);
+}
+.mainGrid > div:nth-child(odd) {
+	background: var(--color-background);
+}
+.mainGrid > div:nth-child(even) {
+	background: var(--color-background-darker);
+}
+.selectionGrid {
+	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	text-align: center;
+}
+.mainGrid > div.canvasContainer {
+	padding: 0;
+	text-align: center;
+}
+#canvas {
+	display: block;
+	max-width:750px;
+	width: 100%;
+	height: auto;
+	margin: 0px auto;
+}
+
+/*Card manipulation menu grid*/
+.selectionGrid > div {
+	font-size: 1.1em;
+	font-family: belerenbsc;
+	cursor: pointer;
+	padding: 0.1em;
+	border: 0.05em solid var(--color-primary);
+	background-color: var(--color-background);
+	-webkit-transition: 0.3333s;
+  	transition: 0.3333s;
+}
+.selectionGrid > div:hover {
+	border: 0.15em solid var(--color-select);
+	padding: 0px;
+}
+.padded {
+	padding: 1em;
+}
+.paddedVertical {
+	padding: 1em 0px;
+}
+.cmm, .extras {
+	display: none;
+}
+.shown {
+	display: block;
+}
+.sampleCard {
+	width: 100%;
+}
+
+/*Inputs and more*/
+/*dropdown*/
+.dropdown {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.dropdown select {
+	padding-left: 0.25em;
+	width: inherit;
+	cursor: pointer;
+	-moz-appearance: none;
+	-webkit-appearance:none;
+	appearance: none;
+}
+.dropdown select option::hover {
+	/*nothing for now :)*/
+}
+.dropdown::after {
+	content: "\25BC";
+	font-size: 0.6em;
+	position: absolute;
+	pointer-events: none;
+	right: 0.6em;
+	top: 0.5em;
+}
+/*checkbox*/
+.checkbox {
+	height: 1em;
+	margin: 0.1em 0px 0.3em 0px;
+	position: relative;
+}
+.checkbox label {
+	display: inline-block;
+	width: calc(1.2em - 6px);
+	height: calc(1.2em - 6px);
+	border: 3px solid var(--color-select);
+	border-radius: 0.25em;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
+}
+.checkbox input:checked ~ label {
+	background: var(--color-select);
+	border: 3px solid var(--color-primary);
+}
+.checkbox > input {
+	opacity: 0;
+}
+.checkbox div {
+	white-space: pre;
+	position: relative;
+	top: -0.1em;
+	left: 1.3em;
+}
+/*other inputs*/
+input[type="text"], input[type="number"], textarea, input[type="file"] {
+	width: 100%;
+	padding-left: 0.25em;
+}
+/*color selector*/
+input[type="color"] {
+	padding: 0px;
+}
+.input {
+	background: var(--color-primary);
+	border-radius: 0.25em;
+	border: 1px solid var(--color-select);
+}
+
+/*Hyperlinks*/
+a:link, a:visited {
+	color: #fff;
+}
+a:hover, a:active {
+	color: #999;
+}
+a {
+	-webkit-transition: 0.3333s;
+  	transition: 0.3333s;
+}
+
+/*Desktop*/
+@media only screen and (min-width: 750px) {
+	html {
+		background: url("images/background.png") no-repeat center center fixed;
+	  	-webkit-background-size: cover;
+	  	-moz-background-size: cover;
+	 	-o-background-size: cover;
+	 	background-size: cover;
+	}
+	* {
+		font-size: 20pt; /*Master font size*/
+	}
+	header {
+		top: 0;
+	}
+	footer {
+		bottom: 0;
+	}
+	header, footer {
+		position: fixed;
+		width: 100%;
+		z-index: 1000;
+	}
+	footer > #alertMenu {
+		position: static;
+	}
+	#header {
+		max-height: 100px;
+		width: auto;
+	}
+	.mainGrid {
+		margin-top: 110px;
+		margin-bottom: 1.1em;
+	}
+}
+@media only screen and (min-width: 1175px) {
+	.mainGrid {
+		grid-template-columns: 750px auto;
+	}
+	.mainGrid > div:not(.canvasContainer):not(.cmmArea) {
+		grid-column: 1 / span 2;
+	}
+	/*.sampleGrid {
+		grid-column: 1 / span 2;
+	}*/
+}
+@media only screen and (orientation: landscape) {
+	.sampleCard {
+		width: 32.8%;
+	}
+}
+
+
+/*Header and Footer*/
+#header {
+	width: auto;
+}
+header, .footer {
+	text-align: center;
+	background-color: black;
+	padding: 5px 0px;
+}
+footer * {
+	font-size: inherit;
+	padding: 0.25em
+}
+footer {
+	font-size: 0.8em;
+}
+
+/*symbol grid*/
+.manaSymbol > img {
+	position: relative;
+	height: 1em;
+}
+.symbolGrid {
+	grid-template-columns: repeat(auto-fit, minmax(3.5em, 1fr));
+	text-align: center;
+}
+.symbolGrid > div {
+	border: 0.1em solid var(--color-background);
+	border-radius: 1em;
+	background-color: var(--color-primary);
+}
+
+/*Sitewide text (bottom of the page)*/
+.miniTitle {
+	font-family: belerenbsc;
+	text-align: center;
+	font-size: 1.2em;
+	padding-bottom: 0.125em;
+}
+.paragraph {
+	padding-bottom: 0.25em;
+	text-indent: 2em;
+}
+/*Donation buttons!*/
+.donateGrid {
+	grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+}
+.donateGrid.grid > div {
+	font-size: 1.7em;
+}
+.donateGrid > div > img {
+	position: relative;
+	top: 0.25em;
+	left: 0.5em;
+	height: 1.7em;
+}
+
+
+
+#alertMenu {
+	position: fixed;
+	bottom: 0;
+}
+.alert {
+  	opacity: 1;
+  	padding: 0.25em;
+  	cursor: pointer;
+  	transition: 0.25s;
+  	border: 0px solid var(--color-select);
+}
+.alert:hover {
+	border-width: 0.15em;
+	padding: 0.1em;
+}
+.alert.info {background-color: var(--color-primary);}
+.alert.conflict {background-color: #b37d07;}
+.alert.warning {background-color: #3b0000;}
+
+.hidden {
+	display: none;
+}
