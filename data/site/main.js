@@ -215,21 +215,30 @@ function updateWatermarkCanvas() {
 			watermarkY = version.watermarkY - watermarkHeight / 2
 		}
 		watermarkContext.drawImage(watermark, watermarkX, watermarkY, watermarkWidth, watermarkHeight)
-		watermarkContext.globalCompositeOperation = "source-atop"
-		watermarkContext.fillStyle = document.getElementById("inputWatermarkPrimary").value
-		watermarkContext.fillRect(0, 0, cardWidth, cardHeight)
+		watermarkContext.globalCompositeOperation = "source-in"
+		if (document.getElementById("inputWatermarkPrimary").value != "default") {
+			watermarkContext.fillStyle = document.getElementById("inputWatermarkPrimary").value
+			watermarkContext.fillRect(0, 0, cardWidth, cardHeight)
+		}
 		if (document.getElementById("inputWatermarkSecondary").value != "none") {
+			watermarkContext.globalCompositeOperation = "source-atop"
 			tempContext.clearRect(0, 0, cardWidth, cardHeight)
 			tempContext.drawImage(window[nameArray[nameArray.indexOf("secondary")]].image, 0, 0, cardWidth, cardHeight)
-			tempContext.globalCompositeOperation = "source-atop"
-			tempContext.fillStyle = document.getElementById("inputWatermarkSecondary").value
-			tempContext.fillRect(0, 0, cardWidth, cardHeight)
+			tempContext.globalCompositeOperation = "source-in"
+			if (document.getElementById("inputWatermarkSecondary").value == "default") {
+				tempContext.drawImage(watermark, watermarkX, watermarkY, watermarkWidth, watermarkHeight)
+			} else {
+				tempContext.fillStyle = document.getElementById("inputWatermarkSecondary").value
+				tempContext.fillRect(0, 0, cardWidth, cardHeight)
+			}
 			tempContext.globalCompositeOperation = "source-over"
 			watermarkContext.drawImage(tempCanvas, 0, 0, cardWidth, cardHeight)
 		}
 		watermarkContext.globalCompositeOperation = "source-over"
-		updateCardCanvas()
+	} else {
+		watermarkContext.clearRect(0, 0, cardWidth, cardHeight)
 	}
+	updateCardCanvas()
 }
 //Does the bottom info function! This can be different depending on the version.
 function updateBottomInfoCanvas() {
@@ -511,7 +520,7 @@ function changeWhichText() {
 	document.getElementById("inputText").value = version.textList[whichTextIndex][1]
 }
 //Removes all the white pixels in an image
-var whiteThreshold = 240
+var whiteThreshold = 250
 function whiteToTransparent(targetImage, source = targetImage.src) {
     //Create image, size canvas, draw image
     var imgTempTarget = new Image()

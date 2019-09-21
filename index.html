@@ -8,10 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="pageTitle">
-		Card Conjurer
-	</div>
 	<div class="mainDiv">
+		<div class="pageTitle">
+			Card Conjurer
+		</div>
 		<div class="mainGrid">
 			<div class="canvasContainer">
 				<canvas id="mainCanvas" class="canvas"></canvas>
@@ -103,23 +103,25 @@
 						<div class="tooltip"><input type="text" class="input text" placeholder="Via Set Code" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large')"><span class="tooltiptext">Use a set code<br>(2-3 letters, as seen on the bottom of cards)</span></div>
 						<div class="tooltip"><select class="select" id="inputWatermarkPrimary" onchange="updateWatermarkCanvas()">
 							<option value="none">None</option>
-							<option value="#afa360" selected="selected">White</option>
-							<option value="#04527c">Blue</option>
-							<option value="#494949">Black</option>
-							<option value="#a3280d">Red</option>
-							<option value="#0f4f14">Green</option>
-							<option value="#7f5f00">Gold</option>
-							<option value="#616b72">Artifact/Colorless</option>
+							<option value="default">Default</option>
+							<option value="#ccc8b1" selected="selected">White</option>
+							<option value="#b0c3d5">Blue</option>
+							<option value="#b3b3b3">Black</option>
+							<option value="#ddac9b">Red</option>
+							<option value="#b9c8b5">Green</option>
+							<option value="#e4d49b">Gold</option>
+							<option value="#cfc8be">Artifact/Colorless</option>
 						</select><span class="tooltiptext">Select the watermark color</span></div>
 						<div class="tooltip"><select class="select" id="inputWatermarkSecondary" onchange="updateWatermarkCanvas()">
 							<option value="none">None</option>
-							<option value="#afa360">White</option>
-							<option value="#04527c">Blue</option>
-							<option value="#494949">Black</option>
-							<option value="#a3280d">Red</option>
-							<option value="#0f4f14">Green</option>
-							<option value="#7f5f00">Gold</option>
-							<option value="#616b72">Artifact/Colorless</option>
+							<option value="default">Default</option>
+							<option value="#ccc8b1">White</option>
+							<option value="#b0c3d5">Blue</option>
+							<option value="#b3b3b3">Black</option>
+							<option value="#ddac9b">Red</option>
+							<option value="#b9c8b5">Green</option>
+							<option value="#e4d49b">Gold</option>
+							<option value="#cfc8be">Artifact/Colorless</option>
 						</select><span class="tooltiptext">Select the secondary watermark color</span></div>
 					</div>
 					<div class="bar"></div>
@@ -131,12 +133,38 @@
 				</div>
 			</div>
 		</div>
+		<div class="hidden"></div>
 		<div class="layer">
 			<div class="title">Welcome to Card Conjurer!</div>
+			<div class="paragraph indent">Card Conjurer is a free program that helps you create custom Magic: The Gathering cards. There are already plenty of custom card makers out there, but what sets Card Conjurer apart from the rest is its live-edit capabilities. You can immediatly see the effects of any change you make, which makes card customization easier and overall a better experience.</div>
+		</div>
+		<div class="layer">
+			<div class="title">About Me</div>
+			<div class="paragraph indent">
+				Hi! My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology.</a> During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager. (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>) It was pretty simple but I soon began to add more border images like Miracle or Nyx. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github, and then in April of 2019 I bought the domain <a href="#header" onclick="alert('You\'re already there, silly!')">cardconjurer.com</a>.
+			</div>
 		</div>
 		<div class="layer">
 			<div class="paragraph indent">
 				This version of the website is currently a work in progress, so it doesn't have all the features the original Card Conjurer had. If you'd like to go back to the old version, <a href="old/index.html">click here</a>.
+			</div>
+		</div>
+		<div class="layer">
+			<div class="title">How You Can Help</div>
+			<div class="paragraph indent">
+				I hope that you found Card Conjurer useful! If you did, you can help me out tremendously by using one of the following referral links:
+			</div>
+			<div class="autoGrid donate">
+				<!-- <div onclick="window.open('https://www.paypal.me/kyleburtondonate', '_blank');" style="color:rgb(0,37,134);">PayPal<img src="data/site/icons/paypal.png"></div> -->
+				<div onclick="window.open('https://pucatrade.com/invite/gift/186748', '_blank');" style="color:rgb(61,33,58);">PucaTrade<img src="data/site/icons/pucatrade.png"></div>
+				<!-- <div onclick="window.open('https://twitter.com/ImKyle4815', '_blank');" style="color:rgb(0,174,239);">@ImKyle4815<img src="data/site/icons/twitter.png"></div> -->
+				<div onclick="window.open('https://www.massdrop.com/?referer=LNWNLL', '_blank');" style="color:rgb(255,255,255);">Massdrop<img src="data/site/icons/massdrop.png"></div>
+			</div>
+		</div>
+		<div class="layer">
+			<div class="title">Have Any Questions?</div>
+			<div class="paragraph indent">
+				If you have any questions please don't hesitate to email me at <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a>. Even if you made a cool card and want to share, I'd love to see it!
 			</div>
 		</div>
 	</div>
@@ -146,7 +174,6 @@
 		<div>
 			Card Conjurer By Kyle Burton<br>
 			<input type="checkbox" checked="true" onchange="toggleTooltips(this.checked)" id="tooltipToggler"> Display tooltips<br>
-			Happy Card Conjuring!
 		</div>
 		<div>
 			Navigation:<br>

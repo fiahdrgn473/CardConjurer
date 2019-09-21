@@ -217,6 +217,20 @@ footer a:hover {
 .leftMargin {
 	margin-left: 2em;
 }
+.donate > div:hover {
+	text-decoration: underline;
+}
+.donate > div {
+	background-color: #1111;
+	border-radius: 2em;
+	font: 2em belerenbsc;
+}
+.donate > div > img {
+	height: 1em;
+	position: relative;
+	top: 0.15em;
+	left: 0.15em;
+}
 
 /*Controls the area taken by the canvas*/
 @media screen and (min-width: 888pt) {
