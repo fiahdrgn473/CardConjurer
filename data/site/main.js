@@ -374,6 +374,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 				possibleCodeLower = splitString[i].toLowerCase().replace("{", "").replace("}", "")
 				if (possibleCodeLower == "line" && !oneLine) {
 					finishLine = true
+                    currentLineY += textSize * 0.35
 				} else if (possibleCodeLower == "linenospace" && ! oneLine) {
 					finishLine = true
 				} else if (possibleCodeLower == "bar" || possibleCodeLower == "flavor") {
