@@ -40,6 +40,7 @@
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
 	--dark-color: #333;
+    --clear-light: #1111;
 }
 footer {
 	background-color: var(--dark-color);
@@ -192,8 +193,9 @@ footer a:hover {
 	color: black;
 	font-size: 2em;
 	text-align: center;
+    margin: 3em 0px;
 }
-.layer:nth-child(even) {
+.layer {       /*:nth-child(even)*/
 	background-color: var(--light-color);
 	background-image: url(images/layerBackground.png);
 	background-position: center;
@@ -221,7 +223,7 @@ footer a:hover {
 	text-decoration: underline;
 }
 .donate > div {
-	background-color: #1111;
+	background-color: var(--clear-light);
 	border-radius: 2em;
 	font: 2em belerenbsc;
 }
