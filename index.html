@@ -42,7 +42,9 @@
 					<div>
 						Text
 					</div>
-					<div class="tooltip"><select class="select" id="inputWhichText" onchange="changeWhichText()"></select><span class="tooltiptext">Select the text you want to edit</span></div>
+                    <div id="inputWhichTextTabs" class="tab tooltip">
+                        <span class="tooltiptext">Select the text you want to edit</span>
+                    </div>
 					<div class="tooltip"><textarea class="textarea tooltip" id="inputText" placeholder="" oninput="updateText()"></textarea><span class="tooltiptext">Edit the selected text</span></div>
 					<div class="tooltip"><input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="updateCardCanvas()" value=""><span class="tooltiptext">Enter the mana cost. Include spaces!</span></div>
 					<div class="bar"></div>

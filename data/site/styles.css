@@ -40,7 +40,8 @@
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
 	--dark-color: #333;
-    --clear-light: #1111;
+    --clear-light: #0001;
+    --clear-dark: #0003;
 }
 footer {
 	background-color: var(--dark-color);
@@ -276,3 +277,39 @@ footer a:hover {
 		grid-gap: 1em;
 	}
 }
+
+
+/*WIP*/
+.tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+    grid-auto-rows: min-content;
+/*    align-items: center;*/
+}
+.tabButton {
+    text-align: center;
+    background: var(--clear-light);
+    border: 1px solid var(--light-color);
+    font: 1.2em belerenbsc;
+    padding: 0.1em 0em;
+}
+.tabButton.activeTab {
+    background: var(--clear-dark);
+}
+.tabContent {
+    display: none;
+}
+.tabContent.displayed {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+

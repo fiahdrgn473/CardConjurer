@@ -5,6 +5,7 @@
 var cardWidth = 750, cardHeight = 1050
 var version = {}
 var date = new Date()
+var initiated = false
 document.getElementById("inputInfoNumber").value = date.getFullYear()
 //Make all the canvases and their contexts
 var mainCanvas = document.getElementById("mainCanvas")
@@ -85,6 +86,7 @@ function init() {
 	//Runs any tests. This should not do anything when published.
 	setTimeout(testFunction, 100)
 	checkCookies()
+    initiated = true
 }
 //Loads an image. Only actually loads images the first time each image is loaded, otherwise assigns it.
 function loadImage(index, target = "none") {
@@ -245,6 +247,9 @@ function updateBottomInfoCanvas() {
 	window[version.bottomInfoFunction]()
 }
 function updateCardCanvas() {
+    if (!initiated) {
+        return
+    }
 	//clear it
 	cardContext.fillStyle = "black"
 	cardContext.fillRect(0, 0, cardWidth, cardHeight)
@@ -316,7 +321,10 @@ function finishChangingVersion() {
 		}
 	}
 	for (var i = 0; i < version.textList.length; i ++) {
-		document.getElementById("inputWhichText").innerHTML += "<option>" + version.textList[i][0] + "</option>"
+		document.getElementById("inputWhichTextTabs").innerHTML += "<div class='tabButton text' onclick='tabFunction(event, `text`, `option" + version.textList[i][0] + "`, `textTabFunction`)'>" + version.textList[i][0] + "</div>"
+        if (i == 0) {
+            document.getElementsByClassName("tabButton text")[0].classList.add("activeTab")
+        }
 	}
 	hideShowColors(true)
 	loadOpacityValue()
@@ -707,6 +715,31 @@ function checkCookies() {
 	}
 }
 
+
+function tabFunction(event, section, target, specialFunction = "none") {
+    var tabButtons = document.getElementsByClassName("tabButton " + section)
+    for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].className = tabButtons[i].className.replace(" activeTab", "")
+    }
+    event.currentTarget.className += " activeTab"
+    if (specialFunction != "none") {
+        window[specialFunction](event, section, target)
+    } else {
+        var tabContents = document.getElementsByClassName("tabContent " + section)
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].className = tabContents[i].className.replace(" displayed", "")
+        }
+        document.getElementById(target).className += " displayed"
+    }
+}
+function textTabFunction(event, section, target) {
+    for (var i = 0; i < version.textList.length; i ++) {
+        if (version.textList[i][0] == target.replace("option", "")) {
+            whichTextIndex = i
+        }
+    }
+    document.getElementById("inputText").value = version.textList[whichTextIndex][1]
+}
 
 
 /*To do list:
