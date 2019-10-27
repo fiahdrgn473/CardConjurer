@@ -39,6 +39,7 @@
 	--shifting-color-1: #00c300;
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
+    --clear-selected: #fff4;
 	--dark-color: #333;
     --clear-light: #0001;
     --clear-dark: #0003;
@@ -98,9 +99,9 @@ canvas {
 	height: 1em;
 }
 .cardMenu > div > div:nth-child(1) {
-	/*border: 1px solid blue;*/
-	text-align: center;
-	font: 1.5em belerenbsc;
+/*    border: 1px solid blue;*/
+/*    text-align: center;*/
+/*    font: 1.5em belerenbsc;*/
 }
 .twoGrid {
 	display: grid;
@@ -282,9 +283,9 @@ footer a:hover {
 /*WIP*/
 .tab {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(6.5em, 1fr));
     grid-auto-rows: min-content;
-/*    align-items: center;*/
+    cursor: pointer;
 }
 .tabButton {
     text-align: center;
@@ -294,7 +295,7 @@ footer a:hover {
     padding: 0.1em 0em;
 }
 .tabButton.activeTab {
-    background: var(--clear-dark);
+    background: var(--clear-selected);
 }
 .tabContent {
     display: none;
@@ -303,8 +304,10 @@ footer a:hover {
     display: block;
 }
 
-
-
+.download {
+    text-align: center;
+    font: 1.5em belerenbsc;
+}
 
 
 
