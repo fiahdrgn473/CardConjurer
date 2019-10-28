@@ -317,7 +317,14 @@ footer a:hover {
     text-align: center;
     font: 1.5em belerenbsc;
 }
-
+.truncate {
+/*    width: 100%;*/
+/*    outline: 1px solid green;*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-indent: 0em;
+}
 
 
 
