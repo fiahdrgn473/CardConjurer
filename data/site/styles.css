@@ -287,6 +287,12 @@ footer a:hover {
     grid-auto-rows: min-content;
     cursor: pointer;
 }
+.tab.tabSelect {
+    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+}
+.tabButton.tabSelectButton {
+    font: 1em belerenb;
+}
 .tabButton {
     text-align: center;
     background: var(--clear-light);

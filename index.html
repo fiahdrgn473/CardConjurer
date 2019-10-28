@@ -27,10 +27,12 @@
                 </div>
                 <div class="bar"></div>
 				<div class="tabContent editor displayed" id="optionFrame">
+                    Select the part of the card frame:<br>
+                    <div class="tab tabSelect" id="frameType"></div><br>
+                    Select the color:<br>
+                    <div class="tab tabSelect" id="tabSelectColor"></div><br>
 					<div class="imageGrid">
 						<div class="autoGrid">
-							<div class="tooltip"><select class="select" id="inputImageType" onchange="hideShowColors()"></select><span class="tooltiptext">Select the part of the card frame</span></div>
-							<div class="tooltip"><select class="select" id="inputImageIndex" onchange="userLoadImage()"></select><span class="tooltiptext">Select the color of the current image type</span></div>
 							<button class="button tooltip" onclick="userEnterImage()">Enter<span class="tooltiptext">Add the selected image to the card</span></button>
 							<button class="button tooltip" onclick="userRemoveImage()">Remove<span class="tooltiptext">Remove the select image type from the card</span></button>
 						</div>
@@ -44,9 +46,7 @@
 					</div>
 				</div>
 				<div class="tabContent editor" id="optionText">
-                    <div id="inputWhichTextTabs" class="tab tooltip">
-                        <span class="tooltiptext">Select the text you want to edit</span>
-                    </div>
+                    <div id="inputWhichTextTabs" class="tab"></div>
 					<div class="tooltip"><textarea class="textarea tooltip" id="inputText" placeholder="" oninput="updateText()"></textarea><span class="tooltiptext">Edit the selected text</span></div>
 					<div class="tooltip"><input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="updateCardCanvas()" value=""><span class="tooltiptext">Enter the mana cost. Include spaces!</span></div>
 				</div>

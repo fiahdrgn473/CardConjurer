@@ -6,6 +6,7 @@ var cardWidth = 750, cardHeight = 1050
 var version = {}
 var date = new Date()
 var initiated = false
+var suggestedColor = "White"
 document.getElementById("inputInfoNumber").value = date.getFullYear()
 //Make all the canvases and their contexts
 var mainCanvas = document.getElementById("mainCanvas")
@@ -170,14 +171,22 @@ function updateTextCanvas() {
 	//post processing?
 	updateCardCanvas()
 }
+var currentlyWritingText = false
 //Rewrites all the text!
 function updateText() {
-	version.textList[whichTextIndex][1] = document.getElementById("inputText").value
-	textContext.clearRect(0, 0, cardWidth, cardHeight)
-	for (var i = 0; i < version.textList.length; i ++) {
-		var waitUntilIAmDone = textContext.writeText(version.textList[i][1], version.textList[i][2], version.textList[i][3], version.textList[i][4], version.textList[i][5], version.textList[i][6], version.textList[i][7], version.textList[i][8], version.textList[i][9])
-		updateTextCanvas()
-	}
+    if (!currentlyWritingText) {
+        console.log(currentlyWritingText)
+        currentlyWritingText = true
+        setTimeout(updateTextInnerShell, 100)
+    }
+}
+function updateTextInnerShell() {
+    version.textList[whichTextIndex][1] = document.getElementById("inputText").value
+    textContext.clearRect(0, 0, cardWidth, cardHeight)
+    for (var i = 0; i < version.textList.length; i ++) {
+        var waitUntilIAmDone = textContext.writeText(version.textList[i][1], version.textList[i][2], version.textList[i][3], version.textList[i][4], version.textList[i][5], version.textList[i][6], version.textList[i][7], version.textList[i][8], version.textList[i][9])
+        updateTextCanvas()
+    }
 }
 //figures out the placing of the set symbol
 function updateSetSymbolCanvas() {
@@ -268,20 +277,21 @@ function updateCardCanvas() {
 	//paste it to the visible canvas
 	mainContext.clearRect(0, 0, cardWidth, cardHeight)
 	mainContext.drawImage(cardCanvas, 0, 0, cardWidth, cardHeight)
+    currentlyWritingText = false
 }
 //Loads an image in from user input
 function userLoadImage() {
-	loadImage(document.getElementById("inputImageIndex").value, "preview")
+	loadImage(getSelectedTab("tabSelectColor"), "preview")
 }
 //Enters an image from user input
 function userEnterImage() {
-	loadImage(document.getElementById("inputImageIndex").value, document.getElementById("inputImageType").value)
+	loadImage(getSelectedTab("tabSelectColor"), getSelectedTab("frameType"))
 }
 //Removes an image from user input
 function userRemoveImage() {
-	if (cardMasterTypes.includes(document.getElementById("inputImageType").value) && document.getElementById("inputImageType").value != "Full") {
-		cardMasterImages.splice(cardMasterTypes.indexOf(document.getElementById("inputImageType").value), 1)
-		cardMasterTypes.splice(cardMasterTypes.indexOf(document.getElementById("inputImageType").value), 1)
+	if (cardMasterTypes.includes(getSelectedTab("frameType")) && getSelectedTab("frameType") != "Full") {
+		cardMasterImages.splice(cardMasterTypes.indexOf(getSelectedTab("frameType")), 1)
+		cardMasterTypes.splice(cardMasterTypes.indexOf(getSelectedTab("frameType")), 1)
 		cardMasterUpdated()
 	}
 }
@@ -310,16 +320,17 @@ function changeVersionTo(versionToChangeTo) {
 	loadScript("data/versions/" + versionToChangeTo + "Version.js")
 }
 function finishChangingVersion() {
-	document.getElementById("inputImageType").innerHTML = ""
+    document.getElementById("frameType").innerHTML = ""
 	document.getElementById("inputImageTypeOpacity").innerHTML = ""
 	for (var i = 0; i < version.typeOrder.length; i ++) {
-		document.getElementById("inputImageType").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
+        tabSelectAddOption("frameType", version.typeOrder[i].replace("Secondary", " (right)"), version.typeOrder[i])
 		if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
 			document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
 			cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
 			cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
 		}
 	}
+    document.getElementsByClassName("frameType")[0].className += " activeTab"
 	for (var i = 0; i < version.textList.length; i ++) {
 		document.getElementById("inputWhichTextTabs").innerHTML += "<div class='tabButton text' onclick='tabFunction(event, `text`, `option" + version.textList[i][0] + "`, `textTabFunction`)'>" + version.textList[i][0] + "</div>"
         if (i == 0) {
@@ -334,12 +345,20 @@ function finishChangingVersion() {
 }
 //Hides and shows the options in inputImageColor to match the selected type
 function hideShowColors(enter = false) {
-	document.getElementById("inputImageIndex").innerHTML = ""
+	document.getElementById("tabSelectColor").innerHTML = ""
+    var activeTab = false
 	for (var i = 0; i < versionArray.length; i ++) {
-		if (versionArray[i] == version.currentVersion && (typeArray[i] == document.getElementById("inputImageType").value.replace("Secondary", "") || (typeArray[i] == "Full" && version.typeNotFull.includes(document.getElementById("inputImageType").value) == false)) && colorArray[i] != "Mask") {
-			document.getElementById("inputImageIndex").innerHTML += "<option value='" + i + "''>" + displayNameArray[i] + "</option>"
+		if (versionArray[i] == version.currentVersion && (typeArray[i] == getSelectedTab("frameType").replace("Secondary", "") || (typeArray[i] == "Full" && version.typeNotFull.includes(getSelectedTab("frameType")) == false)) && colorArray[i] != "Mask") {
+			tabSelectAddOption("tabSelectColor", displayNameArray[i], i)
+            if (displayNameArray[i] == suggestedColor) {
+                document.getElementsByClassName("tabSelectColor")[document.getElementsByClassName("tabSelectColor").length - 1].className += " activeTab"
+                activeTab = true
+            }
 		}
 	}
+    if (!activeTab) {
+        document.getElementsByClassName("tabSelectColor")[0].className += " activeTab"
+    }
 	if (enter) {
 		userEnterImage()
 	}
@@ -740,6 +759,51 @@ function textTabFunction(event, section, target) {
     }
     document.getElementById("inputText").value = version.textList[whichTextIndex][1]
 }
+
+
+
+
+
+
+
+
+
+
+
+function tabSelect(event, selectSection) {
+    var tabSelectButtons = document.getElementsByClassName(selectSection)
+    for (var i = 0; i < tabSelectButtons.length; i++) {
+        tabSelectButtons[i].className = tabSelectButtons[i].className.replace(" activeTab", "")
+    }
+    event.target.className += " activeTab"
+    if (selectSection == "frameType") {
+        hideShowColors()
+    } else if (selectSection == "tabSelectColor") {
+        userLoadImage()
+        suggestedColor = displayNameArray[getSelectedTab("tabSelectColor")]
+    }
+}
+function getSelectedTab(selectSection) {
+    var tabSelectButtons = document.getElementsByClassName(selectSection)
+    for (var i = 0; i < tabSelectButtons.length; i++) {
+        if (tabSelectButtons[i].className.includes("activeTab")) {
+            return tabSelectButtons[i].id
+        }
+    }
+}
+function tabSelectAddOption(tabSection, displayName, tabValue) {
+    document.getElementById(tabSection).innerHTML += "<div class='tabButton tabSelectButton " + tabSection + "' id='" + tabValue + "' onclick='tabSelect(event, `" + tabSection + "`)'>" + displayName + "</div>"
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /*To do list:
