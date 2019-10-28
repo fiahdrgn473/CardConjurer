@@ -39,7 +39,8 @@
 	--shifting-color-1: #00c300;
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
-    --clear-selected: #fff4;
+    --clear-tab: #fff2;
+    --clear-selected: #fff6;
 	--dark-color: #333;
     --clear-light: #0001;
     --clear-dark: #0003;
@@ -295,13 +296,15 @@ footer a:hover {
 }
 .tabButton {
     text-align: center;
-    background: var(--clear-light);
+    background: var(--clear-tab);
     border: 1px solid var(--light-color);
     font: 1.2em belerenbsc;
     padding: 0.1em 0em;
 }
 .tabButton.activeTab {
     background: var(--clear-selected);
+    text-decoration: underline;
+    text-decoration-color: var(--shifting-color-1-light)
 }
 .tabContent {
     display: none;
