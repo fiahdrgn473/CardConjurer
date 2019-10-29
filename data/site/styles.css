@@ -39,11 +39,10 @@
 	--shifting-color-1: #00c300;
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
-    --clear-tab: #fff2;
-    --clear-selected: #fff6;
 	--dark-color: #333;
-    --clear-light: #0001;
-    --clear-dark: #0003;
+    --clear-light: #fff2;
+    --clear-mid: #fff4;
+    --clear-dark: #fff6;
 }
 footer {
 	background-color: var(--dark-color);
@@ -196,7 +195,7 @@ footer a:hover {
 	color: black;
 	font-size: 2em;
 	text-align: center;
-    margin: 3em 0px;
+    margin-bottom: 3em;
 }
 .layer {       /*:nth-child(even)*/
 	background-color: var(--light-color);
@@ -286,7 +285,6 @@ footer a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(6.5em, 1fr));
     grid-auto-rows: min-content;
-    cursor: pointer;
 }
 .tab.tabSelect {
     grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
@@ -296,13 +294,16 @@ footer a:hover {
 }
 .tabButton {
     text-align: center;
-    background: var(--clear-tab);
+    background: var(--clear-light);
     border: 1px solid var(--light-color);
     font: 1.2em belerenbsc;
     padding: 0.1em 0em;
 }
+.tabButton:hover {
+    background-color: var(--clear-mid);
+}
 .tabButton.activeTab {
-    background: var(--clear-selected);
+    background: var(--clear-dark);
     text-decoration: underline;
     text-decoration-color: var(--shifting-color-1-light)
 }
@@ -318,15 +319,15 @@ footer a:hover {
     font: 1.5em belerenbsc;
 }
 .truncate {
-/*    width: 100%;*/
-/*    outline: 1px solid green;*/
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-indent: 0em;
 }
 
-
+.tab, button, select, option {
+    cursor: pointer;
+}
 
 
 
