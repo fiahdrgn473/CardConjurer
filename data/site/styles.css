@@ -298,9 +298,11 @@ footer a:hover {
     border: 1px solid var(--light-color);
     font: 1.2em belerenbsc;
     padding: 0.1em 0em;
+    transition: 0.33s;
 }
 .tabButton:hover {
     background-color: var(--clear-mid);
+    transition: 0s;
 }
 .tabButton.activeTab {
     background: var(--clear-dark);
