@@ -291,7 +291,7 @@ function singleTap(targetPlayerBox) {
 	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
         console.log(touchX[touchX.length - 1])
         console.log(playerBoxBounds.width / 2 + playerBoxBounds.x)
-		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
+		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.left) {
 			lifeAdjust = 1
 		} else {
 			lifeAdjust = -1
@@ -299,7 +299,7 @@ function singleTap(targetPlayerBox) {
 	} else {
         console.log(touchY[touchY.length - 1])
         console.log(playerBoxBounds.height / 2 + playerBoxBounds.y)
-		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
+		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.top) {
 			lifeAdjust = 1
 		} else {
 			lifeAdjust = -1
