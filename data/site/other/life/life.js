@@ -1,6 +1,7 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
+console.log("1.0")
 //define variables
 var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0, noSleep = new NoSleep(), canEnableNoSleep = false
 //Setup the enabler for no sleep
@@ -77,10 +78,15 @@ function startGame() {
 	if (playerCount == 2 || playerCount == 4) {
 		rowCount -= 1
 	}
+    console.log("Row count: " + rowCount)
 	if (isFullscreen) {
 		rowHeight = screen.height / rowCount - 2
+        console.log("Full screen, rowHeight: " + rowHeight)
+        console.log("screen.height: " + screen.height)
 	} else {
 		rowHeight = window.innerHeight / rowCount - 2
+        console.log("Not full screen, rowHeight: " + rowHeight)
+        console.log("window.innerHeight: " + window.innerHeight)
 	}
 	//Now that all the player boxes are made, they must be configured
 	for (var i = 1; i <= playerCount; i++) {
