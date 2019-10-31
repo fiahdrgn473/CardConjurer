@@ -289,14 +289,16 @@ function singleTap(targetPlayerBox) {
     console.log("Rotation: " + tappedPlayerBox.rotation)
     console.log("touchX: " + touchX[touchX.length - 1] + "\ntouchY: " + touchY[touchY.length - 1])
 	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
-        console.log("rotation was 0 or 180, right?")
+        console.log(touchX[touchX.length - 1])
+        console.log(playerBoxBounds.width / 2 + playerBoxBounds.x)
 		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
 			lifeAdjust = 1
 		} else {
 			lifeAdjust = -1
 		}
 	} else {
-        console.log("rotation was 90 or 270, right?")
+        console.log(touchY[touchY.length - 1])
+        console.log(playerBoxBounds.height / 2 + playerBoxBounds.y)
 		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
 			lifeAdjust = 1
 		} else {
