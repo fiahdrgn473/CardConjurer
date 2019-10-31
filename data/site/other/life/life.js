@@ -84,7 +84,12 @@ function startGame() {
         console.log("Full screen, rowHeight: " + rowHeight)
         console.log("screen.height: " + screen.height)
 	} else {
-		rowHeight = window.innerHeight / rowCount - 2
+        var heightToUse = window.innerHeight
+        if (document.documentElement.clientHeight > heightToUse) {
+            console.log("document.documentElement.clientHeight: " + document.documentElement.clientHeight)
+            heightToUse = document.documentElement.clientHeight
+        }
+		rowHeight = heightToUse / rowCount - 2
         console.log("Not full screen, rowHeight: " + rowHeight)
         console.log("window.innerHeight: " + window.innerHeight)
 	}
