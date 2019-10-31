@@ -1,7 +1,7 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
-console.log("1.0")
+console.log("1.1")
 //define variables
 var playerCount, startingLifeTotal, firstPlayerWide = false, lastPlayerWide = false, playerList = [], rowHeight = 0, columnWidth = 0, rowCount = 0, isFullscreen = true, mouseClickId = 0, noSleep = new NoSleep(), canEnableNoSleep = false
 //Setup the enabler for no sleep
