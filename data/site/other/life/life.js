@@ -280,16 +280,23 @@ function endTouch() {
 }
 //Tap (and click) functions
 function singleTap(targetPlayerBox) {
+    console.log("Box #" + targetPlayerBox.customVarID + " was pressed")
 	var playerBoxBounds = targetPlayerBox.getBoundingClientRect()
+    console.log("Bounds:")
+    console.log(playerBoxBounds)
 	var tappedPlayerBox = playerList[targetPlayerBox.customVarID - 1]
 	var lifeAdjust = 0
+    console.log("Rotation: " + tappedPlayerBox.rotation)
+    console.log("touchX: " + touchX[touchX.length - 1] + "\ntouchY: " + touchY[touchY.length - 1])
 	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
+        console.log("rotation was 0 or 180, right?")
 		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.x) {
 			lifeAdjust = 1
 		} else {
 			lifeAdjust = -1
 		}
 	} else {
+        console.log("rotation was 90 or 270, right?")
 		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.y) {
 			lifeAdjust = 1
 		} else {
@@ -299,6 +306,7 @@ function singleTap(targetPlayerBox) {
 	if (tappedPlayerBox.rotation == 180 || tappedPlayerBox.rotation == 270) {
 		lifeAdjust *= -1
 	}
+    console.log(lifeAdjust)
 	tappedPlayerBox.direction = lifeAdjust
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
