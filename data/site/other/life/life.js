@@ -280,25 +280,25 @@ function endTouch() {
 }
 //Tap (and click) functions
 function singleTap(targetPlayerBox) {
-    console.log("Box #" + targetPlayerBox.customVarID + " was pressed")
+//    console.log("Box #" + targetPlayerBox.customVarID + " was pressed")
 	var playerBoxBounds = targetPlayerBox.getBoundingClientRect()
-    console.log("Bounds:")
-    console.log(playerBoxBounds)
+//    console.log("Bounds:")
+//    console.log(playerBoxBounds)
 	var tappedPlayerBox = playerList[targetPlayerBox.customVarID - 1]
 	var lifeAdjust = 0
-    console.log("Rotation: " + tappedPlayerBox.rotation)
-    console.log("touchX: " + touchX[touchX.length - 1] + "\ntouchY: " + touchY[touchY.length - 1])
+//    console.log("Rotation: " + tappedPlayerBox.rotation)
+//    console.log("touchX: " + touchX[touchX.length - 1] + "\ntouchY: " + touchY[touchY.length - 1])
 	if (tappedPlayerBox.rotation == 0 || tappedPlayerBox.rotation == 180) {
-        console.log(touchX[touchX.length - 1])
-        console.log(playerBoxBounds.width / 2 + playerBoxBounds.left)
+//        console.log(touchX[touchX.length - 1])
+//        console.log(playerBoxBounds.width / 2 + playerBoxBounds.left)
 		if (touchX[touchX.length - 1] > playerBoxBounds.width / 2 + playerBoxBounds.left) {
 			lifeAdjust = 1
 		} else {
 			lifeAdjust = -1
 		}
 	} else {
-        console.log(touchY[touchY.length - 1])
-        console.log(playerBoxBounds.height / 2 + playerBoxBounds.top)
+//        console.log(touchY[touchY.length - 1])
+//        console.log(playerBoxBounds.height / 2 + playerBoxBounds.top)
 		if (touchY[touchY.length - 1] > playerBoxBounds.height / 2 + playerBoxBounds.top) {
 			lifeAdjust = 1
 		} else {
@@ -308,7 +308,7 @@ function singleTap(targetPlayerBox) {
 	if (tappedPlayerBox.rotation == 180 || tappedPlayerBox.rotation == 270) {
 		lifeAdjust *= -1
 	}
-    console.log(lifeAdjust)
+//    console.log(lifeAdjust)
 	tappedPlayerBox.direction = lifeAdjust
 	tappedPlayerBox.life += lifeAdjust
 	drawPlayerBox(tappedPlayerBox.id)
