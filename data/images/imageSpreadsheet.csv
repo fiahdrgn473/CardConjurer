@@ -48,3 +48,26 @@ m15,RL,Full,m15RLFull,Red Land,m15,0,0,1,1,TRUE
 m15,GL,Full,m15GLFull,Green Land,m15,0,0,1,1,TRUE
 m15,ML,Full,m15MLFull,Multicolored Land,m15,0,0,1,1,TRUE
 m15,CL,Full,m15CLFull,Colorless Land,m15,0,0,1,1,TRUE
+m15,W,Miracle,m15WMiracle,White,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,U,Miracle,m15UMiracle,Blue,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,B,Miracle,m15BMiracle,Black,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,R,Miracle,m15RMiracle,Red,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,G,Miracle,m15GMiracle,Green,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,M,Miracle,m15MMiracle,Multicolored,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,C,Miracle,m15CMiracle,Colorless,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,A,Miracle,m15AMiracle,Artifact,m15,0.04,0.0286,0.9187,0.4867,TRUE
+m15,W,Nyx,m15WNyx,White,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,U,Nyx,m15UNyx,Blue,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,B,Nyx,m15BNyx,Black,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,R,Nyx,m15RNyx,Red,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,G,Nyx,m15GNyx,Green,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,M,Nyx,m15MNyx,Multicolored,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,A,Nyx,m15ANyx,Artifact,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,C,Nyx,m15CNyx,Colorless,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,WL,Nyx,m15WLNyx,White Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,UL,Nyx,m15ULNyx,Blue Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,BL,Nyx,m15BLNyx,Black Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,RL,Nyx,m15RLNyx,Red Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,GL,Nyx,m15GLNyx,Green Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,ML,Nyx,m15MLNyx,Multicolored Land,m15,0.04,0.0286,0.92,0.5581,TRUE
+m15,CL,Nyx,m15CLNyx,Colorless Land,m15,0.04,0.0286,0.92,0.5581,TRUE

@@ -2,9 +2,8 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 version.currentVersion = "m15"
-version.typeOrder = ["Full", "FullSecondary", "Frame", "FrameSecondary", "Pinline", "PinlineSecondary", "Legendary", "LegendarySecondary", "Title", "TitleSecondary", "Type", "TypeSecondary", "Rules", "RulesSecondary", "PT", "RareStamp", "RareStampSecondary"]
-//version.typeOrder = ["Full", "Frame", "Pinline", "Legendary", "Title", "Type", "Rules", "PT", "RareStamp", "RareStampSecondary"]
-version.typeNotFull = ["Legendary", "LegendarySecondary", "PT", "RareStamp", "RareStampSecondary"]
+version.typeOrder = ["Full", "FullSecondary", "Frame", "FrameSecondary", "Nyx", "NyxSecondary", "Pinline", "PinlineSecondary", "Legendary", "LegendarySecondary", "Title", "TitleSecondary", "Miracle", "MiracleSecondary", "Type", "TypeSecondary", "Rules", "RulesSecondary", "PT", "RareStamp", "RareStampSecondary"]
+version.typeNotFull = ["Legendary", "LegendarySecondary", "PT", "RareStamp", "RareStampSecondary", "Nyx", "NyxSecondary", "Miracle", "MiracleSecondary"]
 version.artX = cwidth(58)
 version.artY = cheight(118)
 version.setSymbolRight = cwidth(693)
