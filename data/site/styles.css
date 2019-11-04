@@ -326,11 +326,60 @@ footer a:hover {
     text-overflow: ellipsis;
     text-indent: 0em;
 }
-
 .tab, button, select, option {
     cursor: pointer;
 }
-
+/*Custom Checkboxes*/
+.realCheckboxContainer {
+    margin-top: 0.45em
+}
+.checkboxContainer {
+    position: relative;
+    padding-left: 1.5em;
+    padding-top: 0.25em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.2em;
+    width: 1.2em;
+    transition: 0.33s;
+    background-color: var(--clear-light);
+    border: 1px solid var(--light-color)
+}
+.checkboxContainer:hover input ~ .checkmark {
+    background-color: var(--clear-dark);
+}
+.checkboxContainer input:checked ~ .checkmark {
+    background-color: var(--dark-color);
+}
+.checkmark:after {
+    content: "X";
+    font: 1.2em gothammedium;
+    color: white;
+    position: absolute;
+    opacity: 0;
+    transition: 0.33s;
+}
+.checkboxContainer input:checked ~ .checkmark:after {
+    opacity: 1;
+}
+.checkboxContainer .checkmark:after {
+    left: 0.15em;
+    top: 0.08em;
+}
 
 
 

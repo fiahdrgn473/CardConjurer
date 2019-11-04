@@ -114,6 +114,9 @@ function addToCardMaster(index, target) {
 		document.getElementById("imgPreview").src = window[nameArray[index]].image.src
 		return
 	}
+    if (document.getElementById("checkboxSecondary").checked) {
+        target += "Secondary"
+    }
 	if ((target == typeArray[index]) || (secondaryArray[index] && target.replace("Secondary", "")) == typeArray[index] || (typeArray[index] == "Full")) {
 		if (cardMasterTypes.includes(target)) {
 			cardMasterImages[cardMasterTypes.indexOf(target)] = window[nameArray[index]]
@@ -175,7 +178,6 @@ var currentlyWritingText = false
 //Rewrites all the text!
 function updateText() {
     if (!currentlyWritingText) {
-        console.log(currentlyWritingText)
         currentlyWritingText = true
         setTimeout(updateTextInnerShell, 100)
     }
@@ -289,9 +291,13 @@ function userEnterImage() {
 }
 //Removes an image from user input
 function userRemoveImage() {
-	if (cardMasterTypes.includes(getSelectedTab("frameType")) && getSelectedTab("frameType") != "Full") {
-		cardMasterImages.splice(cardMasterTypes.indexOf(getSelectedTab("frameType")), 1)
-		cardMasterTypes.splice(cardMasterTypes.indexOf(getSelectedTab("frameType")), 1)
+    var targetToRemove = getSelectedTab("frameType")
+    if (document.getElementById("checkboxSecondary").checked) {
+        targetToRemove += "Secondary"
+    }
+	if (cardMasterTypes.includes(targetToRemove) && targetToRemove != "Full") {
+		cardMasterImages.splice(cardMasterTypes.indexOf(targetToRemove), 1)
+		cardMasterTypes.splice(cardMasterTypes.indexOf(targetToRemove), 1)
 		cardMasterUpdated()
 	}
 }
@@ -323,12 +329,14 @@ function finishChangingVersion() {
     document.getElementById("frameType").innerHTML = ""
 	document.getElementById("inputImageTypeOpacity").innerHTML = ""
 	for (var i = 0; i < version.typeOrder.length; i ++) {
-        tabSelectAddOption("frameType", version.typeOrder[i].replace("Secondary", " (right)"), version.typeOrder[i])
-		if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
-			document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
-			cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
-			cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
-		}
+        if (!version.typeOrder[i].includes("Secondary")) {
+            tabSelectAddOption("frameType", version.typeOrder[i], version.typeOrder[i])
+            if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
+                document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
+                cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
+                cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
+            }
+        }
 	}
     document.getElementsByClassName("frameType")[0].className += " activeTab"
 	for (var i = 0; i < version.textList.length; i ++) {
