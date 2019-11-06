@@ -204,6 +204,7 @@ footer a:hover {
 	background-repeat: no-repeat;
 }
 .title {
+	text-align: center;
 	font: 1.5em belerenbsc;
 }
 .pageTitle {
@@ -378,8 +379,19 @@ footer a:hover {
 }
 .checkboxContainer .checkmark:after {
     left: 0.15em;
-    top: 0.08em;
+    top: -0.1em;
 }
-
+#textCodeTutorial {
+	display: grid;
+	grid-template-columns: 6.5em auto;
+	/*padding: 0.5em;*/
+}
+#textCodeTutorial > div {
+	padding: 0.25em 0;
+	background-color: var(--clear-mid);
+}
+#textCodeTutorial > div:nth-child(4n), #textCodeTutorial > div:nth-child(4n - 1) {
+	background-color: var(--clear-light);
+}
 
 

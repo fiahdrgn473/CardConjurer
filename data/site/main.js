@@ -88,6 +88,7 @@ function init() {
 	setTimeout(testFunction, 100)
 	checkCookies()
     initiated = true
+    textCodeTutorial()
 }
 //Loads an image. Only actually loads images the first time each image is loaded, otherwise assigns it.
 function loadImage(index, target = "none") {
@@ -807,11 +808,31 @@ function tabSelectAddOption(tabSection, displayName, tabValue) {
 
 
 
+function textCodeTutorial() {
+	var textCodeTutorialString = `line-skips to the next line
+	_linenospace-skips to the next line, but doesn't add spacing
+	_bar-skips to the next line, and adds the flavor text bar
+	_flavor-skips to the next line, adds the flavor text bar, and italicizes the following text
+	_i-italicizes the following text
+	_/i-removes italics from the following text
+	_fontsize#-changes the font size to # pixels
+	_left-justifies text to the left
+	_center-justifies text to the center
+	_right-justifies text to the right
+	_up#-moves the following text # pixels up
+	_down#-moves the following text # pixels down
+	_left#-moves the following text # pixels left
+	_right#-moves the following text # pixels right
+	_SYMBOL-creates a mana symbol, where SYMBOL can be: w, u, b, r, g, 1, 2, 3, etc...`
+	var textCodeTutorialArray = textCodeTutorialString.split("_")
+	for (var i = 0; i < textCodeTutorialArray.length; i ++) {
+		document.getElementById("textCodeTutorial").innerHTML += "<div><b>{" + textCodeTutorialArray[i].split("-")[0] + "}</b></div><div>" + textCodeTutorialArray[i].split("-")[1] + "</div>"
+	}
+}
 
 
 
-
-
+textCodeTutorial()
 
 
 /*To do list:
