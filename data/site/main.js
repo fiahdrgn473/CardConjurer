@@ -369,7 +369,7 @@ function hideShowColors(enter = false) {
             }
 		}
 	}
-    if (!activeTab) {
+    if (!activeTab && document.getElementsByClassName("tabSelectColor")[0].className != undefined) {
         document.getElementsByClassName("tabSelectColor")[0].className += " activeTab"
     }
 	if (enter) {
