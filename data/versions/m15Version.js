@@ -28,7 +28,8 @@ version.textList = [
 	["Title", "", cwidth(62), cheight(87), cwidth(630), 0, "belerenb", 40, "black", "oneLine=true"],
 	["Type", "", cwidth(60), cheight(624), cwidth(630), 0, "belerenb", 34, "black", "oneLine=true"],
 	["Rules Text", "", cwidth(63), cheight(670), cwidth(624), cheight(292), "mplantin", 38, "black", "lineSpace=0.97"],
-	["Power Toughness", "", cwidth(590), cheight(970), cwidth(110), 0, "belerenb", 39, "black", "oneLine=true,textAlign='center'"]
+	["Power Toughness", "", cwidth(590), cheight(970), cwidth(110), 0, "belerenb", 39, "black", "oneLine=true,textAlign='center'"],
+	["Flip PT", "", cwidth(588), cheight(902), cwidth(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]
 ]
 finishChangingVersion()
 
