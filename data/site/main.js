@@ -51,6 +51,7 @@ loadImageSpreadsheet()
 //============================================//
 //                 Functions                  //
 //============================================//
+var nameArray = []
 //Load the CSV full of image data
 function loadImageSpreadsheet() {
 	var xhttp = new XMLHttpRequest()
@@ -65,8 +66,11 @@ function loadImageSpreadsheet() {
 						window[rawText[0].split(",")[n].trim() + "Array"][i - 1] = rawText[i].split(",")[n].trim()
 					}
 				}
+                if (i != 0) {
+                    nameArray[i - 1] = versionArray[i - 1] + colorArray[i - 1] + typeArray[i - 1]
+                }
 				if (i == rawText.length - 1) {
-					init()
+                    init()
 				}
 			}
 		}
@@ -142,7 +146,7 @@ CanvasRenderingContext2D.prototype.mask = function(cardMasterIndex) {
 	maskContext.clearRect(0, 0, cardWidth, cardHeight)
 	maskContext.globalCompositeOperation = "source-over"
 	if (cardMasterTypes[cardMasterIndex].includes("Secondary")) {
-		maskContext.drawImage(window[nameArray[nameArray.indexOf("secondary")]].image, 0, 0, cardWidth, cardHeight)
+		maskContext.drawImage(window[nameArray[nameArray.indexOf("noneMaskSecondary")]].image, 0, 0, cardWidth, cardHeight)
 		maskContext.globalCompositeOperation = "source-in"
 	}
 	var maskToUse = window[versionArray[cardMasterImages[cardMasterIndex].index] + "Mask" + cardMasterTypes[cardMasterIndex].replace("Secondary", "")]
@@ -151,10 +155,10 @@ CanvasRenderingContext2D.prototype.mask = function(cardMasterIndex) {
 		maskContext.globalCompositeOperation = "source-in"
 	}
 	var mainImageIndex = cardMasterImages[cardMasterIndex].index
-	maskContext.drawImage(cardMasterImages[cardMasterIndex].image, xArray[mainImageIndex] * cardWidth, yArray[mainImageIndex] * cardHeight, widthArray[mainImageIndex] * cardWidth, heightArray[mainImageIndex] * cardHeight)
+    maskContext.drawImage(cardMasterImages[cardMasterIndex].image, xArray[mainImageIndex] * cardWidth, yArray[mainImageIndex] * cardHeight, widthArray[mainImageIndex] * cardWidth, heightArray[mainImageIndex] * cardHeight)
 	this.drawImage(maskCanvas, 0, 0, cardWidth, cardHeight)
 	if (cardMasterTypes[cardMasterIndex].includes("RareStamp")) {
-		this.drawImage(window[nameArray[nameArray.indexOf("stamp")]].image, version.rareStampX, version.rareStampY, version.rareStampWidth, version.rareStampHeight)
+		this.drawImage(window[nameArray[nameArray.indexOf("noneMaskStamp")]].image, version.rareStampX, version.rareStampY, version.rareStampWidth, version.rareStampHeight)
 	}
 	updateImageCanvas()
 }
@@ -237,7 +241,7 @@ function updateWatermarkCanvas() {
 		if (document.getElementById("inputWatermarkSecondary").value != "none") {
 			watermarkContext.globalCompositeOperation = "source-atop"
 			tempContext.clearRect(0, 0, cardWidth, cardHeight)
-			tempContext.drawImage(window[nameArray[nameArray.indexOf("secondary")]].image, 0, 0, cardWidth, cardHeight)
+			tempContext.drawImage(window[nameArray[nameArray.indexOf("noneMaskSecondary")]].image, 0, 0, cardWidth, cardHeight)
 			tempContext.globalCompositeOperation = "source-in"
 			if (document.getElementById("inputWatermarkSecondary").value == "default") {
 				tempContext.drawImage(watermark, watermarkX, watermarkY, watermarkWidth, watermarkHeight)
@@ -275,7 +279,7 @@ function updateCardCanvas() {
 	cardContext.drawImage(setSymbolCanvas, 0, 0, cardWidth, cardHeight)
 	//clear the corners
 	cardContext.globalCompositeOperation = "destination-out"
-	cardContext.drawImage(window[nameArray[nameArray.indexOf("corners")]].image, 0, 0, cardWidth, cardHeight)
+	cardContext.drawImage(window[nameArray[nameArray.indexOf("noneMaskCorners")]].image, 0, 0, cardWidth, cardHeight)
 	cardContext.globalCompositeOperation = "source-over"
 	//paste it to the visible canvas
 	mainContext.clearRect(0, 0, cardWidth, cardHeight)
@@ -357,7 +361,7 @@ function hideShowColors(enter = false) {
 	document.getElementById("tabSelectColor").innerHTML = ""
     var activeTab = false
 	for (var i = 0; i < versionArray.length; i ++) {
-		if (versionArray[i] == version.currentVersion && (typeArray[i] == getSelectedTab("frameType").replace("Secondary", "") || (typeArray[i] == "Full" && version.typeNotFull.includes(getSelectedTab("frameType")) == false)) && colorArray[i] != "Mask") {
+		if (versionArray[i] == version.currentVersion && (typeArray[i] == getSelectedTab("frameType").replace("Secondary", "") || (typeArray[i] == "Full" && version.typeNotFull.includes(getSelectedTab("frameType")) == false)) && colorArray[i] != "Mask" && (document.getElementById("checkboxAdvanced").checked || advancedArray[i] == "FALSE")) {
 			tabSelectAddOption("tabSelectColor", displayNameArray[i], i)
             if (displayNameArray[i] == suggestedColor) {
                 document.getElementsByClassName("tabSelectColor")[document.getElementsByClassName("tabSelectColor").length - 1].className += " activeTab"
@@ -743,6 +747,10 @@ function checkCookies() {
 		toggleTooltips(false)
 		document.getElementById("tooltipToggler").checked = false
 	}
+    if (getCookie("advancedBorders") == "true") {
+        document.getElementById("tooltipToggler").checked = true
+        hideShowColors()
+    }
 }
 
 
@@ -831,6 +839,11 @@ function textCodeTutorial() {
 	for (var i = 0; i < textCodeTutorialArray.length; i ++) {
 		document.getElementById("textCodeTutorial").innerHTML += "<div class='selectable'><b>{" + textCodeTutorialArray[i].split("-")[0] + "}</b></div><div>" + textCodeTutorialArray[i].split("-")[1] + "</div>"
 	}
+}
+
+function advancedBordersClicked() {
+    hideShowColors()
+    setCookie("advancedBorders", document.getElementById("checkboxAdvanced").checked + "")
 }
 
 

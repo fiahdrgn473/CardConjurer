@@ -1,135 +1,135 @@
-version,color,type,name,displayName,maskVersion,x,y,width,height,secondary
-m15,W,Full,m15WFull,White,m15,0,0,1,1,TRUE
-m15,U,Full,m15UFull,Blue,m15,0,0,1,1,TRUE
-m15,B,Full,m15BFull,Black,m15,0,0,1,1,TRUE
-m15,R,Full,m15RFull,Red,m15,0,0,1,1,TRUE
-m15,G,Full,m15GFull,Green,m15,0,0,1,1,TRUE
-m15,M,Full,m15MFull,Multicolored,m15,0,0,1,1,TRUE
-m15,A,Full,m15AFull,Artifact,m15,0,0,1,1,TRUE
-m15,C,Full,m15CFull,Colorless,m15,0,0,1,1,TRUE
-m15,Mask,Frame,m15MaskFrame,,m15,0,0,1,1,TRUE
-m15,Mask,Pinline,m15MaskPinline,,m15,0,0,1,1,TRUE
-m15,Mask,Title,m15MaskTitle,,m15,0,0,1,1,TRUE
-m15,Mask,Type,m15MaskType,,m15,0,0,1,1,TRUE
-m15,Mask,Rules,m15MaskRules,,m15,0,0,1,1,TRUE
-none,Mask,Secondary,secondary,,none,0,0,1,1,TRUE
-m15,W,PT,m15WPT,White,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,U,PT,m15UPT,Blue,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,B,PT,m15BPT,Black,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,R,PT,m15RPT,Red,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,G,PT,m15GPT,Green,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,M,PT,m15MPT,Multicolored,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,A,PT,m15APT,Artifact,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,C,PT,m15CPT,Colorless,m15,0.7613,0.8898,0.183,0.0734,FALSE
-none,Mask,Corners,corners,,none,0.0267,0.0191,0.952,0.1771,FALSE
-m15,W,Legendary,m15WLegendary,White,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,U,Legendary,m15ULegendary,Blue,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,B,Legendary,m15BLegendary,Black,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,R,Legendary,m15RLegendary,Red,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,G,Legendary,m15GLegendary,Green,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,M,Legendary,m15MLegendary,Multicolored,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,A,Legendary,m15ALegendary,Artifact,m15,0.0267,0.0191,0.952,0.1771,TRUE
-m15,C,Legendary,m15CLegendary,Colorless,m15,0.0267,0.0191,0.952,0.1771,TRUE
-none,Mask,Stamp,stamp,,none,0.4387,0.9039,0.12,0.0477,FALSE
-m15,W,RareStamp,m15WRareStamp,White,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,U,RareStamp,m15URareStamp,Blue,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,B,RareStamp,m15BRareStamp,Black,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,R,RareStamp,m15RRareStamp,Red,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,G,RareStamp,m15GRareStamp,Green,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,M,RareStamp,m15MRareStamp,Multicolored,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,A,RareStamp,m15ARareStamp,Artifact,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,C,RareStamp,m15CRareStamp,Colorless,m15,0.4387,0.9039,0.12,0.0477,TRUE
-m15,V,PT,m15VPT,Vehicle,m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,V,Full,m15VFull,Vehicle,m15,0,0,1,1,TRUE
-m15,WL,Full,m15WLFull,White Land,m15,0,0,1,1,TRUE
-m15,UL,Full,m15ULFull,Blue Land,m15,0,0,1,1,TRUE
-m15,BL,Full,m15BLFull,Black Land,m15,0,0,1,1,TRUE
-m15,RL,Full,m15RLFull,Red Land,m15,0,0,1,1,TRUE
-m15,GL,Full,m15GLFull,Green Land,m15,0,0,1,1,TRUE
-m15,ML,Full,m15MLFull,Multicolored Land,m15,0,0,1,1,TRUE
-m15,CL,Full,m15CLFull,Colorless Land,m15,0,0,1,1,TRUE
-m15,W,Miracle,m15WMiracle,White,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,U,Miracle,m15UMiracle,Blue,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,B,Miracle,m15BMiracle,Black,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,R,Miracle,m15RMiracle,Red,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,G,Miracle,m15GMiracle,Green,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,M,Miracle,m15MMiracle,Multicolored,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,C,Miracle,m15CMiracle,Colorless,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,A,Miracle,m15AMiracle,Artifact,m15,0.04,0.0286,0.9187,0.4867,TRUE
-m15,W,Nyx,m15WNyx,White,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,U,Nyx,m15UNyx,Blue,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,B,Nyx,m15BNyx,Black,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,R,Nyx,m15RNyx,Red,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,G,Nyx,m15GNyx,Green,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,M,Nyx,m15MNyx,Multicolored,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,A,Nyx,m15ANyx,Artifact,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,C,Nyx,m15CNyx,Colorless,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,WL,Nyx,m15WLNyx,White Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,UL,Nyx,m15ULNyx,Blue Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,BL,Nyx,m15BLNyx,Black Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,RL,Nyx,m15RLNyx,Red Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,GL,Nyx,m15GLNyx,Green Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,ML,Nyx,m15MLNyx,Multicolored Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,CL,Nyx,m15CLNyx,Colorless Land,m15,0.04,0.0286,0.92,0.5581,TRUE
-m15,WD,Full,m15WDFull,White (Dark),m15,0,0,1,1,TRUE
-m15,UD,Full,m15UDFull,Blue (Dark),m15,0,0,1,1,TRUE
-m15,BD,Full,m15BDFull,Black (Dark),m15,0,0,1,1,TRUE
-m15,RD,Full,m15RDFull,Red (Dark),m15,0,0,1,1,TRUE
-m15,GD,Full,m15GDFull,Green (Dark),m15,0,0,1,1,TRUE
-m15,MD,Full,m15MDFull,Multicolored (Dark),m15,0,0,1,1,TRUE
-m15,AD,Full,m15ADFull,Artifact (Dark),m15,0,0,1,1,TRUE
-m15,CD,Full,m15CDFull,Colorless (Dark),m15,0,0,1,1,TRUE
-m15,WLD,Full,m15WLDFull,White Land (Dark),m15,0,0,1,1,TRUE
-m15,ULD,Full,m15ULDFull,Blue Land (Dark),m15,0,0,1,1,TRUE
-m15,BLD,Full,m15BLDFull,Black Land (Dark),m15,0,0,1,1,TRUE
-m15,RLD,Full,m15RLDFull,Red Land (Dark),m15,0,0,1,1,TRUE
-m15,GLD,Full,m15GLDFull,Green Land (Dark),m15,0,0,1,1,TRUE
-m15,MLD,Full,m15MLDFull,Multicolored Land (Dark),m15,0,0,1,1,TRUE
-m15,CLD,Full,m15CLDFull,Colorless Land (Dark),m15,0,0,1,1,TRUE
-m15,WD,PT,m15WDPT,White (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,UD,PT,m15UDPT,Blue (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,BD,PT,m15BDPT,Black (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,RD,PT,m15RDPT,Red (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,GD,PT,m15GDPT,Green (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,MD,PT,m15MDPT,Multicolored (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,AD,PT,m15ADPT,Artifact (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,CD,PT,m15CDPT,Colorless (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE
-m15,W,FlipPT,m15WFlipPT,White,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,U,FlipPT,m15UFlipPT,Blue,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,B,FlipPT,m15BFlipPT,Black,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,R,FlipPT,m15RFlipPT,Red,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,G,FlipPT,m15GFlipPT,Green,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,M,FlipPT,m15MFlipPT,Multicolored,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,A,FlipPT,m15AFlipPT,Artifact,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,C,FlipPT,m15CFlipPT,Colorless,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,WL,FlipPT,m15WLFlipPT,White Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,UL,FlipPT,m15ULFlipPT,Blue Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,BL,FlipPT,m15BLFlipPT,Black Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,RL,FlipPT,m15RLFlipPT,Red Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,GL,FlipPT,m15GLFlipPT,Green Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,ML,FlipPT,m15MLFlipPT,Multicolorled Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,CL,FlipPT,m15CLFlipPT,Colorless Land,m15,0.914,0.8352,0.048,0.0457,FALSE
-m15,W,FlipCircle,m15WFlipCircle,White,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,U,FlipCircle,m15UFlipCircle,Blue,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,B,FlipCircle,m15BFlipCircle,Black,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,R,FlipCircle,m15RFlipCircle,Red,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,G,FlipCircle,m15GFlipCircle,Green,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,M,FlipCircle,m15MFlipCircle,Multicolored,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,A,FlipCircle,m15AFlipCircle,Artifact,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,C,FlipCircle,m15CFlipCircle,Colorless,m15,0.0347,0.044,0.104,0.0676,FALSE
-m15,Icon,FlipIcon,m15ArtifactIcon,Artifact,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15BlankIcon,Blank,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15CompassIcon,Compass,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15CreatureIcon,Creature,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15DayIcon,Day,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15EldraziIcon,Eldrazi,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15EnchantmentIcon,Enchantment,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15InstantIcon,Instant,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15LandIcon,Land,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15MoonIcon,Moon,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15MultitypeIcon,Multitype,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15NightIcon,Night,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15PlaneshiftIcon,Planeshift,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15PlaneswalkerIcon,Planeswalker,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15SorceryIcon,Sorcery,m15,0.052,0.0486,0.08,0.0571,FALSE
-m15,Icon,FlipIcon,m15StructureIcon,Structure,m15,0.052,0.0486,0.08,0.0571,FALSE
+version,color,type,displayName,maskVersion,x,y,width,height,secondary,advanced
+m15,W,Full,White,m15,0,0,1,1,TRUE,FALSE
+m15,U,Full,Blue,m15,0,0,1,1,TRUE,FALSE
+m15,B,Full,Black,m15,0,0,1,1,TRUE,FALSE
+m15,R,Full,Red,m15,0,0,1,1,TRUE,FALSE
+m15,G,Full,Green,m15,0,0,1,1,TRUE,FALSE
+m15,M,Full,Multicolored,m15,0,0,1,1,TRUE,FALSE
+m15,A,Full,Artifact,m15,0,0,1,1,TRUE,FALSE
+m15,C,Full,Colorless,m15,0,0,1,1,TRUE,FALSE
+m15,Mask,Frame,,m15,0,0,1,1,TRUE,FALSE
+m15,Mask,Pinline,,m15,0,0,1,1,TRUE,FALSE
+m15,Mask,Title,,m15,0,0,1,1,TRUE,FALSE
+m15,Mask,Type,,m15,0,0,1,1,TRUE,FALSE
+m15,Mask,Rules,,m15,0,0,1,1,TRUE,FALSE
+none,Mask,Secondary,,none,0,0,1,1,TRUE,FALSE
+m15,W,PT,White,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,U,PT,Blue,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,B,PT,Black,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,R,PT,Red,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,G,PT,Green,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,M,PT,Multicolored,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,A,PT,Artifact,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,C,PT,Colorless,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+none,Mask,Corners,,none,0.0267,0.0191,0.952,0.1771,FALSE,FALSE
+m15,W,Legendary,White,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,U,Legendary,Blue,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,B,Legendary,Black,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,R,Legendary,Red,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,G,Legendary,Green,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,M,Legendary,Multicolored,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,A,Legendary,Artifact,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+m15,C,Legendary,Colorless,m15,0.0267,0.0191,0.952,0.1771,TRUE,FALSE
+none,Mask,Stamp,,none,0.4387,0.9039,0.12,0.0477,FALSE,FALSE
+m15,W,RareStamp,White,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,U,RareStamp,Blue,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,B,RareStamp,Black,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,R,RareStamp,Red,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,G,RareStamp,Green,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,M,RareStamp,Multicolored,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,A,RareStamp,Artifact,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,C,RareStamp,Colorless,m15,0.4387,0.9039,0.12,0.0477,TRUE,FALSE
+m15,V,PT,Vehicle,m15,0.7613,0.8898,0.183,0.0734,FALSE,FALSE
+m15,V,Full,Vehicle,m15,0,0,1,1,TRUE,FALSE
+m15,WL,Full,White Land,m15,0,0,1,1,TRUE,FALSE
+m15,UL,Full,Blue Land,m15,0,0,1,1,TRUE,FALSE
+m15,BL,Full,Black Land,m15,0,0,1,1,TRUE,FALSE
+m15,RL,Full,Red Land,m15,0,0,1,1,TRUE,FALSE
+m15,GL,Full,Green Land,m15,0,0,1,1,TRUE,FALSE
+m15,ML,Full,Multicolored Land,m15,0,0,1,1,TRUE,FALSE
+m15,CL,Full,Colorless Land,m15,0,0,1,1,TRUE,FALSE
+m15,W,Miracle,White,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,U,Miracle,Blue,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,B,Miracle,Black,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,R,Miracle,Red,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,G,Miracle,Green,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,M,Miracle,Multicolored,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,C,Miracle,Colorless,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,A,Miracle,Artifact,m15,0.04,0.0286,0.9187,0.4867,TRUE,TRUE
+m15,W,Nyx,White,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,U,Nyx,Blue,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,B,Nyx,Black,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,R,Nyx,Red,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,G,Nyx,Green,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,M,Nyx,Multicolored,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,A,Nyx,Artifact,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,C,Nyx,Colorless,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,WL,Nyx,White Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,UL,Nyx,Blue Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,BL,Nyx,Black Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,RL,Nyx,Red Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,GL,Nyx,Green Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,ML,Nyx,Multicolored Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,CL,Nyx,Colorless Land,m15,0.04,0.0286,0.92,0.5581,TRUE,TRUE
+m15,WD,Full,White (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,UD,Full,Blue (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,BD,Full,Black (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,RD,Full,Red (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,GD,Full,Green (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,MD,Full,Multicolored (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,AD,Full,Artifact (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,CD,Full,Colorless (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,WLD,Full,White Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,ULD,Full,Blue Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,BLD,Full,Black Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,RLD,Full,Red Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,GLD,Full,Green Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,MLD,Full,Multicolored Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,CLD,Full,Colorless Land (Dark),m15,0,0,1,1,TRUE,TRUE
+m15,WD,PT,White (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,UD,PT,Blue (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,BD,PT,Black (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,RD,PT,Red (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,GD,PT,Green (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,MD,PT,Multicolored (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,AD,PT,Artifact (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,CD,PT,Colorless (Dark),m15,0.7613,0.8898,0.183,0.0734,FALSE,TRUE
+m15,W,FlipPT,White,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,U,FlipPT,Blue,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,B,FlipPT,Black,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,R,FlipPT,Red,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,G,FlipPT,Green,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,M,FlipPT,Multicolored,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,A,FlipPT,Artifact,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,C,FlipPT,Colorless,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,WL,FlipPT,White Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,UL,FlipPT,Blue Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,BL,FlipPT,Black Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,RL,FlipPT,Red Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,GL,FlipPT,Green Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,ML,FlipPT,Multicolorled Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,CL,FlipPT,Colorless Land,m15,0.914,0.8352,0.048,0.0457,FALSE,TRUE
+m15,W,FlipCircle,White,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,U,FlipCircle,Blue,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,B,FlipCircle,Black,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,R,FlipCircle,Red,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,G,FlipCircle,Green,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,M,FlipCircle,Multicolored,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,A,FlipCircle,Artifact,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,C,FlipCircle,Colorless,m15,0.0347,0.044,0.104,0.0676,FALSE,TRUE
+m15,Artifact,FlipIcon,Artifact,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Blank,FlipIcon,Blank,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Compass,FlipIcon,Compass,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Creature,FlipIcon,Creature,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Day,FlipIcon,Day,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Eldrazi,FlipIcon,Eldrazi,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Enchantment,FlipIcon,Enchantment,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Instant,FlipIcon,Instant,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Land,FlipIcon,Land,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Moon,FlipIcon,Moon,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Multitype,FlipIcon,Multitype,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Night,FlipIcon,Night,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Planeshift,FlipIcon,Planeshift,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Planeswalker,FlipIcon,Planeswalker,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Sorcery,FlipIcon,Sorcery,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Structure,FlipIcon,Structure,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
