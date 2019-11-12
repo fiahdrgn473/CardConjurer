@@ -66,6 +66,9 @@ html {
 	user-select: none;
 	font-size: 8pt;
 }
+.selectable {
+	user-select: all;
+}
 canvas {
 	width: calc(100%);
 	height: auto;

@@ -447,7 +447,11 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 					var artistBrushWidth = textSize * 1.2
 					lineContext.drawImage(manaSymbolImageList[62], currentLineX, currentLineY - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
 					currentLineX += artistBrushWidth * 1.1
-				} else if (possibleCodeLower.includes("font")) {
+				} else if (possibleCodeLower.includes("fontcolor")) {
+					console.log(possibleCodeLower.slice(9, possibleCodeLower.length))
+					lineContext.fillStyle = possibleCodeLower.slice(9, possibleCodeLower.length)
+					console.log(lineContext.fillStyle)
+				}else if (possibleCodeLower.includes("font")) {
 					textFont = possibleCodeLower.slice(5, possibleCodeLower.length)
 					lineContext.font = textSize + "px " + textFont
 				} else if (manaSymbolCodeList.includes(possibleCodeLower)) {
@@ -468,7 +472,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 				}
 				if (currentLineX + currentWordWidth > textWidth || finishLine) {
 					//Finish the line
-					if (oneLine && i != splitString.length - 1) {
+					if (oneLine && i != splitString.length - 1 && inputTextSize > 1) {
 						lineContext.clearRect(0, 0, cardWidth, cardHeight)
 						this.writeText(text, textX, textY, textWidth, textHeight, textFont, inputTextSize - 1, textColor, other)
 						return
@@ -816,6 +820,7 @@ function textCodeTutorial() {
 	_i-italicizes the following text
 	_/i-removes italics from the following text
 	_fontsize#-changes the font size to # pixels
+	_fontcolor#-changes the color to #. Can use color names, or hex codes
 	_left-justifies text to the left
 	_center-justifies text to the center
 	_right-justifies text to the right
@@ -826,7 +831,7 @@ function textCodeTutorial() {
 	_SYMBOL-creates a mana symbol, where SYMBOL can be: w, u, b, r, g, 1, 2, 3, etc...`
 	var textCodeTutorialArray = textCodeTutorialString.split("_")
 	for (var i = 0; i < textCodeTutorialArray.length; i ++) {
-		document.getElementById("textCodeTutorial").innerHTML += "<div><b>{" + textCodeTutorialArray[i].split("-")[0] + "}</b></div><div>" + textCodeTutorialArray[i].split("-")[1] + "</div>"
+		document.getElementById("textCodeTutorial").innerHTML += "<div class='selectable'><b>{" + textCodeTutorialArray[i].split("-")[0] + "}</b></div><div>" + textCodeTutorialArray[i].split("-")[1] + "</div>"
 	}
 }
 
