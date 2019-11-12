@@ -448,9 +448,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 					lineContext.drawImage(manaSymbolImageList[62], currentLineX, currentLineY - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
 					currentLineX += artistBrushWidth * 1.1
 				} else if (possibleCodeLower.includes("fontcolor")) {
-					console.log(possibleCodeLower.slice(9, possibleCodeLower.length))
 					lineContext.fillStyle = possibleCodeLower.slice(9, possibleCodeLower.length)
-					console.log(lineContext.fillStyle)
 				}else if (possibleCodeLower.includes("font")) {
 					textFont = possibleCodeLower.slice(5, possibleCodeLower.length)
 					lineContext.font = textSize + "px " + textFont
