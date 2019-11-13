@@ -133,3 +133,5 @@ m15,Planeshift,FlipIcon,Planeshift,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
 m15,Planeswalker,FlipIcon,Planeswalker,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
 m15,Sorcery,FlipIcon,Sorcery,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
 m15,Structure,FlipIcon,Structure,m15,0.052,0.0486,0.08,0.0571,FALSE,TRUE
+m15,Mask,Border,m15MaskBorder,m15,0,0,1,1,TRUE,FALSE
+m15,Default,Border,m15DefaultBorder,m15,0,0,1,1,TRUE,FALSE

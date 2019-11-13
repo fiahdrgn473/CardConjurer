@@ -382,7 +382,7 @@ function hideShowColors(enter = false) {
 }
 //Loads the opacity value
 function loadOpacityValue() {
-	document.getElementById("inputOpacityValue").value = cardMasterOpacityValue[version.typeOrder.indexOf(document.getElementById("inputImageTypeOpacity").value)]
+	document.getElementById("inputOpacityValue").value = cardMasterOpacityValue[version.typeOrder.indexOf(document.getElementById("inputImageTypeOpacity").value)] || 100
 }
 function opacityValueUpdated() {
 	cardMasterOpacityValue[version.typeOrder.indexOf(document.getElementById("inputImageTypeOpacity").value)] = document.getElementById("inputOpacityValue").value
