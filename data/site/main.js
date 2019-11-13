@@ -752,10 +752,8 @@ function checkCookies() {
 		document.getElementById("tooltipToggler").checked = false
 	}
     if (getCookie("advancedBorders") == "true") {
-        document.getElementById("tooltipToggler").checked = true
+        document.getElementById("checkboxAdvanced").checked = true
         hideShowFrameTypes()
-    } else {
-        console.log(getCookie("advancedBorders"))
     }
 }
 
