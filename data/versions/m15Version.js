@@ -3,6 +3,7 @@
 //============================================//
 version.currentVersion = "m15"
 version.typeOrder = ["Full", "FullSecondary", "Frame", "FrameSecondary", "Nyx", "NyxSecondary", "Pinline", "PinlineSecondary", "Legendary", "LegendarySecondary", "Title", "TitleSecondary", "Miracle", "MiracleSecondary", "Type", "TypeSecondary", "Rules", "RulesSecondary", "PT", "RareStamp", "RareStampSecondary", "FlipPT", "FlipCircle", "FlipIcon"]
+version.typesAdvanced = ["Nyx", "Miracle", "FlipPT", "FlipCircle", "FlipIcon"]
 version.typeNotFull = ["Legendary", "LegendarySecondary", "PT", "RareStamp", "RareStampSecondary", "Nyx", "NyxSecondary", "Miracle", "MiracleSecondary", "FlipPT", "FlipCircle", "FlipIcon"]
 version.artX = cwidth(58)
 version.artY = cheight(118)

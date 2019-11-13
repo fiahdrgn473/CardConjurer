@@ -90,9 +90,10 @@ function init() {
 	}
 	//Runs any tests. This should not do anything when published.
 	setTimeout(testFunction, 100)
-	checkCookies()
     initiated = true
     textCodeTutorial()
+    //Checks cookies!
+    setTimeout(checkCookies, 100)
 }
 //Loads an image. Only actually loads images the first time each image is loaded, otherwise assigns it.
 function loadImage(index, target = "none") {
@@ -331,10 +332,22 @@ function changeVersionTo(versionToChangeTo) {
 	loadScript("data/versions/" + versionToChangeTo + "Version.js")
 }
 function finishChangingVersion() {
+    hideShowFrameTypes()
+	for (var i = 0; i < version.textList.length; i ++) {
+		document.getElementById("inputWhichTextTabs").innerHTML += "<div class='tabButton text' onclick='tabFunction(event, `text`, `option" + version.textList[i][0] + "`, `textTabFunction`)'>" + version.textList[i][0] + "</div>"
+        if (i == 0) {
+            document.getElementsByClassName("tabButton text")[0].classList.add("activeTab")
+        }
+	}
+	updateText()
+	updateBottomInfoCanvas()
+	updateSetSymbolCanvas()
+}
+function hideShowFrameTypes() {
     document.getElementById("frameType").innerHTML = ""
-	document.getElementById("inputImageTypeOpacity").innerHTML = ""
-	for (var i = 0; i < version.typeOrder.length; i ++) {
-        if (!version.typeOrder[i].includes("Secondary")) {
+    document.getElementById("inputImageTypeOpacity").innerHTML = ""
+    for (var i = 0; i < version.typeOrder.length; i ++) {
+        if (!version.typeOrder[i].includes("Secondary") && (!version.typesAdvanced.includes(version.typeOrder[i]) || document.getElementById("checkboxAdvanced").checked)) {
             tabSelectAddOption("frameType", version.typeOrder[i], version.typeOrder[i])
             if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
                 document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
@@ -342,19 +355,10 @@ function finishChangingVersion() {
                 cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
             }
         }
-	}
+    }
     document.getElementsByClassName("frameType")[0].className += " activeTab"
-	for (var i = 0; i < version.textList.length; i ++) {
-		document.getElementById("inputWhichTextTabs").innerHTML += "<div class='tabButton text' onclick='tabFunction(event, `text`, `option" + version.textList[i][0] + "`, `textTabFunction`)'>" + version.textList[i][0] + "</div>"
-        if (i == 0) {
-            document.getElementsByClassName("tabButton text")[0].classList.add("activeTab")
-        }
-	}
-	hideShowColors(true)
-	loadOpacityValue()
-	updateText()
-	updateBottomInfoCanvas()
-	updateSetSymbolCanvas()
+    hideShowColors(true)
+    loadOpacityValue()
 }
 //Hides and shows the options in inputImageColor to match the selected type
 function hideShowColors(enter = false) {
@@ -369,7 +373,7 @@ function hideShowColors(enter = false) {
             }
 		}
 	}
-    if (!activeTab && document.getElementsByClassName("tabSelectColor")[0].className != undefined) {
+    if (!activeTab && document.getElementsByClassName("tabSelectColor").length > 0) {
         document.getElementsByClassName("tabSelectColor")[0].className += " activeTab"
     }
 	if (enter) {
@@ -749,7 +753,9 @@ function checkCookies() {
 	}
     if (getCookie("advancedBorders") == "true") {
         document.getElementById("tooltipToggler").checked = true
-        hideShowColors()
+        hideShowFrameTypes()
+    } else {
+        console.log(getCookie("advancedBorders"))
     }
 }
 
@@ -842,13 +848,13 @@ function textCodeTutorial() {
 }
 
 function advancedBordersClicked() {
-    hideShowColors()
+    hideShowFrameTypes()
     setCookie("advancedBorders", document.getElementById("checkboxAdvanced").checked + "")
 }
 
 
 
-textCodeTutorial()
+//textCodeTutorial()
 
 
 /*To do list:
