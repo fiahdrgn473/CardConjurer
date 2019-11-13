@@ -23,7 +23,7 @@ for (var i = 0; i < canvasList.length; i++) {
 //Create the arrays that keeps track of what parts of the card are what
 var cardMasterTypes = []
 var cardMasterImages = []
-var cardMasterOpacity = []
+//var cardMasterOpacity = []
 var cardMasterOpacityValue = []
 //Mana symbol Array setup
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar"]
@@ -157,7 +157,9 @@ CanvasRenderingContext2D.prototype.mask = function(cardMasterIndex) {
 	}
 	var mainImageIndex = cardMasterImages[cardMasterIndex].index
     maskContext.drawImage(cardMasterImages[cardMasterIndex].image, xArray[mainImageIndex] * cardWidth, yArray[mainImageIndex] * cardHeight, widthArray[mainImageIndex] * cardWidth, heightArray[mainImageIndex] * cardHeight)
+    this.globalAlpha = cardMasterOpacityValue[version.typeOrder.indexOf(cardMasterTypes[cardMasterIndex].replace("Secondary", ""))] / 100
 	this.drawImage(maskCanvas, 0, 0, cardWidth, cardHeight)
+    this.globalAlpha = 1
 	if (cardMasterTypes[cardMasterIndex].includes("RareStamp")) {
 		this.drawImage(window[nameArray[nameArray.indexOf("noneMaskStamp")]].image, version.rareStampX, version.rareStampY, version.rareStampWidth, version.rareStampHeight)
 	}
@@ -165,15 +167,14 @@ CanvasRenderingContext2D.prototype.mask = function(cardMasterIndex) {
 }
 //All the canvas functions
 function updateImageCanvas() {
-	imageContext.globalCompositeOperation = "destination-out"
-	for (var i = 0; i < cardMasterOpacity.length; i ++) {
-		imageContext.globalAlpha = 1 - cardMasterOpacityValue[i] / 100
-		//opacityc
-		opacityImage = window[version.currentVersion + "Mask" + cardMasterOpacity[i]].image
-		imageContext.drawImage(opacityImage, 0, 0, cardWidth, cardHeight)
-	}
-	imageContext.globalAlpha = 1
-	imageContext.globalCompositeOperation = "source-over"
+//    imageContext.globalCompositeOperation = "destination-out"
+//    for (var i = 0; i < cardMasterOpacity.length; i ++) {
+//        imageContext.globalAlpha = 1 - cardMasterOpacityValue[i] / 100
+//        opacityImage = window[version.currentVersion + "Mask" + cardMasterOpacity[i]].image
+//        imageContext.drawImage(opacityImage, 0, 0, cardWidth, cardHeight)
+//    }
+//    imageContext.globalAlpha = 1
+//    imageContext.globalCompositeOperation = "source-over"
 	updateBottomInfoCanvas()
 }
 function updateTextCanvas() {
@@ -349,11 +350,9 @@ function hideShowFrameTypes() {
     for (var i = 0; i < version.typeOrder.length; i ++) {
         if (!version.typeOrder[i].includes("Secondary") && (!version.typesAdvanced.includes(version.typeOrder[i]) || document.getElementById("checkboxAdvanced").checked)) {
             tabSelectAddOption("frameType", version.typeOrder[i], version.typeOrder[i])
-            if (window[version.currentVersion + "Mask" + version.typeOrder[i]]) {
-                document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
-                cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
-                cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
-            }
+            document.getElementById("inputImageTypeOpacity").innerHTML += "<option>" + version.typeOrder[i] + "</option>"
+//            cardMasterOpacity[cardMasterOpacity.length] = version.typeOrder[i]
+            cardMasterOpacityValue[cardMasterOpacityValue.length] = 100
         }
     }
     document.getElementsByClassName("frameType")[0].className += " activeTab"
@@ -383,10 +382,10 @@ function hideShowColors(enter = false) {
 }
 //Loads the opacity value
 function loadOpacityValue() {
-	document.getElementById("inputOpacityValue").value = cardMasterOpacityValue[cardMasterOpacity.indexOf(document.getElementById("inputImageTypeOpacity").value)]
+	document.getElementById("inputOpacityValue").value = cardMasterOpacityValue[version.typeOrder.indexOf(document.getElementById("inputImageTypeOpacity").value)]
 }
 function opacityValueUpdated() {
-	cardMasterOpacityValue[cardMasterOpacity.indexOf(document.getElementById("inputImageTypeOpacity").value)] = document.getElementById("inputOpacityValue").value
+	cardMasterOpacityValue[version.typeOrder.indexOf(document.getElementById("inputImageTypeOpacity").value)] = document.getElementById("inputOpacityValue").value
 	cardMasterUpdated()
 }
 //Custom text function! This acts on any codes and makes things look nice :)
