@@ -5,11 +5,12 @@
 window.onload = initiate
 function initiate() {
 	var cardWidth = 750, cardHeight = 1050;
-	displayCanvas = document.getElementById("displayCanvas");
+	var displayCanvas = document.getElementById("displayCanvas");
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
 	displayContext = displayCanvas.getContext("2d");
 	loadScript("data/scripts/sortable.js");
+	import Sortable from './data/scripts/sortable.js';
 	// var el = document.getElementById('items');
 	// var sortable = Sortable.create(el);
 }
@@ -19,7 +20,7 @@ function initiate() {
 
 
 
-// import Sortable from './data/scripts/sortable.js'
+
 
 
 
