@@ -11,8 +11,8 @@ function initiate() {
 	document.getElementById("displayCanvas").height = cardHeight;
 	window.displayContext = displayCanvas.getContext("2d");
 	// loadScript("data/scripts/sortable.js");
-	import Sortable from './data/scripts/sortable.js';
-	// var el = document.getElementById('items');
+	import Sortable from "./sortable.js";
+    var el = document.getElementById('items');
 	// var sortable = Sortable.create(el);
 	console.log("init done")
 }
