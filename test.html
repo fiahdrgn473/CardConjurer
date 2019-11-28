@@ -1,0 +1,97 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>Card Conjurer</title>
+	<!-- Other things -->
+	<link rel="stylesheet" href="data/site/newStyles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<ul id="items">
+		<li>item 1</li>
+		<li>item 2</li>
+		<li>item 3</li>
+	</ul>
+	<div class="mainDiv">
+		<div class="pageTitle">
+			Card Conjurer
+		</div>
+		<div class="mainGrid">
+			<div class="canvasContainer">
+				<canvas id="displayCanvas"></canvas>
+			</div>
+			<div class="cardMenu">
+                <!-- Card editor tabs begin here! -->
+                <div class="tabMenu">
+                	<div class="tabOption mainEditor tabOptionSelected" onclick="toggleTabs(event, 'frame', 'mainEditor')">Frame</div>
+                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'text', 'mainEditor')">Text</div>
+                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'art', 'mainEditor')">Art</div>
+                </div>
+                <div class="tabContent mainEditor tabVisible" id="frame">
+                	oh boy the frames!
+                </div>
+                <div class="tabContent mainEditor" id="text">
+                	oh cool some text!
+                </div>
+                <div class="tabContent mainEditor" id="art">
+                	art stuff!
+                </div>
+                <!-- Card editor tabs end here! -->
+                <div class="bar"></div>
+				<div>
+					<div class="download">
+						<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden"></div>
+		<div class="layer">
+			<div class="title">Welcome to Card Conjurer!</div>
+			<div class="paragraph indent">Card Conjurer is a free program that helps you create custom Magic: The Gathering cards. There are already plenty of custom card makers out there, but what sets Card Conjurer apart from the rest is its live-edit capabilities. You can immediatly see the effects of any change you make, which makes card customization easier and overall a better experience.</div>
+		</div>
+		<div class="layer">
+			<div class="title">About Me</div>
+			<div class="paragraph indent">
+				Hi! My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology</a>. During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>). It was pretty simple but I soon began to add more border images like Miracle or Nyx. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github, and then in April of 2019 I bought the domain <a href="#" onclick="alert('You\'re already there, silly!')">cardconjurer.com</a>.
+			</div>
+		</div>
+		<div class="layer">
+            <div class="title">Want More Customization?</div>
+			<div class="paragraph indent">
+                If you'd like to try out some more frames, scroll to the bottom of this page and check the box next to "Advanced Borders" - CardConjurer.com will remember this setting, so you only need to do this once per device.
+			</div>
+            <div class="paragraph indent">
+                This version of the website is currently a work in progress, so it doesn't have all the features the original Card Conjurer had. If you'd like to go back to the old version, <a href="old/index.html">click here</a>.
+            </div>
+		</div>
+		<div class="layer">
+			<div class="title">Have Any Questions?</div>
+			<div class="paragraph indent">
+                If you have any questions please don't hesitate to email me at: <div class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></div>Even if you made a cool card and want to share, I'd love to see it!
+			</div>
+		</div>
+	</div>
+</body>
+<footer>
+	<div class="footerGrid">
+		<div>
+			Card Conjurer By Kyle Burton<br>
+		</div>
+		<div>
+			Navigation:<br>
+			<a href="index.html">Card Creator</a><br>
+			<a href="life.html">Life Counter</a>
+		</div>
+		<div>
+			Legal:<br>
+			<a href="disclaimer.html">Disclaimer</a><br>
+			<a href="termsOfUse.html">Terms of Use</a>
+		</div>
+	</div>
+</footer>
+<script src="data/scripts/colors.js"></script>
+<!-- <script src="data/scripts/sortable.js" type="module"></script> -->
+<script src="data/scripts/main.js" type="module"></script>
+<html>
