@@ -4,11 +4,12 @@
 /* Initiate! */
 window.onload = initiate
 function initiate() {
-	var cardWidth = 750, cardHeight = 1050;
-	var displayCanvas = document.getElementById("displayCanvas");
+	window.cardWidth = 750;
+	window.cardHeight = 1050;
+	window.displayCanvas = document.getElementById("displayCanvas");
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
-	displayContext = displayCanvas.getContext("2d");
+	window.displayContext = displayCanvas.getContext("2d");
 	loadScript("data/scripts/sortable.js");
 	import Sortable from './data/scripts/sortable.js';
 	// var el = document.getElementById('items');
