@@ -10,10 +10,11 @@ function initiate() {
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
 	window.displayContext = displayCanvas.getContext("2d");
-	loadScript("data/scripts/sortable.js");
+	// loadScript("data/scripts/sortable.js");
 	import Sortable from './data/scripts/sortable.js';
 	// var el = document.getElementById('items');
 	// var sortable = Sortable.create(el);
+	console.log("init done")
 }
 
 
