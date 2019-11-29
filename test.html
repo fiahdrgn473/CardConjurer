@@ -8,11 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<ul id="items">
-		<li>item 1</li>
-		<li>item 2</li>
-		<li>item 3</li>
-	</ul>
 	<div class="mainDiv">
 		<div class="pageTitle">
 			Card Conjurer
@@ -29,7 +24,12 @@
                 	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'art', 'mainEditor')">Art</div>
                 </div>
                 <div class="tabContent mainEditor tabVisible" id="frame">
-                	oh boy the frames!
+                	<div class="splitGrid">
+                		<div id="framePicker" class="frameGrid"></div>
+                		<div id="maskPicker"></div>
+                	</div>
+                	<button onclick="addFrameToCardMaster()">Add</button><button onclick="addFrameToCardMaster(true)">Add To Right Half</button>
+                	<div id="cardMaster" onchange="cardMasterUpdated()"></div>
                 </div>
                 <div class="tabContent mainEditor" id="text">
                 	oh cool some text!
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 </footer>
-<script src="data/scripts/colors.js"></script>
-<!-- <script src="data/scripts/sortable.js" type="module"></script> -->
-<script type="module" src="data/scripts/main.js"></script>
+<script async src="data/scripts/sortable.js"></script>
+<script defer src="data/scripts/main.js"></script>
+<script defer src="data/scripts/colors.js"></script>
 <html>

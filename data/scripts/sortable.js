@@ -3688,5 +3688,5 @@ function removeMultiDragElements() {
   });
 }
 
-export default Sortable;
-export { AutoScrollPlugin as AutoScroll, MultiDragPlugin as MultiDrag, OnSpill, Sortable, SwapPlugin as Swap };
+// export default Sortable;
+// export { AutoScrollPlugin as AutoScroll, MultiDragPlugin as MultiDrag, OnSpill, Sortable, SwapPlugin as Swap };

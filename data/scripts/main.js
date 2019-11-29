@@ -1,36 +1,200 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
+/* Test things! */
+function testFunction() {
+	// console.log("test function begin");
+	// cardMaster.innerHTML += frameList[0].cardMasterElement("Full");
+	// console.log("test function end");
+	// cardMasterUpdated();
+}
+
+
 /* Initiate! */
-window.onload = initiate
+window.onload = initiate;
 function initiate() {
 	window.cardWidth = 750;
 	window.cardHeight = 1050;
+	window.frameList = new Array();
+	window.maskNameList = ["Right Half", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame"];
+	window.maskList = [];
+	window.selectedFrame = -1;
+	window.selectedMask = "";
+	for (var i = 0; i < maskNameList.length; i++) {
+		var imageSource = "data/images/masks/" + maskNameList[i].replace(" ", "") + ".png";
+		maskList[i] = new Image();
+		maskList[i].src = imageSource;
+	}
+	window.cardMaster = document.getElementById("cardMaster");
 	window.displayCanvas = document.getElementById("displayCanvas");
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
 	window.displayContext = displayCanvas.getContext("2d");
-	// loadScript("data/scripts/sortable.js");
-	import Sortable from './data/scripts/sortable.js';
-	// var el = document.getElementById('items');
-	// var sortable = Sortable.create(el);
-	console.log("init done")
+	newCanvas("frameMask");
+	newCanvas("frameFinal");
+	newCanvas("cardFinal");
+	//Loads up anything that uses Sortable.js
+	var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: "cardMasterElementMoving"});
+	//initiation is complete, ready to load image data
+	console.log("init done");
+	loadImageCSV();
 }
 
 
+/* Loads all the image info from the CSV! */
+function loadImageCSV() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			var splitImageCSV = xhttp.responseText.split("\n");
+			for (var i = 1; i < splitImageCSV.length; i++) {
+				var splitIndividualImageCSV = splitImageCSV[i].split(",");
+				frameList[frameList.length] = new frameImage(splitIndividualImageCSV[0], "data/images/" + splitIndividualImageCSV[1], splitIndividualImageCSV[2]);
+			}
+			console.log("frame list loaded");
+			for (var i = 0; i < frameList.length; i++) {
+				// frameList[i].framePickerElement(document.getElementById("framePicker"));
+				document.getElementById("framePicker").innerHTML += frameList[i].framePickerElement();
+			}
+			//I don't like these here, because even though they run, it doesn't populate the mask options
+			// document.getElementsByClassName("frameOption")[0].classList.add("frameOptionSelected");
+			// selectedMask = document.getElementsByClassName("frameOption")[0].id.replace("frameIndex", "");
+			setTimeout(testFunction, 500); //deleteme
+		}
+	}
+	xhttp.open("GET", "data/images/imageCSV.csv", true);
+	xhttp.send();
+}
 
 
+/* Image Class */
+class frameImage {
+	constructor(display, path, masks) {
+		this.displayName = display;
+		this.image = new Image();
+		this.image.src = path;
+		this.maskOptionList = new Array();
+		this.xList = new Array();
+		this.yList = new Array();
+		this.widthList = new Array();
+		this.heightList = new Array();
+		var splitMasks = masks.split(";");
+		for (var i = 0; i < splitMasks.length; i++) {
+			var splitIndividualMasks = splitMasks[i].split("-");
+			this.maskOptionList[i] = splitIndividualMasks[0];
+			this.xList[i] = scale(parseInt(splitIndividualMasks[1]));
+			this.yList[i] = scale(parseInt(splitIndividualMasks[2]));
+			this.widthList[i] = scale(parseInt(splitIndividualMasks[3]));
+			this.heightList[i] = scale(parseInt(splitIndividualMasks[4]));
+		}
+	}
+	cardMasterElement(targetMask, right) {
+		var extraMask = ""
+		if (right) {
+			extraMask = " - Right"
+		}
+		return "<div id='frameIndex" + frameList.indexOf(this) + "' class='cardMasterElement'>" + this.displayName + " (" + targetMask + extraMask + ")<span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span></div>";
+	}
+	framePickerElement(targetElement) {
+		return "<div id='frameIndex" + frameList.indexOf(this) + "' class='frameOption' onclick='frameOptionClicked(event)'><img src=" + this.image.src + "></div>";
+	}
+}
 
 
+/* User input for card master */
+function frameOptionClicked(event) {
+	//Takes the clicked element, determines the right frame image index, sets the selected frame, and displays available masks
+	//most importantly, stores the selected frame under 'selectedFrame'
+	var clickedElement = event.target;
+	if (clickedElement.nodeName == "IMG") {
+		clickedElement = event.target.parentElement;
+	}
+	var frameOptionList = document.getElementsByClassName("frameOption");
+	for (var i = 0; i < frameOptionList.length; i++) {
+		frameOptionList[i].classList.remove("frameOptionSelected");
+	}
+	clickedElement.classList.add("frameOptionSelected");
+	clickedElementIndex = clickedElement.id.replace("frameIndex", "");
+	if (clickedElementIndex != selectedFrame) {
+		selectedFrame = parseInt(clickedElementIndex);
+		document.getElementById("maskPicker").innerHTML = "";
+		for (var i = 0; i < frameList[selectedFrame].maskOptionList.length; i++) {
+			document.getElementById("maskPicker").innerHTML += "<div class='maskOption' onclick='maskOptionClicked(event)' id='maskName" + frameList[selectedFrame].maskOptionList[i] + "'><img src='" + maskList[maskNameList.indexOf(frameList[selectedFrame].maskOptionList[i])].src + "'>" + frameList[selectedFrame].maskOptionList[i] + "</div>";
+		}
+		document.getElementsByClassName("maskOption")[0].classList.add("maskOptionSelected");
+		selectedMask = document.getElementsByClassName("maskOption")[0].id.replace("maskName", "");
+	}
+}
+function maskOptionClicked(event) {
+	//Determines which mask was selected, and stores that value under 'selectedMask'
+	var clickedElement = event.target;
+	if (clickedElement.nodeName == "IMG") {
+		clickedElement = event.target.parentElement;
+	}
+	var maskOptionList = document.getElementsByClassName("maskOption");
+	for (var i = 0; i < maskOptionList.length; i++) {
+		maskOptionList[i].classList.remove("maskOptionSelected");
+	}
+	clickedElement.classList.add("maskOptionSelected");
+	selectedMask = clickedElement.id.replace("maskName", "");
+}
+function addFrameToCardMaster(right = false) {
+	//Takes the stored selectedFrame and selectedMask to add the frame w/ mask to the card master!
+	if (selectedFrame > -1 && selectedMask != "") {
+		cardMaster.innerHTML = frameList[selectedFrame].cardMasterElement(selectedMask, right) + cardMaster.innerHTML;
+		cardMasterUpdated();
+	}
+}
+function deleteCardMasterElement(event) {
+	event.target.parentElement.parentElement.removeChild(event.target.parentElement);
+	cardMasterUpdated();
+}
 
 
+/* Card Master Cool Stuff! */
+function cardMasterUpdated() {
+	console.log("The card master is updating!");
+	frameFinalContext.clearRect(0, 0, cardWidth, cardHeight);
+	for (var i = cardMaster.children.length - 1; i >= 0; i--) {
+		var targetChild = cardMaster.children[i];
+		var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
+		var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
+		var rightHalf = false;
+		if (maskName.includes(" - Right")) {
+			maskName = maskName.replace(" - Right", "");
+			rightHalf = true;
+		}
+		var maskIndex = frameToDraw.maskOptionList.indexOf(maskName);
+		var maskImageIndex = maskNameList.indexOf(maskName)
+		//Clears the temporary mask canvas, draws the mask, draws the image over it, then copies it to the final frame canvas
+		frameMaskContext.globalCompositeOperation = "source-over";
+		frameMaskContext.clearRect(0, 0, cardWidth, cardHeight);
+		frameMaskContext.drawImage(maskList[maskImageIndex], 0, 0, cardWidth, cardHeight);
+		if (rightHalf) {
+			frameMaskContext.globalCompositeOperation = "source-in"
+			frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
+		}
+		frameMaskContext.globalCompositeOperation = "source-in";
+		frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
+		frameFinalContext.drawImage(frameMaskCanvas, 0, 0, cardWidth, cardHeight);
+	}
+	cardImageUpdated();
+}
 
 
+/* Overall card stuff */
+function cardImageUpdated() {
+	cardFinalContext.clearRect(0, 0, cardWidth, cardHeight);
+	displayContext.clearRect(0, 0, cardWidth, cardHeight);
+	cardFinalContext.drawImage(frameFinalCanvas, 0, 0, cardWidth, cardHeight);
+	displayContext.drawImage(cardFinalCanvas, 0, 0, cardWidth, cardHeight);
+}
 
 
-
-
-
+/* Misc convenient functions */
+function scale(input) {
+	return input * cardWidth / 750;
+}
 
 
 /* Functions that make stuff */
@@ -42,8 +206,6 @@ function newCanvas(newCanvasName) {
 }
 
 
-
-
 /* Functions that manage the website */
 function toggleTabs(event, targetTab, tabSubject) {
 	var tabList = document.getElementsByClassName(tabSubject);
@@ -51,8 +213,8 @@ function toggleTabs(event, targetTab, tabSubject) {
 		tabList[i].classList.remove("tabVisible");
 		tabList[i].classList.remove("tabOptionSelected");
 	}
-	document.getElementById(targetTab).classList.add("tabVisible")
-	event.target.classList.add("tabOptionSelected")
+	document.getElementById(targetTab).classList.add("tabVisible");
+	event.target.classList.add("tabOptionSelected");
 }
 function loadScript(scriptPath){
 	var script = document.createElement("script");
