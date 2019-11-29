@@ -35,7 +35,7 @@ var setCodeListSpecialOnly = ['MPS_KLD', 'MPS_AKH']
 //Only Rare / Mythic
 var setCodeListRareMythicOnly = ['SS2']
 
-randomSet(false)
+// randomSet(false)
 function randomSet(updateHTML = true) {
 	var totalSetCount = setCodeListPreMythic.length + setCodeListPostMythic.length + setCodeListRareOnly.length + setCodeListMythicOnly.length + setCodeListSpecialOnly.length + setCodeListRareMythicOnly.length
 	var setIndex = Math.floor(Math.random() * (totalSetCount - 1))

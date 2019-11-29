@@ -240,21 +240,21 @@ footer a:hover {
 /*WIP (or I'm too lazy to sort these)*/
 .tabMenu {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(3em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
 	grid-auto-rows: min-content;
 }
-.tabOption {
+.tabOption, .textTabButton {
 	font: 1.5em belerenbsc;
 	text-align: center;
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
 	transition: 0.5s;
 }
-.tabOption:hover {
+.tabOption:hover, .textTabButton:hover {
 	background-color: var(--clear-mid);
 	transition: 0s;
 }
-.tabOption.tabOptionSelected {
+.tabOption.tabOptionSelected, .textTabButton.activeTextTab {
 	background-color: var(--clear-dark);
 }
 .tabContent:not(.tabVisible) {
@@ -271,11 +271,12 @@ footer a:hover {
 }
 .cardMasterElement img {
 	max-height: 2em;
+	max-width: 2em;
 	position: absolute;
 	transform: translate(1em, -0.35em);
 }
 .cardmasterElement img.cardMasterElementMaskImage {
-	transform: translate(3em, -0.35em);
+	transform: translate(3.5em, -0.35em);
 }
 .cardMasterElementMoving {
 	background-color: var(--clear-dark);
@@ -322,4 +323,30 @@ footer a:hover {
 	margin-left: 0.5em;
 	padding: 0.125em;
 	width: calc(100% - 1.4em);
+}
+
+
+.textarea {
+	width: 100%;
+	min-height: 12em;
+	max-height: 36em;
+	resize: vertical;
+}
+.textTabButton {
+	font-size: 1em;
+}
+.textTab {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-auto-rows: min-content;
+}
+
+.input, .textarea, .button, .select {
+	font: 1em mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaa;
+	border-radius: 0.2em;
+	padding: 0px 0.2em;
+	outline: none;
+	width: 100%;
 }
