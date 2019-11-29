@@ -194,7 +194,7 @@ footer a:hover {
 
 
 /*Controls the area taken by the canvas*/
-@media screen and (min-width: 888pt) {
+@media screen and (min-width: 905pt) {
 	/*Makes room for the canvas and controls to be side by side*/
 	.mainGrid {
 		padding: 1.5em;
@@ -266,8 +266,16 @@ footer a:hover {
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
 	border-radius: 0.25em;
-	padding: 0.25em;
+	padding: 0.5em;
 	margin-top: 0.25em;
+}
+.cardMasterElement img {
+	max-height: 2em;
+	position: absolute;
+	transform: translate(1em, -0.35em);
+}
+.cardmasterElement img.cardMasterElementMaskImage {
+	transform: translate(3em, -0.35em);
 }
 .cardMasterElementMoving {
 	background-color: var(--clear-dark);
@@ -283,10 +291,16 @@ footer a:hover {
 
 
 
-
+#framePicker, #maskPicker {
+	max-height: 260pt;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid var(--light-color);
+}
 .frameOption {
 	height: 4em;
 	text-align: center;
+	width: 100%;
 }
 .frameOption img {
 	max-width: 4em;
@@ -303,9 +317,9 @@ footer a:hover {
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
 	border-radius: 0.25em;
-	width: 100%;
 }
 .maskOption {
 	margin-left: 0.5em;
 	padding: 0.125em;
+	width: calc(100% - 1.4em);
 }

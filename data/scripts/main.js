@@ -16,7 +16,7 @@ function initiate() {
 	window.cardWidth = 750;
 	window.cardHeight = 1050;
 	window.frameList = new Array();
-	window.maskNameList = ["Right Half", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame"];
+	window.maskNameList = ["Right Half", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border"];
 	window.maskList = [];
 	window.selectedFrame = -1;
 	window.selectedMask = "";
@@ -88,12 +88,8 @@ class frameImage {
 			this.heightList[i] = scale(parseInt(splitIndividualMasks[4]));
 		}
 	}
-	cardMasterElement(targetMask, right) {
-		var extraMask = ""
-		if (right) {
-			extraMask = " - Right"
-		}
-		return "<div id='frameIndex" + frameList.indexOf(this) + "' class='cardMasterElement'>" + this.displayName + " (" + targetMask + extraMask + ")<span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span></div>";
+	cardMasterElement(targetMask) {
+		return "<div id='frameIndex" + frameList.indexOf(this) + "' class='cardMasterElement'>" + this.displayName + " (" + targetMask + ")<img class='cardMasterElementMaskImage' src=" + this.image.src + "><img src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span></div>";
 	}
 	framePickerElement(targetElement) {
 		return "<div id='frameIndex" + frameList.indexOf(this) + "' class='frameOption' onclick='frameOptionClicked(event)'><img src=" + this.image.src + "></div>";
@@ -138,10 +134,10 @@ function maskOptionClicked(event) {
 	clickedElement.classList.add("maskOptionSelected");
 	selectedMask = clickedElement.id.replace("maskName", "");
 }
-function addFrameToCardMaster(right = false) {
+function addFrameToCardMaster(right = "") {
 	//Takes the stored selectedFrame and selectedMask to add the frame w/ mask to the card master!
 	if (selectedFrame > -1 && selectedMask != "") {
-		cardMaster.innerHTML = frameList[selectedFrame].cardMasterElement(selectedMask, right) + cardMaster.innerHTML;
+		cardMaster.innerHTML = frameList[selectedFrame].cardMasterElement(selectedMask + right) + cardMaster.innerHTML;
 		cardMasterUpdated();
 	}
 }

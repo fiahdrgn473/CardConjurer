@@ -7,6 +7,7 @@ Green,m15GFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules 
 Multicolored,m15MFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Artifact,m15AFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Colorless,m15CFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
+Vehicle,m15VFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 White Land,m15WLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Blue Land,m15ULFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Black Land,m15BLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
@@ -14,3 +15,51 @@ Red Land,m15RLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Ru
 Green Land,m15GLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Multicolored Land,m15MLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
 Colorless Land,m15CLFull.png,Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050
+White,m15WPT.png,Full-570-934-137-77
+Blue,m15UPT.png,Full-570-934-137-77
+Black,m15BPT.png,Full-570-934-137-77
+Red,m15RPT.png,Full-570-934-137-77
+Green,m15GPT.png,Full-570-934-137-77
+Multicolored,m15MPT.png,Full-570-934-137-77
+Artifact,m15APT.png,Full-570-934-137-77
+Colorless,m15CPT.png,Full-570-934-137-77
+Vehicle,m15VPT.png,Full-570-934-137-77
+White,m15WLegendary.png,Full-20-20-714-186
+Blue,m15ULegendary.png,Full-20-20-714-186
+Black,m15BLegendary.png,Full-20-20-714-186
+Red,m15RLegendary.png,Full-20-20-714-186
+Green,m15GLegendary.png,Full-20-20-714-186
+Multicolored,m15MLegendary.png,Full-20-20-714-186
+Artifact,m15ALegendary.png,Full-20-20-714-186
+Colorless,m15CLegendary.png,Full-20-20-714-186
+White,m15WRareStamp.png,Full-329-949-90-50
+Blue,m15URareStamp.png,Full-329-949-90-50
+Black,m15BRareStamp.png,Full-329-949-90-50
+Red,m15RRareStamp.png,Full-329-949-90-50
+Green,m15GRareStamp.png,Full-329-949-90-50
+Multicolored,m15MRareStamp.png,Full-329-949-90-50
+Artifact,m15ARareStamp.png,Full-329-949-90-50
+Colorless,m15CRareStamp.png,Full-329-949-90-50
+White,m15WMiracle.png,Full-30-30-690-511
+Blue,m15UMiracle.png,Full-30-30-690-511
+Black,m15BMiracle.png,Full-30-30-690-511
+Red,m15RMiracle.png,Full-30-30-690-511
+Green,m15GMiracle.png,Full-30-30-690-511
+Multicolored,m15MMiracle.png,Full-30-30-690-511
+Artifact,m15AMiracle.png,Full-30-30-690-511
+Colorless,m15CMiracle.png,Full-30-30-690-511
+White,m15WNyx.png,Full-30-30-690-586
+Blue,m15UNyx.png,Full-30-30-690-586
+Black,m15BNyx.png,Full-30-30-690-586
+Red,m15RNyx.png,Full-30-30-690-586
+Green,m15GNyx.png,Full-30-30-690-586
+Multicolored,m15MNyx.png,Full-30-30-690-586
+Artifact,m15ANyx.png,Full-30-30-690-586
+Colorless,m15CNyx.png,Full-30-30-690-586
+White Land,m15WLNyx.png,Full-30-30-690-586
+Blue Land,m15ULNyx.png,Full-30-30-690-586
+Black Land,m15BLNyx.png,Full-30-30-690-586
+Red Land,m15RLNyx.png,Full-30-30-690-586
+Green Land,m15GLNyx.png,Full-30-30-690-586
+Multicolored Land,m15MLNyx.png,Full-30-30-690-586
+Colorless Land,m15CLNyx.png,Full-30-30-690-586
