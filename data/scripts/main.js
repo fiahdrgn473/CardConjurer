@@ -30,22 +30,14 @@ function initiate() {
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
 	window.displayContext = displayCanvas.getContext("2d");
-<<<<<<< HEAD
 	newCanvas("frameMask");
 	newCanvas("frameFinal");
 	newCanvas("cardFinal");
 	//Loads up anything that uses Sortable.js
 	var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: "cardMasterElementMoving"});
 	//initiation is complete, ready to load image data
-	console.log("init done");
 	loadImageCSV();
-=======
-	// loadScript("data/scripts/sortable.js");
-	import Sortable from "./sortable.js";
-    var el = document.getElementById('items');
-	// var sortable = Sortable.create(el);
 	console.log("init done")
->>>>>>> 14a4104f200c050a672892cadd01502c7e047d63
 }
 
 
