@@ -36,7 +36,15 @@
 		            	<button onclick="addFrameToCardMaster(' - Right')" class="button">Add To Right Half</button>
                 	</div>
                 	<div id="selectedFramePreview">No frame selected</div>
-                	<div id="cardMaster"></div>
+                	<div id="cardMaster">
+                		<div id="frameIndex-1" class="cardMasterElement">Card Art Placeholder <img src="file:///C:/Users/Kyle%20Burton/Documents/GitHub/CardConjurer/data/images/m15WFull.png"></div>
+                	</div>
+                	<div class="bar"></div>
+                	<div>Upload your own frame images:</div>
+                	<div class="autoGrid">
+                		<input type="file" class="input file" accept="image/*" onchange="retrieveLocalURL(event)" placeholder="Via File Upload">
+						<input type="text" class="input text" placeholder="Via URL" onchange="addNewFrameOption(this.value)">
+                	</div>
                 </div>
                 <div class="tabContent mainEditor" id="text">
                 	<div id="inputWhichTextTabs" class="textTab"></div>
@@ -59,9 +67,9 @@
 						</div>
 						<div>
                             <div style="text-align: center; margin: 0.18em 0px">X, Y, &amp; Zoom:</div>
-							<input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardImageUpdated()">
-							<input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardImageUpdated()">
-							<input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardImageUpdated()">
+							<input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardMasterUpdated()">
+							<input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardMasterUpdated()">
+							<input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardMasterUpdated()">
 						</div>
 					</div>
                 </div>

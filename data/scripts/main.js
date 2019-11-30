@@ -3,9 +3,9 @@
 //============================================//
 /* Test things! */
 function testFunction() {
-	cardMaster.appendChild(frameList[0].cardMasterElement("Full"));
+	// cardMaster.appendChild(frameList[0].cardMasterElement("Full"));
 	cardMasterUpdated();
-	console.log("First frame manually loaded")
+	// console.log("First frame manually loaded")
 }
 
 
@@ -54,7 +54,8 @@ function initiate() {
 	setSymbol.crossOrigin = "anonymous";
 	watermark.crossOrigin = "anonymous";
 	cardArt.onload = function() {
-		cardImageUpdated();
+		// cardImageUpdated();
+		cardMasterUpdated();
 	}
 	setSymbol.onload = function() {
 		updateSetSymbol();
@@ -191,6 +192,13 @@ function deleteCardMasterElement(event) {
 	event.target.parentElement.parentElement.removeChild(event.target.parentElement);
 	cardMasterUpdated();
 }
+function addNewFrameOption(imageSource) {
+	frameList[frameList.length] = new frameImage("Custom", imageSource, "Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050;Border-0-0-750-1050");
+	frameList[frameList.length - 1].image.customVar = frameList.length - 1
+	frameList[frameList.length - 1].image.onload = function() {
+		document.getElementById("framePicker").appendChild(frameList[this.customVar].framePickerElement());
+	}
+}
 
 
 /* Card Master Cool Stuff! */
@@ -199,32 +207,37 @@ function cardMasterUpdated() {
 	frameFinalContext.clearRect(0, 0, cardWidth, cardHeight);
 	for (var i = cardMaster.children.length - 1; i >= 0; i--) {
 		var targetChild = cardMaster.children[i];
-		var opacityToDraw = targetChild.children[0].value / 100;
-		var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
-		var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
-		var rightHalf = false;
-		if (maskName.includes(" - Right")) {
-			maskName = maskName.replace(" - Right", "");
-			rightHalf = true;
+		if (parseInt(targetChild.id.replace("frameIndex", "")) == -1) {
+			//The card art placeholder is manually set to -1 and cannot be removed :)
+			frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
+		} else {
+			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
+			var opacityToDraw = targetChild.children[0].value / 100;
+			var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
+			var rightHalf = false;
+			if (maskName.includes(" - Right")) {
+				maskName = maskName.replace(" - Right", "");
+				rightHalf = true;
+			}
+			var maskIndex = frameToDraw.maskOptionList.indexOf(maskName);
+			var maskImageIndex = maskNameList.indexOf(maskName)
+			//Clears the temporary mask canvas, draws the mask, draws the image over it, then copies it to the final frame canvas
+			frameMaskContext.globalCompositeOperation = "source-over";
+			frameMaskContext.clearRect(0, 0, cardWidth, cardHeight);
+			frameMaskContext.drawImage(maskList[maskImageIndex], 0, 0, cardWidth, cardHeight);
+			frameMaskContext.globalCompositeOperation = "source-in";
+			if (rightHalf) {
+				frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
+			}
+			frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
+			if (targetChild.children[1].checked == true) {
+				frameFinalContext.globalCompositeOperation = "destination-out";
+			}
+			frameFinalContext.globalAlpha = opacityToDraw;
+			frameFinalContext.drawImage(frameMaskCanvas, 0, 0, cardWidth, cardHeight);
+			frameFinalContext.globalAlpha = 1;
+			frameFinalContext.globalCompositeOperation = "source-over";
 		}
-		var maskIndex = frameToDraw.maskOptionList.indexOf(maskName);
-		var maskImageIndex = maskNameList.indexOf(maskName)
-		//Clears the temporary mask canvas, draws the mask, draws the image over it, then copies it to the final frame canvas
-		frameMaskContext.globalCompositeOperation = "source-over";
-		frameMaskContext.clearRect(0, 0, cardWidth, cardHeight);
-		frameMaskContext.drawImage(maskList[maskImageIndex], 0, 0, cardWidth, cardHeight);
-		frameMaskContext.globalCompositeOperation = "source-in";
-		if (rightHalf) {
-			frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
-		}
-		frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
-		if (targetChild.children[1].checked == true) {
-			frameFinalContext.globalCompositeOperation = "destination-out";
-		}
-		frameFinalContext.globalAlpha = opacityToDraw;
-		frameFinalContext.drawImage(frameMaskCanvas, 0, 0, cardWidth, cardHeight);
-		frameFinalContext.globalAlpha = 1;
-		frameFinalContext.globalCompositeOperation = "source-over";
 	}
 	updateBottomInfoCanvas();
 }
@@ -237,7 +250,7 @@ function cardImageUpdated() {
 	cardFinalContext.fillRect(0, 0, cardWidth, cardHeight);
 	displayContext.clearRect(0, 0, cardWidth, cardHeight);
 	//Draw the art, frame, text, bottom info, mana cost, watermark, and set symbol
-	cardFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
+	// cardFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
 	cardFinalContext.drawImage(frameFinalCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight);
@@ -676,15 +689,24 @@ function autocrop(targetImage, source = targetImage.src) {
         }
     }
 }
-// //The next several functions are all about loading images!
+//The next several functions are all about loading images!
 function uploadImage(event, destination) {
-	var input = event.target
-	var reader = new FileReader()
+	var input = event.target;
+	var reader = new FileReader();
 	reader.onload = function() {
-		var dataURL = reader.result
-		destination.src = dataURL
+		var dataURL = reader.result;
+		destination.src = dataURL;
 	}
-	reader.readAsDataURL(input.files[0])
+	reader.readAsDataURL(input.files[0]);
+}
+function retrieveLocalURL(event) {
+	var input = event.target;
+	var reader = new FileReader();
+	reader.onload = function() {
+		addNewFrameOption(reader.result)
+		// return reader.result;
+	}
+	reader.readAsDataURL(input.files[0]);
 }
 var savedArtList = [], cardArtUrlList = [], cardArtArtistList = []
 function inputCardArtName(cardArtNameInput) {

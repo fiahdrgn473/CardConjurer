@@ -37,7 +37,7 @@ function m15BottomInfo() {
 	bottomInfoContext.writeText(document.getElementById("inputInfoSet").value + " \u00b7 " + document.getElementById("inputInfoLanguage").value + "  {fontsize1}{font:belerenbsc}{artistBrush}" + document.getElementById("inputInfoArtist").value, scale(46), scale(1012), scale(375), 0, "gothammedium", 17, "white", "oneLine=true")
 	var copyrightShift = 0;
 	for (var i = 0; i < cardMaster.children.length; i++) {
-		if (frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT")) {
+		if (parseInt(cardMaster.children[i].id.replace("frameIndex", "")) != -1 && frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT")) {
 			copyrightShift = 19;
 		}
 	}
