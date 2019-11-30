@@ -213,7 +213,7 @@ function cardMasterUpdated() {
 			frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
 		} else {
 			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
-			var opacityToDraw = targetChild.children[0].value / 100;
+			var opacityToDraw = targetChild.children[1].children[1].value / 100;
 			var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
 			var rightHalf = false;
 			if (maskName.includes(" - Right")) {
@@ -231,7 +231,7 @@ function cardMasterUpdated() {
 				frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
 			}
 			frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
-			if (targetChild.children[1].checked == true) {
+			if (targetChild.children[1].children[2].checked == true) {
 				frameFinalContext.globalCompositeOperation = "destination-out";
 			}
 			frameFinalContext.globalAlpha = opacityToDraw;
