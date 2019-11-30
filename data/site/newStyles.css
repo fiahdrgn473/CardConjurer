@@ -328,8 +328,8 @@ footer a:hover {
 
 .textarea {
 	width: 100%;
-	min-height: 12em;
-	max-height: 36em;
+	min-height: 8em;
+	max-height: 24em;
 	resize: vertical;
 }
 .textTabButton {
@@ -349,4 +349,33 @@ footer a:hover {
 	padding: 0px 0.2em;
 	outline: none;
 	width: 100%;
+}
+.inputOpacity {
+	font: 1em mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaa;
+	border-radius: 0.2em;
+	padding: 0px 0.2em;
+	outline: none;
+	width: 2.9em;
+}
+
+
+
+#textCodeTutorial {
+	display: grid;
+	grid-template-columns: 6.5em auto;
+	/*padding: 0.5em;*/
+}
+#textCodeTutorial > div {
+	padding: 0.25em 0;
+	background-color: var(--clear-mid);
+}
+#textCodeTutorial > div:nth-child(4n), #textCodeTutorial > div:nth-child(4n - 1) {
+	background-color: var(--clear-light);
+}
+
+
+input[type="checkbox"], .frameOption, .maskOption, .button {
+	cursor: pointer;
 }
