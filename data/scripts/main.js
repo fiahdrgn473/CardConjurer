@@ -3,8 +3,8 @@
 //============================================//
 /* Test things! */
 function testFunction() {
-	// cardMaster.appendChild(frameList[0].cardMasterElement("Full"));
-	cardMasterUpdated();
+    cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[0]);
+    cardMasterUpdated();
 	// console.log("First frame manually loaded")
 }
 
@@ -95,7 +95,7 @@ function loadImageCSV() {
 			// document.getElementsByClassName("frameOption")[0].classList.add("frameOptionSelected");
 			// selectedMask = document.getElementsByClassName("frameOption")[0].id.replace("frameIndex", "");
 			console.log("image csv loaded, happy card conjuring!");
-			setTimeout(testFunction, 500); //deleteme
+			setTimeout(testFunction, 0); //deleteme
 		}
 	}
 	xhttp.open("GET", "data/images/imageCSV.csv", true);
