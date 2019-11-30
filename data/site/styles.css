@@ -44,18 +44,9 @@
     --clear-mid: #fff4;
     --clear-dark: #fff6;
 }
-footer {
-	background-color: var(--dark-color);
-	padding: 2.5em;
-	font: 1.3em gothammedium;
-	color: var(--light-color);
-}
-body {
-	margin: 0px;
-	background-image: url(images/lowpoly.png);
-	background-attachment: fixed;
-	background-size: cover;
-}
+
+
+/*Background & Footer*/
 html {
 	background-image: linear-gradient(to bottom right, var(--shifting-color-1), var(--shifting-color-1-light));
 	background-attachment: fixed;
@@ -66,9 +57,21 @@ html {
 	user-select: none;
 	font-size: 8pt;
 }
-.selectable {
-	user-select: all;
+body {
+	margin: 0px;
+	background-image: url(images/lowpoly.png);
+	background-attachment: fixed;
+	background-size: cover;
 }
+footer {
+	background-color: var(--dark-color);
+	padding: 2.5em;
+	font: 1.3em gothammedium;
+	color: var(--light-color);
+}
+
+
+/*Canvas*/
 canvas {
 	width: calc(100%);
 	height: auto;
@@ -78,6 +81,9 @@ canvas {
 .canvasContainer {
 	text-align: center;
 }
+
+
+/*Grids*/
 .mainGrid {
 	padding: 0.3em;
 	display: grid;
@@ -85,13 +91,36 @@ canvas {
 	grid-template-columns: auto;
 	font: 1.6em mplantin;
 }
-.imageGrid {
+.splitGrid {
 	display: grid;
-	grid-template-columns: auto 9em;
-	min-height: 12.5em;
+	grid-template-columns: 50% 50%;
 }
-.imgPreview {
-	width: 100%;
+.frameGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(4em, 1fr));
+	grid-auto-rows: min-content;
+}
+.footerGrid {
+	display: grid;
+	grid-template-columns: auto;
+	grid-gap: 2em;
+}
+.autoGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-auto-rows: min-content;
+}
+
+
+/*Misc elements*/
+.download {
+    text-align: center;
+    font: 1.5em belerenbsc;
+}
+.pageTitle {
+	font: 5em belerenbsc;
+	text-align: center;
+	padding-top: 0.3em;
 }
 .bar {
 	background-image: url(../images/manaSymbols/63.png);
@@ -101,78 +130,55 @@ canvas {
 	width: 100%;
 	height: 1em;
 }
-.cardMenu > div > div:nth-child(1) {
-/*    border: 1px solid blue;*/
-/*    text-align: center;*/
-/*    font: 1.5em belerenbsc;*/
-}
-.twoGrid {
-	display: grid;
-	grid-template-columns: 50% auto;
-}
-.input, .textarea, .button, .select {
-	font: 1em mplantin;
-	background-color: var(--light-color);
-	border: 1px solid #aaae;
-	border-radius: 0.2em;
-	padding: 0px 0.2em;
-	outline: none;
-}
-.textarea {
-	min-height: 6em;
-	max-height: 18em;
-	resize: vertical;
-}
-.select {
-    background: #fafafa url(../images/manaSymbols/49.png) no-repeat calc(100% - 0.1em) 50%;
-    background-size: 1em 1em;
-    -webkit-appearance: none;
-}
-.autoGrid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
-	grid-auto-rows: min-content;
-}
-.input.file {
-	padding: 0px;
-	height: 1.26em;
-}
-.tooltip {
-	position: relative;
-}
-.tooltip .tooltiptext {
-  visibility: hidden;
-  background-color: var(--dark-color);
-  color: var(--light-color);
-  text-align: center;
-  border-radius: 5px;
-  padding: 5px;
-  top: calc(100% + 5px);
-  left: 0px;
-  max-width: calc(100% - 10px);
-  width: auto;
-  position: absolute;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.tooltip .tooltiptext::after {
-  content: " ";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent var(--dark-color) transparent;
-}
-.tooltip .tooltiptext:hover {
-	/*visibility: hidden;*/
-	opacity: 0;
-}
-div.tooltip > * {
+.imgPreview {
 	width: 100%;
 }
+.layer {
+	padding: 2em 2em;
+	color: black;
+	font-size: 2em;
+	text-align: center;
+    margin-bottom: 3em;
+    background-color: var(--light-color);
+	background-image: url(images/layerBackground.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+/*Various text modifications*/
+.title {
+	text-align: center;
+	font: 1.5em belerenbsc;
+}
+.truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-indent: 0em;
+}
+.paragraph {
+	font: 1em mplantin;
+	text-align: left;
+}
+.indent {
+	text-indent: 2em;
+}
+
+
+/*General modifications*/
+.hidden {
+	display: none;
+}
+.visible {
+	display: inline-block;
+}
+.selectable {
+	user-select: all;
+}
+
+
+/*Hyperlinks*/
 a {
 	color: black;
 }
@@ -185,63 +191,10 @@ footer a {
 footer a:hover {
 	color: var(--shifting-color-1-light);
 }
-.hidden {
-	display: none;
-}
-.footerGrid {
-	display: grid;
-	grid-template-columns: auto;
-	grid-gap: 2em;
-}
-.layer {
-	padding: 2em 2em;
-	color: black;
-	font-size: 2em;
-	text-align: center;
-    margin-bottom: 3em;
-}
-.layer {       /*:nth-child(even)*/
-	background-color: var(--light-color);
-	background-image: url(images/layerBackground.png);
-	background-position: center;
-	background-repeat: no-repeat;
-}
-.title {
-	text-align: center;
-	font: 1.5em belerenbsc;
-}
-.pageTitle {
-	font: 5em belerenbsc;
-	text-align: center;
-	padding-top: 0.3em;
-}
-.paragraph {
-	font: 1em mplantin;
-	text-align: left;
-}
-.indent {
-	text-indent: 2em;
-}
-.leftMargin {
-	margin-left: 2em;
-}
-.donate > div:hover {
-	text-decoration: underline;
-}
-.donate > div {
-	background-color: var(--clear-light);
-	border-radius: 2em;
-	font: 2em belerenbsc;
-}
-.donate > div > img {
-	height: 1em;
-	position: relative;
-	top: 0.15em;
-	left: 0.15em;
-}
+
 
 /*Controls the area taken by the canvas*/
-@media screen and (min-width: 888pt) {
+@media screen and (min-width: 905pt) {
 	/*Makes room for the canvas and controls to be side by side*/
 	.mainGrid {
 		padding: 1.5em;
@@ -262,7 +215,7 @@ footer a:hover {
 	}
 }
 /*These control tooltips for mobile devices vs. desktops/laptops*/
-@media screen and (min-width: 1024px) {
+/*@media screen and (min-width: 1024px) {
 	.tooltip:hover .tooltiptext {
 	  	visibility: visible;
 	  	opacity: 1;
@@ -273,8 +226,8 @@ footer a:hover {
 	  	visibility: visible;
 	  	opacity: 1;
 	}
-}
-/*The footer can now fit horizontally!*/
+}*/
+/*Allows the footer to be displayed horizontally on Desktop*/
 @media screen and (min-width: 375pt) {
 	.footerGrid {
 		display: grid;
@@ -284,106 +237,131 @@ footer a:hover {
 }
 
 
-/*WIP*/
-.tab {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6.5em, 1fr));
-    grid-auto-rows: min-content;
+/*WIP (or I'm too lazy to sort these)*/
+.tabMenu {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+	grid-auto-rows: min-content;
 }
-.tab.tabSelect {
-    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+.tabOption, .textTabButton {
+	font: 1.5em belerenbsc;
+	text-align: center;
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	transition: 0.5s;
 }
-.tabButton.tabSelectButton {
-    font: 1em belerenb;
+.tabOption:hover, .textTabButton:hover {
+	background-color: var(--clear-mid);
+	transition: 0s;
 }
-.tabButton {
-    text-align: center;
-    background: var(--clear-light);
-    border: 1px solid var(--light-color);
-    font: 1.2em belerenbsc;
-    padding: 0.1em 0em;
-    transition: 0.33s;
+.tabOption.tabOptionSelected, .textTabButton.activeTextTab {
+	background-color: var(--clear-dark);
 }
-.tabButton:hover {
-    background-color: var(--clear-mid);
-    transition: 0s;
-}
-.tabButton.activeTab {
-    background: var(--clear-dark);
-    text-decoration: underline;
-    text-decoration-color: var(--shifting-color-1-light)
-}
-.tabContent {
-    display: none;
-}
-.tabContent.displayed {
-    display: block;
+.tabContent:not(.tabVisible) {
+	display: none;
 }
 
-.download {
-    text-align: center;
-    font: 1.5em belerenbsc;
+.cardMasterElement {
+	font: 1em belerenbsc;
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	border-radius: 0.25em;
+	padding: 0.5em;
+	margin-top: 0.25em;
 }
-.truncate {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-indent: 0em;
+.cardMasterElement img {
+	max-height: 2em;
+	max-width: 2em;
+	position: absolute;
+	transform: translate(1em, -0.35em);
 }
-.tab, button, select, option {
-    cursor: pointer;
+.cardmasterElement img.cardMasterElementMaskImage {
+	transform: translate(3.5em, -0.35em);
 }
-/*Custom Checkboxes*/
-.realCheckboxContainer {
-    margin-top: 0.45em
+.cardMasterElementMoving {
+	background-color: var(--clear-dark);
 }
-.checkboxContainer {
-    position: relative;
-    padding-left: 1.5em;
-    padding-top: 0.25em;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.closeCardMasterElement {
+	cursor: pointer;
+	position: absolute;
+	/*top: 50%;*/
+	left: 96%;
+	/*padding: 12px 16px;*/
+	/*transform: translate(0%, -50%);*/
 }
-.checkboxContainer input {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
+
+
+
+#framePicker, #maskPicker {
+	max-height: 260pt;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid var(--light-color);
 }
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.2em;
-    width: 1.2em;
-    transition: 0.33s;
-    background-color: var(--clear-light);
-    border: 1px solid var(--light-color)
+.frameOption {
+	height: 4em;
+	text-align: center;
+	width: 100%;
 }
-.checkboxContainer:hover input ~ .checkmark {
-    background-color: var(--clear-dark);
+.frameOption img {
+	max-width: 4em;
+	max-height: 4em;
 }
-.checkboxContainer input:checked ~ .checkmark {
-    background-color: var(--dark-color);
+.maskOption img {
+	max-width: 2em;
+	max-height: 2em;
 }
-.checkmark:after {
-    content: "X";
-    font: 1.2em gothammedium;
-    color: white;
-    position: absolute;
-    opacity: 0;
-    transition: 0.33s;
+.frameOption.frameOptionSelected, .maskOption.maskOptionSelected {
+	background-color: var(--clear-dark);
 }
-.checkboxContainer input:checked ~ .checkmark:after {
-    opacity: 1;
+.maskOption, .frameOption {
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	border-radius: 0.25em;
 }
-.checkboxContainer .checkmark:after {
-    left: 0.15em;
-    top: -0.1em;
+.maskOption {
+	margin-left: 0.5em;
+	padding: 0.125em;
+	width: calc(100% - 1.4em);
 }
+
+
+.textarea {
+	width: 100%;
+	min-height: 8em;
+	max-height: 24em;
+	resize: vertical;
+}
+.textTabButton {
+	font-size: 1em;
+}
+.textTab {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-auto-rows: min-content;
+}
+
+.input, .textarea, .button, .select {
+	font: 1em mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaa;
+	border-radius: 0.2em;
+	padding: 0px 0.2em;
+	outline: none;
+	width: 100%;
+}
+.inputOpacity {
+	font: 1em mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaa;
+	border-radius: 0.2em;
+	padding: 0px 0.2em;
+	outline: none;
+	width: 2.9em;
+}
+
+
+
 #textCodeTutorial {
 	display: grid;
 	grid-template-columns: 6.5em auto;
@@ -398,3 +376,6 @@ footer a:hover {
 }
 
 
+input[type="checkbox"], .frameOption, .maskOption, .button {
+	cursor: pointer;
+}
