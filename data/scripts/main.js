@@ -56,6 +56,7 @@ function initiate() {
 	cardArt.onload = function() {
 		// cardImageUpdated();
 		cardMasterUpdated();
+        document.getElementById("artPlaceholderImage").src = this.src
 	}
 	setSymbol.onload = function() {
 		updateSetSymbol();
@@ -66,7 +67,7 @@ function initiate() {
 	//Load the mana symbol images
 	loadManaSymbolImages();
 	//Loads up anything that uses Sortable.js
-	var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: "cardMasterElementMoving"});
+	var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: "cardMasterElementMoving", handle: ".handle"});
 	//Other little things
 	window.date = new Date()
 	document.getElementById("inputInfoNumber").value = date.getFullYear()
@@ -127,7 +128,7 @@ class frameImage {
 		var tempElement = document.createElement("div");
 		tempElement.id = "frameIndex" + frameList.indexOf(this);
 		tempElement.classList.add("cardMasterElement");
-		tempElement.innerHTML = this.displayName + " (" + targetMask + ") <input type='number' min='0' max='100' value='100' class='inputOpacity' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span></div>";
+		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
 		return tempElement
 	}
 	framePickerElement(targetElement) {

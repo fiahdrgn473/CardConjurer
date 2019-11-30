@@ -266,31 +266,40 @@ footer a:hover {
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
 	border-radius: 0.25em;
-	padding: 0.5em;
 	margin-top: 0.25em;
+    display: grid;
+    grid-template-columns: 2em auto 1em;
+    align-items: center;
+}
+.cardMasterElement > .handle {
+    cursor: all-scroll;
+    padding: 1em 0.5em;
+    text-align: center;
 }
 .cardMasterElement img {
-	max-height: 2em;
-	max-width: 2em;
+	max-height: 1.5em;
+	max-width: 1.5em;
 	position: absolute;
-	transform: translate(1em, -0.35em);
+	transform: translate(0.1em, 0);
 }
 .cardmasterElement img.cardMasterElementMaskImage {
-	transform: translate(3.5em, -0.35em);
+	transform: translate(1.7em, 0);
 }
 .cardMasterElementMoving {
 	background-color: var(--clear-dark);
 }
 .closeCardMasterElement {
 	cursor: pointer;
-	position: absolute;
-	/*top: 50%;*/
-	left: 96%;
-	/*padding: 12px 16px;*/
-	/*transform: translate(0%, -50%);*/
+    text-align: center;
 }
 
-
+.frameOption img, .maskOption img, .cardMasterElement img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
 
 #framePicker, #maskPicker {
 	max-height: 260pt;
