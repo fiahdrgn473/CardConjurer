@@ -25,7 +25,7 @@ version.watermarkY = scale(800)
 version.textList = [
 	["Title", "", scale(64), scale(83), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],
 	["Type", "", scale(65), scale(615), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],
-	["Rules Text", "", scale(66), scale(670), scale(624), scale(292), "mplantin", 38, "black", "lineSpace=0.97"],
+	["Rules Text", "", scale(66), scale(662), scale(612), scale(292), "mplantin", 38, "black", "lineSpace=0.97"],
 	["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", 38, "black", "oneLine=true,textAlign='center'"]/*,
 	["Flip PT", "", scale(588), scale(902), scale(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]*/
 ]
