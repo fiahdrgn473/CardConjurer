@@ -13,10 +13,10 @@ function testFunction() {
 window.onload = initiate;
 function initiate() {
 	window.version = {}
-	window.cardWidth = 750;
-	window.cardHeight = 1050;
+	window.cardWidth = 744;
+	window.cardHeight = 1039;
 	window.frameList = new Array();
-	window.maskNameList = ["Right Half", "Corners", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border"];
+	window.maskNameList = ["Right Half", "Corners", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border", "Legend", "LegendWithBorder", "BoxTopper"];
 	window.maskList = [];
 	window.selectedFrame = -1;
 	window.selectedMask = "";
@@ -75,7 +75,7 @@ function initiate() {
 	//initiation is complete, ready to load image data
 	console.log("init done, time to set the card version");
 	changeVersionTo("m15");
-}
+} 
 
 
 /* Loads all the image info from the CSV! */
@@ -194,7 +194,7 @@ function deleteCardMasterElement(event) {
 	cardMasterUpdated();
 }
 function addNewFrameOption(imageSource) {
-	frameList[frameList.length] = new frameImage("Custom", imageSource, "Full-0-0-750-1050;Title-0-0-750-1050;Type-0-0-750-1050;Rules Text-0-0-750-1050;Pinline-0-0-750-1050;Frame-0-0-750-1050;Border-0-0-750-1050");
+	frameList[frameList.length] = new frameImage("Custom", imageSource, "Full-0-0-" + cardWidth + "-" + cardHeight + ";Title-0-0-" + cardWidth + "-" + cardHeight + ";Type-0-0-" + cardWidth + "-" + cardHeight + ";Rules Text-0-0-" + cardWidth + "-" + cardHeight + ";Pinline-0-0-" + cardWidth + "-" + cardHeight + ";Frame-0-0-" + cardWidth + "-" + cardHeight + ";Border-0-0-" + cardWidth + "-" + cardHeight);
 	frameList[frameList.length - 1].image.customVar = frameList.length - 1
 	frameList[frameList.length - 1].image.onload = function() {
 		document.getElementById("framePicker").appendChild(frameList[this.customVar].framePickerElement());
@@ -210,7 +210,7 @@ function cardMasterUpdated() {
 		var targetChild = cardMaster.children[i];
 		if (parseInt(targetChild.id.replace("frameIndex", "")) == -1) {
 			//The card art placeholder is manually set to -1 and cannot be removed :)
-			frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100)
+            frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100);
 		} else {
 			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
 			var opacityToDraw = targetChild.children[1].children[1].value / 100;
@@ -231,12 +231,17 @@ function cardMasterUpdated() {
 				frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
 			}
 			frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
+//            console.log(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
 			if (targetChild.children[1].children[2].checked == true) {
 				frameFinalContext.globalCompositeOperation = "destination-out";
 			}
 			frameFinalContext.globalAlpha = opacityToDraw;
 			frameFinalContext.drawImage(frameMaskCanvas, 0, 0, cardWidth, cardHeight);
 			frameFinalContext.globalAlpha = 1;
+            if (targetChild.children[1].children[2].checked == true) {
+                frameFinalContext.globalCompositeOperation = "destination-over";
+                frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100);
+            }
 			frameFinalContext.globalCompositeOperation = "source-over";
 		}
 	}
@@ -322,7 +327,7 @@ function rewriteText() {
 }
 
 
-/* functions for all the little parts of the care */
+/* functions for all the little parts of the card */
 function updateBottomInfoCanvas() {
 	window[version.bottomInfoFunction]()
 }
@@ -330,7 +335,7 @@ function updateBottomInfoCanvas() {
 
 /* Misc convenient functions */
 function scale(input) {
-	return input * cardWidth / 750;
+	return input * cardWidth / 744;
 }
 function getValue(elementId) {
 	return parseFloat(document.getElementById(elementId).value)
