@@ -12,6 +12,7 @@ function testFunction() {
 /* Initiate! */
 window.onload = initiate;
 function initiate() {
+    window.CSVList = []
 	window.version = {}
 	window.cardWidth = 744;
 	window.cardHeight = 1039;
@@ -79,33 +80,36 @@ function initiate() {
 
 
 /* Loads all the image info from the CSV! */
-function loadImageCSV() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4) {
-			var splitImageCSV = xhttp.responseText.split("\n");
-			for (var i = 1; i < splitImageCSV.length; i++) {
-				var splitIndividualImageCSV = splitImageCSV[i].split(",");
-				frameList[frameList.length] = new frameImage(splitIndividualImageCSV[0], "data/images/" + splitIndividualImageCSV[1], splitIndividualImageCSV[2]);
-			}
-			for (var i = 0; i < frameList.length; i++) {
-				document.getElementById("framePicker").appendChild(frameList[i].framePickerElement());
-			}
-			//I don't like these here, because even though they run, it doesn't populate the mask options
-			// document.getElementsByClassName("frameOption")[0].classList.add("frameOptionSelected");
-			// selectedMask = document.getElementsByClassName("frameOption")[0].id.replace("frameIndex", "");
-			console.log("image csv loaded, happy card conjuring!");
-			setTimeout(testFunction, 0); //deleteme
-		}
-	}
-	xhttp.open("GET", "data/images/imageCSV.csv", true);
-	xhttp.send();
+function loadImageCSV(targetCSV) {
+    if (!CSVList.includes(targetCSV)) {
+        CSVList[CSVList.length] = targetCSV;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                var splitImageCSV = xhttp.responseText.split("\n");
+                for (var i = 1; i < splitImageCSV.length; i++) {
+                    var splitIndividualImageCSV = splitImageCSV[i].split(",");
+                    frameList[frameList.length] = new frameImage(splitIndividualImageCSV[0], "data/images/" + splitIndividualImageCSV[1], splitIndividualImageCSV[2], splitIndividualImageCSV[3].toString());
+                    if (i == 1) {
+                        frameList[0].image.onload = testFunction;
+                    }
+                }
+                for (var i = 0; i < frameList.length; i++) {
+                    document.getElementById("framePicker").appendChild(frameList[i].framePickerElement());
+                }
+                console.log("image csv loaded, happy card conjuring!");
+                //            setTimeout(testFunction, 0); //deleteme
+            }
+        }
+        xhttp.open("GET", targetCSV, true);
+        xhttp.send();
+    }
 }
 
 
 /* Image Class */
 class frameImage {
-	constructor(display, path, masks) {
+	constructor(display, path, masks, classes) {
 		this.displayName = display;
 		this.image = new Image();
 		this.image.src = path;
@@ -123,6 +127,10 @@ class frameImage {
 			this.widthList[i] = scale(parseInt(splitIndividualMasks[3]));
 			this.heightList[i] = scale(parseInt(splitIndividualMasks[4]));
 		}
+        this.framePickerClasses =["frameOption"]
+        if (classes[0] == "f") {
+            this.framePickerClasses = ("frameOption;" + classes.slice(0,classes.length - 1)).replace(/;/g, ";frameClass").split(";");
+        }
 	}
 	cardMasterElement(targetMask) {
 		var tempElement = document.createElement("div");
@@ -134,7 +142,9 @@ class frameImage {
 	framePickerElement(targetElement) {
 		var tempElement = document.createElement("div");
 		tempElement.id = "frameIndex" + frameList.indexOf(this);
-		tempElement.classList.add("frameOption");
+        for (var i = 0; i < this.framePickerClasses.length; i++) {
+            tempElement.classList.add(this.framePickerClasses[i]);
+        }
 		tempElement.onclick = frameOptionClicked;
 		tempElement.innerHTML = "<img src=" + this.image.src + ">"
 		return tempElement;
@@ -276,7 +286,7 @@ function cardImageUpdated() {
 function changeVersionTo(versionToChangeTo) {
 	loadScript("data/versions/" + versionToChangeTo + ".js")
 }
-function finishChangingVersion() {
+function finishChangingVersion(targetCSV = false) {
 	for (var i = 0; i < version.textList.length; i ++) {
 		document.getElementById("inputWhichTextTabs").innerHTML += "<div class='textTabButton' onclick='textTabFunction(event, `" + version.textList[i][0] + "`)'>" + version.textList[i][0] + "</div>"
         if (i == 0) {
@@ -284,7 +294,9 @@ function finishChangingVersion() {
         }
 	}
 	console.log("version changed, time to load the image csv")
-	loadImageCSV();
+    if (targetCSV != false) {
+        loadImageCSV(targetCSV);
+    }
 }
 
 
