@@ -54,14 +54,19 @@ if (!version.addedPlaneswalker) {
     document.getElementById("cardMenu").appendChild(planeswalkerTab)
     newCanvas("planeswalker");
     var planeswalkerPlus = new Image()
+    planeswalkerPlus.crossOrigin = "anonymous";
     planeswalkerPlus.src = "data/images/planeswalker/planeswalkerPlus.png"
     var planeswalkerNeutral = new Image()
+    planeswalkerNeutral.crossOrigin = "anonymous";
     planeswalkerNeutral.src = "data/images/planeswalker/planeswalkerNeutral.png"
     var planeswalkerMinus = new Image()
+    planeswalkerMinus.crossOrigin = "anonymous";
     planeswalkerMinus.src = "data/images/planeswalker/planeswalkerMinus.png"
     var lightToDarkPlaneswalker = new Image()
+    lightToDarkPlaneswalker.crossOrigin = "anonymous";
     lightToDarkPlaneswalker.src = "data/images/planeswalker/abilityLineOdd.png"
     var darkToLightPlaneswalker = new Image()
+    darkToLightPlaneswalker.crossOrigin = "anonymous";
     darkToLightPlaneswalker.onload = function() {planeswalkerAbilities()}
     darkToLightPlaneswalker.src = "data/images/planeswalker/abilityLineEven.png"
 }

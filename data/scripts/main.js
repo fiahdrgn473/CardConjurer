@@ -108,6 +108,7 @@ class frameImage {
 	constructor(display, path, masks, classes) {
 		this.displayName = display;
 		this.image = new Image();
+        this.image.crossOrigin = "anonymous";
 		this.image.src = path;
 		this.maskOptionList = new Array();
 		this.xList = new Array();
@@ -298,6 +299,7 @@ function finishChangingVersion(targetCSV = false) {
         if (!maskNameList.includes(version.masksToAdd[i])) {
             maskNameList[maskNameList.length] = version.masksToAdd[i];
             maskList[maskList.length] = new Image();
+            maskList[maskList.length - 1].crossOrigin = "anonymous";
             maskList[maskList.length - 1].src = "data/images/masks/" + version.masksToAdd[i].replace(/ /g, "") + ".png";
         }
     }
@@ -628,6 +630,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 function loadManaSymbolImages() {
 	for (var i = 0; i < manaSymbolCodeList.length; i++) {
 		manaSymbolImageList[i] = new Image()
+        manaSymbolImageList[i].crossOrigin = "anonymous";
 		manaSymbolImageList[i].src = "data/images/manaSymbols/" + i + ".png"
 	}
 }
