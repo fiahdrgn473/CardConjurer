@@ -17,108 +17,117 @@
 				<canvas id="displayCanvas"></canvas>
 			</div>
 			<div class="cardMenu">
-                <!-- Card editor tabs begin here! -->
-                <div class="tabMenu">
-                	<div class="tabOption mainEditor tabOptionSelected" onclick="toggleTabs(event, 'frame', 'mainEditor')">Frame</div>
-                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'text', 'mainEditor')">Text</div>
-                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'art', 'mainEditor')">Art</div>
-                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'collector', 'mainEditor')">Collector</div>
-                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'set', 'mainEditor')">Set Symbol</div>
-                	<div class="tabOption mainEditor" onclick="toggleTabs(event, 'watermark', 'mainEditor')">Watermark</div>
-                </div>
-                <div class="tabContent mainEditor tabVisible" id="frame">
-                	<div class="splitGrid">
-                		<div id="framePicker" class="frameGrid"></div>
-                		<div id="maskPicker"></div>
-                	</div>
-                	<div class="splitGrid">
-		            	<button onclick="addFrameToCardMaster()" class="button">Add</button>
-		            	<button onclick="addFrameToCardMaster(' - Right')" class="button">Add To Right Half</button>
-                	</div>
-                	<div id="selectedFramePreview">No frame selected</div>
-                	<div id="cardMaster">
-                		<div id="frameIndex-1" class="cardMasterElement"><span class="handle">|||</span><div>Card Art Placeholder <img id="artPlaceholderImage"></div><span></span></div>
-                	</div>
-                	<div class="bar"></div>
-                	<div>Upload your own frame images:</div>
-                	<div class="autoGrid">
-                		<input type="file" class="input file" accept="image/*" onchange="retrieveLocalURL(event)" placeholder="Via File Upload">
-						<input type="text" class="input text" placeholder="Via URL" onchange="addNewFrameOption(this.value)">
-                	</div>
-                </div>
-                <div class="tabContent mainEditor" id="text">
-                	<div id="inputWhichTextTabs" class="textTab"></div>
-					<textarea class="textarea" id="inputText" placeholder="" oninput="updateText()"></textarea>
-					<input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="cardImageUpdated()" value="">
-					<div class="bar"></div>
-					<div class="title">How To Use Text Codes</div>
-					<div class="paragraph indent">
-						Remember to surround each code with curly brackets ("{" and "}"). The codes are not caps sensitive. The following is a list of available text codes and what they do:
-					</div>
-					<div id="textCodeTutorial"></div>
-                </div>
-                <div class="tabContent mainEditor" id="art">
-                	<div class="splitGrid">
-						<div>
-							<input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
-							<input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
-							<input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
-							<input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
-						</div>
-						<div>
-                            <div style="text-align: center; margin: 0.18em 0px">X, Y, &amp; Zoom:</div>
-							<input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardMasterUpdated()">
-							<input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardMasterUpdated()">
-							<input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardMasterUpdated()">
-						</div>
-					</div>
-                </div>
-                <div class="tabContent mainEditor" id="collector">
-                	<div class="autoGrid">
-						<input type="text" class="input text" placeholder="Number" id="inputInfoNumber" oninput="updateBottomInfoCanvas()" value="">
-						<input type="text" class="input text" placeholder="Rarity" id="inputInfoRarity" oninput="updateBottomInfoCanvas()" value="P">
-						<input type="text" class="input text" placeholder="Set" id="inputInfoSet" oninput="updateBottomInfoCanvas()" value="MTG">
-						<input type="text" class="input text" placeholder="Language" id="inputInfoLanguage" oninput="updateBottomInfoCanvas()" value="EN">
-						<input type="text" class="input text" placeholder="Artist's Name" id="inputInfoArtist" oninput="updateBottomInfoCanvas()" value="">
-					</div>
-                </div>
-                <div class="tabContent mainEditor" id="set">
-                	<div class="autoGrid">
-						<input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
-						<input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)">
-						<input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
-						<input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
-						<button class="button" onclick="randomSet()">Random</button>
-					</div>
-                </div>
-                <div class="tabContent mainEditor" id="watermark">
-                	<div class="autoGrid">
-						<input type="file" class="input file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload">
-						<input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/' + this.value)">
-						<input type="text" class="input text" placeholder="Via Set Code" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large')">
-						<select class="select" id="inputWatermarkPrimary" onchange="updateWatermark()">
-							<option value="none">None</option>
-							<option value="default">Default</option>
-							<option value="#ccc8b1" selected="selected">White</option>
-							<option value="#b0c3d5">Blue</option>
-							<option value="#b3b3b3">Black</option>
-							<option value="#ddac9b">Red</option>
-							<option value="#b9c8b5">Green</option>
-							<option value="#e4d49b">Gold</option>
-							<option value="#cfc8be">Artifact/Colorless</option>
-						</select>
-						<select class="select" id="inputWatermarkSecondary" onchange="updateWatermark()">
-							<option value="none">None</option>
-							<option value="default">Default</option>
-							<option value="#ccc8b1">White</option>
-							<option value="#b0c3d5">Blue</option>
-							<option value="#b3b3b3">Black</option>
-							<option value="#ddac9b">Red</option>
-							<option value="#b9c8b5">Green</option>
-							<option value="#e4d49b">Gold</option>
-							<option value="#cfc8be">Artifact/Colorless</option>
-						</select>
-					</div>
+                <div id="cardMenu">
+                    <!-- Card editor tabs begin here! -->
+                    <div class="tabMenu" id="mainTabMenu">
+                        <div class="tabOption mainEditor tabOptionSelected" onclick="toggleTabs(event, 'frame', 'mainEditor')">Frame</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'text', 'mainEditor')">Text</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'art', 'mainEditor')">Art</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'collector', 'mainEditor')">Collector</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'set', 'mainEditor')">Set Symbol</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'watermark', 'mainEditor')">Watermark</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'advanced', 'mainEditor')">Advanced</div>
+                    </div>
+                    <div class="tabContent mainEditor tabVisible" id="frame">
+                        <div class="splitGrid">
+                            <div id="framePicker" class="frameGrid"></div>
+                            <div id="maskPicker"></div>
+                        </div>
+                        <div class="splitGrid">
+                            <button onclick="addFrameToCardMaster()" class="button">Add</button>
+                            <button onclick="addFrameToCardMaster(' - Right')" class="button">Add To Right Half</button>
+                        </div>
+                        <div id="selectedFramePreview">No frame selected</div>
+                        <div id="cardMaster">
+                            <div id="frameIndex-1" class="cardMasterElement"><span class="handle">|||</span><div>Card Art Placeholder <img id="artPlaceholderImage"></div><span></span></div>
+                        </div>
+                        <div class="bar"></div>
+                        <div>Upload your own frame images:</div>
+                        <div class="autoGrid">
+                            <input type="file" class="input file" accept="image/*" onchange="retrieveLocalURL(event)" placeholder="Via File Upload">
+                            <input type="text" class="input text" placeholder="Via URL" onchange="addNewFrameOption(this.value)">
+                        </div>
+                    </div>
+                    <div class="tabContent mainEditor" id="text">
+                        <div id="inputWhichTextTabs" class="textTab"></div>
+                        <textarea class="textarea" id="inputText" placeholder="" oninput="updateText()"></textarea>
+                        <input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="cardImageUpdated()" value="">
+                        <div class="bar"></div>
+                        <div class="title">How To Use Text Codes</div>
+                        <div class="paragraph indent">
+                            Remember to surround each code with curly brackets ("{" and "}"). The codes are not caps sensitive. The following is a list of available text codes and what they do:
+                        </div>
+                        <div id="textCodeTutorial"></div>
+                    </div>
+                    <div class="tabContent mainEditor" id="art">
+                        <div class="splitGrid">
+                            <div>
+                                <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
+                                <input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
+                                <input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
+                                <input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
+                            </div>
+                            <div>
+                                <div style="text-align: center; margin: 0.18em 0px">X, Y, &amp; Zoom:</div>
+                                <input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardMasterUpdated()">
+                                <input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardMasterUpdated()">
+                                <input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardMasterUpdated()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabContent mainEditor" id="collector">
+                        <div class="autoGrid">
+                            <input type="text" class="input text" placeholder="Number" id="inputInfoNumber" oninput="updateBottomInfoCanvas()" value="">
+                            <input type="text" class="input text" placeholder="Rarity" id="inputInfoRarity" oninput="updateBottomInfoCanvas()" value="P">
+                            <input type="text" class="input text" placeholder="Set" id="inputInfoSet" oninput="updateBottomInfoCanvas()" value="MTG">
+                            <input type="text" class="input text" placeholder="Language" id="inputInfoLanguage" oninput="updateBottomInfoCanvas()" value="EN">
+                            <input type="text" class="input text" placeholder="Artist's Name" id="inputInfoArtist" oninput="updateBottomInfoCanvas()" value="">
+                        </div>
+                    </div>
+                    <div class="tabContent mainEditor" id="set">
+                        <div class="autoGrid">
+                            <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
+                            <input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)">
+                            <input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
+                            <input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
+                            <button class="button" onclick="randomSet()">Random</button>
+                        </div>
+                    </div>
+                    <div class="tabContent mainEditor" id="watermark">
+                        <div class="autoGrid">
+                            <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload">
+                            <input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/' + this.value)">
+                            <input type="text" class="input text" placeholder="Via Set Code" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large')">
+                            <select class="select" id="inputWatermarkPrimary" onchange="updateWatermark()">
+                                <option value="none">None</option>
+                                <option value="default">Default</option>
+                                <option value="#ccc8b1" selected="selected">White</option>
+                                <option value="#b0c3d5">Blue</option>
+                                <option value="#b3b3b3">Black</option>
+                                <option value="#ddac9b">Red</option>
+                                <option value="#b9c8b5">Green</option>
+                                <option value="#e4d49b">Gold</option>
+                                <option value="#cfc8be">Artifact/Colorless</option>
+                            </select>
+                            <select class="select" id="inputWatermarkSecondary" onchange="updateWatermark()">
+                                <option value="none">None</option>
+                                <option value="default">Default</option>
+                                <option value="#ccc8b1">White</option>
+                                <option value="#b0c3d5">Blue</option>
+                                <option value="#b3b3b3">Black</option>
+                                <option value="#ddac9b">Red</option>
+                                <option value="#b9c8b5">Green</option>
+                                <option value="#e4d49b">Gold</option>
+                                <option value="#cfc8be">Artifact/Colorless</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tabContent mainEditor" id="advanced">
+                        <div class="paragraph indent">
+                            Click on one of the following buttons to load the described image frame set:
+                        </div>
+                        <button onclick="loadPlaneswalkerFrames()" class="button">Planeswalker</button>
+                    </div>
                 </div>
                 <!-- Card editor tabs end here! -->
                 <div class="bar"></div>
@@ -141,14 +150,21 @@
 			</div>
 		</div>
 		<div class="layer">
-            <div class="title">Want More Customization?</div>
-			<!-- <div class="paragraph indent">
-                If you'd like to try out some more frames, scroll to the bottom of this page and check the box next to "Advanced Borders" - CardConjurer.com will remember this setting, so you only need to do this once per device.
-			</div> -->
+            <div class="title">Looking for the Original?</div>
             <div class="paragraph indent">
-                This version of the website is currently a work in progress, so it doesn't have all the features the original Card Conjurer had. If you'd like to go back to the old version, <a href="old/index.html">click here</a>.
+                This version of the website is currently a work in progress, so it doesn't have the same features that the original Card Conjurer had. If you want to go back to the old version, <a href="old/index.html">click here</a>.
             </div>
 		</div>
+        <div class="layer">
+            <div class="title">The Proxy Factory</div>
+            <div class="paragraph indent">If you'd like to delve deeper into making custom Magic: The Gathering cards, check out The Proxy Factory! They're a community full of individuals interested in creating custom cards, and are very welcoming to new members.</div>
+            <div class="proxyFactoryLimitedGrid">
+                <div class="imageLinkGrid">
+                    <a class="imageLink showBackgroundThrough" style="color: #ff4500;" href="https://www.reddit.com/r/TheProxyFactory/"><img src="data/site/icons/reddit.png"><div>Reddit</div></a>
+                    <a class="imageLink showBackgroundThrough" style="color: #738adb;" href="https://discordapp.com/invite/xBCQprM"><img src="data/site/icons/discord.png"><div>Discord</div></a>
+                </div>
+            </div>
+        </div>
 		<div class="layer">
 			<div class="title">Have Any Questions?</div>
 			<div class="paragraph indent">

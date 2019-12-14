@@ -21,6 +21,7 @@ version.manaCostDirection = "horizontal"
 version.watermarkWidth = scale(520)
 version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)
+version.masksToAdd = ["Right Half", "Corners", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border", "Legend", "Legend With Border", "Box Topper"]
 //Name, text, x, y, width, height, font, size, color, other
 version.textList = [
 	["Title", "", scale(64), scale(83), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],

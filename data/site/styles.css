@@ -40,11 +40,13 @@
 	--shifting-color-1-light: #c8ff64;
 	--light-color: #eee;
 	--dark-color: #333;
-    --clear-light: #fff2;
-    --clear-mid: #fff4;
-    --clear-dark: #fff6;
+    --clear-light: #fff3;
+    --clear-mid: #fff6;
+    --clear-dark: #fff9;
+    --clear-darker: #aaa3;
+    --clear-darkerer: #aaa6;
+    --background-gradient: linear-gradient(to bottom right, var(--shifting-color-1), var(--shifting-color-1-light));
 }
-
 
 /*Background & Footer*/
 html {
@@ -58,8 +60,12 @@ html {
 	font-size: 8pt;
 }
 body {
-	margin: 0px;
+    margin: 0;
+    border: 0;
+    padding: 0;
 	background-image: url(images/lowpoly.png);
+    background-position: left;
+    background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -370,11 +376,10 @@ footer a:hover {
 }
 
 
-
+/* Text code tutorial */
 #textCodeTutorial {
 	display: grid;
 	grid-template-columns: 6.5em auto;
-	/*padding: 0.5em;*/
 }
 #textCodeTutorial > div {
 	padding: 0.25em 0;
@@ -387,4 +392,44 @@ footer a:hover {
 
 input[type="checkbox"], .frameOption, .maskOption, .button {
 	cursor: pointer;
+}
+
+
+/* image links */
+.proxyFactoryLimitedGrid {
+    margin: 0 auto;
+    max-width: 32em;
+}
+.imageLinkGrid {
+    margin-top: 1em;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+    
+}
+.showBackgroundThrough {
+    display: inline-block;
+    background: url(images/lowpoly.png) left top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.imageLink {
+    width: 12em;
+    padding: 0.5em;
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: 4em auto;
+    align-items: center;
+    justify-items: left;
+    border: 1px solid var(--dark-color);
+}
+.imageLink:hover {
+    background-color: var(--clear-darkerer);
+}
+.imageLink > img {
+    max-height: 3em;
+    max-width: 4em;
+}
+.imageLink > div {
+    font: 1.5em belerenbsc;
 }
