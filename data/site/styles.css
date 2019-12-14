@@ -437,7 +437,7 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
 .visitorCount {
     display: none;
 }
-.visitorCount img {
+.visitorCount > a > img {
     max-height: 1em;
 }
 .visitorCountTrigger:hover + .visitorCount {
