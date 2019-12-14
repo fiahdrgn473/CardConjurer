@@ -433,3 +433,13 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
 .imageLink > div {
     font: 1.5em belerenbsc;
 }
+
+.visitorCount {
+    display: none;
+}
+.visitorCount img {
+    max-height: 1em;
+}
+.visitorCountTrigger:hover + .visitorCount {
+    display:inline-block;
+}
