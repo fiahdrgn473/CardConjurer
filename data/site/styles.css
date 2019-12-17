@@ -224,6 +224,18 @@ footer a:hover {
 @media screen and (min-width: 750pt) {
     .samples {
         grid-template-columns: 33.33% 33.33% 33.33% !important;
+        margin-bottom: 2em;
+    }
+    .samples #sample1 {
+        width: 90%;
+        transform: rotate(-10deg) translate(10%, 8%);
+    }
+    .samples #sample2 {
+        z-index: 10;
+    }
+    .samples #sample3 {
+        width: 90%;
+        transform: rotate(10deg) translate(-10%, 8%);
     }
 }
 /*These control tooltips for mobile devices vs. desktops/laptops*/
@@ -462,7 +474,6 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
     margin: 0 auto;
     height: auto;
 }
-
 
 
 
