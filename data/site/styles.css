@@ -220,6 +220,12 @@ footer a:hover {
 		font-size: 10pt;
 	}
 }
+/*The screen is big enough for the samples to lay side by side*/
+@media screen and (min-width: 750pt) {
+    .samples {
+        grid-template-columns: 33.33% 33.33% 33.33% !important;
+    }
+}
 /*These control tooltips for mobile devices vs. desktops/laptops*/
 /*@media screen and (min-width: 1024px) {
 	.tooltip:hover .tooltiptext {
@@ -443,3 +449,24 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
 .visitorCountTrigger:hover + .visitorCount {
     display:inline-block;
 }
+
+
+
+.samples {
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+}
+.samples img {
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+}
+
+
+
+
+
+
+
+

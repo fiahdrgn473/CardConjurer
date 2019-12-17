@@ -883,6 +883,7 @@ function textCodeTutorial() {
 
 // //textCodeTutorial()
 textCodeTutorial()
+loadSampleImages()
 
 
 
@@ -900,3 +901,34 @@ function filterFramePicker(classToShow) {
         }
     }
 }
+
+
+function loadSampleImages() {
+    var availableSamples = 6;
+    var samplesToLoad = [0,0,0];
+    for (var i = 1; i <= samplesToLoad.length; i ++) {
+        var sampleImage = new Image()
+        sampleImage.customVarIndex = i;
+        var randomIndex = 0;
+        sampleImage.onload = function() {
+            document.getElementById(("sample" + this.customVarIndex)).src = this.src;
+        }
+        while(samplesToLoad[i - 1] == 0) {
+            randomIndex = Math.floor(Math.random() * (availableSamples)) + 1;
+            if (!samplesToLoad.includes(randomIndex)) {
+                samplesToLoad[i - 1] = randomIndex;
+            }
+        }
+        sampleImage.src = "data/site/images/samples/" + randomIndex + ".png";
+    }
+}
+
+
+
+
+
+
+
+
+
+
