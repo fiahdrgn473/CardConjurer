@@ -23,8 +23,8 @@ filterFramePicker("frameClassExpedition")
 version.textList = [
     ["Title", "", scale(64), scale(77), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],
     ["Type", "", scale(64), scale(875), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],
-    ["Rules Text", "", scale(64), scale(729), scale(616), scale(0), "mplantin", 38, "black", "lineSpace=0.97"]/*,
-    ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", 38, "black", "oneLine=true,textAlign='center'"]*/
+    ["Rules Text", "", scale(64), scale(729), scale(616), scale(0), "mplantin", 38, "black", "lineSpace=0.97"],
+    ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", 38, "black", "oneLine=true,textAlign='center'"]
 ]
 if (!version.addedExpedition) {
     version.addedExpedition = true
