@@ -904,7 +904,7 @@ function filterFramePicker(classToShow) {
 
 
 function loadSampleImages() {
-    var availableSamples = 6;
+    var availableSamples = 7;
     var samplesToLoad = [0,0,0];
     for (var i = 1; i <= samplesToLoad.length; i ++) {
         var sampleImage = new Image()
