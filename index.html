@@ -126,7 +126,11 @@
                         <div class="paragraph indent">
                             Click on one of the following buttons to load the described image frame set:
                         </div>
-                        <button onclick="loadPlaneswalkerFrames()" class="button">Planeswalker</button>
+                        <button onclick="changeVersionTo('planeswalker')" class="button">Planeswalker</button>
+                        <button onclick="changeVersionTo('expedition')" class="button">Expeditions</button>
+                        <button onclick="changeVersionTo('m15extras')" class="button">M15 Extras</button>
+                        <div class="bar"></div>
+                        <input type="checkbox" class="checkbox" id="inputCheckboxHideFrames" checked onchange="toggleFrameOptionVisibility()">Hide unrelated frames<br>
                     </div>
                 </div>
                 <!-- Card editor tabs end here! -->

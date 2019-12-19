@@ -173,7 +173,7 @@ canvas {
 
 
 /*General modifications*/
-.hidden {
+.hidden:not(.visibilityOverride) {
 	display: none;
 }
 .visible {
@@ -474,7 +474,6 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
     margin: 0 auto;
     height: auto;
 }
-
 
 
 

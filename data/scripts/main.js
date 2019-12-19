@@ -887,9 +887,9 @@ loadSampleImages()
 
 
 
-function loadPlaneswalkerFrames() {
-    changeVersionTo("planeswalker");
-}
+//function loadPlaneswalkerFrames() {
+//    changeVersionTo("planeswalker");
+//}
 
 function filterFramePicker(classToShow) {
     var framePickerList = document.getElementsByClassName("frameOption")
@@ -925,7 +925,18 @@ function loadSampleImages() {
 
 
 
-
+function toggleFrameOptionVisibility() {
+    var frameOptionList = document.getElementsByClassName("frameOption")
+    if (document.getElementById("inputCheckboxHideFrames").checked) {
+        for (var i = 0; i < frameOptionList.length; i ++) {
+            frameOptionList[i].classList.remove("visibilityOverride");
+        }
+    } else {
+        for (var i = 0; i < frameOptionList.length; i ++) {
+            frameOptionList[i].classList.add("visibilityOverride");
+        }
+    }
+}
 
 
 
