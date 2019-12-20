@@ -86,8 +86,8 @@ function loadImageCSV(targetCSV) {
                 for (var i = 1; i < splitImageCSV.length; i++) {
                     var splitIndividualImageCSV = splitImageCSV[i].split(",");
                     frameList[frameList.length] = new frameImage(splitIndividualImageCSV[0], "data/images/" + splitIndividualImageCSV[1], splitIndividualImageCSV[2], splitIndividualImageCSV[3].toString());
-                    if (i == 1) {
-                        frameList[0].image.onload = testFunction;
+                    if (i == 6) {
+                        frameList[5].image.onload = testFunction;
                     }
                 }
                 for (var i = 0; i < frameList.length; i++) {
