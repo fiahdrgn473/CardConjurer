@@ -175,6 +175,7 @@ function frameOptionClicked(event) {
 		selectedFrame = parseInt(clickedElementIndex);
 		document.getElementById("maskPicker").innerHTML = "";
 		for (var i = 0; i < frameList[selectedFrame].maskOptionList.length; i++) {
+            console.log(frameList[selectedFrame].maskOptionList);
             document.getElementById("maskPicker").innerHTML += "<div class='maskOption' onclick='maskOptionClicked(event)' id='maskName" + frameList[selectedFrame].maskOptionList[i] + "'><img src='" + maskList[maskNameList.indexOf(frameList[selectedFrame].maskOptionList[i])].src + "'>" + frameList[selectedFrame].maskOptionList[i] + "</div>";
 		}
 		document.getElementsByClassName("maskOption")[0].classList.add("maskOptionSelected");
@@ -209,8 +210,13 @@ function deleteCardMasterElement(event) {
 	cardMasterUpdated();
 }
 function addNewFrameOption(imageSource) {
-    frameList[frameList.length] = new frameImage("Custom", imageSource, "Full-0-0-" + cardWidth + "-" + cardHeight + ";Title-0-0-" + cardWidth + "-" + cardHeight + ";Type-0-0-" + cardWidth + "-" + cardHeight + ";Rules Text-0-0-" + cardWidth + "-" + cardHeight + ";Pinline-0-0-" + cardWidth + "-" + cardHeight + ";Frame-0-0-" + cardWidth + "-" + cardHeight + ";Border-0-0-" + cardWidth + "-" + cardHeight + ";Box Topper-0-0-" + cardWidth + "-" + cardHeight, "Eternal;Custom ");
-	frameList[frameList.length - 1].image.customVar = frameList.length - 1
+    var availableMasks = "";
+    for (var i = 0; i < maskNameList.length; i++) {
+        availableMasks += maskNameList[i] + "-0-0-" + cardWidth + "-" + cardHeight + ";";
+    }
+    availableMasks = availableMasks.substring(0, availableMasks.length - 1);
+    frameList[frameList.length] = new frameImage("Custom", imageSource, availableMasks, "Eternal;Custom ");
+    frameList[frameList.length - 1].image.customVar = frameList.length - 1;
 	frameList[frameList.length - 1].image.onload = function() {
 		frameList[this.customVar].framePickerElement();
 	}
