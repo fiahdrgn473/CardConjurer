@@ -282,11 +282,11 @@ function cardImageUpdated() {
     if (version.currentVersion == "planeswalker") {
         cardFinalContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight);
     }
-	cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
+    cardFinalContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
 	cardFinalContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight);
-	cardFinalContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection)
-	cardFinalContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
+    cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(setSymbolCanvas, 0, 0, cardWidth, cardHeight)
+    cardFinalContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection)
 	//Clear the corners
 	cardFinalContext.globalCompositeOperation = "destination-out"
 	cardFinalContext.drawImage(maskList[1], 0, 0, cardWidth, cardHeight)
