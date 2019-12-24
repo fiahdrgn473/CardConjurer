@@ -16,6 +16,7 @@ function initiate() {
 	window.version = {}
 	window.cardWidth = 744;
 	window.cardHeight = 1039;
+    window.whichTextIndex = 0;
 	window.frameList = new Array();
 	window.maskNameList = [];
 	window.maskList = [];
@@ -338,16 +339,6 @@ function textTabFunction(event, target) {
     	
     }
 }
-//Changes the textarea content to whichever text is currently selected for editing
-var whichTextIndex = 0
-function changeWhichText() {
-	for (var i = 0; i < version.textList.length; i ++) {
-		if (version.textList[i][0] == document.getElementById("inputWhichText").value) {
-			whichTextIndex = i
-		}
-	}
-	document.getElementById("inputText").value = version.textList[whichTextIndex][1]
-}
 function updateText() {
     version.textList[whichTextIndex][1] = document.getElementById("inputText").value
     clearTimeout(updateTextDelay)
@@ -374,12 +365,19 @@ function updateBottomInfoCanvas() {
 }
 
 
-/* Misc convenient functions */
+/* Misc/general convenient little functions */
 function scale(input) {
 	return input * cardWidth / 744;
 }
 function getValue(elementId) {
 	return parseFloat(document.getElementById(elementId).value)
+}
+function beforeAfter(targetString, beforeString, afterString) {
+    if (targetString.includes(beforeString) && targetString.includes(afterString)) {
+        return targetString.split(beforeString)[1].split(afterString)[0];
+    } else {
+        return "";
+    }
 }
 
 
@@ -946,6 +944,36 @@ function toggleFrameOptionVisibility() {
 
 
 
-
-
+function inputCardNameTextImport(cardName) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var importCardTextResponse = this.responseText;
+            console.log(importCardTextResponse);
+            importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
+            importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
+            importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}"), "Rules Text");
+            if (importCardTextResponse.includes('"power":"')) {
+                importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
+            }
+            document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
+        } else if (this.readyState == 4 && this.status == 404) {
+            alert("Sorry, but we can't seem to find any card named '" + cardName + "'");
+        }
+    }
+    xhttp.open("GET", "https://api.scryfall.com/cards/search?order=released&q=name%3D" + cardName.replace(/ /g, "_"), true);
+    xhttp.send();
+}
+function importText(text, target) {
+    for (var i = 0; i < version.textList.length; i++) {
+        if (version.textList[i][0] == target) {
+            if (i == whichTextIndex) {
+                document.getElementById("inputText").value = text;
+            } else {
+                version.textList[i][1] = text;
+            }
+            updateText();
+        }
+    }
+}
 

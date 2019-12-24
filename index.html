@@ -27,6 +27,7 @@
                         <div class="tabOption mainEditor" onclick="toggleTabs(event, 'set', 'mainEditor')">Set Symbol</div>
                         <div class="tabOption mainEditor" onclick="toggleTabs(event, 'watermark', 'mainEditor')">Watermark</div>
                         <div class="tabOption mainEditor" onclick="toggleTabs(event, 'advanced', 'mainEditor')">Advanced</div>
+                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'import', 'mainEditor')">Import Text</div>
                     </div>
                     <div class="tabContent mainEditor tabVisible" id="frame">
                         <div class="splitGrid">
@@ -133,6 +134,10 @@
                         <div class="bar"></div>
                         <input type="checkbox" class="checkbox" id="inputCheckboxHideFrames" checked onchange="toggleFrameOptionVisibility()">Hide unrelated frames<br>
                     </div>
+                </div>
+                <div class="tabContent mainEditor" id="import">
+                    Type in a card name to import its text! (Only works for regular cards)
+                    <input type="text" class="input text" id="inputCardNameTextImport" onchange="inputCardNameTextImport(this.value)" placeholder="Via Card Name">
                 </div>
                 <!-- Card editor tabs end here! -->
                 <div class="bar"></div>
