@@ -211,7 +211,7 @@ function deleteCardMasterElement(event) {
 }
 function addNewFrameOption(imageSource) {
     var availableMasks = "";
-    for (var i = 0; i < maskNameList.length; i++) {
+    for (var i = 2; i < maskNameList.length; i++) {
         availableMasks += maskNameList[i] + "-0-0-" + cardWidth + "-" + cardHeight + ";";
     }
     availableMasks = availableMasks.substring(0, availableMasks.length - 1);
