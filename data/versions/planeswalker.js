@@ -2,8 +2,10 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 version.currentVersion = "planeswalker"
-version.artX = scale(58)
-version.artY = scale(118)
+version.artX = scale(50)
+version.artY = scale(95)
+version.artWidth = scale(754)
+version.artHeight = scale(853)
 version.setSymbolRight = scale(687)
 version.setSymbolVertical = scale(612)
 version.setSymbolWidth = scale(90)

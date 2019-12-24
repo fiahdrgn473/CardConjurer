@@ -2,8 +2,10 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 version.currentVersion = "expedition"
-version.artX = scale(58)
-version.artY = scale(118)
+version.artX = scale(56)
+version.artY = scale(113)
+version.artWidth = scale(630)
+version.artHeight = scale(720)
 version.setSymbolRight = scale(687)
 version.setSymbolVertical = scale(872)
 version.setSymbolWidth = scale(90)

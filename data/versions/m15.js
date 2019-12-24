@@ -4,6 +4,8 @@
 version.currentVersion = "m15"
 version.artX = scale(58)
 version.artY = scale(118)
+version.artWidth = scale(626)
+version.artHeight = scale(458)
 version.setSymbolRight = scale(684)
 version.setSymbolVertical = scale(614)
 version.setSymbolWidth = scale(90)

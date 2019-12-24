@@ -2,8 +2,10 @@
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
 version.currentVersion = "unhinged"
-version.artX = scale(58)
-version.artY = scale(118)
+version.artX = scale(59)
+version.artY = scale(58)
+version.artWidth = scale(623)
+version.artHeight = scale(864)
 version.setSymbolRight = scale(684)
 version.setSymbolVertical = scale(614)
 version.setSymbolWidth = scale(90)

@@ -52,9 +52,15 @@ function initiate() {
 	setSymbol.crossOrigin = "anonymous";
 	watermark.crossOrigin = "anonymous";
 	cardArt.onload = function() {
-		// cardImageUpdated();
+        if (this.width / this.height > version.artWidth / version.artHeight) {
+            document.getElementById("inputCardArtZoom").value = version.artHeight / this.height * 100;
+        } else {
+            document.getElementById("inputCardArtZoom").value = version.artWidth / this.width * 100;
+        }
+        document.getElementById("inputCardArtX").value = 0;
+        document.getElementById("inputCardArtY").value = 0;
 		cardMasterUpdated();
-        document.getElementById("artPlaceholderImage").src = this.src
+        document.getElementById("artPlaceholderImage").src = this.src;
 	}
 	setSymbol.onload = function() {
 		updateSetSymbol();
@@ -560,10 +566,10 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
                     outline = true;
                     lineContext.strokeStyle = possibleCodeLower.replace("outline:", "").split(",")[0];
                     lineContext.lineWidth = parseInt(possibleCodeLower.replace("outline:", "").split(",")[1]);
-                } else if (manaSymbolCodeList.includes(possibleCodeLower)) {
+                } else if (manaSymbolCodeList.includes(possibleCodeLower.split("/").join(""))) {
 					//THIS HAS TO BE THE LAST ONE
 					var manaSymbolDiameter = textSize * 0.77
-					lineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower)], currentLineX, currentLineY - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
+					lineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split("/").join(""))], currentLineX, currentLineY - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
 					currentLineX += manaSymbolDiameter * 1.02
 				} else {
 					wordToWrite = splitString[i]
@@ -640,7 +646,7 @@ function loadManaSymbolImages() {
 }
 //Draws a mana cost
 CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbolsY, diameter = 50, distance = -50, direction = "horizontal") {
-	var splitManaCost = text.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split(" ")
+	var splitManaCost = text.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split("/").join("").split(" ")
 	var currentSymbolIndex = 0
 	var currentX = symbolsX
 	var currentY = symbolsY
@@ -949,14 +955,20 @@ function inputCardNameTextImport(cardName) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var importCardTextResponse = this.responseText;
-            console.log(importCardTextResponse);
             importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
             importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
             importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}"), "Rules Text");
             if (importCardTextResponse.includes('"power":"')) {
                 importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
+            } else {
+                importText("", "Power Toughness");
             }
             document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
+            document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
+            document.getElementById("inputSetCode").value = beforeAfter(importCardTextResponse, '"set":"', '",');
+            document.getElementById("inputSetRarity").value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0];
+            whiteToTransparent(setSymbol, "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetCode").value + "&size=large&rarity=" + document.getElementById("inputSetRarity").value)
+            inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'));
         } else if (this.readyState == 4 && this.status == 404) {
             alert("Sorry, but we can't seem to find any card named '" + cardName + "'");
         }
