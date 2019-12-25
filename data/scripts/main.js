@@ -658,7 +658,7 @@ CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbo
 			}
 			this.fillStyle = "black"
 			this.beginPath()
-			this.arc(currentX + diameter / 2.1, currentY + diameter / 1.8, diameter / 2, 0, 2 * Math.PI, false)
+			this.arc(currentX + diameter / 2.13, currentY + diameter / 1.7, diameter / 2, 0, 2 * Math.PI, false)
 			this.fill()
 			this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
 			if (direction == "horizontal") {
