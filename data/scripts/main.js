@@ -507,7 +507,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 	var currentLineX = textCanvasesPadding
 	var currentLineY = textY + (textSize * 0.45) //+ textCanvasesPadding
 	var uniqueSplitter = "9dn57gwbt4sh"
-	var splitString = text.replace(/ /g, uniqueSplitter +  " " + uniqueSplitter).replace(/{/g, uniqueSplitter + "{").replace(/}/g, "}" + uniqueSplitter).split(uniqueSplitter)
+	var splitString = text.replace(/\n/g, "{line}").replace(/ /g, uniqueSplitter +  " " + uniqueSplitter).replace(/{/g, uniqueSplitter + "{").replace(/}/g, "}" + uniqueSplitter).split(uniqueSplitter)
 	splitString[splitString.length] = " "
 	var lastWordAdded = ""
 	for (var i = 0; i < splitString.length; i++) {
@@ -574,7 +574,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 				} else {
 					wordToWrite = splitString[i]
 				}
-			}
+            }
 			if (wordToWrite != "" || finishLine == true) {
 				//We're left with a word. Write it.
 				var currentWordWidth = lineContext.measureText(wordToWrite).width
@@ -948,8 +948,8 @@ function toggleFrameOptionVisibility() {
     }
 }
 
-
-
+//inputCardNameNumberTextImport
+var savedImportResponse = ""
 function inputCardNameTextImport(cardName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -970,7 +970,7 @@ function inputCardNameNumberTextImport(index) {
     var importCardTextResponse = savedImportResponse[index]//.split('{"object":"related_card"')[0]
     importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
-    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}").replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D'), "Rules Text");
+    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "\n").replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D'), "Rules Text");
     if (importCardTextResponse.includes('"power":"')) {
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
     } else {
