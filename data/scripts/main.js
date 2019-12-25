@@ -79,6 +79,7 @@ function initiate() {
 	//initiation is complete, ready to load image data
 	console.log("init done, time to set the card version");
 	changeVersionTo("m15");
+    document.body.appendChild(cropCanvas);
 } 
 
 
@@ -734,19 +735,19 @@ function autocrop(targetImage, source = targetImage.src) {
 	                }
 	            }
 	            //sorts the arrays numerically
-	            pix.x.sort(function(a,b){return a-b})
-	            pix.y.sort(function(a,b){return a-b})
-	            var n = pix.x.length - 1
+                pix.x.sort(function(a,b){return a-b});
+                pix.y.sort(function(a,b){return a-b});
+                var n = pix.x.length - 1;
 	            //Finds the difference between the leftmost and rightmost visible pixels, and the topmost and bottommost pixels, cuts out a section of the canvas
-	            width = pix.x[n] - pix.x[0]
-	            height = pix.y[n] - pix.y[0]
-	            var cropped = cropContext.getImageData(pix.x[0], pix.y[0], width + 1, height + 1)
+                width = pix.x[n] - pix.x[0];
+                height = pix.y[n] - pix.y[0];
+                var cropped = cropContext.getImageData(pix.x[0], pix.y[0], width + 1, height + 1);
 	            //Resizes the canvas and draws cropped image
-	            cropCanvas.width = width + 1
-	            cropCanvas.height = height + 1
-	            cropContext.putImageData(cropped, 0, 0)
+                cropCanvas.width = width + 1;
+                cropCanvas.height = height + 1;
+                cropContext.putImageData(cropped, 0, 0);
 	            //Saves the newly cropped image to the given image
-	            targetImage.src = cropCanvas.toDataURL()
+                targetImage.src = cropCanvas.toDataURL();
             }
         }
     }
