@@ -954,7 +954,7 @@ function inputCardNameTextImport(cardName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var importCardTextResponse = this.responseText;
+            var importCardTextResponse = this.responseText.split('{"object":"card"')[1].split('{"object":"related_card"')[0];
             importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
             importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
             importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}"), "Rules Text");
