@@ -747,7 +747,7 @@ function autocrop(targetImage, source = targetImage.src) {
                 cropCanvas.height = height + 1;
                 cropContext.putImageData(cropped, 0, 0);
 	            //Saves the newly cropped image to the given image
-                targetImage.src = cropCanvas.toDataURL();
+                setTimeout(function() {targetImage.src = cropCanvas.toDataURL();}, 100)
             }
         }
     }
