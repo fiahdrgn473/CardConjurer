@@ -976,6 +976,19 @@ function inputCardNameNumberTextImport(index) {
     } else {
         importText("", "Power Toughness");
     }
+    if (importCardTextResponse.includes('"loyalty":"')) {
+        importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), "Loyalty");
+        var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g);
+        abilityList.push("", "", "", "");
+        importText(abilityList[0].split(/: (.+)?/)[1], "First Ability");
+        document.getElementById("inputPlaneswalker1Icon").value = abilityList[0].split(/: (.+)?/)[0];
+        importText(abilityList[1].split(/: (.+)?/)[1], "Second Ability");
+        document.getElementById("inputPlaneswalker2Icon").value = abilityList[1].split(/: (.+)?/)[0];
+        importText(abilityList[2].split(/: (.+)?/)[1], "Third Ability");
+        document.getElementById("inputPlaneswalker3Icon").value = abilityList[2].split(/: (.+)?/)[0];
+        importText(abilityList[3].split(/: (.+)?/)[1], "Fourth Ability");
+        document.getElementById("inputPlaneswalker4Icon").value = abilityList[3].split(/: (.+)?/)[0];
+    }
     document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
     document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
     document.getElementById("inputSetCode").value = beforeAfter(importCardTextResponse, '"set":"', '",');
