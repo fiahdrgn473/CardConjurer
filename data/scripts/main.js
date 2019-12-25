@@ -954,27 +954,34 @@ function inputCardNameTextImport(cardName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var importCardTextResponse = this.responseText.split('{"object":"card"')[1].split('{"object":"related_card"')[0];
-            importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
-            importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
-            importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}"), "Rules Text");
-            if (importCardTextResponse.includes('"power":"')) {
-                importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
-            } else {
-                importText("", "Power Toughness");
-            }
-            document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
-            document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
-            document.getElementById("inputSetCode").value = beforeAfter(importCardTextResponse, '"set":"', '",');
-            document.getElementById("inputSetRarity").value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0];
-            whiteToTransparent(setSymbol, "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetCode").value + "&size=large&rarity=" + document.getElementById("inputSetRarity").value)
-            inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'));
+            savedImportResponse = this.responseText.split('{"object":"card"');
+            inputCardNameNumberTextImport(1);
+            document.getElementById("inputCardNameNumberTextImport").max = savedImportResponse.length - 1;
+            document.getElementById("inputCardNameNumberTextImport").value = 1;
         } else if (this.readyState == 4 && this.status == 404) {
+            savedImportResponse = ""
             alert("Sorry, but we can't seem to find any card named '" + cardName + "'");
         }
     }
-    xhttp.open("GET", "https://api.scryfall.com/cards/search?order=released&q=name%3D" + cardName.replace(/ /g, "_"), true);
+    xhttp.open("GET", "https://api.scryfall.com/cards/search?order=released&q=name%3D" + cardName.replace(/ /g, "+"), true);
     xhttp.send();
+}
+function inputCardNameNumberTextImport(index) {
+    var importCardTextResponse = savedImportResponse[index]//.split('{"object":"related_card"')[0]
+    importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
+    importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
+    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "{line}").replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D'), "Rules Text");
+    if (importCardTextResponse.includes('"power":"')) {
+        importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
+    } else {
+        importText("", "Power Toughness");
+    }
+    document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
+    document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
+    document.getElementById("inputSetCode").value = beforeAfter(importCardTextResponse, '"set":"', '",');
+    document.getElementById("inputSetRarity").value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0];
+    whiteToTransparent(setSymbol, "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetCode").value + "&size=large&rarity=" + document.getElementById("inputSetRarity").value);
+    inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'));
 }
 function importText(text, target) {
     for (var i = 0; i < version.textList.length; i++) {

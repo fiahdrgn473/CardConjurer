@@ -136,8 +136,10 @@
                     </div>
                 </div>
                 <div class="tabContent mainEditor" id="import">
-                    Type in a card name to import its text! (Only works for regular cards)
+                    Type in a card name to import it! (Only works for regular cards)
                     <input type="text" class="input text" id="inputCardNameTextImport" onchange="inputCardNameTextImport(this.value)" placeholder="Via Card Name">
+                    Select which card to import:
+                    <input type="number" class="input number" id="inputCardNameNumberTextImport" onchange="inputCardNameNumberTextImport(this.value)" value="1" min="1" max="1">
                 </div>
                 <!-- Card editor tabs end here! -->
                 <div class="bar"></div>
