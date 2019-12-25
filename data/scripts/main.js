@@ -1009,3 +1009,18 @@ function importText(text, target) {
     }
 }
 
+
+
+
+var inputsToRemoveAutocorrect = document.querySelectorAll("input");
+
+inputsToRemoveAutocorrect.forEach(input => {
+    input.setAttribute("autocomplete", "off")
+    input.setAttribute("autocorrect", "off")
+    input.setAttribute("autocapitalize", "off")
+    input.setAttribute("spellcheck", false)
+})
+
+
+
+

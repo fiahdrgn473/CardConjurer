@@ -351,3 +351,12 @@ document.getElementById("mainGrid").addEventListener("touchstart", function() {
     doubleTouchStartTimestamp = now
 })
 //Updated :D
+
+var inputsToRemoveAutocorrect = document.querySelectorAll("input");
+
+inputsToRemoveAutocorrect.forEach(input => {
+                                  input.setAttribute("autocomplete", "off")
+                                  input.setAttribute("autocorrect", "off")
+                                  input.setAttribute("autocapitalize", "off")
+                                  input.setAttribute("spellcheck", false)
+                                  })
