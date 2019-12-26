@@ -79,8 +79,8 @@ function initiate() {
 	//initiation is complete, ready to load image data
 	console.log("init done, time to set the card version");
 	changeVersionTo("m15");
-    document.body.appendChild(cropCanvas);
-} 
+//    document.body.appendChild(cropCanvas);
+}
 
 
 /* Loads all the image info from the CSV! */
