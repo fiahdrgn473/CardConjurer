@@ -71,12 +71,13 @@ if (!version.addedPlaneswalker) {
     darkToLightPlaneswalker.crossOrigin = "anonymous";
     darkToLightPlaneswalker.onload = function() {planeswalkerAbilities()}
     darkToLightPlaneswalker.src = "data/images/planeswalker/abilityLineEven.png"
+    setTimeout(planeswalkerAbilities, 1000);
 }
 
 m15PlaneswalkerBottomInfo()
 finishChangingVersion("data/images/planeswalker/planeswalkerCSV.csv")
 
-var planeswalkerAbilityLayout = [[0], [0, scale(784)], [0, scale(730), scale(863)], [0, scale(697), scale(784), scale(878)], [0, scale(100), scale(200), scale(300), scale(400)]]
+var planeswalkerAbilityLayout = [[0], [0, scale(784)], [0, scale(730), scale(863)], [0, scale(697), scale(784), scale(878)], [0, scale(683), scale(756), scale(830), scale(904)]]
 var planeswalkerAbilityCount = 3;
 var ability1Y = 0, ability2Y = 0, ability3Y = 0, ability4Y = 0, ability5Y = cardHeight;
 //planeswalkerContext.writeText(version.textList[2][1], 64, ability1Y, 616, 0, "mplantin", 38, "black", "lineSpace=0.97");
@@ -165,7 +166,3 @@ function changePlaneswalkerAbilityLayout() {
     }
     planeswalkerAbilities()
 }
-
-
-
-

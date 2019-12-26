@@ -499,13 +499,13 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 	lineContext.font = textSize + "px " + textFont
 	lineContext.fillStyle = textColor
 	var otherParameters = other.split(",")
-	var outline, shadow = 0, oneLine = false, outlineWidth = 2, textAlign = "left", verticalAlign = true, lineSpace = 1
+	var outline, shadow = 0, oneLine = false, outlineWidth = 2, textAlign = "left", verticalAlign = true, lineSpace = 1, userHorizontalShift = 0
 	for (var i = 0; i < otherParameters.length; i ++) {
 		eval(otherParameters[i])
 	}
 	lineContext.strokeStyle = outline
 	lineContext.lineWidth = outlineWidth
-	var currentLineX = textCanvasesPadding
+	var currentLineX = textCanvasesPadding + userHorizontalShift
 	var currentLineY = textY + (textSize * 0.45) //+ textCanvasesPadding
 	var uniqueSplitter = "9dn57gwbt4sh"
 	var splitString = text.replace(/\n/g, "{line}").replace(/ /g, uniqueSplitter +  " " + uniqueSplitter).replace(/{/g, uniqueSplitter + "{").replace(/}/g, "}" + uniqueSplitter).split(uniqueSplitter)
@@ -551,9 +551,11 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 				} else if (possibleCodeLower.includes("down")) {
 					currentLineY += (parseInt(possibleCodeLower.slice(4, possibleCodeLower.length)))
 				} else if (possibleCodeLower.includes("left")) {
-					currentLineX -= (parseInt(possibleCodeLower.slice(4, possibleCodeLower.length)))
+                    userHorizontalShift -= (parseInt(possibleCodeLower.slice(4, possibleCodeLower.length)));
+                    currentLineX -= (parseInt(possibleCodeLower.slice(4, possibleCodeLower.length)));
 				} else if (possibleCodeLower.includes("right")) {
-					currentLineX += (parseInt(possibleCodeLower.slice(5, possibleCodeLower.length)))
+                    userHorizontalShift += (parseInt(possibleCodeLower.slice(5, possibleCodeLower.length)));
+                    currentLineX += (parseInt(possibleCodeLower.slice(5, possibleCodeLower.length)));
 				} else if (possibleCodeLower == "artistbrush") {
 					var artistBrushWidth = textSize * 1.2
 					lineContext.drawImage(manaSymbolImageList[62], currentLineX, currentLineY - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
@@ -606,7 +608,7 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 					paragraphContext.drawImage(lineCanvas, 0 + alignAdjust - textCanvasesPadding, 0, cardWidth + 2 * textCanvasesPadding, cardHeight + 2 * textCanvasesPadding)
 					lineContext.clearRect(0, 0, cardWidth + 2 * textCanvasesPadding, cardHeight + 2 * textCanvasesPadding)
 					currentLineY += textSize * lineSpace
-					currentLineX = textCanvasesPadding
+					currentLineX = textCanvasesPadding + userHorizontalShift
 					if (wordToWrite == " ") {
 						currentWordWidth = 0
 					}
@@ -980,15 +982,32 @@ function inputCardNameNumberTextImport(index) {
     if (importCardTextResponse.includes('"loyalty":"') && version.currentVersion == "planeswalker") {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), "Loyalty");
         var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g);
-        abilityList.push("", "", "", "");
-        importText(abilityList[0].split(/: (.+)?/)[1], "First Ability");
-        document.getElementById("inputPlaneswalker1Icon").value = abilityList[0].split(/: (.+)?/)[0];
-        importText(abilityList[1].split(/: (.+)?/)[1], "Second Ability");
-        document.getElementById("inputPlaneswalker2Icon").value = abilityList[1].split(/: (.+)?/)[0];
-        importText(abilityList[2].split(/: (.+)?/)[1], "Third Ability");
-        document.getElementById("inputPlaneswalker3Icon").value = abilityList[2].split(/: (.+)?/)[0];
-        importText(abilityList[3].split(/: (.+)?/)[1], "Fourth Ability");
-        document.getElementById("inputPlaneswalker4Icon").value = abilityList[3].split(/: (.+)?/)[0];
+        for (var i = 0; i < abilityList.length; i++) {
+            var stringVersion = ""
+            switch(i) {
+                case 3:
+                    stringVersion = "Fourth"
+                    break;
+                case 2:
+                    stringVersion = "Third"
+                    break;
+                case 1:
+                    stringVersion = "Second"
+                    break;
+                default:
+                    stringVersion = "First"
+            }
+            if (abilityList[i].slice(0, 4).includes(":")) {
+                importText(abilityList[i].split(/: (.+)?/)[1], stringVersion + " Ability");
+                document.getElementById("inputPlaneswalker" + (i + 1) + "Icon").value = abilityList[i].split(/: (.+)?/)[0];
+            } else {
+                importText("{left24}" + abilityList[i], stringVersion + " Ability");
+                document.getElementById("inputPlaneswalker" + (i + 1) + "Icon").value = "";
+            }
+            if (document.getElementById("inputPlaneswalker" + (i + 1)).value < 1) {
+                document.getElementById("inputPlaneswalker" + (i + 1)).value = 1;
+            }
+        }
     }
     document.getElementById("inputManaCost").value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",');
     document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
