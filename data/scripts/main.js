@@ -977,7 +977,7 @@ function inputCardNameNumberTextImport(index) {
     } else {
         importText("", "Power Toughness");
     }
-    if (importCardTextResponse.includes('"loyalty":"')) {
+    if (importCardTextResponse.includes('"loyalty":"') && version.currentVersion == "planeswalker") {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), "Loyalty");
         var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g);
         abilityList.push("", "", "", "");
