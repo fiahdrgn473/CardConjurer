@@ -23,7 +23,8 @@ version.manaCostDirection = "horizontal"
 version.watermarkWidth = scale(520)
 version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)
-version.masksToAdd = ["Right Half", "Corners", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border", "Legend", "Legend With Border", "Box Topper"]
+version.masksToAdd = ["Right Half", "Corners", "Full", "Title", "Type", "Rules Text", "Pinline", "Frame", "Border", "Legend", "Legend With Border", "Box Topper"];
+filterFramePicker("frameClassRegular");
 //Name, text, x, y, width, height, font, size, color, other
 version.textList = [
 	["Title", "", scale(64), scale(83), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],
@@ -40,7 +41,7 @@ function m15BottomInfo() {
 	bottomInfoContext.writeText(document.getElementById("inputInfoSet").value + "  \u2022  " + document.getElementById("inputInfoLanguage").value + "  {font:belerenbsc}{artistBrush}{fontsize1}" + document.getElementById("inputInfoArtist").value, scale(46), scale(1000), scale(375), 0, "gothammedium", 17, "white", "oneLine=true")
 	var copyrightShift = 0;
 	for (var i = 0; i < cardMaster.children.length; i++) {
-		if (parseInt(cardMaster.children[i].id.replace("frameIndex", "")) != -1 && frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT") && !frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].framePickerClasses.includes("frameClassCustom")) {
+		if (parseInt(cardMaster.children[i].id.replace("frameIndex", "")) >= 0 && frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT") && !frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].framePickerClasses.includes("frameClassCustom")) {
 			copyrightShift = 19;
 		}
 	}

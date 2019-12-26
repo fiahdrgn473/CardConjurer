@@ -20,6 +20,7 @@ version.watermarkWidth = scale(520)
 version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)
 version.masksToAdd = []
+filterFramePicker("frameClassRegular");
 //Name, text, x, y, width, height, font, size, color, other
 version.textList = [
     ["Title", "", scale(64), scale(83), scale(630), 0, "belerenb", 37, "black", "oneLine=true"],

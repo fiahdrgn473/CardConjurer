@@ -3,7 +3,7 @@
 //============================================//
 /* Test things! */
 function testFunction() {
-    cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[0]);
+    cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
     cardMasterUpdated();
 	// console.log("First frame manually loaded")
 }
@@ -28,7 +28,8 @@ function initiate() {
 	document.getElementById("displayCanvas").width = cardWidth;
 	document.getElementById("displayCanvas").height = cardHeight;
 	window.displayContext = displayCanvas.getContext("2d");
-    window.textCanvasesPadding = 100
+    window.textCanvasesPadding = 100;
+    window.newFrameInsertionLocation = 1;
 	newCanvas("frameMask");
 	newCanvas("frameFinal");
 	newCanvas("text");
@@ -209,7 +210,7 @@ function addFrameToCardMaster(right = "") {
 	//Takes the stored selectedFrame and selectedMask to add the frame w/ mask to the card master!
 	if (selectedFrame > -1 && selectedMask != "") {
 		//In order to both keep input values and insert new frames before old ones, they must be added like so:
-		cardMaster.insertBefore(frameList[selectedFrame].cardMasterElement(selectedMask + right), cardMaster.children[0]);
+		cardMaster.insertBefore(frameList[selectedFrame].cardMasterElement(selectedMask + right), cardMaster.children[newFrameInsertionLocation]);
 		cardMasterUpdated();
 	}
 }
@@ -240,7 +241,14 @@ function cardMasterUpdated() {
 		if (parseInt(targetChild.id.replace("frameIndex", "")) == -1) {
 			//The card art placeholder is manually set to -1 and cannot be removed :)
             frameFinalContext.drawImage(cardArt, version.artX + getValue("inputCardArtX"), version.artY + getValue("inputCardArtY"), cardArt.width * getValue("inputCardArtZoom") / 100, cardArt.height * getValue("inputCardArtZoom") / 100);
-		} else {
+        } else if (parseInt(targetChild.id.replace("frameIndex", "")) == -2) {
+            if (i == 0) {
+                newFrameInsertionLocation = 1;
+            } else {
+                newFrameInsertionLocation = 0;
+            }
+            frameFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
+        } else {
 			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
 			var opacityToDraw = targetChild.children[1].children[1].value / 100;
 			var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
@@ -292,7 +300,7 @@ function cardImageUpdated() {
     }
     cardFinalContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
 	cardFinalContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight);
-    cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
+//    cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(setSymbolCanvas, 0, 0, cardWidth, cardHeight)
     cardFinalContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection)
 	//Clear the corners

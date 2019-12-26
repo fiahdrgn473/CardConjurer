@@ -34,7 +34,7 @@ function unhingedBottomInfo() {
 	bottomInfoContext.writeText(document.getElementById("inputInfoSet").value + "  \u2022  " + document.getElementById("inputInfoLanguage").value + "  {font:belerenbsc}{artistBrush}{fontsize1}" + document.getElementById("inputInfoArtist").value, scale(46), scale(1000), scale(375), 0, "gothammedium", 17, "white", "oneLine=true")
 	var copyrightShift = 0;
 	for (var i = 0; i < cardMaster.children.length; i++) {
-		if (parseInt(cardMaster.children[i].id.replace("frameIndex", "")) != -1 && frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT")) {
+		if (parseInt(cardMaster.children[i].id.replace("frameIndex", "")) >= 1 && frameList[parseInt(cardMaster.children[i].id.replace("frameIndex", ""))].image.src.includes("PT")) {
 			copyrightShift = 19;
 		}
 	}
