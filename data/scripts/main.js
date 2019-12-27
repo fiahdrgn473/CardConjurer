@@ -370,7 +370,7 @@ function rewriteText() {
             textContext.writeText(version.textList[i][1], version.textList[i][2], version.textList[i][3], version.textList[i][4], version.textList[i][5], version.textList[i][6], version.textList[i][7], version.textList[i][8], version.textList[i][9]);
         }
     }
-    cardImageUpdated()
+    cardMasterUpdated()
 }
 
 
