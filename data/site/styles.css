@@ -163,7 +163,7 @@ canvas {
 	font: 1.5rem belerenbsc;
 }
 .truncate {
-    word-break: break-word;
+    word-break: break-all;
 }
 .paragraph {
 	font: mplantin;
