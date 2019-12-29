@@ -1,6 +1,13 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
+if (version.currentVersion != "unhinged") {
+    //Name, text, x, y, width, height, font, size, color, other
+    version.textList = [
+                        ["Title", "", scale(280), scale(56), scale(174), 0, "belerenb", 37, "black", "oneLine=true,textAlign='center'"],/*,
+                                                                                                                                         ["Flip PT", "", scale(588), scale(902), scale(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]*/
+                        ]
+}
 version.currentVersion = "unhinged"
 version.artX = scale(59)
 version.artY = scale(58)
@@ -21,11 +28,7 @@ version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)
 version.masksToAdd = ["Title Unhinged", "Pinline Unhinged", "Frame Unhinged", "Border Unhinged"]
 filterFramePicker("frameClassUnhinged")
-//Name, text, x, y, width, height, font, size, color, other
-version.textList = [
-	["Title", "", scale(280), scale(56), scale(174), 0, "belerenb", 37, "black", "oneLine=true,textAlign='center'"],/*,
-	["Flip PT", "", scale(588), scale(902), scale(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]*/
-]
+
 
 function unhingedBottomInfo() {
 	//remember to ctrl+f for 'artistBrushWidth' and adjust that when fixing these values!

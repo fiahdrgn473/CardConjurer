@@ -1,6 +1,18 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
+if (version.currentVersion != "planeswalker") {
+    //Name, text, x, y, width, height, font, size, color, other, alternative-function
+    version.textList = [
+                        ["Title", "", scale(65), scale(65), scale(630), 0, "belerenb", scale(39), "black", "oneLine=true"],
+                        ["Type", "", scale(65), scale(615), scale(630), 0, "belerenb", scale(33), "black", "oneLine=true"],
+                        ["First Ability","",,,,,,,,,"planeswalkerAbilities"],
+                        ["Second Ability", "",,,,,,,,,"ignore"],
+                        ["Third Ability", "",,,,,,,,,"ignore"],
+                        ["Fourth Ability", "",,,,,,,,,"ignore"],
+                        ["Loyalty", "", scale(615), scale(958), scale(79), 0, "belerenb", scale(38), "white", "oneLine=true,textAlign='center'"]
+                        ]
+}
 version.currentVersion = "planeswalker"
 version.artX = scale(50)
 version.artY = scale(95)
@@ -21,16 +33,7 @@ version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)
 version.masksToAdd = ["Title Planeswalker", "Type Planeswalker", "Pinline Planeswalker", "Frame Planeswalker", "Border Planeswalker", "Loyalty Planeswalker", "Rules Text Planeswalker"]
 filterFramePicker("frameClassPlaneswalker")
-//Name, text, x, y, width, height, font, size, color, other, alternative-function
-version.textList = [
-	["Title", "", scale(65), scale(65), scale(630), 0, "belerenb", scale(39), "black", "oneLine=true"],
-	["Type", "", scale(65), scale(615), scale(630), 0, "belerenb", scale(33), "black", "oneLine=true"],
-	["First Ability","",,,,,,,,,"planeswalkerAbilities"],
-    ["Second Ability", "",,,,,,,,,"ignore"],
-    ["Third Ability", "",,,,,,,,,"ignore"],
-    ["Fourth Ability", "",,,,,,,,,"ignore"],
-	["Loyalty", "", scale(615), scale(958), scale(79), 0, "belerenb", scale(38), "white", "oneLine=true,textAlign='center'"]
-]
+
 function m15PlaneswalkerBottomInfo() {    //remember to ctrl+f for 'artistBrushWidth' and adjust that when fixing these values!
     bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
     bottomInfoContext.writeText(document.getElementById("inputInfoNumber").value + " " + document.getElementById("inputInfoRarity").value + " *Not For Sale*", scale(46), scale(982), scale(329), 0, "gothammedium", scale(17), "white", "oneLine=true")

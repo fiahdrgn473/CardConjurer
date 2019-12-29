@@ -143,7 +143,7 @@ class frameImage {
 		var tempElement = document.createElement("div");
 		tempElement.id = "frameIndex" + frameList.indexOf(this);
 		tempElement.classList.add("cardMasterElement");
-		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
+		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity input' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
 		return tempElement
 	}
 	framePickerElement(targetElement) {
@@ -247,6 +247,7 @@ function cardMasterUpdated() {
             } else {
                 newFrameInsertionLocation = 0;
             }
+            frameFinalContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
             frameFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
         } else {
 			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
@@ -298,7 +299,6 @@ function cardImageUpdated() {
     if (version.currentVersion == "planeswalker") {
         cardFinalContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight);
     }
-    cardFinalContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
 	cardFinalContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight);
 //    cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(setSymbolCanvas, 0, 0, cardWidth, cardHeight)
@@ -497,7 +497,7 @@ function updateWatermark() {
 	} else {
 		watermarkContext.clearRect(0, 0, cardWidth, cardHeight)
 	}
-	cardImageUpdated()
+    cardMasterUpdated();
 }
 
 //Custom text function! This acts on any codes and makes things look nice :)
@@ -942,6 +942,15 @@ function loadSampleImages() {
         }
         sampleImage.src = "data/site/images/samples/" + randomIndex + ".png";
     }
+    //Donate card stuff!
+    var cardWishlist = [["Thrasios, Triton Hero", "https://img.scryfall.com/cards/large/front/2/1/21e27b91-c7f1-4709-aa0d-8b5d81b22a0a.jpg?1562391653"], ["Arcane Signet", "https://img.scryfall.com/cards/large/front/8/4/84128e98-87d6-4c2f-909b-9435a7833e63.jpg?1572482845"], ["Kenrith, the Returned King", "https://img.scryfall.com/cards/large/front/5/6/56c1227e-bea7-47cb-bbec-389a3d585af5.jpg?1571282458"], ["Ramunap Excavator", "https://img.scryfall.com/cards/large/front/9/0/90a54d18-8403-441d-a115-ee462fabdabb.jpg?1562806928"], ["Meloku the Clouded Mirror", "https://img.scryfall.com/cards/large/front/a/1/a19601ac-48a7-40c2-9159-af15af8520ca.jpg?1561968062"]];
+    var randomWishlistCard = cardWishlist[Math.floor(Math.random() * cardWishlist.length)];
+    document.getElementById("wishlistCardName").innerHTML = randomWishlistCard[0];
+    var wishlistCardImage = new Image();
+    wishlistCardImage.onload = function() {
+        document.getElementById("wishlistCardImage").src = this.src;
+    }
+    wishlistCardImage.src = randomWishlistCard[1];
 }
 
 
@@ -981,7 +990,7 @@ function inputCardNameNumberTextImport(index) {
     var importCardTextResponse = savedImportResponse[index]//.split('{"object":"related_card"')[0]
     importText(beforeAfter(importCardTextResponse, '"name":"', '",'), "Title");
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), "Type");
-    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "\n").replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D'), "Rules Text");
+    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, "\n").replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, "{i}(").replace(/\)/g, "){/i}"), "Rules Text");
     if (importCardTextResponse.includes('"power":"')) {
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + "/" + beforeAfter(importCardTextResponse, '"toughness":"', '",'), "Power Toughness");
     } else {

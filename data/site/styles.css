@@ -57,7 +57,7 @@ html {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	font-size: 8pt;
+	font-size: 16pt;
 }
 body {
     margin: 0;
@@ -71,8 +71,8 @@ body {
 }
 footer {
 	background-color: var(--dark-color);
-	padding: 2.5em;
-	font: 1.3em gothammedium;
+	padding: 2rem;
+	font: 0.5em gothammedium;
 	color: var(--light-color);
 }
 
@@ -91,11 +91,10 @@ canvas {
 
 /*Grids*/
 .mainGrid {
-	padding: 0.3em;
 	display: grid;
-	grid-gap: 1.5em;
+    grid-gap: 1rem;
 	grid-template-columns: auto;
-	font: 1.6em mplantin;
+    padding-bottom: 1rem;
 }
 .splitGrid {
 	display: grid;
@@ -103,17 +102,17 @@ canvas {
 }
 .frameGrid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(4em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 	grid-auto-rows: min-content;
 }
 .footerGrid {
 	display: grid;
 	grid-template-columns: auto;
-	grid-gap: 2em;
+	grid-gap: 1rem;
 }
 .autoGrid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 	grid-auto-rows: min-content;
 }
 
@@ -121,12 +120,12 @@ canvas {
 /*Misc elements*/
 .download {
     text-align: center;
-    font: 1.5em belerenbsc;
+    font: 1.5rem belerenbsc;
 }
 .pageTitle {
-	font: 5em belerenbsc;
+	font: 3rem belerenbsc;
 	text-align: center;
-	padding-top: 0.3em;
+	padding-top: 0.5rem;
 }
 .bar {
 	background-image: url(../images/manaSymbols/63.png);
@@ -134,17 +133,16 @@ canvas {
 	background-repeat: no-repeat;
 	background-size: 100% 2px;
 	width: 100%;
-	height: 1em;
+	height: 1rem;
 }
 .imgPreview {
 	width: 100%;
 }
 .layer {
-	padding: 2em 2em;
+	padding: 2rem 2rem;
 	color: black;
-	font-size: 2em;
 	text-align: center;
-    margin-bottom: 3em;
+    margin-bottom: 3rem;
     background-color: var(--light-color);
 	background-image: url(images/layerBackground.png);
 	background-position: center;
@@ -152,23 +150,27 @@ canvas {
 }
 
 
+/*Donate Grid Stuff!*/
+.donateHalfGrid > img {
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+
 /*Various text modifications*/
 .title {
 	text-align: center;
-	font: 1.5em belerenbsc;
+	font: 1.5rem belerenbsc;
 }
 .truncate {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-indent: 0em;
+    word-break: break-word;
 }
 .paragraph {
-	font: 1em mplantin;
+	font: mplantin;
 	text-align: left;
 }
 .indent {
-	text-indent: 2em;
+	text-indent: 2rem;
 }
 
 
@@ -203,11 +205,11 @@ footer a:hover {
 @media screen and (min-width: 905pt) {
 	/*Makes room for the canvas and controls to be side by side*/
 	.mainGrid {
-		padding: 1.5em;
+		padding: 1rem;
 		grid-template-columns: calc(750px + 2px) auto;
 	}
 }
-@media screen and (min-width: calc(750px + 2em)) {
+@media screen and (min-width: calc(750px + 2rem)) {
 	/*The canvas can be full size and doesn't have to scale anymore*/
 	canvas {
 		width: 750px;
@@ -215,16 +217,16 @@ footer a:hover {
 	}
 }
 /*The screen is big enough (larger than phone, likely) to use a larger font*/
-@media screen and (min-width: 263pt) {
+@media screen and (min-width: 375pt) {
 	html {
-		font-size: 10pt;
+		font-size: 24pt;
 	}
 }
-/*The screen is big enough for the samples to lay side by side*/
+/*The screen is big enough for the samples to lay side by side. Also, the donate section can be displayed horizontally.*/
 @media screen and (min-width: 750pt) {
     .samples {
         grid-template-columns: 33.33% 33.33% 33.33% !important;
-        margin-bottom: 2em;
+        margin-bottom: 2rem;
     }
     .samples #sample1 {
         width: 90%;
@@ -236,6 +238,15 @@ footer a:hover {
     .samples #sample3 {
         width: 90%;
         transform: rotate(10deg) translate(-10%, 8%);
+    }
+    .donateHalfGrid {
+        display: grid;
+        grid-template-columns: 16rem auto;
+        margin-top: 0.5rem;
+    }
+    .donateHalfGrid > img {
+        width: 15rem;
+        margin-bottom: 0;
     }
 }
 /*These control tooltips for mobile devices vs. desktops/laptops*/
@@ -256,7 +267,7 @@ footer a:hover {
 	.footerGrid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
-		grid-gap: 1em;
+		grid-gap: 1rem;
 	}
 }
 
@@ -264,11 +275,11 @@ footer a:hover {
 /*WIP (or I'm too lazy to sort these)*/
 .tabMenu {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
 	grid-auto-rows: min-content;
 }
 .tabOption, .textTabButton {
-	font: 1.5em belerenbsc;
+	font: 1rem belerenbsc;
 	text-align: center;
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
@@ -286,28 +297,28 @@ footer a:hover {
 }
 
 .cardMasterElement {
-	font: 1em belerenbsc;
+	font: 0.75rem belerenbsc;
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
-	border-radius: 0.25em;
-	margin-top: 0.25em;
+	border-radius: 0.5rem;
+	margin-top: 0.25rem;
     display: grid;
-    grid-template-columns: 2em auto 1em;
+    grid-template-columns: 2rem auto 1rem;
     align-items: center;
 }
 .cardMasterElement > .handle {
     cursor: all-scroll;
-    padding: 1em 0.5em;
+    padding: 1rem 0.5rem;
     text-align: center;
 }
 .cardMasterElement img {
-	max-height: 1.5em;
-	max-width: 1.5em;
+    max-height: 1.3rem;
+	max-width: 1.3rem;
 	position: absolute;
-	transform: translate(0.1em, 0);
+	transform: translate(0.1rem, 0);
 }
 .cardmasterElement img.cardMasterElementMaskImage {
-	transform: translate(1.7em, 0);
+	transform: translate(1.5rem, 0);
 }
 .cardMasterElementMoving {
 	background-color: var(--clear-dark);
@@ -332,17 +343,17 @@ footer a:hover {
 	border: 1px solid var(--light-color);
 }
 .frameOption {
-	height: 4em;
+	height: 3rem;
 	text-align: center;
 	width: 100%;
 }
 .frameOption img {
-	max-width: 4em;
-	max-height: 4em;
+	max-width: 3rem;
+	max-height: 3rem;
 }
 .maskOption img {
-	max-width: 2em;
-	max-height: 2em;
+	max-width: 1.5rem;
+	max-height: 1.5rem;
 }
 .frameOption.frameOptionSelected, .maskOption.maskOptionSelected {
 	background-color: var(--clear-dark);
@@ -350,57 +361,53 @@ footer a:hover {
 .maskOption, .frameOption {
 	background-color: var(--clear-light);
 	border: 1px solid var(--light-color);
-	border-radius: 0.25em;
+	border-radius: 0.25rem;
 }
 .maskOption {
-	margin-left: 0.5em;
-	padding: 0.125em;
-	width: calc(100% - 1.4em);
+    font-size: 0.75rem;
+	margin-left: 0.5rem;
+	padding: 0.25rem;
+	width: calc(100% - 1.3rem);
 }
 
 
 .textarea {
 	width: 100%;
-	min-height: 8em;
-	max-height: 24em;
+	min-height: 6rem;
+	max-height: 18rem;
 	resize: vertical;
 }
 .textTabButton {
-	font-size: 1em;
+    font-size: 0.75rem;
 }
 .textTab {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(6em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
 	grid-auto-rows: min-content;
 }
 
 .input, .textarea, .button, .select {
-	font: 1em mplantin;
+	font: 0.75rem mplantin;
 	background-color: var(--light-color);
 	border: 1px solid #aaa;
-	border-radius: 0.2em;
-	padding: 0px 0.2em;
+	border-radius: 0.2rem;
+	padding: 0px 0.2rem;
 	outline: none;
 	width: 100%;
 }
-.inputOpacity {
-	font: 1em mplantin;
-	background-color: var(--light-color);
-	border: 1px solid #aaa;
-	border-radius: 0.2em;
-	padding: 0px 0.2em;
-	outline: none;
-	width: 2.9em;
+.input.inputOpacity {
+	width: 2.4rem;
 }
 
 
 /* Text code tutorial */
 #textCodeTutorial {
+    font-size: 0.75rem;
 	display: grid;
-	grid-template-columns: 6.5em auto;
+	grid-template-columns: 4.5rem auto;
 }
 #textCodeTutorial > div {
-	padding: 0.25em 0;
+	padding: 0.25rem 0;
 	background-color: var(--clear-mid);
 }
 #textCodeTutorial > div:nth-child(4n), #textCodeTutorial > div:nth-child(4n - 1) {
@@ -415,15 +422,19 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
 
 /* image links */
 .proxyFactoryLimitedGrid {
-    margin: 0 auto;
-    max-width: 32em;
+    margin: 0;
+    max-width: calc(100vw - 4rem);
+}
+.donateGrid {
+    margin: 0;
+    max-width: calc(100vw - 4rem);
 }
 .imageLinkGrid {
-    margin-top: 1em;
+    margin-top: 1rem;
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
-    
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+/*    border: 1px solid red;*/
 }
 .showBackgroundThrough {
     display: inline-block;
@@ -432,31 +443,32 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
     background-attachment: fixed;
 }
 .imageLink {
-    width: 12em;
-    padding: 0.5em;
-    border-radius: 1em;
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
+    border-radius: 1rem;
     display: grid;
-    grid-template-columns: 4em auto;
+    grid-template-columns: 4rem auto;
     align-items: center;
-    justify-items: left;
+    justify-items: center;
     border: 1px solid var(--dark-color);
 }
 .imageLink:hover {
     background-color: var(--clear-darkerer);
 }
 .imageLink > img {
-    max-height: 3em;
-    max-width: 4em;
+    max-height: 3rem;
+    max-width: 4rem;
 }
 .imageLink > div {
-    font: 1.5em belerenbsc;
+    word-break: break-all;
+    font: 1.5rem belerenbsc;
 }
 
 .visitorCount {
     display: none;
 }
 .visitorCount > a > img {
-    max-height: 1em;
+    max-height: 0.5rem;
 }
 .visitorCountTrigger:hover + .visitorCount {
     display:inline-block;
@@ -474,6 +486,13 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
     margin: 0 auto;
     height: auto;
 }
+
+
+
+
+
+
+
 
 
 
