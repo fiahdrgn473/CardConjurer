@@ -143,7 +143,7 @@ class frameImage {
 		var tempElement = document.createElement("div");
 		tempElement.id = "frameIndex" + frameList.indexOf(this);
 		tempElement.classList.add("cardMasterElement");
-		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity input' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.replace(" - Right", ""))].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
+		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity input' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.split(" - ")[0])].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
 		return tempElement
 	}
 	framePickerElement(targetElement) {
@@ -253,11 +253,11 @@ function cardMasterUpdated() {
 			var frameToDraw = frameList[parseInt(targetChild.id.replace("frameIndex", ""))];
 			var opacityToDraw = targetChild.children[1].children[1].value / 100;
 			var maskName = targetChild.innerHTML.slice(targetChild.innerHTML.indexOf("(") + 1, targetChild.innerHTML.indexOf(")"));
-			var rightHalf = false;
-			if (maskName.includes(" - Right")) {
-				maskName = maskName.replace(" - Right", "");
-				rightHalf = true;
-			}
+            var sectionMask = "none"
+            if (maskName.includes(" - ")) {
+                sectionMask = maskName.split(" - ")[1];
+                maskName = maskName.split(" - ")[0];
+            }
 			var maskIndex = frameToDraw.maskOptionList.indexOf(maskName);
 			var maskImageIndex = maskNameList.indexOf(maskName)
 			//Clears the temporary mask canvas, draws the mask, draws the image over it, then copies it to the final frame canvas
@@ -265,11 +265,10 @@ function cardMasterUpdated() {
 			frameMaskContext.clearRect(0, 0, cardWidth, cardHeight);
 			frameMaskContext.drawImage(maskList[maskImageIndex], 0, 0, cardWidth, cardHeight);
 			frameMaskContext.globalCompositeOperation = "source-in";
-			if (rightHalf) {
-				frameMaskContext.drawImage(maskList[0], 0, 0, cardWidth, cardHeight)
-			}
+            if (sectionMask != "none") {
+                frameMaskContext.drawImage(maskList[maskNameList.indexOf(sectionMask)], 0, 0, cardWidth, cardHeight);
+            }
 			frameMaskContext.drawImage(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
-//            console.log(frameToDraw.image, frameToDraw.xList[maskIndex], frameToDraw.yList[maskIndex], frameToDraw.widthList[maskIndex], frameToDraw.heightList[maskIndex]);
 			if (targetChild.children[1].children[2].checked == true) {
 				frameFinalContext.globalCompositeOperation = "destination-out";
 			}
@@ -925,7 +924,7 @@ function filterFramePicker(classToShow) {
 
 
 function loadSampleImages() {
-    var availableSamples = 7;
+    var availableSamples = 10;
     var samplesToLoad = [0,0,0];
     for (var i = 1; i <= samplesToLoad.length; i ++) {
         var sampleImage = new Image()

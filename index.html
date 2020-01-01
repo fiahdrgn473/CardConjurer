@@ -34,9 +34,9 @@
                             <div id="framePicker" class="frameGrid"></div>
                             <div id="maskPicker"></div>
                         </div>
-                        <div class="splitGrid">
+                        <div class="splitGrid" id="addFrameToCardMasterButtons">
                             <button onclick="addFrameToCardMaster()" class="button">Add</button>
-                            <button onclick="addFrameToCardMaster(' - Right')" class="button">Add To Right Half</button>
+                            <button onclick="addFrameToCardMaster(' - Right Half')" class="button">Add To Right Half</button>
                         </div>
                         <div id="selectedFramePreview">No frame selected</div>
                         <div id="cardMaster">
@@ -128,6 +128,7 @@
                         <div class="paragraph indent">
                             Click on one of the following buttons to load the described image frame set:
                         </div>
+                        <button onclick="changeVersionTo('moreMasks')" class="button">More Masks</button>
                         <button onclick="changeVersionTo('planeswalker')" class="button">Planeswalker</button>
                         <button onclick="changeVersionTo('expedition')" class="button">Expeditions</button>
                         <button onclick="changeVersionTo('unhinged')" class="button">Unhinged Basics</button>
