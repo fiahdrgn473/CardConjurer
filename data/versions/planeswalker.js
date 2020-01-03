@@ -28,6 +28,7 @@ version.manaCostY = scale(43)
 version.manaCostDiameter = scale(34)
 version.manaCostDistance = scale(-39)
 version.manaCostDirection = "horizontal"
+version.manaCostVersion = "m15"
 version.watermarkWidth = scale(520)
 version.watermarkHeight = scale(250)
 version.watermarkY = scale(800)

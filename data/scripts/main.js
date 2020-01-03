@@ -5,6 +5,8 @@
 function testFunction() {
     cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
     cardMasterUpdated();
+//    changeVersionTo("seventh")
+//    setTimeout(function() {cardMaster.insertBefore(frameList[40].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);cardMasterUpdated();}, 1000);
 	// console.log("First frame manually loaded")
 }
 
@@ -301,7 +303,7 @@ function cardImageUpdated() {
 	cardFinalContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight);
 //    cardFinalContext.drawImage(textCanvas, 0, 0, cardWidth, cardHeight);
 	cardFinalContext.drawImage(setSymbolCanvas, 0, 0, cardWidth, cardHeight)
-    cardFinalContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection)
+    cardFinalContext.drawManaCost(document.getElementById("inputManaCost").value, version.manaCostX, version.manaCostY, version.manaCostDiameter, version.manaCostDistance, version.manaCostDirection, version.manaCostVersion)
 	//Clear the corners
 	cardFinalContext.globalCompositeOperation = "destination-out"
 	cardFinalContext.drawImage(maskList[1], 0, 0, cardWidth, cardHeight)
@@ -576,6 +578,8 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
                     outline = true;
                     lineContext.strokeStyle = possibleCodeLower.replace("outline:", "").split(",")[0];
                     lineContext.lineWidth = parseInt(possibleCodeLower.replace("outline:", "").split(",")[1]);
+                } else if (possibleCodeLower.includes("shadow")) {
+                    shadow = parseInt(possibleCodeLower.replace("shadow", ""));
                 } else if (manaSymbolCodeList.includes(possibleCodeLower.split("/").join(""))) {
 					//THIS HAS TO BE THE LAST ONE
 					var manaSymbolDiameter = textSize * 0.77
@@ -622,7 +626,9 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 				}
 				//Whether or not the current line is finished, write to it.
 				if (shadow > 0) {
-					lineContext.fillText(wordToWrite, currentLineX + shadow, currentLineY + shadow)
+                    lineContext.fillStyle = "black";
+                    lineContext.fillText(wordToWrite, currentLineX + shadow, currentLineY + shadow);
+                    lineContext.fillStyle = textColor;
 				}
 				if (outline != undefined) {
 					lineContext.strokeText(wordToWrite, currentLineX, currentLineY)
@@ -655,7 +661,7 @@ function loadManaSymbolImages() {
 	}
 }
 //Draws a mana cost
-CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbolsY, diameter = 50, distance = -50, direction = "horizontal") {
+CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbolsY, diameter = 50, distance = -50, direction = "horizontal", version = "m15") {
 	var splitManaCost = text.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split("/").join("").split(" ")
 	var currentSymbolIndex = 0
 	var currentX = symbolsX
@@ -666,11 +672,15 @@ CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbo
 				currentX = direction[i][0]
 				currentY = direction[i][1]
 			}
-			this.fillStyle = "black"
-			this.beginPath()
-			this.arc(currentX + diameter / 2.13, currentY + diameter / 1.7, diameter / 2, 0, 2 * Math.PI, false)
-			this.fill()
-			this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+            if (version == "m15") {
+                this.fillStyle = "black"
+                this.beginPath()
+                this.arc(currentX + diameter / 2.13, currentY + diameter / 1.7, diameter / 2, 0, 2 * Math.PI, false)
+                this.fill()
+                this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+            } else if (version == "seventh") {
+                this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+            }
 			if (direction == "horizontal") {
 				currentX += distance
 			} else if (direction == "vertical") {
@@ -894,7 +904,8 @@ function textCodeTutorial() {
 	_left#-moves the following text # pixels left
 	_right#-moves the following text # pixels right
 	_SYMBOL-creates a mana symbol, where SYMBOL can be: w, u, b, r, g, 1, 2, 3, etc...
-    _outline:*,#-outlines the following text with # thickness and * color`
+    _outline:*,#-outlines the following text with # thickness and * color
+    _shadow#-creates a text shadow # pixels left and # pixels right`
 	var textCodeTutorialArray = textCodeTutorialString.split("_")
 	for (var i = 0; i < textCodeTutorialArray.length; i ++) {
 		document.getElementById("textCodeTutorial").innerHTML += "<div class='selectable'><b>{" + textCodeTutorialArray[i].split("-")[0] + "}</b></div><div>" + textCodeTutorialArray[i].split("-")[1] + "</div>"

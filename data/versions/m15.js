@@ -26,6 +26,7 @@ version.manaCostY = scale(60)
 version.manaCostDiameter = scale(34)
 version.manaCostDistance = scale(-38)
 version.manaCostDirection = "horizontal"
+version.manaCostVersion = "m15"
 // version.rareStampX = scale(340)
 // version.rareStampY = scale(965)
 // version.rareStampWidth = scale(70)
