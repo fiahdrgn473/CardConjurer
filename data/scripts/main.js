@@ -5,8 +5,8 @@
 function testFunction() {
     cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
     cardMasterUpdated();
-//    changeVersionTo("seventh")
-//    setTimeout(function() {cardMaster.insertBefore(frameList[40].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);cardMasterUpdated();}, 1000);
+//    changeVersionTo("future")
+//    setTimeout(function() {cardMaster.insertBefore(frameList[37].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);cardMasterUpdated();}, 1000);
 	// console.log("First frame manually loaded")
 }
 
@@ -45,7 +45,7 @@ function initiate() {
 	newCanvas("temp");
 	newCanvas("cardFinal");
 	//Mana symbol Array setup
-	window.manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar"];
+	window.manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"];
 	window.manaSymbolImageList = [];
 	//Manually create a few important images
 	window.cardArt = new Image();
@@ -454,6 +454,10 @@ function updateSetSymbol() {
 		setSymbolX = version.setSymbolRight - setSymbolWidth
 		setSymbolY = version.setSymbolVertical - setSymbolHeight / 2
 	}
+    if (version.currentVersion == "future") {
+        //Also center the set symbol horizontally
+        setSymbolX = version.setSymbolRight - setSymbolWidth / 2;
+    }
 	setSymbolContext.drawImage(setSymbol, setSymbolX, setSymbolY, setSymbolWidth, setSymbolHeight)
 	cardImageUpdated()
 }
@@ -569,7 +573,15 @@ CanvasRenderingContext2D.prototype.writeText = function(text = "", textX = 0, te
 					var artistBrushWidth = textSize * 1.2
 					lineContext.drawImage(manaSymbolImageList[62], currentLineX, currentLineY - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
 					currentLineX += artistBrushWidth * 1.1
-				} else if (possibleCodeLower.includes("fontcolor")) {
+                } else if (possibleCodeLower == "oldartistbrush") {
+                    var artistBrushWidth = textSize * 2.4
+                    if (lineContext.fillStyle == "#ffffff" || lineContext.fillStyle == "white") {
+                        lineContext.drawImage(manaSymbolImageList[64], currentLineX, currentLineY - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+                    } else {
+                        lineContext.drawImage(manaSymbolImageList[65], currentLineX, currentLineY - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+                    }
+                    currentLineX += artistBrushWidth * 1.1
+                } else if (possibleCodeLower.includes("fontcolor")) {
 					lineContext.fillStyle = possibleCodeLower.slice(9, possibleCodeLower.length)
 				} else if (possibleCodeLower.includes("font")) {
 					textFont = possibleCodeLower.slice(5, possibleCodeLower.length)
@@ -663,14 +675,19 @@ function loadManaSymbolImages() {
 //Draws a mana cost
 CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbolsY, diameter = 50, distance = -50, direction = "horizontal", version = "m15") {
 	var splitManaCost = text.toLowerCase().replace(/{/g, " ").replace(/}/g, " ").split("/").join("").split(" ")
+    if (version == "future") {
+        splitManaCost.reverse();
+    }
 	var currentSymbolIndex = 0
 	var currentX = symbolsX
 	var currentY = symbolsY
+    var realManaCostIndex = 0;
 	for (var i = splitManaCost.length - 1; i >= 0; i --) {
 		if (manaSymbolCodeList.includes(splitManaCost[i])) {
-			if (Array.isArray(direction) && i < direction.length) {
-				currentX = direction[i][0]
-				currentY = direction[i][1]
+//            console.log(realManaCostIndex, splitManaCost[i])
+			if (Array.isArray(direction) && realManaCostIndex < direction.length) {
+				currentX = direction[realManaCostIndex][0]
+				currentY = direction[realManaCostIndex][1]
 			}
             if (version == "m15") {
                 this.fillStyle = "black"
@@ -680,12 +697,21 @@ CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbo
                 this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
             } else if (version == "seventh") {
                 this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+            } else if (version == "future") {
+                if (realManaCostIndex < direction.length) {
+                    if (window.version.futureManaSymbolNameList.includes(splitManaCost[i]) && window.version.futureManaSymbolImageList[window.version.futureManaSymbolNameList.indexOf(splitManaCost[i])]) {
+                        this.drawImage(window.version.futureManaSymbolImageList[window.version.futureManaSymbolNameList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+                    } else {
+                        this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+                    }
+                }
             }
 			if (direction == "horizontal") {
 				currentX += distance
 			} else if (direction == "vertical") {
 				currentY += distance
-			}
+            }
+            realManaCostIndex += 1;
 		}
 	}
 }
@@ -1040,7 +1066,7 @@ function inputCardNameNumberTextImport(index) {
     document.getElementById("inputCardArtName").value = beforeAfter(importCardTextResponse, '"name":"', '",');
     document.getElementById("inputSetCode").value = beforeAfter(importCardTextResponse, '"set":"', '",');
     document.getElementById("inputSetRarity").value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0];
-    whiteToTransparent(setSymbol, "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetCode").value + "&size=large&rarity=" + document.getElementById("inputSetRarity").value);
+    autocrop(setSymbol, "https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=" + document.getElementById("inputSetCode").value + "&size=large&rarity=" + document.getElementById("inputSetRarity").value);
     inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'));
 }
 function importText(text, target) {

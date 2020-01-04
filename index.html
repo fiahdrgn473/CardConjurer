@@ -89,9 +89,9 @@
                     <div class="tabContent mainEditor" id="set">
                         <div class="autoGrid">
                             <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
-                            <input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)">
-                            <input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
-                            <input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="whiteToTransparent(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
+                            <input type="text" class="input text" placeholder="Via URL" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)">
+                            <input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
+                            <input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
                             <button class="button" onclick="randomSet()">Random</button>
                         </div>
                     </div>
@@ -129,8 +129,9 @@
                             Click on one of the following buttons to load the described image frame set:
                         </div>
                         <button onclick="changeVersionTo('moreMasks')" class="button">More Masks</button>
-                        <button onclick="changeVersionTo('planeswalker')" class="button">Planeswalker</button>
                         <button onclick="changeVersionTo('expedition')" class="button">Expeditions</button>
+                        <button onclick="changeVersionTo('planeswalker')" class="button">Planeswalker</button>
+                        <button onclick="changeVersionTo('future')" class="button">Future Shifted</button>
                         <button onclick="changeVersionTo('unhinged')" class="button">Unhinged Basics</button>
                         <button onclick="changeVersionTo('seventh')" class="button">Seventh Edition</button>
                         <button onclick="changeVersionTo('m15extras')" class="button">M15 Extras</button>
