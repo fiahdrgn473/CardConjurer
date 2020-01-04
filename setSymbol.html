@@ -1,0 +1,98 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>Card Conjurer</title>
+	<!-- Other things -->
+	<link rel="stylesheet" href="data/site/styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="mainDiv">
+		<div class="pageTitle">
+			Card Conjurer
+		</div>
+		<div class="mainGrid">
+			<div class="canvasContainer">
+				<svg id="displaySVG">
+                    <defs>
+                        <linearGradient id="gradCommon" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#302b2c;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#474040;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#302b2c;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradUncommon" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#5a6572;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#9e9e9e;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#5a6572;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradRare" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#876a3b;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#dfbd6b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#876a3b;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradMythic" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#b21f0f;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#f38300;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b21f0f;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradTimeshifted" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#652978;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#c09ac5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#652978;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path stroke-width="2" stroke-linejoin="arcs"></path>
+                    <path></path>
+                </svg>
+			</div>
+			<div class="cardMenu">
+                Enter a set code and select a rarity:
+                <input type="text" class="input text" value="rtr" onchange="fetchSVGData(this.value)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <select class="select" id="inputSetSymbolRarity" onchange="decorateSVG()">
+                    <option>Common</option>
+                    <option>Uncommon</option>
+                    <option selected="selected">Rare</option>
+                    <option>Mythic</option>
+                    <option>Timeshifted</option>
+                </select>
+                <div class="bar"></div>
+				<div>
+					<div class="download">
+						<a onclick="downloadSetSymbolImage(this)" id="downloadSetSymbolImage" href="" target="_blank" download="setSymbol.svg">Download</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden"></div>
+        <div class="layer">
+            <div class="title">Have Any Questions?</div>
+            <div class="paragraph indent">
+                If you have any questions please don't hesitate to email me at <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>. Even if you made a cool card and want to share, I'd love to see it!
+            </div>
+        </div>
+	</div>
+</body>
+<footer>
+    <div class="footerGrid">
+        <div>
+            <div class="visitorCountTrigger">Card Conjurer By Kyle Burton</div>
+            <div class="visitorCount"></div>
+        </div>
+        <div>
+            Navigation:<br>
+            <a href="index.html">Card Creator</a><br>
+            <a href="life.html">Life Counter</a><br>
+            <a href="setSymbol.html">Set Symbol Creator</a>
+        </div>
+        <div>
+            Legal:<br>
+            <a href="disclaimer.html">Disclaimer</a><br>
+            <a href="termsOfUse.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+<script async src="data/scripts/setCodeList.js"></script>
+<script defer src="data/site/other/setSymbol/setSymbol.js"></script>
+<script defer src="data/scripts/colors.js"></script>
+<html>

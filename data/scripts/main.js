@@ -804,6 +804,9 @@ function uploadImage(event, destination) {
 	reader.onload = function() {
 		var dataURL = reader.result;
 		destination.src = dataURL;
+        if (destination == setSymbol) {
+            autocrop(setSymbol)
+        }
 	}
 	reader.readAsDataURL(input.files[0]);
 }
