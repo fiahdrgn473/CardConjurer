@@ -14,4 +14,3 @@ if (!version.addedMoreMasks) {
         }
     }
 }
-

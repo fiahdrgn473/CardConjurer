@@ -1,16 +1,6 @@
 //============================================//
 //       Card Conjurer, by Kyle Burton        //
 //============================================//
-/* Test things! */
-function testFunction() {
-    cardMaster.insertBefore(frameList[5].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
-    cardMasterUpdated();
-//    changeVersionTo("future")
-//    setTimeout(function() {cardMaster.insertBefore(frameList[37].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);cardMasterUpdated();}, 1000);
-	// console.log("First frame manually loaded")
-}
-
-
 /* Initiate! */
 window.onload = initiate;
 function initiate() {
@@ -97,15 +87,25 @@ function loadImageCSV(targetCSV) {
                 for (var i = 1; i < splitImageCSV.length; i++) {
                     var splitIndividualImageCSV = splitImageCSV[i].split(",");
                     frameList[frameList.length] = new frameImage(splitIndividualImageCSV[0], "data/images/" + splitIndividualImageCSV[1], splitIndividualImageCSV[2], splitIndividualImageCSV[3].toString());
-                    if (i == 6) {
-                        frameList[5].image.onload = testFunction;
+                    if (i == version.frameIndexToInsert + 1) {
+                        version.trueFrameIndexToInsert = frameList.length - 1
+                        version.frameIndexToInsert = "none";
+                        frameList[frameList.length - 1].image.onload = function() {
+                            cardMaster.insertBefore(frameList[version.trueFrameIndexToInsert].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
+                            cardMasterUpdated();
+                        };
                     }
                 }
                 for (var i = 0; i < frameList.length; i++) {
                     frameList[i].framePickerElement();
                 }
                 console.log("image csv loaded, happy card conjuring!");
-                //            setTimeout(testFunction, 0); //deleteme
+                //Inserts a frame!
+                if (version.frameIndexToInsert != "none") {
+                    cardMaster.insertBefore(frameList[version.frameIndexToInsert].cardMasterElement("Full"), cardMaster.children[newFrameInsertionLocation]);
+//                    version.frameIndexToInsert = "none";
+                    cardMasterUpdated();
+                }
             }
         }
         xhttp.open("GET", targetCSV, true);
@@ -145,7 +145,7 @@ class frameImage {
 		var tempElement = document.createElement("div");
 		tempElement.id = "frameIndex" + frameList.indexOf(this);
 		tempElement.classList.add("cardMasterElement");
-		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity input' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img src=" + this.image.src + "><img class='cardMasterElementMaskImage' src=" + maskList[maskNameList.indexOf(targetMask.split(" - ")[0])].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
+		tempElement.innerHTML = "<span class='handle'>|||</span><div>" + this.displayName + " (" + targetMask + ") <br><input type='number' min='0' max='100' value='100' class='inputOpacity input' oninput='cardMasterUpdated()'><input type='checkbox' onchange='cardMasterUpdated()'><img class='zoom' src=" + this.image.src + "><img class='cardMasterElementMaskImage zoom' src=" + maskList[maskNameList.indexOf(targetMask.split(" - ")[0])].src + "></div><span class='closeCardMasterElement' onclick='deleteCardMasterElement(event)'>x</span>";
 		return tempElement
 	}
 	framePickerElement(targetElement) {

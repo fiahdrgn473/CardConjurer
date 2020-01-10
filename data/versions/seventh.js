@@ -9,6 +9,7 @@ if (version.currentVersion != "seventh") {
         ["Rules Text", "", scale(97), scale(630), scale(554), scale(292), "mplantin", 36, "black", "lineSpace=0.97"],
         ["Power Toughness", "", scale(592), scale(959), scale(110), 0, "mplantin", 47, "white", "oneLine=true,textAlign='center',shadow=2"]
     ];
+    version.frameIndexToInsert = 6;
 }
 version.currentVersion = "seventh"
 version.artX = scale(88)

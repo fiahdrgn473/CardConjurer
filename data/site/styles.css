@@ -320,6 +320,9 @@ footer a:hover {
 .cardmasterElement img.cardMasterElementMaskImage {
 	transform: translate(1.5rem, 0);
 }
+.cardMasterElement img.cardMasterElementMaskImage.zoom:hover {
+    transform: translate(1.5rem, 0) scale(3);
+}
 .cardMasterElementMoving {
 	background-color: var(--clear-dark);
 }
@@ -487,7 +490,13 @@ input[type="checkbox"], .frameOption, .maskOption, .button {
     height: auto;
 }
 
-
+.zoom {
+    transition: 0.2s;
+}
+.zoom:hover {
+    transform: scale(3);
+    z-index: 100;
+}
 
 
 

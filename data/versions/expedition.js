@@ -9,6 +9,7 @@ if (version.currentVersion != "expedition") {
                         ["Rules Text", "", scale(64), scale(729), scale(616), scale(0), "mplantin", 38, "black", "lineSpace=0.97"],
                         ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", 38, "black", "oneLine=true,textAlign='center'"]
                         ]
+    version.frameIndexToInsert = 7;
 }
 version.currentVersion = "expedition"
 version.artX = scale(56)

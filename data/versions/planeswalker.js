@@ -12,6 +12,7 @@ if (version.currentVersion != "planeswalker") {
                         ["Fourth Ability", "",,,,,,,,,"ignore"],
                         ["Loyalty", "", scale(615), scale(958), scale(79), 0, "belerenb", scale(38), "white", "oneLine=true,textAlign='center'"]
                         ]
+    version.frameIndexToInsert = 5;
 }
 version.currentVersion = "planeswalker"
 version.artX = scale(50)

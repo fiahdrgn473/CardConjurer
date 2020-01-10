@@ -18,6 +18,7 @@ if (version.currentVersion != "future") {
             version.futureManaSymbolImageList[i].src = "data/images/manaSymbols/future/" + i + ".png"
         }
     }
+    version.frameIndexToInsert = 2;
 }
 version.currentVersion = "future"
 version.artX = scale(64)

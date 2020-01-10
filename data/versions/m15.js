@@ -10,6 +10,7 @@ if (version.currentVersion != "m15") {
                         ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", 38, "black", "oneLine=true,textAlign='center'"]/*,
                                                                                                                                                    ["Flip PT", "", scale(588), scale(902), scale(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]*/
                         ]
+    version.frameIndexToInsert = 5;
 }
 version.currentVersion = "m15"
 version.artX = scale(58)
