@@ -197,7 +197,7 @@ function frameOptionClicked(event) {
 		selectedFrame = parseInt(clickedElementIndex);
 		document.getElementById("maskPicker").innerHTML = "";
 		for (var i = 0; i < frameList[selectedFrame].maskOptionList.length; i++) {
-//            console.log(frameList[selectedFrame].maskOptionList);
+//            alert(frameList[selectedFrame].maskOptionList);
             document.getElementById("maskPicker").innerHTML += "<div class='maskOption' onclick='maskOptionClicked(event)' id='maskName" + frameList[selectedFrame].maskOptionList[i] + "'><img src='" + maskList[maskNameList.indexOf(frameList[selectedFrame].maskOptionList[i])].src + "'>" + frameList[selectedFrame].maskOptionList[i] + "</div>";
 		}
 		document.getElementsByClassName("maskOption")[0].classList.add("maskOptionSelected");
