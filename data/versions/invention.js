@@ -5,7 +5,7 @@ if (version.currentVersion != "invention") {
     //Name, text, x, y, width, height, font, size, color, other
     version.textList = [
                         ["Title", "", scale(64), scale(82), scale(630), 0, "belerenb", scale(37), "black", "oneLine=true"],
-                        ["Type", "", scale(64), scale(616), scale(630), 0, "belerenb", scale(33), "black", "oneLine=true"],
+                        ["Type", "", scale(64), scale(618), scale(630), 0, "belerenb", scale(33), "black", "oneLine=true"],
                         ["Rules Text", "", scale(64), scale(662), scale(616), scale(292), "mplantin", scale(38), "black", "lineSpace=0.97"],
                         ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", scale(38), "black", "oneLine=true,textAlign='center'"]/*,
                                                                                                                                                           ["Flip PT", "", scale(588), scale(902), scale(100), 0, "belerenb", 28, "#666", "oneLine=true,textAlign='right'"]*/
@@ -18,7 +18,7 @@ version.artY = scale(28)
 version.artWidth = scale(685)
 version.artHeight = scale(929)
 version.setSymbolRight = scale(684)
-version.setSymbolVertical = scale(614)
+version.setSymbolVertical = scale(616)
 version.setSymbolWidth = scale(90)
 version.setSymbolHeight = scale(41)
 version.bottomInfoFunction = "m15BottomInfo"
