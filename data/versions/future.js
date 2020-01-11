@@ -4,10 +4,10 @@
 if (version.currentVersion != "future") {
     //Name, text, x, y, width, height, font, size, color, other
     version.textList = [
-                        ["Title", "", scale(131), scale(87), scale(550), 0, "matrixb", 45, "white", "oneLine=true"],
-                        ["Type", "", scale(91), scale(615), scale(557), 0, "matrixb", 37, "white", "oneLine=true"],
-                        ["Rules Text", "", scale(76), scale(650), scale(594), scale(278), "mplantin", 36, "black", "lineSpace=0.97"],
-                        ["Power Toughness", "", scale(574), scale(960), scale(106), 0, "mplantin", 42, "white", "oneLine=true,textAlign='center'"]
+                        ["Title", "", scale(131), scale(87), scale(550), 0, "matrixb", scale(45), "white", "oneLine=true"],
+                        ["Type", "", scale(91), scale(615), scale(557), 0, "matrixb", scale(37), "white", "oneLine=true"],
+                        ["Rules Text", "", scale(76), scale(650), scale(594), scale(278), "mplantin", scale(36), "black", "lineSpace=0.97"],
+                        ["Power Toughness", "", scale(574), scale(960), scale(106), 0, "mplantin", scale(42), "white", "oneLine=true,textAlign='center'"]
                         ];
     if (!version.addedFuture) {
         version.addedFuture = true;
@@ -34,7 +34,7 @@ version.manaCostX = scale(91)
 version.manaCostY = scale(140)
 version.manaCostDiameter = scale(59)
 version.manaCostDistance = scale(-38)
-version.manaCostDirection = [[91, 140], [61, 207], [46, 281], [46, 356], [59, 437], [106, 512]];
+version.manaCostDirection = [[scale(91), scale(140)], [scale(61), scale(207)], [scale(46), scale(281)], [scale(46), scale(356)], [scale(59), scale(437)], [scale(106), scale(512)]];
 version.manaCostVersion = "future";
 version.watermarkWidth = scale(520)
 version.watermarkHeight = scale(250)

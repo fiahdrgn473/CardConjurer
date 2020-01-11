@@ -6,6 +6,12 @@
 	<link rel="stylesheet" href="data/site/styles.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        canvas {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
 	<div class="mainDiv">
@@ -45,10 +51,11 @@
                     <path stroke-width="2" stroke-linejoin="arcs"></path>
                     <path></path>
                 </svg>
+                <canvas id="displayCanvas">
 			</div>
 			<div class="cardMenu">
                 Enter a set code and select a rarity:
-                <input type="text" class="input text" value="rtr" onchange="fetchSVGData(this.value)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input type="text" class="input text" value="rtr" onchange="fetchSVGData('https://raw.githubusercontent.com/andrewgioia/Keyrune/master/svg/' + this.value + '.svg')" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <select class="select" id="inputSetSymbolRarity" onchange="decorateSVG()">
                     <option>Common</option>
                     <option>Uncommon</option>
@@ -56,6 +63,8 @@
                     <option>Mythic</option>
                     <option>Timeshifted</option>
                 </select>
+                Or upload your own image/svg:
+                <input type="file" class="input file" accept="image/*" onchange="uploadImage(event)" placeholder="Via File Upload">
                 <div class="bar"></div>
 				<div>
 					<div class="download">

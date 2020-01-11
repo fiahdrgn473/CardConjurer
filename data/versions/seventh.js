@@ -4,10 +4,10 @@
 if (version.currentVersion != "seventh") {
     //Name, text, x, y, width, height, font, size, color, other
     version.textList = [
-        ["Title", "", scale(82), scale(70), scale(630), 0, "goudymedieval", 42, "white", "oneLine=true,shadow=2"],
-        ["Type", "", scale(82), scale(600), scale(630), 0, "mplantin", 33, "white", "oneLine=true,shadow=2"],
-        ["Rules Text", "", scale(97), scale(630), scale(554), scale(292), "mplantin", 36, "black", "lineSpace=0.97"],
-        ["Power Toughness", "", scale(592), scale(959), scale(110), 0, "mplantin", 47, "white", "oneLine=true,textAlign='center',shadow=2"]
+        ["Title", "", scale(82), scale(70), scale(630), 0, "goudymedieval", scale(42), "white", "oneLine=true,shadow=2"],
+        ["Type", "", scale(82), scale(600), scale(630), 0, "mplantin", scale(33), "white", "oneLine=true,shadow=2"],
+        ["Rules Text", "", scale(97), scale(630), scale(554), scale(292), "mplantin", scale(36), "black", "lineSpace=0.97"],
+        ["Power Toughness", "", scale(592), scale(959), scale(110), 0, "mplantin", scale(47), "white", "oneLine=true,textAlign='center',shadow=2"]
     ];
     version.frameIndexToInsert = 6;
 }
@@ -37,8 +37,8 @@ filterFramePicker("frameClassSeventh");
 function seventhBottomInfo() {
 	//remember to ctrl+f for 'artistBrushWidth' and adjust that when fixing these values!
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
-    bottomInfoContext.writeText("{center}{shadow2}Illus: " + document.getElementById("inputInfoArtist").value, scale(46), scale(948), scale(651), 0, "mplantin", 29, "white", "oneLine=true")
-    bottomInfoContext.writeText("{center}\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast *Not For Sale*", scale(46), scale(972), scale(651), 0, "mplantin", 18, "white", "oneLine=true,textAlign='right'")
+    bottomInfoContext.writeText("{center}{shadow2}Illus: " + document.getElementById("inputInfoArtist").value, scale(46), scale(948), scale(651), 0, "mplantin", scale(29), "white", "oneLine=true")
+    bottomInfoContext.writeText("{center}\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast *Not For Sale*", scale(46), scale(972), scale(651), 0, "mplantin", scale(18), "white", "oneLine=true,textAlign='right'")
 	cardImageUpdated()
 }
  setTimeout(seventhBottomInfo, 250)

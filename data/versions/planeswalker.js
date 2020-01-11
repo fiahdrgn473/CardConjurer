@@ -39,7 +39,7 @@ filterFramePicker("frameClassPlaneswalker")
 function m15PlaneswalkerBottomInfo() {    //remember to ctrl+f for 'artistBrushWidth' and adjust that when fixing these values!
     bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
     bottomInfoContext.writeText(document.getElementById("inputInfoNumber").value + " " + document.getElementById("inputInfoRarity").value + " *Not For Sale*", scale(46), scale(982), scale(329), 0, "gothammedium", scale(17), "white", "oneLine=true")
-    bottomInfoContext.writeText(document.getElementById("inputInfoSet").value + "  \u2022  " + document.getElementById("inputInfoLanguage").value + "  {font:belerenbsc}{artistBrush}{fontsize1}" + document.getElementById("inputInfoArtist").value, scale(46), scale(1002), scale(375), 0, "gothammedium", 17, "white", "oneLine=true")
+    bottomInfoContext.writeText(document.getElementById("inputInfoSet").value + "  \u2022  " + document.getElementById("inputInfoLanguage").value + "  {font:belerenbsc}{artistBrush}{fontsize1}" + document.getElementById("inputInfoArtist").value, scale(46), scale(1002), scale(375), 0, "gothammedium", scale(17), "white", "oneLine=true")
     bottomInfoContext.writeText("\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast", cardWidth / 2, scale(1001), scale(322), 0, "mplantin", scale(17), "white", "oneLine=true,textAlign='right'")
     cardImageUpdated()
 }
@@ -141,7 +141,7 @@ function planeswalkerTextFunction() {
     planeswalkerContext.drawImage(maskList[maskNameList.indexOf("Rules Text Planeswalker")], 0, 0, cardWidth, cardHeight)
     planeswalkerContext.globalCompositeOperation = "source-over"
     planeswalkerContext.fillStyle = "white"
-    planeswalkerContext.font = "30px belerenbsc"
+    planeswalkerContext.font = scale(30) + "px belerenbsc"
     planeswalkerContext.textAlign = "center"
     for (var i = 1; i < planeswalkerAbilityCount + 1; i++) {
         var planeswalkerIconValue = document.getElementById("inputPlaneswalker" + i + "Icon").value

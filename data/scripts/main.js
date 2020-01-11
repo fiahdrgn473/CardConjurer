@@ -8,6 +8,17 @@ function initiate() {
 	window.version = {}
 	window.cardWidth = 744;
 	window.cardHeight = 1039;
+    if (window.location.search != "") {
+        var parameters = window.location.search.replace('?', '').split('&');
+        for (var i = 0; i < parameters.length; i ++) {
+            var targetParameter = parameters[i].split('=');
+            if (targetParameter[0] == 'width') {
+                cardWidth = parseInt(targetParameter[1]);
+            } else if (targetParameter[0] == 'height') {
+                cardHeight = parseInt(targetParameter[1]);
+            }
+        }
+    }
     window.whichTextIndex = 0;
 	window.frameList = new Array();
 	window.maskNameList = [];

@@ -4,7 +4,7 @@
 if (version.currentVersion != "unhinged") {
     //Name, text, x, y, width, height, font, size, color, other
     version.textList = [
-                        ["Title", "", scale(280), scale(56), scale(174), 0, "belerenb", 37, "black", "oneLine=true,textAlign='center'"]
+                        ["Title", "", scale(280), scale(56), scale(174), 0, "belerenb", scale(37), "black", "oneLine=true,textAlign='center'"]
                         ]
     version.frameIndexToInsert = 4;
 }
