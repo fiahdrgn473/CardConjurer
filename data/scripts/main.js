@@ -8,6 +8,7 @@ function initiate() {
 	window.version = {}
 	window.cardWidth = 744;
 	window.cardHeight = 1039;
+    window.creditColor = "";
     if (window.location.search != "") {
         var parameters = window.location.search.replace('?', '').split('&');
         for (var i = 0; i < parameters.length; i ++) {
@@ -16,6 +17,9 @@ function initiate() {
                 cardWidth = parseInt(targetParameter[1]);
             } else if (targetParameter[0] == 'height') {
                 cardHeight = parseInt(targetParameter[1]);
+            }
+            if (targetParameter[0] == 'creditColor') {
+                window.creditColor = "{fontcolor" + targetParameter[1] + "}";
             }
         }
     }
@@ -993,7 +997,7 @@ function loadSampleImages() {
         sampleImage.src = "data/site/images/samples/" + randomIndex + ".png";
     }
     //Donate card stuff!
-    var cardWishlist = [["Thrasios, Triton Hero", "https://img.scryfall.com/cards/large/front/2/1/21e27b91-c7f1-4709-aa0d-8b5d81b22a0a.jpg?1562391653"], ["Arcane Signet", "https://img.scryfall.com/cards/large/front/8/4/84128e98-87d6-4c2f-909b-9435a7833e63.jpg?1572482845"], ["Kenrith, the Returned King", "https://img.scryfall.com/cards/large/front/5/6/56c1227e-bea7-47cb-bbec-389a3d585af5.jpg?1571282458"], ["Ramunap Excavator", "https://img.scryfall.com/cards/large/front/9/0/90a54d18-8403-441d-a115-ee462fabdabb.jpg?1562806928"], ["Meloku the Clouded Mirror", "https://img.scryfall.com/cards/large/front/a/1/a19601ac-48a7-40c2-9159-af15af8520ca.jpg?1561968062"]];
+    var cardWishlist = [["Thrasios, Triton Hero", "https://img.scryfall.com/cards/large/front/2/1/21e27b91-c7f1-4709-aa0d-8b5d81b22a0a.jpg?1562391653"], ["Riku of Two Reflections", "https://img.scryfall.com/cards/large/front/7/1/716d0b3b-bac9-4fb8-882e-bd6171864043.jpg?1562916032"], ["Kenrith, the Returned King", "https://img.scryfall.com/cards/large/front/5/6/56c1227e-bea7-47cb-bbec-389a3d585af5.jpg?1571282458"], ["Ramunap Excavator", "https://img.scryfall.com/cards/large/front/9/0/90a54d18-8403-441d-a115-ee462fabdabb.jpg?1562806928"], ["Meloku the Clouded Mirror", "https://img.scryfall.com/cards/large/front/a/1/a19601ac-48a7-40c2-9159-af15af8520ca.jpg?1561968062"]];
     var randomWishlistCard = cardWishlist[Math.floor(Math.random() * cardWishlist.length)];
     document.getElementById("wishlistCardName").innerHTML = randomWishlistCard[0];
     var wishlistCardImage = new Image();

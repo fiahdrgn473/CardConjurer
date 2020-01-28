@@ -46,7 +46,7 @@ function m15BottomInfo() {
 			copyrightShift = scale(19);
 		}
 	}
-	bottomInfoContext.writeText("\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast", cardWidth / 2, scale(980 + copyrightShift), scale(322), 0, "mplantin", scale(17), "white", "oneLine=true,textAlign='right'")
+	bottomInfoContext.writeText(creditColor + "\u2122 & \u00a9 " + date.getFullYear() + " Wizards of the Coast", cardWidth / 2, scale(980 + copyrightShift), scale(322), 0, "mplantin", scale(17), "white", "oneLine=true,textAlign='right'")
 	cardImageUpdated()
 }
 // setTimeout(m15BottomInfo, 250)
