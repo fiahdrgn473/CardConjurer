@@ -997,7 +997,7 @@ function loadSampleImages() {
         sampleImage.src = "data/site/images/samples/" + randomIndex + ".png";
     }
     //Donate card stuff!
-    var cardWishlist = [["Thrasios, Triton Hero", "https://img.scryfall.com/cards/large/front/2/1/21e27b91-c7f1-4709-aa0d-8b5d81b22a0a.jpg?1562391653"], ["Riku of Two Reflections", "https://img.scryfall.com/cards/large/front/7/1/716d0b3b-bac9-4fb8-882e-bd6171864043.jpg?1562916032"], ["Kenrith, the Returned King", "https://img.scryfall.com/cards/large/front/5/6/56c1227e-bea7-47cb-bbec-389a3d585af5.jpg?1571282458"], ["Ramunap Excavator", "https://img.scryfall.com/cards/large/front/9/0/90a54d18-8403-441d-a115-ee462fabdabb.jpg?1562806928"], ["Meloku the Clouded Mirror", "https://img.scryfall.com/cards/large/front/a/1/a19601ac-48a7-40c2-9159-af15af8520ca.jpg?1561968062"]];
+    var cardWishlist = [["Riku of Two Reflections", "https://img.scryfall.com/cards/large/front/7/1/716d0b3b-bac9-4fb8-882e-bd6171864043.jpg?1562916032"], ["Klothys, God of Destiny", "https://img.scryfall.com/cards/large/front/4/d/4d747889-04db-4e7a-ad4c-7549514b5112.jpg?1577968427"], ["Ramunap Excavator", "https://img.scryfall.com/cards/large/front/9/0/90a54d18-8403-441d-a115-ee462fabdabb.jpg?1562806928"], ["Birds of Paradise", "https://img.scryfall.com/cards/large/front/f/e/feefe9f0-24a6-461c-9ef1-86c5a6f33b83.jpg?1576382980"], ["Xantcha, Sleeper Agent", "https://img.scryfall.com/cards/large/front/8/9/89b03b9a-7e20-47cb-bc64-23513acea855.jpg?1566340797"]];
     var randomWishlistCard = cardWishlist[Math.floor(Math.random() * cardWishlist.length)];
     document.getElementById("wishlistCardName").innerHTML = randomWishlistCard[0];
     var wishlistCardImage = new Image();
