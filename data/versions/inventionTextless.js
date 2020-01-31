@@ -6,6 +6,7 @@ if (version.currentVersion != "inventionTextless") {
     version.textList = [
                         ["Title", "", scale(64), scale(82), scale(630), 0, "belerenb", scale(37), "black", "oneLine=true"],
                         ["Type", "", scale(64), scale(898), scale(630), 0, "belerenb", scale(33), "black", "oneLine=true"],
+                        ["Rules Text", "", scale(64), scale(560), scale(616), scale(300), "mplantin", scale(38), "black", "lineSpace=0.97"],
                         ["Power Toughness", "", scale(587), scale(958), scale(110), 0, "belerenb", scale(38), "black", "oneLine=true,textAlign='center'"]
                         ]
     version.frameIndexToInsert = 0;

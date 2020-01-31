@@ -2,3 +2,5 @@ displayName,imagePath,maskOptions,framePickerOptions
 Artifact,invention/inventionTextlessAFull.png,Full-0-0-744-1039,Invention
 Artifact PT,invention/inventionAPT.png,Full-575-924-129-71,Invention
 Border,masks/BorderInvention.png,Full-0-0-744-1039;Border Invention-0-0-744-1039,Invention
+White Rules Text Box,invention/inventionTextlessWhiteBackground.png,Full-0-0-744-1039,Invention
+Black Rules Text Box,invention/inventionTextlessBlackBackground.png,Full-0-0-744-1039,Invention
