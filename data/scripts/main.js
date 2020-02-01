@@ -710,6 +710,8 @@ CanvasRenderingContext2D.prototype.drawManaCost = function(text, symbolsX, symbo
                 this.arc(currentX + diameter / 2.13, currentY + diameter / 1.7, diameter / 2, 0, 2 * Math.PI, false)
                 this.fill()
                 this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
+            } else if (version == "justTheSymbol") {
+                this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
             } else if (version == "seventh") {
                 this.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(splitManaCost[i])], currentX, currentY, diameter, diameter)
             } else if (version == "future") {
@@ -962,9 +964,6 @@ loadSampleImages()
 
 
 
-//function loadPlaneswalkerFrames() {
-//    changeVersionTo("planeswalker");
-//}
 
 function filterFramePicker(classToShow) {
     var framePickerList = document.getElementsByClassName("frameOption")
