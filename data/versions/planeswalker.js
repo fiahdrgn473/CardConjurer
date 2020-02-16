@@ -57,7 +57,8 @@ if (!version.addedPlaneswalker) {
             Four: <input type="number" class="input number" id="inputPlaneswalker4" oninput="planeswalkerAbilities()" value="0" min="0" max="1039"><input type="text" class="input text" id="inputPlaneswalker4Icon" oninput="planeswalkerAbilities()" value="-9"><br>
     For two-ability Planeswalkers only:<br>
     <input type="checkbox" onchange="changePlaneswalkerAbilityLayout()" id="inputWARSpacing"> Use War of the Spark ability spacing<br>
-    <input type="checkbox" onchange="changePlaneswalkerAbilityLayout()" id="inputWARReverse"> Reverse War of the Spark ability spacing`
+    <input type="checkbox" onchange="changePlaneswalkerAbilityLayout()" id="inputWARReverse"> Reverse War of the Spark ability spacing<br>
+    <input type="checkbox" onchange="invertPlaneswalkerColors()" id="inputColorInvert"> Dark ability boxes`
     document.getElementById("cardMenu").appendChild(planeswalkerTab)
     newCanvas("planeswalker");
     var planeswalkerPlus = new Image()
@@ -74,9 +75,21 @@ if (!version.addedPlaneswalker) {
     lightToDarkPlaneswalker.src = "data/images/planeswalker/abilityLineOdd.png"
     var darkToLightPlaneswalker = new Image()
     darkToLightPlaneswalker.crossOrigin = "anonymous";
-    darkToLightPlaneswalker.onload = function() {planeswalkerAbilities()}
+    //darkToLightPlaneswalker.onload = function() {planeswalkerAbilities()}
     darkToLightPlaneswalker.src = "data/images/planeswalker/abilityLineEven.png"
+    var lightToDarkPlaneswalkerDarkened= new Image()
+    lightToDarkPlaneswalkerDarkened.crossOrigin = "anonymous";
+    lightToDarkPlaneswalkerDarkened.src = "data/images/planeswalker/abilityLineOddDarkened.png"
+    var darkToLightPlaneswalkerDarkened = new Image()
+    darkToLightPlaneswalkerDarkened.crossOrigin = "anonymous";
+    darkToLightPlaneswalkerDarkened.onload = function() {invertPlaneswalkerColors()}
+    darkToLightPlaneswalkerDarkened.src = "data/images/planeswalker/abilityLineEvenDarkened.png"
     setTimeout(planeswalkerAbilities, 1000);
+    //placeholders:
+    var darkColor = "#a4a4a4";
+    var lightColor = "white";
+    var planeswalkerLightToDark = new Image()
+    var planeswalkerDarkToLight = new Image()
 }
 
 m15PlaneswalkerBottomInfo()
@@ -121,20 +134,20 @@ function planeswalkerTextFunction() {
             lastAdjust = 2 * cardHeight
         }
         if (i % 2 == 1) {
-            planeswalkerContext.fillStyle = "white"
+            planeswalkerContext.fillStyle = lightColor
             planeswalkerContext.globalAlpha = 0.608
             planeswalkerContext.fillRect(scale(91), window["ability" + i + "Y"] + scale(10), scale(599), window["ability" + (i + 1) + "Y"] - window["ability" + i + "Y"] - scale(20) + lastAdjust)
             if (i == 1 && planeswalkerAbilityCount != 1) {
                 planeswalkerContext.fillRect(scale(91), window["ability" + i + "Y"], scale(599), scale(10))
             }
             planeswalkerContext.globalAlpha = 1
-            planeswalkerContext.drawImage(lightToDarkPlaneswalker, scale(91), window["ability" + (i + 1) + "Y"] - scale(10) + lastAdjust, scale(599), scale(20))
+            planeswalkerContext.drawImage(planeswalkerLightToDark, scale(91), window["ability" + (i + 1) + "Y"] - scale(10) + lastAdjust, scale(599), scale(20))
         } else {
-            planeswalkerContext.fillStyle = "#a4a4a4"
+            planeswalkerContext.fillStyle = darkColor
             planeswalkerContext.globalAlpha = 0.706
             planeswalkerContext.fillRect(scale(91), window["ability" + i + "Y"] + scale(10), scale(599), window["ability" + (i + 1) + "Y"] - window["ability" + i + "Y"] - scale(20) + lastAdjust)
             planeswalkerContext.globalAlpha = 1
-            planeswalkerContext.drawImage(darkToLightPlaneswalker, scale(91), window["ability" + (i + 1)+ "Y"] - scale(10) + lastAdjust, scale(599), scale(20))
+            planeswalkerContext.drawImage(planeswalkerDarkToLight, scale(91), window["ability" + (i + 1)+ "Y"] - scale(10) + lastAdjust, scale(599), scale(20))
         }
     }
     planeswalkerContext.globalCompositeOperation = "destination-in"
@@ -170,4 +183,18 @@ function changePlaneswalkerAbilityLayout() {
         planeswalkerAbilityLayout[2] = [0, scale(730), scale(863)]
     }
     planeswalkerAbilities()
+}
+function invertPlaneswalkerColors() {
+    if (document.getElementById("inputColorInvert").checked) {
+        darkColor = "#5b5b5b"
+        lightColor = "black"
+        planeswalkerLightToDark.src = lightToDarkPlaneswalkerDarkened.src
+        planeswalkerDarkToLight.src = darkToLightPlaneswalkerDarkened.src
+    } else {
+        darkColor = "#a4a4a4"
+        lightColor = "white"
+        planeswalkerLightToDark.src = lightToDarkPlaneswalker.src
+        planeswalkerDarkToLight.src = darkToLightPlaneswalker.src
+    }
+    planeswalkerAbilities();
 }
