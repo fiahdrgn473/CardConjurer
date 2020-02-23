@@ -1,0 +1,115 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>CC — Ask Scryfall</title>
+	<!-- Other things -->
+	<link rel="stylesheet" href="data/site/styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .askScryfallGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 90pt auto;
+            align-items: center;
+            justify-items: center;
+        }
+        .urzaCard {
+            text-align: center;
+            grid-column: 1 / span 3;
+        }
+        .urzaCard > img {
+            width: 360pt;
+            height: auto;
+        }
+        .askScryfallGrid > * {
+            /*border: 1px solid red;*/
+        }
+        .askScryfallButton {
+            width: auto;
+            height: 60pt;
+            transition: 0.25s;
+        }
+        .askScryfallButton:hover {
+            height: 80pt;
+        }
+        .askScryfallButton:active {
+            height: 90pt !important;
+        }
+        #askScryfallResult {
+            grid-column: 1 / span 3;
+            padding: 12pt;
+            font: 32pt belerenb;
+        }
+        @media screen and (min-width: 864pt) {
+            .askScryfallGrid {
+                grid-template-columns: calc(360pt + 1rem) 1fr 1fr 1fr !important;
+                grid-template-rows: 90pt auto !important;
+            }
+            .urzaCard {
+                grid-column: 1;
+                grid-row: 1 / span 2 !important;
+            }
+            #askScryfallResult {
+                grid-column: 2 / span 3 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+	<div class="mainDiv">
+		<div class="layer">
+			<div class="title">
+				Ask Scryfall
+			</div>
+		</div>
+		<div class="layer">
+			<div class="paragraph">
+				<div class="askScryfallGrid">
+                    <div class="urzaCard">
+                        <img src="data/site/other/askScryfall/urzaBlank.png">
+                    </div>
+                    <div>
+                        <img class="askScryfallButton" src="data/site/other/askScryfall/plus.png" onclick="randomAbility(0)">
+                    </div>
+                    <div>
+                        <img class="askScryfallButton" src="data/site/other/askScryfall/minus.png" onclick="randomAbility(1)">
+                    </div>
+                    <div>
+                        <img class="askScryfallButton" src="data/site/other/askScryfall/ultimate.png" onclick="randomAbility(2)">
+                    </div>
+                    <div id="askScryfallResult">
+                        
+                    </div>
+                </div>
+			</div>
+		</div>
+        <div class="layer">
+            <div class="paragraph indent">
+                Ask Scryfall is a replacement for AskUrza.com that periodically compiles all planeswalker abilities (using Scryfall) and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability, and in my opinion, much more fun. To use Ask Scryfall, simply click on one of the +1, -1, or -6, and let the gods of chaos decide your fate!
+            </div>
+        </div>
+	</div>
+</body>
+<footer>
+    <div class="footerGrid">
+        <div>
+            <div class="visitorCountTrigger">Card Conjurer By Kyle Burton</div>
+            <div class="visitorCount"></div>
+        </div>
+        <div>
+            Navigation:<br>
+            <a href="index.html">Card Creator</a><br>
+            <a href="life.html">Life Counter</a><br>
+            <a href="askScryfall.html">Ask Scryfall</a>
+        </div>
+        <div>
+            Legal:<br>
+            <a href="disclaimer.html">Disclaimer</a><br>
+            <a href="termsOfUse.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+<script src="data/scripts/colors.js"></script>
+<script src="data/site/other/askScryfall/askScryfall.js"></script>
+<html>
