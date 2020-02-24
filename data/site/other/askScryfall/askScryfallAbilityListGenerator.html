@@ -33,14 +33,14 @@
                                 var abilityType = planeswalkerAbilityList[n].split(":")[0]
                                 if (!abilityType.includes("X")) {
                                     if (abilityType.includes("+")) {
-                                    //plus
-                                    plusAbilities[plusAbilities.length] = abilityText
-                                    } else if (abilityType.includes("\u2212") && n == planeswalkerAbilityList.length - 1 && n > 1) {
-                                    //ult
-                                    ultimateAbilities[ultimateAbilities.length] = abilityText
+                                        //plus
+                                        plusAbilities[plusAbilities.length] = abilityText
+                                    } else if (abilityType.includes("\u2212") && n == planeswalkerAbilityList.length - 1 && n > 1 && parseInt(abilityType.replace("\u2212", "")) > 4) {
+                                        //ult
+                                        ultimateAbilities[ultimateAbilities.length] = abilityText
                                     } else if (abilityType.includes("\u2212") || abilityType == "0") {
-                                    //minus
-                                    minusAbilities[minusAbilities.length] = abilityText
+                                        //minus
+                                        minusAbilities[minusAbilities.length] = abilityText
                                     } else {
                                     //do nothing
                                     }
