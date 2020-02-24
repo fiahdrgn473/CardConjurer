@@ -35,7 +35,7 @@
                                     if (abilityType.includes("+")) {
                                         //plus
                                         plusAbilities[plusAbilities.length] = abilityText
-                                    } else if (abilityType.includes("\u2212") && n == planeswalkerAbilityList.length - 1 && n > 1 && parseInt(abilityType.replace("\u2212", "")) > 4) {
+                                    } else if (abilityType.includes("\u2212") && parseInt(abilityType.replace("\u2212", "")) > 4) {
                                         //ult
                                         ultimateAbilities[ultimateAbilities.length] = abilityText
                                     } else if (abilityType.includes("\u2212") || abilityType == "0") {
