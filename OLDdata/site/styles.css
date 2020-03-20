@@ -1,0 +1,510 @@
+/*fonts*/
+@font-face {
+	font-family: gothammedium;
+	src: url("../fonts/gotham-medium.ttf");
+}
+@font-face {
+	font-family: belerenb;
+	src: url("../fonts/beleren-b.ttf");
+}
+@font-face {
+	font-family: belerenbsc;
+	src: url("../fonts/beleren-bsc.ttf");
+}
+@font-face {
+	font-family: matrix;
+	src: url("../fonts/matrix.ttf");
+}
+@font-face {
+	font-family: matrixb;
+	src: url("../fonts/matrix-b.ttf");
+}
+@font-face {
+	font-family: matrixbsc;
+	src: url("../fonts/matrix-bsc.ttf");
+}
+@font-face {
+	font-family: mplantin;
+	src: url("../fonts/mplantin.ttf");
+}
+@font-face {
+	font-family: mplantini;
+	src: url("../fonts/mplantin-i.ttf");
+}
+@font-face {
+	font-family: goudymedieval;
+	src: url("../fonts/goudy-medieval.ttf");
+}
+:root {
+	--shifting-color-1: #00c300;
+	--shifting-color-1-light: #c8ff64;
+	--light-color: #eee;
+	--dark-color: #333;
+    --clear-light: #fff3;
+    --clear-mid: #fff6;
+    --clear-dark: #fff9;
+    --clear-darker: #aaa3;
+    --clear-darkerer: #aaa6;
+    --background-gradient: linear-gradient(to bottom right, var(--shifting-color-1), var(--shifting-color-1-light));
+}
+
+/*Background & Footer*/
+html {
+	background-image: linear-gradient(to bottom right, var(--shifting-color-1), var(--shifting-color-1-light));
+	background-attachment: fixed;
+	overflow-x: hidden;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 16pt;
+}
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+	background-image: url(images/lowpoly.png);
+    background-position: left;
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+footer {
+	background-color: var(--dark-color);
+	padding: 2rem;
+	font: 0.5em gothammedium;
+	color: var(--light-color);
+}
+
+
+/*Canvas*/
+canvas {
+	width: calc(100%);
+	height: auto;
+	max-width: 750px;
+	max-height: 1050px;
+}
+.canvasContainer {
+	text-align: center;
+}
+
+
+/*Grids*/
+.mainGrid {
+	display: grid;
+    grid-gap: 1rem;
+	grid-template-columns: auto;
+    padding-bottom: 1rem;
+}
+.splitGrid {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+.frameGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+	grid-auto-rows: min-content;
+}
+.footerGrid {
+	display: grid;
+	grid-template-columns: auto;
+	grid-gap: 1rem;
+}
+.autoGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+	grid-auto-rows: min-content;
+}
+
+
+/*Misc elements*/
+.download {
+    text-align: center;
+    font: 1.5rem belerenbsc;
+}
+.pageTitle {
+	font: 3rem belerenbsc;
+	text-align: center;
+	padding-top: 0.5rem;
+}
+.bar {
+	background-image: url(../images/manaSymbols/63.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 2px;
+	width: 100%;
+	height: 1rem;
+}
+.imgPreview {
+	width: 100%;
+}
+.layer {
+	padding: 2rem 2rem;
+	color: black;
+	text-align: center;
+    margin-bottom: 3rem;
+    background-color: var(--light-color);
+	background-image: url(images/layerBackground.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+/*Donate Grid Stuff!*/
+.donateHalfGrid > img {
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+
+/*Various text modifications*/
+.title {
+	text-align: center;
+	font: 1.5rem belerenbsc;
+}
+.truncate {
+    word-break: break-word;
+}
+.paragraph {
+	font: mplantin;
+	text-align: left;
+}
+.indent {
+	text-indent: 2rem;
+}
+
+
+/*General modifications*/
+.hidden:not(.visibilityOverride) {
+	display: none;
+}
+.visible {
+	display: inline-block;
+}
+.selectable {
+	user-select: all;
+}
+
+
+/*Hyperlinks*/
+a {
+	color: black;
+}
+a:hover {
+	color: var(--dark-color);
+}
+footer a {
+	color: white;
+}
+footer a:hover {
+	color: var(--shifting-color-1-light);
+}
+
+
+/*Controls the area taken by the canvas*/
+@media screen and (min-width: 905pt) {
+	/*Makes room for the canvas and controls to be side by side*/
+	.mainGrid {
+		padding: 1rem;
+		grid-template-columns: calc(750px + 2px) auto;
+	}
+}
+@media screen and (min-width: calc(750px + 2rem)) {
+	/*The canvas can be full size and doesn't have to scale anymore*/
+	canvas {
+		width: 750px;
+		height: 1050px;
+	}
+}
+/*The screen is big enough (larger than phone, likely) to use a larger font*/
+@media screen and (min-width: 375pt) {
+	html {
+		font-size: 24pt;
+	}
+}
+/*The screen is big enough for the samples to lay side by side. Also, the donate section can be displayed horizontally.*/
+@media screen and (min-width: 750pt) {
+    .samples {
+        grid-template-columns: 33.33% 33.33% 33.33% !important;
+        margin-bottom: 2rem;
+    }
+    .samples #sample1 {
+        width: 90%;
+        transform: rotate(-10deg) translate(10%, 8%);
+    }
+    .samples #sample2 {
+        z-index: 10;
+    }
+    .samples #sample3 {
+        width: 90%;
+        transform: rotate(10deg) translate(-10%, 8%);
+    }
+    .donateHalfGrid {
+        display: grid;
+        grid-template-columns: 16rem auto;
+        margin-top: 0.5rem;
+    }
+    .donateHalfGrid > img {
+        width: 15rem;
+        margin-bottom: 0;
+    }
+}
+/*These control tooltips for mobile devices vs. desktops/laptops*/
+/*@media screen and (min-width: 1024px) {
+	.tooltip:hover .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}
+@media screen and (max-width: 1023px) {
+	.tooltip:focus .tooltiptext, div.tooltip > input:focus + .tooltiptext, div.tooltip > textarea:focus + .tooltiptext {
+	  	visibility: visible;
+	  	opacity: 1;
+	}
+}*/
+/*Allows the footer to be displayed horizontally on Desktop*/
+@media screen and (min-width: 375pt) {
+	.footerGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+		grid-gap: 1rem;
+	}
+}
+
+
+/*WIP (or I'm too lazy to sort these)*/
+.tabMenu {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+	grid-auto-rows: min-content;
+}
+.tabOption, .textTabButton {
+	font: 1rem belerenbsc;
+	text-align: center;
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	transition: 0.5s;
+}
+.tabOption:hover, .textTabButton:hover {
+	background-color: var(--clear-mid);
+	transition: 0s;
+}
+.tabOption.tabOptionSelected, .textTabButton.activeTextTab {
+	background-color: var(--clear-dark);
+}
+.tabContent:not(.tabVisible) {
+	display: none;
+}
+
+.cardMasterElement {
+	font: 0.75rem belerenbsc;
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	border-radius: 0.5rem;
+	margin-top: 0.25rem;
+    display: grid;
+    grid-template-columns: 2rem auto 1rem;
+    align-items: center;
+}
+.cardMasterElement > .handle {
+    cursor: all-scroll;
+    padding: 1rem 0.5rem;
+    text-align: center;
+}
+.cardMasterElement img {
+    max-height: 1.3rem;
+	max-width: 1.3rem;
+	position: absolute;
+	transform: translate(0.1rem, 0);
+}
+.cardmasterElement img.cardMasterElementMaskImage {
+	transform: translate(1.5rem, 0);
+}
+.cardMasterElement img.cardMasterElementMaskImage.zoom:hover {
+    transform: translate(1.5rem, 0) scale(3);
+}
+.cardMasterElementMoving {
+	background-color: var(--clear-dark);
+}
+.closeCardMasterElement {
+	cursor: pointer;
+    text-align: center;
+}
+
+.frameOption img, .maskOption img, .cardMasterElement img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+#framePicker, #maskPicker {
+	max-height: 260pt;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid var(--light-color);
+}
+.frameOption {
+	height: 3rem;
+	text-align: center;
+	width: 100%;
+}
+.frameOption img {
+	max-width: 3rem;
+	max-height: 3rem;
+}
+.maskOption img {
+	max-width: 1.5rem;
+	max-height: 1.5rem;
+}
+.frameOption.frameOptionSelected, .maskOption.maskOptionSelected {
+	background-color: var(--clear-dark);
+}
+.maskOption, .frameOption {
+	background-color: var(--clear-light);
+	border: 1px solid var(--light-color);
+	border-radius: 0.25rem;
+}
+.maskOption {
+    font-size: 0.75rem;
+	margin-left: 0.5rem;
+	padding: 0.25rem;
+	width: calc(100% - 1.3rem);
+}
+
+
+.textarea {
+	width: 100%;
+	min-height: 6rem;
+	max-height: 18rem;
+	resize: vertical;
+}
+.textTabButton {
+    font-size: 0.75rem;
+}
+.textTab {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+	grid-auto-rows: min-content;
+}
+
+.input, .textarea, .button, .select {
+	font: 0.75rem mplantin;
+	background-color: var(--light-color);
+	border: 1px solid #aaa;
+	border-radius: 0.2rem;
+	padding: 0px 0.2rem;
+	outline: none;
+	width: 100%;
+}
+.input.inputOpacity {
+	width: 2.4rem;
+}
+
+
+/* Text code tutorial */
+#textCodeTutorial {
+    font-size: 0.75rem;
+	display: grid;
+	grid-template-columns: 4.5rem auto;
+}
+#textCodeTutorial > div {
+	padding: 0.25rem 0;
+	background-color: var(--clear-mid);
+}
+#textCodeTutorial > div:nth-child(4n), #textCodeTutorial > div:nth-child(4n - 1) {
+	background-color: var(--clear-light);
+}
+
+
+input[type="checkbox"], .frameOption, .maskOption, .button {
+	cursor: pointer;
+}
+
+
+/* image links */
+.proxyFactoryLimitedGrid {
+    margin: 0;
+    max-width: calc(100vw - 4rem);
+}
+.donateGrid {
+    margin: 0;
+    max-width: calc(100vw - 4rem);
+}
+.imageLinkGrid {
+    margin-top: 1rem;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+/*    border: 1px solid red;*/
+}
+.showBackgroundThrough {
+    display: inline-block;
+    background: url(images/lowpoly.png) left top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.imageLink {
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 4rem auto;
+    align-items: center;
+    justify-items: center;
+    border: 1px solid var(--dark-color);
+}
+.imageLink:hover {
+    background-color: var(--clear-darkerer);
+}
+.imageLink > img {
+    max-height: 3rem;
+    max-width: 4rem;
+}
+.imageLink > div {
+    word-break: break-all;
+    font: 1.5rem belerenbsc;
+}
+
+.visitorCount {
+    display: none;
+}
+.visitorCount > a > img {
+    max-height: 0.5rem;
+}
+.visitorCountTrigger:hover + .visitorCount {
+    display:inline-block;
+}
+
+
+
+.samples {
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+}
+.samples img {
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.zoom {
+    transition: 0.2s;
+}
+.zoom:hover {
+    transform: scale(3);
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+

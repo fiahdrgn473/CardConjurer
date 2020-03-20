@@ -1,252 +1,61 @@
 <!DOCTYPE html5>
 <html>
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158949995-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'UA-158949995-1');
-    </script>
 	<title>Card Conjurer</title>
-	<!-- Other things -->
 	<link rel="stylesheet" href="data/site/styles.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="mainDiv">
-		<div class="pageTitle">
-			Card Conjurer
+	<canvas id="previewCanvas"></canvas>
+	<div id='frameTab'>
+		<div class="splitGrid">
+	        <div id="framePicker" class="frameGrid"></div>
+	        <div id="maskPicker"></div>
+	    </div>
+	    <div>
+		    <button onclick='addSelectedFrame()'>Add</button>
+		    <button onclick='addSelectedFrame(["Right Half"])'>Add To Right Half</button>
 		</div>
-		<div class="mainGrid">
-			<div class="canvasContainer">
-				<canvas id="displayCanvas"></canvas>
-			</div>
-			<div class="cardMenu">
-                <div id="cardMenu">
-                    <!-- Card editor tabs begin here! -->
-                    <div class="tabMenu" id="mainTabMenu">
-                        <div class="tabOption mainEditor tabOptionSelected" onclick="toggleTabs(event, 'frame', 'mainEditor')">Frame</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'text', 'mainEditor')">Text</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'art', 'mainEditor')">Art</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'collector', 'mainEditor')">Collector</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'set', 'mainEditor')">Set Symbol</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'watermark', 'mainEditor')">Watermark</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'advanced', 'mainEditor')">Advanced</div>
-                        <div class="tabOption mainEditor" onclick="toggleTabs(event, 'import', 'mainEditor')">Import Card</div>
-                    </div>
-                    <div class="tabContent mainEditor tabVisible" id="frame">
-                        <div class="splitGrid">
-                            <div id="framePicker" class="frameGrid"></div>
-                            <div id="maskPicker"></div>
-                        </div>
-                        <div class="splitGrid" id="addFrameToCardMasterButtons">
-                            <button onclick="addFrameToCardMaster()" class="button">Add</button>
-                            <button onclick="addFrameToCardMaster(' - Right Half')" class="button">Add To Right Half</button>
-                        </div>
-                        <div id="selectedFramePreview">No frame selected</div>
-                        <div id="cardMaster">
-                            <div id="frameIndex-2" class="cardMasterElement"><span class="handle">|||</span><div>Text Placeholder</div><span></span></div>
-                            <div id="frameIndex-1" class="cardMasterElement"><span class="handle">|||</span><div>Card Art Placeholder <img id="artPlaceholderImage"></div><span></span></div>
-                        </div>
-                        <div class="bar"></div>
-                        <div>Upload your own frame images:</div>
-                        <div class="autoGrid">
-                            <input type="file" class="input file" accept="image/*" onchange="retrieveLocalURL(event)" placeholder="Via File Upload">
-                            <input type="text" class="input text" placeholder="Via URL" onchange="addNewFrameOption(this.value)">
-                        </div>
-                    </div>
-                    <div class="tabContent mainEditor" id="text">
-                        <div id="inputWhichTextTabs" class="textTab"></div>
-                        <textarea class="textarea" id="inputText" placeholder="" oninput="updateText()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-                        <input type="text" class="input text" placeholder="Mana Cost" id="inputManaCost" oninput="cardImageUpdated()" value="">
-                        <div class="bar"></div>
-                        <div class="title">How To Use Text Codes</div>
-                        <div class="paragraph indent">
-                            Remember to surround each code with curly brackets ("{" and "}"). The codes are not caps sensitive. The following is a list of available text codes and what they do:
-                        </div>
-                        <div id="textCodeTutorial"></div>
-                    </div>
-                    <div class="tabContent mainEditor" id="art">
-                        <div class="splitGrid">
-                            <div>
-                                <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
-                                <input type="text" class="input text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
-                                <input type="text" class="input text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
-                                <input type="number" class="input number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
-                            </div>
-                            <div>
-                                <div style="text-align: center; margin: 0.18em 0px">X, Y, &amp; Zoom:</div>
-                                <input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardMasterUpdated()">
-                                <input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardMasterUpdated()">
-                                <input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardMasterUpdated()">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tabContent mainEditor" id="collector">
-                        <div class="autoGrid">
-                            <input type="text" class="input text" placeholder="Number" id="inputInfoNumber" oninput="updateBottomInfoCanvas()" value="">
-                            <input type="text" class="input text" placeholder="Rarity" id="inputInfoRarity" oninput="updateBottomInfoCanvas()" value="P">
-                            <input type="text" class="input text" placeholder="Set" id="inputInfoSet" oninput="updateBottomInfoCanvas()" value="MTG">
-                            <input type="text" class="input text" placeholder="Language" id="inputInfoLanguage" oninput="updateBottomInfoCanvas()" value="EN">
-                            <input type="text" class="input text" placeholder="Artist's Name" id="inputInfoArtist" oninput="updateBottomInfoCanvas()" value="">
-                        </div>
-                    </div>
-                    <div class="tabContent mainEditor" id="set">
-                        <div class="autoGrid">
-                            <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
-                            <input type="text" class="input text" placeholder="Via URL" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/' + this.value)">
-                            <input type="text" class="input text" id="inputSetCode" placeholder="Via Set Code" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
-                            <input type="text" class="input text" id="inputSetRarity" placeholder="Rarity" onchange="autocrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
-                            <button class="button" onclick="randomSet()">Random</button>
-                        </div>
-                    </div>
-                    <div class="tabContent mainEditor" id="watermark">
-                        <div class="autoGrid">
-                            <input type="file" class="input file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload">
-                            <input type="text" class="input text" placeholder="Via URL" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/' + this.value)">
-                            <input type="text" class="input text" placeholder="Via Set Code" onchange="whiteToTransparent(watermark, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large')">
-                            <select class="select" id="inputWatermarkPrimary" onchange="updateWatermark()">
-                                <option value="none">None</option>
-                                <option value="default">Default</option>
-                                <option value="#ccc8b1" selected="selected">White</option>
-                                <option value="#b0c3d5">Blue</option>
-                                <option value="#b3b3b3">Black</option>
-                                <option value="#ddac9b">Red</option>
-                                <option value="#b9c8b5">Green</option>
-                                <option value="#e4d49b">Gold</option>
-                                <option value="#cfc8be">Artifact/Colorless</option>
-                                <option value="#ffffff">True White</option>
-                            </select>
-                            <select class="select" id="inputWatermarkSecondary" onchange="updateWatermark()">
-                                <option value="none">None</option>
-                                <option value="default">Default</option>
-                                <option value="#ccc8b1">White</option>
-                                <option value="#b0c3d5">Blue</option>
-                                <option value="#b3b3b3">Black</option>
-                                <option value="#ddac9b">Red</option>
-                                <option value="#b9c8b5">Green</option>
-                                <option value="#e4d49b">Gold</option>
-                                <option value="#cfc8be">Artifact/Colorless</option>
-                                <option value="#ffffff">True White</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="tabContent mainEditor" id="advanced">
-                        <div class="paragraph indent">
-                            Click on one of the following buttons to load the described image frame set:
-                        </div>
-                        <button onclick="changeVersionTo('m15')" class="button">M15</button>
-                        <button onclick="changeVersionTo('m15extras')" class="button">M15 Extras</button><br><br>
-                        <button onclick="changeVersionTo('planeswalker')" class="button">Planeswalker</button><br><br>
-                        <button onclick="changeVersionTo('invention')" class="button">Inventions</button><br>
-                        <button onclick="changeVersionTo('inventionTextless')" class="button">Inventions (Textless)</button><br><br>
-                        <button onclick="changeVersionTo('expedition')" class="button">Expeditions</button><br><br>
-                        <button onclick="changeVersionTo('future')" class="button">Future Shifted</button><br><br>
-                        <button onclick="changeVersionTo('seventh')" class="button">Seventh Edition</button><br><br>
-                        <button onclick="changeVersionTo('unsanctioned')" class="button">Unsanctioned Lands</button><br><br>
-                        <button onclick="changeVersionTo('unhinged')" class="button">Unhinged Lands</button><br><br>
-                        <button onclick="changeVersionTo('moreMasks')" class="button">More Masks</button>
-                        <div class="bar"></div>
-                        <input type="checkbox" class="checkbox" id="inputCheckboxHideFrames" checked onchange="toggleFrameOptionVisibility()">Hide unrelated frames<br>
-                    </div>
-                </div>
-                <div class="tabContent mainEditor" id="import">
-                    Type in a card name to import it! (Only works for regular cards)
-                    <input type="text" class="input text" id="inputCardNameTextImport" onchange="inputCardNameTextImport(this.value)" placeholder="Via Card Name">
-                    Select which card to import:
-                    <input type="number" class="input number" id="inputCardNameNumberTextImport" onchange="inputCardNameNumberTextImport(this.value)" value="1" min="1" max="1">
-                </div>
-                <!-- Card editor tabs end here! -->
-                <div class="bar"></div>
-				<div>
-					<div class="download">
-						<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
-					</div>
-				</div>
-			</div>
+		<div id="cardMaster">
+
+	    </div>
+	    <div id='cardMasterElementEditor'>
+	    	X: <input id='cardMasterElementEditorX' type='number' oninput='cardMasterElementEdited()'>
+	    	Y: <input id='cardMasterElementEditorY' type='number' oninput='cardMasterElementEdited()'>
+	    	Scale: <input id='cardMasterElementEditorScale' type='number' oninput='cardMasterElementEdited()'>
+	    	Opacity: <input id='cardMasterElementEditorOpacity' type='number' min='0' max='100' oninput='cardMasterElementEdited()'>
+	    	Erase: <input id='cardMasterElementEditorErase' type='checkbox' onchange='cardMasterElementEdited()'>
+	    </div>
+	</div>
+	<div id='textTab'>
+		<div id='textPicker'></div>
+		<div id='textEditor'>
+			Text: <textarea id='textEditorText' oninput='cardTextEdited()'></textarea>
+			X: <input id='textEditorX' type='number' oninput='cardTextEdited()'>
+			Y: <input id='textEditorY' type='number' oninput='cardTextEdited()'>
+			Width: <input id='textEditorWidth' type='number' oninput='cardTextEdited()'>
+			Height: <input id='textEditorHeight' type='number' oninput='cardTextEdited()'>
 		</div>
-		<div class="hidden"></div>
-		<div class="layer">
-			<div class="title">Welcome to Card Conjurer!</div>
-			<div class="paragraph indent">Card Conjurer is a free program that helps you create custom Magic: The Gathering cards. There are already plenty of custom card makers out there, but what sets Card Conjurer apart from the rest is its live-edit capabilities. You can immediately see the effects of any change you make, which makes card customization easier and overall a better experience. Additionally, in comparison to alternative websites, Card Conjurer offers more frames such as planeswalker, seventh edition, or even kaladesh inventions, and provides much more customizability.</div>
-		</div>
-		<div class="layer">
-			<div class="title">About Me</div>
-			<div class="paragraph indent">
-				Hi! My name is Kyle Burton and I am currently a high school student. I used to play Pokemon, but when a friend introduced me to Magic in 2013 I sold my pocket monsters and bought an M14 Intro Pack. Ever since that day, Magic has been my all time favorite game. In addition to playing games, I've always <a href="https://www.youtube.com/watch?v=ERCzN91JicA" target="blank">loved technology</a>. During the 2017-18 school year I tought myself how to code Javascript, and a little bit of HTML and CSS. The following summer I created Kyle's Card Imager (<a href="https://scryfall.com/card/5dn/134/krark-clan-ironworks" target="blank">KCI</a>). It was pretty simple but I soon began to add more card frames. After a few months I decided to share my creation, so I renamed it Card Conjurer and uploaded it to Github, and then in April of 2019 I bought the domain <a href="#" onclick="alert('You\'re already there, silly!')">cardconjurer.com</a>.
-			</div>
-		</div>
-        <div class="layer">
-            <div class="title">Check Out Some Samples!</div>
-            <div class="samples">
-                <img id="sample1" alt="loading sample...">
-                <img id="sample2" alt="loading sample...">
-                <img id="sample3" alt="loading sample...">
+	</div>
+	<div id='artTab'>
+		<div class="splitGrid">
+            <div>
+                <input type="file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
+                <input type="text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
+                <input type="text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
+                <input type="number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
             </div>
-        </div>
-        <div class="layer">
-            <div class="title">How You Can Help</div>
-            <div class="donateHalfGrid">
-                <img id="wishlistCardImage" placeholder="loading...">
-                <div>
-                    <div class="paragraph indent">I play Commander, which can be expensive for a student! Right now, one of the cards that I'm saving up for is <label id="wishlistCardName">loading..</label>. If you've enjoyed using Card Conjurer, a small donation, even as low as a single cent, would be incredibly appreciated and put to good use!</div>
-                    <div class="donateGrid">
-                        <div class="imageLinkGrid">
-                            <a class="imageLink showBackgroundThrough" style="color: #012d8a;" href="https://www.paypal.me/kyleburtondonate" target="_blank"><img src="data/site/icons/paypal.png"><div>PayPal</div></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="layer">
-            <div class="title">Looking for the Original?</div>
-            <div class="paragraph indent">
-                This version of the website doesn't have the same features that the original Card Conjurer had. If you want to go back to the old version, <a href="old/index.html">click here</a>.
-            </div>
-        </div>
-        <div class="layer">
-            <div class="title">Have Any Questions?</div>
-            <div class="paragraph indent">
-                If you have any questions please don't hesitate to email me at <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>. Even if you made a cool card and want to share, I'd love to see it!
-            </div>
-        </div>
-        <div class="layer">
-            <div class="title">The Proxy Factory</div>
-            <div class="paragraph indent">If you'd like to delve deeper into making custom Magic: The Gathering cards, check out The Proxy Factory! They're a community full of individuals interested in creating custom cards, and are very welcoming to new members.</div>
-            <div class="proxyFactoryLimitedGrid">
-                <div class="imageLinkGrid">
-                    <a class="imageLink showBackgroundThrough" style="color: #ff4500;" href="https://www.reddit.com/r/TheProxyFactory/" target="_blank"><img src="data/site/icons/reddit.png"><div>Reddit</div></a>
-                    <a class="imageLink showBackgroundThrough" style="color: #738adb;" href="https://discordapp.com/invite/xBCQprM" target="_blank"><img src="data/site/icons/discord.png"><div>Discord</div></a>
-                </div>
+            <div>
+                <div>X, Y, &amp; Zoom:</div>
+                <input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardArtUpdated()">
+                <input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardArtUpdated()">
+                <input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardArtUpdated()">
             </div>
         </div>
 	</div>
 </body>
-<footer>
-	<div class="footerGrid">
-		<div>
-			<div class="visitorCountTrigger">Card Conjurer By Kyle Burton</div>
-            <div class="visitorCount"></div>
-		</div>
-		<div>
-			Navigation:<br>
-			<a href="index.html">Card Creator</a><br>
-            <a href="life.html">Life Counter</a><br>
-            <a href="askscryfall.html">Ask Scryfall</a>
-		</div>
-		<div>
-			Legal:<br>
-			<a href="disclaimer.html">Disclaimer</a><br>
-            <a href="termsofuse.html">Terms of Use</a>
-		</div>
-	</div>
-</footer>
-<script async src="data/scripts/sortable.js"></script>
-<script async src="data/scripts/setCodeList.js"></script>
+<script defer src="data/scripts/sortable.js"></script>
 <script defer src="data/scripts/main.js"></script>
-<script defer src="data/scripts/colors.js"></script>
+<script defer src="data/scripts/versionM15.js"></script>
 <html>

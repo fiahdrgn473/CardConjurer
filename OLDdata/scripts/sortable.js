@@ -2156,7 +2156,7 @@ Sortable.prototype =
         if (moved && !awaitingDragStarted) {
           toggleClass(dragEl, putSortable ? putSortable.options.ghostClass : this.options.ghostClass, false);
           //code added by me (Kyle) starts here!
-          drawCardObjects()
+          cardMasterUpdated()
           //code added by me (Kyle) ends here!
         }
 

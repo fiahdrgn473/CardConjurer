@@ -1,0 +1,36 @@
+displayName,imagePath,maskOptions,framePickerOptions
+White,m15WFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Blue,m15UFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Black,m15BFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Red,m15RFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Green,m15GFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Multicolored,m15MFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Artifact,m15AFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Land,m15LFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+Vehicle,m15VFull.png,Full-0-0-744-1039;Title-0-0-744-1039;Type-0-0-744-1039;Rules Text-0-0-744-1039;Pinline-0-0-744-1039;Frame-0-0-744-1039;Box Topper-0-0-744-1039,Regular
+White PT,m15WPT.png,Full-567-921-140-81,Regular
+Blue PT,m15UPT.png,Full-567-921-140-81,Regular
+Black PT,m15BPT.png,Full-567-921-140-81,Regular
+Red PT,m15RPT.png,Full-567-921-140-81,Regular
+Green PT,m15GPT.png,Full-567-921-140-81,Regular
+Multicolored PT,m15MPT.png,Full-567-921-140-81,Regular
+Artifact PT,m15APT.png,Full-567-921-140-81,Regular
+Vehicle PT,m15VPT.png,Full-567-921-140-81,Regular
+White Legendary,m15WLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Blue Legendary,m15ULegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Black Legendary,m15BLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Red Legendary,m15RLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Green Legendary,m15GLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Multicolored Legendary,m15MLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Artifact Legendary,m15ALegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+Colorless Legendary,m15CLegendary.png,Full-0-0-744-177;Legend-0-0-744-177;Legend With Border-0-0-744-177,Regular
+White Rare Stamp,m15WRareStamp.png,Full-327-943-91-22,Regular
+Blue Rare Stamp,m15URareStamp.png,Full-327-943-91-22,Regular
+Black Rare Stamp,m15BRareStamp.png,Full-327-943-91-22,Regular
+Red Rare Stamp,m15RRareStamp.png,Full-327-943-91-22,Regular
+Green Rare Stamp,m15GRareStamp.png,Full-327-943-91-22,Regular
+Multicolored Rare Stamp,m15MRareStamp.png,Full-327-943-91-22,Regular
+Artifact Rare Stamp,m15ARareStamp.png,Full-327-943-91-22,Regular
+Colorless Rare Stamp,m15CRareStamp.png,Full-327-943-91-22,Regular
+Holo Stamp,stamp.png,Full-340-953-70-38,Regular;Eternal
+Black Border,masks/Border.png,Full-0-0-744-1039;Box Topper-0-0-744-1039,Regular
