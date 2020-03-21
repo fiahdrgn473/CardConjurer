@@ -22,3 +22,28 @@ artX = 0
 artY = 0
 artWidth = 1500
 artHeight = 500
+bottomInfoFunction = 'bottomInfoM15'
+
+manaCostXPath = 'scaleX(0.05) * manaSymbolIndex'
+manaCostYPath = 'scaleY(0.1)'
+manaCostDiameter = 'scaleX(0.05)'
+manaCostShadowOffset = '[scaleX(-0.01), scaleY(0.01)]'
+
+setSymbolX = [scaleX(0.8), 'right']
+setSymbolY = [scaleY(0.5), 'left']
+setSymbolWidth = scaleX(0.1)
+setSymbolHeight = scaleY(0.1)
+
+watermarkX = scaleX(0.5)
+watermarkY = scaleY(0.5)
+watermarkWidth = scaleX(1)
+watermarkHeight = scaleY(1)
+
+function bottomInfoM15() {
+	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
+	writeText(
+		[
+			{text: 'EEEEEEEE', x: 0, y: 0.05, width: 0.8, height: 0.05, font: 'mplantin', fontSize: 0.05, fontColor: 'black', otherParameters: ['oneLine=true']},
+		], bottomInfoContext)
+	// document.body.appendChild(bottomInfoCanvas)
+}

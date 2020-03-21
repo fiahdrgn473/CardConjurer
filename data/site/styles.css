@@ -44,42 +44,52 @@ html {
 	user-select: none;
 	font-size: 20pt;
 }
+body {
+	margin: 0px;
+}
 
+.cardMaster {
+	margin: 0.9rem 0px;
+}
 .cardMasterElement {
 	font: 1rem belerenbsc;
-	border: 1px solid black;
-	border-radius: 0.5rem;
-	margin-top: 0.125rem;
+	margin-top: 0.1rem;
     display: grid;
-    grid-template-columns: 2rem auto 1rem;
+    grid-template-columns: 2rem auto 2rem;
     align-items: center;
+    background: gray;
 }
 .cardMasterElement > .handle {
     cursor: move;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
     text-align: center;
-    border: 1px solid green;
 }
 .cardMasterElementMoving {
-	background-color: gray;
+	background-color: #555;
 }
 .cardMasterElement > .delete {
 	cursor: pointer;
     text-align: center;
-    border: 1px solid red;
 }
 .cardMasterElement.cardMasterElementSelected {
-	border: 5px solid green;
+	background: green;
 }
 
 .splitGrid {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 0.1rem;
+}
+.autoGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+	grid-auto-rows: min-content;
 }
 .frameGrid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 	grid-auto-rows: min-content;
+	grid-gap: 0.1rem;
 }
 img {
     -webkit-user-drag: none;
@@ -92,7 +102,6 @@ img {
 	max-height: 260pt;
 	overflow-y: auto;
 	overflow-x: hidden;
-	border: 1px solid black;
 }
 #framePicker > div {
 	height: 3rem;
@@ -112,23 +121,65 @@ img {
 }
 #maskPicker > div, #framePicker > div {
 	background-color: gray;
-	border: 1px solid blue;
-	border-radius: 0.25rem;
 }
 #maskPicker > div {
-	/*margin-left: 0.5rem;*/
-	padding: 0.25rem;
-	/*width: calc(100% - 1.3rem);*/
+	padding: 0.5rem;
+	margin-bottom: 0.1rem;
 }
 
+#textPicker {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+	grid-auto-rows: min-content;
+	grid-gap: 0.1rem;
+	margin: 0.1rem 0px;
+}
 #textPicker > div {
-	border: 1px solid black;
-	padding: 1rem;
+	font: 1rem belerenbsc;
+	background: gray;
+	padding: 0.5rem;
 }
 #textPicker > div.selectedText {
-	border: 5px solid green;
+	background: green;
 }
 
 canvas {
-	border:1px solid black;
+	background: gray;
+}
+
+.hidden {
+	display: none;
+}
+
+
+
+.mainGrid {
+	display: grid;
+	grid-template-columns: 750px auto;
+	grid-gap: 1rem;
+	background: #eeeeee;
+	padding: 1rem;
+	margin-bottom: 12rem;
+}
+
+.tabPicker {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+	grid-auto-rows: min-content;
+	grid-gap: 0.1rem;
+	margin-bottom: 1rem;
+}
+.tabPicker > div {
+	font: 1rem belerenbsc;
+	text-align: center;
+	padding: 0.5rem;
+	background: gray;
+}
+.tabPicker > div.tabOptionSelected {
+	background: green;
+}
+
+input, textarea, button, select {
+	font: 0.8rem mplantin;
+	width: 100%;
 }

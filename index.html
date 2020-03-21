@@ -7,52 +7,128 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<canvas id="previewCanvas"></canvas>
-	<div id='frameTab'>
-		<div class="splitGrid">
-	        <div id="framePicker" class="frameGrid"></div>
-	        <div id="maskPicker"></div>
-	    </div>
-	    <div>
-		    <button onclick='addSelectedFrame()'>Add</button>
-		    <button onclick='addSelectedFrame(["Right Half"])'>Add To Right Half</button>
-		</div>
-		<div id="cardMaster">
+	<div class='mainGrid'>
+		<canvas id="previewCanvas"></canvas>
+		<div>
+			<div class='tabPicker'>
+				<div onclick='toggleTabs(this, "frameTab")' class='tabOptionSelected'>Frame</div>
+				<div onclick='toggleTabs(this, "textTab")'>Text</div>
+				<div onclick='toggleTabs(this, "artTab")'>Art</div>
+				<div onclick='toggleTabs(this, "setSymbolTab")'>Set Symbol</div>
+				<div onclick='toggleTabs(this, "watermarkTab")'>Watermark</div>
+				<div onclick='toggleTabs(this, "collectorTab")'>Collector</div>
+				<div onclick='toggleTabs(this, "importTab")'>Import</div>
+			</div>
+			<div id='tabOptions'>
+				<div id='frameTab'>
+					<div class="splitGrid">
+				        <div id="framePicker" class="frameGrid"></div>
+				        <div id="maskPicker"></div>
+				    </div>
+				    <div class='autoGrid'>
+					    <button onclick='addSelectedFrame()'>Add</button>
+					    <button onclick='addSelectedFrame(["Right Half"])'>Add To Right Half</button>
+					</div>
+					<div id="cardMaster">
 
-	    </div>
-	    <div id='cardMasterElementEditor'>
-	    	X: <input id='cardMasterElementEditorX' type='number' oninput='cardMasterElementEdited()'>
-	    	Y: <input id='cardMasterElementEditorY' type='number' oninput='cardMasterElementEdited()'>
-	    	Scale: <input id='cardMasterElementEditorScale' type='number' oninput='cardMasterElementEdited()'>
-	    	Opacity: <input id='cardMasterElementEditorOpacity' type='number' min='0' max='100' oninput='cardMasterElementEdited()'>
-	    	Erase: <input id='cardMasterElementEditorErase' type='checkbox' onchange='cardMasterElementEdited()'>
-	    </div>
-	</div>
-	<div id='textTab'>
-		<div id='textPicker'></div>
-		<div id='textEditor'>
-			Text: <textarea id='textEditorText' oninput='cardTextEdited()'></textarea>
-			X: <input id='textEditorX' type='number' oninput='cardTextEdited()'>
-			Y: <input id='textEditorY' type='number' oninput='cardTextEdited()'>
-			Width: <input id='textEditorWidth' type='number' oninput='cardTextEdited()'>
-			Height: <input id='textEditorHeight' type='number' oninput='cardTextEdited()'>
+				    </div>
+				    <div id='cardMasterElementEditor'>
+				    	X: <input id='cardMasterElementEditorX' type='number' oninput='cardMasterElementEdited()'>
+				    	Y: <input id='cardMasterElementEditorY' type='number' oninput='cardMasterElementEdited()'>
+				    	Scale: <input id='cardMasterElementEditorScale' type='number' oninput='cardMasterElementEdited()'>
+				    	Opacity: <input id='cardMasterElementEditorOpacity' type='number' min='0' max='100' oninput='cardMasterElementEdited()'>
+				    	Erase: <input id='cardMasterElementEditorErase' type='checkbox' onchange='cardMasterElementEdited()'>
+				    </div>
+				    <div>Upload your own frame images:</div>
+			        <div class="autoGrid">
+			            <input type="file" accept="image/*" onchange="uploadLocalFrameImage(event)" placeholder="Via File Upload">
+			            <input type="text" placeholder="Via URL" onchange="addUploadedFrameImage('https://cors-anywhere.herokuapp.com/' + this.value)">
+			        </div>
+				</div>
+				<div id='textTab' class='hidden'>
+					<input type="text" placeholder="Mana Cost" id="inputManaCost" oninput="manaCostUpdated()" value="">
+					<div id='textPicker'></div>
+					<div id='textEditor'>
+						Text: <textarea id='textEditorText' oninput='cardTextEdited()'></textarea>
+						X: <input id='textEditorX' type='number' oninput='cardTextEdited()'>
+						Y: <input id='textEditorY' type='number' oninput='cardTextEdited()'>
+						Width: <input id='textEditorWidth' type='number' oninput='cardTextEdited()'>
+						Height: <input id='textEditorHeight' type='number' oninput='cardTextEdited()'>
+					</div>
+				</div>
+				<div id='artTab' class='hidden'>
+					<div class="splitGrid">
+			            <div>
+			                <input type="file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
+			                <input type="text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
+			                <input type="text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
+			                <input type="number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
+			            </div>
+			            <div>
+			                <div>X, Y, &amp; Zoom:</div>
+			                <input type="number" value="0" id="inputCardArtX" oninput="cardArtUpdated()">
+			                <input type="number" value="0" id="inputCardArtY" oninput="cardArtUpdated()">
+			                <input type="number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardArtUpdated()">
+			            </div>
+			        </div>
+				</div>
+				<div id='collectorTab' class='hidden'>
+					<div class="autoGrid">
+				        <input type="text" placeholder="Number" id="inputInfoNumber" oninput="bottomInfoUpdated()" value="">
+				        <input type="text" placeholder="Rarity" id="inputInfoRarity" oninput="bottomInfoUpdated()" value="P">
+				        <input type="text" placeholder="Set" id="inputInfoSet" oninput="bottomInfoUpdated()" value="MTG">
+				        <input type="text" placeholder="Language" id="inputInfoLanguage" oninput="bottomInfoUpdated()" value="EN">
+				        <input type="text" placeholder="Artist's Name" id="inputInfoArtist" oninput="bottomInfoUpdated()" value="">
+				    </div>
+				</div>
+				<div id='setSymbolTab' class='hidden'>
+					<div class="autoGrid">
+				        <input type="file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
+				        <input type="text" placeholder="Via URL" onchange="setSymbol.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
+				        <input type="text" id="inputSetCode" placeholder="Via Set Code" onchange="setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value">
+				        <input type="text" id="inputSetRarity" placeholder="Rarity" onchange="setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value">
+				        <!-- <button class="button" onclick="randomSet()">Random</button> -->
+				    </div>
+				</div>
+				<div id='watermarkTab' class='hidden'>
+					<div class="autoGrid">
+			            <input type="file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload">
+			            <input type="text" placeholder="Via URL" onchange="watermark.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
+			            <input type="text" placeholder="Via Set Code" onchange="watermark.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large'">
+			            <select id="inputWatermarkPrimary" onchange="watermarkUpdated()">
+			                <option value="none">None</option>
+			                <option value="default">Default</option>
+			                <option value="#ccc8b1" selected="selected">White</option>
+			                <option value="#b0c3d5">Blue</option>
+			                <option value="#b3b3b3">Black</option>
+			                <option value="#ddac9b">Red</option>
+			                <option value="#b9c8b5">Green</option>
+			                <option value="#e4d49b">Gold</option>
+			                <option value="#cfc8be">Artifact/Colorless</option>
+			                <option value="#ffffff">True White</option>
+			            </select>
+			            <select id="inputWatermarkSecondary" onchange="watermarkUpdated()">
+			                <option value="none">None</option>
+			                <option value="default">Default</option>
+			                <option value="#ccc8b1">White</option>
+			                <option value="#b0c3d5">Blue</option>
+			                <option value="#b3b3b3">Black</option>
+			                <option value="#ddac9b">Red</option>
+			                <option value="#b9c8b5">Green</option>
+			                <option value="#e4d49b">Gold</option>
+			                <option value="#cfc8be">Artifact/Colorless</option>
+			                <option value="#ffffff">True White</option>
+			            </select>
+			        </div>
+				</div>
+				<div id='importTab' class='hidden'>
+					Type in a card name to import it! (Only works for regular cards)
+			        <input type="text" class="input text" id="inputCardNameTextImport" onchange="inputCardNameTextImport(this.value)" placeholder="Via Card Name">
+			        Select which card to import:
+			        <input type="number" class="input number" id="inputCardNameNumberTextImport" onchange="inputCardNameNumberTextImport(this.value)" value="1" min="1" max="1">
+				</div>
+			</div>
 		</div>
-	</div>
-	<div id='artTab'>
-		<div class="splitGrid">
-            <div>
-                <input type="file" accept="image/*" onchange="uploadImage(event, cardArt)" placeholder="Via File Upload">
-                <input type="text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
-                <input type="text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
-                <input type="number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
-            </div>
-            <div>
-                <div>X, Y, &amp; Zoom:</div>
-                <input type="number" class="input number" value="0" id="inputCardArtX" oninput="cardArtUpdated()">
-                <input type="number" class="input number" value="0" id="inputCardArtY" oninput="cardArtUpdated()">
-                <input type="number" class="input number" value="100" step="0.1" min="0" id="inputCardArtZoom" oninput="cardArtUpdated()">
-            </div>
-        </div>
 	</div>
 </body>
 <script defer src="data/scripts/sortable.js"></script>
