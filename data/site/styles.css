@@ -37,15 +37,31 @@
 }
 
 :root {
-	--light-color: #eee;
+	--background-color: #fafafa;
+	--background-color-contrast: #222;
+	--interactable-color: #aaa;
+	--interactable-selected-color: #888;
+	--input-color: #ddd;
+	--font-color: #000;
+	--font-color-contrast: #eee;
 }
 
 html {
 	user-select: none;
 	font-size: 20pt;
+	background-color: var(--background-color);
+	color: var(--font-color);
 }
-body {
-	margin: 0px;
+html, body {
+	margin: 0;
+	overflow-x: hidden
+}
+
+.title {
+	text-align: center;
+	color: var(--font-color);
+	font: 2.5rem 'belerenbsc';
+	margin-top: 1rem;
 }
 
 .cardMaster {
@@ -57,7 +73,7 @@ body {
     display: grid;
     grid-template-columns: 2rem auto 2rem;
     align-items: center;
-    background: gray;
+    background-color: var(--input-color);
 }
 .cardMasterElement > .handle {
     cursor: move;
@@ -65,14 +81,14 @@ body {
     text-align: center;
 }
 .cardMasterElementMoving {
-	background-color: #555;
+	background-color: var(--interactable-selected-color);
 }
 .cardMasterElement > .delete {
 	cursor: pointer;
     text-align: center;
 }
 .cardMasterElement.cardMasterElementSelected {
-	background: green;
+	background-color: var(--interactable-color);
 }
 
 .splitGrid {
@@ -84,6 +100,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 	grid-auto-rows: min-content;
+	grid-gap: 0.1rem;
 }
 .frameGrid {
 	display: grid;
@@ -117,10 +134,10 @@ img {
 	max-height: 1.5rem;
 }
 #framePicker > div.frameOptionSelected, #maskPicker > div.maskOptionSelected {
-	background-color: green;
+	background-color: var(--interactable-selected-color);
 }
 #maskPicker > div, #framePicker > div {
-	background-color: gray;
+	background-color: var(--interactable-color);
 }
 #maskPicker > div {
 	padding: 0.5rem;
@@ -136,15 +153,20 @@ img {
 }
 #textPicker > div {
 	font: 1rem belerenbsc;
-	background: gray;
+	background-color: var(--interactable-color);
 	padding: 0.5rem;
 }
 #textPicker > div.selectedText {
-	background: green;
+	background-color: var(--interactable-selected-color);
 }
 
 canvas {
-	background: gray;
+	/*background-color: var(--interactable-color);*/
+}
+textarea {
+	resize: vertical;
+	min-height: 4rem;
+	max-height: 12rem;
 }
 
 .hidden {
@@ -157,9 +179,7 @@ canvas {
 	display: grid;
 	grid-template-columns: 750px auto;
 	grid-gap: 1rem;
-	background: #eeeeee;
 	padding: 1rem;
-	margin-bottom: 12rem;
 }
 
 .tabPicker {
@@ -173,13 +193,112 @@ canvas {
 	font: 1rem belerenbsc;
 	text-align: center;
 	padding: 0.5rem;
-	background: gray;
+	background-color: var(--interactable-color);
 }
 .tabPicker > div.tabOptionSelected {
-	background: green;
+	background-color: var(--interactable-selected-color);
 }
 
 input, textarea, button, select {
 	font: 0.8rem mplantin;
 	width: 100%;
+	background-color: var(--input-color);
+	border: none;
+	outline: none;
+	padding: 0.2rem;
+	margin-top: 0.1rem;
+}
+
+@keyframes fade-in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+@keyframes slide-from-left {
+	from {position: relative; left: -100vw;}
+	to {position: relative; left: 0px;}
+}
+@keyframes slide-from-right {
+	from {position: relative; left: 100vw;}
+	to {position: relative; left: 0px;}
+}
+.layer {
+	padding: 5rem;
+}
+.layerTitle {
+	/*color: inherit;*/
+	text-align: center;
+	font: 2rem 'belerenbsc';
+}
+.darkLayer {
+	background-color: var(--background-color-contrast);
+	color: var(--font-color-contrast);
+}
+.layer > div {
+	opacity: 0;
+}
+.layer.revealedLayer > div {
+	opacity: 1;
+}
+.layer.revealedLayer.fadeIn > div {
+	animation: fade-in 2s;
+}
+.mainGrid.fadeIn {
+	animation: fade-in 0.5s;
+}
+.layer.revealedLayer.slideFromLeft > div {
+	animation: slide-from-left 2s;
+}
+.layer.revealedLayer.slideFromRight > div {
+	animation: slide-from-right 2s;
+}
+
+.footer {
+	padding: 2rem;
+	background-color: var(--background-color-contrast);
+	color: var(--font-color-contrast);
+	font: 0.6rem 'open sans';
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+.fiveSampleCards {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	margin: 2rem 0;
+}
+.fiveSampleCards > div > img {
+	position: relative;
+	width: 100%;
+}
+.layer.revealedLayer > div > div > div > .sample1 {
+	animation: sample-one 2s;
+	transform: rotate(-10deg) translate(16%, 15%);
+}
+.layer.revealedLayer > div > div > div > .sample2 {
+	animation: sample-two 2s;
+	transform: rotate(-5deg) translate(10%, 4%);
+}
+.layer.revealedLayer > div > div > div > .sample4 {
+	animation: sample-four 2s;
+	transform: rotate(5deg) translate(-10%, 4%);
+}
+.layer.revealedLayer > div > div > div > .sample5 {
+	animation: sample-five 2s;
+	transform: rotate(10deg) translate(-16%, 15%);
+}
+@keyframes sample-one {
+	from {transform: rotate(0deg) translate(0, 0); position: relative; left: 200%;}
+	to {transform: rotate(-10deg) translate(16%, 15%); position: relative; left: 0;}
+}
+@keyframes sample-two {
+	from {transform: rotate(0deg) translate(0, 0); position: relative; left: 100%;}
+	to {transform: rotate(-5deg) translate(10%, 4%); position: relative; left: 0;}
+}
+@keyframes sample-four {
+	from {transform: rotate(0deg) translate(0, 0); position: relative; left: -100%;}
+	to {transform: rotate(5deg) translate(-10%, 4%); position: relative; left: 0;}
+}
+@keyframes sample-five {
+	from {transform: rotate(0deg) translate(0, 0); position: relative; left: -200%;}
+	to {transform: rotate(10deg) translate(-16%, 15%); position: relative; left: 0;}
 }

@@ -16,6 +16,7 @@ var cardTextList = new Array()
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"];
 var manaSymbolImageList = [];
 manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Image(); manaSymbolImageList[index].src = 'data/images/manaSymbols/' + index + '.png'})
+date = new Date()
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -263,6 +264,14 @@ function loadMaskImages(listOfMasks) {
 function loadFrameImages(listOfFrames) {
 	for (var i = 0; i < listOfFrames.length; i++) {
 		frameImageList.push(new frameImage(...listOfFrames[i], frameImageList.length))
+		if (i == 0) {
+			frameObjectToAdd = frameImageList[frameImageList.length - 1]
+			var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, [], false))
+			cardMaster.insertBefore(cardMasterList[frameToInsert - 1].cardMasterElement(), cardMaster.children[1])
+			frameObjectToAdd.image.onload = function() {
+				drawCardObjects()
+			}
+		}
 	}
 }
 
@@ -320,6 +329,9 @@ function cardTextEdited() {
 	selectedTextObject.width = document.getElementById('textEditorWidth').value / cardWidth
 	selectedTextObject.height = document.getElementById('textEditorHeight').value / cardHeight
 	drawCardText()
+	if (selectedTextObject.name == 'Power/Toughness') {
+		bottomInfoUpdated()
+	}
 }
 function drawCardText() {
 	textContext.clearRect(0, 0, cardWidth, cardHeight)
@@ -328,7 +340,7 @@ function drawCardText() {
 function writeText(textObjectList, targetContext) {
 	var textCanvasBuffer = 100
 	var rewritingLine = false
-	var textSize
+	var textSize, textFont
 	outerloop:
 	for (var i = 0; i < textObjectList.length; i++) {
 		if (!rewritingLine) {
@@ -343,11 +355,12 @@ function writeText(textObjectList, targetContext) {
 		textParagraphCanvas.height = scaleY(textObjectList[i].height) + 2 * textCanvasBuffer
 		textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
-		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0
+		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0
 		textObjectList[i].otherParameters.forEach(item => eval(item))
 		textLineContext.strokeStyle = outline
 		textLineContext.lineWidth = outlineThickness
-		textLineContext.font = textSize + 'px ' + textObjectList[i].font
+		textFont = textObjectList[i].font
+		textLineContext.font = textSize + 'px ' + textFont
 		textLineContext.fillStyle = textObjectList[i].fontColor
 		var textX = textCanvasBuffer
 		var textY = 0
@@ -362,7 +375,7 @@ function writeText(textObjectList, targetContext) {
 					var possibleCodeLower = splitText[n].substr(1, splitText[n].length - 2).toLowerCase()
 					if (possibleCodeLower == 'line' && !oneLine) {
 						finishLine = true
-						paragraphSpace = textSize * 0.35
+						paragraphSpace += textSize * 0.35
 					} else if (possibleCodeLower == 'linenospace' && !oneLine) {
 						finishLine = true
 					} else if ((possibleCodeLower == 'bar' || possibleCodeLower == 'flavor') && !oneLine) {
@@ -370,23 +383,37 @@ function writeText(textObjectList, targetContext) {
 						var barWidth = scaleX(textObjectList[i].width) * 0.95
 						var barHeight = scaleY(0.001)
 						textLineContext.drawImage(manaSymbolImageList[63], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 1.6 + textCanvasBuffer, barWidth, barHeight)
-						paragraphSpace = textSize * 0.8
+						paragraphSpace += textSize * 0.8
 						if (possibleCodeLower == 'flavor') {
-							textLineContext.font = 'italic ' + (textSize * 0.92) + 'px ' + textObjectList[i].font
+							textLineContext.font = 'italic ' + (textSize * 0.92) + 'px ' + textFont
 						}
 					} else if (possibleCodeLower == 'i') {
-						textLineContext.font = 'italic ' + textSize + 'px ' + textObjectList[i].font
+						textLineContext.font = 'italic ' + textSize + 'px ' + textFont
 					} else if (possibleCodeLower == '/i') {
-						textLineContext.font = textSize + 'px ' + textObjectList[i].font
+						textLineContext.font = textSize + 'px ' + textFont
 					} else if (possibleCodeLower.includes('fontsize')) {
 						textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
-						textLineContext.font = textSize + 'px ' + textObjectList[i].font
+						textLineContext.font = textSize + 'px ' + textFont
 					} else if (possibleCodeLower == 'left') {
 						textAlign = 'left'
 					} else if (possibleCodeLower == 'center') {
 						textAlign = 'center'
 					} else if (possibleCodeLower == 'right') {
 						textAlign = 'right'
+					} else if (possibleCodeLower.includes('right')) {
+						textX += parseInt(possibleCodeLower.replace('right', ''))
+						currentLineWidth += parseInt(possibleCodeLower.replace('right', ''))
+					} else if (possibleCodeLower.includes('left')) {
+						textX -= parseInt(possibleCodeLower.replace('left', ''))
+						currentLineWidth -= parseInt(possibleCodeLower.replace('left', ''))
+					} else if (possibleCodeLower.includes('up')) {
+						finishLine = true
+						paragraphSpace -= parseInt(possibleCodeLower.replace('up', '')) + textSize
+						temporaryLineShift += currentLineWidth
+					} else if (possibleCodeLower.includes('down')) {
+						finishLine = true
+						paragraphSpace += parseInt(possibleCodeLower.replace('down', '')) - textSize
+						temporaryLineShift += currentLineWidth
 					} else if (possibleCodeLower.includes('outline:')) {
 	                    outline = true;
 	                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0];
@@ -398,8 +425,11 @@ function writeText(textObjectList, targetContext) {
 	                } else if (possibleCodeLower == 'artistbrush') {
 	                	var artistBrushWidth = textSize * 1.2
 						textLineContext.drawImage(manaSymbolImageList[62], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
-						currentLineX += artistBrushWidth * 1.1
-	                } else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
+						textX += artistBrushWidth * 1.1
+	                } else if (possibleCodeLower.includes('font')) {
+						textFont = possibleCodeLower.replace('font', '')
+						textLineContext.font = textSize + 'px ' + textFont
+					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.77
 						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split('/').join(''))], textX, textCanvasBuffer + textSize - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
@@ -428,11 +458,15 @@ function writeText(textObjectList, targetContext) {
 						textParagraphContext.drawImage(textLineCanvas, 0 + textAlignShift, textY, textLineCanvas.width, textLineCanvas.height)
 						if (n != splitText.length - 1) {
 							textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
-							textX = textCanvasBuffer
-							currentLineWidth = 0
+							textX = textCanvasBuffer + permanentLineShift + temporaryLineShift
+							currentLineWidth = 0 + permanentLineShift + temporaryLineShift
 							textY += textSize + paragraphSpace
 							paragraphSpace = 0
+							temporaryLineShift = 0
 							finishLine = false
+							if (wordToWrite == " ") {
+								continue innerloop
+							}
 						}
 					}
 					if (shadow > 0) {
@@ -503,11 +537,30 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 }
 
 function initialize() {
+	//Card stuff
 	cardMasterList.push(new cardPlaceholder('Card Art Placeholder', cardArt))
 	cardMasterList.push(new cardPlaceholder('Text Placeholder', window['textCanvas']))
 	cardMaster.insertBefore(cardMasterList[0].cardMasterElement(), cardMaster.children[0])
 	cardMaster.insertBefore(cardMasterList[1].cardMasterElement(), cardMaster.children[0])
-	drawCardObjects()
+	document.getElementById('inputInfoNumber').value = date.getFullYear()
+	setTimeout(bottomInfoUpdated, 500)
+	//CSS & HTML stuff
+	window.layerElements = document.querySelectorAll('.layer')
+	window.addEventListener('resize', windowResized)
+	window.addEventListener('scroll', windowScrolled)
+	windowResized()
+}
+
+function windowResized() {
+	window.windowHeight = window.innerHeight
+}
+function windowScrolled() {
+	for (var i = 0; i < layerElements.length; i++) {
+		var positionFromTop = (layerElements[i].getBoundingClientRect().top + layerElements[i].getBoundingClientRect().bottom) / 2
+		if (positionFromTop - windowHeight <= 0) {
+			layerElements[i].classList.add('revealedLayer')
+		}
+	}
 }
 
 function bottomInfoUpdated() {
@@ -529,9 +582,12 @@ function addUploadedFrameImage(imageSource) {
 
 function manaCostUpdated() {
 	manaCostContext.clearRect(0, 0, cardWidth, cardHeight)
-	var manaCostList = document.getElementById('inputManaCost').value.toLowerCase().replace(/{/, ' ').replace(/}/, ' ').split('/').join('').split(' ')
+	var manaCostList = document.getElementById('inputManaCost').value.toLowerCase().replace(/{/g, ' ').replace(/}/g, ' ').split('/').join('').split(' ')
 	var manaSymbolIndex = -1
 	manaCostCanvas.fillStyle = 'black'
+	if (manaCostDirection == 'reverse') {
+		manaCostList.reverse()
+	}
 	for (var i = 0; i < manaCostList.length; i++) {
 		if (manaSymbolCodeList.includes(manaCostList[i])) {
 			manaSymbolIndex += 1
@@ -652,6 +708,8 @@ function inputCardNameNumberTextImport(index) {
     document.getElementById('inputSetRarity').value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0]
     setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value
     inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'))
+    manaCostUpdated()
+    drawCardText()
 }
 function importText(text, target) {
     for (var i = 0; i < cardTextList.length; i++) {
