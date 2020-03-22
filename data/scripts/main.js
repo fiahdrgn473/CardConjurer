@@ -17,6 +17,8 @@ var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
 var manaSymbolImageList = [];
 manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Image(); manaSymbolImageList[index].src = 'data/images/manaSymbols/' + index + '.png'})
 date = new Date()
+var cornerCutout = new Image()
+cornerCutout.src = 'data/images/cornerCutout.png'
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -207,6 +209,15 @@ function drawCardObjects() {
 	mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
 	mainContext.globalCompositeOperation = 'destination-out'
 	//draw the corner cutters
+	mainContext.drawImage(cornerCutout, 0, 0, scaleX(59/1500), scaleX(59/1500))
+	mainContext.rotate(Math.PI / 2)
+	mainContext.drawImage(cornerCutout, 0, -cardWidth, scaleX(59/1500), scaleX(59/1500))
+	mainContext.rotate(Math.PI / 2)
+	mainContext.drawImage(cornerCutout, -cardWidth, -cardHeight, scaleX(59/1500), scaleX(59/1500))
+	mainContext.rotate(Math.PI / 2)
+	mainContext.drawImage(cornerCutout, -cardHeight, 0, scaleX(59/1500), scaleX(59/1500))
+	mainContext.rotate(Math.PI / 2)
+	//preview the card
 	mainContext.globalCompositeOperation = 'source-over'
 	previewContext.drawImage(mainCanvas, 0, 0, previewCanvas.width, previewCanvas.height)
 }

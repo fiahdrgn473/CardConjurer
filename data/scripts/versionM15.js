@@ -1,23 +1,23 @@
 var versionM15ImageList = [
-['White Frame', 'data/images/m15/m15FrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Blue Frame', 'data/images/m15/m15FrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Black Frame', 'data/images/m15/m15FrameB.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Red Frame', 'data/images/m15/m15FrameR.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Green Frame', 'data/images/m15/m15FrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Multicolored Frame', 'data/images/m15/m15FrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Artifact Frame', 'data/images/m15/m15FrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Vehicle Frame', 'data/images/m15/m15FrameV.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Land Frame', 'data/images/m15/m15FrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['White Nyx Nyx Frame', 'data/images/m15/m15FrameWNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Blue Nyx Frame', 'data/images/m15/m15FrameUNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Black Nyx Frame', 'data/images/m15/m15FrameBNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Red Nyx Frame', 'data/images/m15/m15FrameRNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Green Nyx Frame', 'data/images/m15/m15FrameGNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Multicolored Nyx Frame', 'data/images/m15/m15FrameMNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']],
-['Artifact Nyx Frame', 'data/images/m15/m15FrameANyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)']]
+['White Frame', 'data/images/m15/m15FrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Blue Frame', 'data/images/m15/m15FrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Black Frame', 'data/images/m15/m15FrameB.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Red Frame', 'data/images/m15/m15FrameR.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Green Frame', 'data/images/m15/m15FrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Multicolored Frame', 'data/images/m15/m15FrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Artifact Frame', 'data/images/m15/m15FrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Vehicle Frame', 'data/images/m15/m15FrameV.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Land Frame', 'data/images/m15/m15FrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['White Nyx Nyx Frame', 'data/images/m15/m15FrameWNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Blue Nyx Frame', 'data/images/m15/m15FrameUNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Black Nyx Frame', 'data/images/m15/m15FrameBNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Red Nyx Frame', 'data/images/m15/m15FrameRNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Green Nyx Frame', 'data/images/m15/m15FrameGNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Multicolored Nyx Frame', 'data/images/m15/m15FrameMNyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
+['Artifact Nyx Frame', 'data/images/m15/m15FrameANyx.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']]
 ]
 
-var versionM15MaskList = [['Right Half', 'data/images/maskRightHalf.png'], ['Pinline (m15)', 'data/images/m15/m15MaskPinline.png'], ['Full', 'data/images/maskFull.png']]
+var versionM15MaskList = [['Right Half', 'data/images/maskRightHalf.png'], ['Pinline (m15)', 'data/images/m15/m15MaskPinline.png'], ['Full', 'data/images/maskFull.png'], ['Border (m15)', 'data/images/m15/m15MaskBorder.png'], ['Title (m15)', 'data/images/m15/m15MaskTitle.png'], ['Type (m15)', 'data/images/m15/m15MaskType.png'], ['Rules (m15)', 'data/images/m15/m15MaskRules.png'], ['Frame (m15)', 'data/images/m15/m15MaskFrame.png']]
 
 if (!loadedVersions.includes('m15')) {
 	loadedVersions.push("m15")
@@ -26,7 +26,7 @@ if (!loadedVersions.includes('m15')) {
 }
 
 loadTextOptions([
-new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+new cardText('Card Title', '', 126/1500, 187/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
 new cardText('Card Type', '', 126/1500, 1263/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
 new cardText('Rules Text', '', 135/1500, 1372/2100, 1230/1500, 624/2100, 'mplantin', 74/2100, 'black'),
 new cardText('Power/Toughness', '', 0.1, 0.1, 0.8, 0.8, 'mplantin', 0.0177, 'black', ['oneLine=true'])
@@ -34,8 +34,8 @@ new cardText('Power/Toughness', '', 0.1, 0.1, 0.8, 0.8, 'mplantin', 0.0177, 'bla
 
 artX = scaleX(115 / 1500)
 artY = scaleY(237 / 2100)
-artWidth = scaleX(1154 / 1500)
-artHeight = scaleY(928 / 2100)
+artWidth = scaleX(1270 / 1500)//1384
+artHeight = scaleY(928 / 2100)//1164
 bottomInfoFunction = 'bottomInfoM15'
 
 manaCostXPath = '1316 - 78 * manaSymbolIndex'
