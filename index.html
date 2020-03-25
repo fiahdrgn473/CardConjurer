@@ -120,6 +120,7 @@
 			                <option value="#cfc8be">Artifact/Colorless</option>
 			                <option value="#ffffff">True White</option>
 			            </select>
+			            <input id='inputWatermarkOpacity' type="number" placeholder="Opacity" oninput="watermarkUpdated()" min='0' max='100' value='100'>
 			        </div>
 				</div>
 				<div id='importTab' class='hidden'>
@@ -129,6 +130,7 @@
 			        <input type="number" class="input number" id="inputCardNameNumberTextImport" onchange="inputCardNameNumberTextImport(this.value)" value="1" min="1" max="1">
 				</div>
 			</div>
+			<a onclick="downloadCardImage(this)" id="downloadCardImage" href="" target="_blank" download="card.png">Download</a>
 		</div>
 	</div>
 	<div class='layer darkLayer fadeIn'>
@@ -160,7 +162,13 @@
 	</div>
 </body>
 <footer class='footer'>
-	<div>Card Conjurer by Kyle Burton</div>
+	<div>
+		Card Conjurer by Kyle Burton<br>
+		<select id='inputColorPalette' onchange='loadScript("data/scripts/" + this.value + ".js")'>
+	        <option value='lightMode'>Light Mode</option>
+	        <option value='darkMode'>Dark Mode</option>
+      	</select>
+    </div>
 	<div>
 		Navigation<br>
 		Card Creator<br>

@@ -56,6 +56,10 @@ html, body {
 	margin: 0;
 	overflow-x: hidden
 }
+a {
+	font: inherit;
+	color: inherit;
+}
 
 .title {
 	text-align: center;
@@ -201,6 +205,7 @@ textarea {
 
 input, textarea, button, select {
 	font: 0.8rem mplantin;
+	color: var(--font-color);
 	width: 100%;
 	background-color: var(--input-color);
 	border: none;
@@ -301,4 +306,10 @@ input, textarea, button, select {
 @keyframes sample-five {
 	from {transform: rotate(0deg) translate(0, 0); position: relative; left: -200%;}
 	to {transform: rotate(10deg) translate(-16%, 15%); position: relative; left: 0;}
+}
+
+#inputColorPalette {
+	font: inherit;
+	width: 10rem;
+	textAlign: left;
 }

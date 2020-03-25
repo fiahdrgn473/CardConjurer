@@ -13,12 +13,13 @@ var selectedMaskImage = 0
 var selectedCardMasterElement
 var selectedTextObject
 var cardTextList = new Array()
-var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"];
-var manaSymbolImageList = [];
+var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"]
+var manaSymbolImageList = []
 manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Image(); manaSymbolImageList[index].src = 'data/images/manaSymbols/' + index + '.png'})
 date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = 'data/images/cornerCutout.png'
+let rootStyles = document.documentElement.style
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -99,6 +100,7 @@ class cardPlaceholder {
 		uniqueNumberTracker += 1
 	}
 	draw() {
+		mainContext.globalAlpha = 1
 		mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
 		if (this.whatToDraw == textCanvas) {
 			mainContext.drawImage(manaCostCanvas, 0, 0, cardWidth, cardHeight)
@@ -202,7 +204,9 @@ function drawCardObjects() {
 			}
 		}
 	}
+	mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
 	mainContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
+	mainContext.globalAlpha = 1
 	mainContext.drawImage(setSymbol, setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight)
 	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
@@ -287,7 +291,7 @@ function loadFrameImages(listOfFrames) {
 }
 
 //Loads up anything that uses Sortable.js
-var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: 'cardMasterElementMoving', handle: '.handle'});
+var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: 'cardMasterElementMoving', handle: '.handle'})
 
 function deleteCardObject(event) {
 	cardMaster.removeChild(document.getElementById('uniqueNumber' + parseInt(event.target.parentElement.id.replace('uniqueNumber', ''))))
@@ -344,9 +348,13 @@ function cardTextEdited() {
 		bottomInfoUpdated()
 	}
 }
-function drawCardText() {
+function drawCardTextReal() {
 	textContext.clearRect(0, 0, cardWidth, cardHeight)
 	writeText(cardTextList, textContext)
+}
+function drawCardText() {
+    clearTimeout(updateTextDelay)
+    updateTextDelay = setTimeout(drawCardTextReal, 250)
 }
 function writeText(textObjectList, targetContext) {
 	var textCanvasBuffer = 100
@@ -426,11 +434,11 @@ function writeText(textObjectList, targetContext) {
 						paragraphSpace += parseInt(possibleCodeLower.replace('down', '')) - textSize
 						temporaryLineShift += currentLineWidth
 					} else if (possibleCodeLower.includes('outline:')) {
-	                    outline = true;
-	                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0];
-	                    textLineContext.lineWidth = parseInt(possibleCodeLower.replace('outline:', '').split(',')[1]);
+	                    outline = true
+	                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0]
+	                    textLineContext.lineWidth = parseInt(possibleCodeLower.replace('outline:', '').split(',')[1])
 	                } else if (possibleCodeLower.includes('shadow')) {
-	                    shadow = parseInt(possibleCodeLower.replace('shadow', ''));
+	                    shadow = parseInt(possibleCodeLower.replace('shadow', ''))
 	                } else if (possibleCodeLower.includes('fontcolor')) {
 	                	textLineContext.fillStyle = possibleCodeLower.slice(9, possibleCodeLower.length)
 	                } else if (possibleCodeLower == 'artistbrush') {
@@ -486,7 +494,7 @@ function writeText(textObjectList, targetContext) {
 	                    textLineContext.fillStyle = textObjectList[i].fontColor
 					}
 					if (outline != undefined) {
-						lineContext.strokeText(wordToWrite, textX, textCanvasBuffer + textSize)
+						textLineContext.strokeText(wordToWrite, textX, textCanvasBuffer + textSize)
 					}
 					textLineContext.fillText(wordToWrite, textX, textCanvasBuffer + textSize)
 					currentLineWidth += currentWordWidth
@@ -502,13 +510,13 @@ function writeText(textObjectList, targetContext) {
 }
 
 function uploadImage(event, destination) {
-	var input = event.target;
-	var reader = new FileReader();
+	var input = event.target
+	var reader = new FileReader()
 	reader.onload = function() {
-		var dataURL = reader.result;
-		destination.src = dataURL;
+		var dataURL = reader.result
+		destination.src = dataURL
 	}
-	reader.readAsDataURL(input.files[0]);
+	reader.readAsDataURL(input.files[0])
 }
 
 function cardArtUpdated() {
@@ -531,7 +539,7 @@ function inputCardArtName(cardArtNameInput) {
 				cardArtUrlList[i] = savedArtList[i].split('","border_crop":')[0]
 			}
 			for (i = 0; i < savedArtList.length; i ++) {
-				cardArtArtistList[i] = savedArtList[i].slice(savedArtList[i].indexOf('"artist":"') + 10, savedArtList[i].indexOf('","artist_id'));
+				cardArtArtistList[i] = savedArtList[i].slice(savedArtList[i].indexOf('"artist":"') + 10, savedArtList[i].indexOf('","artist_id'))
 			}
 			inputCardArtNameNumber(1)
 		} else if (this.readyState == 4 && this.status == 404) {
@@ -554,6 +562,7 @@ function initialize() {
 	cardMaster.insertBefore(cardMasterList[0].cardMasterElement(), cardMaster.children[0])
 	cardMaster.insertBefore(cardMasterList[1].cardMasterElement(), cardMaster.children[0])
 	document.getElementById('inputInfoNumber').value = date.getFullYear()
+	window.updateTextDelay = setTimeout(drawCardTextReal, 250)
 	setTimeout(bottomInfoUpdated, 500)
 	//CSS & HTML stuff
 	window.layerElements = document.querySelectorAll('.layer')
@@ -579,12 +588,12 @@ function bottomInfoUpdated() {
 }
 
 function uploadLocalFrameImage(event) {
-	var input = event.target;
-	var reader = new FileReader();
+	var input = event.target
+	var reader = new FileReader()
 	reader.onload = function() {
 		addUploadedFrameImage(reader.result)
 	}
-	reader.readAsDataURL(input.files[0]);
+	reader.readAsDataURL(input.files[0])
 }
 
 function addUploadedFrameImage(imageSource) {
@@ -677,7 +686,8 @@ function inputCardNameNumberTextImport(index) {
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), 'Card Type')
     importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
     if (importCardTextResponse.includes('"power":"')) {
-        importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power Toughness')
+    	console.log('hmmm')
+        importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power/Toughness')
     } else {
         importText('', 'Power Toughness')
     }
@@ -704,7 +714,7 @@ function inputCardNameNumberTextImport(index) {
                 importText(abilityList[i].split(/: (.+)?/)[1], stringVersion + ' Ability')
                 document.getElementById('inputPlaneswalker' + (i + 1) + 'Icon').value = abilityList[i].split(/: (.+)?/)[0]
             } else {
-                importText('{left24}' + abilityList[i], stringVersion + ' Ability');
+                importText('{left24}' + abilityList[i], stringVersion + ' Ability')
                 document.getElementById('inputPlaneswalker' + (i + 1) + 'Icon').value = ''
             }
             if (document.getElementById('inputPlaneswalker' + (i + 1)).value < 1) {
@@ -733,9 +743,9 @@ function importText(text, target) {
 }
 function beforeAfter(targetString, beforeString, afterString) {
     if (targetString.includes(beforeString) && targetString.includes(afterString)) {
-        return targetString.split(beforeString)[1].split(afterString)[0];
+        return targetString.split(beforeString)[1].split(afterString)[0]
     } else {
-        return '';
+        return ''
     }
 }
 
@@ -746,7 +756,31 @@ function toggleTabs(clickedElement, targetId) {
 	document.getElementById(targetId).classList.remove('hidden')
 }
 
+function downloadCardImage(linkElement) {
+	if (document.getElementById("inputInfoArtist").value.replace(/ /g, "") != "") {
+		linkElement.download = cardTextList[0].name.toLowerCase().replace(/ /g, "_") + ".png"
+		if (linkElement.download == ".png") {
+			linkElement.download = "card.png"
+		}
+	} else {
+		event.preventDefault()
+		alert("You must properly credit an artist before downloading!")
+	}
+	var cardImageData = mainCanvas.toDataURL()
+	if (cardImageData == undefined) {
+		alert("Sorry, but it seems that you cannot download your card. Please try using a different browser/device.")
+	}
+	linkElement.href = cardImageData
+}
 
+function loadScript(scriptPath){
+	var script = document.createElement('script')
+	script.setAttribute('type','text/javascript')
+	script.setAttribute('src', scriptPath)
+	if (typeof script != 'undefined') {
+		document.getElementsByTagName('head')[0].appendChild(script)
+	}
+}
 
 
 
