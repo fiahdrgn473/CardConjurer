@@ -1,54 +1,49 @@
 <!DOCTYPE html5>
 <html>
+<script async src="data/scripts/cookies.js"></script>
 <head>
-	<title>CC — Disclaimer</title>
-	<!-- Other things -->
-	<link rel="stylesheet" href="data/site/styles.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CC - Terms of Use</title>
+    <link rel="stylesheet" href="data/site/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="mainDiv">
-		<div class="layer">
-			<div class="title">
-				Terms of Use:
-			</div>
-		</div>
-		<div class="layer">
-			<div class="paragraph indent">
-				This program is for creative purposes only. It is intended only to be used for personal reasons, and not for commercial production or sale.
-			</div>
-		</div>
-        <div class="layer">
-            <div class="paragraph indent">
-                Users must properly credit any artwork that they upload to the program.
-            </div>
-        </div>
-        <div class="layer">
-            <div class="paragraph indent">
-                By using Card Conjurer, you are agreeing to the storage of cookies on your device. The cookies serve to improve your experience, and store nothing but the settings you have previously input so they can be automatically loaded whenever you revisit the site.
-            </div>
-        </div>
-	</div>
-</body>
-<footer>
-    <div class="footerGrid">
-        <div>
-            <div class="visitorCountTrigger">Card Conjurer By Kyle Burton</div>
-            <div class="visitorCount"></div>
-        </div>
-        <div>
-            Navigation:<br>
-            <a href="index.html">Card Creator</a><br>
-            <a href="life.html">Life Counter</a><br>
-            <a href="askscryfall.html">Ask Scryfall</a>
-        </div>
-        <div>
-            Legal:<br>
-            <a href="disclaimer.html">Disclaimer</a><br>
-            <a href="termsofuse.html">Terms of Use</a>
+    <div class='title darkLayer'>Terms of Use</div>
+    <div class='layer fadeIn'>
+        <div class='paragraph'>
+            This program is for creative purposes only. It is intended only to be used for personal reasons, and not for commercial production or sale.
         </div>
     </div>
+    <div class='layer darkLayer fadeIn'>
+        <div class='paragraph'>
+            Users must properly credit any artwork that they upload.
+        </div>
+    </div>
+    <div class='layer fadeIn'>
+        <div class='paragraph'>
+            By using Card Conjurer, you are agreeing to the storage of cookies on your device. The cookies serve to improve your experience and store nothing but the settings you have previously input so they can be automatically loaded whenever you revisit the site.
+        </div>
+    </div>
+</body>
+<footer class='footer'>
+    <div>
+        Card Conjurer by Kyle Burton<br>
+        <select id='inputColorPalette' onchange='loadScript("data/scripts/" + this.value + ".js")'>
+            <option value='lightMode'>Light Mode</option>
+            <option value='darkMode'>Dark Mode</option>
+        </select>
+    </div>
+    <div>
+        Navigation<br>
+        <a href='index.html'>Card Creator</a><br>
+        <a href='life.html'>Life Counter</a><br>
+        <a href='askscryfall.html'>Ask Scryfall</a>
+    </div>
+    <div>
+        Legal<br>
+        <a href='termsofuse.html'>Terms of Use</a><br>
+        <a href='disclaimer.html'>Disclaimer</a>
+    </div>
 </footer>
-<script src="data/scripts/colors.js"></script>
+<script defer src="data/scripts/animations.js"></script>
 <html>

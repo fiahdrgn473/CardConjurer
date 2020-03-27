@@ -90,6 +90,7 @@ if (!version.addedPlaneswalker) {
     var lightColor = "white";
     var planeswalkerLightToDark = new Image()
     var planeswalkerDarkToLight = new Image()
+    planeswalkerDarkToLight.onload = planeswalkerAbilities()
 }
 
 m15PlaneswalkerBottomInfo()
@@ -196,5 +197,5 @@ function invertPlaneswalkerColors() {
         planeswalkerLightToDark.src = lightToDarkPlaneswalker.src
         planeswalkerDarkToLight.src = darkToLightPlaneswalker.src
     }
-    planeswalkerAbilities();
+    // planeswalkerAbilities();
 }

@@ -5,8 +5,8 @@ var maskImageList = new Array()
 var maskNameList = new Array()
 var canvasList = new Array()
 var contextList = new Array()
-var cardWidth = 1500, cardHeight = 2100
 var loadedVersions = new Array()
+var currentVersion
 var cardMaster = document.getElementById('cardMaster')
 var selectedFrameImage
 var selectedMaskImage = 0
@@ -29,6 +29,9 @@ function newCanvas(name) {
 	window[name + 'Context'] = window[name + 'Canvas'].getContext('2d')
 	contextList.push(window[name + 'Context'])
 }
+function resizeCanvases(newCardWidth, newCardHeight) {
+	canvasList.forEach(element => {element.width = newCardWidth; element.height = newCardHeight})
+}
 
 var previewCanvas = document.getElementById('previewCanvas')
 previewCanvas.width = 750
@@ -43,6 +46,7 @@ newCanvas('bottomInfo')
 newCanvas('manaCost')
 newCanvas('watermark')
 newCanvas('temp')
+newCanvas('autoCrop')
 
 var artWidth = cardWidth, artHeight = cardHeight
 var setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight
@@ -76,6 +80,8 @@ setSymbol.onload = function() {
 	setSymbolDrawX = setSymbolX[0]
 	if (setSymbolX[1] == 'right') {
 		setSymbolDrawX -= setSymbolDrawWidth
+	} else if (setSymbolX[1] == 'center') {
+		setSymbolDrawX -= setSymbolDrawWidth / 2
 	}
 	setSymbolDrawY = setSymbolY[0]
 	if (setSymbolY[1] == 'center') {
@@ -100,11 +106,18 @@ class cardPlaceholder {
 		uniqueNumberTracker += 1
 	}
 	draw() {
-		mainContext.globalAlpha = 1
-		mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
 		if (this.whatToDraw == textCanvas) {
+			if (currentVersion == 'planeswalker') {
+				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)
+			}
+			mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
+			mainContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
+			mainContext.globalAlpha = 1
 			mainContext.drawImage(manaCostCanvas, 0, 0, cardWidth, cardHeight)
+		} else {
+			mainContext.globalAlpha = 1
 		}
+		mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
 	}
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
@@ -204,9 +217,6 @@ function drawCardObjects() {
 			}
 		}
 	}
-	mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
-	mainContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
-	mainContext.globalAlpha = 1
 	mainContext.drawImage(setSymbol, setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight)
 	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
@@ -227,7 +237,7 @@ function drawCardObjects() {
 }
 
 class frameImage {
-	constructor(displayName = 'custom', imageSource = '', x = 0, y = 0, width = 1, height = 1, masks = [], frameImageListIndex) {
+	constructor(displayName = 'custom', imageSource = '', x = 0, y = 0, width = 1, height = 1, masks = [], frameImageListIndex, frameClass) {
 		this.name = displayName
 		this.image = new Image()
 		if (this.name == 'custom') {
@@ -241,6 +251,7 @@ class frameImage {
 		this.masks = masks
 		this.framePickerElement = document.createElement('div')
         this.framePickerElement.id = 'frameIndex' + frameImageListIndex
+        this.framePickerElement.classList.add(frameClass)
         this.framePickerElement.onclick = this.frameOptionClicked
         this.framePickerElement.innerHTML = '<img src=' + this.image.src + '>'
         document.getElementById('framePicker').appendChild(this.framePickerElement)
@@ -276,12 +287,12 @@ function loadMaskImages(listOfMasks) {
 		maskNameList.push(listOfMasks[i][0])
 	}
 }
-function loadFrameImages(listOfFrames) {
+function loadFrameImages(listOfFrames, frameClass) {
 	for (var i = 0; i < listOfFrames.length; i++) {
-		frameImageList.push(new frameImage(...listOfFrames[i], frameImageList.length))
+		frameImageList.push(new frameImage(...listOfFrames[i], frameImageList.length, frameClass))
 		if (i == 0) {
 			frameObjectToAdd = frameImageList[frameImageList.length - 1]
-			var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, [], false))
+			var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, ['Full'], false))
 			cardMaster.insertBefore(cardMasterList[frameToInsert - 1].cardMasterElement(), cardMaster.children[1])
 			frameObjectToAdd.image.onload = function() {
 				drawCardObjects()
@@ -323,6 +334,7 @@ function getFloat(input) {
 }
 
 function loadTextOptions(textArray) {
+	document.getElementById('textPicker').innerHTML = ''
 	cardTextList = textArray
 	cardTextList.forEach((item, index) => document.getElementById('textPicker').innerHTML += '<div id="' + index + '" onclick="textOptionClicked(event, ' + index + ')">' + item.name + '</div>')
 	document.getElementById('textPicker').children[0].click()
@@ -558,29 +570,12 @@ function inputCardArtNameNumber(cardArtNameNumberInput) {
 function initialize() {
 	//Card stuff
 	cardMasterList.push(new cardPlaceholder('Card Art Placeholder', cardArt))
-	cardMasterList.push(new cardPlaceholder('Text Placeholder', window['textCanvas']))
+	cardMasterList.push(new cardPlaceholder('Text Placeholder', textCanvas))
 	cardMaster.insertBefore(cardMasterList[0].cardMasterElement(), cardMaster.children[0])
 	cardMaster.insertBefore(cardMasterList[1].cardMasterElement(), cardMaster.children[0])
 	document.getElementById('inputInfoNumber').value = date.getFullYear()
 	window.updateTextDelay = setTimeout(drawCardTextReal, 250)
 	setTimeout(bottomInfoUpdated, 500)
-	//CSS & HTML stuff
-	window.layerElements = document.querySelectorAll('.layer')
-	window.addEventListener('resize', windowResized)
-	window.addEventListener('scroll', windowScrolled)
-	windowResized()
-}
-
-function windowResized() {
-	window.windowHeight = window.innerHeight
-}
-function windowScrolled() {
-	for (var i = 0; i < layerElements.length; i++) {
-		var positionFromTop = (layerElements[i].getBoundingClientRect().top + layerElements[i].getBoundingClientRect().bottom) / 2
-		if (positionFromTop - windowHeight <= 0) {
-			layerElements[i].classList.add('revealedLayer')
-		}
-	}
 }
 
 function bottomInfoUpdated() {
@@ -597,7 +592,7 @@ function uploadLocalFrameImage(event) {
 }
 
 function addUploadedFrameImage(imageSource) {
-	frameImageList.push(new frameImage('custom', imageSource, 0, 0, 1, 1, maskNameList, frameImageList.length))
+	frameImageList.push(new frameImage('custom', imageSource, 0, 0, 1, 1, maskNameList, frameImageList.length, 'frameClassCustom'))
 }
 
 function manaCostUpdated() {
@@ -686,7 +681,6 @@ function inputCardNameNumberTextImport(index) {
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), 'Card Type')
     importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
     if (importCardTextResponse.includes('"power":"')) {
-    	console.log('hmmm')
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power/Toughness')
     } else {
         importText('', 'Power Toughness')
@@ -727,7 +721,7 @@ function inputCardNameNumberTextImport(index) {
     document.getElementById('inputCardArtName').value = beforeAfter(importCardTextResponse, '"name":"', '",')
     document.getElementById('inputSetCode').value = beforeAfter(importCardTextResponse, '"set":"', '",')
     document.getElementById('inputSetRarity').value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0]
-    setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value
+    autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
     inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'))
     manaCostUpdated()
     drawCardText()
@@ -782,9 +776,69 @@ function loadScript(scriptPath){
 	}
 }
 
+function hideFrameImages(frameClass) {
+	Array.from(document.getElementById('framePicker').children).forEach(element => {
+		if (!element.classList.contains(frameClass)) {
+			element.classList.add('hidden')
+		} else {
+			element.classList.remove('hidden')
+		}
+	})
+}
 
-
-
+function autoCrop(targetImage, source = targetImage.src) {
+	var autoCropImage = new Image()
+	autoCropImage.crossOrigin = 'anonymous'
+	autoCropImage.src = source
+	autoCropImage.onload = function() {
+		var width = this.width
+		var height = this.height
+		autoCropCanvas.width = width
+		autoCropCanvas.height = height
+		autoCropContext.drawImage(this, 0, 0,)
+		var pixels = {x:[], y:[]}
+		var imageData = autoCropContext.getImageData(0, 0, width, height)
+		var x, y, index
+		if (imageData.data.length > 4) {
+			for (y = 0; y < height; y++) { //scans from left to right, top to bottom
+				for (x = 0; x < width; x++) {
+					index = (y * width + x) * 4 + 3 //calculuates the alpha value index
+					if (imageData.data[index] > 0) {
+						pixels.x.push(x)
+						pixels.y.push(y) //stores visible pixel coordinates
+					}
+				}
+			}
+			pixels.x.sort(function(a, b){return a - b})
+			pixels.y.sort(function(a, b){return a - b})
+			var n = pixels.x.length - 1
+			width = pixels.x[n] - pixels.x[0]
+			height = pixels.y[n] - pixels.y[0]
+			var cropped = autoCropContext.getImageData(pixels.x[0], pixels.y[0], width + 1, height + 1)
+			autoCropCanvas.width = width + 1
+			autoCropCanvas.height = height + 1
+			autoCropContext.putImageData(cropped, 0, 0)
+			setTimeout(function(){targetImage.src = autoCropCanvas.toDataURL()}, 100)
+		}
+	}
+}
+/*
+                var n = pix.x.length - 1;
+	            //Finds the difference between the leftmost and rightmost visible pixels, and the topmost and bottommost pixels, cuts out a section of the canvas
+                width = pix.x[n] - pix.x[0];
+                height = pix.y[n] - pix.y[0];
+                var cropped = cropContext.getImageData(pix.x[0], pix.y[0], width + 1, height + 1);
+	            //Resizes the canvas and draws cropped image
+                cropCanvas.width = width + 1;
+                cropCanvas.height = height + 1;
+                cropContext.putImageData(cropped, 0, 0);
+	            //Saves the newly cropped image to the given image
+                setTimeout(function() {targetImage.src = cropCanvas.toDataURL();}, 100)
+            }
+        }
+    }
+}
+*/
 
 
 
