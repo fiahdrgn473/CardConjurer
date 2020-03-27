@@ -458,6 +458,16 @@ function writeText(textObjectList, targetContext) {
 	                	var artistBrushWidth = textSize * 1.2
 						textLineContext.drawImage(manaSymbolImageList[62], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
 						textX += artistBrushWidth * 1.1
+						currentLineWidth += artistBrushWidth * 1.1
+	                } else if (possibleCodeLower == 'oldartistbrush') {
+	                    var artistBrushWidth = textSize * 2.4
+	                    if (textLineContext.fillStyle == '#ffffff' || textLineContext.fillStyle == 'white') {
+	                        textLineContext.drawImage(manaSymbolImageList[64], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+	                    } else {
+	                        textLineContext.drawImage(manaSymbolImageList[65], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+	                    }
+	                    textX += artistBrushWidth * 1.1
+	                    currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower.includes('font')) {
 						textFont = possibleCodeLower.replace('font', '')
 						textLineContext.font = textSize + 'px ' + textFont

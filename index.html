@@ -1,13 +1,13 @@
 <!DOCTYPE html5>
 <html>
-<script async src="data/scripts/cookies.js"></script>
 <head>
-	<title>Card Conjurer</title>
+	<script async src="data/scripts/cookies.js"></script>
 	<link rel="stylesheet" href="data/site/styles.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+	<title>Card Conjurer</title>
 	<div class='title'>Card Conjurer</div>
 	<script>
 		var cardWidth = 1500, cardHeight = 2100
@@ -146,10 +146,11 @@
 				</div>
 				<div id='advancedTab' class='hidden'>
 					Click one of the following buttons to load the described card frame:<br>
-					<button onclick='loadScript("data/scripts/versionM15.js")'>M15</button>
-					<button onclick='loadScript("data/scripts/versionM15Nyx.js")'>Nyx (M15)</button><br><br>
-					<button onclick='loadScript("data/scripts/versionPlaneswalker.js")'>Planeswalker (M15)</button><br><br>
-					<button onclick='loadScript("data/scripts/versionStorybook.js")'>*Storybook (Non-Adventure)</button>
+					<button onclick='loadScript("data/scripts/versions/versionM15.js")'>M15</button>
+					<button onclick='loadScript("data/scripts/versions/versionM15Nyx.js")'>Nyx (M15)</button><br><br>
+					<button onclick='loadScript("data/scripts/versions/versionPlaneswalker.js")'>Planeswalker (M15)</button><br><br>
+					<button onclick='loadScript("data/scripts/versions/versionStorybook.js")'>*Storybook (Non-Adventure)</button><br><br>
+					<button onclick='loadScript("data/scripts/versions/versionFuture.js")'>*Future Shifted</button>
 					<br><br>*Starred frames are works in progress, however they can still be used.
 				</div>
 			</div>
@@ -185,11 +186,14 @@
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vehicula ipsum a arcu cursus vitae. Venenatis tellus in metus vulputate eu. Id diam maecenas ultricies mi. Enim nec dui nunc mattis enim ut tellus elementum. Consectetur libero id faucibus nisl tincidunt eget nullam non. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Morbi leo urna molestie at elementum eu facilisis sed odio. Nulla pharetra diam sit amet nisl suscipit. A erat nam at lectus urna duis. Neque viverra justo nec ultrices.
 		</div>
 	</div>
+	<script defer src="data/scripts/sortable.js"></script>
+	<script defer src="data/scripts/main.js"></script>
+	<script defer src="data/scripts/versions/versionM15.js"></script>
 </body>
 <footer class='footer'>
 	<div>
 		Card Conjurer by Kyle Burton<br>
-		<select id='inputColorPalette' onchange='loadScript("data/scripts/" + this.value + ".js")'>
+		<select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
 	        <option value='lightMode'>Light Mode</option>
 	        <option value='darkMode'>Dark Mode</option>
 	        <option value='raveMode'>Rave Mode</option>
@@ -206,9 +210,6 @@
 		<a href='termsofuse.html'>Terms of Use</a><br>
 		<a href='disclaimer.html'>Disclaimer</a>
 	</div>
+	<script defer src="data/scripts/animations.js"></script>
 </footer>
-<script defer src="data/scripts/animations.js"></script>
-<script defer src="data/scripts/sortable.js"></script>
-<script defer src="data/scripts/main.js"></script>
-<script defer src="data/scripts/versionM15.js"></script>
 <html>
