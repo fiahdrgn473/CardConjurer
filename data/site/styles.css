@@ -48,7 +48,7 @@
 }
 
 html {
-	font: 20pt roboto;
+	font: 20pt georgia;
 	background: var(--background-color);
 	color: var(--font-color);
 	background-attachment: fixed;
@@ -300,7 +300,7 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	padding: 2rem;
 	background: var(--background-color-contrast);
 	color: var(--font-color-contrast);
-	font: 0.6rem 'open sans';
+	font: 0.6rem arial;
 	display: grid;
 	grid-template-columns: auto auto auto;
 }
@@ -308,7 +308,8 @@ input[type='checkbox'], select, option, input[type='file'], button {
 .fiveSampleCards {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	margin: 2rem 0;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
 }
 .fiveSampleCards > div > img {
 	position: relative;

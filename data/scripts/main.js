@@ -19,7 +19,6 @@ manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Im
 date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = 'data/images/cornerCutout.png'
-let rootStyles = document.documentElement.style
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -434,9 +433,11 @@ function writeText(textObjectList, targetContext) {
 					} else if (possibleCodeLower.includes('right')) {
 						textX += parseInt(possibleCodeLower.replace('right', ''))
 						currentLineWidth += parseInt(possibleCodeLower.replace('right', ''))
+						permanentLineShift += parseInt(possibleCodeLower.replace('right', ''))
 					} else if (possibleCodeLower.includes('left')) {
 						textX -= parseInt(possibleCodeLower.replace('left', ''))
 						currentLineWidth -= parseInt(possibleCodeLower.replace('left', ''))
+						permanentLineShift -= parseInt(possibleCodeLower.replace('left', ''))
 					} else if (possibleCodeLower.includes('up')) {
 						finishLine = true
 						paragraphSpace -= parseInt(possibleCodeLower.replace('up', '')) + textSize
@@ -685,38 +686,23 @@ function inputCardNameNumberTextImport(index) {
     } else {
         importText('', 'Power Toughness')
     }
-    /*
-    if (importCardTextResponse.includes('"loyalty":"') && version.currentVersion == 'planeswalker') {
+    if (importCardTextResponse.includes('"loyalty":"') && currentVersion == 'planeswalker') {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), 'Loyalty')
         var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g)
         for (var i = 0; i < abilityList.length; i++) {
-            var stringVersion = ''
-            switch(i) {
-                case 3:
-                    stringVersion = 'Fourth'
-                    break;
-                case 2:
-                    stringVersion = 'Third'
-                    break;
-                case 1:
-                    stringVersion = 'Second'
-                    break;
-                default:
-                    stringVersion = 'First'
-            }
             if (abilityList[i].slice(0, 4).includes(':')) {
-                importText(abilityList[i].split(/: (.+)?/)[1], stringVersion + ' Ability')
+                importText(abilityList[i].split(/: (.+)?/)[1], 'Ability ' + (i+1))
                 document.getElementById('inputPlaneswalker' + (i + 1) + 'Icon').value = abilityList[i].split(/: (.+)?/)[0]
             } else {
-                importText('{left24}' + abilityList[i], stringVersion + ' Ability')
+                importText('{left' + parseInt(scaleX(24/750)) + '}' + abilityList[i], 'Ability ' + (i+1))
                 document.getElementById('inputPlaneswalker' + (i + 1) + 'Icon').value = ''
             }
             if (document.getElementById('inputPlaneswalker' + (i + 1)).value < 1) {
                 document.getElementById('inputPlaneswalker' + (i + 1)).value = 1
             }
         }
+        planeswalkerAbilities()
     }
-    */
     document.getElementById('inputManaCost').value = beforeAfter(importCardTextResponse, '"mana_cost":"', '",')
     document.getElementById('inputCardArtName').value = beforeAfter(importCardTextResponse, '"name":"', '",')
     document.getElementById('inputSetCode').value = beforeAfter(importCardTextResponse, '"set":"', '",')
@@ -752,7 +738,7 @@ function toggleTabs(clickedElement, targetId) {
 
 function downloadCardImage(linkElement) {
 	if (document.getElementById("inputInfoArtist").value.replace(/ /g, "") != "") {
-		linkElement.download = cardTextList[0].name.toLowerCase().replace(/ /g, "_") + ".png"
+		linkElement.download = cardTextList[0].text.toLowerCase().replace(/ /g, "_") + ".png"
 		if (linkElement.download == ".png") {
 			linkElement.download = "card.png"
 		}
@@ -765,15 +751,6 @@ function downloadCardImage(linkElement) {
 		alert("Sorry, but it seems that you cannot download your card. Please try using a different browser/device.")
 	}
 	linkElement.href = cardImageData
-}
-
-function loadScript(scriptPath){
-	var script = document.createElement('script')
-	script.setAttribute('type','text/javascript')
-	script.setAttribute('src', scriptPath)
-	if (typeof script != 'undefined') {
-		document.getElementsByTagName('head')[0].appendChild(script)
-	}
 }
 
 function hideFrameImages(frameClass) {

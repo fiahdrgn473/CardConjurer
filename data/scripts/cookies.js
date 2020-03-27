@@ -1,3 +1,5 @@
+let rootStyles = document.documentElement.style
+
 function setCookie(cookieName, cookieValue, cookieTime = (5 * 365 * 24 * 60 * 60 * 1000)) {	//years*days*hours*minutes*seconds*milliseconds
   	var tempDate = new Date()
   	tempDate.setTime(tempDate.getTime() + cookieTime)
@@ -21,4 +23,13 @@ function checkCookies() {
 	if (getCookie('colorPalette') != undefined) {
 		loadScript('data/scripts/' + getCookie('colorPalette') + '.js')
 	}
+}
+
+function loadScript(scriptPath){
+  var script = document.createElement('script')
+  script.setAttribute('type','text/javascript')
+  script.setAttribute('src', scriptPath)
+  if (typeof script != 'undefined') {
+    document.getElementsByTagName('head')[0].appendChild(script)
+  }
 }

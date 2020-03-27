@@ -60,6 +60,7 @@ if (!loadedVersions.includes('planeswalker')) {
     var lightColor = 'white'
     var planeswalkerLightToDark = new Image()
     var planeswalkerDarkToLight = new Image()
+    planeswalkerDarkToLight.onload = function(){planeswalkerAbilities()}
 }
 
 if (currentVersion != 'planeswalker') {
@@ -228,5 +229,4 @@ function invertPlaneswalkerColors() {
         planeswalkerLightToDark.src = lightToDarkPlaneswalker.src
         planeswalkerDarkToLight.src = darkToLightPlaneswalker.src
     }
-    planeswalkerAbilities();
 }
