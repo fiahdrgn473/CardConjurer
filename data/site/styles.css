@@ -41,7 +41,9 @@
 	--background-color-contrast: #333;
 	--interactable-color: #aaa;
 	--interactable-selected-color: #777;
+	--interactable-tiling: 100% 100%;
 	--input-color: #ddd;
+	--input-font-color: #000;
 	--font-color: #000;
 	--font-color-contrast: #eee;
 	--body-background: none;
@@ -82,7 +84,7 @@ a:hover {
 
 .title {
 	text-align: center;
-	color: var(--font-color);
+	/*color: var(--font-color);*/
 	font: 2.5rem 'belerenbsc';
 	padding: 1rem 0;
 }
@@ -97,6 +99,8 @@ a:hover {
     grid-template-columns: 2rem auto 2rem;
     align-items: center;
     background: var(--interactable-color);
+    color: var(--input-font-color);
+    background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 .cardMasterElement > .handle {
@@ -162,6 +166,8 @@ img {
 }
 #maskPicker > div, #framePicker > div {
 	background: var(--interactable-color);
+	color: var(--input-font-color);
+	background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 #maskPicker > div {
@@ -179,6 +185,8 @@ img {
 #textPicker > div {
 	font: 1rem belerenbsc;
 	background: var(--interactable-color);
+	color: var(--input-font-color);
+	background-size: var(--interactable-tiling);
 	padding: 0.5rem;
     cursor: pointer;
 }
@@ -223,6 +231,8 @@ textarea {
 	text-align: center;
 	padding: 0.5rem 0;
 	background: var(--interactable-color);
+	color: var(--input-font-color);
+	background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 .tabPicker > div.tabOptionSelected {
@@ -231,7 +241,7 @@ textarea {
 
 input:not([type='checkbox']), textarea, button, select {
 	font: inherit;
-	color: var(--font-color);
+	color: var(--input-font-color);
 	width: 100%;
 	background: var(--input-color);
 	border: none;
@@ -240,7 +250,7 @@ input:not([type='checkbox']), textarea, button, select {
 	margin-top: 0.1rem;
 }
 input:not([type='checkbox']):active, textarea:active, button:active {
-	border: 0.1rem solid var(--interactable-color);
+	border: 0.1rem solid var(--input-font-color);
 	padding: 0.1rem;
 }
 input[type='checkbox'] {
@@ -275,6 +285,7 @@ input[type='checkbox'], select, option, input[type='file'], button {
 }
 .darkLayer {
 	background: var(--background-color-contrast);
+	background-size: 100% 100%;
 	color: var(--font-color-contrast);
 }
 .layer > div {
@@ -286,19 +297,17 @@ input[type='checkbox'], select, option, input[type='file'], button {
 .layer.revealedLayer.fadeIn > div {
 	animation: fade-in 2s;
 }
-.mainGrid.fadeIn {
-	animation: fade-in 0.5s;
-}
 .layer.revealedLayer.slideFromLeft > div {
-	animation: slide-from-left 2s;
+	animation: slide-from-left 1.5s;
 }
 .layer.revealedLayer.slideFromRight > div {
-	animation: slide-from-right 2s;
+	animation: slide-from-right 1.5s;
 }
 
 .footer {
 	padding: 2rem;
 	background: var(--background-color-contrast);
+	background-size: 100% 100%;
 	color: var(--font-color-contrast);
 	font: 0.6rem arial;
 	display: grid;
@@ -367,4 +376,19 @@ input[type='checkbox'], select, option, input[type='file'], button {
 
 .paragraph {
 	text-indent: 2em;
+}
+
+.cardLayerGrid {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 1rem;
+	justify-items: center;
+	align-items: center;
+}
+.cardLayerGrid > img {
+	width: 300pt;
+	height: auto;
+}
+.truncate {
+    word-break: break-word;
 }

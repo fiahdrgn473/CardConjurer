@@ -1,0 +1,58 @@
+.askScryfallGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 90pt auto;
+            align-items: center;
+            justify-items: center;
+        }
+        .urzaCard {
+            width: 360pt;
+            text-align: center;
+            grid-column: 1 / span 3;
+        }
+        .urzaCard > img {
+            position: relative;
+            left: -2rem;
+            width: 360pt;
+            height: auto;
+        }
+        img {
+            position: relative;
+            left: -1rem;
+        }
+        .askScryfallGrid > * {
+            /*border: 1px solid red;*/
+        }
+        .askScryfallButton {
+            width: auto;
+            height: 60pt;
+            transition: 0.25s;
+        }
+        .askScryfallButton:hover {
+            height: 80pt;
+        }
+        .askScryfallButton:active {
+            height: 90pt !important;
+        }
+        #askScryfallResult {
+            grid-column: 1 / span 3;
+            padding: 2rem;
+            margin: 1rem;
+            background: var(--background-color-contrast);
+            color: var(--font-color-contrast);
+            border-radius: 1rem;
+            font: 2rem belerenb;
+        }
+        @media screen and (min-width: 864pt) {
+            .askScryfallGrid {
+                grid-template-columns: calc(360pt) 1fr 1fr 1fr !important;
+                grid-template-rows: 90pt auto !important;
+            }
+            .urzaCard {
+                grid-column: 1;
+                grid-row: 1 / span 2 !important;
+            }
+            #askScryfallResult {
+                grid-column: 2 / span 3 !important;
+            }
+        }

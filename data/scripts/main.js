@@ -371,6 +371,7 @@ function writeText(textObjectList, targetContext) {
 	var textCanvasBuffer = 100
 	var rewritingLine = false
 	var textSize, textFont
+	var savedTextX = 0
 	outerloop:
 	for (var i = 0; i < textObjectList.length; i++) {
 		if (!rewritingLine) {
@@ -446,6 +447,10 @@ function writeText(textObjectList, targetContext) {
 						finishLine = true
 						paragraphSpace += parseInt(possibleCodeLower.replace('down', '')) - textSize
 						temporaryLineShift += currentLineWidth
+					} else if (possibleCodeLower == 'savetextx') {
+						savedTextX = textX
+					} else if (possibleCodeLower == 'loadtextx') {
+						textX = savedTextX
 					} else if (possibleCodeLower.includes('outline:')) {
 	                    outline = true
 	                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0]

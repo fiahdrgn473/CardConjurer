@@ -2,11 +2,13 @@ rootStyles.setProperty('--background-color', '#1c1c1c')
 rootStyles.setProperty('--background-color-contrast', '#111')
 rootStyles.setProperty('--interactable-color', '#333')
 rootStyles.setProperty('--interactable-selected-color', '#555')
+rootStyles.setProperty('--interactable-tiling', '100% 100%')
 rootStyles.setProperty('--input-color', '#3a3a3a')
-rootStyles.setProperty('--font-color', '#fff')
+rootStyles.setProperty('--input-font-color', '#fff')
+rootStyles.setProperty('--font-color', '#000')
 rootStyles.setProperty('--font-color-contrast', '#eee')
 rootStyles.setProperty('--body-background', 'url(images/lowpoly.png)')
-setCookie('colorPalette', 'darkMode')
+setCookie('colorPalette', 'raveMode')
 
 //Cycles through a rainbow!
 if (currentColorIndex == undefined) {

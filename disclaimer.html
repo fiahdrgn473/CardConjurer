@@ -1,13 +1,13 @@
 <!DOCTYPE html5>
 <html>
-<script async src="data/scripts/cookies.js"></script>
 <head>
-    <title>CC - Disclaimer</title>
+    <script async src="data/scripts/cookies.js"></script>
     <link rel="stylesheet" href="data/site/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <title>CC - Disclaimer</title>
     <div class='title'>Disclaimer</div>
     <div class='layer darkLayer fadeIn'>
         <div class='paragraph'>
@@ -37,10 +37,11 @@
 <footer class='footer'>
     <div>
         Card Conjurer by Kyle Burton<br>
-        <select id='inputColorPalette' onchange='loadScript("data/scripts/" + this.value + ".js")'>
+        <select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
             <option value='lightMode'>Light Mode</option>
             <option value='darkMode'>Dark Mode</option>
             <option value='raveMode'>Rave Mode</option>
+            <option value='scholarMode'>Scholar Mode</option>
         </select>
     </div>
     <div>
@@ -54,6 +55,6 @@
         <a href='termsofuse.html'>Terms of Use</a><br>
         <a href='disclaimer.html'>Disclaimer</a>
     </div>
+    <script defer src="data/scripts/animations.js"></script>
 </footer>
-<script defer src="data/scripts/animations.js"></script>
 <html>
