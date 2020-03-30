@@ -54,7 +54,6 @@ html {
 	background: var(--background-color);
 	color: var(--font-color);
 	background-attachment: fixed;
-	overflow-x: hidden;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -64,7 +63,7 @@ html, body {
 	margin: 0;
     border: 0;
     padding: 0;
-	overflow-x: hidden
+	/*overflow-x: hidden;*/
 }
 body {
 	background: var(--body-background);
