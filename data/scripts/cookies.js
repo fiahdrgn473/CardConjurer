@@ -25,6 +25,7 @@ function checkCookies() {
 		loadScript('data/scripts/' + getCookie('colorPalette') + '.js')
 	}
 }
+checkCookies()
 
 function loadScript(scriptPath){
   var script = document.createElement('script')
