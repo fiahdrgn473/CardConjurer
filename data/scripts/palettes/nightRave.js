@@ -7,7 +7,7 @@ rootStyles.setProperty('--input-color', '#3a3a3a')
 rootStyles.setProperty('--input-font-color', '#efefef')
 rootStyles.setProperty('--font-color', '#000')
 rootStyles.setProperty('--font-color-contrast', '#efefef')
-rootStyles.setProperty('--body-background', 'url(images/lowpoly.png)')
+rootStyles.setProperty('--body-background', 'url(data/site/images/lowpoly.png)')
 setCookie('colorPalette', 'nightRave')
 
 //Cycles through a rainbow!

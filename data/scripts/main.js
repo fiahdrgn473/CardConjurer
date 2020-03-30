@@ -50,9 +50,10 @@ newCanvas('autoCrop')
 var artWidth = cardWidth, artHeight = cardHeight
 var setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight
 var watermarkDrawX = 0, watermarkDrawY = 0, watermarkDrawWidth = 0, watermarkDrawHeight = 0
-cardArt = new Image()
-setSymbol = new Image()
-watermark = new Image()
+var cardArt = new Image()
+cardArt.src = 'data/images/blank.png'
+var setSymbol = new Image()
+var watermark = new Image()
 cardArt.crossOrigin = "anonymous"
 setSymbol.crossOrigin = "anonymous"
 watermark.crossOrigin = "anonymous"
@@ -116,7 +117,9 @@ class cardPlaceholder {
 		} else {
 			mainContext.globalAlpha = 1
 		}
-		mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
+        console.log(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
+        mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
+//        breaks here
 	}
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
@@ -219,7 +222,8 @@ function drawCardObjects() {
 	mainContext.drawImage(setSymbol, setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight)
 	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
-	mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
+    mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
+    //breaks here
 	mainContext.globalCompositeOperation = 'destination-out'
 	//draw the corner cutters
 	mainContext.drawImage(cornerCutout, 0, 0, scaleX(59/1500), scaleX(59/1500))
