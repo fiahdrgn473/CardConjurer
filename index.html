@@ -2,6 +2,7 @@
 <html>
 <head>
 	<script async src="data/scripts/cookies.js"></script>
+	<!-- <script async src="data/scripts/palettes/dayRave.js"></script> -->
 	<link rel="stylesheet" href="data/site/styles.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +13,7 @@
 </head>
 <body>
 	<title>Card Conjurer</title>
-	<div class='title'>Card Conjurer</div>
+	<div class='title darklayer'>Card Conjurer</div>
 	<script>
 		var cardWidth = 1500, cardHeight = 2100
 		if (window.location.search != "") {
@@ -184,7 +185,7 @@
 				<div class='layerTitle'>
 					Choose From A Variety Of Card Frames
 				</div>
-				<div>
+				<div class="justify">
 					Card Conjurer offers more card frame options than any other web-based Magic card maker
 				</div>
 			</div>
@@ -196,7 +197,7 @@
 				<div class='layerTitle'>
 					Customize To Your Heart's Content
 				</div>
-				<div>
+				<div class="justify">
 					With Card Conjurer's level of customization, you'll have endless options when designing your dream cards
 				</div>
 			</div>
@@ -210,7 +211,7 @@
 				<div class='layerTitle'>
 					Or Bling Out Existing Favorites
 				</div>
-				<div>
+				<div class="justify">
 					Easily import vital information from existing cards, then redesign them
 				</div>
 			</div>
@@ -222,8 +223,8 @@
 				<div class='layerTitle'>
 					Have Any Questions?
 				</div>
-				<div class='paragraph'>
-					If you have a question, a request, or even just want to share that cool card you made, please don't hesitate to email me at <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>!
+				<div class='justify'>
+					If you have a question, a request, or even just want to share a cool card you made, please don't hesitate to email me at <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>!
 				</div>
 			</div>
 		</div>
@@ -233,7 +234,7 @@
 			<div class='layerTitle'>
 				The Proxy Factory
 			</div>
-			<div class="paragraph">
+			<div class="justify">
 				If you'd like to delve deeper into making custom Magic: The Gathering cards, check out The Proxy Factory! They're a community full of individuals interested in creating custom cards, and are very welcoming to new members. Take a look at their <a style='color: #ff4500;' href='https://www.reddit.com/r/TheProxyFactory/' target='_blank'>Reddit</a>, or join their <a style='color: #738adb;' href='https://discordapp.com/invite/xBCQprM' target='_blank'>Discord</a>. Happy proxying!
 			</div>
 		</div>
@@ -248,7 +249,8 @@
 		<select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
 	        <option value='lightMode'>Light Mode</option>
 	        <option value='darkMode'>Dark Mode</option>
-	        <option value='raveMode'>Rave Mode</option>
+	        <option value='dayRave'>Day Rave</option>
+	        <option value='nightRave'>Night Rave</option>
 	        <option value='scholarMode'>Scholar Mode</option>
       	</select>
     </div>

@@ -37,20 +37,20 @@
 }
 
 :root {
-	--background-color: #fafafa;
-	--background-color-contrast: #333;
-	--interactable-color: #aaa;
-	--interactable-selected-color: #777;
+	--background-color: #f5f5f5;
+	--background-color-contrast: #eaeaea;
+	--interactable-color: #dfdfdf;
+	--interactable-selected-color: #cccccc;
 	--interactable-tiling: 100% 100%;
-	--input-color: #ddd;
+	--input-color: #dadada;
 	--input-font-color: #000;
 	--font-color: #000;
-	--font-color-contrast: #eee;
+	--font-color-contrast: #000;
 	--body-background: none;
 }
 
 html {
-	font: 20pt georgia;
+	font: 12pt georgia;
 	background: var(--background-color);
 	color: var(--font-color);
 	background-attachment: fixed;
@@ -194,9 +194,6 @@ img {
 	background: var(--interactable-selected-color);
 }
 
-canvas {
-	/*background: var(--interactable-color);*/
-}
 textarea {
 	resize: vertical;
 	min-height: 4rem;
@@ -212,12 +209,7 @@ textarea {
 
 
 
-.mainGrid {
-	display: grid;
-	grid-template-columns: 750px auto;
-	grid-gap: 1rem;
-	padding: 0 1rem 1rem 1rem;
-}
+
 
 .tabPicker {
 	display: grid;
@@ -275,9 +267,6 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	from {position: relative; left: 100vw;}
 	to {position: relative; left: 0px;}
 }
-.layer {
-	padding: 5rem;
-}
 .layerTitle {
 	/*color: inherit;*/
 	text-align: center;
@@ -304,21 +293,13 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	animation: slide-from-right 1.5s;
 }
 
-.footer {
-	padding: 2rem;
-	background: var(--background-color-contrast);
-	background-size: 100% 100%;
-	color: var(--font-color-contrast);
-	font: 0.6rem arial;
-	display: grid;
-	grid-template-columns: auto auto auto;
-}
+
 
 .fiveSampleCards {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	margin-top: 1rem;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 .fiveSampleCards > div > img {
 	position: relative;
@@ -378,17 +359,94 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	text-indent: 2em;
 }
 
+.truncate {
+    word-break: break-word;
+}
+
+.justify {
+	text-align: justify;
+}
+
+
+
+
+
+/*ANYTHING THAT CHANGES BASED ON SCREEN WIDTH GOES HERE*/
+.mainGrid {
+	display: grid;
+	grid-template-columns: auto;
+	justify-items: center;
+	grid-gap: 1rem;
+	padding: 1rem 0;
+}
+.layer {
+	padding: 2rem;
+}
 .cardLayerGrid {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: auto;
 	grid-gap: 1rem;
 	justify-items: center;
 	align-items: center;
 }
 .cardLayerGrid > img {
-	width: 300pt;
+	width: 100%;
 	height: auto;
 }
-.truncate {
-    word-break: break-word;
+canvas {
+	width: 100%;
+}
+.footer {
+	padding: 1rem;
+	background: var(--background-color-contrast);
+	background-size: 100% 100%;
+	color: var(--font-color-contrast);
+	font: 0.6rem arial;
+	display: grid;
+	grid-template-columns: auto;
+	grid-row-gap: 1rem;
+}
+.footer > div > select {
+	width: auto !important;
+}
+@media screen and (min-width: 909pt) { /*Screen is wide enough to show the card next to the editor menu*/
+    .mainGrid {
+		grid-template-columns: 750px auto;
+		justify-items: stretch;
+		/*padding: 0 1rem 1rem 1rem;*/
+	}
+}
+@media screen and (min-width: 800pt) { /*Screen is wide enough for cardLayerGrids to display side by side, and for more padding*/
+    .cardLayerGrid {
+		grid-template-columns: auto auto;
+    }
+    .layer {
+    	padding: 4rem;
+    }
+}
+@media screen and (min-width: 618pt) { /*Screen is wide enough for padding*/
+    .mainGrid {
+		padding: 1rem 1rem;
+	}
+}
+@media screen and (min-width: 768px) { /*Screen is wide enough for the card image to be 750px wide. Scrollbar is 18 pixels?*/
+    canvas {
+		width: 750px;
+	}
+}
+@media screen and (min-width: 450pt) { /*Screen is wide enough for the footer to display horizontally*/
+	.footer {
+		padding: 2rem;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media screen and (min-width: 392pt) { /*Screen is wide enough for the samples to be a constant size*/
+	.cardLayerGrid > img {
+		width: 300pt;
+	}
+}
+@media screen and (min-width: 300pt) { /*Screen is wide enough for larger text*/
+	html {
+		font: 20pt georgia;
+	}
 }

@@ -1,14 +1,14 @@
-rootStyles.setProperty('--background-color', '#1c1c1c')
-rootStyles.setProperty('--background-color-contrast', '#111')
-rootStyles.setProperty('--interactable-color', '#333')
-rootStyles.setProperty('--interactable-selected-color', '#555')
+rootStyles.setProperty('--background-color', '#eaeaea')
+rootStyles.setProperty('--background-color-contrast', '#f5f5f5')
+rootStyles.setProperty('--interactable-color', '#f5f5f5')
+rootStyles.setProperty('--interactable-selected-color', '#eaeaea')
 rootStyles.setProperty('--interactable-tiling', '100% 100%')
-rootStyles.setProperty('--input-color', '#3a3a3a')
-rootStyles.setProperty('--input-font-color', '#fff')
+rootStyles.setProperty('--input-color', '#efefef')
+rootStyles.setProperty('--input-font-color', '#000')
 rootStyles.setProperty('--font-color', '#000')
-rootStyles.setProperty('--font-color-contrast', '#eee')
+rootStyles.setProperty('--font-color-contrast', '#000')
 rootStyles.setProperty('--body-background', 'url(images/lowpoly.png)')
-setCookie('colorPalette', 'raveMode')
+setCookie('colorPalette', 'dayRave')
 
 //Cycles through a rainbow!
 if (currentColorIndex == undefined) {
