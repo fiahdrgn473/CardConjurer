@@ -22,6 +22,9 @@ function getCookie(cookieName) {
 function checkCookies() {
 	if (getCookie('colorPalette') != undefined) {
 		loadScript('data/scripts/palettes/' + getCookie('colorPalette') + '.js')
+        setTimeout(function() {
+            document.getElementById('inputColorPalette').value = getCookie('colorPalette')
+        }, 1000)
 	}
 }
 checkCookies()

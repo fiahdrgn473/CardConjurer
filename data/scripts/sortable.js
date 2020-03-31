@@ -1686,9 +1686,8 @@ Sortable.prototype =
 
         if (ghostRelativeParent !== document.body && ghostRelativeParent !== document.documentElement) {
           if (ghostRelativeParent === document) ghostRelativeParent = getWindowScrollingElement();
-            console.log(ghostRelativeParent, container, this)
           //rect.top += ghostRelativeParent.scrollTop;
-          //rect.left += ghostRelativeParent.scrollLeft;
+          //rect.left += ghostRelativeParent.scrollLeft; /*These don't work with my iPhone for some reason? -Kyle*/
         } else {
           ghostRelativeParent = getWindowScrollingElement();
         }
