@@ -353,6 +353,18 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	text-align: justify;
 }
 
+#textCodeReference {
+	display: grid;
+	grid-template-columns: 7rem auto;
+	margin-top: 0.5rem;
+	grid-gap: 0.1rem;
+	padding: 0.5rem 1rem 0 1rem;
+}
+#textCodeReference > div {
+	background: var(--input-color);
+	padding: 0.1rem;
+}
+
 
 
 

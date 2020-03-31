@@ -593,6 +593,7 @@ function initialize() {
 	document.getElementById('inputInfoNumber').value = date.getFullYear()
 	window.updateTextDelay = setTimeout(drawCardTextReal, 250)
 	setTimeout(bottomInfoUpdated, 500)
+	textCodeReference()
 }
 
 function bottomInfoUpdated() {
@@ -815,23 +816,32 @@ function autoCrop(targetImage, source = targetImage.src) {
 		}
 	}
 }
-/*
-                var n = pix.x.length - 1;
-	            //Finds the difference between the leftmost and rightmost visible pixels, and the topmost and bottommost pixels, cuts out a section of the canvas
-                width = pix.x[n] - pix.x[0];
-                height = pix.y[n] - pix.y[0];
-                var cropped = cropContext.getImageData(pix.x[0], pix.y[0], width + 1, height + 1);
-	            //Resizes the canvas and draws cropped image
-                cropCanvas.width = width + 1;
-                cropCanvas.height = height + 1;
-                cropContext.putImageData(cropped, 0, 0);
-	            //Saves the newly cropped image to the given image
-                setTimeout(function() {targetImage.src = cropCanvas.toDataURL();}, 100)
-            }
-        }
-    }
+
+var textCodeReferenceArray = [
+['Code', 'Result'],
+['{linenospace}', 'Moves to the next line without an extra space'],
+['{bar}', 'Moves to the next line and draws the flavor text bar'],
+['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the text'],
+['{i}', 'Italicizes the text'],
+['{/i}', 'Removes italicization'],
+['{fontsize#}', 'Changes the font size by # pixels'],
+['{fontcolor#}', 'Changes the font color to #'],
+['{left}', 'Aligns the text to the left'],
+['{center}', 'Aligns the text to the center'],
+['{right}', 'Aligns the text to the right'],
+['{left#}', 'Shifts the following text # pixels to the left'],
+['{right#}', 'Shifts the following text # pixels to the right'],
+['{up#}', 'Shifts the following text # pixels up'],
+['{down#}', 'Shifts the following text # pixels down'],
+['{outline*,#}', 'Outlines the following text by # pixels in * color'],
+['{shadow#}', 'Adds a shadow # pixels away from the following text']
+]
+function textCodeReference() {
+	// for (var i = 0; i < textCodeReferenceArray.length; i++) {
+	// 	document.getElementById('textCodeReference')
+	// }
+	textCodeReferenceArray.forEach(item => document.getElementById('textCodeReference').innerHTML += '<div>' + item[0] + '</div><div>' + item[1] + '</div>')
 }
-*/
 
 
 
