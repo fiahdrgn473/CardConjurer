@@ -117,9 +117,7 @@ class cardPlaceholder {
 		} else {
 			mainContext.globalAlpha = 1
 		}
-        console.log(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
         mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
-//        breaks here
 	}
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
@@ -223,7 +221,6 @@ function drawCardObjects() {
 	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
     mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
-    //breaks here
 	mainContext.globalCompositeOperation = 'destination-out'
 	//draw the corner cutters
 	mainContext.drawImage(cornerCutout, 0, 0, scaleX(59/1500), scaleX(59/1500))

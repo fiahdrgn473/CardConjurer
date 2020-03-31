@@ -2,12 +2,11 @@ rootStyles.setProperty('--background-color', '#eaeaea')
 rootStyles.setProperty('--background-color-contrast', '#f5f5f5')
 rootStyles.setProperty('--interactable-color', '#f5f5f5')
 rootStyles.setProperty('--interactable-selected-color', '#eaeaea')
-rootStyles.setProperty('--interactable-tiling', '100% 100%')
 rootStyles.setProperty('--input-color', '#efefef')
 rootStyles.setProperty('--input-font-color', '#000')
 rootStyles.setProperty('--font-color', '#000')
 rootStyles.setProperty('--font-color-contrast', '#000')
-rootStyles.setProperty('--body-background', 'url(data/site/images/lowpoly.png)')
+rootStyles.setProperty('--body-background', 'url(data/site/images/lowpoly.png) left/cover no-repeat fixed')
 setCookie('colorPalette', 'dayRave')
 
 //Cycles through a rainbow!
@@ -24,7 +23,7 @@ var currentColorIndex = 0
 function changeColor() {
 	var colors = indexToColor(currentColorIndex)
 	var lightColors = indexToColor(currentColorIndex + lightLead)
-	rootStyles.setProperty('--background-color', 'linear-gradient(to bottom right, ' + "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")" + ', ' + "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")" + ')')
+	rootStyles.setProperty('--background-color', 'linear-gradient(to bottom right, ' + "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")" + ', ' + "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")" + ') left/cover no-repeat fixed')
 	currentColorIndex += 2.5 * 153 / 180 //The second number is how many seconds it takes to do a full loop
 }
 function indexToColor(colorIndex) {

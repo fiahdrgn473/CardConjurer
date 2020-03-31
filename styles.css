@@ -38,10 +38,9 @@
 
 :root {
 	--background-color: #f5f5f5;
-	--background-color-contrast: #eaeaea;
+	--background-color-contrast: #e4e4e4;
 	--interactable-color: #dfdfdf;
 	--interactable-selected-color: #cccccc;
-	--interactable-tiling: 100% 100%;
 	--input-color: #dadada;
 	--input-font-color: #000;
 	--font-color: #000;
@@ -53,7 +52,6 @@ html {
 	font: 12pt georgia;
 	background: var(--background-color);
 	color: var(--font-color);
-	background-attachment: fixed;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -63,14 +61,10 @@ html, body {
 	margin: 0;
     border: 0;
     padding: 0;
-	/*overflow-x: hidden;*/
+	overflow-x: hidden;
 }
 body {
 	background: var(--body-background);
-	background-position: left;
-    background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
 }
 a {
 	font: inherit;
@@ -83,7 +77,6 @@ a:hover {
 
 .title {
 	text-align: center;
-	/*color: var(--font-color);*/
 	font: 2.5rem 'belerenbsc';
 	padding: 1rem 0;
 }
@@ -99,7 +92,6 @@ a:hover {
     align-items: center;
     background: var(--interactable-color);
     color: var(--input-font-color);
-    background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 .cardMasterElement > .handle {
@@ -166,7 +158,6 @@ img {
 #maskPicker > div, #framePicker > div {
 	background: var(--interactable-color);
 	color: var(--input-font-color);
-	background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 #maskPicker > div {
@@ -185,7 +176,6 @@ img {
 	font: 1rem belerenbsc;
 	background: var(--interactable-color);
 	color: var(--input-font-color);
-	background-size: var(--interactable-tiling);
 	padding: 0.5rem;
     cursor: pointer;
 }
@@ -223,7 +213,6 @@ textarea {
 	padding: 0.5rem 0;
 	background: var(--interactable-color);
 	color: var(--input-font-color);
-	background-size: var(--interactable-tiling);
     cursor: pointer;
 }
 .tabPicker > div.tabOptionSelected {
@@ -267,13 +256,11 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	to {position: relative; left: 0px;}
 }
 .layerTitle {
-	/*color: inherit;*/
 	text-align: center;
 	font: 2rem 'belerenbsc';
 }
 .darkLayer {
 	background: var(--background-color-contrast);
-	background-size: 100% 100%;
 	color: var(--font-color-contrast);
 }
 .layer > div {
@@ -398,7 +385,6 @@ canvas {
 .footer {
 	padding: 1rem;
 	background: var(--background-color-contrast);
-	background-size: 100% 100%;
 	color: var(--font-color-contrast);
 	font: 0.6rem arial;
 	display: grid;
@@ -412,7 +398,6 @@ canvas {
     .mainGrid {
 		grid-template-columns: 750px auto;
 		justify-items: stretch;
-		/*padding: 0 1rem 1rem 1rem;*/
 	}
 }
 @media screen and (min-width: 800pt) { /*Screen is wide enough for cardLayerGrids to display side by side, and for more padding*/

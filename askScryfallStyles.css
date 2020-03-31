@@ -6,27 +6,21 @@
     justify-items: center;
 }
 .urzaCard {
-    width: 360pt;
+    width: 90vw;
     text-align: center;
     grid-column: 1 / span 3;
 }
 .urzaCard > img {
-    width: 360pt;
+    width: 100%;
     height: auto;
 }
 .askScryfallGrid > * {
     /*border: 1px solid red;*/
 }
 .askScryfallButton {
-    width: auto;
-    height: 60pt;
+    height: auto;
+    width: 22vw;
     transition: 0.25s;
-}
-.askScryfallButton:hover {
-    height: 80pt;
-}
-.askScryfallButton:active {
-    height: 90pt !important;
 }
 #askScryfallResult {
     grid-column: 1 / span 3;
@@ -35,12 +29,12 @@
     background: var(--background-color-contrast);
     color: var(--font-color-contrast);
     border-radius: 1rem;
-    font: 2rem belerenb;
+    font: 1.5rem belerenb;
 }
 @media screen and (min-width: 864pt) {
     .askScryfallGrid {
         grid-template-columns: calc(360pt) 1fr 1fr 1fr !important;
-        grid-template-rows: 90pt auto !important;
+        grid-template-rows: 92pt auto !important;
     }
     .urzaCard {
         grid-column: 1;
@@ -48,5 +42,21 @@
     }
     #askScryfallResult {
         grid-column: 2 / span 3 !important;
+    }
+}
+@media screen and (min-width: 380pt) {
+    .urzaCard {
+        width: 360pt;
+    }
+    .askScryfallButton {
+        height: auto;
+        width: 100pt;
+        transition: 0.25s;
+    }
+    .askScryfallButton:hover {
+        width: 110pt;
+    }
+    .askScryfallButton:active {
+        width: 120pt !important;
     }
 }
