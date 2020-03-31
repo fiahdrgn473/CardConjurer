@@ -837,9 +837,6 @@ var textCodeReferenceArray = [
 ['{shadow#}', 'Adds a shadow # pixels away from the following text']
 ]
 function textCodeReference() {
-	// for (var i = 0; i < textCodeReferenceArray.length; i++) {
-	// 	document.getElementById('textCodeReference')
-	// }
 	textCodeReferenceArray.forEach(item => document.getElementById('textCodeReference').innerHTML += '<div>' + item[0] + '</div><div>' + item[1] + '</div>')
 }
 

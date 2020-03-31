@@ -116,6 +116,7 @@ a:hover {
 	grid-gap: 0.1rem;
 }
 .autoGrid {
+	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 	grid-auto-rows: min-content;
@@ -248,12 +249,14 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	to {opacity: 1;}
 }
 @keyframes slide-from-left {
-	from {position: relative; left: -100vw;}
-	to {position: relative; left: 0px;}
+	0% {position: relative; left: -100vw;}
+	75% {position: relative; left: -10px;}
+	100% {position: relative; left: 0px;}
 }
 @keyframes slide-from-right {
-	from {position: relative; left: 100vw;}
-	to {position: relative; left: 0px;}
+	0% {position: relative; left: 100vw;}
+	75% {position: relative; left: 10px;}
+	100% {position: relative; left: 0px;}
 }
 .layerTitle {
 	text-align: center;
@@ -308,20 +311,24 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	transform: rotate(10deg) translate(-16%, 15%);
 }
 @keyframes sample-one {
-	from {transform: rotate(0deg) translate(0, 0); position: relative; left: 200%;}
-	to {transform: rotate(-10deg) translate(16%, 15%); position: relative; left: 0;}
+	0% {transform: rotate(0deg) translate(0, 0); position: relative; left: 200%;}
+	10% {transform: rotate(0deg) translate(0, 0); position: relative; left: 200%;}
+	100% {transform: rotate(-10deg) translate(16%, 15%); position: relative; left: 0;}
 }
 @keyframes sample-two {
-	from {transform: rotate(0deg) translate(0, 0); position: relative; left: 100%;}
-	to {transform: rotate(-5deg) translate(10%, 4%); position: relative; left: 0;}
+	0% {transform: rotate(0deg) translate(0, 0); position: relative; left: 100%;}
+	10% {transform: rotate(0deg) translate(0, 0); position: relative; left: 100%;}
+	100% {transform: rotate(-5deg) translate(10%, 4%); position: relative; left: 0;}
 }
 @keyframes sample-four {
-	from {transform: rotate(0deg) translate(0, 0); position: relative; left: -100%;}
-	to {transform: rotate(5deg) translate(-10%, 4%); position: relative; left: 0;}
+	0% {transform: rotate(0deg) translate(0, 0); position: relative; left: -100%;}
+	10% {transform: rotate(0deg) translate(0, 0); position: relative; left: -100%;}
+	100% {transform: rotate(5deg) translate(-10%, 4%); position: relative; left: 0;}
 }
 @keyframes sample-five {
-	from {transform: rotate(0deg) translate(0, 0); position: relative; left: -200%;}
-	to {transform: rotate(10deg) translate(-16%, 15%); position: relative; left: 0;}
+	0% {transform: rotate(0deg) translate(0, 0); position: relative; left: -200%;}
+	10% {transform: rotate(0deg) translate(0, 0); position: relative; left: -200%;}
+	100% {transform: rotate(10deg) translate(-16%, 15%); position: relative; left: 0;}
 }
 
 #inputColorPalette {
