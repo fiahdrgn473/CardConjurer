@@ -1686,6 +1686,7 @@ Sortable.prototype =
 
         if (ghostRelativeParent !== document.body && ghostRelativeParent !== document.documentElement) {
           if (ghostRelativeParent === document) ghostRelativeParent = getWindowScrollingElement();
+            console.log(ghostRelativeParent, contained, this)
           rect.top += ghostRelativeParent.scrollTop;
           rect.left += ghostRelativeParent.scrollLeft;
         } else {
