@@ -14,7 +14,7 @@ function generateSVGs() {
     var ppi = parseInt(document.getElementById('inputPPI').value)
     var padding = ppi
     var materialThickness = parseFloat(document.getElementById('inputMaterialThickness').value) * ppi
-    var rowCount = parseInt(document.getElementById('inputRowCount').value)
+    var rowCount = 1//parseInt(document.getElementById('inputRowCount').value)
     var rowLength = parseFloat(document.getElementById('inputRowLength').value) * ppi
     var cardWidth = parseFloat(document.getElementById('inputCardWidth').value + document.getElementById('inputWiggleRoom').value) * ppi
     var cardHeight = parseFloat(document.getElementById('inputCardHeight').value + document.getElementById('inputWiggleRoom').value) * ppi
