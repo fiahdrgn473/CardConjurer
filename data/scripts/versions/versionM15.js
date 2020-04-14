@@ -44,7 +44,7 @@ if (currentVersion != 'm15') {
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
 	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
 	new cardText('Rules Text', '', 135/1500, 1375/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 
 	artX = scaleX(115 / 1500)
@@ -59,7 +59,7 @@ if (currentVersion != 'm15') {
 	manaCostDirection = 'reverse'
 
 	setSymbolX = [scaleX(1382/1500), 'right']
-	setSymbolY = [scaleY(1240/2100), 'center']
+	setSymbolY = [scaleY(1242/2100), 'center']
 	setSymbolWidth = scaleX(180/1500)
 	setSymbolHeight = scaleY(80/2100)
 
@@ -86,7 +86,7 @@ function bottomInfoM15() {
 			{text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2026/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 			{text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 1990/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 			{text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 1990/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '*Not for Sale*', x: 97/1500, y: 2056/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '{right}CardConjurer.com', x: 97/1500, y: 2020/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']}
+			{text: 'NOT FOR SALE', x: 97/1500, y: 2058/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{right}CardConjurer.com', x: 97/1500, y: 2022/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']}
 		], bottomInfoContext)
 }

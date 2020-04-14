@@ -32,7 +32,7 @@ if (currentVersion != 'm15') {
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
 	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
 	new cardText('Rules Text', '', 135/1500, 1375/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 
 	artX = scaleX(115 / 1500)
@@ -47,7 +47,7 @@ if (currentVersion != 'm15') {
 	manaCostDirection = 'reverse'
 
 	setSymbolX = [scaleX(1382/1500), 'right']
-	setSymbolY = [scaleY(1240/2100), 'center']
+	setSymbolY = [scaleY(1242/2100), 'center']
 	setSymbolWidth = scaleX(180/1500)
 	setSymbolHeight = scaleY(80/2100)
 
