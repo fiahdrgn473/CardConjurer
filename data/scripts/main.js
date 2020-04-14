@@ -387,12 +387,12 @@ function writeText(textObjectList, targetContext) {
 		textParagraphCanvas.height = scaleY(textObjectList[i].height) + 2 * textCanvasBuffer
 		textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
-		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0
+		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = ''
 		textObjectList[i].otherParameters.forEach(item => eval(item))
 		textLineContext.strokeStyle = outline
 		textLineContext.lineWidth = outlineThickness
 		textFont = textObjectList[i].font
-		textLineContext.font = textSize + 'px ' + textFont
+		textLineContext.font = fontStyle + textSize + 'px ' + textFont
 		textLineContext.fillStyle = textObjectList[i].fontColor
 		var textX = textCanvasBuffer
 		var textY = 0
@@ -416,16 +416,19 @@ function writeText(textObjectList, targetContext) {
 						var barHeight = scaleY(0.001)
 						textLineContext.drawImage(manaSymbolImageList[63], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 1.6 + textCanvasBuffer, barWidth, barHeight)
 						paragraphSpace += textSize * 0.8
-						if (possibleCodeLower == 'flavor') {
-							textLineContext.font = 'italic ' + (textSize * 0.92) + 'px ' + textFont
+						if (possibleCodeLower == 'flavor' && !fontStyle.includes('italic')) {
+							fontStyle += 'italic '
+							textLineContext.font = fontStyle + (textSize * 0.92) + 'px ' + textFont
 						}
-					} else if (possibleCodeLower == 'i') {
-						textLineContext.font = 'italic ' + textSize + 'px ' + textFont
+					} else if (possibleCodeLower == 'i' && !fontStyle.includes('italic')) {
+						fontStyle += 'italic '
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (possibleCodeLower == '/i') {
-						textLineContext.font = textSize + 'px ' + textFont
+						fontStyle.replace('italic ', '')
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (possibleCodeLower.includes('fontsize')) {
 						textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
-						textLineContext.font = textSize + 'px ' + textFont
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (possibleCodeLower == 'left') {
 						textAlign = 'left'
 					} else if (possibleCodeLower == 'center') {
@@ -476,7 +479,7 @@ function writeText(textObjectList, targetContext) {
 	                    currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower.includes('font')) {
 						textFont = possibleCodeLower.replace('font', '')
-						textLineContext.font = textSize + 'px ' + textFont
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.77

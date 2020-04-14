@@ -1,6 +1,6 @@
 var versionInventionImageList = [
 ['Invention Frame', 'data/images/invention/inventionFrame.png', 0, 0, 1, 1, ['Full', 'Pinline Super (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
-['Invention Power/Toughness', 'data/images/invention/inventionPT.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']]
+['Invention Power/Toughness', 'data/images/invention/inventionPT.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
 ]
 
 var versionInventionMaskList = []
@@ -17,16 +17,16 @@ if (currentVersion != 'invention') {
 	hideFrameImages('frameClassM15')
 
 	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 187/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1263/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Rules Text', '', 135/1500, 1372/2100, 1230/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1190/1500, 1950/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Rules Text', '', 135/1500, 1375/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
+	new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 
 	artX = scaleX(60/1500)
 	artY = scaleY(60/2100)
-	artWidth = scaleX(1440/1500)
-	artHeight = scaleY(1888/2100)
+	artWidth = scaleX(1381/1500)
+	artHeight = scaleY(1876/2100)
 
 	manaCostXPath = '1316 - 78 * manaSymbolIndex'
 	manaCostYPath = '121'

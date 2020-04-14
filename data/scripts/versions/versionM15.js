@@ -8,22 +8,22 @@ var versionM15ImageList = [
 ['Artifact Frame', 'data/images/m15/m15FrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)', 'Pinline Super (m15)']],
 ['Vehicle Frame', 'data/images/m15/m15FrameV.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)', 'Pinline Super (m15)']],
 ['Land Frame', 'data/images/m15/m15FrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)', 'Pinline Super (m15)']],
-['White Power/Toughness', 'data/images/m15/m15PTW.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Blue Power/Toughness', 'data/images/m15/m15PTU.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Black Power/Toughness', 'data/images/m15/m15PTB.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Red Power/Toughness', 'data/images/m15/m15PTR.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Green Power/Toughness', 'data/images/m15/m15PTG.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Multicolored Power/Toughness', 'data/images/m15/m15PTM.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['Artifact Power/Toughness', 'data/images/m15/m15PTA.png', 1142/1500, 1856/2100, 287/1500, 157/2100, ['Full']],
-['White Legend Crown', 'data/images/m15/m15CrownW.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Blue Legend Crown', 'data/images/m15/m15CrownU.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Black Legend Crown', 'data/images/m15/m15CrownB.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Red Legend Crown', 'data/images/m15/m15CrownR.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Green Legend Crown', 'data/images/m15/m15CrownG.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Multicolored Legend Crown', 'data/images/m15/m15CrownM.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Artifact Legend Crown', 'data/images/m15/m15CrownA.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Land Legend Crown', 'data/images/m15/m15CrownL.png', 38/1500, 29/2100, 1422/1500, 341/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Legend Crown Border Cover', 'data/images/m15/m15LegendCrownBorderCover.png', 0, 0, 1, 1, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['White Power/Toughness', 'data/images/m15/m15PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Blue Power/Toughness', 'data/images/m15/m15PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Black Power/Toughness', 'data/images/m15/m15PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Red Power/Toughness', 'data/images/m15/m15PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Green Power/Toughness', 'data/images/m15/m15PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Multicolored Power/Toughness', 'data/images/m15/m15PTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Artifact Power/Toughness', 'data/images/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['White Legend Crown', 'data/images/m15/m15CrownW.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Blue Legend Crown', 'data/images/m15/m15CrownU.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Black Legend Crown', 'data/images/m15/m15CrownB.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Red Legend Crown', 'data/images/m15/m15CrownR.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Green Legend Crown', 'data/images/m15/m15CrownG.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Multicolored Legend Crown', 'data/images/m15/m15CrownM.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Artifact Legend Crown', 'data/images/m15/m15CrownA.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Land Legend Crown', 'data/images/m15/m15CrownL.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
+['Legend Crown Border Cover', 'data/images/m15/m15LegendCrownBorderCover.png', 0, 0, 1, 1, ['Full']],
 ['Midnight Frame', 'data/images/m15/m15Midnight.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']]
 ]
 
@@ -41,16 +41,16 @@ if (currentVersion != 'm15') {
 	hideFrameImages('frameClassM15')
 
 	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 187/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1263/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Rules Text', '', 135/1500, 1372/2100, 1230/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1190/1500, 1950/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Rules Text', '', 135/1500, 1375/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
+	new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 
-	artX = scaleX(111 / 1500)
-	artY = scaleY(233 / 2100)
-	artWidth = scaleX(1278 / 1500)
-	artHeight = scaleY(936 / 2100)
+	artX = scaleX(115 / 1500)
+	artY = scaleY(237 / 2100)
+	artWidth = scaleX(1270 / 1500)
+	artHeight = scaleY(929 / 2100)
 
 	manaCostXPath = '1316 - 78 * manaSymbolIndex'
 	manaCostYPath = '121'
