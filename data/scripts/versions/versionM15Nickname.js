@@ -30,7 +30,8 @@ var versionM15NicknameImageList = [
 ['Red Nickname Power/Toughness', 'data/images/m15/m15NicknamePTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 ['Green Nickname Power/Toughness', 'data/images/m15/m15NicknamePTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 ['Multicolored Nickname Power/Toughness', 'data/images/m15/m15NicknamePTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-['Artifact Nickname Power/Toughness', 'data/images/m15/m15NicknamePTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
+['Artifact Nickname Power/Toughness', 'data/images/m15/m15NicknamePTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+['Colorless Nickname Power/Toughness', 'data/images/m15/m15NicknamePTC.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
 ]
 
 var versionM15NicknameMaskList = [['Nickname Legend Crown (m15)', 'data/images/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', 'data/images/m15/m15MaskNicknameTitleStrokeless.png']]
