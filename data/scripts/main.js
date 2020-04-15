@@ -316,6 +316,7 @@ function addSelectedFrame(additionalMasks = []) {
 	var objectToInsert = cardMasterList.push(new cardImage(selectedFrameObject.name, selectedFrameObject.image.src, selectedFrameObject.x, selectedFrameObject.y, selectedFrameObject.width, selectedFrameObject.height, 1, masksToUse, false))
 	cardMaster.insertBefore(cardMasterList[objectToInsert - 1].cardMasterElement(), cardMaster.children[1])
 	drawCardObjects()
+	setTimeout(drawCardObjects, 100)
 }
 
 function cardMasterElementEdited() {
