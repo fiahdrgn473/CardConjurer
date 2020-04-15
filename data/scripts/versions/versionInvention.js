@@ -35,9 +35,9 @@ if (currentVersion != 'invention') {
 	manaCostDirection = 'reverse'
 
 	setSymbolX = [scaleX(1382/1500), 'right']
-	setSymbolY = [scaleY(1242/2100), 'center']
+	setSymbolY = [scaleY(1241/2100), 'center']
 	setSymbolWidth = scaleX(180/1500)
-	setSymbolHeight = scaleY(80/2100)
+	setSymbolHeight = scaleY(86/2100)
 
 	watermarkX = scaleX(0.5)
 	watermarkY = scaleY(1630/2100)
