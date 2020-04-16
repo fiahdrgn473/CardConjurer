@@ -35,6 +35,10 @@
 	font-family: goudymedieval;
 	src: url("data/fonts/goudy-medieval.ttf");
 }
+@font-face {
+	font-family: phyrexian;
+	src: url("data/fonts/phyrexian.ttf");
+}
 
 :root {
 	--background-color: #f5f5f5;
