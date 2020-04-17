@@ -281,10 +281,13 @@ function maskOptionClicked(event) {
 
 function loadMaskImages(listOfMasks) {
 	for (var i = 0; i < listOfMasks.length; i++) {
-		var maskImage = new Image()
-		maskImage.src = listOfMasks[i][1]
-		maskImageList.push(maskImage)
-		maskNameList.push(listOfMasks[i][0])
+		if (!maskNameList.includes(listOfMasks[i][0])) {
+			var maskImage = new Image()
+			maskImage.src = listOfMasks[i][1]
+			maskImageList.push(maskImage)
+			maskNameList.push(listOfMasks[i][0])
+		}
+		
 	}
 }
 function loadFrameImages(listOfFrames, frameClass) {
