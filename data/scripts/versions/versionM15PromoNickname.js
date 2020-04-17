@@ -7,7 +7,7 @@ var versionM15PromoNicknameImageList = [
 ['Green Nickname Frame', 'data/images/m15Promo/m15PromoNicknameFrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Border (m15)']],
 ['Multicolored Nickname Frame', 'data/images/m15Promo/m15PromoNicknameFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Border (m15)']],
 ['Artifact Nickname Frame', 'data/images/m15Promo/m15PromoNicknameFrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Border (m15)']],
-['Land Nickname Frame', 'data/images/m15/m15NicknameFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Border (m15)']],
+['Land Nickname Frame', 'data/images/m15Promo/m15PromoNicknameFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Border (m15)']],
 ['White Nickname Title', 'data/images/m15/m15NicknameTitleW.png', 74/1500, 85/2100, 1352/1500, 221/2100, ['Full', 'Nickname Legend Crown (m15)']],
 ['Blue Nickname Title', 'data/images/m15/m15NicknameTitleU.png', 74/1500, 85/2100, 1352/1500, 221/2100, ['Full', 'Nickname Legend Crown (m15)']],
 ['Black Nickname Title', 'data/images/m15/m15NicknameTitleB.png', 74/1500, 85/2100, 1352/1500, 221/2100, ['Full', 'Nickname Legend Crown (m15)']],
