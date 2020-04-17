@@ -38,16 +38,7 @@ var versionM15PromoNicknameImageList = [
 ['Red Power/Toughness', 'data/images/m15/m15PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 ['Green Power/Toughness', 'data/images/m15/m15PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 ['Multicolored Power/Toughness', 'data/images/m15/m15PTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-['Artifact Power/Toughness', 'data/images/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-['White Legend Crown', 'data/images/m15/m15CrownW.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Blue Legend Crown', 'data/images/m15/m15CrownU.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Black Legend Crown', 'data/images/m15/m15CrownB.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Red Legend Crown', 'data/images/m15/m15CrownR.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Green Legend Crown', 'data/images/m15/m15CrownG.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Multicolored Legend Crown', 'data/images/m15/m15CrownM.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Artifact Legend Crown', 'data/images/m15/m15CrownA.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Land Legend Crown', 'data/images/m15/m15CrownL.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
-['Legend Crown Border Cover', 'data/images/m15/m15LegendCrownBorderCover.png', 0, 0, 1, 1, ['Full']]
+['Artifact Power/Toughness', 'data/images/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
 ]
 
 var versionM15PromoNicknameMaskList = [['Nickname Legend Crown (m15)', 'data/images/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', 'data/images/m15/m15MaskNicknameTitleStrokeless.png'], ['Pinline (m15 Promo)', 'data/images/m15Promo/m15PromoMaskPinline.png'], ['Type (m15 Promo)', 'data/images/m15Promo/m15PromoMaskType.png'], ['Rules (m15 Promo)', 'data/images/m15Promo/m15PromoMaskRules.png']]
