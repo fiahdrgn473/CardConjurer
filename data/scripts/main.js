@@ -123,7 +123,7 @@ class cardPlaceholder {
 		var temporaryElement = document.createElement('div')
 		temporaryElement.id = 'uniqueNumber' + this.uniqueNumber
 		temporaryElement.classList.add('cardMasterElement')
-		temporaryElement.innerHTML = '<span class="handle">|||</span><div>' + this.name + '</div><span></span>'
+		temporaryElement.innerHTML = '<span class="handle">|||</span><div style="grid-column: 2 / 4">' + this.name + '</div><span></span>'
 		return temporaryElement
 	}
 }
@@ -168,7 +168,7 @@ class cardImage {
 		var temporaryElement = document.createElement('div')
 		temporaryElement.id = 'uniqueNumber' + this.uniqueNumber
 		temporaryElement.classList.add('cardMasterElement')
-		temporaryElement.innerHTML = '<span class="handle">|||</span><div>' + this.name + ' (' + this.masks.toString().replace(',', ', ') + ')</div><span class="delete" onclick="deleteCardObject(event)">X</span>'
+		temporaryElement.innerHTML = '<div class="handle">|||</div><div><img src="' + this.image.src + '"><img src="' + maskImageList[maskNameList.indexOf(this.masks[0])].src + '"></div><div>' + this.name + ' - ' + this.masks.toString().replace(',', ', ') + '</div><span class="delete" onclick="deleteCardObject(event)">X</span>'
 		temporaryElement.onclick = function() {
 			selectedCardMasterElement = parseInt(this.id.replace('uniqueNumber', ''))
 			var selectedObject = cardMasterList[selectedCardMasterElement]
@@ -279,6 +279,14 @@ function maskOptionClicked(event) {
 	}
 }
 
+function loadFramePackOptions(listOfFramePacks) {
+	var framePackHTML = ''
+	for (var i = 0; i < listOfFramePacks.length; i++) {
+		framePackHTML += '<option value="' + listOfFramePacks[i][0] + '">' + listOfFramePacks[i][1] + '</option>'
+	}
+	document.getElementById('inputFramePack').innerHTML = framePackHTML
+	loadScript('data/scripts/versions/' + document.getElementById('inputFrameVersion').value + '/regular.js')
+}
 function loadMaskImages(listOfMasks) {
 	for (var i = 0; i < listOfMasks.length; i++) {
 		if (!maskNameList.includes(listOfMasks[i][0])) {
@@ -293,14 +301,14 @@ function loadMaskImages(listOfMasks) {
 function loadFrameImages(listOfFrames, frameClass) {
 	for (var i = 0; i < listOfFrames.length; i++) {
 		frameImageList.push(new frameImage(...listOfFrames[i], frameImageList.length, frameClass))
-		if (i == 0) {
-			frameObjectToAdd = frameImageList[frameImageList.length - 1]
-			var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, ['Full'], false))
-			cardMaster.insertBefore(cardMasterList[frameToInsert - 1].cardMasterElement(), cardMaster.children[1])
-			frameObjectToAdd.image.onload = function() {
-				drawCardObjects()
-			}
-		}
+		// if (i == 0) {
+		// 	frameObjectToAdd = frameImageList[frameImageList.length - 1]
+		// 	var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, ['Full'], false))
+		// 	cardMaster.insertBefore(cardMasterList[frameToInsert - 1].cardMasterElement(), cardMaster.children[1])
+		// 	frameObjectToAdd.image.onload = function() {
+		// 		drawCardObjects()
+		// 	}
+		// }
 	}
 }
 

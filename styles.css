@@ -92,7 +92,7 @@ a:hover {
 	font: 1rem belerenbsc;
 	margin-top: 0.1rem;
     display: grid;
-    grid-template-columns: 2rem auto 2rem;
+    grid-template-columns: 2rem 4rem auto 2rem;
     align-items: center;
     background: var(--interactable-color);
     color: var(--input-font-color);
@@ -102,6 +102,11 @@ a:hover {
     cursor: move;
     padding: 0.5rem;
     text-align: center;
+}
+.cardMasterElement > div > img {
+	height: 2rem;
+	width: 2rem;
+	object-fit: contain;
 }
 .cardMasterElementMoving {
 	background: var(--interactable-selected-color);
@@ -150,8 +155,9 @@ img {
 	width: 100%;
 }
 #framePicker img {
-	max-width: 3rem;
-	max-height: 3rem;
+	width: 3rem;
+	height: 3rem;
+	object-fit: contain;
 }
 #maskPicker img {
 	max-width: 1.5rem;
