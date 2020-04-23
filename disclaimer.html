@@ -39,28 +39,31 @@
 </body>
 <footer class='footer'>
     <div>
-        Card Conjurer by Kyle Burton<br>
+        <div>Card Conjurer by Kyle Burton</div>
+        <div>
         <select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
-            <option value='lightMode'>Light Mode</option>
-            <option value='darkMode'>Dark Mode</option>
-            <option value='dayRave'>Day Rave</option>
-            <option value='nightRave'>Night Rave</option>
-            <option value='scholarMode'>Scholar Mode</option>
-        </select>
-        <script>
-            document.getElementById('inputColorPalette').value = getCookie('colorPalette')
-        </script>
+                <option value='lightMode'>Light Mode</option>
+                <option value='darkMode'>Dark Mode</option>
+                <option value='dayRave'>Day Rave</option>
+                <option value='nightRave'>Night Rave</option>
+                <option value='scholarMode'>Scholar Mode</option>
+            </select>
+          </div>
     </div>
     <div>
-        Navigation<br>
-        <a href='index.html'>Card Creator</a><br>
-        <a href='life.html'>Life Counter</a><br>
-        <a href='askscryfall.html'>Ask Scryfall</a>
+        <div>Navigation</div>
+        <div>
+            <a href='index.html'>Card Creator</a><br>
+            <a href='life.html'>Life Counter</a><br>
+            <a href='askscryfall.html'>Ask Scryfall</a>
+        </div>
     </div>
     <div>
-        Legal<br>
-        <a href='termsofuse.html'>Terms of Use</a><br>
-        <a href='disclaimer.html'>Disclaimer</a>
+        <div>Legal</div>
+        <div>
+            <a href='termsofuse.html'>Terms of Use</a><br>
+            <a href='disclaimer.html'>Disclaimer</a>
+        </div>
     </div>
     <script defer src="data/scripts/animations.js"></script>
 </footer>
