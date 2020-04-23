@@ -10,11 +10,12 @@ var currentVersion
 var cardMaster = document.getElementById('cardMaster')
 var selectedFrameImage
 var selectedMaskImage = 0
-var selectedCardMasterElement
+var selectedCardMasterElement = -1
 var selectedTextObject
 var cardTextList = new Array()
 var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "1/2", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"]
 var manaSymbolImageList = []
+var deletingCardObject = false
 manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Image(); manaSymbolImageList[index].src = 'data/images/manaSymbols/' + index + '.png'})
 date = new Date()
 var cornerCutout = new Image()
@@ -170,6 +171,9 @@ class cardImage {
 		temporaryElement.classList.add('cardMasterElement')
 		temporaryElement.innerHTML = '<div class="handle">|||</div><div><img src="' + this.image.src + '"><img src="' + maskImageList[maskNameList.indexOf(this.masks[0])].src + '"></div><div>' + this.name + ' - ' + this.masks.toString().replace(',', ', ') + '</div><span class="delete" onclick="deleteCardObject(event)">X</span>'
 		temporaryElement.onclick = function() {
+			if (document.getElementById('cardMasterElementEditor').classList.contains('hidden') && !deletingCardObject) {
+				document.getElementById('cardMasterElementEditor').classList.remove('hidden')
+			}
 			selectedCardMasterElement = parseInt(this.id.replace('uniqueNumber', ''))
 			var selectedObject = cardMasterList[selectedCardMasterElement]
 			document.getElementById('cardMasterElementEditorX').value = scaleX(selectedObject.x)
@@ -316,8 +320,18 @@ function loadFrameImages(listOfFrames, frameClass) {
 var sortable = Sortable.create(cardMaster, {animation: 150, ghostClass: 'cardMasterElementMoving', handle: '.handle'})
 
 function deleteCardObject(event) {
+	var isItPT = event.target.parentElement.children[2].innerHTML.includes('Power/Toughness')
 	cardMaster.removeChild(document.getElementById('uniqueNumber' + parseInt(event.target.parentElement.id.replace('uniqueNumber', ''))))
-	drawCardObjects()
+	selectedCardMasterElement = -1
+	if (isItPT) {
+		bottomInfoUpdated()
+	} else {
+		drawCardObjects()
+	}
+	
+	
+	deletingCardObject = true
+	document.getElementById('cardMasterElementEditor').classList.add('hidden')
 }
 
 function addSelectedFrame(additionalMasks = []) {
@@ -326,8 +340,12 @@ function addSelectedFrame(additionalMasks = []) {
 	masksToUse.unshift(maskNameList[selectedMaskImage])
 	var objectToInsert = cardMasterList.push(new cardImage(selectedFrameObject.name, selectedFrameObject.image.src, selectedFrameObject.x, selectedFrameObject.y, selectedFrameObject.width, selectedFrameObject.height, 1, masksToUse, false))
 	cardMaster.insertBefore(cardMasterList[objectToInsert - 1].cardMasterElement(), cardMaster.children[1])
-	drawCardObjects()
-	setTimeout(drawCardObjects, 100)
+	if (selectedFrameObject.name.includes('Power/Toughness')) {
+		bottomInfoUpdated()
+	} else {
+		drawCardObjects()
+	}
+	// setTimeout(drawCardObjects, 100)
 }
 
 function cardMasterElementEdited() {
