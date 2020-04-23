@@ -259,14 +259,12 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	to {opacity: 1;}
 }
 @keyframes slide-from-left {
-	0% {position: relative; left: -100vw;}
-	75% {position: relative; left: -10px;}
-	100% {position: relative; left: 0px;}
+	0% {transform: translate(-100vw, 0);}
+	100% {transform: translate(0, 0);}
 }
 @keyframes slide-from-right {
-	0% {position: relative; left: 100vw;}
-	75% {position: relative; left: 10px;}
-	100% {position: relative; left: 0px;}
+	0% {transform: translate(100vw, 0);}
+	100% {transform: translate(0, 0);}
 }
 .layerTitle {
 	text-align: center;
