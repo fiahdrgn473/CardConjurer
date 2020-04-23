@@ -419,6 +419,13 @@ canvas {
 	display: grid;
 	grid-template-columns: auto;
 	grid-row-gap: 1rem;
+	text-align: center;
+}
+.footer > div > div:first-child {
+	margin-bottom: 0.2rem;
+}
+.footer > div > div:not(:first-child) {
+	font-weight: bold;
 }
 .footer > div > select {
 	width: auto !important;
