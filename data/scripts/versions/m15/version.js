@@ -49,6 +49,9 @@ function bottomInfoM15() {
 			ptBoxShift = 36/2100
 		}
 	}
+	if (ptBoxShift == 0) {
+		Array.from(cardMaster.children).forEach(element => {if (element.children[2].innerHTML.includes('Power/Toughness')) {ptBoxShift = 36/2100}})
+	}
 	writeText(
 		[
 			{text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2026/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
