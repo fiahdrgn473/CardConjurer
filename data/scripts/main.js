@@ -454,8 +454,10 @@ function writeText(textObjectList, targetContext) {
 						fontStyle += 'italic '
 						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (possibleCodeLower == '/i') {
-						fontStyle.replace('italic ', '')
+						console.log(fontStyle)
+						fontStyle = fontStyle.replace('italic ', '')
 						textLineContext.font = fontStyle + textSize + 'px ' + textFont
+						console.log(textLineContext.font)
 					} else if (possibleCodeLower.includes('fontsize')) {
 						textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
 						textLineContext.font = fontStyle + textSize + 'px ' + textFont
