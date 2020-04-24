@@ -1,6 +1,7 @@
 if (!loadedVersions.includes('m15FloatingCrowns')) {
 	loadedVersions.push("m15FloatingCrowns")
 	loadFrameImages([
+		['Invention Legend Crown Cutout', 'data/images/black.png', 110/1500, 230/2100, 1280/1500, 30/2100, ['Full']],
 		['White Floating Legend Crown', 'data/images/m15/m15CrownFloatingW.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
 		['Blue Floating Legend Crown', 'data/images/m15/m15CrownFloatingU.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
 		['Black Floating Legend Crown', 'data/images/m15/m15CrownFloatingB.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
