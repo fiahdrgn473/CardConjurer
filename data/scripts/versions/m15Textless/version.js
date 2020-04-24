@@ -38,7 +38,7 @@ if (currentVersion != 'm15Textless') {
 	bottomInfoUpdated()
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns']])
+loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
 
 function bottomInfoM15() {
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)

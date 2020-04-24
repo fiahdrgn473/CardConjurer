@@ -173,6 +173,8 @@ class cardImage {
 		temporaryElement.onclick = function() {
 			if (document.getElementById('cardMasterElementEditor').classList.contains('hidden') && !deletingCardObject) {
 				document.getElementById('cardMasterElementEditor').classList.remove('hidden')
+			} else {
+				deletingCardObject = false
 			}
 			selectedCardMasterElement = parseInt(this.id.replace('uniqueNumber', ''))
 			var selectedObject = cardMasterList[selectedCardMasterElement]
@@ -328,8 +330,6 @@ function deleteCardObject(event) {
 	} else {
 		drawCardObjects()
 	}
-	
-	
 	deletingCardObject = true
 	document.getElementById('cardMasterElementEditor').classList.add('hidden')
 }

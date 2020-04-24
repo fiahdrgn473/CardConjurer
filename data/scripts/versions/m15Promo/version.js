@@ -39,4 +39,4 @@ if (currentVersion != 'm15Promo') {
 	bottomInfoUpdated()
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['nickname', 'Nickname (Godzilla)']])
+loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['nickname', 'Nickname (Godzilla)'], ['innerCrowns', 'Inner Crowns']])
