@@ -284,10 +284,10 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	animation: fade-in 2s;
 }
 .layer.revealedLayer.slideFromLeft > div {
-	animation: slide-from-left 1.5s;
+	animation: slide-from-left 1s;
 }
 .layer.revealedLayer.slideFromRight > div {
-	animation: slide-from-right 1.5s;
+	animation: slide-from-right 1s;
 }
 
 
