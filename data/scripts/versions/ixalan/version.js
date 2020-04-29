@@ -13,9 +13,9 @@ if (currentVersion != 'ixalan') {
 	])
 
 	artX = scaleX(60 / 1500)
-	artY = scaleY(206 / 2100)
+	artY = scaleY(229 / 2100)
 	artWidth = scaleX(1380 / 1500)
-	artHeight = scaleY(934 / 2100)
+	artHeight = scaleY(953 / 2100)
 
 	manaCostXPath = '1316 - 78 * manaSymbolIndex'
 	manaCostYPath = '109'
