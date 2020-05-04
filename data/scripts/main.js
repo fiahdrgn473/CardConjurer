@@ -305,17 +305,14 @@ function loadMaskImages(listOfMasks) {
 	}
 }
 function loadFrameImages(listOfFrames, frameClass) {
+    var firstFrameIndex = 0
 	for (var i = 0; i < listOfFrames.length; i++) {
+        if (i == 0) {
+            firstFrameIndex = frameImageList.length
+        }
 		frameImageList.push(new frameImage(...listOfFrames[i], frameImageList.length, frameClass))
-		// if (i == 0) {
-		// 	frameObjectToAdd = frameImageList[frameImageList.length - 1]
-		// 	var frameToInsert = cardMasterList.push(new cardImage(frameObjectToAdd.name, frameObjectToAdd.image.src, frameObjectToAdd.x, frameObjectToAdd.y, frameObjectToAdd.width, frameObjectToAdd.height, 1, ['Full'], false))
-		// 	cardMaster.insertBefore(cardMasterList[frameToInsert - 1].cardMasterElement(), cardMaster.children[1])
-		// 	frameObjectToAdd.image.onload = function() {
-		// 		drawCardObjects()
-		// 	}
-		// }
 	}
+    frameImageList[firstFrameIndex].framePickerElement.click()
 }
 
 //Loads up anything that uses Sortable.js
