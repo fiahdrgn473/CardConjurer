@@ -411,23 +411,26 @@ input[type='checkbox'], select, option, input[type='file'], button {
 canvas {
 	width: 100%;
 }
+footer {
+    background: var(--background-color-contrast);
+    color: var(--font-color-contrast);
+    font: 0.6rem arial;
+}
 .footer {
-	padding: 1rem;
-	background: var(--background-color-contrast);
-	color: var(--font-color-contrast);
-	font: 0.6rem arial;
+    width: 10rem;
+    padding: 1rem 0;
+    margin: 0 auto;
 	display: grid;
 	grid-template-columns: auto;
-	grid-row-gap: 1rem;
-	text-align: center;
+	grid-gap: 2rem;
 }
 .footer > div > div:first-child {
 	margin-bottom: 0.2rem;
 }
 .footer > div > div:not(:first-child) {
-	font-weight: bold;
+/*    font-weight: bold;*/
 }
-.footer > div > select {
+.footer > div > div > select {
 	width: auto !important;
 }
 @media screen and (min-width: 909pt) { /*Screen is wide enough to show the card next to the editor menu*/
@@ -454,10 +457,11 @@ canvas {
 		width: 750px;
 	}
 }
-@media screen and (min-width: 450pt) { /*Screen is wide enough for the footer to display horizontally*/
-	.footer {
-		padding: 2rem;
-		grid-template-columns: 1fr 1fr 1fr;
+@media screen and (min-width: 30rem) { /*Screen is wide enough for the footer to display horizontally*/
+    .footer {
+        width: 30rem;
+        padding: 2rem 0;
+		grid-template-columns: repeat(4, 6rem);
 	}
 }
 @media screen and (min-width: 392pt) { /*Screen is wide enough for the samples to be a constant size*/

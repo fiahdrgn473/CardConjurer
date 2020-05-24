@@ -1,5 +1,5 @@
 rootStyles.setProperty('--background-color', '#f5f5f5')
-rootStyles.setProperty('--background-color-contrast', '#e4e4e4')
+rootStyles.setProperty('--background-color-contrast', '#d0d0d0')
 rootStyles.setProperty('--interactable-color', '#dfdfdf')
 rootStyles.setProperty('--interactable-selected-color', '#cccccc')
 rootStyles.setProperty('--input-color', '#dadada')
