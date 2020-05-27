@@ -884,3 +884,13 @@ function textCodeReference() {
 
 //Must run last:
 initialize()
+
+//Redundant
+function loadScript(scriptPath){
+  var script = document.createElement('script')
+  script.setAttribute('type','text/javascript')
+  script.setAttribute('src', scriptPath)
+  if (typeof script != 'undefined') {
+    document.getElementsByTagName('head')[0].appendChild(script)
+  }
+}
