@@ -1,12 +1,13 @@
 if (!loadedVersions.includes('seventhTextless')) {
 	loadedVersions.push('seventhTextless')
+	loadMaskImages([['Pinline (seventh textless)', 'data/images/seventhTextless/seventhTextlessMaskPinline.png']])
 }
 
 if (currentVersion != 'seventhTextless') {
 	currentVersion = 'seventhTextless'
 
 	loadTextOptions([
-	new cardText('Card Title', '', 165/1500, 158/2100, 1170/1500, 88/2100, 'goudymedieval', 88/2100, 'white', ['oneLine=true','shadow=' + scaleY(5/2100)])
+	new cardText('Card Title', '', 165/1500, 158/2100, 1170/1500, 85/2100, 'goudymedieval', 85/2100, 'white', ['oneLine=true','shadow=' + scaleY(5/2100)])
 	])
 
 	artX = scaleX(174 / 1500)
