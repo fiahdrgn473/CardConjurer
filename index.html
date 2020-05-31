@@ -46,6 +46,7 @@
 							Select a frame version:<br>
 							<select id="inputFrameVersion" onchange="loadScript('data/scripts/versions/' + this.value + '/version.js')">
 				                <option value="m15">M15</option>
+				                <option value="token">Tokens</option>
 				                <option value="m15Promo">M15 Promo</option>
 				                <option value="m15Textless">Textless Kaladesh Inventions</option>
 				                <option value="m15Planeswalker">M15 Planeswalker</option>
@@ -172,7 +173,7 @@
 			        </div>
 				</div>
 				<div id='importTab' class='hidden'>
-					Type in a card name to import it! (Only works for regular cards)
+					Type in a card name to import it! (Doesn't work with doublefaced or split cards)
 			        <input type="text" class="input text" id="inputCardNameTextImport" onchange="inputCardNameTextImport(this.value)" placeholder="Via Card Name">
 			        Select which card to import:
 			        <input type="number" class="input number" id="inputCardNameNumberTextImport" onchange="inputCardNameNumberTextImport(this.value)" value="1" min="1" max="1">
