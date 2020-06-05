@@ -299,8 +299,15 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	margin-bottom: 2rem;
 }
 .fiveSampleCards > div > img {
-	position: relative;
-	width: 100%;
+    position: relative;
+    width: 100%;
+}
+.fiveSampleCards > div {
+    transition: transform 0.5s;
+}
+.fiveSampleCards > div:hover {
+    z-index: 100;
+    transform: translate(0, -1em);
 }
 .layer.revealedLayer > div > div > div > .sample1 {
 	animation: sample-one 2s;
