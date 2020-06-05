@@ -364,6 +364,10 @@ input[type='checkbox'], select, option, input[type='file'], button {
     word-break: break-word;
 }
 
+.cornered {
+    border-radius: 0.5rem;
+}
+
 .justify {
 	text-align: justify;
 }
