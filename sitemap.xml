@@ -9,43 +9,33 @@
 
 <url>
   <loc>https://cardconjurer.com/</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/old/index.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://cardconjurer.com/index.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cardconjurer.com/life.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cardconjurer.com/askscryfall.html</loc>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cardconjurer.com/termsofuse.html</loc>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cardconjurer.com/disclaimer.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
+  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
   <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cardconjurer.com/termsOfUse.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cardconjurer.com/old/symbol.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cardconjurer.com/old/life.html</loc>
-  <lastmod>2019-11-04T01:39:55+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 
 
