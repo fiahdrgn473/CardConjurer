@@ -414,7 +414,7 @@ function writeText(textObjectList, targetContext) {
 		textParagraphCanvas.height = scaleY(textObjectList[i].height) + 2 * textCanvasBuffer
 		textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
-		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = ''
+		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', manaCost = false, canWriteText = true
 		textObjectList[i].otherParameters.forEach(item => eval(item))
 		textLineContext.strokeStyle = outline
 		textLineContext.lineWidth = outlineThickness
@@ -425,6 +425,10 @@ function writeText(textObjectList, targetContext) {
 		var textY = 0
 		var currentLineWidth = 0
 		var splitText = textObjectList[i].text.replace(/\n/g, '{line}').replace(/{/g, 'fh48a3h2{').replace(/}/g, '}fh48a3h2').replace(/ /g, 'fh48a3h2 fh48a3h2').split('fh48a3h2')
+		if (manaCost) {
+			splitText = '{' + textObjectList[i].text.replace(/\n/g, '').replace(/{/g, ' ').replace(/}/g, ' ').replace(/ /g, '}fh48a3h2{right4}fh48a3h2{') + '}'
+			splitText = splitText.split('fh48a3h2')
+		}
 		splitText.push('')
 		innerloop:
 		for (var n = 0; n < splitText.length; n++) {
@@ -510,6 +514,12 @@ function writeText(textObjectList, targetContext) {
 					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.77
+						if (manaCost) {
+							var shadowOffset = eval(manaCostShadowOffset)
+							textLineContext.beginPath()
+							textLineContext.arc(textX + manaSymbolDiameter / 2 + shadowOffset[0], textCanvasBuffer + textSize - manaSymbolDiameter * 0.45 + shadowOffset[1], manaSymbolDiameter / 2, 0, 2 * Math.PI)
+							textLineContext.fill()
+						}
 						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split('/').join(''))], textX, textCanvasBuffer + textSize - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
 						currentLineWidth += manaSymbolDiameter * 1.02
 						textX += manaSymbolDiameter * 1.02
@@ -518,6 +528,9 @@ function writeText(textObjectList, targetContext) {
 					}
 				} else {
 					wordToWrite = splitText[n]
+				}
+				if (!canWriteText) {
+					wordToWrite = ''
 				}
 				if (wordToWrite != '' || n == splitText.length - 1 || finishLine) {
 					var currentWordWidth = textLineContext.measureText(wordToWrite).width

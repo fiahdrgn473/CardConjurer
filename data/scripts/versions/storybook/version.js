@@ -2,17 +2,21 @@
 if (!loadedVersions.includes('storybook')) {
 	loadedVersions.push('storybook')
 	// loadMaskImages([['Storybook Right Half', 'data/images/storybook/maskStorybookRightHalf.png']])
+	//special additional mana cost, title, and type
 }
 
 if (currentVersion != 'storybook') {
 	currentVersion = 'storybook'
 
 	loadTextOptions([
-		new cardText('Card Title', '', 222/1500, 187/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-		new cardText('Card Type', '', 345/1500, 1268/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-		new cardText('Rules Text', '', 124/1500, 1348/2100, 600/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-		new cardText('Rules Text (Right)', '', 780/1500, 1348/2100, 600/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-		new cardText('Power/Toughness', '', 1190/1500, 1950/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+		new cardText('Card Title', '', 222/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+		new cardText('Card Type', '', 345/1500, 1269/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+		new cardText('Rules Text', '', 125/1500, 1500/2100, 597/1500, 500/2100, 'mplantin', 74/2100, 'black'),
+		new cardText('Rules Text (Right)', '', 796/1500, 1370/2100, 570/1500, 600/2100, 'mplantin', 74/2100, 'black'),
+		new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"']),
+		new cardText('Adventure Title', '', 122/1500, 1386/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
+		new cardText('Adventure Type', '', 122/1500, 1480/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
+		new cardText('Adventure Mana Cost', '', 122/1500, 1394/2100, 600/1500, 82/2100, 'belerenb', 82/2100, 'black', ['oneLine=true','manaCost=true','canWriteText=false','textAlign="right"'])
 	])
 
 	artX = scaleX(50/1500)
@@ -51,11 +55,14 @@ function bottomInfoStorybook() {
 			ptBoxShift = 36/2100
 		}
 	}
+	if (ptBoxShift == 0) {
+		Array.from(cardMaster.children).forEach(element => {if (element.children[2].innerHTML.includes('Power/Toughness')) {ptBoxShift = 36/2100}})
+	}
 	writeText(
 		[
-			{text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2036/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 2000/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 2000/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2034/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 1998/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 1998/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 			{text: 'NOT FOR SALE', x: 97/1500, y: 2066/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 			{text: '{right}CardConjurer.com', x: 97/1500, y: 2030/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']}
 		], bottomInfoContext)
