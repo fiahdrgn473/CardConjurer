@@ -72,7 +72,11 @@ cardArt.onload = function() {
 }
 function setSymbolFromGatherer() {
 	if (document.getElementById('inputSetCode').value.toLowerCase() == 'cc') {
-		setSymbol.src = 'http://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+		var newSetSymbolSource = 'http://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+		if (document.getElementById('inputSetRarity').value == '') {
+			newSetSymbolSource += 'c'
+		}
+		setSymbol.src = newSetSymbolSource + '.png'
 	} else {
 		autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
 	}
