@@ -72,7 +72,7 @@ cardArt.onload = function() {
 }
 function setSymbolFromGatherer() {
 	if (document.getElementById('inputSetCode').value.toLowerCase() == 'cc') {
-		var newSetSymbolSource = 'http://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+		var newSetSymbolSource = 'https://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
 		if (document.getElementById('inputSetRarity').value == '') {
 			newSetSymbolSource += 'c'
 		}
