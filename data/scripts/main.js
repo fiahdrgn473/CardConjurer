@@ -70,6 +70,13 @@ cardArt.onload = function() {
     document.getElementById('inputCardArtY').value = artY
 	cardArtUpdated()
 }
+function setSymbolFromGatherer() {
+	if (document.getElementById('inputSetCode').value.toLowerCase() == 'cc') {
+		setSymbol.src = 'http://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+	} else {
+		autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
+	}
+}
 setSymbol.onload = function() {
 	if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
 		setSymbolDrawWidth = setSymbolWidth
@@ -680,6 +687,8 @@ function manaCostUpdated() {
 	drawCardObjects()
 }
 
+
+
 function watermarkUpdated() {
 	if (document.getElementById('inputWatermarkPrimary').value != 'none') {
 		watermarkContext.clearRect(0, 0, cardWidth, cardHeight)
@@ -767,7 +776,8 @@ function inputCardNameNumberTextImport(index) {
     document.getElementById('inputCardArtName').value = beforeAfter(importCardTextResponse, '"name":"', '",')
     document.getElementById('inputSetCode').value = beforeAfter(importCardTextResponse, '"set":"', '",')
     document.getElementById('inputSetRarity').value = beforeAfter(importCardTextResponse, '"rarity":"', '",')[0]
-    autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
+    setSymbolFromGatherer()
+    // autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
     inputCardArtName(beforeAfter(importCardTextResponse, '"name":"', '",'))
     manaCostUpdated()
     drawCardText()

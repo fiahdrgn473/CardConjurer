@@ -135,8 +135,8 @@
 					<div class="autoGrid">
 				        <input type="file" accept="image/*" onchange="uploadImage(event, setSymbol)" placeholder="Via File Upload">
 				        <input type="text" placeholder="Via URL" onchange="setSymbol.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
-				        <input type="text" id="inputSetCode" placeholder="Via Set Code" onchange="autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)">
-				        <input type="text" id="inputSetRarity" placeholder="Rarity" onchange="autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + this.value)">
+				        <input type="text" id="inputSetCode" placeholder="Via Set Code" onchange="setSymbolFromGatherer()">
+				        <input type="text" id="inputSetRarity" placeholder="Rarity" onchange="setSymbolFromGatherer()">
 				        <!-- <button class="button" onclick="randomSet()">Random</button> -->
 				    </div>
 				</div>
