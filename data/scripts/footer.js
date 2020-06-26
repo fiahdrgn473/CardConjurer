@@ -25,7 +25,8 @@ document.getElementById('footer').innerHTML = `
         <div>Navigation</div>
         <hr>
         <div>
-            <a href='index.html'>Card Creator</a><br>
+            <a href='index.html'>Home</a><br>
+            <a href='creator.html'>Card Creator</a><br>
             <a href='life.html'>Life Counter</a><br>
             <a href='askscryfall.html'>Ask Scryfall</a><br>
             <a href='phyrexian.html'>Phyrexian Text</a>

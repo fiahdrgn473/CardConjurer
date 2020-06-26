@@ -284,10 +284,10 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	animation: fade-in 2s;
 }
 .layer.revealedLayer.slideFromLeft > div {
-	animation: slide-from-left 1s;
+	animation: slide-from-left 0.8s;
 }
 .layer.revealedLayer.slideFromRight > div {
-	animation: slide-from-right 1s;
+	animation: slide-from-right 0.8s;
 }
 
 
@@ -305,10 +305,10 @@ input[type='checkbox'], select, option, input[type='file'], button {
 .fiveSampleCards > div {
     transition: transform 0.5s;
 }
-.fiveSampleCards > div:hover {
+/*.fiveSampleCards > div:hover {
     z-index: 100;
     transform: translate(0, -1em);
-}
+}*/
 .layer.revealedLayer > div > div > div > .sample1 {
 	animation: sample-one 2s;
 	transform: rotate(-10deg) translate(16%, 15%);
@@ -425,7 +425,7 @@ canvas {
 footer {
     background: var(--background-color-contrast);
     color: var(--font-color-contrast);
-    font: 0.6rem arial;
+    font: 1rem arial;
 }
 .footer {
     width: 10rem;
@@ -468,7 +468,7 @@ footer {
 		width: 750px;
 	}
 }
-@media screen and (min-width: 30rem) { /*Screen is wide enough for the footer to display horizontally*/
+@media screen and (min-width: 50rem) { /*Screen is wide enough for the footer to display horizontally*/
     .footer {
         width: 30rem;
         padding: 2rem 0;
@@ -483,5 +483,8 @@ footer {
 @media screen and (min-width: 300pt) { /*Screen is wide enough for larger text*/
 	html {
 		font: 20pt georgia;
+	}
+	footer {
+	    font: 0.6rem arial;
 	}
 }
