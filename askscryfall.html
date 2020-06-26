@@ -39,58 +39,20 @@
             </div>
         </div>
         <div class="layer darkLayer slideFromLeft">
-            <div class="paragraph indent">
-                Ask Scryfall is a replacement for AskUrza.com that periodically compiles all planeswalker abilities (using Scryfall) and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Scryfall, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
+            <div class="indent">
+                Ask Scryfall is a replacement for AskUrza.com that periodically compiles all planeswalker abilities (using Scryfall) and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun.
             </div>
         </div>
         <div class="layer slideFromRight">
-            <div class="paragraph indent">
-                I hope you have as much fun playing Urza this way as I do!
+            <div class="indent">
+                To use Ask Scryfall, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
             </div>
         </div>
     </div>
     <script defer src="data/site/other/askScryfall/askScryfall.js"></script>
 </body>
-<footer>
-    <div class='footer'>
-        <div>
-            <div>Theme</div>
-            <hr>
-            <div>
-                <select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
-                    <option value='lightMode'>Light Mode</option>
-                    <option value='darkMode'>Dark Mode</option>
-                    <option value='dayRave'>Day Rave</option>
-                    <option value='nightRave'>Night Rave</option>
-                    <option value='scholarMode'>Scholar Mode</option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <div>Navigation</div>
-            <hr>
-            <div>
-                <a href='index.html'>Card Creator</a><br>
-                <a href='life.html'>Life Counter</a><br>
-                <a href='askscryfall.html'>Ask Scryfall</a>
-            </div>
-        </div>
-        <div>
-            <div>Legal</div>
-            <hr>
-            <div>
-                <a href='termsofuse.html'>Terms of Use</a><br>
-                <a href='disclaimer.html'>Disclaimer</a>
-            </div>
-        </div>
-        <div>
-            <div>Contact</div>
-            <hr>
-            <div>
-                <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>
-            </div>
-        </div>
-        <script defer src="data/scripts/animations.js"></script>
-    </div>
+<footer id='footer'>
+    <script async src='data/scripts/footer.js'></script>
+    <script defer src="data/scripts/animations.js"></script>
 </footer>
 <html>

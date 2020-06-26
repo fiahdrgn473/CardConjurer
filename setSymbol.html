@@ -1,22 +1,26 @@
 <!DOCTYPE html5>
 <html>
 <head>
-	<title>Card Conjurer</title>
-	<!-- Other things -->
-	<link rel="stylesheet" href="data/site/styles.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async src="data/scripts/cookies.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="data/site/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="data/site/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="data/site/favicons/favicon-16x16.png">
+    <link rel="manifest" href="data/site/favicons/site.webmanifest">
+</head>
+<body>
     <style>
         canvas {
             width: 500px;
             height: 500px;
         }
     </style>
-</head>
-<body>
+    <title>CC - Set Symbol</title>
 	<div class="mainDiv">
 		<div class="pageTitle">
-			Card Conjurer
+			Set Symbol Maker
 		</div>
 		<div class="mainGrid">
 			<div class="canvasContainer">
@@ -76,55 +80,14 @@
 		<div class="hidden"></div>
         <div class="layer">
             <div class="title">Have Any Questions?</div>
-            <div class="paragraph indent">
+            <div class="indent">
                 If you have any questions please don't hesitate to email me at <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>. Even if you made a cool card and want to share, I'd love to see it!
             </div>
         </div>
 	</div>
 </body>
-<footer>
-    <div class='footer'>
-        <div>
-            <div>Theme</div>
-            <hr>
-            <div>
-                <select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
-                    <option value='lightMode'>Light Mode</option>
-                    <option value='darkMode'>Dark Mode</option>
-                    <option value='dayRave'>Day Rave</option>
-                    <option value='nightRave'>Night Rave</option>
-                    <option value='scholarMode'>Scholar Mode</option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <div>Navigation</div>
-            <hr>
-            <div>
-                <a href='index.html'>Card Creator</a><br>
-                <a href='life.html'>Life Counter</a><br>
-                <a href='askscryfall.html'>Ask Scryfall</a>
-            </div>
-        </div>
-        <div>
-            <div>Legal</div>
-            <hr>
-            <div>
-                <a href='termsofuse.html'>Terms of Use</a><br>
-                <a href='disclaimer.html'>Disclaimer</a>
-            </div>
-        </div>
-        <div>
-            <div>Contact</div>
-            <hr>
-            <div>
-                <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>
-            </div>
-        </div>
-        <script defer src="data/scripts/animations.js"></script>
-    </div>
+<footer id='footer'>
+    <script async src='data/scripts/footer.js'></script>
+    <script defer src="data/scripts/animations.js"></script>
 </footer>
-<script async src="data/scripts/setCodeList.js"></script>
-<script defer src="data/site/other/setSymbol/setSymbol.js"></script>
-<script defer src="data/scripts/colors.js"></script>
 <html>
