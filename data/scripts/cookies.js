@@ -5,6 +5,7 @@ function setCookie(cookieName, cookieValue, cookieTime = (5 * 365 * 24 * 60 * 60
   	tempDate.setTime(tempDate.getTime() + cookieTime)
   	document.cookie = cookieName + '=' + cookieValue + ';expires=' + tempDate.toUTCString() + ';path=/'
 }
+
 function getCookie(cookieName) {
   	var name = cookieName + '='
   	var cookieArray = document.cookie.split(';')
@@ -19,6 +20,7 @@ function getCookie(cookieName) {
   	}
   	return ''
 }
+
 function checkCookies() {
 	if (getCookie('colorPalette') != undefined) {
 		loadScript('data/scripts/palettes/' + getCookie('colorPalette') + '.js')
