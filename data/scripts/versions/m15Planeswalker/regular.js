@@ -9,7 +9,8 @@ if (!loadedVersions.includes('planeswalkerRegular')) {
         ['Multicolored Frame', 'data/images/planeswalker/planeswalkerFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
         ['Artifact Frame', 'data/images/planeswalker/planeswalkerFrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
         ['Colorless Frame', 'data/images/planeswalker/planeswalkerFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
-        ['Dark Twins', 'data/images/planeswalker/planeswalkerDarkTwins.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']]
+        ['Dark Twins', 'data/images/planeswalker/planeswalkerDarkTwins.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
+        ['Holo Stamp', 'data/images/stamp.png', 338/744, 951/1039, 70/744, 36/1039, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']]
     ], 'frameClassPlaneswalkerRegular')
 }
 
