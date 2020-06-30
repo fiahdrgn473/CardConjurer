@@ -392,8 +392,24 @@ input[type='checkbox'], select, option, input[type='file'], button {
 }
 
 
-.testClass {
-	border: 1px solid red;
+.notificationContainer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: black;
+}
+.notification {
+	display: grid;
+	grid-template-columns: auto 1rem;
+	grid-gap: 1rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	background: green;
+}
+.notification > .deleteNotification {
+	text-align: center;
+	cursor: pointer;
 }
 
 

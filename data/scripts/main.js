@@ -897,15 +897,14 @@ function textCodeReference() {
 	textCodeReferenceArray.forEach(item => document.getElementById('textCodeReference').innerHTML += '<div>' + item[0] + '</div><div>' + item[1] + '</div>')
 }
 
-
-
-
-
-
-
-
-
-
+function notify(message, color) {
+	document.getElementsByClassName('notificationContainer')[0].innerHTML += `
+	<div class='notification' style='background-color: ` + color + `'>
+		<div>` + message + `</div>
+		<div class='deleteNotification' onclick='this.parentElement.parentNode.removeChild(this.parentElement)'>X</div>
+	</div>
+	`
+}//notify('MessageGoesHere', '#aaffaadd')
 
 //Must run last:
 initialize()
