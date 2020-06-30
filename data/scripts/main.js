@@ -13,13 +13,22 @@ var selectedMaskImage = 0
 var selectedCardMasterElement = -1
 var selectedTextObject
 var cardTextList = new Array()
-var manaSymbolCodeList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"]
+var manaSymbolCodeList = []
 var manaSymbolImageList = []
 var deletingCardObject = false
-manaSymbolCodeList.forEach((item, index) => {manaSymbolImageList[index] = new Image(); manaSymbolImageList[index].src = 'data/images/manaSymbols/' + index + '.png'})
 date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = 'data/images/cornerCutout.png'
+
+function addToManaSymbolList(folderPath, newManaSymbolList) {
+	for (var i = 0; i < newManaSymbolList.length; i ++) {
+		manaSymbolCodeList.push(newManaSymbolList[i])
+		manaSymbolImageList.push(new Image())
+		manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+	}
+}
+
+addToManaSymbolList('data/images/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -626,7 +635,7 @@ function inputCardArtName(cardArtNameInput) {
 			}
 			inputCardArtNameNumber(1)
 		} else if (this.readyState == 4 && this.status == 404) {
-			alert("Sorry, but we can't seem to find any art for " + cardArtNameInput)
+			notify("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'", '#ffffaae0')
 		}
 	}
 	xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D' + cardArtNameInput.replace(/ /g, '_'), true)
@@ -743,7 +752,7 @@ function inputCardNameTextImport(cardName) {
             document.getElementById('inputCardNameNumberTextImport').value = 1
         } else if (this.readyState == 4 && this.status == 404) {
             savedImportResponse = ''
-            alert("Sorry, but we can't seem to find any card named '" + cardName + "'")
+            notify("Sorry, but we can't seem to find any card named '" + cardName + "'", '#ffffaae0')
         }
     }
     xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&q=name%3D' + cardName.replace(/ /g, '+'), true)
@@ -818,11 +827,11 @@ function downloadCardImage(linkElement) {
 		}
 	} else {
 		event.preventDefault()
-		alert("You must properly credit an artist before downloading!")
+		notify("You must properly credit an artist before downloading!", '#ffaaaae0')
 	}
 	var cardImageData = mainCanvas.toDataURL()
 	if (cardImageData == undefined) {
-		alert("Sorry, but it seems that you cannot download your card. Please try using a different browser/device.")
+		notify("Sorry, but it seems that you cannot download your card. Please try using a different browser/device.", '#ffffaae0')
 	}
 	linkElement.href = cardImageData
 }

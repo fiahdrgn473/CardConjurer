@@ -18,6 +18,8 @@ if (!loadedVersions.includes('m15M21Showcase')) {
 		['Green Power/Toughness', 'data/images/m15/m21/m15M21PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Holo Stamp', 'data/images/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']]
 	], 'frameClassM15M21Showcase')
+	// addToManaSymbolList('data/images/manaSymbols/future/', ["f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17", "f18", "f19", "f20", "fw", "fu", "fb", "fr", "fg", "fwu", "fwb", "fub", "fur", "fbr", "fbg", "frg", "frw", "fgw", "fgu", "fx"])
+	// notify('The Future Shifted frame uses special mana symbols for 1-20, WUBRG, all hybrid mana symbols, and X. If you would like to use these, just add an "f" at the beginning of each symbol. For example, "2 g g" would become "f2 fg fg".', '#aaffaae0')
 }
 
 if (currentVersion != 'm15M21Showcase') {
