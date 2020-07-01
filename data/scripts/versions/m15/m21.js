@@ -18,8 +18,8 @@ if (!loadedVersions.includes('m15M21Showcase')) {
 		['Green Power/Toughness', 'data/images/m15/m21/m15M21PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Holo Stamp', 'data/images/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']]
 	], 'frameClassM15M21Showcase')
-	// addToManaSymbolList('data/images/manaSymbols/future/', ["f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17", "f18", "f19", "f20", "fw", "fu", "fb", "fr", "fg", "fwu", "fwb", "fub", "fur", "fbr", "fbg", "frg", "frw", "fgw", "fgu", "fx"])
-	// notify('The Future Shifted frame uses special mana symbols for 1-20, WUBRG, all hybrid mana symbols, and X. If you would like to use these, just add an "f" at the beginning of each symbol. For example, "2 g g" would become "f2 fg fg".', '#aaffaae0')
+	addToManaSymbolList('data/images/manaSymbols/m21/', ["m210", "m211", "m212", "m213", "m214", "m215", "m216", "m217", "m218", "m219", "m21w", "m21u", "m21b", "m21r", "m21g", "m21x"])
+	notify('The M21 Showcase frame uses special mana symbols for 1-9, WUBRG, and X. If you would like to use these, just add an "m21" at the beginning of each symbol. For example, "2 g g" would become "m212 m21g m21g".', '#aaffaae0')
 }
 
 if (currentVersion != 'm15M21Showcase') {
@@ -31,6 +31,12 @@ if (currentVersion != 'm15M21Showcase') {
 	new cardText('Rules Text', '', 145/1500, 1370/2100, 1210/1500, 625/2100, 'mplantin', 74/2100, 'black'),
 	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'white', ['oneLine=true,textAlign="center"'])
 	])
+
+	manaCostXPath = '1316 - 78 * manaSymbolIndex'
+	manaCostYPath = '121'
+	manaCostDiameter = '74'
+	manaCostShadowOffset = 'none'
+	manaCostDirection = 'reverse'
 }
 
 hideFrameImages('frameClassM15M21Showcase')

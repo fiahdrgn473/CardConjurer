@@ -534,7 +534,7 @@ function writeText(textObjectList, targetContext) {
 					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.77
-						if (manaCost) {
+						if (manaCost && manaCostShadowOffset != 'none') {
 							var shadowOffset = eval(manaCostShadowOffset)
 							textLineContext.beginPath()
 							textLineContext.arc(textX + manaSymbolDiameter / 2 + shadowOffset[0], textCanvasBuffer + textSize - manaSymbolDiameter * 0.45 + shadowOffset[1], manaSymbolDiameter / 2, 0, 2 * Math.PI)
@@ -690,10 +690,12 @@ function manaCostUpdated() {
 			var x = eval(manaCostXPath)
 			var y = eval(manaCostYPath)
 			var diameter = eval(manaCostDiameter)
-			var shadowOffset = eval(manaCostShadowOffset)
-			manaCostContext.beginPath()
-			manaCostContext.arc(x + diameter / 2 + shadowOffset[0], y + diameter / 2 + shadowOffset[1], diameter / 2, 0, 2 * Math.PI)
-			manaCostContext.fill()
+			if (manaCostShadowOffset != 'none') {
+				var shadowOffset = eval(manaCostShadowOffset)
+				manaCostContext.beginPath()
+				manaCostContext.arc(x + diameter / 2 + shadowOffset[0], y + diameter / 2 + shadowOffset[1], diameter / 2, 0, 2 * Math.PI)
+				manaCostContext.fill()
+			}
 			manaCostContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i])], x, y, diameter, diameter)
 		}
 	}
