@@ -33,7 +33,7 @@ if (currentVersion != 'm15M21Showcase') {
 	])
 
 	manaCostXPath = '1316 - 78 * manaSymbolIndex'
-	manaCostYPath = '121'
+	manaCostYPath = '122'
 	manaCostDiameter = '74'
 	manaCostShadowOffset = 'none'
 	manaCostDirection = 'reverse'
