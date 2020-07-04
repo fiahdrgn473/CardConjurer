@@ -440,7 +440,8 @@ function writeText(textObjectList, targetContext) {
 		textLineContext.lineWidth = outlineThickness
 		textFont = textObjectList[i].font
 		textLineContext.font = fontStyle + textSize + 'px ' + textFont
-		textLineContext.fillStyle = textObjectList[i].fontColor
+		var currentFontColor = textObjectList[i].fontColor
+		textLineContext.fillStyle = currentFontColor
 		var textX = textCanvasBuffer
 		var textY = 0
 		var currentLineWidth = 0
@@ -513,7 +514,8 @@ function writeText(textObjectList, targetContext) {
 	                } else if (possibleCodeLower.includes('shadow')) {
 	                    shadow = parseInt(possibleCodeLower.replace('shadow', ''))
 	                } else if (possibleCodeLower.includes('fontcolor')) {
-	                	textLineContext.fillStyle = possibleCodeLower.slice(9, possibleCodeLower.length)
+	                	currentFontColor = possibleCodeLower.slice(9, possibleCodeLower.length)
+	                	textLineContext.fillStyle = currentFontColor
 	                } else if (possibleCodeLower == 'artistbrush') {
 	                	var artistBrushWidth = textSize * 1.2
 						textLineContext.drawImage(manaSymbolImageList[62], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
@@ -583,7 +585,7 @@ function writeText(textObjectList, targetContext) {
 					if (shadow > 0) {
 	                    textLineContext.fillStyle = 'black'
 	                    textLineContext.fillText(wordToWrite, textX + shadow, textCanvasBuffer + textSize + shadow)
-	                    textLineContext.fillStyle = textObjectList[i].fontColor
+	                    textLineContext.fillStyle = currentFontColor
 					}
 					if (outline != undefined) {
 						textLineContext.strokeText(wordToWrite, textX, textCanvasBuffer + textSize)
