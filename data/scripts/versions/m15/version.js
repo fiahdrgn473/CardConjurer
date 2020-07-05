@@ -39,7 +39,7 @@ if (currentVersion != 'm15') {
 	bottomInfoUpdated()
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['legendCrowns', 'Legend Crowns'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['invention', 'Kaladesh Invention'], ['inventionClassic', 'Simple Invention'], ['floatingCrowns', 'Floating Crowns'], ['darkPT', 'Dark Power/Toughness']])
+loadFramePackOptions([['regular', 'Regular'], ['legendCrowns', 'Legend Crowns'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['invention', 'Kaladesh Invention'], ['inventionClassic', 'Simple Invention'], ['devoid', 'Devoid'], ['floatingCrowns', 'Floating Crowns'], ['darkPT', 'Dark Power/Toughness']])
 
 function bottomInfoM15() {
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
