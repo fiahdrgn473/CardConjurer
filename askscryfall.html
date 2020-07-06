@@ -1,6 +1,7 @@
 <!DOCTYPE html5>
 <html>
 <head>
+    <script data-ad-client="ca-pub-8226515140557560" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="data/scripts/cookies.js"></script>
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
@@ -9,11 +10,73 @@
     <link rel="icon" type="image/png" sizes="32x32" href="data/site/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="data/site/favicons/favicon-16x16.png">
     <link rel="manifest" href="data/site/favicons/site.webmanifest">
-    <script data-ad-client="ca-pub-8226515140557560" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
     <title>CC - Ask Scryfall</title>
-    <link rel="stylesheet" href="askScryfallStyles.css">
+    <style>
+        .askScryfallGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 90pt auto;
+            align-items: center;
+            justify-items: center;
+        }
+        .urzaCard {
+            width: 90vw;
+            text-align: center;
+            grid-column: 1 / span 3;
+        }
+        .urzaCard > img {
+            width: 100%;
+            height: auto;
+        }
+        .askScryfallGrid > * {
+            /*border: 1px solid red;*/
+        }
+        .askScryfallButton {
+            height: auto;
+            width: 22vw;
+            transition: 0.25s;
+        }
+        #askScryfallResult {
+            grid-column: 1 / span 3;
+            padding: 1rem;
+            margin: 0.5rem;
+            background: var(--background-color-contrast);
+            color: var(--font-color-contrast);
+            border-radius: 1rem;
+            font: 1.5rem belerenb;
+        }
+        @media screen and (min-width: 864pt) {
+            .askScryfallGrid {
+                grid-template-columns: calc(360pt) 1fr 1fr 1fr !important;
+                grid-template-rows: 92pt auto !important;
+            }
+            .urzaCard {
+                grid-column: 1;
+                grid-row: 1 / span 2 !important;
+            }
+            #askScryfallResult {
+                grid-column: 2 / span 3 !important;
+            }
+        }
+        @media screen and (min-width: 380pt) {
+            .urzaCard {
+                width: 360pt;
+            }
+            .askScryfallButton {
+                height: auto;
+                width: 100pt;
+                transition: 0.25s;
+            }
+            .askScryfallButton:hover {
+                width: 110pt;
+            }
+            .askScryfallButton:active {
+                width: 120pt !important;
+            }
+        }
+    </style>
     <div>
         <div class="title darkLayer">
             Ask Scryfall
