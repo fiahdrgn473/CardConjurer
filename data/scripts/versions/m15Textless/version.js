@@ -39,21 +39,3 @@ if (currentVersion != 'm15Textless') {
 }
 
 loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
-
-function bottomInfoM15() {
-	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
-	var ptBoxShift = 0
-	for (var i = 0; i < cardTextList.length; i++) {
-		if (cardTextList[i].name == 'Power/Toughness' && cardTextList[i].text != '') {
-			ptBoxShift = 36/2100
-		}
-	}
-	writeText(
-		[
-			{text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2026/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 1990/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 1990/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: 'NOT FOR SALE', x: 97/1500, y: 2058/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '{right}CardConjurer.com', x: 97/1500, y: 2022/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']}
-		], bottomInfoContext)
-}
