@@ -24,7 +24,7 @@ function getCookie(cookieName) {
 function checkCookies() {
   var colorPaletteCookie = getCookie('colorPalette')
 	if (colorPaletteCookie != undefined && colorPaletteCookie != '') {
-		loadScript('data/scripts/palettes/' + colorPaletteCookie + '.js')
+		loadScript('/data/scripts/palettes/' + colorPaletteCookie + '.js')
         setTimeout(function() {
             document.getElementById('inputColorPalette').value = getCookie('colorPalette')
         }, 1000)
