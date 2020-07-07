@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('m15Promo')) {
 	loadedVersions.push("m15Promo")
-	loadMaskImages([['Nickname Legend Crown (m15)', 'data/images/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', 'data/images/m15/m15MaskNicknameTitleStrokeless.png'], ['Pinline (m15 Promo)', 'data/images/m15Promo/m15PromoMaskPinline.png'], ['Titleless (m15 Promo)', 'data/images/m15Promo/m15PromoMaskTitleless.png'], ['Type (m15 Promo)', 'data/images/m15Promo/m15PromoMaskType.png'], ['Rules (m15 Promo)', 'data/images/m15Promo/m15PromoMaskRules.png']])
+	loadMaskImages([['Nickname Legend Crown (m15)', '/data/images/cardImages/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', '/data/images/cardImages/m15/m15MaskNicknameTitleStrokeless.png'], ['Pinline (m15 Promo)', '/data/images/cardImages/m15Promo/m15PromoMaskPinline.png'], ['Titleless (m15 Promo)', '/data/images/cardImages/m15Promo/m15PromoMaskTitleless.png'], ['Type (m15 Promo)', '/data/images/cardImages/m15Promo/m15PromoMaskType.png'], ['Rules (m15 Promo)', '/data/images/cardImages/m15Promo/m15PromoMaskRules.png']])
 }
 
 if (currentVersion != 'm15Promo') {

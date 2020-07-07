@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('m15Textless')) {
 	loadedVersions.push('m15Textless')
-	loadMaskImages([['Border (m15 Textless)', 'data/images/m15Textless/m15TextlessMaskBorder.png'], ['Pinline (m15 Textless)', 'data/images/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', 'data/images/m15Textless/m15TextlessMaskType.png'], ['Invention (m15 Textless)', 'data/images/m15Textless/m15TextlessMaskInvention.png']])
+	loadMaskImages([['Border (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskBorder.png'], ['Pinline (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Invention (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskInvention.png']])
 }
 
 if (currentVersion != 'm15Textless') {

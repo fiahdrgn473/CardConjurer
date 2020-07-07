@@ -1,24 +1,24 @@
 if (!loadedVersions.includes('m15M21Showcase')) {
 	loadedVersions.push("m15M21Showcase")
 	loadFrameImages([
-		['White M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameW.png', 0, 0, 1, 1, ['Full']],
-		['Blue M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameU.png', 0, 0, 1, 1, ['Full']],
-		['Black M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameB.png', 0, 0, 1, 1, ['Full']],
-		['Red M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameR.png', 0, 0, 1, 1, ['Full']],
-		['Green M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameG.png', 0, 0, 1, 1, ['Full']],
-		['White Land M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameWL.png', 0, 0, 1, 1, ['Full']],
-		['Blue Land M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameUL.png', 0, 0, 1, 1, ['Full']],
-		['Black Land M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameBL.png', 0, 0, 1, 1, ['Full']],
-		['Red Land M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameRL.png', 0, 0, 1, 1, ['Full']],
-		['Green Land M21 Showcase Frame', 'data/images/m15/m21/m15M21FrameGL.png', 0, 0, 1, 1, ['Full']],
-		['White Power/Toughness', 'data/images/m15/m21/m15M21PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Blue Power/Toughness', 'data/images/m15/m21/m15M21PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Black Power/Toughness', 'data/images/m15/m21/m15M21PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Red Power/Toughness', 'data/images/m15/m21/m15M21PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Green Power/Toughness', 'data/images/m15/m21/m15M21PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Holo Stamp', 'data/images/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']]
+		['White M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameW.png', 0, 0, 1, 1, ['Full']],
+		['Blue M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameU.png', 0, 0, 1, 1, ['Full']],
+		['Black M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameB.png', 0, 0, 1, 1, ['Full']],
+		['Red M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameR.png', 0, 0, 1, 1, ['Full']],
+		['Green M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameG.png', 0, 0, 1, 1, ['Full']],
+		['White Land M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameWL.png', 0, 0, 1, 1, ['Full']],
+		['Blue Land M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameUL.png', 0, 0, 1, 1, ['Full']],
+		['Black Land M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameBL.png', 0, 0, 1, 1, ['Full']],
+		['Red Land M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameRL.png', 0, 0, 1, 1, ['Full']],
+		['Green Land M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameGL.png', 0, 0, 1, 1, ['Full']],
+		['White Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Blue Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Black Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Red Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Green Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Holo Stamp', '/data/images/cardImages/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']]
 	], 'frameClassM15M21Showcase')
-	addToManaSymbolList('data/images/manaSymbols/m21/', ["m210", "m211", "m212", "m213", "m214", "m215", "m216", "m217", "m218", "m219", "m21w", "m21u", "m21b", "m21r", "m21g", "m21x"])
+	addToManaSymbolList('/data/images/cardImages/manaSymbols/m21/', ["m210", "m211", "m212", "m213", "m214", "m215", "m216", "m217", "m218", "m219", "m21w", "m21u", "m21b", "m21r", "m21g", "m21x"])
 	notify('The M21 Showcase frame uses special mana symbols for 1-9, WUBRG, and X. If you would like to use these, just add an "m21" at the beginning of each symbol. For example, "2 g g" would become "m212 m21g m21g".', '#aaffaae0')
 }
 

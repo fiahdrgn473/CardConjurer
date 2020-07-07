@@ -1,43 +1,43 @@
 /*fonts*/
 @font-face {
 	font-family: gothammedium;
-	src: url("data/fonts/gotham-medium.ttf");
+	src: url("/data/fonts/gotham-medium.ttf");
 }
 @font-face {
 	font-family: belerenb;
-	src: url("data/fonts/beleren-b.ttf");
+	src: url("/data/fonts/beleren-b.ttf");
 }
 @font-face {
 	font-family: belerenbsc;
-	src: url("data/fonts/beleren-bsc.ttf");
+	src: url("/data/fonts/beleren-bsc.ttf");
 }
 @font-face {
 	font-family: matrix;
-	src: url("data/fonts/matrix.ttf");
+	src: url("/data/fonts/matrix.ttf");
 }
 @font-face {
 	font-family: matrixb;
-	src: url("data/fonts/matrix-b.ttf");
+	src: url("/data/fonts/matrix-b.ttf");
 }
 @font-face {
 	font-family: matrixbsc;
-	src: url("data/fonts/matrix-bsc.ttf");
+	src: url("/data/fonts/matrix-bsc.ttf");
 }
 @font-face {
 	font-family: mplantin;
-	src: url("data/fonts/mplantin.ttf");
+	src: url("/data/fonts/mplantin.ttf");
 }
 @font-face {
 	font-family: mplantini;
-	src: url("data/fonts/mplantin-i.ttf");
+	src: url("/data/fonts/mplantin-i.ttf");
 }
 @font-face {
 	font-family: goudymedieval;
-	src: url("data/fonts/goudy-medieval.ttf");
+	src: url("/data/fonts/goudy-medieval.ttf");
 }
 @font-face {
 	font-family: phyrexian;
-	src: url("data/fonts/phyrexian.ttf");
+	src: url("/data/fonts/phyrexian.ttf");
 }
 
 :root {

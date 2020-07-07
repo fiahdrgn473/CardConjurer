@@ -10,7 +10,7 @@ function loadAbilities() {
             }
         }
     }
-    xhttp.open("GET", "data/site/other/askScryfall/planeswalkerAbilities.txt", true);
+    xhttp.open("GET", "/data/site/other/askScryfall/planeswalkerAbilities.txt", true);
     xhttp.send();
 }
 

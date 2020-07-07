@@ -18,7 +18,7 @@ var manaSymbolImageList = []
 var deletingCardObject = false
 date = new Date()
 var cornerCutout = new Image()
-cornerCutout.src = 'data/images/cornerCutout.png'
+cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
 
 function addToManaSymbolList(folderPath, newManaSymbolList) {
 	for (var i = 0; i < newManaSymbolList.length; i ++) {
@@ -28,7 +28,7 @@ function addToManaSymbolList(folderPath, newManaSymbolList) {
 	}
 }
 
-addToManaSymbolList('data/images/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
+addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -61,7 +61,7 @@ var artWidth = cardWidth, artHeight = cardHeight
 var setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight
 var watermarkDrawX = 0, watermarkDrawY = 0, watermarkDrawWidth = 0, watermarkDrawHeight = 0
 var cardArt = new Image()
-cardArt.src = 'data/images/blank.png'
+cardArt.src = '/data/images/cardImages/blank.png'
 var setSymbol = new Image()
 var watermark = new Image()
 cardArt.crossOrigin = "anonymous"
@@ -81,7 +81,7 @@ cardArt.onload = function() {
 }
 function setSymbolFromGatherer() {
 	if (document.getElementById('inputSetCode').value.toLowerCase() == 'cc') {
-		var newSetSymbolSource = 'https://cardconjurer.com/data/images/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+		var newSetSymbolSource = 'https://cardconjurer.com/data/images/cardImages/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
 		if (document.getElementById('inputSetRarity').value == '') {
 			newSetSymbolSource += 'c'
 		}
@@ -311,7 +311,7 @@ function loadFramePackOptions(listOfFramePacks) {
 		framePackHTML += '<option value="' + listOfFramePacks[i][0] + '">' + listOfFramePacks[i][1] + '</option>'
 	}
 	document.getElementById('inputFramePack').innerHTML = framePackHTML
-	loadScript('data/scripts/versions/' + document.getElementById('inputFrameVersion').value + '/regular.js')
+	loadScript('/data/scripts/versions/' + document.getElementById('inputFrameVersion').value + '/regular.js')
 }
 function loadMaskImages(listOfMasks) {
 	for (var i = 0; i < listOfMasks.length; i++) {

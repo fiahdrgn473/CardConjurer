@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('seventhTextless')) {
 	loadedVersions.push('seventhTextless')
-	loadMaskImages([['Pinline (seventh textless)', 'data/images/seventhTextless/seventhTextlessMaskPinline.png']])
+	loadMaskImages([['Pinline (seventh textless)', '/data/images/cardImages/seventhTextless/seventhTextlessMaskPinline.png']])
 }
 
 if (currentVersion != 'seventhTextless') {

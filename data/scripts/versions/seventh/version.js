@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('seventh')) {
 	loadedVersions.push('seventh')
-	loadMaskImages([['Border (seventh)', 'data/images/seventh/seventhMaskBorder.png'], ['Pinline (seventh)', 'data/images/seventh/seventhMaskPinline.png'], ['Rules (seventh)', 'data/images/seventh/seventhMaskRules.png'], ['Frame (seventh)', 'data/images/seventh/seventhMaskFrame.png']])
+	loadMaskImages([['Border (seventh)', '/data/images/cardImages/seventh/seventhMaskBorder.png'], ['Pinline (seventh)', '/data/images/cardImages/seventh/seventhMaskPinline.png'], ['Rules (seventh)', '/data/images/cardImages/seventh/seventhMaskRules.png'], ['Frame (seventh)', '/data/images/cardImages/seventh/seventhMaskFrame.png']])
 }
 
 if (currentVersion != 'seventh') {
