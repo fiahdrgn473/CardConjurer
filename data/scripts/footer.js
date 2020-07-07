@@ -36,7 +36,7 @@ document.getElementById('footer').innerHTML = `
         <div>Legal</div>
         <hr>
         <div>
-            <a href='legal.html'>Terms and Conditions</a><br>
+            <a href='/legal'>Terms and Conditions</a><br>
         </div>
     </div>
     <div>
