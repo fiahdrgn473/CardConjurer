@@ -4,38 +4,36 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://cardconjurer.com/</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/index.html</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://cardconjurer.com/creator/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/life.html</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
+  <loc>https://cardconjurer.com/legal/</loc>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cardconjurer.com/askscryfall.html</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
-  <priority>0.80</priority>
+  <changefreq>monthly</changefreq>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/termsofuse.html</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://cardconjurer.com/phyrexian/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.40</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/disclaimer.html</loc>
-  <lastmod>2020-06-05T01:33:07+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://cardconjurer.com/life.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.20</priority>
 </url>
 
 
