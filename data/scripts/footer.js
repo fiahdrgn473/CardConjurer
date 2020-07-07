@@ -12,7 +12,7 @@ document.getElementById('footer').innerHTML = `
         <div>Theme</div>
         <hr>
         <div>
-            <select id='inputColorPalette' onchange='loadScript("data/scripts/palettes/" + this.value + ".js")'>
+            <select id='inputColorPalette' onchange='loadScript("/data/scripts/palettes/" + this.value + ".js")'>
                 <option value='lightMode'>Light Mode</option>
                 <option value='darkMode'>Dark Mode</option>
                 <option value='dayRave'>Day Rave</option>
@@ -46,6 +46,6 @@ document.getElementById('footer').innerHTML = `
             <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>
         </div>
     </div>
-    <script defer src="data/scripts/animations.js"></script>
+    <script defer src="/data/scripts/animations.js"></script>
 </div>
 `
