@@ -27,9 +27,10 @@ document.getElementById('footer').innerHTML = `
         <div>
             <a href='/'>Home</a><br>
             <a href='/creator'>Card Creator</a><br>
-            <a href='/life.html'>Life Counter</a><br>
             <a href='/askscryfall'>Ask Scryfall</a><br>
-            <a href='/phyrexian'>Phyrexian Text</a>
+            <a href='/phyrexian'>Phyrexian Text</a><br>
+            <a href='/life.html'>Life Counter</a><br>
+            <a href='/about'>About Me</a>
         </div>
     </div>
     <div>
