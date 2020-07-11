@@ -12,9 +12,9 @@
     <link rel="manifest" href="/data/site/favicons/site.webmanifest">
 </head>
 <body>
-    <title>CC - Ask Scryfall</title>
+    <title>CC - Ask Urza 2.0</title>
     <style>
-        .askScryfallGrid {
+        .askUrzaGrid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: auto 90pt auto;
@@ -30,12 +30,12 @@
             width: 100%;
             height: auto;
         }
-        .askScryfallButton {
+        .askUrzaButton {
             height: auto;
             width: 22vw;
             transition: 0.25s;
         }
-        #askScryfallResult {
+        #askUrzaResult {
             grid-column: 1 / span 3;
             padding: 1rem;
             margin: 0.5rem;
@@ -45,7 +45,7 @@
             font: 1.5rem belerenb;
         }
         @media screen and (min-width: 864pt) {
-            .askScryfallGrid {
+            .askUrzaGrid {
                 grid-template-columns: calc(360pt) 1fr 1fr 1fr !important;
                 grid-template-rows: 92pt auto !important;
             }
@@ -53,7 +53,7 @@
                 grid-column: 1;
                 grid-row: 1 / span 2 !important;
             }
-            #askScryfallResult {
+            #askUrzaResult {
                 grid-column: 2 / span 3 !important;
             }
         }
@@ -61,39 +61,39 @@
             .urzaCard {
                 width: 360pt;
             }
-            .askScryfallButton {
+            .askUrzaButton {
                 height: auto;
                 width: 100pt;
                 transition: 0.25s;
             }
-            .askScryfallButton:hover {
+            .askUrzaButton:hover {
                 width: 110pt;
             }
-            .askScryfallButton:active {
+            .askUrzaButton:active {
                 width: 120pt !important;
             }
         }
     </style>
     <div>
         <div class="title darkLayer">
-            Ask Scryfall
+            Ask Urza 2.0
         </div>
         <div class="layer slideFromRight">
             <div>
-                <div class="askScryfallGrid">
+                <div class="askUrzaGrid">
                     <div class="urzaCard">
-                        <img src="/data/site/other/askScryfall/urzaBlank.png">
+                        <img src="/data/site/other/askUrza/urzaBlank.png">
                     </div>
                     <div>
-                        <img class="askScryfallButton" src="/data/site/other/askScryfall/plus.png" onclick="randomAbility(0)">
+                        <img class="askUrzaButton" src="/data/site/other/askUrza/plus.png" onclick="randomAbility(0)">
                     </div>
                     <div>
-                        <img class="askScryfallButton" src="/data/site/other/askScryfall/minus.png" onclick="randomAbility(1)">
+                        <img class="askUrzaButton" src="/data/site/other/askUrza/minus.png" onclick="randomAbility(1)">
                     </div>
                     <div>
-                        <img class="askScryfallButton" src="/data/site/other/askScryfall/ultimate.png" onclick="randomAbility(2)">
+                        <img class="askUrzaButton" src="/data/site/other/askUrza/ultimate.png" onclick="randomAbility(2)">
                     </div>
-                    <div id="askScryfallResult">
+                    <div id="askUrzaResult">
                         
                     </div>
                 </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="layer darkLayer slideFromLeft">
             <div class="indent">
-                Ask Scryfall is a replacement for AskUrza.com that periodically compiles all planeswalker abilities (using Scryfall) and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Scryfall, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
+                Ask Urza 2.0 is a replacement for AskUrza.com that periodically compiles all planeswalker abilities and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Urza, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
             </div>
         </div>
         <div class="layer">
@@ -120,7 +120,7 @@
             </div>
         </div>
     </div>
-    <script defer src="/data/site/other/askScryfall/askScryfall.js"></script>
+    <script defer src="/data/site/other/askUrza/askUrza.js"></script>
 </body>
 <footer id='footer'>
     <script async src='/data/scripts/footer.js'></script>

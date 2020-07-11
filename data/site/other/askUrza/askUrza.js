@@ -10,13 +10,13 @@ function loadAbilities() {
             }
         }
     }
-    xhttp.open("GET", "/data/site/other/askScryfall/planeswalkerAbilities.txt", true);
+    xhttp.open("GET", "/data/site/other/askUrza/planeswalkerAbilities.txt", true);
     xhttp.send();
 }
 
 function randomAbility(index) {
     possibleAbilities = fullAbilityList[index]
-    document.getElementById("askScryfallResult").innerHTML = possibleAbilities[Math.floor(Math.random() * (possibleAbilities.length - 1))].replace(/\\"/g, '"')
+    document.getElementById("askUrzaResult").innerHTML = possibleAbilities[Math.floor(Math.random() * (possibleAbilities.length - 1))].replace(/\\"/g, '"')
 }
 
 loadAbilities()
