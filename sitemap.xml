@@ -21,7 +21,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://cardconjurer.com/askscryfall.html</loc>
+  <loc>https://cardconjurer.com/askurza/</loc>
   <changefreq>monthly</changefreq>
   <priority>0.50</priority>
 </url>
@@ -29,6 +29,11 @@
   <loc>https://cardconjurer.com/phyrexian/</loc>
   <changefreq>monthly</changefreq>
   <priority>0.40</priority>
+</url>
+<url>
+  <loc>https://cardconjurer.com/about/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.30</priority>
 </url>
 <url>
   <loc>https://cardconjurer.com/life.html</loc>
