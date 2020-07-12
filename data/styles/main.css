@@ -81,6 +81,8 @@ a:hover {
 
 .ad {
 	text-align: center;
+	/*border: 1px solid red;*/
+	width: calc(50vw - 5rem);
 }
 
 .title {
