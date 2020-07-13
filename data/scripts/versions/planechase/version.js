@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('planechase')) {
 	loadedVersions.push('planechase')
-	// loadMaskImages([])
+	notify('For the small Chaos symbol on Planar cards use "{chaos}", and for the large Chaos symbol use "{planechase}".', '#aaffaae0')
 }
 
 if (currentVersion != 'planechase') {
@@ -29,10 +29,10 @@ if (currentVersion != 'planechase') {
 	manaCostShadowOffset = 'none'
 	manaCostDirection = 'none'
 
-	setSymbolX = [cardWidth / 2, 'center']
-	setSymbolY = [scaleY(244/2100), 'center']
-	setSymbolWidth = scaleX(180/1500)
-	setSymbolHeight = scaleY(84/2100)
+	setSymbolX = [scaleX(1631/2100), 'right']
+	setSymbolY = [scaleY(1042/1500), 'center']
+	setSymbolWidth = scaleX(96/2100)
+	setSymbolHeight = scaleY(48/1500)
 
 	watermarkX = cardWidth * 2
 	watermarkY = cardHeight * 2
@@ -59,8 +59,8 @@ function bottomInfoPlanechase() {
 	}
 	writeText(
 		[//{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value
-			{text: '{center}' + document.getElementById('inputInfoNumber').value + ' ' + document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + '{right' + scaleX(0.005) + '}{fontmplantin}{fontsize-1}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 670/2100, y: 2044/2100, width: 760/2100, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{center}' + document.getElementById('inputInfoNumber').value + ' ' + document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + '{right' + scaleX(0.01) + '}{fontmplantin}{fontsize-1}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 670/2100, y: 2044/2100, width: 760/2100, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 			{text: '{center}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 670/2100, y: 2008/2100, width: 760/2100, height: 36/2100, font: 'belerenbsc', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
-			{text: '{center}NOT FOR SALE{right' + scaleX(0.005) + '}{fontmplantin}CardConjurer.com', x: 670/2100, y: 2078/2100, width: 760/2100, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{center}NOT FOR SALE{right' + scaleX(0.01) + '}{fontmplantin}CardConjurer.com', x: 670/2100, y: 2078/2100, width: 760/2100, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
 		], bottomInfoContext)
 }
