@@ -1,0 +1,66 @@
+if (!loadedVersions.includes('planechase')) {
+	loadedVersions.push('planechase')
+	// loadMaskImages([])
+}
+
+if (currentVersion != 'planechase') {
+	currentVersion = 'planechase'
+
+	previewContext.translate(0, cardHeight / 2)
+	previewContext.rotate(-Math.PI / 2)
+	cardWidth *= 7/5
+	cardHeight *= 5/7
+	resizeCanvases(cardWidth, cardHeight)
+
+	loadTextOptions([
+	new cardText('Card Title', '', 150/2100, 150/1500, 1800/2100, 67/1500, 'belerenb', 67/1500, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Card Type', '', 450/2100, 1056/1500, 1200/2100, 52/1500, 'belerenb', 52/1500, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Rules Text', '', 242/2100, 1030/1500, 1616/2100, 500/1500, 'mplantin', 56/1500, 'black')
+	])
+
+	artX = scaleX(65 / 2100)
+	artY = scaleY(65 / 1500)
+	artWidth = scaleX(1970 / 2100)
+	artHeight = scaleY(1372 / 1500)
+
+	manaCostXPath = '0'
+	manaCostYPath = '0'
+	manaCostDiameter = '0'
+	manaCostShadowOffset = 'none'
+	manaCostDirection = 'none'
+
+	setSymbolX = [cardWidth / 2, 'center']
+	setSymbolY = [scaleY(244/2100), 'center']
+	setSymbolWidth = scaleX(180/1500)
+	setSymbolHeight = scaleY(84/2100)
+
+	watermarkX = cardWidth * 2
+	watermarkY = cardHeight * 2
+	watermarkWidth = 1
+	watermarkHeight = 1
+
+	bottomInfoFunction = 'bottomInfoPlanechase'
+
+	bottomInfoUpdated()
+}
+
+loadFramePackOptions([['regular', 'Regular']])
+
+function bottomInfoPlanechase() {
+	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
+	var ptBoxShift = 0
+	for (var i = 0; i < cardTextList.length; i++) {
+		if (cardTextList[i].name == 'Power/Toughness' && cardTextList[i].text != '') {
+			ptBoxShift = 36/2100
+		}
+	}
+	if (ptBoxShift == 0) {
+		Array.from(cardMaster.children).forEach(element => {if (element.children[2].innerHTML.includes('Power/Toughness')) {ptBoxShift = 36/2100}})
+	}
+	writeText(
+		[//{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value
+			{text: '{center}' + document.getElementById('inputInfoNumber').value + ' ' + document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + '{right' + scaleX(0.005) + '}{fontmplantin}{fontsize-1}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 670/2100, y: 2044/2100, width: 760/2100, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{center}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 670/2100, y: 2008/2100, width: 760/2100, height: 36/2100, font: 'belerenbsc', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+			{text: '{center}NOT FOR SALE{right' + scaleX(0.005) + '}{fontmplantin}CardConjurer.com', x: 670/2100, y: 2078/2100, width: 760/2100, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true']},
+		], bottomInfoContext)
+}

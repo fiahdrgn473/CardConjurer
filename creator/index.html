@@ -46,7 +46,7 @@
 					<div class="splitGrid">
 						<div>
 							Select a frame version:<br>
-							<select id="inputFrameVersion" onchange="loadScript('/data/scripts/versions/' + this.value + '/version.js')">
+							<select id="inputFrameVersion" onchange="loadVersion(this.value)">
 				                <option value="m15">M15</option>
 				                <option value="token">Tokens</option>
 				                <option value="m15Promo">M15 Promo</option>
@@ -55,6 +55,7 @@
 				                <option value="storybook">Storybook</option>
 				                <option value="ixalan">Ixalan Maps</option>
 				                <option value="expedition">Expeditions</option>
+				                <option value="planechase">Planechase</option>
 				                <option value="future">Future Shifted</option>
 				                <option value="seventh">Seventh Edition</option>
 				                <option value="seventhTextless">Textless Seventh Edition</option>

@@ -28,7 +28,7 @@ function addToManaSymbolList(folderPath, newManaSymbolList) {
 	}
 }
 
-addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "plane", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
+addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -112,6 +112,17 @@ setSymbol.onload = function() {
 }
 watermark.onload = function() {
 	watermarkUpdated()
+}
+
+function loadVersion(versionToLoad) {
+	if (cardWidth / cardHeight != 5/7) {
+		cardWidth *= 5/7
+		cardHeight *= 7/5
+		resizeCanvases(cardWidth, cardHeight)
+		previewContext.rotate(Math.PI / 2)
+		previewContext.translate(0, -cardHeight / 2)
+	}
+	loadScript('/data/scripts/versions/' + versionToLoad + '/version.js')
 }
 
 class cardPlaceholder {
@@ -259,7 +270,11 @@ function drawCardObjects() {
 	mainContext.rotate(Math.PI / 2)
 	//preview the card
 	mainContext.globalCompositeOperation = 'source-over'
-	previewContext.drawImage(mainCanvas, 0, 0, previewCanvas.width, previewCanvas.height)
+	if (cardWidth < cardHeight) {
+		previewContext.drawImage(mainCanvas, 0, 0, previewCanvas.width, previewCanvas.height)
+	} else {
+		previewContext.drawImage(mainCanvas, 0, 0, previewCanvas.height, previewCanvas.width)
+	}
 }
 
 class frameImage {
@@ -518,21 +533,26 @@ function writeText(textObjectList, targetContext) {
 	                	textLineContext.fillStyle = currentFontColor
 	                } else if (possibleCodeLower == 'artistbrush') {
 	                	var artistBrushWidth = textSize * 1.2
-						textLineContext.drawImage(manaSymbolImageList[62], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('artistbrush')], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
 						textX += artistBrushWidth * 1.1
 						currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower == 'oldartistbrush') {
 	                    var artistBrushWidth = textSize * 2.4
 	                    if (textLineContext.fillStyle == '#ffffff' || textLineContext.fillStyle == 'white') {
-	                        textLineContext.drawImage(manaSymbolImageList[64], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+	                        textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('whiteBrush')], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
 	                    } else {
-	                        textLineContext.drawImage(manaSymbolImageList[65], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
+	                        textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('blackBrush')], textX, textCanvasBuffer + textSize - artistBrushWidth * 13 / 63, artistBrushWidth, artistBrushWidth * 13 / 63);
 	                    }
 	                    textX += artistBrushWidth * 1.1
 	                    currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower.includes('font')) {
 						textFont = possibleCodeLower.replace('font', '')
 						textLineContext.font = fontStyle + textSize + 'px ' + textFont
+					} else if (possibleCodeLower == 'planechase') {
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('chaos')], textX, textCanvasBuffer + textSize - scaleX(40/2100), scaleX(102/2100), scaleX(85/2100))
+						textX += scaleX(125/2100)
+						currentLineWidth += scaleX(125/2100)
+						permanentLineShift += scaleX(125/2100)
 					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.77
@@ -636,7 +656,7 @@ function inputCardArtName(cardArtNameInput) {
 				cardArtArtistList[i] = savedArtList[i].slice(savedArtList[i].indexOf('"artist":"') + 10, savedArtList[i].indexOf('","artist_id'))
 			}
 			inputCardArtNameNumber(1)
-		} else if (this.readyState == 4 && this.status == 404) {
+		} else if (this.readyState == 4 && this.status == 404 && cardArtNameInput != '') {
 			notify("Sorry, but we can't seem to find any art for '" + cardArtNameInput + "'", '#ffffaae0')
 		}
 	}
@@ -754,7 +774,7 @@ function inputCardNameTextImport(cardName) {
             inputCardNameNumberTextImport(1)
             document.getElementById('inputCardNameNumberTextImport').max = savedImportResponse.length - 1
             document.getElementById('inputCardNameNumberTextImport').value = 1
-        } else if (this.readyState == 4 && this.status == 404) {
+        } else if (this.readyState == 4 && this.status == 404 && cardName != '') {
             savedImportResponse = ''
             notify("Sorry, but we can't seem to find any card named '" + cardName + "'", '#ffffaae0')
         }
