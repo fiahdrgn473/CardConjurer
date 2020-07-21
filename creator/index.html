@@ -47,19 +47,23 @@
 						<div>
 							Select a frame version:<br>
 							<select id="inputFrameVersion" onchange="loadVersion(this.value)">
-				                <option value="m15">M15</option>
+								<option disabled value=''>Standard Frames</option>
+				                <option value="m15">Regular</option>
 				                <option value="token">Tokens</option>
-				                <option value="m15Promo">M15 Promo</option>
-				                <option value="m15Textless">Textless Kaladesh Inventions</option>
 				                <option value="m15Planeswalker">M15 Planeswalker</option>
-				                <option value="storybook">Storybook</option>
+				                <option disabled value=''>Special Frames</option>
+				                <option value="m15Promo">Promo</option>
+				                <option value="m15Textless">Textless Kaladesh Inventions</option>
+				                <option value="storybook">Eldraine Storybook</option>
 				                <option value="ixalan">Ixalan Maps</option>
 				                <option value="unstable">Unstable Basics</option>
-				                <option value="expedition">Expeditions</option>
-				                <option value="planechase">Planechase</option>
+				                <option value="expedition">Zendikar Expeditions</option>
 				                <option value="future">Future Shifted</option>
+				                <option disabled value=''>Old Frames</option>
 				                <option value="seventh">Seventh Edition</option>
 				                <option value="seventhTextless">Textless Seventh Edition</option>
+				                <option disabled value=''>Misc. Frames</option>
+				                <option value="planechase">Planechase</option>
 				            </select>
 						</div>
 						<div>
@@ -73,11 +77,15 @@
 				        <div id="framePicker" class="frameGrid"></div>
 				        <div id="maskPicker"></div>
 				    </div>
+				    
 				    <div class='autoGrid'>
 					    <button onclick='addSelectedFrame()'>Add</button>
 					    <button onclick='addSelectedFrame(["Right Half"])'>Add To Right Half</button>
 					    <button onclick='addSelectedFrame(["Middle Third"])'>Add To Middle Third</button>
 					</div>
+					<div id='previewSelectedFrame'>
+				    	(Selected: None)
+				    </div>
 					<div id="cardMaster">
 
 				    </div>

@@ -306,6 +306,7 @@ class frameImage {
 			frameImageList[parseInt(this.id.replace('frameIndex', ''))].masks.forEach(array => document.getElementById('maskPicker').innerHTML += '<div id="maskOption' + maskNameList.indexOf(array) + '" onclick="maskOptionClicked(event)"><img src="' + maskImageList[maskNameList.indexOf(array)].src + '">' + array + '</div>')
 			document.getElementById('maskPicker').children[0].classList.add('maskOptionSelected')
 			selectedMaskImage = parseInt(document.getElementById('maskPicker').children[0].id.replace('maskOption', ''))
+			updateSelectedFramePreview()
 		}
 	}
 }
@@ -318,12 +319,20 @@ function maskOptionClicked(event) {
 		event.target.classList.add('maskOptionSelected')
 		selectedMaskImage = parseInt(event.target.id.replace('maskOption', ''))
 	}
+	updateSelectedFramePreview()
+}
+function updateSelectedFramePreview() {
+	document.getElementById('previewSelectedFrame').innerHTML = '(Selected: ' + frameImageList[selectedFrameImage].name + ' with a ' + maskNameList[selectedMaskImage] + ' mask.)'
 }
 
 function loadFramePackOptions(listOfFramePacks) {
 	var framePackHTML = ''
 	for (var i = 0; i < listOfFramePacks.length; i++) {
-		framePackHTML += '<option value="' + listOfFramePacks[i][0] + '">' + listOfFramePacks[i][1] + '</option>'
+		var framePackOptionDisabled = ''
+		if (listOfFramePacks[i][0] == 'disabled') {
+			framePackOptionDisabled = 'disabled '
+		}
+		framePackHTML += '<option ' + framePackOptionDisabled + 'value="' + listOfFramePacks[i][0] + '">' + listOfFramePacks[i][1] + '</option>'
 	}
 	document.getElementById('inputFramePack').innerHTML = framePackHTML
 	loadScript('/data/scripts/versions/' + document.getElementById('inputFrameVersion').value + '/regular.js')
