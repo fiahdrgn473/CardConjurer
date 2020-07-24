@@ -1,5 +1,5 @@
 //CSS & HTML stuff
-window.layerElements = document.querySelectorAll('.layer')
+window.animatedElements = document.querySelectorAll('.animated')
 window.addEventListener('resize', windowResized)
 window.addEventListener('scroll', windowScrolled)
 windowResized()
@@ -9,10 +9,10 @@ function windowResized() {
   windowScrolled()
 }
 function windowScrolled() {
-  for (var i = 0; i < layerElements.length; i++) {
-    var positionFromTop = (layerElements[i].getBoundingClientRect().top + layerElements[i].getBoundingClientRect().bottom) / 2
+  for (var i = 0; i < animatedElements.length; i++) {
+    var positionFromTop = (animatedElements[i].getBoundingClientRect().top + animatedElements[i].getBoundingClientRect().bottom) / 2
     if (positionFromTop - windowHeight <= 0) {
-      layerElements[i].classList.add('revealedLayer')
+      animatedElements[i].classList.add('revealedAnimation')
     }
   }
 }

@@ -1,12 +1,10 @@
-rootStyles.setProperty('--background-color', '#d0d0d0')
-rootStyles.setProperty('--background-color-contrast', '#f5f5f5')
-rootStyles.setProperty('--interactable-color', '#dfdfdf')
-rootStyles.setProperty('--interactable-selected-color', '#cccccc')
-rootStyles.setProperty('--input-color', '#dadada')
-rootStyles.setProperty('--input-font-color', '#000')
-rootStyles.setProperty('--font-color', '#000')
-rootStyles.setProperty('--font-color-contrast', '#000')
-rootStyles.setProperty('--body-background', 'url(data/site/images/lowpoly.png) left/cover no-repeat fixed')
+rootStyles.setProperty('--site-background', '#f5f5f5')
+rootStyles.setProperty('--layer-background', '#e4e4e4')
+rootStyles.setProperty('--layer-background-selected', '#cccccc')
+rootStyles.setProperty('--interactable-unselected', '#aaaaaa')
+rootStyles.setProperty('--interactable-selected', '#00aa00')
+rootStyles.setProperty('--font-color', '#000000')
+rootStyles.setProperty('--body-background', 'url(/data/site/images/lowpoly.png) left/cover no-repeat fixed')
 setCookie('colorPalette', 'dayRave')
 
 //Cycles through a rainbow!
@@ -23,7 +21,7 @@ var currentColorIndex = 0
 function changeColor() {
 	var colors = indexToColor(currentColorIndex)
 	var lightColors = indexToColor(currentColorIndex + lightLead)
-	rootStyles.setProperty('--background-color', 'linear-gradient(to bottom right, ' + "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")" + ', ' + "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")" + ') left/cover no-repeat fixed')
+	rootStyles.setProperty('--site-background', 'linear-gradient(to bottom right, ' + "rgb(" + parseInt(colors[0] + regularAdjust) + "," + parseInt(colors[1] + regularAdjust) + "," + parseInt(colors[2] + regularAdjust) + ")" + ', ' + "rgb(" + parseInt(lightColors[0] + lightAdjust) + "," + parseInt(lightColors[1] + lightAdjust) + "," + parseInt(lightColors[2] + lightAdjust) + ")" + ') left/cover no-repeat fixed')
 	currentColorIndex += 2.5 * 153 / 180 //The second number is how many seconds it takes to do a full loop
 }
 function indexToColor(colorIndex) {

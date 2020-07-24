@@ -41,20 +41,18 @@
 }
 
 :root {
-	--background-color: #f5f5f5;
-	--background-color-contrast: #e4e4e4;
-	--interactable-color: #dfdfdf;
-	--interactable-selected-color: #cccccc;
-	--input-color: #dadada;
-	--input-font-color: #000;
+	--site-background: #f5f5f5;
+	--layer-background: #e4e4e4;
+	--layer-background-selected: #ccc;
+	--interactable-unselected: #aaa;
+	--interactable-selected: #00aa00;
 	--font-color: #000;
-	--font-color-contrast: #000;
 	--body-background: none;
 }
 
 html {
 	font: 12pt georgia;
-	background: var(--background-color);
+	background: var(--site-background);
 	color: var(--font-color);
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -79,16 +77,31 @@ a:hover {
 	text-decoration: underline;
 }
 
-.ad {
-	text-align: center;
-	/*border: 1px solid red;*/
-	width: calc(50vw - 5rem);
+/*.ad {
+	margin: 0;
+	padding: 0;
+}*/
+.adGrid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+	grid-auto-rows: min-content;
+	justify-items: center;
+	align-items: center;
+}
+.adGrid > div {
+	width: 100%;
 }
 
-.title {
-	text-align: center;
-	font: 2.5rem 'belerenbsc';
-	padding: 1rem 0;
+.interactable {
+	background: var(--layer-background);
+	border-top: 0.2rem solid var(--interactable-unselected);
+	cursor: pointer;
+	border-radius: 0.2rem;
+}
+.interactable.selected {
+	border-top-color: var(--interactable-selected);
+	background: var(--layer-background-selected);
 }
 
 .cardMaster {
@@ -96,13 +109,10 @@ a:hover {
 }
 .cardMasterElement {
 	font: 1rem belerenbsc;
-	margin-top: 0.1rem;
+	margin-top: 0.25rem;
     display: grid;
     grid-template-columns: 2rem 4rem auto 2rem;
     align-items: center;
-    background: var(--interactable-color);
-    color: var(--input-font-color);
-    cursor: pointer;
 }
 .cardMasterElement > .handle {
     cursor: move;
@@ -115,33 +125,29 @@ a:hover {
 	object-fit: contain;
 }
 .cardMasterElementMoving {
-	background: var(--interactable-selected-color);
+	background: var(--layer-background-selected);
 }
 .cardMasterElement > .delete {
-	cursor: pointer;
     text-align: center;
-}
-.cardMasterElement.cardMasterElementSelected {
-	background: var(--interactable-selected-color);
 }
 
 .splitGrid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap: 0.1rem;
+	grid-gap: 0.25rem;
 }
 .autoGrid {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 	grid-auto-rows: min-content;
-	grid-gap: 0.1rem;
+	grid-gap: 0.25rem;
 }
 .frameGrid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 	grid-auto-rows: min-content;
-	grid-gap: 0.1rem;
+	grid-gap: 0.25rem;
 }
 img {
     -webkit-user-drag: none;
@@ -151,6 +157,7 @@ img {
     user-drag: none;
 }
 #framePicker, #maskPicker {
+	margin: 0.25rem 0;
 	max-height: 260pt;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -169,35 +176,21 @@ img {
 	max-width: 1.5rem;
 	max-height: 1.5rem;
 }
-#framePicker > div.frameOptionSelected, #maskPicker > div.maskOptionSelected {
-	background: var(--interactable-selected-color);
-}
-#maskPicker > div, #framePicker > div {
-	background: var(--interactable-color);
-	color: var(--input-font-color);
-    cursor: pointer;
-}
 #maskPicker > div {
 	padding: 0.5rem;
-	margin-bottom: 0.1rem;
+	margin-bottom: 0.25rem;
 }
 
 #textPicker {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
 	grid-auto-rows: min-content;
-	grid-gap: 0.1rem;
-	margin: 0.1rem 0px;
+	grid-gap: 0.25rem;
+	margin: 0.25rem 0px;
 }
 #textPicker > div {
 	font: 1rem belerenbsc;
-	background: var(--interactable-color);
-	color: var(--input-font-color);
 	padding: 0.5rem;
-    cursor: pointer;
-}
-#textPicker > div.selectedText {
-	background: var(--interactable-selected-color);
 }
 
 textarea {
@@ -221,34 +214,28 @@ textarea {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(8.2rem, 1fr));
 	grid-auto-rows: min-content;
-	grid-gap: 0.1rem;
-	margin-bottom: 1rem;
+	grid-gap: 0.25rem;
+	margin-bottom: 0.25rem;
 }
 .tabPicker > div {
 	font: 1.2rem belerenbsc;
 	text-align: center;
 	padding: 0.5rem 0;
-	background: var(--interactable-color);
-	color: var(--input-font-color);
-    cursor: pointer;
-}
-.tabPicker > div.tabOptionSelected {
-	background: var(--interactable-selected-color);
 }
 
 input:not([type='checkbox']), textarea, button, select {
 	font: inherit;
-	color: var(--input-font-color);
+	color: inherit;
 	width: 100%;
-	background: var(--input-color);
+	background: var(--layer-background);
 	border: none;
 	outline: none;
-	padding: 0.2rem;
-	margin-top: 0.1rem;
+	padding: 0.25rem;
+	margin-top: 0.25rem;
 }
 input:not([type='checkbox']):active, textarea:active, button:active {
-	border: 0.1rem solid var(--input-font-color);
 	padding: 0.1rem;
+	border: 0.1rem solid var(--interactable-unselected);
 }
 input[type='checkbox'] {
 	position: relative;
@@ -272,31 +259,31 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	0% {transform: translate(100vw, 0);}
 	100% {transform: translate(0, 0);}
 }
-.layerTitle {
+
+.title {
 	text-align: center;
-	font: 2rem 'belerenbsc';
+	font: 2.5rem 'belerenbsc';
+	padding: 1rem !important;
 }
-.darkLayer {
-	background: var(--background-color-contrast);
-	color: var(--font-color-contrast);
+.layer {
+	background: var(--layer-background);
 }
-.layer > div {
+.layer.clearLayer {
+	background: none;
+}
+.animated > div {
 	opacity: 0;
 }
-.layer.smallLayer {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-}
-.layer.revealedLayer > div {
+.animated.revealedAnimation > div {
 	opacity: 1;
 }
-.layer.revealedLayer.fadeIn > div {
+.animated.revealedAnimation.fadeIn > div {
 	animation: fade-in 2s;
 }
-.layer.revealedLayer.slideFromLeft > div {
+.animated.revealedAnimation.slideFromLeft > div {
 	animation: slide-from-left 0.8s;
 }
-.layer.revealedLayer.slideFromRight > div {
+.animated.revealedAnimation.slideFromRight > div {
 	animation: slide-from-right 0.8s;
 }
 
@@ -319,19 +306,19 @@ input[type='checkbox'], select, option, input[type='file'], button {
     z-index: 100;
     transform: translate(0, -1em);
 }*/
-.layer.revealedLayer > div > div > div > .sample1 {
+.animated.revealedAnimation > div > div > div > .sample1 {
 	animation: sample-one 2s;
 	transform: rotate(-10deg) translate(16%, 15%);
 }
-.layer.revealedLayer > div > div > div > .sample2 {
+.animated.revealedAnimation > div > div > div > .sample2 {
 	animation: sample-two 2s;
 	transform: rotate(-5deg) translate(10%, 4%);
 }
-.layer.revealedLayer > div > div > div > .sample4 {
+.animated.revealedAnimation > div > div > div > .sample4 {
 	animation: sample-four 2s;
 	transform: rotate(5deg) translate(-10%, 4%);
 }
-.layer.revealedLayer > div > div > div > .sample5 {
+.animated.revealedAnimation > div > div > div > .sample5 {
 	animation: sample-five 2s;
 	transform: rotate(10deg) translate(-16%, 15%);
 }
@@ -374,7 +361,7 @@ input[type='checkbox'], select, option, input[type='file'], button {
 }
 
 .indent {
-	text-indent: 2em;
+	text-indent: 2rem;
 }
 
 .truncate {
@@ -393,12 +380,13 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	display: grid;
 	grid-template-columns: 7rem auto;
 	margin-top: 1rem;
-	grid-gap: 0.1rem;
+	grid-gap: 0.25rem;
+	border: 0.2rem solid var(--interactable-unselected);
+	border-radius: 0.2rem;
 }
 #textCodeReference > div {
-	background: var(--input-color);
-	padding: 0.1rem;
-	color: var(--input-font-color);
+	background: var(--layer-background);
+	padding: 0.25rem;
 }
 
 
@@ -407,7 +395,6 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	color: black;
 }
 .notification {
 	display: grid;
@@ -415,11 +402,10 @@ input[type='checkbox'], select, option, input[type='file'], button {
 	grid-gap: 1rem;
 	margin: 0.5rem;
 	padding: 0.5rem;
-	background: green;
+	background: var(--layer-background-selected);
 }
 .notification > .deleteNotification {
 	text-align: center;
-	cursor: pointer;
 }
 
 
@@ -449,8 +435,7 @@ canvas {
 	width: 100%;
 }
 footer {
-    background: var(--background-color-contrast);
-    color: var(--font-color-contrast);
+    background: var(--layer-background);
     font: 1rem arial;
 }
 .footer {
@@ -469,6 +454,8 @@ footer {
 }
 .footer > div > div > select {
 	width: auto !important;
+	border: 0.2rem solid var(--interactable-unselected);
+	border-radius: 0.2rem;
 }
 @media screen and (min-width: 909pt) { /*Screen is wide enough to show the card next to the editor menu*/
     .mainGrid {

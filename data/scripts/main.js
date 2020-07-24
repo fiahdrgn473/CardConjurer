@@ -81,7 +81,7 @@ cardArt.onload = function() {
 }
 function setSymbolFromGatherer() {
 	if (document.getElementById('inputSetCode').value.toLowerCase() == 'cc') {
-		var newSetSymbolSource = 'https://cardconjurer.com/data/images/cardImages/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
+		var newSetSymbolSource = '/data/images/cardImages/misc/cc-' + document.getElementById('inputSetRarity').value.toLowerCase()
 		if (document.getElementById('inputSetRarity').value == '') {
 			newSetSymbolSource += 'c'
 		}
@@ -154,7 +154,7 @@ class cardPlaceholder {
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
 		temporaryElement.id = 'uniqueNumber' + this.uniqueNumber
-		temporaryElement.classList.add('cardMasterElement')
+		temporaryElement.classList.add('cardMasterElement', 'interactable')
 		temporaryElement.innerHTML = '<span class="handle">|||</span><div style="grid-column: 2 / 4">' + this.name + '</div><span></span>'
 		return temporaryElement
 	}
@@ -199,7 +199,7 @@ class cardImage {
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
 		temporaryElement.id = 'uniqueNumber' + this.uniqueNumber
-		temporaryElement.classList.add('cardMasterElement')
+		temporaryElement.classList.add('cardMasterElement', 'interactable')
 		temporaryElement.innerHTML = '<div class="handle">|||</div><div><img src="' + this.image.src + '"><img src="' + maskImageList[maskNameList.indexOf(this.masks[0])].src + '"></div><div>' + this.name + ' - ' + this.masks.toString().replace(',', ', ') + '</div><span class="delete" onclick="deleteCardObject(event)">X</span>'
 		temporaryElement.onclick = function() {
 			if (document.getElementById('cardMasterElementEditor').classList.contains('hidden') && !deletingCardObject) {
@@ -214,8 +214,8 @@ class cardImage {
 			document.getElementById('cardMasterElementEditorScale').value = scaleX(selectedObject.width)
 			document.getElementById('cardMasterElementEditorOpacity').value = selectedObject.opacity * 100
 			document.getElementById('cardMasterElementEditorErase').checked = selectedObject.erase
-			Array.from(document.getElementById('cardMaster').children).forEach(element => element.classList.remove('cardMasterElementSelected'))
-			this.classList.add('cardMasterElementSelected')
+			Array.from(document.getElementById('cardMaster').children).forEach(element => element.classList.remove('selected'))
+			this.classList.add('selected')
 		}
 		return temporaryElement
 	}
@@ -292,31 +292,31 @@ class frameImage {
 		this.masks = masks
 		this.framePickerElement = document.createElement('div')
         this.framePickerElement.id = 'frameIndex' + frameImageListIndex
-        this.framePickerElement.classList.add(frameClass)
+        this.framePickerElement.classList.add(frameClass, 'interactable')
         this.framePickerElement.onclick = this.frameOptionClicked
         this.framePickerElement.innerHTML = '<img src=' + this.image.src + '>'
         document.getElementById('framePicker').appendChild(this.framePickerElement)
 	}
 	frameOptionClicked() {
-		Array.from(document.getElementById('framePicker').children).forEach(element => element.classList.remove('frameOptionSelected'))
-		this.classList.add('frameOptionSelected')
+		Array.from(document.getElementById('framePicker').children).forEach(element => element.classList.remove('selected'))
+		this.classList.add('selected')
 		if (parseInt(this.id.replace('frameIndex', '')) != selectedFrameImage) {
 			selectedFrameImage = parseInt(this.id.replace('frameIndex', ''))
 			document.getElementById('maskPicker').innerHTML = ''
-			frameImageList[parseInt(this.id.replace('frameIndex', ''))].masks.forEach(array => document.getElementById('maskPicker').innerHTML += '<div id="maskOption' + maskNameList.indexOf(array) + '" onclick="maskOptionClicked(event)"><img src="' + maskImageList[maskNameList.indexOf(array)].src + '">' + array + '</div>')
-			document.getElementById('maskPicker').children[0].classList.add('maskOptionSelected')
+			frameImageList[parseInt(this.id.replace('frameIndex', ''))].masks.forEach(array => document.getElementById('maskPicker').innerHTML += '<div id="maskOption' + maskNameList.indexOf(array) + '" class="interactable" onclick="maskOptionClicked(event)"><img src="' + maskImageList[maskNameList.indexOf(array)].src + '">' + array + '</div>')
+			document.getElementById('maskPicker').children[0].classList.add('selected')
 			selectedMaskImage = parseInt(document.getElementById('maskPicker').children[0].id.replace('maskOption', ''))
 			updateSelectedFramePreview()
 		}
 	}
 }
 function maskOptionClicked(event) {
-	Array.from(document.getElementById('maskPicker').children).forEach(element => element.classList.remove('maskOptionSelected'))
+	Array.from(document.getElementById('maskPicker').children).forEach(element => element.classList.remove('selected'))
 	if (event.target.nodeName == 'IMG') {
-		event.target.parentElement.classList.add('maskOptionSelected')
+		event.target.parentElement.classList.add('selected')
 		selectedMaskImage = parseInt(event.target.parentElement.id.replace('maskOption', ''))
 	} else {
-		event.target.classList.add('maskOptionSelected')
+		event.target.classList.add('selected')
 		selectedMaskImage = parseInt(event.target.id.replace('maskOption', ''))
 	}
 	updateSelectedFramePreview()
@@ -407,12 +407,12 @@ function getFloat(input) {
 function loadTextOptions(textArray) {
 	document.getElementById('textPicker').innerHTML = ''
 	cardTextList = textArray
-	cardTextList.forEach((item, index) => document.getElementById('textPicker').innerHTML += '<div id="' + index + '" onclick="textOptionClicked(event, ' + index + ')">' + item.name + '</div>')
+	cardTextList.forEach((item, index) => document.getElementById('textPicker').innerHTML += '<div id="' + index + '" onclick="textOptionClicked(event, ' + index + ')" class="interactable">' + item.name + '</div>')
 	document.getElementById('textPicker').children[0].click()
 }
 function textOptionClicked(event, index) {
-	Array.from(document.getElementById('textPicker').children).forEach(element => element.classList.remove('selectedText'))
-	event.target.classList.add('selectedText')
+	Array.from(document.getElementById('textPicker').children).forEach(element => element.classList.remove('selected'))
+	event.target.classList.add('selected')
 	selectedTextObject = cardTextList[index]
 	document.getElementById('textEditorText').value = selectedTextObject.text
 	document.getElementById('textEditorX').value = scaleX(selectedTextObject.x)
@@ -846,8 +846,8 @@ function beforeAfter(targetString, beforeString, afterString) {
 }
 
 function toggleTabs(clickedElement, targetId) {
-	Array.from(clickedElement.parentElement.children).forEach(element => element.classList.remove('tabOptionSelected'))
-	clickedElement.classList.add('tabOptionSelected')
+	Array.from(clickedElement.parentElement.children).forEach(element => element.classList.remove('selected'))
+	clickedElement.classList.add('selected')
 	Array.from(document.getElementById(targetId).parentElement.children).forEach(element => element.classList.add('hidden'))
 	document.getElementById(targetId).classList.remove('hidden')
 }
@@ -941,7 +941,7 @@ function textCodeReference() {
 
 function notify(message, color) {
 	document.getElementsByClassName('notificationContainer')[0].innerHTML += `
-	<div class='notification' style='background-color: ` + color + `'>
+	<div class='notification interactable' style='border-top-color: ` + color + `'>
 		<div>` + message + `</div>
 		<div class='deleteNotification' onclick='this.parentElement.parentNode.removeChild(this.parentElement)'>X</div>
 	</div>
