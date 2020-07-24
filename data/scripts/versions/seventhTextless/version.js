@@ -7,7 +7,8 @@ if (currentVersion != 'seventhTextless') {
 	currentVersion = 'seventhTextless'
 
 	loadTextOptions([
-	new cardText('Card Title', '', 165/1500, 158/2100, 1170/1500, 85/2100, 'goudymedieval', 85/2100, 'white', ['oneLine=true','shadow=' + scaleY(5/2100)])
+	new cardText('Card Title', '', 165/1500, 158/2100, 1170/1500, 85/2100, 'goudymedieval', 85/2100, 'white', ['oneLine=true','shadow=' + scaleY(5/2100)]),
+	new cardText('Power/Toughness', '', 1190/1500, 1969/2100, 230/1500, 78/2100, 'mplantin', 95/2100, 'white', ['oneLine=true,textAlign="center"','shadow=' + scaleY(2/2100)])
 	])
 
 	artX = scaleX(174 / 1500)
