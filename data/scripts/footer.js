@@ -17,6 +17,7 @@ document.getElementById('footer').innerHTML = `
                 <option value='darkMode'>Dark Mode</option>
                 <option value='dayRave'>Day Rave</option>
                 <option value='nightRave'>Night Rave</option>
+                <option value='lowpoly'>Lowpoly</option>
             </select>
         </div>
     </div>
