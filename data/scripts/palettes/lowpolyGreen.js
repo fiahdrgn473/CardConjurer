@@ -1,6 +1,5 @@
-var currentPalette = 'lowpolyGreen'
 rootStyles.setProperty('--site-background', '#3a3838 url("/data/images/site/backgrounds/lowpolyDarkGreen.svg") left/cover no-repeat fixed')
-rootStyles.setProperty('--site-background-filter', 'none')
+rootStyles.setProperty('--site-background-filter', 'grayscale(0) hue-rotate(0deg)')
 rootStyles.setProperty('--layer-background', '#242424 url("/data/images/site/backgrounds/lowpolyDarkGray.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--layer-background-selected', '#1d1d1d')
 rootStyles.setProperty('--interactable-unselected', '#666666')

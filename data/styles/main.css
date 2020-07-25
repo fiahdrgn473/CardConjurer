@@ -69,6 +69,7 @@ html::before {
 	height: 100%;
 	background: var(--site-background);
 	filter: var(--site-background-filter);
+	transition: 2s;
 	z-index: -1;
 }
 html, body {
@@ -78,7 +79,7 @@ html, body {
 	overflow-x: hidden;
 }
 body {
-	background: var(--body-background);
+	/*background: var(--body-background);*/
 }
 a {
 	font: inherit;
