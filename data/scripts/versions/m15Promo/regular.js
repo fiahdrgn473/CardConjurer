@@ -16,7 +16,8 @@ if (!loadedVersions.includes('m15PromoRegular')) {
 		['Red Power/Toughness', '/data/images/cardImages/m15/m15PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Green Power/Toughness', '/data/images/cardImages/m15/m15PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Multicolored Power/Toughness', '/data/images/cardImages/m15/m15PTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Artifact Power/Toughness', '/data/images/cardImages/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
+		['Artifact Power/Toughness', '/data/images/cardImages/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Pinline Outline', '/data/images/cardImages/m15Promo/m15PromoPinlineOutline.png', 74/1500, 85/2100, 1352/1500, 1867/2100, ['Full']]
 	], 'frameClassM15PromoRegular')
 }
 

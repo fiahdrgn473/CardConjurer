@@ -10,7 +10,8 @@ if (!loadedVersions.includes('m15FloatingCrowns')) {
 		['Multicolored Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingM.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
 		['Artifact Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingA.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
 		['Land Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingL.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
-		['Upper Crown Border Cover', '/data/images/cardImages/black.png', 59/1500, 58/2100, 1384/1500, 37/2100, ['Full']]
+		['Upper Crown Border Cover', '/data/images/cardImages/black.png', 59/1500, 58/2100, 1384/1500, 37/2100, ['Full']],
+		['Floating Crown Outline', '/data/images/cardImages/m15/m15CrownFloatingOutline.png', 42/1500, 36/2100, 1416/1500, 223/2100, ['Full']]
 	], 'frameClassM15FloatingCrowns')
 }
 
