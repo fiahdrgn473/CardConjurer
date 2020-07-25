@@ -1,4 +1,3 @@
-var currentPalette = 'dayRave'
 rootStyles.setProperty('--site-background', '#f5f5f5 url("/data/images/site/backgrounds/lowpolyLightGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#e4e4e4 url("/data/images/site/backgrounds/lowpolyLightGray.svg") left/cover no-repeat fixed')
@@ -12,10 +11,12 @@ setCookie('colorPalette', 'dayRave')
 //Stops the hue shift when another palette is loaded
 if (document.getElementById('inputColorPalette') != null) {
 	document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
+} else {
+	setTimeout(function() {document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)}, 1000)
 }
 
 function removeEventListener() {
-	if (currentPalette != 'dayRave') {
+	if (document.getElementById('inputColorPalette').value != 'dayRave') {
 		clearInterval(colorCycle)
 		document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
 	}

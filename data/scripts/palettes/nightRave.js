@@ -1,4 +1,3 @@
-var currentPalette = 'nightRave'
 rootStyles.setProperty('--site-background', '#3a3838 url("/data/images/site/backgrounds/lowpolyDarkGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#242424 url("/data/images/site/backgrounds/lowpolyDarkGray.svg") left/cover no-repeat fixed')
@@ -12,10 +11,12 @@ setCookie('colorPalette', 'nightRave')
 //Stops the hue shift when another palette is loaded
 if (document.getElementById('inputColorPalette') != null) {
 	document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
+} else {
+	setTimeout(function() {document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)}, 1000)
 }
 
 function removeEventListener() {
-	if (currentPalette != 'nightRave') {
+	if (document.getElementById('inputColorPalette').value != 'nightRave') {
 		clearInterval(colorCycle)
 		document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
 	}
