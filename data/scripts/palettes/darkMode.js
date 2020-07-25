@@ -1,3 +1,4 @@
+var currentPalette = 'darkMode'
 rootStyles.setProperty('--site-background', '#3a3838')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#242424')

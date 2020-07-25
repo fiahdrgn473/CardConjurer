@@ -1,3 +1,4 @@
+var currentPalette = 'dayRave'
 rootStyles.setProperty('--site-background', '#f5f5f5 url("/data/images/site/backgrounds/lowpolyLightGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#e4e4e4 url("/data/images/site/backgrounds/lowpolyLightGray.svg") left/cover no-repeat fixed')
@@ -14,8 +15,10 @@ if (document.getElementById('inputColorPalette') != null) {
 }
 
 function removeEventListener() {
-	clearInterval(colorCycle)
-	document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
+	if (currentPalette != 'dayRave') {
+		clearInterval(colorCycle)
+		document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
+	}
 }
 
 //Shifts the hue

@@ -1,3 +1,4 @@
+var currentPalette = 'lowpolyGreen'
 rootStyles.setProperty('--site-background', '#3a3838 url("/data/images/site/backgrounds/lowpolyDarkGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#242424 url("/data/images/site/backgrounds/lowpolyDarkGray.svg") left/cover no-repeat fixed')

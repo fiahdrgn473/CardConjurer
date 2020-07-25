@@ -1,3 +1,4 @@
+var currentPalette = 'lightMode'
 rootStyles.setProperty('--site-background', '#f5f5f5')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#e4e4e4')

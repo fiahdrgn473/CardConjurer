@@ -1,3 +1,4 @@
+var currentPalette = 'nightRave'
 rootStyles.setProperty('--site-background', '#3a3838 url("/data/images/site/backgrounds/lowpolyDarkGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#242424 url("/data/images/site/backgrounds/lowpolyDarkGray.svg") left/cover no-repeat fixed')
@@ -14,8 +15,10 @@ if (document.getElementById('inputColorPalette') != null) {
 }
 
 function removeEventListener() {
-	clearInterval(colorCycle)
-	document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
+	if (currentPalette != 'nightRave') {
+		clearInterval(colorCycle)
+		document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
+	}
 }
 
 //Shifts the hue
