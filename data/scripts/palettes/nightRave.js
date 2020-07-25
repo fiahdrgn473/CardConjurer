@@ -9,7 +9,9 @@ rootStyles.setProperty('--body-background', 'none')
 setCookie('colorPalette', 'nightRave')
 
 //Stops the hue shift when another palette is loaded
-document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
+if (document.getElementById('inputColorPalette') != null) {
+	document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
+}
 
 function removeEventListener() {
 	clearInterval(colorCycle)
@@ -17,7 +19,7 @@ function removeEventListener() {
 }
 
 //Shifts the hue
-var colorCycle = setInterval(shiftHue, 100)
+var colorCycle = setInterval(shiftHue, 200)
 var currentHueRotation = 0
 
 function shiftHue() {

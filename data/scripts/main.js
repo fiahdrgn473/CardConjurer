@@ -236,10 +236,10 @@ class cardText {
 }
 
 function scaleX(xToScale) {
-	return xToScale * cardWidth
+	return Math.round(xToScale * cardWidth)
 }
 function scaleY(yToScale) {
-	return yToScale * cardHeight
+	return Math.round(yToScale * cardHeight)
 }
 
 function drawCardObjects() {
