@@ -8,6 +8,14 @@ rootStyles.setProperty('--font-color', '#000000')
 rootStyles.setProperty('--body-background', 'none')
 setCookie('colorPalette', 'dayRave')
 
+//Stops the hue shift when another palette is loaded
+document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
+
+function removeEventListener() {
+	clearInterval(colorCycle)
+	document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
+}
+
 //Shifts the hue
 var colorCycle = setInterval(shiftHue, 100)
 var currentHueRotation = 0
@@ -18,13 +26,4 @@ function shiftHue() {
 	if (currentHueRotation == 360) {
 		currentHueRotation = 0
 	}
-}
-
-//Stops the hue shift when another palette is loaded
-document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
-
-function removeEventListener() {
-	console.log('cleared')
-	clearInterval(colorCycle)
-	document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
 }
