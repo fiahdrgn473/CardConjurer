@@ -1,4 +1,5 @@
 rootStyles.setProperty('--site-background', '#f5f5f5')
+rootStyles.setProperty('--site-background-filter', 'none')
 rootStyles.setProperty('--layer-background', '#e4e4e4')
 rootStyles.setProperty('--layer-background-selected', '#cccccc')
 rootStyles.setProperty('--interactable-unselected', '#aaaaaa')

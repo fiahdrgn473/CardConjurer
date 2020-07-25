@@ -28,7 +28,9 @@ function checkCookies() {
         setTimeout(function() {
             document.getElementById('inputColorPalette').value = getCookie('colorPalette')
         }, 1000)
-	}
+	} else {
+    loadScript('/data/scripts/palettes/lowpolyGreen.js')
+  }
 }
 checkCookies()
 

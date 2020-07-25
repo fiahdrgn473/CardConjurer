@@ -13,11 +13,16 @@ document.getElementById('footer').innerHTML = `
         <hr>
         <div>
             <select id='inputColorPalette' onchange='loadScript("/data/scripts/palettes/" + this.value + ".js")'>
+                <option disabled>Bare Bones</option>
                 <option value='lightMode'>Light Mode</option>
                 <option value='darkMode'>Dark Mode</option>
+                <option disabled>Lowpoly</option>
+                <option value='lowpolyRed'>Red</option>
+                <option value='lowpolyGreen' selected='selected'>Green</option>
+                <option value='lowpolyBlue'>Blue</option>
+                <option disabled>Color-Changing</option>
                 <option value='dayRave'>Day Rave</option>
                 <option value='nightRave'>Night Rave</option>
-                <option value='lowpoly'>Lowpoly</option>
             </select>
         </div>
     </div>
