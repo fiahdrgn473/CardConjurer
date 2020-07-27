@@ -22,13 +22,19 @@ cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
 
 function addToManaSymbolList(folderPath, newManaSymbolList) {
 	for (var i = 0; i < newManaSymbolList.length; i ++) {
-		manaSymbolCodeList.push(newManaSymbolList[i])
-		manaSymbolImageList.push(new Image())
-		manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+		if (newManaSymbolList[i].includes('.svg')) {
+			manaSymbolCodeList.push(newManaSymbolList[i].replace('.svg', ''))
+			manaSymbolImageList.push(new Image())
+			manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i]
+		} else {
+			manaSymbolCodeList.push(newManaSymbolList[i])
+			manaSymbolImageList.push(new Image())
+			manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+		}
 	}
 }
 
-addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "w", "u", "b", "r", "g", "2w", "2u", "2b", "2r", "2g", "pw", "pu", "pb", "pr", "pg", "wu", "wb", "ub", "ur", "br", "bg", "rg", "rw", "gw", "gu", "x", "s", "c", "t","untap", "e", "y", "z", "half", "inf", "chaos", "l+", "l-", "l0", "oldtap", "artistbrush", "bar", "whiteBrush", "blackBrush"])
+addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0.svg", "1.svg", "2.svg", "3.svg", "4.svg", "5.svg", "6.svg", "7.svg", "8.svg", "9.svg", "10.svg", "11.svg", "12.svg", "13.svg", "14.svg", "15.svg", "16.svg", "17.svg", "18.svg", "19.svg", "20.svg", "w.svg", "u.svg", "b.svg", "r.svg", "g.svg", "2w.svg", "2u.svg", "2b.svg", "2r.svg", "2g.svg", "pw.svg", "pu.svg", "pb.svg", "pr.svg", "pg.svg", "wu.svg", "wb.svg", "ub.svg", "ur.svg", "br.svg", "bg.svg", "rg.svg", "rw.svg", "gw.svg", "gu.svg", "x.svg", "s.svg", "c.svg", "t.svg","untap.svg", "e.svg", "y.svg", "z.svg", "half.svg", "inf.svg", "chaos.svg", "l+", "l-", "l0", "oldtap.svg", "artistbrush", "bar", "whiteBrush", "blackBrush"])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')

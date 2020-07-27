@@ -69,7 +69,7 @@ html::before {
 	height: 100%;
 	background: var(--site-background);
 	filter: var(--site-background-filter);
-	transition: 2s;
+	/*transition: 2s;*/
 	z-index: -1;
 }
 html, body {
