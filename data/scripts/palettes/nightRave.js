@@ -8,28 +8,17 @@ rootStyles.setProperty('--font-color', '#efefef')
 rootStyles.setProperty('--body-background', 'none')
 setCookie('colorPalette', 'nightRave')
 
-//Stops the hue shift when another palette is loaded
-if (document.getElementById('inputColorPalette') != null) {
-	document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)
-} else {
-	setTimeout(function() {document.getElementById('inputColorPalette').addEventListener('change', removeEventListener, false)}, 1000)
-}
-
-function removeEventListener() {
-	if (document.getElementById('inputColorPalette').value != 'nightRave') {
-		clearInterval(colorCycle)
-		document.getElementById('inputColorPalette').removeEventListener('change', removeEventListener, false)
-	}
-}
-
 //Shifts the hue
-var colorCycle = setInterval(shiftHue, 200)
+var colorCycle
 var currentHueRotation = 0
+if (colorCycle == undefined) {
+	colorCycle = setInterval(shiftHue, 200)
+}
 
-function shiftHue() {
-	rootStyles.setProperty('--site-background-filter', 'grayscale(0) hue-rotate(' + currentHueRotation + 'deg)')
-	currentHueRotation += 1
-	if (currentHueRotation == 360) {
-		currentHueRotation = 0
+function shiftHue(checkForClear = false) {
+	if (document.getElementById('inputColorPalette').value.includes('Rave')) {
+		rootStyles.setProperty('--site-background-filter', 'grayscale(0) hue-rotate(' + currentHueRotation + 'deg)')
+		currentHueRotation += 1
+		if (currentHueRotation == 360) {currentHueRotation = 0}
 	}
 }
