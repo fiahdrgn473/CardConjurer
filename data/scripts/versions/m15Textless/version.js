@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('m15Textless')) {
 	loadedVersions.push('m15Textless')
-	loadMaskImages([['Border (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskBorder.png'], ['Pinline (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Invention (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskInvention.png']])
+	loadMaskImages([['Border (m15)', '/data/images/cardImages/m15/m15MaskBorder.png'], ['Pinline (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Filigree (m15 Textless)', '/data/images/cardImages/m15Textless/invention/m15TextlessMaskInvention.png']])
 }
 
 if (currentVersion != 'm15Textless') {
@@ -8,7 +8,7 @@ if (currentVersion != 'm15Textless') {
 
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1827/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1795/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
 	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 
@@ -24,7 +24,7 @@ if (currentVersion != 'm15Textless') {
 	manaCostDirection = 'reverse'
 
 	setSymbolX = [scaleX(1382/1500), 'right']
-	setSymbolY = [scaleY(1804/2100), 'center']
+	setSymbolY = [scaleY(1772/2100), 'center']
 	setSymbolWidth = scaleX(180/1500)
 	setSymbolHeight = scaleY(86/2100)
 

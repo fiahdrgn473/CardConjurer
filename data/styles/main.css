@@ -174,6 +174,7 @@ img {
     user-drag: none;
 }
 #framePicker, #maskPicker {
+	margin-top: 0.25rem;
 	padding-top: 0.25rem;
 	margin-bottom: 0.25rem;
 	max-height: 260pt;
@@ -240,7 +241,7 @@ img {
 }
 
 /*Gives non-text inputs the pointer cursor*/
-input:not([type='text']), select, option, button {
+input:not([type='text']):not([type='number']), select, option, button {
     cursor: pointer;
 }
 /*Styles most of the inputs, except checkboxes*/

@@ -1,15 +1,15 @@
 if (!loadedVersions.includes('tokenTextless')) {
 	loadedVersions.push('tokenTextless')
-	loadMaskImages([['Pinline (token textless)', '/data/images/cardImages/token/tokenMaskTextlessPinline.png'], ['Type (token textless)', '/data/images/cardImages/token/tokenMaskTextlessType.png']])
+	loadMaskImages([['Pinline (token textless)', '/data/images/cardImages/token/tokenMaskTextlessPinline.png'], ['Type (m15 textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png']])
 	loadFrameImages([
-		['White Frame', '/data/images/cardImages/token/tokenFrameWTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Blue Frame', '/data/images/cardImages/token/tokenFrameUTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Black Frame', '/data/images/cardImages/token/tokenFrameBTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Red Frame', '/data/images/cardImages/token/tokenFrameRTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Green Frame', '/data/images/cardImages/token/tokenFrameGTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Multicolored Frame', '/data/images/cardImages/token/tokenFrameMTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Artifact Frame', '/data/images/cardImages/token/tokenFrameATextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
-		['Land Frame', '/data/images/cardImages/token/tokenFrameLTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (token textless)', 'Border (m15)']],
+		['White Frame', '/data/images/cardImages/token/tokenFrameWTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Blue Frame', '/data/images/cardImages/token/tokenFrameUTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Black Frame', '/data/images/cardImages/token/tokenFrameBTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Red Frame', '/data/images/cardImages/token/tokenFrameRTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Green Frame', '/data/images/cardImages/token/tokenFrameGTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Multicolored Frame', '/data/images/cardImages/token/tokenFrameMTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Artifact Frame', '/data/images/cardImages/token/tokenFrameATextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
+		['Land Frame', '/data/images/cardImages/token/tokenFrameLTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
 		['White Power/Toughness', '/data/images/cardImages/m15/m15PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Blue Power/Toughness', '/data/images/cardImages/m15/m15PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Black Power/Toughness', '/data/images/cardImages/m15/m15PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],

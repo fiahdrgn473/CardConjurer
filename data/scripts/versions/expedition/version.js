@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('expedition')) {
 	loadedVersions.push('expedition')
-	loadMaskImages([['Pinline (expedition)', '/data/images/cardImages/expedition/expeditionMaskPinline.png'], ['Type (expedition)', '/data/images/cardImages/expedition/expeditionMaskType.png'], ['Rules (expedition)', '/data/images/cardImages/expedition/expeditionMaskTextbox.png'], ['Frame (expedition)', '/data/images/cardImages/expedition/expeditionMaskFrame.png']])
+	loadMaskImages([['Pinline (expedition)', '/data/images/cardImages/expedition/expeditionMaskPinline.png'], ['Type (m15 textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Rules (expedition)', '/data/images/cardImages/expedition/expeditionMaskTextbox.png'], ['Frame (expedition)', '/data/images/cardImages/expedition/expeditionMaskFrame.png']])
 }
 
 if (currentVersion != 'expedition') {
