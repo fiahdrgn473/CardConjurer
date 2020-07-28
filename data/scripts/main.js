@@ -92,6 +92,8 @@ function setSymbolFromGatherer() {
 			newSetSymbolSource += 'c'
 		}
 		setSymbol.src = newSetSymbolSource + '.png'
+	} else if (document.getElementById('inputSetCode').value.toLowerCase() == 'none') {
+		setSymbol.src = '/data/images/cardImages/blank.png'
 	} else {
 		autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
 	}
