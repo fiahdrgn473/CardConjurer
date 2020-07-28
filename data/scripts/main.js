@@ -466,6 +466,10 @@ function writeText(textObjectList, targetContext) {
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
 		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', manaCost = false, canWriteText = true
 		textObjectList[i].otherParameters.forEach(item => eval(item))
+		textLineContext.shadowOffsetX = shadow
+		textLineContext.shadowOffsetY = shadow
+		textLineContext.shadowBlur = 0
+		textLineContext.shadowColor = 'black'
 		textLineContext.strokeStyle = outline
 		textLineContext.lineWidth = outlineThickness
 		textFont = textObjectList[i].font
@@ -538,11 +542,18 @@ function writeText(textObjectList, targetContext) {
 					} else if (possibleCodeLower == 'loadtextx') {
 						textX = savedTextX
 					} else if (possibleCodeLower.includes('outline:')) {
-	                    outline = true
-	                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0]
-	                    textLineContext.lineWidth = parseInt(possibleCodeLower.replace('outline:', '').split(',')[1])
+						console.log(parseInt(possibleCodeLower.replace('outline:', '').split(',')[1]), possibleCodeLower.replace('outline:', '').split(',')[1], possibleCodeLower.replace('outline:', '').split(','))
+						if (parseInt(possibleCodeLower.replace('outline:', '').split(',')[1]) == 0) {
+							outline = false
+						} else {
+							outline = true
+		                    textLineContext.strokeStyle = possibleCodeLower.replace('outline:', '').split(',')[0]
+		                    textLineContext.lineWidth = parseInt(possibleCodeLower.replace('outline:', '').split(',')[1])
+						}
 	                } else if (possibleCodeLower.includes('shadow')) {
-	                    shadow = parseInt(possibleCodeLower.replace('shadow', ''))
+	                    var shadowOffset = parseInt(possibleCodeLower.replace('shadow', ''))
+	                    textLineContext.shadowOffsetX = shadowOffset
+	                    textLineContext.shadowOffsetY = shadowOffset
 	                } else if (possibleCodeLower.includes('fontcolor')) {
 	                	currentFontColor = possibleCodeLower.slice(9, possibleCodeLower.length)
 	                	textLineContext.fillStyle = currentFontColor
@@ -617,12 +628,7 @@ function writeText(textObjectList, targetContext) {
 							}
 						}
 					}
-					if (shadow > 0) {
-	                    textLineContext.fillStyle = 'black'
-	                    textLineContext.fillText(wordToWrite, textX + shadow, textCanvasBuffer + textSize + shadow)
-	                    textLineContext.fillStyle = currentFontColor
-					}
-					if (outline != undefined) {
+					if (outline == true) {
 						textLineContext.strokeText(wordToWrite, textX, textCanvasBuffer + textSize)
 					}
 					textLineContext.fillText(wordToWrite, textX, textCanvasBuffer + textSize)

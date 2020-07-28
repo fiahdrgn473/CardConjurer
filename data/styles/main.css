@@ -211,15 +211,13 @@ img {
 	padding: 0.5rem;
 }
 
-textarea {
-	resize: vertical;
-	min-height: 4rem;
-	max-height: 12rem;
-}
 
+
+/*Hides anything*/
 .hidden {
 	display: none;
 }
+/*Overrides hiding custom uploaded frame images*/
 .hidden.frameClassCustom {
 	display: inline-block;
 }
@@ -241,28 +239,47 @@ textarea {
 	padding: 0.5rem 0;
 }
 
+/*Gives non-text inputs the pointer cursor*/
+input:not([type='text']), select, option, button {
+    cursor: pointer;
+}
+/*Styles most of the inputs, except checkboxes*/
 input:not([type='checkbox']), textarea, button, select {
 	font: inherit;
 	color: inherit;
 	width: 100%;
-	background: var(--layer-background);
-	border: none;
 	outline: none;
+	border-style: solid none none none;
 	padding: 0.25rem;
 	margin-top: 0.25rem;
+	background: var(--layer-background);
+	border-top: 0.1rem solid var(--interactable-unselected);
+	border-radius: 0.1rem;
+	transition: 0.25s;
+	position: relative;
+	top: 0;
 }
-input:not([type='checkbox']):active, textarea:active, button:active {
-	padding: 0.1rem;
-	border: 0.1rem solid var(--interactable-unselected);
+/*Slightly lifts inputs upon hovering over them*/
+input:not([type='checkbox']):hover, textarea:hover, button:hover, select:hover {
+	top: -0.1rem;
+	box-shadow: 0 0.125rem 0.25rem black;
 }
+/*Shows that inputs that aren't checkboxes are in use*/
+input:not([type='checkbox']):active, button:active, input:not([type='checkbox']):not([type='input']):focus, textarea:focus, select:active {
+	border-top-color: var(--interactable-selected);
+}
+/*Styles checboxes*/
 input[type='checkbox'] {
 	position: relative;
 	top: 0.25rem;
 	width: 1rem;
 	height: 1rem;
 }
-input[type='checkbox'], select, option, input[type='file'], button {
-    cursor: pointer;
+/*Allows resizing of the textarea*/
+textarea {
+	resize: vertical;
+	min-height: 6rem;
+	max-height: 12rem;
 }
 
 @keyframes fade-in {
@@ -395,6 +412,7 @@ input[type='checkbox'], select, option, input[type='file'], button {
 }
 
 #textCodeReference {
+	background: var(--interactable-unselected);
 	display: grid;
 	grid-template-columns: 7rem auto;
 	margin-top: 1rem;
@@ -405,6 +423,9 @@ input[type='checkbox'], select, option, input[type='file'], button {
 #textCodeReference > div {
 	background: var(--layer-background);
 	padding: 0.25rem;
+}
+#textCodeReference > div:nth-child(2n + 1):not(:nth-child(1)) {
+	user-select: all;
 }
 
 
