@@ -14,6 +14,9 @@ if (!loadedVersions.includes('ixalanRegular')) {
 		['Instant Icon', '/data/images/cardImages/ixalan/ixalanIconInstant.png', 90/1500, 105/2100, 100/1500, 101/2100, ['Full']],
 		['Multitype Icon', '/data/images/cardImages/ixalan/ixalanIconMulti.png', 90/1500, 105/2100, 100/1500, 101/2100, ['Full']],
 		['Sorcery Icon', '/data/images/cardImages/ixalan/ixalanIconSorcery.png', 90/1500, 105/2100, 100/1500, 101/2100, ['Full']],
+		['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
+		['Silver Border', '/data/images/cardImages/silver.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
+		['Gold Border', '/data/images/cardImages/gold.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']]
 	], 'frameClassIxalanRegular')
 }
 

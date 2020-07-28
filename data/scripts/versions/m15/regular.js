@@ -18,7 +18,10 @@ if (!loadedVersions.includes('m15Regular')) {
 		['Multicolored Power/Toughness', '/data/images/cardImages/m15/m15PTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Artifact Power/Toughness', '/data/images/cardImages/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Midnight Frame', '/data/images/cardImages/m15/m15Midnight.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)']],
-		['Pinline Outline', '/data/images/cardImages/m15/m15PinlineOutline.png', 74/1500, 85/2100, 1352/1500, 1768/2100, ['Full']]
+		['Pinline Outline', '/data/images/cardImages/m15/m15PinlineOutline.png', 74/1500, 85/2100, 1352/1500, 1768/2100, ['Full']],
+		['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
+		['Silver Border', '/data/images/cardImages/silver.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
+		['Gold Border', '/data/images/cardImages/gold.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']]
 	], 'frameClassM15Regular')
 }
 

@@ -14,7 +14,10 @@ if (!loadedVersions.includes('seventhRegular')) {
 		['Red Land Frame', '/data/images/cardImages/seventh/seventhFrameRL.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh)', 'Rules (seventh)', 'Frame (seventh)', 'Border (seventh)']],
 		['Green Land Frame', '/data/images/cardImages/seventh/seventhFrameGL.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh)', 'Rules (seventh)', 'Frame (seventh)', 'Border (seventh)']],
 		['Land Frame', '/data/images/cardImages/seventh/seventhFrameCL.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh)', 'Rules (seventh)', 'Frame (seventh)', 'Border (seventh)']],
-		['Foil Stamp', '/data/images/cardImages/seventh/seventhFoilStamp.png', 81/744, 867/1039, 300/744, 115/1039, ['Full']]
+		['Foil Stamp', '/data/images/cardImages/seventh/seventhFoilStamp.png', 81/744, 867/1039, 300/744, 115/1039, ['Full']],
+		['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Border (seventh)']],
+		['Silver Border', '/data/images/cardImages/silver.png', 0, 0, 1, 1, ['Border (seventh)']],
+		['Gold Border', '/data/images/cardImages/gold.png', 0, 0, 1, 1, ['Border (seventh)']]
 	], 'frameClassSeventhRegular')
 }
 

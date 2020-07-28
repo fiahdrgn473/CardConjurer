@@ -464,13 +464,13 @@ function writeText(textObjectList, targetContext) {
 		textParagraphCanvas.height = scaleY(textObjectList[i].height) + 2 * textCanvasBuffer
 		textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
-		var outline, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', manaCost = false, canWriteText = true
+		var outlineColor = 'black', outline = false, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', manaCost = false, canWriteText = true
 		textObjectList[i].otherParameters.forEach(item => eval(item))
 		textLineContext.shadowOffsetX = shadow
 		textLineContext.shadowOffsetY = shadow
 		textLineContext.shadowBlur = 0
 		textLineContext.shadowColor = 'black'
-		textLineContext.strokeStyle = outline
+		textLineContext.strokeStyle = outlineColor
 		textLineContext.lineWidth = outlineThickness
 		textFont = textObjectList[i].font
 		textLineContext.font = fontStyle + textSize + 'px ' + textFont
