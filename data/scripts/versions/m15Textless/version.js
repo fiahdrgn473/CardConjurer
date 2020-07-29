@@ -38,4 +38,4 @@ if (currentVersion != 'm15Textless') {
 	bottomInfoUpdated()
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
+loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['textlessGenericShowcase', 'Generic Showcase'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
