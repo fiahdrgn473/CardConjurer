@@ -34,7 +34,7 @@ function addToManaSymbolList(folderPath, newManaSymbolList) {
 	}
 }
 
-addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0.svg", "1.svg", "2.svg", "3.svg", "4.svg", "5.svg", "6.svg", "7.svg", "8.svg", "9.svg", "10.svg", "11.svg", "12.svg", "13.svg", "14.svg", "15.svg", "16.svg", "17.svg", "18.svg", "19.svg", "20.svg", "w.svg", "u.svg", "b.svg", "r.svg", "g.svg", "2w.svg", "2u.svg", "2b.svg", "2r.svg", "2g.svg", "pw.svg", "pu.svg", "pb.svg", "pr.svg", "pg.svg", "wu.svg", "wb.svg", "ub.svg", "ur.svg", "br.svg", "bg.svg", "rg.svg", "rw.svg", "gw.svg", "gu.svg", "x.svg", "s.svg", "c.svg", "t.svg","untap.svg", "e.svg", "y.svg", "z.svg", "half.svg", "inf.svg", "chaos.svg", "l+", "l-", "l0", "oldtap.svg", "artistbrush", "bar", "whiteBrush", "blackBrush"])
+addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0.svg", "1.svg", "2.svg", "3.svg", "4.svg", "5.svg", "6.svg", "7.svg", "8.svg", "9.svg", "10.svg", "11.svg", "12.svg", "13.svg", "14.svg", "15.svg", "16.svg", "17.svg", "18.svg", "19.svg", "20.svg", "w.svg", "u.svg", "b.svg", "r.svg", "g.svg", "2w.svg", "2u.svg", "2b.svg", "2r.svg", "2g.svg", "pw.svg", "pu.svg", "pb.svg", "pr.svg", "pg.svg", "wu.svg", "wb.svg", "ub.svg", "ur.svg", "br.svg", "bg.svg", "rg.svg", "rw.svg", "gw.svg", "gu.svg", "x.svg", "s.svg", "c.svg", "t.svg","untap.svg", "e.svg", "y.svg", "z.svg", "half.svg", "inf.svg", "chaos.svg", "l+", "l-", "l0", "oldtap.svg", "artistbrush.svg", "bar", "whiteBrush", "blackBrush", 'star.svg'])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -559,9 +559,15 @@ function writeText(textObjectList, targetContext) {
 	                } else if (possibleCodeLower.includes('fontcolor')) {
 	                	currentFontColor = possibleCodeLower.slice(9, possibleCodeLower.length)
 	                	textLineContext.fillStyle = currentFontColor
+	                } else if (possibleCodeLower == 'star') {
+	                	var starWidth = textSize * 0.7
+	                	var starSpace = textSize * 0.18
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('star')], textX + starSpace, textCanvasBuffer + textSize - starWidth * 1.01, starWidth, starWidth * 91/96)
+						textX += starWidth + starSpace * 2
+						currentLineWidth += starWidth + starSpace * 2
 	                } else if (possibleCodeLower == 'artistbrush') {
-	                	var artistBrushWidth = textSize * 1.2
-						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('artistbrush')], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.58, artistBrushWidth, artistBrushWidth * 13 / 21)
+	                	var artistBrushWidth = textSize * 1.08
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('artistbrush')], textX, textCanvasBuffer + textSize - artistBrushWidth * 0.63, artistBrushWidth, artistBrushWidth * 59 / 101)
 						textX += artistBrushWidth * 1.1
 						currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower == 'oldartistbrush') {

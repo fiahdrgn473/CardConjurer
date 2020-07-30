@@ -88,16 +88,16 @@ if (currentVersion != 'planeswalker') {
 }
 
 function bottomInfoPlaneswalker() {
-	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
-	var ptBoxShift = 36/2100
-	writeText(
-		[
-            {text: document.getElementById('inputInfoSet').value + '{right' + scaleX(0.005) + '}\u2605{right' + scaleX(0.005) + '}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2026/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
-			{text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 1990/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
-			{text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 1990/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
-			{text: 'NOT FOR SALE', x: 97/1500, y: 2056/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
-			{text: '{right}CardConjurer.com', x: 97/1500, y: 2020/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']}
-		], bottomInfoContext)
+    bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
+    var ptBoxShift = 36/2100
+    writeText(
+        [
+            {text: document.getElementById('inputInfoSet').value + '{star}' + document.getElementById('inputInfoLanguage').value + ' {saveTextX}{artistbrush}{fontbelerenbsc}' + document.getElementById('inputInfoArtist').value, x: 97/1500, y: 2026/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
+            {text: document.getElementById('inputInfoNumber').value + '{loadTextX}' + document.getElementById('inputInfoRarity').value, x: 97/1500, y: 1990/2100, width: 1306/1500, height: 36/2100, font: 'gothammedium', fontSize: 36/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
+            {text: '{right}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x: 97/1500, y: 1990/2100 + ptBoxShift, width: 1306/1500, height: 35/2100, font: 'mplantin', fontSize: 35/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
+            {text: 'NOT FOR SALE', x: 97/1500, y: 2058/2100, width: 1306/1500, height: 30/2100, font: 'gothammedium', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']},
+            {text: '{right}CardConjurer.com', x: 97/1500, y: 2022/2100 + ptBoxShift, width: 1306/1500, height: 30/2100, font: 'mplantin', fontSize: 30/2100, fontColor: 'white', otherParameters: ['oneLine=true', 'outline=true', 'outlineThickness=8']}
+        ], bottomInfoContext)
 }
 
 var planeswalkerAbilityLayout = [[0], [0, scaleY(784/1050)], [0, scaleY(730/1050), scaleY(863/1050)], [0, scaleY(697/1050), scaleY(784/1050), scaleY(878/1050)], [0, scaleY(683/1050), scaleY(756/1050), scaleY(830/1050), scaleY(904/1050)]]
