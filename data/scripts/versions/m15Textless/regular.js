@@ -11,6 +11,7 @@ if (!loadedVersions.includes('m15TextlessInvention')) {
 		['Multicolored Invention Frame', '/data/images/cardImages/m15Textless/invention/m15TextlessFrameInventionM.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Filigree (m15 Textless)', 'Border (m15)']],
 		['Artifact Invention Frame', '/data/images/cardImages/m15Textless/invention/m15TextlessFrameInventionA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Filigree (m15 Textless)', 'Border (m15)']],
 		['Land Invention Frame', '/data/images/cardImages/m15Textless/invention/m15TextlessFrameInventionL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Filigree (m15 Textless)', 'Border (m15)']],
+		['Dark Invention Frame', '/data/images/cardImages/m15Textless/invention/m15TextlessFrameInventionPhyrexian.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Filigree (m15 Textless)', 'Border (m15)']],
 		['White Power/Toughness', '/data/images/cardImages/m15/m15PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Blue Power/Toughness', '/data/images/cardImages/m15/m15PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Black Power/Toughness', '/data/images/cardImages/m15/m15PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
