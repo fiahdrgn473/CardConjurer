@@ -8,13 +8,6 @@ if (!loadedVersions.includes('future')) {
 if (currentVersion != 'future') {
 	currentVersion = 'future'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 264/1500, 195/2100, 1248/1500, 91/2100, 'matrixb', 91/2100, 'white', ['oneLine=true']),
-	new cardText('Card Type', '', 182/1500, 1261/2100, 1248/1500, 75/2100, 'matrixb', 75/2100, 'white', ['oneLine=true']),
-	new cardText('Rules Text', '', 154/1500, 1313/2100, 1211/1500, 670/2100, 'mplantin', 73/2100, 'black'),
-	new cardText('Power/Toughness', '', 1160/1500, 1960/2100, 210/1500, 83/2100, 'mplantin', 83/2100, 'white', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = scaleX(129 / 1500)
 	artY = scaleY(177 / 2100)
 	artWidth = scaleX(1307 / 1500)
@@ -38,7 +31,12 @@ if (currentVersion != 'future') {
 
 	bottomInfoFunction = 'bottomInfoFuture'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 264/1500, 195/2100, 1248/1500, 91/2100, 'matrixb', 91/2100, 'white', ['oneLine=true']),
+	new cardText('Card Type', '', 182/1500, 1261/2100, 1248/1500, 75/2100, 'matrixb', 75/2100, 'white', ['oneLine=true']),
+	new cardText('Rules Text', '', 154/1500, 1313/2100, 1211/1500, 670/2100, 'mplantin', 73/2100, 'black'),
+	new cardText('Power/Toughness', '', 1160/1500, 1960/2100, 210/1500, 83/2100, 'mplantin', 83/2100, 'white', ['oneLine=true,textAlign="center"'])
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular']])

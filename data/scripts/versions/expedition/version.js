@@ -6,13 +6,6 @@ if (!loadedVersions.includes('expedition')) {
 if (currentVersion != 'expedition') {
 	currentVersion = 'expedition'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1795/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Rules Text', '', 135/1500, 1238/2100, 1230/1500, 600/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = scaleX(113 / 1500)
 	artY = scaleY(233 / 2100)
 	artWidth = scaleX(1274 / 1500)
@@ -36,7 +29,12 @@ if (currentVersion != 'expedition') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1795/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Rules Text', '', 135/1500, 1238/2100, 1230/1500, 600/2100, 'mplantin', 74/2100, 'black'),
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns']])

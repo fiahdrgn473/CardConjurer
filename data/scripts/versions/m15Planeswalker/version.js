@@ -51,16 +51,6 @@ if (!loadedVersions.includes('planeswalker')) {
 if (currentVersion != 'planeswalker') {
 	currentVersion = 'planeswalker'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 130/1500, 149/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 130/1500, 1258/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Ability 1', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Ability 2', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Ability 3', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Ability 4', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Loyalty', '', 1215/1500, 1954/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'white', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = scaleX(100 / 1500)
 	artY = scaleY(190 / 2100)
 	artWidth = scaleX(1508 / 1500)
@@ -84,7 +74,15 @@ if (currentVersion != 'planeswalker') {
 
 	bottomInfoFunction = 'bottomInfoPlaneswalker'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+    new cardText('Card Title', '', 130/1500, 149/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+    new cardText('Card Type', '', 130/1500, 1258/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+    new cardText('Ability 1', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
+    new cardText('Ability 2', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
+    new cardText('Ability 3', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
+    new cardText('Ability 4', '', 270/1500, 1153/2100, 1120/1500, 624/2100, 'mplantin', 74/2100, 'black'),
+    new cardText('Loyalty', '', 1215/1500, 1954/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'white', ['oneLine=true,textAlign="center"'])
+    ])
 }
 
 function bottomInfoPlaneswalker() {

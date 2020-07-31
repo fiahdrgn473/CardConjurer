@@ -412,11 +412,24 @@ function getFloat(input) {
 	return parseFloat(document.getElementById(input).value)
 }
 
-function loadTextOptions(textArray) {
+function loadTextOptions(textArray = []) {
 	document.getElementById('textPicker').innerHTML = ''
+	var backupTextValues = cardTextList
 	cardTextList = textArray
-	cardTextList.forEach((item, index) => document.getElementById('textPicker').innerHTML += '<div id="' + index + '" onclick="textOptionClicked(event, ' + index + ')" class="interactable">' + item.name + '</div>')
+	for (var i = 0; i < cardTextList.length; i++) {
+		for (var n = 0; n < backupTextValues.length; n++) {
+			if (cardTextList[i].name == backupTextValues[n].name) {
+				cardTextList[i].text = backupTextValues[n].text
+			}
+		}
+		document.getElementById('textPicker').innerHTML += '<div id="' + i + '" onclick="textOptionClicked(event, ' + i + ')" class="interactable">' + cardTextList[i].name + '</div>'
+	}
 	document.getElementById('textPicker').children[0].click()
+	cardTextEdited()
+	setSymbol.src = setSymbol.src
+	cardArt.src = cardArt.src
+	manaCostUpdated()
+	bottomInfoUpdated()
 }
 function textOptionClicked(event, index) {
 	Array.from(document.getElementById('textPicker').children).forEach(element => element.classList.remove('selected'))

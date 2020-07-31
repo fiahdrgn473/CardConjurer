@@ -6,12 +6,6 @@ if (!loadedVersions.includes('m15Textless')) {
 if (currentVersion != 'm15Textless') {
 	currentVersion = 'm15Textless'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1795/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = scaleX(60 / 1500)
 	artY = scaleY(60 / 2100)
 	artWidth = scaleX(1380 / 1500)
@@ -35,7 +29,11 @@ if (currentVersion != 'm15Textless') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1795/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	])
 }
 
 loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['textlessGenericShowcase', 'Generic Showcase'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])

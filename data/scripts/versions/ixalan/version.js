@@ -6,12 +6,6 @@ if (!loadedVersions.includes('ixalan')) {
 if (currentVersion != 'ixalan') {
 	currentVersion = 'ixalan'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 165/1500, 174/2100, 1170/1500, 79/2100, 'belerenbsc', 79/2100, 'black', ['oneLine=true','textAlign="center"']),
-	new cardText('Card Type', '', 165/1500, 1262/2100, 1170/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true','textAlign="center"']),
-	new cardText('Rules Text', '', 196/1500, 1327/2100, 1112/1500, 700/2100, 'mplantin', 73/2100, 'black')
-	])
-
 	artX = scaleX(60 / 1500)
 	artY = scaleY(229 / 2100)
 	artWidth = scaleX(1380 / 1500)
@@ -35,7 +29,11 @@ if (currentVersion != 'ixalan') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 165/1500, 174/2100, 1170/1500, 79/2100, 'belerenbsc', 79/2100, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Card Type', '', 165/1500, 1262/2100, 1170/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Rules Text', '', 196/1500, 1327/2100, 1112/1500, 700/2100, 'mplantin', 73/2100, 'black')
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular']])

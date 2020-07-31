@@ -6,10 +6,6 @@ if (!loadedVersions.includes('unstable')) {
 if (currentVersion != 'unstable') {
 	currentVersion = 'unstable'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 165/1500, 90/2100, 1170/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true','textAlign="center"']),
-	])
-
 	artX = 0
 	artY = 0
 	artWidth = scaleX(1)
@@ -33,7 +29,9 @@ if (currentVersion != 'unstable') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 165/1500, 90/2100, 1170/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true','textAlign="center"']),
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular']])

@@ -12,12 +12,6 @@ if (currentVersion != 'planechase') {
 	cardHeight *= 5/7
 	resizeCanvases(cardWidth, cardHeight)
 
-	loadTextOptions([
-	new cardText('Card Title', '', 150/2100, 150/1500, 1800/2100, 67/1500, 'belerenb', 67/1500, 'black', ['oneLine=true','textAlign="center"']),
-	new cardText('Card Type', '', 450/2100, 1056/1500, 1200/2100, 52/1500, 'belerenb', 52/1500, 'black', ['oneLine=true','textAlign="center"']),
-	new cardText('Rules Text', '', 242/2100, 1030/1500, 1616/2100, 500/1500, 'mplantin', 56/1500, 'black')
-	])
-
 	artX = scaleX(65 / 2100)
 	artY = scaleY(65 / 1500)
 	artWidth = scaleX(1970 / 2100)
@@ -41,7 +35,11 @@ if (currentVersion != 'planechase') {
 
 	bottomInfoFunction = 'bottomInfoPlanechase'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 150/2100, 150/1500, 1800/2100, 67/1500, 'belerenb', 67/1500, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Card Type', '', 450/2100, 1056/1500, 1200/2100, 52/1500, 'belerenb', 52/1500, 'black', ['oneLine=true','textAlign="center"']),
+	new cardText('Rules Text', '', 242/2100, 1030/1500, 1616/2100, 500/1500, 'mplantin', 56/1500, 'black')
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular']])

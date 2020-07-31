@@ -6,13 +6,6 @@ if (!loadedVersions.includes('m15Promo')) {
 if (currentVersion != 'm15Promo') {
 	currentVersion = 'm15Promo'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1439/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'white', ['oneLine=true']),
-	new cardText('Rules Text', '', 135/1500, 1545/2100, 1230/1500, 450/2100, 'mplantin', 74/2100, 'white'),
-	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = 0
 	artY = 0
 	artWidth = scaleX(1)
@@ -36,7 +29,12 @@ if (currentVersion != 'm15Promo') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1439/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'white', ['oneLine=true']),
+	new cardText('Rules Text', '', 135/1500, 1545/2100, 1230/1500, 450/2100, 'mplantin', 74/2100, 'white'),
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['nickname', 'Nickname (Godzilla)'], ['innerCrowns', 'Inner Crowns'], ['darkPT', 'Dark Power/Toughness']])

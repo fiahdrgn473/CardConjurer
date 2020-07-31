@@ -8,17 +8,6 @@ if (!loadedVersions.includes('storybook')) {
 if (currentVersion != 'storybook') {
 	currentVersion = 'storybook'
 
-	loadTextOptions([
-		new cardText('Card Title', '', 222/1500, 188/2100, 1056/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-		new cardText('Card Type', '', 345/1500, 1269/2100, 850/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-		new cardText('Rules Text', '', 140/1500, 1515/2100, 540/1500, 500/2100, 'mplantin', 74/2100, 'black'),
-		new cardText('Rules Text (Right)', '', 796/1500, 1370/2100, 570/1500, 600/2100, 'mplantin', 74/2100, 'black'),
-		new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"']),
-		new cardText('Adventure Title', '', 122/1500, 1386/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
-		new cardText('Adventure Type', '', 122/1500, 1480/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
-		new cardText('Adventure Mana Cost', '', 122/1500, 1394/2100, 600/1500, 82/2100, 'belerenb', 82/2100, 'black', ['oneLine=true','manaCost=true','canWriteText=false','textAlign="right"'])
-	])
-
 	artX = scaleX(50/1500)
 	artY = scaleY(54/2100)
 	artWidth = scaleX(1405/1500)
@@ -42,7 +31,16 @@ if (currentVersion != 'storybook') {
 
 	bottomInfoFunction = 'bottomInfoStorybook'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+		new cardText('Card Title', '', 222/1500, 188/2100, 1056/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+		new cardText('Card Type', '', 345/1500, 1269/2100, 850/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+		new cardText('Rules Text', '', 140/1500, 1515/2100, 540/1500, 500/2100, 'mplantin', 74/2100, 'black'),
+		new cardText('Rules Text (Right)', '', 796/1500, 1370/2100, 570/1500, 600/2100, 'mplantin', 74/2100, 'black'),
+		new cardText('Power/Toughness', '', 1190/1500, 1957/2100, 210/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"']),
+		new cardText('Adventure Title', '', 122/1500, 1386/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
+		new cardText('Adventure Type', '', 122/1500, 1480/2100, 600/1500, 62/2100, 'belerenb', 62/2100, 'white', ['oneLine=true']),
+		new cardText('Adventure Mana Cost', '', 122/1500, 1394/2100, 600/1500, 82/2100, 'belerenb', 82/2100, 'black', ['oneLine=true','manaCost=true','canWriteText=false','textAlign="right"'])
+	])
 }
 
 loadFramePackOptions([['regular', 'Regular']])

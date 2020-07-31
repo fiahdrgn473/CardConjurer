@@ -6,13 +6,6 @@ if (!loadedVersions.includes('m15')) {
 if (currentVersion != 'm15') {
 	currentVersion = 'm15'
 
-	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
-	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
-	new cardText('Rules Text', '', 135/1500, 1370/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
-	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
-	])
-
 	artX = scaleX(115 / 1500)
 	artY = scaleY(237 / 2100)
 	artWidth = scaleX(1270 / 1500)
@@ -36,7 +29,12 @@ if (currentVersion != 'm15') {
 
 	bottomInfoFunction = 'bottomInfoM15'
 
-	bottomInfoUpdated()
+	loadTextOptions([
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'black', ['oneLine=true']),
+	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'black', ['oneLine=true']),
+	new cardText('Rules Text', '', 135/1500, 1370/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	])
 }
 
 loadFramePackOptions([['disabled', 'Standard'],['regular', 'Regular'], ['disabled', 'Crowns'], ['legendCrowns', 'Legend Crowns'], ['floatingCrowns', 'Floating Crowns'], ['disabled', 'Mechanic-Based'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['devoid', 'Devoid'], ['disabled', 'Special'], ['genericShowcase', 'Generic Showcase'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['invention', 'Kaladesh Invention'], ['darkPT', 'Dark Power/Toughness'], ['disabled', 'Custom'], ['inventionClassic', 'Simple Invention']])
