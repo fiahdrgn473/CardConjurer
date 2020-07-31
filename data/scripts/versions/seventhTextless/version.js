@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('seventhTextless')) {
 	loadedVersions.push('seventhTextless')
-	loadMaskImages([['Pinline (seventh textless)', '/data/images/cardImages/seventhTextless/seventhTextlessMaskPinline.png']])
+	loadMaskImages([['Pinline (seventh textless)', '/data/images/cardImages/seventhTextless/seventhTextlessMaskPinline.png'], ['Border (seventh)', '/data/images/cardImages/seventh/seventhMaskBorder.png']])
 	// addToManaSymbolList('/data/images/cardImages/manaSymbols/old/', ["oldw.svg"])
 	// notify('The Seventh Textless frame uses special mana symbols for 1-20, WUBRG, all hybrid mana symbols, and X. If you would like to use these, just add an "old" at the beginning of each symbol. For example, "2 g g" would become "old2 oldg oldg".', '#aaffaae0')
 }

@@ -426,8 +426,12 @@ function loadTextOptions(textArray = []) {
 	}
 	document.getElementById('textPicker').children[0].click()
 	cardTextEdited()
-	setSymbol.src = setSymbol.src
-	cardArt.src = cardArt.src
+	if (setSymbol.src != '') {
+		setSymbol.src = setSymbol.src
+	}
+	if (cardArt.src != '') {
+		cardArt.src = cardArt.src
+	}
 	manaCostUpdated()
 	bottomInfoUpdated()
 }
