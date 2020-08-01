@@ -561,7 +561,6 @@ function writeText(textObjectList, targetContext) {
 					} else if (possibleCodeLower == 'loadtextx') {
 						textX = savedTextX
 					} else if (possibleCodeLower.includes('outline:')) {
-						console.log(parseInt(possibleCodeLower.replace('outline:', '').split(',')[1]), possibleCodeLower.replace('outline:', '').split(',')[1], possibleCodeLower.replace('outline:', '').split(','))
 						if (parseInt(possibleCodeLower.replace('outline:', '').split(',')[1]) == 0) {
 							outline = false
 						} else {
@@ -836,7 +835,7 @@ function inputCardNameNumberTextImport(index) {
     if (importCardTextResponse.includes('"power":"')) {
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power/Toughness')
     } else {
-        importText('', 'Power Toughness')
+        importText('', 'Power/Toughness')
     }
     if (importCardTextResponse.includes('"loyalty":"') && currentVersion == 'planeswalker') {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), 'Loyalty')
