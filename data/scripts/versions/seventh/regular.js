@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('seventhRegular')) {
-	loadedVersions.push('seventhRegular')
+if (!loadedVersions.includes('seventh/regular')) {
+	loadedVersions.push('seventh/regular')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/seventh/seventhFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh)', 'Rules (seventh)', 'Frame (seventh)', 'Border (seventh)']],
 		['Blue Frame', '/data/images/cardImages/seventh/seventhFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh)', 'Rules (seventh)', 'Frame (seventh)', 'Border (seventh)']],

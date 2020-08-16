@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('planeswalker')) {
-	loadedVersions.push('planeswalker')
+if (!loadedVersions.includes('m15Planeswalker/version')) {
+	loadedVersions.push('m15Planeswalker/version')
 	newCanvas('planeswalker')
 	loadMaskImages([['Pinline (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskPinline.png'], ['Border (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskBorder.png'], ['Title (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskTitle.png'], ['Type (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskType.png'], ['Frame (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskFrame.png'], ['Rules Text (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskText.png']])
 
@@ -48,8 +48,8 @@ if (!loadedVersions.includes('planeswalker')) {
     planeswalkerDarkToLight.onload = function(){planeswalkerAbilities()}
 }
 
-if (currentVersion != 'planeswalker') {
-	currentVersion = 'planeswalker'
+if (currentVersion != 'm15Planeswalker/version') {
+	currentVersion = 'm15Planeswalker/version'
 
 	artX = scaleX(100 / 1500)
 	artY = scaleY(190 / 2100)

@@ -1,12 +1,11 @@
-
-if (!loadedVersions.includes('storybook')) {
-	loadedVersions.push('storybook')
+if (!loadedVersions.includes('storybook/version')) {
+	loadedVersions.push('storybook/version')
 	// loadMaskImages([['Storybook Right Half', '/data/images/cardImages/storybook/maskStorybookRightHalf.png']])
 	//special additional mana cost, title, and type
 }
 
-if (currentVersion != 'storybook') {
-	currentVersion = 'storybook'
+if (currentVersion != 'storybook/version') {
+	currentVersion = 'storybook/version'
 
 	artX = scaleX(50/1500)
 	artY = scaleY(54/2100)

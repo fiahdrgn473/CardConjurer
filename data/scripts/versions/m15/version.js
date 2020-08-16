@@ -1,10 +1,10 @@
-if (!loadedVersions.includes('m15')) {
-	loadedVersions.push('m15')
+if (!loadedVersions.includes('m15/version')) {
+	loadedVersions.push('m15/version')
 	loadMaskImages([['Full', '/data/images/cardImages/maskFull.png'], ['Border (m15)', '/data/images/cardImages/m15/m15MaskBorder.png'], ['Right Half', '/data/images/cardImages/maskRightHalf.png'], ['Middle Third', '/data/images/cardImages/maskMiddleThird.png'], ['Pinline (m15)', '/data/images/cardImages/m15/m15MaskPinline.png'], ['Title (m15)', '/data/images/cardImages/m15/m15MaskTitle.png'], ['Type (m15)', '/data/images/cardImages/m15/m15MaskType.png'], ['Rules (m15)', '/data/images/cardImages/m15/m15MaskRules.png'], ['Frame (m15)', '/data/images/cardImages/m15/m15MaskFrame.png'], ['Pinline Super (m15)', '/data/images/cardImages/m15/m15MaskPinlineSuper.png'], ['Legend Crown (m15)', '/data/images/cardImages/m15/m15MaskLegendCrown.png'], ['Legend Crown W/ Pinline (m15)', '/data/images/cardImages/m15/m15MaskLegendCrownPinline.png'], ['Alternative Border', '/data/images/cardImages/m15/m15MaskBorderSliver.png'], ['Alternative Border (Crown)', '/data/images/cardImages/m15/m15MaskBorderSliverCrown.png']])
 }
 
-if (currentVersion != 'm15') {
-	currentVersion = 'm15'
+if (currentVersion != 'm15/version') {
+	currentVersion = 'm15/version'
 
 	artX = scaleX(115 / 1500)
 	artY = scaleY(237 / 2100)

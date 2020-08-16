@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('tokenTall')) {
-	loadedVersions.push('tokenTall')
+if (!loadedVersions.includes('token/tall')) {
+	loadedVersions.push('token/tall')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/token/tokenFrameWTall.png', 0, 0, 1, 1, ['Full', 'Pinline Super (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Border (m15)']],
 		['Blue Frame', '/data/images/cardImages/token/tokenFrameUTall.png', 0, 0, 1, 1, ['Full', 'Pinline Super (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Border (m15)']],
@@ -23,8 +23,8 @@ if (!loadedVersions.includes('tokenTall')) {
 	], 'frameClassTokenTall')
 }
 
-if (currentVersion != 'tokenTall') {
-	currentVersion = 'tokenTall'
+if (currentVersion != 'token/tall') {
+	currentVersion = 'token/tall'
 	
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true','textAlign="center"']),

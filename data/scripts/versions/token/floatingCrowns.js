@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15FloatingCrowns')) {
-	loadedVersions.push("m15FloatingCrowns")
+if (!loadedVersions.includes('m15Token/floatingCrowns')) {
+	loadedVersions.push("m15Token/floatingCrowns")
 	loadFrameImages([
 		['Lower Crown Cutout', '/data/images/cardImages/black.png', 110/1500, 230/2100, 1280/1500, 30/2100, ['Full']],
 		['White Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingW.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],

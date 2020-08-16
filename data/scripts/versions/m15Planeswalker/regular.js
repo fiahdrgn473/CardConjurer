@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('planeswalkerRegular')) {
-	loadedVersions.push('planeswalkerRegular')
+if (!loadedVersions.includes('m15Planeswalker/regular')) {
+	loadedVersions.push('m15Planeswalker/regular')
 	loadFrameImages([
         ['White Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
         ['Blue Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],

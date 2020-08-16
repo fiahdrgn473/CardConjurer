@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('expeditionRegular')) {
-	loadedVersions.push('expeditionRegular')
+if (!loadedVersions.includes('expedition/regular')) {
+	loadedVersions.push('expedition/regular')
 	loadFrameImages([
 		['Land Frame', '/data/images/cardImages/expedition/expeditionFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition)', 'Title (m15)', 'Type (m15 textless)', 'Frame (expedition)', 'Rules (expedition)', 'Border (m15)']],
 		['White Frame', '/data/images/cardImages/expedition/expeditionFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition)', 'Title (m15)', 'Type (m15 textless)', 'Frame (expedition)', 'Rules (expedition)', 'Border (m15)']],

@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15PromoNickname')) {
-	loadedVersions.push("m15PromoNickname")
+if (!loadedVersions.includes('m15Promo/nickname')) {
+	loadedVersions.push("m15Promo/nickname")
 	loadFrameImages([
 		['Base Nickname Frame', '/data/images/cardImages/m15Promo/m15PromoNicknameTextboxes.png', 0, 0, 1, 1, ['Full', 'Title (m15)', 'Type (m15 Promo)', 'Rules (m15 Promo)']],
 		['White Nickname Frame', '/data/images/cardImages/m15Promo/m15PromoNicknameFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Titleless (m15 Promo)', 'Border (m15)']],
@@ -37,8 +37,8 @@ if (!loadedVersions.includes('m15PromoNickname')) {
 	], 'frameClassM15PromoNickname')
 }
 
-if (currentVersion != 'm15PromoNickname') {
-	currentVersion = 'm15PromoNickname'
+if (currentVersion != 'm15Promo/nickname') {
+	currentVersion = 'm15Promo/nickname'
 
 	loadTextOptions([
 	new cardText('Card Nickname', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),

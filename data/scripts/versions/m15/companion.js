@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15Companion')) {
-	loadedVersions.push('m15Companion')
+if (!loadedVersions.includes('m15/companion')) {
+	loadedVersions.push('m15/companion')
 	loadFrameImages([
 		['White Companion Legend Crown', '/data/images/cardImages/m15/m15InnerCrownWCompanion.png', 246/1500, 50/2100, 1008/1500, 50/2100, ['Full']],
 		['Blue Companion Legend Crown', '/data/images/cardImages/m15/m15InnerCrownUCompanion.png', 246/1500, 50/2100, 1008/1500, 50/2100, ['Full']],

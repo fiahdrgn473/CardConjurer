@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15DarkPT')) {
-	loadedVersions.push("m15DarkPT")
+if (!loadedVersions.includes('m15Textless/darkPT')) {
+	loadedVersions.push("m15Textless/darkPT")
 	loadFrameImages([
 		['Darkened White Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Darkened Blue Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],

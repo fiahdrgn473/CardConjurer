@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('tokenTextless')) {
-	loadedVersions.push('tokenTextless')
+if (!loadedVersions.includes('token/textless')) {
+	loadedVersions.push('token/textless')
 	loadMaskImages([['Pinline (token textless)', '/data/images/cardImages/token/tokenMaskTextlessPinline.png'], ['Type (m15 textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png']])
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/token/tokenFrameWTextless.png', 0, 0, 1, 1, ['Full', 'Pinline (token textless)', 'Title (m15)', 'Type (m15 textless)', 'Border (m15)']],
@@ -24,8 +24,8 @@ if (!loadedVersions.includes('tokenTextless')) {
 	], 'frameClassTokenTextless')
 }
 
-if (currentVersion != 'tokenTextless') {
-	currentVersion = 'tokenTextless'
+if (currentVersion != 'token/textless') {
+	currentVersion = 'token/textless'
 	
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true','textAlign="center"']),

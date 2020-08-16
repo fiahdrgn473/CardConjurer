@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('ixalanRegular')) {
-	loadedVersions.push('ixalanRegular')
+if (!loadedVersions.includes('ixalan/regular')) {
+	loadedVersions.push('ixalan/regular')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/ixalan/ixalanFrameW.png', 0, 0, 1, 1, ['Full']],
 		['Blue Frame', '/data/images/cardImages/ixalan/ixalanFrameU.png', 0, 0, 1, 1, ['Full']],

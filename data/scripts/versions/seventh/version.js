@@ -1,10 +1,10 @@
-if (!loadedVersions.includes('seventh')) {
-	loadedVersions.push('seventh')
+if (!loadedVersions.includes('seventh/version')) {
+	loadedVersions.push('seventh/version')
 	loadMaskImages([['Border (seventh)', '/data/images/cardImages/seventh/seventhMaskBorder.png'], ['Pinline (seventh)', '/data/images/cardImages/seventh/seventhMaskPinline.png'], ['Rules (seventh)', '/data/images/cardImages/seventh/seventhMaskRules.png'], ['Frame (seventh)', '/data/images/cardImages/seventh/seventhMaskFrame.png']])
 }
 
-if (currentVersion != 'seventh') {
-	currentVersion = 'seventh'
+if (currentVersion != 'seventh/version') {
+	currentVersion = 'seventh/version'
 
 	artX = scaleX(177 / 1500)
 	artY = scaleY(206 / 2100)

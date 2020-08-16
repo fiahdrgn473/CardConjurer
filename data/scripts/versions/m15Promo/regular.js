@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15PromoRegular')) {
-	loadedVersions.push("m15PromoRegular")
+if (!loadedVersions.includes('m15Promo/regular')) {
+	loadedVersions.push("m15Promo/regular")
 	loadFrameImages([
 		['Base Frame', '/data/images/cardImages/m15Promo/m15PromoTextboxes.png', 0, 0, 1, 1, ['Full', 'Title (m15)', 'Type (m15 Promo)', 'Rules (m15 Promo)']],
 		['White Frame', '/data/images/cardImages/m15Promo/m15PromoFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Promo)', 'Titleless (m15 Promo)', 'Border (m15)']],

@@ -1,10 +1,10 @@
-if (!loadedVersions.includes('unstable')) {
-	loadedVersions.push('unstable')
+if (!loadedVersions.includes('unstable/version')) {
+	loadedVersions.push('unstable/version')
 	// loadMaskImages([])
 }
 
-if (currentVersion != 'unstable') {
-	currentVersion = 'unstable'
+if (currentVersion != 'unstable/version') {
+	currentVersion = 'unstable/version'
 
 	artX = 0
 	artY = 0

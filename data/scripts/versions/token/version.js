@@ -1,9 +1,9 @@
-if (!loadedVersions.includes('token')) {
-	loadedVersions.push('token')
+if (!loadedVersions.includes('token/version')) {
+	loadedVersions.push('token/version')
 }
 
-if (currentVersion != 'token') {
-	currentVersion = 'token'
+if (currentVersion != 'token/version') {
+	currentVersion = 'token/version'
 
 	artX = scaleX(60 / 1500)
 	artY = scaleY(60 / 2100)

@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15TextlessGenericShowcase')) {
-	loadedVersions.push('m15TextlessGenericShowcase')
+if (!loadedVersions.includes('m15Textless/genericShowcase')) {
+	loadedVersions.push('m15Textless/genericShowcase')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/m15Textless/genericShowcase/m15TextlessGenericShowcaseFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Border (m15)']],
 		['Blue Frame', '/data/images/cardImages/m15Textless/genericShowcase/m15TextlessGenericShowcaseFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 Textless)', 'Title (m15)', 'Type (m15 Textless)', 'Border (m15)']],
@@ -23,8 +23,8 @@ if (!loadedVersions.includes('m15TextlessGenericShowcase')) {
 	], 'frameClassM15TextlessGenericShowcase')
 }
 
-if (currentVersion != 'm15TextlessGenericShowcase') {
-	currentVersion = 'm15TextlessGenericShowcase'
+if (currentVersion != 'm15Textless/genericShowcase') {
+	currentVersion = 'm15Textless/genericShowcase'
 
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),

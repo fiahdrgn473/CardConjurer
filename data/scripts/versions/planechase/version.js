@@ -1,10 +1,10 @@
-if (!loadedVersions.includes('planechase')) {
-	loadedVersions.push('planechase')
+if (!loadedVersions.includes('planechase/version')) {
+	loadedVersions.push('planechase/version')
 	notify('For the small Chaos symbol on Planar cards use "{chaos}", and for the large Chaos symbol use "{planechase}".', '#aaffaae0')
 }
 
-if (currentVersion != 'planechase') {
-	currentVersion = 'planechase'
+if (currentVersion != 'planechase/version') {
+	currentVersion = 'planechase/version'
 
 	previewContext.translate(0, cardHeight / 2)
 	previewContext.rotate(-Math.PI / 2)

@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15Devoid')) {
-	loadedVersions.push("m15Devoid")
+if (!loadedVersions.includes('m15/devoid')) {
+	loadedVersions.push("m15/devoid")
 	loadFrameImages([
 		['White Devoid Frame', '/data/images/cardImages/m15/devoid/m15DevoidFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)', 'Pinline Super (m15)']],
 		['Blue Devoid Frame', '/data/images/cardImages/m15/devoid/m15DevoidFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Frame (m15)', 'Border (m15)', 'Pinline Super (m15)']],
@@ -13,8 +13,8 @@ if (!loadedVersions.includes('m15Devoid')) {
 	], 'frameClassM15Devoid')
 }
 
-if (currentVersion != 'm15Devoid') {
-	currentVersion = 'm15Devoid'
+if (currentVersion != 'm15/devoid') {
+	currentVersion = 'm15/devoid'
 
 	artX = scaleX(60 / 1500)
 	artY = scaleY(218 / 2100)

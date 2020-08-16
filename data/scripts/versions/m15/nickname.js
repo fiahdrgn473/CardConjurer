@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15Nickname')) {
-	loadedVersions.push("m15Nickname")
+if (!loadedVersions.includes('m15/nickname')) {
+	loadedVersions.push("m15/nickname")
 	loadMaskImages([['Nickname Legend Crown (m15)', '/data/images/cardImages/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', '/data/images/cardImages/m15/m15MaskNicknameTitleStrokeless.png']])
 	loadFrameImages([
 		['Base Nickname Frame', '/data/images/cardImages/m15/m15NicknameTextboxes.png', 0, 0, 1, 1, ['Full', 'Title (m15)', 'Type (m15)', 'Rules (m15)']],
@@ -38,8 +38,8 @@ if (!loadedVersions.includes('m15Nickname')) {
 	], 'frameClassM15Nickname')
 }
 
-if (currentVersion != 'm15Nickname') {
-	currentVersion = 'm15Nickname'
+if (currentVersion != 'm15/nickname') {
+	currentVersion = 'm15/nickname'
 	
 	loadTextOptions([
 	new cardText('Card Nickname', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),

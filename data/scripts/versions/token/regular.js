@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('tokenRegular')) {
-	loadedVersions.push('tokenRegular')
+if (!loadedVersions.includes('token/regular')) {
+	loadedVersions.push('token/regular')
 	loadMaskImages([['Pinline (token regular)', '/data/images/cardImages/token/tokenMaskRegularPinline.png'], ['Type (token regular)', '/data/images/cardImages/token/tokenMaskRegularType.png'], ['Rules (token regular)', '/data/images/cardImages/token/tokenMaskRegularRules.png']])
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/token/tokenFrameWRegular.png', 0, 0, 1, 1, ['Full', 'Pinline (token regular)', 'Title (m15)', 'Type (token regular)', 'Rules (token regular)', 'Border (m15)']],
@@ -24,8 +24,8 @@ if (!loadedVersions.includes('tokenRegular')) {
 	], 'frameClassTokenRegular')
 }
 
-if (currentVersion != 'tokenRegular') {
-	currentVersion = 'tokenRegular'
+if (currentVersion != 'token/regular') {
+	currentVersion = 'token/regular'
 	
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true','textAlign="center"']),

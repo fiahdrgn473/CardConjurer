@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15FloatingCrowns')) {
-	loadedVersions.push("m15FloatingCrowns")
+if (!loadedVersions.includes('expedition/floatingCrowns')) {
+	loadedVersions.push('expedition/floatingCrowns')
 	loadFrameImages([
 		['White Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingW.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],
 		['Blue Floating Legend Crown', '/data/images/cardImages/m15/m15CrownFloatingU.png', 46/1500, 40/2100, 1408/1500, 215/2100, ['Full']],

@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15LegendCrowns')) {
-	loadedVersions.push("m15LegendCrowns")
+if (!loadedVersions.includes('m15/legendCrowns')) {
+	loadedVersions.push("m15/legendCrowns")
 	loadFrameImages([
 		['White Legend Crown', '/data/images/cardImages/m15/m15CrownW.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],
 		['Blue Legend Crown', '/data/images/cardImages/m15/m15CrownU.png', 41/1500, 40/2100, 1418/1500, 350/2100, ['Full', 'Legend Crown (m15)', 'Legend Crown W/ Pinline (m15)']],

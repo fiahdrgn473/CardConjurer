@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('storybookRegular')) {
-	loadedVersions.push('storybookRegular')
+if (!loadedVersions.includes('storybook/regular')) {
+	loadedVersions.push('storybook/regular')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/storybook/storybookFrameW.png', 0, 0, 1, 1, ['Full']],
 		['Blue Frame', '/data/images/cardImages/storybook/storybookFrameU.png', 0, 0, 1, 1, ['Full']],

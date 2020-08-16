@@ -1,10 +1,10 @@
-if (!loadedVersions.includes('ixalan')) {
-	loadedVersions.push('ixalan')
+if (!loadedVersions.includes('ixalan/version')) {
+	loadedVersions.push('ixalan/version')
 	// loadMaskImages([])
 }
 
-if (currentVersion != 'ixalan') {
-	currentVersion = 'ixalan'
+if (currentVersion != 'ixalan/version') {
+	currentVersion = 'ixalan/version'
 
 	artX = scaleX(60 / 1500)
 	artY = scaleY(229 / 2100)

@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('seventhTextlessRegular')) {
-	loadedVersions.push('seventhTextlessRegular')
+if (!loadedVersions.includes('seventhTextless/regular')) {
+	loadedVersions.push('seventhTextless/regular')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/seventhTextless/seventhTextlessFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh textless)']],
 		['Blue Frame', '/data/images/cardImages/seventhTextless/seventhTextlessFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (seventh textless)']],

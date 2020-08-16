@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('m15M21Showcase')) {
-	loadedVersions.push("m15M21Showcase")
+if (!loadedVersions.includes('m15/m21')) {
+	loadedVersions.push("m15/m21")
 	loadFrameImages([
 		['White M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameW.png', 0, 0, 1, 1, ['Full']],
 		['Blue M21 Showcase Frame', '/data/images/cardImages/m15/m21/m15M21FrameU.png', 0, 0, 1, 1, ['Full']],
@@ -23,8 +23,8 @@ if (!loadedVersions.includes('m15M21Showcase')) {
 	notify('The M21 Showcase frame uses special mana symbols for 1-9, WUBRG, and X. If you would like to use these, just add an "m21" at the beginning of each symbol. For example, "2 g g" would become "m212 m21g m21g". For the darkened mana symbols seen on the white frame, add an additional "d" at the beginning. For example, "3 w" would become "dm213 dm21w".', '#aaffaae0')
 }
 
-if (currentVersion != 'm15M21Showcase') {
-	currentVersion = 'm15M21Showcase'
+if (currentVersion != 'm15/m21') {
+	currentVersion = 'm15/m21'
 	
 	loadTextOptions([
 	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true']),

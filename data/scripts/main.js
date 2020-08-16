@@ -69,7 +69,9 @@ var watermarkDrawX = 0, watermarkDrawY = 0, watermarkDrawWidth = 0, watermarkDra
 var cardArt = new Image()
 cardArt.src = '/data/images/cardImages/blank.png'
 var setSymbol = new Image()
+setSymbol.src = '/data/images/cardImages/blank.png'
 var watermark = new Image()
+watermark.src = '/data/images/cardImages/blank.png'
 cardArt.crossOrigin = "anonymous"
 setSymbol.crossOrigin = "anonymous"
 watermark.crossOrigin = "anonymous"
@@ -95,7 +97,8 @@ function setSymbolFromGatherer() {
 	} else if (document.getElementById('inputSetCode').value.toLowerCase() == 'none') {
 		setSymbol.src = '/data/images/cardImages/blank.png'
 	} else {
-		autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
+		setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value
+		// autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
 	}
 }
 setSymbol.onload = function() {
@@ -147,7 +150,7 @@ class cardPlaceholder {
 	}
 	draw() {
 		if (this.whatToDraw == textCanvas) {
-			if (currentVersion == 'planeswalker') {
+			if (currentVersion == 'm15Planeswalker/version') {
 				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)
 			}
 			mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
@@ -168,10 +171,11 @@ class cardPlaceholder {
 	}
 }
 class cardImage {
-	constructor(displayName = 'cardImage', imageSource = '', x = 0, y = 0, width = 1, height = 1, opacity = 1, masks = [], erase = false) {
+	constructor(displayName = 'cardImage', imageSource = '/data/images/cardImages/blank.png', x = 0, y = 0, width = 1, height = 1, opacity = 1, masks = ['Full'], erase = false) {
 		this.name = displayName
 		this.image = new Image()
 		this.image.src = imageSource
+		this.imageSource = imageSource
 		this.x = x
 		this.y = y
 		this.width = width
@@ -262,7 +266,7 @@ function drawCardObjects() {
 			}
 		}
 	}
-	mainContext.drawImage(setSymbol, setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight)
+	mainContext.drawImage(setSymbol, setSymbolDrawX + getFloat('inputSetSymbolX'), setSymbolDrawY + getFloat('inputSetSymbolY'), setSymbolDrawWidth * getFloat('inputSetSymbolZoom') / 100, setSymbolDrawHeight * getFloat('inputSetSymbolZoom') / 100)
 	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
     mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
@@ -837,7 +841,7 @@ function inputCardNameNumberTextImport(index) {
     } else {
         importText('', 'Power/Toughness')
     }
-    if (importCardTextResponse.includes('"loyalty":"') && currentVersion == 'planeswalker') {
+    if (importCardTextResponse.includes('"loyalty":"') && currentVersion == 'm15Planeswalker/version') {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), 'Loyalty')
         var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g)
         for (var i = 0; i < abilityList.length; i++) {

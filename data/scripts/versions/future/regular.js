@@ -1,5 +1,5 @@
-if (!loadedVersions.includes('futureRegular')) {
-	loadedVersions.push('futureRegular')
+if (!loadedVersions.includes('future/regular')) {
+	loadedVersions.push('future/regular')
 	loadFrameImages([
 		['White Frame', '/data/images/cardImages/future/futureFrameW.png', 0, 0, 1, 1, ['Full', 'Border (future)']],
 		['Blue Frame', '/data/images/cardImages/future/futureFrameU.png', 0, 0, 1, 1, ['Full', 'Border (future)']],
