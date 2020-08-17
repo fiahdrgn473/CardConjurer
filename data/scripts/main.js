@@ -938,6 +938,7 @@ function hideFrameImages(frameClass) {
 			element.classList.remove('hidden')
 		}
 	})
+	manaCostUpdated() //Forces mana cost to update when loading new version (especially important for loading saved cards w/ special mana symbols)
 }
 
 function autoCrop(targetImage, source = targetImage.src) {
