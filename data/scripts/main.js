@@ -110,30 +110,28 @@ function setSymbolFromGatherer() {
 		// autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
 	}
 }
+setSymbol.onerror = function () {
+	this.src = '/data/images/cardImages/blank.png'
+}
 setSymbol.onload = function() {
-	if (setSymbol.width >=1) {
-		if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
-			setSymbolDrawWidth = setSymbolWidth
-			setSymbolDrawHeight = setSymbolWidth * setSymbol.height / setSymbol.width
-		} else {
-			setSymbolDrawHeight = setSymbolHeight
-			setSymbolDrawWidth = setSymbolHeight * setSymbol.width / setSymbol.height
-		}
-		setSymbolDrawX = setSymbolX[0]
-		if (setSymbolX[1] == 'right') {
-			setSymbolDrawX -= setSymbolDrawWidth
-		} else if (setSymbolX[1] == 'center') {
-			setSymbolDrawX -= setSymbolDrawWidth / 2
-		}
-		setSymbolDrawY = setSymbolY[0]
-		if (setSymbolY[1] == 'center') {
-			setSymbolDrawY -= setSymbolDrawHeight / 2
-		}
-		drawCardObjects()
+	if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
+		setSymbolDrawWidth = setSymbolWidth
+		setSymbolDrawHeight = setSymbolWidth * setSymbol.height / setSymbol.width
 	} else {
-		setSymbol.src = '/data/images/cardImages/blank.png'
+		setSymbolDrawHeight = setSymbolHeight
+		setSymbolDrawWidth = setSymbolHeight * setSymbol.width / setSymbol.height
 	}
-	
+	setSymbolDrawX = setSymbolX[0]
+	if (setSymbolX[1] == 'right') {
+		setSymbolDrawX -= setSymbolDrawWidth
+	} else if (setSymbolX[1] == 'center') {
+		setSymbolDrawX -= setSymbolDrawWidth / 2
+	}
+	setSymbolDrawY = setSymbolY[0]
+	if (setSymbolY[1] == 'center') {
+		setSymbolDrawY -= setSymbolDrawHeight / 2
+	}
+	drawCardObjects()
 }
 watermark.onload = function() {
 	watermarkUpdated()
