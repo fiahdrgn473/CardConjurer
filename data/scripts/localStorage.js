@@ -67,7 +67,7 @@ function importSavedCard(localStorageKey = document.getElementById('inputCardToI
     if (importedCard.version != currentVersion) {
       skipLoadTextList += 1
       skipResizeCardArt += 1
-      if (importedCard.version.split('/')[1] != 'version') {
+      if (importedCard.version.split('/')[1] != 'version' && (currentVersion.split('/')[0] != importedCard.version.split('/')[0] || currentVersion.split('/')[1] != 'version')) {
         skipLoadTextList += 1
         skipResizeCardArt += 1
       }
