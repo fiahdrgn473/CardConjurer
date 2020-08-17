@@ -542,7 +542,7 @@ function writeText(textObjectList, targetContext) {
 						finishLine = true
 						var barWidth = scaleX(textObjectList[i].width) * 0.95
 						var barHeight = scaleY(0.001)
-						textLineContext.drawImage(manaSymbolImageList[63], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 1.6 + textCanvasBuffer, barWidth, barHeight)
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('bar')], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 1.6 + textCanvasBuffer, barWidth, barHeight)
 						paragraphSpace += textSize * 0.8
 						if (possibleCodeLower == 'flavor' && !fontStyle.includes('italic')) {
 							fontStyle += 'italic '
