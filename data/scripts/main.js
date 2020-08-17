@@ -111,24 +111,29 @@ function setSymbolFromGatherer() {
 	}
 }
 setSymbol.onload = function() {
-	if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
-		setSymbolDrawWidth = setSymbolWidth
-		setSymbolDrawHeight = setSymbolWidth * setSymbol.height / setSymbol.width
+	if (setSymbol.width >=1) {
+		if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
+			setSymbolDrawWidth = setSymbolWidth
+			setSymbolDrawHeight = setSymbolWidth * setSymbol.height / setSymbol.width
+		} else {
+			setSymbolDrawHeight = setSymbolHeight
+			setSymbolDrawWidth = setSymbolHeight * setSymbol.width / setSymbol.height
+		}
+		setSymbolDrawX = setSymbolX[0]
+		if (setSymbolX[1] == 'right') {
+			setSymbolDrawX -= setSymbolDrawWidth
+		} else if (setSymbolX[1] == 'center') {
+			setSymbolDrawX -= setSymbolDrawWidth / 2
+		}
+		setSymbolDrawY = setSymbolY[0]
+		if (setSymbolY[1] == 'center') {
+			setSymbolDrawY -= setSymbolDrawHeight / 2
+		}
+		drawCardObjects()
 	} else {
-		setSymbolDrawHeight = setSymbolHeight
-		setSymbolDrawWidth = setSymbolHeight * setSymbol.width / setSymbol.height
+		setSymbol.src = '/data/images/cardImages/blank.png'
 	}
-	setSymbolDrawX = setSymbolX[0]
-	if (setSymbolX[1] == 'right') {
-		setSymbolDrawX -= setSymbolDrawWidth
-	} else if (setSymbolX[1] == 'center') {
-		setSymbolDrawX -= setSymbolDrawWidth / 2
-	}
-	setSymbolDrawY = setSymbolY[0]
-	if (setSymbolY[1] == 'center') {
-		setSymbolDrawY -= setSymbolDrawHeight / 2
-	}
-	drawCardObjects()
+	
 }
 watermark.onload = function() {
 	watermarkUpdated()
