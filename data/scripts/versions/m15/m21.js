@@ -16,7 +16,8 @@ if (!loadedVersions.includes('m15/m21')) {
 		['Black Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Red Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Green Power/Toughness', '/data/images/cardImages/m15/m21/m15M21PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Holo Stamp', '/data/images/cardImages/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']]
+		['Holo Stamp', '/data/images/cardImages/m15/m21/m15M21Stamp.png', 709/1500, 1873/2100, 82/1500, 82/2100, ['Full']],
+		['Chandra\'s Fire', '/data/images/cardImages/m15/m21/m15M21Fire.png', 11/1500, 1725/2100, 1480/1500, 320/2100, ['Full']]
 	], 'frameClassM15M21Showcase')
 	addToManaSymbolList('/data/images/cardImages/manaSymbols/m21/', ["m210", "m211", "m212", "m213", "m214", "m215", "m216", "m217", "m218", "m219", "m21w", "m21u", "m21b", "m21r", "m21g", "m21x",])
 	addToManaSymbolList('/data/images/cardImages/manaSymbols/m21/dark/', ["dm210", "dm211", "dm212", "dm213", "dm214", "dm215", "dm216", "dm217", "dm218", "dm219", "dm21w", "dm21u", "dm21b", "dm21r", "dm21g", "dm21x",])

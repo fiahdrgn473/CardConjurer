@@ -16,20 +16,25 @@ var cardTextList = new Array()
 var manaSymbolCodeList = []
 var manaSymbolImageList = []
 var deletingCardObject = false
+var skipResizeCardArt = 0
+var skipLoadTextList = 0
+var usedManaSymbols = []
 date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
 
 function addToManaSymbolList(folderPath, newManaSymbolList) {
 	for (var i = 0; i < newManaSymbolList.length; i ++) {
-		if (newManaSymbolList[i].includes('.svg')) {
-			manaSymbolCodeList.push(newManaSymbolList[i].replace('.svg', ''))
-			manaSymbolImageList.push(new Image())
-			manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i]
-		} else {
-			manaSymbolCodeList.push(newManaSymbolList[i])
-			manaSymbolImageList.push(new Image())
-			manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+		if (!manaSymbolCodeList.includes(newManaSymbolList[i].replace('.svg', ''))) {
+			if (newManaSymbolList[i].includes('.svg')) {
+				manaSymbolCodeList.push(newManaSymbolList[i].replace('.svg', ''))
+				manaSymbolImageList.push(new Image())
+				manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i]
+			} else {
+				manaSymbolCodeList.push(newManaSymbolList[i])
+				manaSymbolImageList.push(new Image())
+				manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+			}
 		}
 	}
 }
@@ -78,13 +83,17 @@ watermark.crossOrigin = "anonymous"
 cardArt.onload = function() {
 	cardMasterList[0].width = this.width / cardWidth
 	cardMasterList[0].height = this.height / cardHeight
-    if (this.width / this.height > artWidth / artHeight) {
-        document.getElementById('inputCardArtZoom').value = artHeight / this.height * 100
-    } else {
-        document.getElementById('inputCardArtZoom').value = artWidth / this.width * 100
-    }
-    document.getElementById('inputCardArtX').value = artX
-    document.getElementById('inputCardArtY').value = artY
+	if (skipResizeCardArt < 1) {
+	    if (this.width / this.height > artWidth / artHeight) {
+	        document.getElementById('inputCardArtZoom').value = artHeight / this.height * 100
+	    } else {
+	        document.getElementById('inputCardArtZoom').value = artWidth / this.width * 100
+	    }
+	    document.getElementById('inputCardArtX').value = artX
+	    document.getElementById('inputCardArtY').value = artY
+	} else {
+		skipResizeCardArt -= 1
+	}
 	cardArtUpdated()
 }
 function setSymbolFromGatherer() {
@@ -419,10 +428,12 @@ function getFloat(input) {
 function loadTextOptions(textArray = []) {
 	document.getElementById('textPicker').innerHTML = ''
 	var backupTextValues = cardTextList
-	cardTextList = textArray
+	if (skipLoadTextList < 1) {
+		cardTextList = textArray
+	}
 	for (var i = 0; i < cardTextList.length; i++) {
 		for (var n = 0; n < backupTextValues.length; n++) {
-			if (cardTextList[i].name == backupTextValues[n].name) {
+			if (cardTextList[i].name == backupTextValues[n].name && skipLoadTextList < 1) {
 				cardTextList[i].text = backupTextValues[n].text
 			}
 		}
@@ -431,10 +442,15 @@ function loadTextOptions(textArray = []) {
 	document.getElementById('textPicker').children[0].click()
 	cardTextEdited()
 	if (setSymbol.src != '') {
-		setSymbol.src = setSymbol.src
+		setSymbol.onload()
 	}
 	if (cardArt.src != '') {
-		cardArt.src = cardArt.src
+		cardArt.onload()
+	} else if (skipResizeCardArt > 0) {
+		skipResizeCardArt -= 1
+	}
+	if (skipLoadTextList > 0) {
+		skipLoadTextList -= 1
 	}
 	manaCostUpdated()
 	bottomInfoUpdated()
@@ -517,7 +533,7 @@ function writeText(textObjectList, targetContext) {
 					if (possibleCodeLower == 'line' && !oneLine) {
 						finishLine = true
 						paragraphSpace += textSize * 0.35
-					} else if (possibleCodeLower == 'linenospace' && !oneLine) {
+					} else if ((possibleCodeLower == 'linenospace' || possibleCodeLower == 'lns') && !oneLine) {
 						finishLine = true
 					} else if ((possibleCodeLower == 'bar' || possibleCodeLower == 'flavor') && !oneLine) {
 						finishLine = true
@@ -748,6 +764,7 @@ function addUploadedFrameImage(imageSource) {
 }
 
 function manaCostUpdated() {
+	usedManaSymbols = []
 	manaCostContext.clearRect(0, 0, cardWidth, cardHeight)
 	var manaCostList = document.getElementById('inputManaCost').value.toLowerCase().replace(/{/g, ' ').replace(/}/g, ' ').split('/').join('').split(' ')
 	var manaSymbolIndex = -1
@@ -757,6 +774,7 @@ function manaCostUpdated() {
 	}
 	for (var i = 0; i < manaCostList.length; i++) {
 		if (manaSymbolCodeList.includes(manaCostList[i])) {
+			usedManaSymbols.push(manaCostList[i])
 			manaSymbolIndex += 1
 			var x = eval(manaCostXPath)
 			var y = eval(manaCostYPath)
@@ -963,7 +981,7 @@ var textCodeReferenceArray = [
 ['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the text'],
 ['{i}', 'Italicizes the text'],
 ['{/i}', 'Removes italicization'],
-['{fontsize#}', 'Changes the font size by # pixels'],
+['{fontsize#}', 'Changes the font size by # pixels (relative - use negative numbers to shrink text)'],
 ['{fontcolor#}', 'Changes the font color to #'],
 ['{left}', 'Aligns the text to the left'],
 ['{center}', 'Aligns the text to the center'],
@@ -972,8 +990,9 @@ var textCodeReferenceArray = [
 ['{right#}', 'Shifts the following text # pixels to the right'],
 ['{up#}', 'Shifts the following text # pixels up'],
 ['{down#}', 'Shifts the following text # pixels down'],
-['{outline*,#}', 'Outlines the following text by # pixels in * color'],
-['{shadow#}', 'Adds a shadow # pixels away from the following text']
+['{outline:*,#}', 'Outlines the following text by # pixels in * color'],
+['{shadow#}', 'Adds a shadow # pixels away from the following text'],
+['Notes:', 'For colors, you may use HTML color codes (ie \'green\'), hex color codes (ie \'#00ff00\'), or rgb (ie \'rgb(0,255,0)\')']
 ]
 function textCodeReference() {
 	textCodeReferenceArray.forEach(item => document.getElementById('textCodeReference').innerHTML += '<div>' + item[0] + '</div><div>' + item[1] + '</div>')

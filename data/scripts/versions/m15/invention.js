@@ -6,4 +6,20 @@ if (!loadedVersions.includes('m15/invention')) {
 	], 'frameClassM15Invention')
 }
 
+if (currentVersion != 'm15/invention') {
+	currentVersion = 'm15/invention'
+
+	artX = scaleX(60 / 1500)
+	artY = scaleY(60 / 2100)
+	artWidth = scaleX(1380 / 1500)
+	artHeight = scaleY(1878 / 2100)
+
+	if (skipResizeCardArt > 0) {
+		skipResizeCardArt -= 1
+	}
+	if (skipLoadTextList > 0) {
+		skipLoadTextList -= 1
+	}
+}
+
 hideFrameImages('frameClassM15Invention')

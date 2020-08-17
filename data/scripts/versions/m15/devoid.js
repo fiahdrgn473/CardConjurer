@@ -20,6 +20,13 @@ if (currentVersion != 'm15/devoid') {
 	artY = scaleY(218 / 2100)
 	artWidth = scaleX(1380 / 1500)
 	artHeight = scaleY(1720 / 2100)
+
+	if (skipResizeCardArt > 0) {
+		skipResizeCardArt -= 1
+	}
+	if (skipLoadTextList > 0) {
+		skipLoadTextList -= 1
+	}
 }
 
 hideFrameImages('frameClassM15Devoid')

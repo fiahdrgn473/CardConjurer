@@ -61,6 +61,17 @@ function importSavedCard(localStorageKey = document.getElementById('inputCardToI
   if (localStorageKey) {
     selectedCardKey = localStorageKey
     importedCard = JSON.parse(localStorage.getItem(localStorageKey))
+    //Skip trackers
+    skipLoadTextList = 0
+    skipResizeCardArt = 1
+    if (importedCard.version != currentVersion) {
+      skipLoadTextList += 1
+      skipResizeCardArt += 1
+      if (importedCard.version.split('/')[1] != 'version') {
+        skipLoadTextList += 1
+        skipResizeCardArt += 1
+      }
+    }
     //Masks
     loadMaskImages(importedCard.maskList)
     //Version
@@ -87,13 +98,10 @@ function importSavedCard(localStorageKey = document.getElementById('inputCardToI
     }
     uniqueNumberTracker = importedCard.numberTracker
     //Art
+    document.getElementById('inputCardArtX').value = importedCard.artX
+    document.getElementById('inputCardArtY').value = importedCard.artY
+    document.getElementById('inputCardArtZoom').value = importedCard.artZoom
     cardArt.src = importedCard.cardArt
-    setTimeout(function() {
-      document.getElementById('inputCardArtX').value = importedCard.artX
-      document.getElementById('inputCardArtY').value = importedCard.artY
-      document.getElementById('inputCardArtZoom').value = importedCard.artZoom
-      cardArtUpdated()
-    }, 500) //These are delayed to not get written over by the image loading
     //Set Symbol
     setSymbol.src = importedCard.setSymbol
     document.getElementById('inputSetSymbolX').value = importedCard.setSymbolX
@@ -111,14 +119,23 @@ function importSavedCard(localStorageKey = document.getElementById('inputCardToI
     document.getElementById('inputInfoLanguage').value = importedCard.language
     document.getElementById('inputInfoArtist').value = importedCard.artist
     bottomInfoUpdated()
-    //Text
+    //Mana Cost
+    if (importedCard.manaCostList) {
+      for (var i = 0; i < importedCard.manaCostList.length; i ++) {
+        if (!manaSymbolCodeList.includes(importedCard.manaCostList[i][0])) {
+          manaSymbolCodeList.push(importedCard.manaCostList[i][0])
+          manaSymbolImageList.push(new Image())
+          manaSymbolImageList[manaSymbolImageList.length - 1].onload = manaCostUpdated
+          manaSymbolImageList[manaSymbolImageList.length - 1].src = importedCard.manaCostList[i][1]
+        }
+      }
+    }
     document.getElementById('inputManaCost').value = importedCard.manaCost
     manaCostUpdated()
-    setTimeout(function() {
-      cardTextList = importedCard.text
-      document.getElementById('textPicker').children[0].click()
-      drawCardText()
-    }, 500)
+    //Text
+    cardTextList = importedCard.text
+    document.getElementById('textPicker').children[0].click()
+    drawCardText()
   }
 }
 
@@ -158,8 +175,13 @@ class savedCard {
     this.set = document.getElementById('inputInfoSet').value
     this.language = document.getElementById('inputInfoLanguage').value
     this.artist = document.getElementById('inputInfoArtist').value
-    //Text
+    //Mana Cost
+    this.manaCostList = []
+    for (var i = 0; i < usedManaSymbols.length; i ++) {
+      this.manaCostList.push([usedManaSymbols[i], manaSymbolImageList[manaSymbolCodeList.indexOf(usedManaSymbols[i])].src])
+    }
     this.manaCost = document.getElementById('inputManaCost').value
+    //Text
     this.text = cardTextList
     //Key
     this.key = keyToUse
