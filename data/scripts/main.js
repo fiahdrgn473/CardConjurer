@@ -782,7 +782,7 @@ function manaCostUpdated() {
 			var x = eval(manaCostXPath)
 			var y = eval(manaCostYPath)
 			var diameter = eval(manaCostDiameter)
-			if (manaCostShadowOffset != 'none') {
+			if (manaCostShadowOffset != 'none' && !manaCostList[i].includes('m21')) {
 				var shadowOffset = eval(manaCostShadowOffset)
 				manaCostContext.beginPath()
 				manaCostContext.arc(x + diameter / 2 + shadowOffset[0], y + diameter / 2 + shadowOffset[1], diameter / 2, 0, 2 * Math.PI)
