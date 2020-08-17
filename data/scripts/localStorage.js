@@ -118,6 +118,7 @@ function importSavedCard(localStorageKey = document.getElementById('inputCardToI
     document.getElementById('inputInfoSet').value = importedCard.set
     document.getElementById('inputInfoLanguage').value = importedCard.language
     document.getElementById('inputInfoArtist').value = importedCard.artist
+    document.getElementById('inputInfoArtist2').value = importedCard.artist
     bottomInfoUpdated()
     //Mana Cost
     if (importedCard.manaCostList) {

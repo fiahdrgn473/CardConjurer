@@ -734,6 +734,7 @@ function inputCardArtName(cardArtNameInput) {
 function inputCardArtNameNumber(cardArtNameNumberInput) {
 	cardArt.src = cardArtUrlList[cardArtNameNumberInput - 1]
 	document.getElementById('inputInfoArtist').value = cardArtArtistList[cardArtNameNumberInput - 1]
+	document.getElementById('inputInfoArtist2').value = document.getElementById('inputInfoArtist').value
 	bottomInfoUpdated()
 }
 
@@ -856,7 +857,11 @@ function inputCardNameNumberTextImport(index) {
     var importCardTextResponse = savedImportResponse[index]
     importText(beforeAfter(importCardTextResponse, '"name":"', '",'), 'Card Title')
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), 'Card Type')
-    importText(beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
+    var flavorText = '{flavor}' + beforeAfter(importCardTextResponse, '"flavor_text":"', '","')
+    if (flavorText.length < 10) {
+    	flavorText = ''
+    }
+    importText((beforeAfter(importCardTextResponse, '"oracle_text":"', '",') + flavorText).replace(/\n\\"/g, '\n\u201C').replace(/{flavor}\\"/g, '{flavor}\u201C').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
     if (importCardTextResponse.includes('"power":"')) {
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power/Toughness')
     } else {
@@ -1010,6 +1015,12 @@ function notify(message, color) {
 	</div>
 	`
 }//notify('MessageGoesHere', '#aaffaadd')
+
+function artistNameUpdated(artistName) {
+	document.getElementById('inputInfoArtist').value = artistName
+	document.getElementById('inputInfoArtist2').value = artistName
+	bottomInfoUpdated()
+}
 
 //Must run last:
 initialize()

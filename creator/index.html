@@ -122,6 +122,7 @@
 			                <input type="text" placeholder="Via URL" onchange="cardArt.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
 			                <input type="text" id="inputCardArtName" onchange="inputCardArtName(this.value)" placeholder="Via Card Name">
 			                <input type="number" id="inputCardArtNameNumber" onchange="inputCardArtNameNumber(this.value)" value="" min="1" max="1" placeholder="Which Art From Card Name">
+			                <input type="text" placeholder="Artist's Name" id="inputInfoArtist2" oninput="artistNameUpdated(this.value)" value="">
 			            </div>
 			            <div>
 			                <div>X, Y, &amp; Zoom:</div>
@@ -141,7 +142,7 @@
 					        <input type="text" placeholder="Rarity" id="inputInfoRarity" oninput="bottomInfoUpdated()" value="P">
 					        <input type="text" placeholder="Set" id="inputInfoSet" oninput="bottomInfoUpdated()" value="MTG">
 					        <input type="text" placeholder="Language" id="inputInfoLanguage" oninput="bottomInfoUpdated()" value="EN">
-					        <input type="text" placeholder="Artist's Name" id="inputInfoArtist" oninput="bottomInfoUpdated()" value="">
+					        <input type="text" placeholder="Artist's Name" id="inputInfoArtist" oninput="artistNameUpdated(this.value)" value="">
 					    </div>
 					    Remember that you must properly credit the artist before downloading your card!
 					</div>
