@@ -39,6 +39,11 @@ if (currentVersion != 'm15/m21') {
 	manaCostDiameter = '74'
 	manaCostShadowOffset = 'none'
 	manaCostDirection = 'reverse'
+
+	artX = scaleX(115 / 1500)
+	artY = scaleY(237 / 2100)
+	artWidth = scaleX(1270 / 1500)
+	artHeight = scaleY(929 / 2100)
 }
 
 hideFrameImages('frameClassM15M21Showcase')
