@@ -732,7 +732,12 @@ function inputCardArtName(cardArtNameInput) {
 	xhttp.send()
 }
 function inputCardArtNameNumber(cardArtNameNumberInput) {
-	cardArt.src = cardArtUrlList[cardArtNameNumberInput - 1]
+	var temporaryCardArt = new Image()
+	temporaryCardArt.crossOrigin = 'anonymous'
+	temporaryCardArt.onload = function() {
+		cardArt.src = this.src
+	}
+	temporaryCardArt.src = cardArtUrlList[cardArtNameNumberInput - 1] //config.hosts << "img.scryfall.com" //environment configuration
 	document.getElementById('inputInfoArtist').value = cardArtArtistList[cardArtNameNumberInput - 1]
 	document.getElementById('inputInfoArtist2').value = document.getElementById('inputInfoArtist').value
 	bottomInfoUpdated()
