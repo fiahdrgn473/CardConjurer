@@ -1,5 +1,7 @@
 if (!loadedVersions.includes('legends/version')) {
 	loadedVersions.push('legends/version')
+	addToManaSymbolList('/data/images/cardImages/manaSymbols/old/', ["oldw.svg", "oldu.svg", "oldb.svg", "oldr.svg", "oldg.svg"])
+	notify('The Legends frame uses special mana symbols for WUBRG. If you would like to use these, just add an "old" at the beginning of each symbol. For example, "2 g g" would become "2 oldg oldg".', '#aaffaae0')
 }
 
 if (currentVersion != 'legends/version') {

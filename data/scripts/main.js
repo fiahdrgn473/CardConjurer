@@ -990,7 +990,7 @@ function autoCrop(targetImage, source = targetImage.src) {
 
 var textCodeReferenceArray = [
 ['Code', 'Result'],
-['{linenospace}', 'Moves to the next line without an extra space'],
+['{linenospace}', 'Moves to the next line without an extra space ({lns} for short)'],
 ['{bar}', 'Moves to the next line and draws the flavor text bar'],
 ['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the text'],
 ['{i}', 'Italicizes the text'],
