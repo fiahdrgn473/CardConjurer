@@ -3,7 +3,7 @@ if (!loadedVersions.includes('m15Planeswalker/version')) {
 	newCanvas('planeswalker')
 	loadMaskImages([['Pinline (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskPinline.png'], ['Border (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskBorder.png'], ['Title (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskTitle.png'], ['Type (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskType.png'], ['Frame (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskFrame.png'], ['Rules Text (planeswalker)', '/data/images/cardImages/planeswalker/planeswalkerMaskText.png']])
 
-	document.getElementById('tabPicker').innerHTML += `<div onclick='toggleTabs(this, "planeswalkerTab")'>Planeswalker</div>`
+	document.getElementById('tabPicker').innerHTML += `<div onclick='toggleTabs(this, "planeswalkerTab")' class='interactable'>Planeswalker</div>`
     var planeswalkerTab = document.createElement("div")
     planeswalkerTab.classList.add('hidden')
     planeswalkerTab.id = 'planeswalkerTab'
