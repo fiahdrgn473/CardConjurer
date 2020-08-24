@@ -49,7 +49,7 @@ document.getElementById('footer').innerHTML = `
         <div>Contact</div>
         <hr>
         <div>
-            <label class="truncate"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=CardConjurerMTG@gmail.com&su=Card%20Conjurer&tf=1" target="_blank">CardConjurerMTG@gmail.com</a></label>
+            <label class="truncate"><a href="mailto:CardConjurerMTG@gmail.com?subject=Card Conjurer" target="_blank">CardConjurerMTG@gmail.com</a></label>
         </div>
     </div>
     <script defer src="/data/scripts/animations.js"></script>
