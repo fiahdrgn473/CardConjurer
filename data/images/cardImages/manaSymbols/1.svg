@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="600" height="600"><circle cx="300" cy="300" r="300" fill="#cbc2bf"/><path d="m347 52 0 373c0 49 29 48 48 48l16 0 0 50-218 0 0-50 20 0c18 0 47 0 47-48l0-239c0-47-15-51-47-50l-18 0 0-51 20 0c36 0 57-32 93-33z" fill="#130c0e"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <circle cx="300" cy="300" r="300" style="fill:rgb(19,12,14);"/>
+    <path d="M300,0C465.575,0 600,134.425 600,300C600,465.575 465.575,600 300,600C134.425,600 0,465.575 0,300C0,134.425 134.425,0 300,0ZM347,52L347,425C347,474 376,473 395,473L411,473L411,523L193,523L193,473L213,473C231,473 260,473 260,425L260,186C260,139 245,135 213,136L195,136L195,85L215,85C251,85 272,53 308,52L347,52Z" style="fill:rgb(203,194,191);"/>
+</svg>
