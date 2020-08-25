@@ -506,7 +506,7 @@ function writeText(textObjectList, targetContext) {
 		textParagraphCanvas.height = scaleY(textObjectList[i].height) + 2 * textCanvasBuffer
 		textLineContext.clearRect(0, 0, textLineCanvas.width, textLineCanvas.height)
 		textParagraphContext.clearRect(0, 0, textParagraphCanvas.width, textParagraphCanvas.height)
-		var outlineColor = 'black', outline = false, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', manaCost = false, canWriteText = true
+		var outlineColor = 'black', outline = false, shadow = 0, oneLine = false, outlineThickness = 2, textAlign = 'left', finishLine = false, paragraphSpace = 0, permanentLineShift = 0, temporaryLineShift = 0, fontStyle = '', textFontExtension = '', manaCost = false, canWriteText = true
 		textObjectList[i].otherParameters.forEach(item => eval(item))
 		textLineContext.shadowOffsetX = shadow
 		textLineContext.shadowOffsetY = shadow
@@ -515,13 +515,13 @@ function writeText(textObjectList, targetContext) {
 		textLineContext.strokeStyle = outlineColor
 		textLineContext.lineWidth = outlineThickness
 		textFont = textObjectList[i].font
-		textLineContext.font = fontStyle + textSize + 'px ' + textFont
+		textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 		var currentFontColor = textObjectList[i].fontColor
 		textLineContext.fillStyle = currentFontColor
 		var textX = textCanvasBuffer
 		var textY = 0
 		var currentLineWidth = 0
-		var splitText = textObjectList[i].text.replace(/\n/g, '{line}').replace(/{/g, 'fh48a3h2{').replace(/}/g, '}fh48a3h2').replace(/ /g, 'fh48a3h2 fh48a3h2').split('fh48a3h2')
+		var splitText = textObjectList[i].text.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{i}').replace(/{/g, 'fh48a3h2{').replace(/}/g, '}fh48a3h2').replace(/ /g, 'fh48a3h2 fh48a3h2').split('fh48a3h2')
 		if (manaCost) {
 			splitText = '{' + textObjectList[i].text.replace(/\n/g, '').replace(/{/g, ' ').replace(/}/g, ' ').replace(/ /g, '}fh48a3h2{right4}fh48a3h2{') + '}'
 			splitText = splitText.split('fh48a3h2')
@@ -539,24 +539,29 @@ function writeText(textObjectList, targetContext) {
 					} else if ((possibleCodeLower == 'linenospace' || possibleCodeLower == 'lns') && !oneLine) {
 						finishLine = true
 					} else if ((possibleCodeLower == 'bar' || possibleCodeLower == 'flavor') && !oneLine) {
-						finishLine = true
 						var barWidth = scaleX(textObjectList[i].width) * 0.95
 						var barHeight = scaleY(0.001)
-						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('bar')], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 1.6 + textCanvasBuffer, barWidth, barHeight)
-						paragraphSpace += textSize * 0.8
-						if (possibleCodeLower == 'flavor' && !fontStyle.includes('italic')) {
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('bar')], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 0.8 + textCanvasBuffer, barWidth, barHeight)
+						currentLineWidth = scaleX(textObjectList[i].width)
+					} else if (possibleCodeLower == 'i') {
+						if (textFont == 'mplantin' && !textFontExtension.includes('i')) {
+							textFontExtension += 'i'
+							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
+						} else if (!fontStyle.includes('italic')) {
 							fontStyle += 'italic '
-							textLineContext.font = fontStyle + (textSize * 0.92) + 'px ' + textFont
+							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 						}
-					} else if (possibleCodeLower == 'i' && !fontStyle.includes('italic')) {
-						fontStyle += 'italic '
-						textLineContext.font = fontStyle + textSize + 'px ' + textFont
 					} else if (possibleCodeLower == '/i') {
-						fontStyle = fontStyle.replace('italic ', '')
-						textLineContext.font = fontStyle + textSize + 'px ' + textFont
+						if (textFont == 'mplantin') {
+							textFontExtension.replace('i', '')
+							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
+						} else {
+							fontStyle = fontStyle.replace('italic ', '')
+							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
+						}
 					} else if (possibleCodeLower.includes('fontsize')) {
 						textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
-						textLineContext.font = fontStyle + textSize + 'px ' + textFont
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 					} else if (possibleCodeLower == 'left') {
 						textAlign = 'left'
 					} else if (possibleCodeLower == 'center') {
@@ -620,7 +625,7 @@ function writeText(textObjectList, targetContext) {
 	                    currentLineWidth += artistBrushWidth * 1.1
 	                } else if (possibleCodeLower.includes('font')) {
 						textFont = possibleCodeLower.replace('font', '')
-						textLineContext.font = fontStyle + textSize + 'px ' + textFont
+						textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 					} else if (possibleCodeLower == 'planechase') {
 						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('chaos')], textX, textCanvasBuffer + textSize - scaleX(40/2100), scaleX(102/2100), scaleX(85/2100))
 						textX += scaleX(125/2100)
@@ -991,8 +996,8 @@ function autoCrop(targetImage, source = targetImage.src) {
 var textCodeReferenceArray = [
 ['Code', 'Result'],
 ['{linenospace}', 'Moves to the next line without an extra space ({lns} for short)'],
-['{bar}', 'Moves to the next line and draws the flavor text bar'],
-['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the text'],
+['{bar}', 'Draws the flavor text bar on the current line'],
+['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the following text'],
 ['{i}', 'Italicizes the text'],
 ['{/i}', 'Removes italicization'],
 ['{fontsize#}', 'Changes the font size by # pixels (relative - use negative numbers to shrink text)'],
