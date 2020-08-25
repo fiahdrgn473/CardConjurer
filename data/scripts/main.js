@@ -553,7 +553,7 @@ function writeText(textObjectList, targetContext) {
 						}
 					} else if (possibleCodeLower == '/i') {
 						if (textFont == 'mplantin') {
-							textFontExtension.replace('i', '')
+							textFontExtension = textFontExtension.replace('i', '')
 							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 						} else {
 							fontStyle = fontStyle.replace('italic ', '')
