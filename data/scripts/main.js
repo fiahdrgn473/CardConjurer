@@ -162,7 +162,7 @@ class cardPlaceholder {
 	}
 	draw() {
 		if (this.whatToDraw == textCanvas) {
-			if (currentVersion == 'm15Planeswalker/version') {
+			if (currentVersion.includes('m15Planeswalker/')) {
 				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)
 			}
 			mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
@@ -425,7 +425,12 @@ function cardMasterElementEdited() {
 }
 
 function getFloat(input) {
-	return parseFloat(document.getElementById(input).value)
+	var getFloatResponse = parseFloat(document.getElementById(input).value)
+	if (getFloatResponse) {
+		return getFloatResponse
+	} else {
+		return 0
+	}
 }
 
 function loadTextOptions(textArray = []) {
@@ -877,7 +882,7 @@ function inputCardNameNumberTextImport(index) {
     } else {
         importText('', 'Power/Toughness')
     }
-    if (importCardTextResponse.includes('"loyalty":"') && currentVersion == 'm15Planeswalker/version') {
+    if (importCardTextResponse.includes('"loyalty":"') && currentVersion.includes('m15Planeswalker/')) {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), 'Loyalty')
         var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g)
         for (var i = 0; i < abilityList.length; i++) {

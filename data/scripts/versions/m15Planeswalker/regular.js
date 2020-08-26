@@ -8,13 +8,12 @@ if (!loadedVersions.includes('m15Planeswalker/regular')) {
         ['Green Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
         ['Multicolored Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
         ['Artifact Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
-        ['Colorless Frame', '/data/images/cardImages/planeswalker/planeswalkerFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
-        ['Dark Twins', '/data/images/cardImages/planeswalker/planeswalkerDarkTwins.png', 0, 0, 1, 1, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
-        ['Holo Stamp', '/data/images/cardImages/stamp.png', 338/744, 951/1039, 70/744, 36/1039, ['Full', 'Pinline (planeswalker)', 'Title (planeswalker)', 'Type (planeswalker)', 'Frame (planeswalker)', 'Border (planeswalker)']],
-        ['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
-        ['Silver Border', '/data/images/cardImages/silver.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
-        ['Gold Border', '/data/images/cardImages/gold.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']]
+        ['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Alternative Border', 'Border (planeswalker)']],
+        ['Silver Border', '/data/images/cardImages/silver.png', 0, 0, 1, 1, ['Alternative Border', 'Border (planeswalker)']],
+        ['Gold Border', '/data/images/cardImages/gold.png', 0, 0, 1, 1, ['Alternative Border', 'Border (planeswalker)']]
     ], 'frameClassPlaneswalkerRegular')
 }
+
+planeswalkerTextBoxX = scaleX(179/1500), planeswalkerTextBoxWidth = scaleX(1205/1500), planeswalkerTextBoxY = scaleY(1314/2100), planeswalkerTextBoxHeight = scaleY(607/2100)
 
 hideFrameImages('frameClassPlaneswalkerRegular')
