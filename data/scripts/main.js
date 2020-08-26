@@ -884,7 +884,7 @@ function inputCardNameNumberTextImport(index) {
     }
     if (importCardTextResponse.includes('"loyalty":"') && currentVersion.includes('m15Planeswalker/')) {
         importText(beforeAfter(importCardTextResponse, '"loyalty":"', '",'), 'Loyalty')
-        var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g)
+        var abilityList = beforeAfter(importCardTextResponse, '"oracle_text":"', '",').replace(/\u2212/g, '-').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').split(/\\n/g)
         for (var i = 0; i < abilityList.length; i++) {
             if (abilityList[i].slice(0, 4).includes(':')) {
                 importText(abilityList[i].split(/: (.+)?/)[1], 'Ability ' + (i+1))
