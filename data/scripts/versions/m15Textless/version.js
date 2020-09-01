@@ -1,6 +1,6 @@
 if (!loadedVersions.includes('m15Textless/version')) {
 	loadedVersions.push('m15Textless/version')
-	loadMaskImages([['Border (m15)', '/data/images/cardImages/m15/m15MaskBorder.png'], ['Pinline (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Filigree (m15 Textless)', '/data/images/cardImages/m15Textless/invention/m15TextlessMaskInvention.png']])
+	loadMaskImages([['Pinline (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskPinline.png'], ['Type (m15 Textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Filigree (m15 Textless)', '/data/images/cardImages/m15Textless/invention/m15TextlessMaskInvention.png']])
 }
 
 if (currentVersion != 'm15Textless/version') {
@@ -36,4 +36,4 @@ if (currentVersion != 'm15Textless/version') {
 	])
 }
 
-loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['textlessGenericShowcase', 'Generic Showcase'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
+loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['textlessGenericShowcase', 'Generic Showcase'], ['textlessBasic', 'Fullart Basic'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
