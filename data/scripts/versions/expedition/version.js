@@ -3,8 +3,8 @@ if (!loadedVersions.includes('expedition/version')) {
 	loadMaskImages([['Pinline (expedition)', '/data/images/cardImages/expedition/expeditionMaskPinline.png'], ['Type (m15 textless)', '/data/images/cardImages/m15Textless/m15TextlessMaskType.png'], ['Rules (expedition)', '/data/images/cardImages/expedition/expeditionMaskTextbox.png'], ['Frame (expedition)', '/data/images/cardImages/expedition/expeditionMaskFrame.png']])
 }
 
-if (currentVersion != 'expedition') {
-	currentVersion = 'expedition'
+if (currentVersion != 'expedition/version') {
+	currentVersion = 'expedition/version'
 
 	artX = scaleX(113 / 1500)
 	artY = scaleY(233 / 2100)
@@ -37,4 +37,4 @@ if (currentVersion != 'expedition') {
 	])
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns']])
+loadFramePackOptions([['regular', 'Regular'], ['new', 'New (Zendikar Rising)'], ['floatingCrowns', 'Floating Crowns']])
