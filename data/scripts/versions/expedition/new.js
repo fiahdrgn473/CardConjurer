@@ -9,6 +9,7 @@ if (!loadedVersions.includes('expedition/new')) {
 		['Green Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
 		['Multicolored Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
 		['Land Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
+		['Colorless Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
 		['White Power/Toughness', '/data/images/cardImages/m15/m15PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Blue Power/Toughness', '/data/images/cardImages/m15/m15PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Black Power/Toughness', '/data/images/cardImages/m15/m15PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
