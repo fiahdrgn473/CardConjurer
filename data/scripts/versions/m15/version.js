@@ -37,14 +37,18 @@ if (currentVersion != 'm15/version') {
 	])
 }
 
-loadFramePackOptions([['disabled', 'Standard'],['regular', 'Regular'], ['disabled', 'Crowns'], ['legendCrowns', 'Legend Crowns'], ['floatingCrowns', 'Floating Crowns'], ['disabled', 'Mechanic-Based'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['devoid', 'Devoid'], ['disabled', 'Special'], ['boxTopper', 'Box Topper'], ['genericShowcase', 'Generic Showcase'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['invention', 'Kaladesh Invention'], ['darkPT', 'Dark Power/Toughness'], ['disabled', 'Custom'], ['inventionClassic', 'Simple Invention']])
+loadFramePackOptions([['disabled', 'Standard'],['regular', 'Regular'], ['disabled', 'Crowns'], ['legendCrowns', 'Legend Crowns'], ['floatingCrowns', 'Floating Crowns'], ['disabled', 'Mechanic-Based'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['devoid', 'Devoid'], ['disabled', 'Special'], ['commanderLegends', 'Commander Legends Showcase'], ['boxTopper', 'Box Topper'], ['genericShowcase', 'Generic Showcase'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['invention', 'Kaladesh Invention'], ['darkPT', 'Dark Power/Toughness'], ['disabled', 'Custom'], ['inventionClassic', 'Simple Invention']])
 
 function bottomInfoM15() {
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
 	var ptBoxShift = 0
-	for (var i = 0; i < cardTextList.length; i++) {
-		if (cardTextList[i].name == 'Power/Toughness' && cardTextList[i].text != '') {
-			ptBoxShift = 36/2100
+	if (currentVersion == 'm15/commanderLegends') {
+		ptBoxShift = 36/2100
+	} else {
+		for (var i = 0; i < cardTextList.length; i++) {
+			if (cardTextList[i].name == 'Power/Toughness' && cardTextList[i].text != '') {
+				ptBoxShift = 36/2100
+			}
 		}
 	}
 	if (ptBoxShift == 0) {
