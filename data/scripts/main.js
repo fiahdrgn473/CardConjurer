@@ -161,6 +161,8 @@ class cardPlaceholder {
 		uniqueNumberTracker += 1
 	}
 	draw() {
+		mainContext.globalCompositeOperation = 'source-over'
+		mainContext.globalAlpha = 1
 		if (this.whatToDraw == textCanvas) {
 			if (currentVersion.includes('m15Planeswalker/')) {
 				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)

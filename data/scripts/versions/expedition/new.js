@@ -1,15 +1,15 @@
 if (!loadedVersions.includes('expedition/new')) {
 	loadedVersions.push('expedition/new')
-	loadMaskImages([['Pinline (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskPinline.png'], ['Type (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskType.png']])
+	loadMaskImages([['Pinline (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskPinline.png'], ['Type (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskType.png'], ['Frame (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskFrame.png'], ['Text (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskText.png'], ['Border (expedition new)', '/data/images/cardImages/expedition/new/expeditionNewMaskBorder.png']])
 	loadFrameImages([
-		['White Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Blue Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Black Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameB.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Red Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameR.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Green Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Multicolored Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Land Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
-		['Colorless Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)']],
+		['White Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Blue Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Black Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameB.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Red Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameR.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Green Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameG.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Multicolored Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameM.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Land Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
+		['Colorless Frame', '/data/images/cardImages/expedition/new/expeditionNewFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (expedition new)', 'Title (m15)', 'Type (expedition new)', 'Frame (expedition new)', 'Text (expedition new)']],
 		['White Power/Toughness', '/data/images/cardImages/m15/m15PTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Blue Power/Toughness', '/data/images/cardImages/m15/m15PTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Black Power/Toughness', '/data/images/cardImages/m15/m15PTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],

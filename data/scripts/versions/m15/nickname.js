@@ -1,8 +1,8 @@
 if (!loadedVersions.includes('m15/nickname')) {
 	loadedVersions.push("m15/nickname")
-	loadMaskImages([['Nickname Legend Crown (m15)', '/data/images/cardImages/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', '/data/images/cardImages/m15/m15MaskNicknameTitleStrokeless.png']])
+	loadMaskImages([['Nickname Legend Crown (m15)', '/data/images/cardImages/m15/m15MaskNicknameLegendCrownStrokeless.png'], ['Nickname Title (m15)', '/data/images/cardImages/m15/m15MaskNicknameTitleStrokeless.png'], ['Nickname True Name (m15)', '/data/images/cardImages/m15/nickname/m15NicknameMaskTrueName.png']])
 	loadFrameImages([
-		['Base Nickname Frame', '/data/images/cardImages/m15/m15NicknameTextboxes.png', 0, 0, 1, 1, ['Full', 'Title (m15)', 'Type (m15)', 'Rules (m15)']],
+		['Base Nickname Frame', '/data/images/cardImages/m15/m15NicknameTextboxes.png', 0, 0, 1, 1, ['Full', 'Title (m15)', 'Type (m15)', 'Rules (m15)', 'Nickname True Name (m15)']],
 		['White Nickname Frame', '/data/images/cardImages/m15/m15NicknameFrameW.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Border (m15)']],
 		['Blue Nickname Frame', '/data/images/cardImages/m15/m15NicknameFrameU.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Border (m15)']],
 		['Black Nickname Frame', '/data/images/cardImages/m15/m15NicknameFrameB.png', 0, 0, 1, 1, ['Full', 'Pinline (m15)', 'Border (m15)']],
