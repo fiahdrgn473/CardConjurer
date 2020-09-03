@@ -25,9 +25,9 @@ if (currentVersion != 'm15/commanderLegends') {
 	currentVersion = 'm15/commanderLegends'
 	
 	loadTextOptions([
-	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true', 'shadow=2']),
-	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'white', ['oneLine=true', 'shadow=2']),
-	new cardText('Rules Text', '', 140/1500, 1370/2100, 1220/1500, 625/2100, 'mplantin', 74/2100, 'white', ['shadow=2']),
+	new cardText('Card Title', '', 126/1500, 188/2100, 1248/1500, 80/2100, 'belerenb', 80/2100, 'white', ['oneLine=true', 'shadow=3']),
+	new cardText('Card Type', '', 126/1500, 1264/2100, 1248/1500, 68/2100, 'belerenb', 68/2100, 'white', ['oneLine=true', 'shadow=3']),
+	new cardText('Rules Text', '', 140/1500, 1370/2100, 1220/1500, 625/2100, 'mplantin', 74/2100, 'white', ['shadow=3']),
 	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'white', ['oneLine=true,textAlign="center"'])
 	])
 
