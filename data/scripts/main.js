@@ -504,7 +504,45 @@ function writeText(textObjectList, targetContext) {
 		if (!rewritingLine) {
 			textSize = scaleY(textObjectList[i].fontSize)
 		} else {
-			textSize -= 1
+			var fontSizeCode = textObjectList[i].text.split(/\n| |{line}/)[0].toLowerCase()
+			if (fontSizeCode.includes('{fontsize')) {
+				textSize = scaleY(textObjectList[i].fontSize)
+				var fontSizeCodeStart = fontSizeCode.indexOf('{fontsize') + 9
+				var fontSizeCodeValueLength = fontSizeCode.split('{fontsize')[1].indexOf('}')
+				var fontSizeCodeValue = fontSizeCode.slice(fontSizeCodeStart, fontSizeCodeValueLength + fontSizeCodeStart)
+				if ((fontSizeCodeValueLength == -1 || fontSizeCodeValueLength > 4) || (!parseInt(fontSizeCodeValue) && parseInt(fontSizeCodeValue) != 0)) {
+					if (fontSizeCodeValueLength == -1 || fontSizeCodeValueLength > 4) {
+						textObjectList[i].text = textObjectList[i].text.replace('{fontsize', '{fontsize0}')
+					} else {
+						textObjectList[i].text = textObjectList[i].text.replace('{fontsize' + fontSizeCodeValue + '}', '{fontsize0}')
+					}
+					if (document.getElementById('textPicker').children[i].classList.contains('selected')) {
+						var savedCursorPosition = document.getElementById('textEditorText').selectionStart - document.getElementById('textEditorText').value.length
+						document.getElementById('textEditorText').value = textObjectList[i].text
+						savedCursorPosition += document.getElementById('textEditorText').value.length
+						document.getElementById('textEditorText').selectionStart = savedCursorPosition
+						document.getElementById('textEditorText').selectionEnd = savedCursorPosition
+					}
+					rewritingLine = true
+					i -= 1
+					continue outerloop
+				} else {
+					fontSizeCodeValue = parseInt(fontSizeCodeValue)
+					if (!fontSizeCodeValue) {
+						fontSizeCodeValue = 0
+					}
+					textObjectList[i].text = textObjectList[i].text.replace('{fontsize' + fontSizeCodeValue + '}', '{fontsize' + (fontSizeCodeValue - 1) + '}')
+					if (document.getElementById('textPicker').children[i].classList.contains('selected')) {
+						var savedCursorPosition = document.getElementById('textEditorText').selectionStart - document.getElementById('textEditorText').value.length
+						document.getElementById('textEditorText').value = textObjectList[i].text
+						savedCursorPosition += document.getElementById('textEditorText').value.length
+						document.getElementById('textEditorText').selectionStart = savedCursorPosition
+						document.getElementById('textEditorText').selectionEnd = savedCursorPosition
+					}
+				}
+			} else {
+				textSize -= 1
+			}
 		}
 		rewritingLine = false
 		textLineCanvas.width = scaleX(textObjectList[i].width) + 2 * textCanvasBuffer
@@ -567,8 +605,10 @@ function writeText(textObjectList, targetContext) {
 							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
 						}
 					} else if (possibleCodeLower.includes('fontsize')) {
-						textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
-						textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
+						if (parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))) {
+							textSize += parseInt(possibleCodeLower.slice(8, possibleCodeLower.length))
+							textLineContext.font = fontStyle + textSize + 'px ' + textFont + textFontExtension
+						}
 					} else if (possibleCodeLower == 'left') {
 						textAlign = 'left'
 					} else if (possibleCodeLower == 'center') {
@@ -640,7 +680,7 @@ function writeText(textObjectList, targetContext) {
 						permanentLineShift += scaleX(125/2100)
 					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
 						//THIS HAS TO BE THE LAST ONE
-						var manaSymbolDiameter = textSize * 0.77
+						var manaSymbolDiameter = textSize * 0.78
 						if (manaCost && manaCostShadowOffset != 'none') {
 							var shadowOffset = eval(manaCostShadowOffset)
 							textLineContext.beginPath()
@@ -648,8 +688,8 @@ function writeText(textObjectList, targetContext) {
 							textLineContext.fill()
 						}
 						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split('/').join(''))], textX, textCanvasBuffer + textSize - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
-						currentLineWidth += manaSymbolDiameter * 1.02
-						textX += manaSymbolDiameter * 1.02
+						currentLineWidth += manaSymbolDiameter * 1.13
+						textX += manaSymbolDiameter * 1.13
 					} else {
 						wordToWrite = splitText[n]
 					}
@@ -695,7 +735,12 @@ function writeText(textObjectList, targetContext) {
 					textX += currentWordWidth
 				}
 			}
-			if (n == splitText.length - 1) {
+			if (n == splitText.length - 1) { //Finally, center the paragraph vertically
+				if (textY + textSize > scaleY(textObjectList[i].height) && !oneLine) {
+					rewritingLine = true
+					i -= 1
+					continue outerloop
+				}
 				targetContext.drawImage(textParagraphCanvas, scaleX(textObjectList[i].x) - textCanvasBuffer, scaleY(textObjectList[i].y) - textCanvasBuffer - textSize + (scaleY(textObjectList[i].height) - textY - textSize) / 2, textParagraphCanvas.width, textParagraphCanvas.height)
 			}
 		}
@@ -875,6 +920,17 @@ function inputCardNameNumberTextImport(index) {
     importText(beforeAfter(importCardTextResponse, '"name":"', '",'), 'Card Title')
     importText(beforeAfter(importCardTextResponse, '"type_line":"', '",'), 'Card Type')
     var flavorText = '{flavor}' + beforeAfter(importCardTextResponse, '"flavor_text":"', '","')
+    var flavorTextStarCount = 0
+    if (flavorText.match(/\*/g)) {
+    	flavorTextStarCount = flavorText.match(/\*/g).length
+    }
+    for (var i = 0; i < flavorTextStarCount; i ++) {
+    	if (i % 2 == 0) {
+    		flavorText = flavorText.replace('*', '{/i}')
+    	} else {
+    		flavorText = flavorText.replace('*', '{i}')
+    	}
+    }
     if (flavorText.length < 10) {
     	flavorText = ''
     }
