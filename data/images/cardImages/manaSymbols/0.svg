@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="Layer1">
-        <circle cx="300" cy="300" r="300" style="fill:rgb(19,12,14);"/>
-        <path d="M300,0C465.575,0 600,134.425 600,300C600,465.575 465.575,600 300,600C134.425,600 0,465.575 0,300C0,134.425 134.425,0 300,0ZM303.382,532.999C339.859,532.746 462,496.255 462,284C462,159 397,65 296,65C201,65 141,197 141,308C140.002,444.685 212.665,532.595 303.382,532.999L303,533L304,533C303.791,533 303.581,533 303.382,532.999ZM304,493C331,493 383,479 383,324C383,158 338,107 296,107C262,107 220,133 220,276C220,444 269,493 304,493Z" style="fill:rgb(203,194,191);"/>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1" width="600" height="600"><circle cx="300" cy="300" r="300" fill="#cbc2bf"/><path d="m304 493c27 0 79-14 79-169 0-166-45-217-87-217-34 0-76 26-76 169 0 168 49 217 84 217m0 40c-91 0-164-88-163-225 0-111 60-243 155-243 101 0 166 94 166 219 0 213-123 249-159 249" fill="#130c0e"/></svg>

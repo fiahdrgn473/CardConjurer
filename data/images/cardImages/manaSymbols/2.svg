@@ -1,6 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <circle cx="300" cy="300" r="300" style="fill:rgb(19,12,14);"/>
-    <path d="M300,0C465.575,0 600,134.425 600,300C600,465.575 465.575,600 300,600C134.425,600 0,465.575 0,300C0,134.425 134.425,0 300,0ZM242,454L360,454C407,454 421,451 437,399L477,398L441,522L156,522L155,488C369,279 373,248 375,217C380,149 331,127 305,127C279,127 236,144 194,230L157,214C213,57 307,64 337,65C411,67 459,137 457,196C455,276 420,288 242,454Z" style="fill:rgb(203,194,191);"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1" width="600" height="600"><circle cx="300" cy="300" r="300" fill="#cbc2bf"/><path d="m242 454 118 0c47 0 61-3 77-55l40-1-36 124-285 0-1-34C369 279 373 248 375 217c5-68-44-90-70-90-26 0-69 17-111 103L157 214C213 57 307 64 337 65c74 2 122 72 120 131-2 80-37 92-215 258z" fill="#130c0e"/></svg>

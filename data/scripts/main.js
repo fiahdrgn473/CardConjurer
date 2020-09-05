@@ -1063,7 +1063,7 @@ var textCodeReferenceArray = [
 ['{flavor}', 'Moves to the next line, draws the flavor text bar, and italicizes the following text'],
 ['{i}', 'Italicizes the text'],
 ['{/i}', 'Removes italicization'],
-['{fontsize#}', 'Changes the font size by # pixels (relative - use negative numbers to shrink text)'],
+['{fontsize#}', 'Changes the font size by # pixels (relative - use negative integers to shrink text)'],
 ['{fontcolor#}', 'Changes the font color to #'],
 ['{left}', 'Aligns the text to the left'],
 ['{center}', 'Aligns the text to the center'],
