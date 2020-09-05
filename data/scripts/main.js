@@ -505,17 +505,13 @@ function writeText(textObjectList, targetContext) {
 			textSize = scaleY(textObjectList[i].fontSize)
 		} else {
 			var fontSizeCode = textObjectList[i].text.split(/\n| |{line}/)[0].toLowerCase()
-			if (fontSizeCode.includes('{fontsize')) {
+			if (fontSizeCode.includes('{fontsize') && fontSizeCode.includes('}') && fontSizeCode.split('{fontsize')[1].indexOf('}') != -1 && fontSizeCode.split('{fontsize')[1].indexOf('}') < 4) {
 				textSize = scaleY(textObjectList[i].fontSize)
 				var fontSizeCodeStart = fontSizeCode.indexOf('{fontsize') + 9
 				var fontSizeCodeValueLength = fontSizeCode.split('{fontsize')[1].indexOf('}')
 				var fontSizeCodeValue = fontSizeCode.slice(fontSizeCodeStart, fontSizeCodeValueLength + fontSizeCodeStart)
-				if ((fontSizeCodeValueLength == -1 || fontSizeCodeValueLength > 4) || (!parseInt(fontSizeCodeValue) && parseInt(fontSizeCodeValue) != 0)) {
-					if (fontSizeCodeValueLength == -1 || fontSizeCodeValueLength > 4) {
-						textObjectList[i].text = textObjectList[i].text.replace('{fontsize', '{fontsize0}')
-					} else {
-						textObjectList[i].text = textObjectList[i].text.replace('{fontsize' + fontSizeCodeValue + '}', '{fontsize0}')
-					}
+				if (!parseInt(fontSizeCodeValue) && parseInt(fontSizeCodeValue) != 0) {
+					textObjectList[i].text = textObjectList[i].text.replace('{fontsize' + fontSizeCodeValue + '}', '{fontsize0}')
 					if (document.getElementById('textPicker').children[i].classList.contains('selected')) {
 						var savedCursorPosition = document.getElementById('textEditorText').selectionStart - document.getElementById('textEditorText').value.length
 						document.getElementById('textEditorText').value = textObjectList[i].text
