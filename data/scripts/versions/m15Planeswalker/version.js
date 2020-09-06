@@ -47,6 +47,8 @@ if (!loadedVersions.includes('m15Planeswalker/version')) {
     var planeswalkerLightToDark = new Image()
     var planeswalkerDarkToLight = new Image()
     planeswalkerDarkToLight.onload = function(){planeswalkerAbilities()}
+
+    notify('To edit the Loyalty costs of planeswalker abilities or change the size of the ability textboxes, see the new \'Planeswalker\' tab.', '#aaffaae0')
 }
 
 if (currentVersion != 'm15Planeswalker/version') {

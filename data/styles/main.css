@@ -261,7 +261,7 @@ input:not([type='checkbox']), textarea, button, select {
 	top: 0;
 }
 /*Slightly lifts inputs upon hovering over them*/
-input:not([type='checkbox']):hover, textarea:hover, button:hover, select:hover {
+input:not([type='checkbox']):hover, textarea:hover, button:hover, select:hover, select:focus {
 	top: -0.1rem;
 	box-shadow: 0 0.125rem 0.25rem black;
 }
