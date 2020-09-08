@@ -698,7 +698,7 @@ function writeText(textObjectList, targetContext) {
 				if (wordToWrite != '' || n == splitText.length - 1 || finishLine) {
 					var currentWordWidth = textLineContext.measureText(wordToWrite).width
 					if (currentWordWidth + currentLineWidth > scaleX(textObjectList[i].width) || n == splitText.length - 1 || finishLine) {
-						if (oneLine && currentWordWidth + currentLineWidth > scaleX(textObjectList[i].width) && textSize > 0) {
+						if (oneLine && currentWordWidth + currentLineWidth > scaleX(textObjectList[i].width) && textSize > 1) {
 							rewritingLine = true
 							i -= 1
 							continue outerloop
@@ -732,7 +732,7 @@ function writeText(textObjectList, targetContext) {
 				}
 			}
 			if (n == splitText.length - 1) { //Finally, center the paragraph vertically
-				if (textY + textSize > scaleY(textObjectList[i].height) && !oneLine) {
+				if (textY + textSize > scaleY(textObjectList[i].height) && !oneLine && textSize > 1) {
 					rewritingLine = true
 					i -= 1
 					continue outerloop
