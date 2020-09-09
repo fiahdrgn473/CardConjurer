@@ -166,6 +166,8 @@ class cardPlaceholder {
 		if (this.whatToDraw == textCanvas) {
 			if (currentVersion.includes('m15Planeswalker/')) {
 				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)
+			} else if (currentVersion.includes('saga')) {
+				mainContext.drawImage(sagaCanvas, 0, 0, cardWidth, cardHeight)
 			}
 			mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
 			mainContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
@@ -865,7 +867,7 @@ function watermarkUpdated() {
 			watermarkDrawHeight = watermarkHeight
 			watermarkDrawWidth = watermarkHeight / watermark.height * watermark.width
 		}
-		watermarkDrawX = cardWidth / 2 - watermarkDrawWidth / 2
+		watermarkDrawX = watermarkX - watermarkDrawWidth / 2
 		watermarkDrawY = watermarkY - watermarkDrawHeight / 2
 		watermarkContext.drawImage(watermark, watermarkDrawX, watermarkDrawY, watermarkDrawWidth, watermarkDrawHeight)
 		watermarkContext.globalCompositeOperation = 'source-in'
