@@ -3,7 +3,7 @@ if (!loadedVersions.includes('m15Saga/regular')) {
 	loadFrameImages([
         ['White Frame', '/data/images/cardImages/saga/sagaFrameW.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
         ['Blue Frame', '/data/images/cardImages/saga/sagaFrameU.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
-        ['Black Frame', '/data/images/cardImages/saga/sagaFrameb.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
+        ['Black Frame', '/data/images/cardImages/saga/sagaFrameB.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
         ['Red Frame', '/data/images/cardImages/saga/sagaFrameR.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
         ['Green Frame', '/data/images/cardImages/saga/sagaFrameG.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
         ['Multicolored Frame', '/data/images/cardImages/saga/sagaFrameM.png', 0, 0, 1, 1, ['Full','Pinline (saga)', 'Frame (saga)', 'Banner (saga)', 'Title (m15)', 'Type (saga)', 'Rules Text (saga)', 'Border (saga)']],
