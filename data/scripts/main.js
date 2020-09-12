@@ -23,6 +23,9 @@ date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
 
+//URL Parameters
+var URLParams = new URLSearchParams(window.location.search)
+
 function addToManaSymbolList(folderPath, newManaSymbolList) {
 	for (var i = 0; i < newManaSymbolList.length; i ++) {
 		if (!manaSymbolCodeList.includes(newManaSymbolList[i].replace('.svg', ''))) {
@@ -929,7 +932,7 @@ function inputCardNameNumberTextImport(index) {
     		flavorText = flavorText.replace('*', '{i}')
     	}
     }
-    if (flavorText.length < 10) {
+    if (flavorText.length < 10 || URLParams.get('noflavor') != null) {
     	flavorText = ''
     }
     importText((beforeAfter(importCardTextResponse, '"oracle_text":"', '",') + flavorText).replace(/\n\\"/g, '\n\u201C').replace(/{flavor}\\"/g, '{flavor}\u201C').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
