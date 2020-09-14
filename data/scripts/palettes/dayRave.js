@@ -6,7 +6,7 @@ rootStyles.setProperty('--interactable-unselected', '#aaaaaa')
 rootStyles.setProperty('--interactable-selected', '#00aa00')
 rootStyles.setProperty('--font-color', '#000000')
 rootStyles.setProperty('--body-background', 'none')
-setCookie('colorPalette', 'dayRave')
+localStorage.setItem('colorPalette', 'dayRave')
 
 //Shifts the hue
 var colorCycle
