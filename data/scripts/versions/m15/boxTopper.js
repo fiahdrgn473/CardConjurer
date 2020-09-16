@@ -17,7 +17,9 @@ if (!loadedVersions.includes('m15/boxTopper')) {
 		['Green Power/Toughness', '/data/images/cardImages/m15/m15PTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Multicolored Power/Toughness', '/data/images/cardImages/m15/m15PTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Artifact Power/Toughness', '/data/images/cardImages/m15/m15PTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Colorless Power/Toughness', '/data/images/cardImages/m15/m15PTC.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']]
+		['Colorless Power/Toughness', '/data/images/cardImages/m15/m15PTC.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Box Topper Bevel Cutout For Nickname', '/data/images/cardImages/black.png', 87/1500, 233/2100, 1325/1500, 80/2100, ['Full']],
+		['Nickname Bevel', '/data/images/cardImages/m15/boxTopper/m15BoxTopperNicknameBevel.png', 87/1500, 233/2100, 1325/1500, 80/2100, ['Full']]
 	], 'frameClassM15BoxTopper')
 }
 
