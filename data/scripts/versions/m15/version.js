@@ -37,7 +37,7 @@ if (currentVersion != 'm15/version') {
 	])
 }
 
-loadFramePackOptions([['disabled', 'Standard'],['regular', 'Regular'], ['disabled', 'Crowns'], ['legendCrowns', 'Legend Crowns'], ['floatingCrowns', 'Floating Crowns'], ['disabled', 'Mechanic-Based'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['devoid', 'Devoid'], ['disabled', 'Special'], ['commanderLegends', 'Commander Legends Showcase'], ['boxTopper', 'Box Topper'], ['genericShowcase', 'Generic Showcase'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['invention', 'Kaladesh Invention'], ['darkPT', 'Dark Power/Toughness'], ['disabled', 'Custom'], ['inventionClassic', 'Simple Invention']])
+loadFramePackOptions([['disabled', 'Standard'],['regular', 'Regular'], ['disabled', 'Crowns'], ['legendCrowns', 'Legend Crowns'], ['floatingCrowns', 'Floating Crowns'], ['disabled', 'Mechanic-Based'], ['companion', 'Companion'], ['nyx', 'Nyx'], ['devoid', 'Devoid'], ['disabled', 'Special'], ['zendikarRising', 'Zendikar Rising Showcase'], ['commanderLegends', 'Commander Legends Showcase'], ['boxTopper', 'Box Topper'], ['genericShowcase', 'Generic Showcase'], ['m21', 'M21 Showcase'], ['nickname', 'Nickname (Godzilla)'], ['invention', 'Kaladesh Invention'], ['darkPT', 'Dark Power/Toughness'], ['disabled', 'Custom'], ['inventionClassic', 'Simple Invention']])
 
 function bottomInfoM15() {
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
