@@ -39,7 +39,7 @@ if (!loadedVersions.includes('m15/zendikarRising')) {
 		['Green Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Multicolored Power/Toughness', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingPTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Artifact Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTA.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Land Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTL.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Land Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTC.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Colorless Power/Toughness', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingPTC.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		
 		['White Border', '/data/images/cardImages/white.png', 0, 0, 1, 1, ['Alternative Border', 'Alternative Border (Crown)', 'Border (m15)']],
