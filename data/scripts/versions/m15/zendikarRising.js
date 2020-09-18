@@ -34,7 +34,7 @@ if (!loadedVersions.includes('m15/zendikarRising')) {
 		
 		['White Power/Toughness', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingPTW.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Blue Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTU.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
-		['Black Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
+		['Black Power/Toughness', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingPTB.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Red Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTR.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Green Power/Toughness', '/data/images/cardImages/m15/m15NicknamePTG.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
 		['Multicolored Power/Toughness', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingPTM.png', 1136/1500, 1858/2100, 282/1500, 154/2100, ['Full']],
