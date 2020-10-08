@@ -994,7 +994,14 @@ function toggleTabs(clickedElement, targetId) {
 
 function downloadCardImage(linkElement) {
 	if (document.getElementById("inputInfoArtist").value.replace(/ /g, "") != "") {
-		linkElement.download = cardTextList[0].text.toLowerCase().replace(/ /g, "_") + ".png"
+		var savedFileName = ''
+		console.log(cardTextList)
+		if (cardTextList[0].name == 'Card Nickname') {
+			savedFileName = cardTextList[1].text + ' (' + cardTextList[0].text + ").png"
+		} else {
+			savedFileName = cardTextList[0].text + '.png'
+		}
+		linkElement.download = savedFileName
 		if (linkElement.download == ".png") {
 			linkElement.download = "card.png"
 		}
