@@ -11,6 +11,7 @@ if (!loadedVersions.includes('m15/zendikarRising')) {
 		['Artifact Frame', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingFrameA.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 zendikar rising)', 'Title (m15)', 'Type (m15)', 'Rules (m15 zendikar rising)', 'Frame (m15 zendikar rising)', 'Border (m15 zendikar rising)']],
 		['Land Frame', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingFrameL.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 zendikar rising)', 'Title (m15)', 'Type (m15)', 'Rules (m15 zendikar rising)', 'Frame (m15 zendikar rising)', 'Border (m15 zendikar rising)']],
 		['Colorless Frame', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingFrameC.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 zendikar rising)', 'Title (m15)', 'Type (m15)', 'Rules (m15 zendikar rising)', 'Frame (m15 zendikar rising)', 'Border (m15 zendikar rising)']],
+		['Colorless Frame (Alt)', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingFrameCAlt.png', 0, 0, 1, 1, ['Full', 'Pinline (m15 zendikar rising)', 'Title (m15)', 'Type (m15)', 'Rules (m15 zendikar rising)', 'Frame (m15 zendikar rising)', 'Border (m15 zendikar rising)']],
 
 		['White Title Pinline', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingTitleW.png', 56/1500, 55/2100, 1388/1500, 229/2100, ['Full']],
 		['Blue Title Pinline', '/data/images/cardImages/m15/zendikarRising/m15ZendikarRisingTitleU.png', 56/1500, 55/2100, 1388/1500, 229/2100, ['Full']],
