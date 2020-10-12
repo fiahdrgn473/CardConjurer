@@ -47,7 +47,8 @@
 :root {
 	--site-background: #3a3838 url("/data/images/site/backgrounds/lowpolyDarkGreen.svg") left/cover no-repeat fixed;
 	--site-background-filter: none;
-	--layer-background: #242424 url("/data/images/site/backgrounds/lowpolyDarkGray.svg") left/cover no-repeat fixed;
+	--layer-background: none;
+	--layer-background-filter: grayscale(100) brightness(0.5);
 	--layer-background-selected: #1d1d1d;
 	--interactable-unselected: #666666;
 	--interactable-selected: #99ee99;
@@ -109,6 +110,8 @@ a:hover {
 
 .interactable {
 	background: var(--layer-background);
+	backdrop-filter: var(--layer-background-filter);
+	-webkit-backdrop-filter: var(--layer-background-filter);
 	border-top: 0.2rem solid var(--interactable-unselected);
 	cursor: pointer;
 	border-radius: 0.2rem;
@@ -258,6 +261,8 @@ input:not([type='checkbox']), textarea, button, select {
 	padding: 0.25rem;
 	margin-top: 0.25rem;
 	background: var(--layer-background);
+	backdrop-filter: var(--layer-background-filter);
+	-webkit-backdrop-filter: var(--layer-background-filter);
 	border-top: 0.1rem solid var(--interactable-unselected);
 	border-radius: 0.1rem;
 	transition: 0.25s;
@@ -307,9 +312,13 @@ textarea {
 }
 .layer {
 	background: var(--layer-background);
+	backdrop-filter: var(--layer-background-filter);
+	-webkit-backdrop-filter: var(--layer-background-filter);
 }
 .layer.clearLayer {
 	background: none;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
 }
 .animated > div {
 	opacity: 0;
@@ -427,6 +436,8 @@ textarea {
 }
 #textCodeReference > div {
 	background: var(--layer-background);
+	backdrop-filter: var(--layer-background-filter);
+	-webkit-backdrop-filter: var(--layer-background-filter);
 	padding: 0.25rem;
 }
 #textCodeReference > div:nth-child(2n + 1):not(:nth-child(1)) {
@@ -480,6 +491,8 @@ canvas {
 }
 footer {
     background: var(--layer-background);
+    backdrop-filter: var(--layer-background-filter);
+	-webkit-backdrop-filter: var(--layer-background-filter);
     font: 1rem arial;
 }
 .footer {

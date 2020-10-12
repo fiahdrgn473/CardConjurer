@@ -1,6 +1,7 @@
 rootStyles.setProperty('--site-background', '#f5f5f5 url("/data/images/site/backgrounds/lowpolyLightGreen.svg") left/cover no-repeat fixed')
 rootStyles.setProperty('--site-background-filter', 'grayscale(0) hue-rotate(0deg)')
-rootStyles.setProperty('--layer-background', '#e4e4e4 url("/data/images/site/backgrounds/lowpolyLightGray.svg") left/cover no-repeat fixed')
+rootStyles.setProperty('--layer-background', 'none')
+rootStyles.setProperty('--layer-background-filter', 'grayscale(100)')
 rootStyles.setProperty('--layer-background-selected', '#cccccc')
 rootStyles.setProperty('--interactable-unselected', '#aaaaaa')
 rootStyles.setProperty('--interactable-selected', '#00aa00')
