@@ -50,6 +50,7 @@
 	--layer-background: none;
 	--layer-background-filter: grayscale(100) brightness(0.5);
 	--layer-background-selected: #1d1d1d;
+	--option-background: #888888;
 	--interactable-unselected: #666666;
 	--interactable-selected: #99ee99;
 	--font-color: #efefef;
@@ -268,6 +269,10 @@ input:not([type='checkbox']), textarea, button, select {
 	transition: 0.25s;
 	position: relative;
 	top: 0;
+}
+option { 
+    /* Whatever color  you want */
+    background: var(--option-background);
 }
 /*Slightly lifts inputs upon hovering over them*/
 input:not([type='checkbox']):hover, textarea:hover, button:hover, select:hover, select:focus {
