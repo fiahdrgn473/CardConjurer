@@ -32,9 +32,10 @@ document.getElementById('footer').innerHTML = `
         <div>
             <a href='/'>Home</a><br>
             <a href='/creator'>Card Creator</a><br>
+            <a href='/gallery'>Card Gallery</a><br>
             <a href='/askurza'>Ask Urza 2.0</a><br>
             <a href='/phyrexian'>Phyrexian Text</a><br>
-            <a href='/life.html'>Life Counter</a><br>
+            <!--<a href='/life.html'>Life Counter</a><br>-->
             <a href='/about'>About Me</a>
         </div>
     </div>

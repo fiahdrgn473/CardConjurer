@@ -23,6 +23,7 @@
 	z-index: 1;
 }
 .galleryCard > div {
+	opacity: 0;
 	position: relative;
 	top: -2rem;
 	left: 0;
