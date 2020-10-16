@@ -5,3 +5,4 @@ data/borders/.DS_Store
 data/borders/m15/.DS_Store
 gallery/buildImageList.bat
 gallery/buildImageList.py
+debug.log
