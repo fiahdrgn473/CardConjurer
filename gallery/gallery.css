@@ -21,6 +21,8 @@
 }
 .galleryCard > img {
 	z-index: 1;
+	width: 100%;
+	height: auto;
 }
 .galleryCard > div {
 	opacity: 0;
