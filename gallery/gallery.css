@@ -65,10 +65,13 @@
 	display: block;
 }
 #fullImageViewbox > img {
-	margin: 1rem;
-	height: calc(100% - 2rem);
-	width: auto;
-	cursor: default;
+	position: fixed;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	object-fit: contain;
+	width: calc(100vw - 2rem);
+	height: calc(100vh - 2rem);
 	animation-duration: 0.5s;
 }
 #fullImageViewbox.visible > img.visible {
@@ -76,15 +79,15 @@
 }
 #fullImageViewbox.visible > img:not(.visible) {
 	animation-name: previewOut;
-	position: relative; top: 100vh;
 	animation-duration: 0.3s;
+	transform: translate(-50%, calc(50% + 1rem));
 }
 
 @keyframes previewIn {
-	from {position: relative; top: 100vh;}
-	to {position: relative; top: 0;}
+	from {transform: translate(-50%, calc(50% + 1rem));}
+	to {transform: translate(-50%, -50%);}
 }
 @keyframes previewOut {
-	from {position: relative; top: 0;}
-	to {position: relative; top: 100vh;}
+	from {transform: translate(-50%, -50%);}
+	to {transform: translate(-50%, calc(50% + 1rem));}
 }

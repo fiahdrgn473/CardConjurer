@@ -38,15 +38,16 @@ function buildHTML(imageNameList) {
 function zoomImage(event) {
 	document.getElementById('fullImage').src = '/gallery/images/fullres/' + event.target.imageName
 	document.getElementById('fullImage').classList = 'visible'
+	document.getElementById('fullImagePreview').src = '/gallery/images/preview/' + event.target.imageName
+	document.getElementById('fullImagePreview').classList = 'visible'
 	document.getElementById('fullImageViewbox').classList = 'visible'
 	windowY = window.scrollY
 }
 
-function unzoomImage(event) {
-	if (event.target.id != 'fullImage') {
-		document.getElementById('fullImage').classList = ''
-		setTimeout(function(){document.getElementById('fullImageViewbox').classList = ''}, 300)
-	}
+function unzoomImage() {
+	document.getElementById('fullImage').classList = ''
+	document.getElementById('fullImagePreview').classList = ''
+	setTimeout(function(){document.getElementById('fullImageViewbox').classList = ''}, 300)
 }
 
 window.addEventListener('scroll', scrollEvent, false)
