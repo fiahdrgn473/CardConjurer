@@ -47,7 +47,7 @@ function zoomImage(event) {
 function unzoomImage() {
 	document.getElementById('fullImage').classList = ''
 	document.getElementById('fullImagePreview').classList = ''
-	setTimeout(function(){document.getElementById('fullImageViewbox').classList = ''}, 300)
+	setTimeout(function(){document.getElementById('fullImageViewbox').classList = ''; document.getElementById('fullImage').src = ''}, 300)
 }
 
 window.addEventListener('scroll', scrollEvent, false)
