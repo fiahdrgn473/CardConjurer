@@ -175,7 +175,7 @@
 					<div class="autoGrid">
 			            <input type="file" accept="image/*" onchange="uploadImage(event, watermark)" placeholder="Via File Upload">
 			            <input type="text" placeholder="Via URL" onchange="watermark.src = 'https://cors-anywhere.herokuapp.com/' + this.value">
-			            <input type="text" placeholder="Via Set Code" onchange="watermark.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + this.value + '&size=large'">
+			            <input type="text" placeholder="Via Set Code" onchange="cropSVG(this.value, watermark)">
 			            <select id="inputWatermarkPrimary" onchange="watermarkUpdated()">
 			                <option value="none">None</option>
 			                <option value="default">Default</option>

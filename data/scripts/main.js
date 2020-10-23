@@ -1103,6 +1103,25 @@ function artistNameUpdated(artistName) {
 	bottomInfoUpdated()
 }
 
+//svg cropper
+function cropSVG(set, targetImage) {
+	xhttp = new XMLHttpRequest()
+	xhttp.open('GET', 'https://raw.githubusercontent.com/andrewgioia/keyrune/4073ac89bb943978c29be504275e6f3160a07255/svg/' + set + '.svg', true)
+	xhttp.overrideMimeType('image/svg+xml')
+	xhttp.onload = function(event) {
+		if (this.readyState == 4 && this.status == 200) {
+		    var svg = document.body.appendChild(xhttp.responseXML.documentElement)
+		    var box = svg.getBBox(svg)
+			svg.setAttribute('viewBox', [box.x, box.y, box.width, box.height].join(' '))
+			svg.setAttribute('width', box.width)
+			svg.setAttribute('height', box.height)
+			targetImage.src = 'data:image/svg+xml,'+encodeURIComponent(svg.outerHTML)
+			svg.remove()
+		}
+	}
+	xhttp.send()
+}
+
 //Must run last:
 initialize()
 
