@@ -37,4 +37,4 @@ if (currentVersion != 'm15Promo/version') {
 	])
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['nickname', 'Nickname (Godzilla)'], ['innerCrowns', 'Inner Crowns'], ['darkPT', 'Dark Power/Toughness']])
+loadFramePackOptions([['regular', 'Regular'], ['floatingCrowns', 'Floating Crowns'], ['holoStamps', 'Holographic Stamps'], ['nickname', 'Nickname (Godzilla)'], ['innerCrowns', 'Inner Crowns'], ['darkPT', 'Dark Power/Toughness']])

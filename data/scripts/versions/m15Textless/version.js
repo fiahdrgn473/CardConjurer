@@ -36,4 +36,4 @@ if (currentVersion != 'm15Textless/version') {
 	])
 }
 
-loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['textlessGenericShowcase', 'Generic Showcase'], ['textlessBasic', 'Fullart Basic'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])
+loadFramePackOptions([['regular', 'Kaladesh Inventions'], ['holoStamps', 'Holographic Stamps'], ['textlessGenericShowcase', 'Generic Showcase'], ['textlessBasic', 'Fullart Basic'], ['floatingCrowns', 'Floating Crowns'], ['innerCrowns', 'Inner Crowns']])

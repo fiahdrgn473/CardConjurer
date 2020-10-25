@@ -36,4 +36,4 @@ if (currentVersion != 'token/version') {
 	])
 }
 
-loadFramePackOptions([['regular', 'Regular'], ['textless', 'Textless'], ['tall', 'Tall'], ['floatingCrowns', 'Floating Crowns']])
+loadFramePackOptions([['regular', 'Regular'], ['textless', 'Textless'], ['tall', 'Tall'], ['floatingCrowns', 'Floating Crowns'], ['holoStamps', 'Holographic Stamps']])
