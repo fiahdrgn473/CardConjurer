@@ -19,6 +19,7 @@ var deletingCardObject = false
 var skipResizeCardArt = 0
 var skipLoadTextList = 0
 var usedManaSymbols = []
+var totalShift = [0, 0]
 date = new Date()
 var cornerCutout = new Image()
 cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
@@ -141,12 +142,17 @@ watermark.onload = function() {
 }
 
 function loadVersion(versionToLoad) {
-	if (cardWidth / cardHeight != 5/7) {
+	totalShift = [0, 0]
+	if (cardWidth / cardHeight == 7/5) {
 		cardWidth *= 5/7
 		cardHeight *= 7/5
 		resizeCanvases(cardWidth, cardHeight)
 		previewContext.rotate(Math.PI / 2)
 		previewContext.translate(0, -cardHeight / 2)
+	} else if (cardWidth != mainCanvas.width) {
+		cardWidth = 1500
+		cardHeight = cardWidth * 7/5
+		resizeCanvases(cardWidth, cardHeight)
 	}
 	loadScript('/data/scripts/versions/' + versionToLoad + '/version.js')
 }
@@ -168,18 +174,18 @@ class cardPlaceholder {
 		mainContext.globalAlpha = 1
 		if (this.whatToDraw == textCanvas) {
 			if (currentVersion.includes('m15Planeswalker/')) {
-				mainContext.drawImage(planeswalkerCanvas, 0, 0, cardWidth, cardHeight)
+				mainContext.drawImage(planeswalkerCanvas, scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 			} else if (currentVersion.includes('saga')) {
-				mainContext.drawImage(sagaCanvas, 0, 0, cardWidth, cardHeight)
+				mainContext.drawImage(sagaCanvas, scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 			}
 			mainContext.globalAlpha = parseInt(document.getElementById('inputWatermarkOpacity').value) / 100
-			mainContext.drawImage(watermarkCanvas, 0, 0, cardWidth, cardHeight)
+			mainContext.drawImage(watermarkCanvas, scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 			mainContext.globalAlpha = 1
-			mainContext.drawImage(manaCostCanvas, 0, 0, cardWidth, cardHeight)
+			mainContext.drawImage(manaCostCanvas, scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 		} else {
 			mainContext.globalAlpha = 1
 		}
-        mainContext.drawImage(this.whatToDraw, scaleX(this.x), scaleY(this.y), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
+        mainContext.drawImage(this.whatToDraw, scaleX(this.x + totalShift[0]), scaleY(this.y + totalShift[1]), scaleX(this.width) * this.zoom, scaleY(this.height) * this.zoom)
 	}
 	cardMasterElement() {
 		var temporaryElement = document.createElement('div')
@@ -206,17 +212,17 @@ class cardImage {
 		uniqueNumberTracker += 1
 	}
 	draw() {
-		if (this.masks.length > 0) {
-			frameMasksContext.clearRect(0, 0, cardWidth, cardHeight)
-			frameMasksContext.drawImage(maskImageList[maskNameList.indexOf(this.masks[0])], 0, 0, cardWidth, cardHeight)
+		frameMasksContext.clearRect(0, 0, frameMasksCanvas.width, frameMasksCanvas.height)
+		if (this.masks.length > 0 && this.masks != 'Full') {
+			frameMasksContext.drawImage(maskImageList[maskNameList.indexOf(this.masks[0])], scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 			frameMasksContext.globalCompositeOperation = 'source-in'
 			for (var i = 1; i < this.masks.length; i++) {
-				frameMasksContext.drawImage(maskImageList[maskNameList.indexOf(this.masks[i])], 0, 0, cardWidth, cardHeight)
+				frameMasksContext.drawImage(maskImageList[maskNameList.indexOf(this.masks[i])], scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 			}
-			frameMasksContext.drawImage(this.image, scaleX(this.x), scaleY(this.y), scaleX(this.width), scaleY(this.height))
+			frameMasksContext.drawImage(this.image, scaleX(this.x + totalShift[0]), scaleY(this.y + totalShift[1]), scaleX(this.width), scaleY(this.height))
 			frameMasksContext.globalCompositeOperation = 'source-over'
 		} else {
-			frameMasksContext.drawImage(this.image, scaleX(this.x), scaleY(this.y), scaleX(this.width), scaleY(this.height))
+			frameMasksContext.drawImage(this.image, scaleX(this.x + totalShift[0]), scaleY(this.y + totalShift[1]), scaleX(this.width), scaleY(this.height))
 		}
 		mainContext.globalAlpha = this.opacity
 		if (this.erase) {
@@ -224,7 +230,7 @@ class cardImage {
 		} else {
 			mainContext.globalCompositeOperation = 'source-over'
 		}
-		mainContext.drawImage(frameMasksCanvas, 0, 0, cardWidth, cardHeight)
+		mainContext.drawImage(frameMasksCanvas, 0, 0, frameMasksCanvas.width, frameMasksCanvas.height)
 		// mainContext.globalCompositeOperation = 'source-over'
 	}
 	cardMasterElement() {
@@ -274,7 +280,7 @@ function scaleY(yToScale) {
 }
 
 function drawCardObjects() {
-	mainContext.clearRect(0, 0, cardWidth, cardHeight)
+	mainContext.clearRect(0, 0, mainCanvas.width, mainCanvas.height)
 	previewContext.clearRect(0, 0, cardWidth, cardHeight)
 	var cardMasterChildren = cardMaster.children
 	for (var i = cardMasterChildren.length - 1; i >= 0; i--) {
@@ -285,20 +291,22 @@ function drawCardObjects() {
 			}
 		}
 	}
-	mainContext.drawImage(setSymbol, setSymbolDrawX + getFloat('inputSetSymbolX'), setSymbolDrawY + getFloat('inputSetSymbolY'), setSymbolDrawWidth * getFloat('inputSetSymbolZoom') / 100, setSymbolDrawHeight * getFloat('inputSetSymbolZoom') / 100)
-	mainContext.drawImage(bottomInfoCanvas, 0, 0, cardWidth, cardHeight)
+	mainContext.drawImage(setSymbol, setSymbolDrawX + getFloat('inputSetSymbolX') + scaleX(totalShift[0]), setSymbolDrawY + getFloat('inputSetSymbolY') + scaleY(totalShift[1]), setSymbolDrawWidth * getFloat('inputSetSymbolZoom') / 100, setSymbolDrawHeight * getFloat('inputSetSymbolZoom') / 100)
+	mainContext.drawImage(bottomInfoCanvas, scaleX(totalShift[0]), scaleY(totalShift[1]), cardWidth, cardHeight)
 	mainContext.globalCompositeOperation = 'destination-over'
-    mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x), scaleY(cardMasterList[0].y), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
+    mainContext.drawImage(cardArt, scaleX(cardMasterList[0].x + totalShift[0]), scaleY(cardMasterList[0].y + totalShift[1]), scaleX(cardMasterList[0].width) * cardMasterList[0].zoom, scaleY(cardMasterList[0].height) * cardMasterList[0].zoom)
 	mainContext.globalCompositeOperation = 'destination-out'
 	//draw the corner cutters
-	mainContext.drawImage(cornerCutout, 0, 0, scaleX(59/1500), scaleX(59/1500))
-	mainContext.rotate(Math.PI / 2)
-	mainContext.drawImage(cornerCutout, 0, -cardWidth, scaleX(59/1500), scaleX(59/1500))
-	mainContext.rotate(Math.PI / 2)
-	mainContext.drawImage(cornerCutout, -cardWidth, -cardHeight, scaleX(59/1500), scaleX(59/1500))
-	mainContext.rotate(Math.PI / 2)
-	mainContext.drawImage(cornerCutout, -cardHeight, 0, scaleX(59/1500), scaleX(59/1500))
-	mainContext.rotate(Math.PI / 2)
+	if (currentVersion != 'bleedEdge/version') {
+		mainContext.drawImage(cornerCutout, 0, 0, scaleX(59/1500), scaleX(59/1500))
+		mainContext.rotate(Math.PI / 2)
+		mainContext.drawImage(cornerCutout, 0, -cardWidth, scaleX(59/1500), scaleX(59/1500))
+		mainContext.rotate(Math.PI / 2)
+		mainContext.drawImage(cornerCutout, -cardWidth, -cardHeight, scaleX(59/1500), scaleX(59/1500))
+		mainContext.rotate(Math.PI / 2)
+		mainContext.drawImage(cornerCutout, -cardHeight, 0, scaleX(59/1500), scaleX(59/1500))
+		mainContext.rotate(Math.PI / 2)
+	}
 	//preview the card
 	mainContext.globalCompositeOperation = 'source-over'
 	if (cardWidth < cardHeight) {
@@ -995,7 +1003,6 @@ function toggleTabs(clickedElement, targetId) {
 function downloadCardImage(linkElement) {
 	if (document.getElementById("inputInfoArtist").value.replace(/ /g, "") != "") {
 		var savedFileName = ''
-		console.log(cardTextList)
 		if (cardTextList[0].name == 'Card Nickname') {
 			savedFileName = cardTextList[1].text + ' (' + cardTextList[0].text + ").png"
 		} else {
