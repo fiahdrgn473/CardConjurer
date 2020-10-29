@@ -514,6 +514,10 @@ function writeText(textObjectList, targetContext) {
 	var savedTextX = 0
 	outerloop:
 	for (var i = 0; i < textObjectList.length; i++) {
+		//FINDME - TESTING PURPOSES ONLY
+		if (URLParams.get('copyright') != null && textObjectList[i].text.includes('\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast')) {
+			textObjectList[i].text = textObjectList[i].text.replace('\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', URLParams.get('copyright'))
+		}
 		if (!rewritingLine) {
 			textSize = scaleY(textObjectList[i].fontSize)
 		} else {
