@@ -515,7 +515,7 @@ function writeText(textObjectList, targetContext) {
 	outerloop:
 	for (var i = 0; i < textObjectList.length; i++) {
 		//FINDME - TESTING PURPOSES ONLY
-		if (URLParams.get('copyright') != null && textObjectList[i].text.includes('\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast')) {
+		if (URLParams.get('copyright') != null && textObjectList[i].text.includes('\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast') && currentVersion.includes('bleedEdge')) {
 			textObjectList[i].text = textObjectList[i].text.replace('\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', URLParams.get('copyright'))
 		}
 		if (!rewritingLine) {
@@ -691,7 +691,7 @@ function writeText(textObjectList, targetContext) {
 						textX += scaleX(125/2100)
 						currentLineWidth += scaleX(125/2100)
 						permanentLineShift += scaleX(125/2100)
-					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').join(''))) {
+					} else if (manaSymbolCodeList.includes(possibleCodeLower.split('/').reverse().join(''))) {
 						//THIS HAS TO BE THE LAST ONE
 						var manaSymbolDiameter = textSize * 0.78
 						if (manaCost && manaCostShadowOffset != 'none') {
@@ -700,7 +700,7 @@ function writeText(textObjectList, targetContext) {
 							textLineContext.arc(textX + manaSymbolDiameter / 2 + shadowOffset[0], textCanvasBuffer + textSize - manaSymbolDiameter * 0.45 + shadowOffset[1], manaSymbolDiameter / 2, 0, 2 * Math.PI)
 							textLineContext.fill()
 						}
-						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split('/').join(''))], textX, textCanvasBuffer + textSize - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(possibleCodeLower.split('/').reverse().join(''))], textX, textCanvasBuffer + textSize - manaSymbolDiameter * 0.95, manaSymbolDiameter, manaSymbolDiameter)
 						currentLineWidth += manaSymbolDiameter * 1.13
 						textX += manaSymbolDiameter * 1.13
 					} else {
@@ -845,14 +845,14 @@ function addUploadedFrameImage(imageSource) {
 function manaCostUpdated() {
 	usedManaSymbols = []
 	manaCostContext.clearRect(0, 0, cardWidth, cardHeight)
-	var manaCostList = document.getElementById('inputManaCost').value.toLowerCase().replace(/{/g, ' ').replace(/}/g, ' ').split('/').join('').split(' ')
+	var manaCostList = document.getElementById('inputManaCost').value.toLowerCase().replace(/{/g, ' ').replace(/}/g, ' ').split(' ')
 	var manaSymbolIndex = -1
 	manaCostCanvas.fillStyle = 'black'
 	if (manaCostDirection == 'reverse') {
 		manaCostList.reverse()
 	}
 	for (var i = 0; i < manaCostList.length; i++) {
-		if (manaSymbolCodeList.includes(manaCostList[i])) {
+		if (manaSymbolCodeList.includes(manaCostList[i].split('/').reverse().join(''))) {
 			usedManaSymbols.push(manaCostList[i])
 			manaSymbolIndex += 1
 			var x = eval(manaCostXPath)
@@ -864,7 +864,9 @@ function manaCostUpdated() {
 				manaCostContext.arc(x + diameter / 2 + shadowOffset[0], y + diameter / 2 + shadowOffset[1], diameter / 2, 0, 2 * Math.PI)
 				manaCostContext.fill()
 			}
-			manaCostContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i])], x, y, diameter, diameter)
+			manaCostContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i].split('/').reverse().join(''))], x, y, diameter, diameter)
+		} else {
+			console.log(manaCostList[i])
 		}
 	}
 	drawCardObjects()

@@ -32,6 +32,8 @@ if (currentVersion != 'bleedEdge/version') {
 	} else if (skipResizeCardArt > 0) {
 		skipResizeCardArt -= 1
 	}
+
+	bottomInfoUpdated()
 }
 
 loadFramePackOptions([['regular', 'Regular']])
