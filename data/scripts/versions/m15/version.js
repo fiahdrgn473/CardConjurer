@@ -42,7 +42,7 @@ loadFramePackOptions([['disabled', 'Standard'], ['regular', 'Regular'], ['disabl
 function bottomInfoM15() {
 	bottomInfoContext.clearRect(0, 0, cardWidth, cardHeight)
 	var ptBoxShift = 0
-	if (currentVersion == 'm15/commanderLegends') {
+	if (currentVersion == 'm15/commanderLegends' || currentVersion == 'm15/m21') {
 		ptBoxShift = 36/2100
 	} else {
 		for (var i = 0; i < cardTextList.length; i++) {
