@@ -43,7 +43,7 @@ function addToManaSymbolList(folderPath, newManaSymbolList) {
 	}
 }
 
-addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0.svg", "1.svg", "2.svg", "3.svg", "4.svg", "5.svg", "6.svg", "7.svg", "8.svg", "9.svg", "10.svg", "11.svg", "12.svg", "13.svg", "14.svg", "15.svg", "16.svg", "17.svg", "18.svg", "19.svg", "20.svg", "w.svg", "u.svg", "b.svg", "r.svg", "g.svg", "2w.svg", "2u.svg", "2b.svg", "2r.svg", "2g.svg", "pw.svg", "pu.svg", "pb.svg", "pr.svg", "pg.svg", "wu.svg", "wb.svg", "ub.svg", "ur.svg", "br.svg", "bg.svg", "rg.svg", "rw.svg", "gw.svg", "gu.svg", "x.svg", "s.svg", "c.svg", "t.svg","untap.svg", "e.svg", "y.svg", "z.svg", "half.svg", "inf.svg", "chaos.svg", "l+", "l-", "l0", "oldtap.svg", "artistbrush.svg", "bar", "whiteBrush", "blackBrush", 'star.svg'])
+addToManaSymbolList('/data/images/cardImages/manaSymbols/', ["0.svg", "1.svg", "2.svg", "3.svg", "4.svg", "5.svg", "6.svg", "7.svg", "8.svg", "9.svg", "10.svg", "11.svg", "12.svg", "13.svg", "14.svg", "15.svg", "16.svg", "17.svg", "18.svg", "19.svg", "20.svg", "w.svg", "u.svg", "b.svg", "r.svg", "g.svg", "2w.svg", "2u.svg", "2b.svg", "2r.svg", "2g.svg", "pw.svg", "pu.svg", "pb.svg", "pr.svg", "pg.svg", "wu.svg", "wb.svg", "ub.svg", "ur.svg", "br.svg", "bg.svg", "rg.svg", "rw.svg", "gw.svg", "gu.svg", "x.svg", "s.svg", "c.svg", "t.svg","untap.svg", "e.svg", "y.svg", "z.svg", "half.svg", "inf.svg", "chaos.svg", "l+", "l-", "l0", "oldtap.svg", "artistbrush.svg", "bar", "whitebar", "whiteBrush", "blackBrush", 'star.svg'])
 
 function newCanvas(name) {
 	window[name + 'Canvas'] = document.createElement('canvas')
@@ -598,8 +598,12 @@ function writeText(textObjectList, targetContext) {
 						finishLine = true
 					} else if ((possibleCodeLower == 'bar' || possibleCodeLower == 'flavor') && !oneLine) {
 						var barWidth = scaleX(textObjectList[i].width) * 0.95
-						var barHeight = scaleY(0.001)
-						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf('bar')], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 0.8 + textCanvasBuffer, barWidth, barHeight)
+						var barHeight = scaleY(0.002)
+						var barImageName = 'bar'
+						if (currentFontColor == 'white') {
+							barImageName = 'whitebar'
+						}
+						textLineContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(barImageName)], textCanvasBuffer + (scaleX(textObjectList[i].width) - barWidth) / 2, textSize * 0.8 + textCanvasBuffer, barWidth, barHeight)
 						currentLineWidth = scaleX(textObjectList[i].width)
 					} else if (possibleCodeLower == 'i') {
 						if (textFont == 'mplantin' && !textFontExtension.includes('i')) {
@@ -865,8 +869,6 @@ function manaCostUpdated() {
 				manaCostContext.fill()
 			}
 			manaCostContext.drawImage(manaSymbolImageList[manaSymbolCodeList.indexOf(manaCostList[i].split('/').reverse().join(''))], x, y, diameter, diameter)
-		} else {
-			console.log(manaCostList[i])
 		}
 	}
 	drawCardObjects()
@@ -949,7 +951,7 @@ function inputCardNameNumberTextImport(index) {
     if (flavorText.length < 10 || URLParams.get('noflavor') != null) {
     	flavorText = ''
     }
-    importText((beforeAfter(importCardTextResponse, '"oracle_text":"', '",') + flavorText).replace(/\n\\"/g, '\n\u201C').replace(/{flavor}\\"/g, '{flavor}\u201C').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
+    importText((beforeAfter(importCardTextResponse, '"oracle_text":"', '",') + flavorText.replace(/\\n\u2014/g, '{lns}\u2014')).replace(/\n\\"/g, '\n\u201C').replace(/{flavor}\\"/g, '{flavor}\u201C').replace(/\\n/g, '\n').replace(/ \\"/g, ' \u201C').replace(/\\"/g, '\u201D').replace(/\(/g, '{i}(').replace(/\)/g, '){/i}'), 'Rules Text')
     if (importCardTextResponse.includes('"power":"')) {
         importText(beforeAfter(importCardTextResponse, '"power":"', '",') + '/' + beforeAfter(importCardTextResponse, '"toughness":"', '",'), 'Power/Toughness')
     } else {
