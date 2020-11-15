@@ -36,7 +36,7 @@ if (currentVersion != 'modal/version') {
 	new cardText('Rules Text', '', 135/1500, 1370/2100, 1230/1500, 625/2100, 'mplantin', 74/2100, 'black'),
 	new cardText('Flipside Type', '', 102/1500, 1927/2100, 546/1500, 49/2100, 'belerenb', 49/2100, 'white', ['oneLine=true']),
 	new cardText('Flipside Reminder', '', 102/1500, 1929/2100, 546/1500, 54/2100, 'mplantin', 54/2100, 'white', ['oneLine=true', 'textAlign="right"']),
-	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'belerenbsc', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
+	new cardText('Power/Toughness', '', 1191/1500, 1954/2100, 205/1500, 78/2100, 'mplantin', 78/2100, 'black', ['oneLine=true,textAlign="center"'])
 	])
 }
 
