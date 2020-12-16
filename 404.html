@@ -1,5 +1,30 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html>
-	<meta http-equiv="refresh" content="3; URL='/'" />
-	<div style='text-align: center; font-size: 40pt'>Page not found. Redirecting to home page momentarily...</div>
-<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="description">
+	<meta name="keywords" content="keywords">
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<script src='/js/includeHTML.js'></script>
+	<script src='/js/main.js'></script>
+</head>
+<body onload='includeHTML();'>
+	<div class='background'></div>
+	<header html-include='/globalHTML/header.html'></header>
+	<div html-include='/globalHTML/menu.html'></div>
+	<!-- Page Specific Content Begins Here -->
+	<title>404 - Card Conjurer</title>
+	<div class='layer center'>
+		<h2 class='padding margin-bottom' style='font-size: 10rem;'>404</h2>
+		<h4 class='padding'>Page Not Found</h4>
+	</div>
+	<div class='layer center'>
+		<h4 class='padding'>The page you seek is as lost as Fblthp.</h4>
+	</div>
+	<!-- Page Specific Content Ends Here -->
+	<footer html-include='/globalHTML/footer.html'></footer>
+</body>
+</html>
