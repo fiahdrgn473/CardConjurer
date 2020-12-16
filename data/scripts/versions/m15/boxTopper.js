@@ -34,7 +34,7 @@ if (currentVersion != 'm15/boxTopper') {
 	])
 
 	artX = 0
-	artY = 170
+	artY = scaleY(170/2100)
 	artWidth = scaleX(1)
 	artHeight = scaleY(1115 / 2100)
 }
