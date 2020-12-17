@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="description">
-	<meta name="keywords" content="keywords">
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="shortcut icon" href="/favicon.ico">
-	<script src='/js/includeHTML.js'></script>
-	<script src='/js/main.js'></script>
-</head>
-<body onload='includeHTML();'>
-	<div class='background'></div>
-	<header html-include='/globalHTML/header.html'></header>
-	<div html-include='/globalHTML/menu.html'></div>
-	<!-- Page Specific Content Begins Here -->
+<?php include('../globalHTML/header.php'); ?>
 	<title>Card Conjurer - Legal</title>
 	<h2 class='readable-background header-extension title center'>Terms and Conditions</h2>
 	<div class='main-content margin-large'>
@@ -75,7 +58,4 @@
 			</h5>
 		</div>
 	</div>
-	<!-- Page Specific Content Ends Here -->
-	<footer html-include='/globalHTML/footer.html'></footer>
-</body>
-</html>
+<?php include('../globalHTML/footer.php'); ?>
