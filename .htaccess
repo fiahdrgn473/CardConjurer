@@ -1,1 +1,13 @@
 ErrorDocument 404 https://cardconjurer.com/404.php
+
+<filesMatch ".(svg|jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
+
+<filesMatch ".(css)$">
+Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+
+<filesMatch ".(js|php|html)$">
+Header set Cache-Control "max-age=86400, public"
+</filesMatch>
