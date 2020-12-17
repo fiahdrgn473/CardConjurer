@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description">
+    <meta name="keywords" content="keywords">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script src='/js/includeHTML.js'></script>
+    <script src='/js/main.js'></script>
+</head>
+<body onload='includeHTML();'>
+    <div class='background'></div>
+    <header html-include='/globalHTML/header.html'></header>
+    <div html-include='/globalHTML/menu.html'></div>
+    <!-- Page Specific Content Begins Here -->
+    <title>Ask Urza 2.0</title>
+    <h2 class='readable-background header-extension title center'>Ask Urza 2.0</h2>
+    <style>
+        .askUrzaGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 90pt auto;
+            align-items: center;
+            justify-items: center;
+            grid-gap: 2rem;
+        }
+        .urzaCard {
+            width: 90vw;
+            text-align: center;
+            grid-column: 1 / span 3;
+        }
+        .urzaCard > img {
+            width: 100%;
+            height: auto;
+        }
+        .askUrzaButton {
+            height: auto;
+            width: 22vw;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        #askUrzaResult {
+            grid-column: 1 / span 3;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 1rem;
+            font: 1.5rem belerenb;
+        }
+        @media screen and (min-width: 864pt) {
+            .askUrzaGrid {
+                grid-template-columns: calc(360pt) 1fr 1fr 1fr !important;
+                grid-template-rows: 92pt auto !important;
+            }
+            .urzaCard {
+                grid-column: 1;
+                grid-row: 1 / span 2 !important;
+            }
+            #askUrzaResult {
+                grid-column: 2 / span 3 !important;
+            }
+        }
+        @media screen and (min-width: 380pt) {
+            .urzaCard {
+                width: 360pt;
+            }
+            .askUrzaButton {
+                height: auto;
+                width: 100pt;
+                transition: 0.25s;
+            }
+            .askUrzaButton:hover {
+                width: 110pt;
+            }
+            .askUrzaButton:active {
+                width: 120pt !important;
+            }
+        }
+    </style>
+    <div class="askUrzaGrid layer margin-large">
+        <div class="urzaCard">
+            <img src="/askUrza/urzaBlank.png">
+        </div>
+        <div>
+            <img class="askUrzaButton" src="/askUrza/plus.png" onclick="randomAbility(0)">
+        </div>
+        <div>
+            <img class="askUrzaButton" src="/askUrza/minus.png" onclick="randomAbility(1)">
+        </div>
+        <div>
+            <img class="askUrzaButton" src="/askUrza/ultimate.png" onclick="randomAbility(2)">
+        </div>
+        <h3 id="askUrzaResult" class='readable-background'></h3>
+    </div>
+    <div class="readable-background layer margin-large">
+        <h5>
+            Ask Urza 2.0 is a replacement for AskUrza.com that periodically compiles all planeswalker abilities and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Urza, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
+        </h5>
+    </div>
+    <script defer src="/askUrza/askUrza.js"></script>
+    <!-- Page Specific Content Ends Here -->
+    <footer html-include='/globalHTML/footer.html'></footer>
+</body>
+</html>
