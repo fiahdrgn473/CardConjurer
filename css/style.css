@@ -203,8 +203,8 @@ a:hover {
 /*Hamburger*/
 .hamburger {
 	position: fixed;
-	right: 2rem;
-	top: 2rem;
+	right: 0rem;
+	top: 0rem;
 	width: 4rem;
 	height: 4rem;
 	fill-rule: evenodd;
@@ -214,7 +214,7 @@ a:hover {
 	cursor: pointer;
 	z-index: 100;
 	background: #35603E;
-	border-radius: 0.5rem;
+	border-radius: 0 0 0 0.5rem;
 }
 .hamburger > path {
 	fill: none;
@@ -241,8 +241,8 @@ a:hover {
 .circle {
 	z-index: 5;
 	position: fixed;
-	right: 4rem;
-	top: 4rem;
+	right: 2rem;
+	top: 2rem;
 	padding: 0;
 	background: #35603E;
 	border-radius: 100%;
@@ -250,13 +250,13 @@ a:hover {
 }
 .hamburger:hover + .circle {
 	padding: 3rem;
-	right: 1rem;
-	top: 1rem;
+	right: -1rem;
+	top: -1rem;
 }
 .hamburger.opened + .circle {
 	padding: var(--window-diagonal-size);
-	right: calc(4rem - var(--window-diagonal-size));
-	top: calc(4rem - var(--window-diagonal-size));
+	right: calc(2rem - var(--window-diagonal-size));
+	top: calc(2rem - var(--window-diagonal-size));
 	transition: 0.75s cubic-bezier(.53,.47,.76,-0.52);
 }
 /*Menus*/
