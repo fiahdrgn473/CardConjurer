@@ -59,7 +59,7 @@
 	z-index: -1;
 	width: 100vw;
 	height: 100vh;
-	background: url('/img/lowpolyBackground.svg');
+	background: #35603E;/*url('/img/lowpolyBackground.svg');*/
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
