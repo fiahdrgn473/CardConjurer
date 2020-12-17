@@ -31,12 +31,7 @@ document.getElementById('footer').innerHTML = `
         <hr>
         <div>
             <a href='/'>Home</a><br>
-            <a href='/creator'>Card Creator</a><br>
-            <a href='/gallery'>Card Gallery</a><br>
-            <a href='/askurza'>Ask Urza 2.0</a><br>
-            <a href='/phyrexian'>Phyrexian Text</a><br>
-            <!--<a href='/life.html'>Life Counter</a><br>-->
-            <a href='/about'>About Me</a>
+            <a href='/creator'>New Card Creator</a><br>
         </div>
     </div>
     <div>
