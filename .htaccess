@@ -1,16 +1,1 @@
 ErrorDocument 404 https://cardconjurer.com/404.php
-
-<IfModule mod_headers.c>
-	#YEAR
-    <filesMatch "\.(png|svg)$">
-	    Header set Cache-Control "max-age=31536000, public"
-	</filesMatch>
-	#MONTH
-	<filesMatch "\.(css|html)$">
-	    Header set Cache-Control "max-age=2678400, public"
-	</filesMatch>
-	#WEEK
-	<filesMatch "\.(js)$">
-	    Header set Cache-Control "max-age=604800, public"
-	</filesMatch>
-</IfModule>
