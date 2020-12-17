@@ -81,6 +81,7 @@ header, footer, .main-content {
 }
 header, footer {
 	backdrop-filter: var(--darkened-backdrop-filter);
+	-webkit-backdrop-filter: var(--darkened-backdrop-filter);
 }
 header {
 	padding: 2rem 0;
@@ -186,6 +187,7 @@ a:hover {
 }
 .readable-background {
 	backdrop-filter: var(--darkened-backdrop-filter);
+	-webkit-backdrop-filter: var(--darkened-backdrop-filter);
 }
 .box-shadow {
 	box-shadow: 0 2px 8px #0008;
