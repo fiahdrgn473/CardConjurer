@@ -38,6 +38,7 @@ var scryfallArt;
 var scryfallCard;
 //for text
 var savedTextXPosition = 0;
+var params = new URLSearchParams(window.location.search);
 //for misc
 var date = new Date();
 //to avoid rerunning special scripts (planeswalker, saga, etc...)
@@ -68,7 +69,7 @@ async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers
 			midLeft: {text:'{elemidinfo-set}*{elemidinfo-language}  {savex}{fontbelerenbsc}{fontsize' + scaleHeight(0.001) + '}{upinline' + scaleHeight(0.0005) + '}\uFFEE{elemidinfo-artist}', x:0.0647, y:0.9548, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			topLeft: {text:'{elemidinfo-number}{loadx}{elemidinfo-rarity}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			bottomLeft: {text:'NOT FOR SALE', x:0.0647, y:0.9719, width:0.8707, height:0.0143, oneLine:true, font:'gothammedium', size:0.0143, color:'white', outlineWidth:0.003},
-			wizards: {text:'{ptshift0,0.0172}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
+			wizards: {name:'wizards', text:'{ptshift0,0.0172}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
 			bottomRight: {text:'{ptshift0,0.0172}CardConjurer.com', x:0.0647, y:0.9548, width:0.8707, height:0.0143, oneLine:true, font:'mplantin', size:0.0143, color:'white', align:'right', outlineWidth:0.003}
 		});
 		//onload
@@ -462,7 +463,11 @@ function writeText(textObject, targetContext) {
 	lineCanvas.height = startingTextSize + 2 * canvasMargin;
 	//Preps the text string
 	var splitString = '6GJt7eL8';
-	var splitText = textObject.text.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+	var rawText = textObject.text
+	if (params.get('copyright') != null && textObject.name == 'wizards' && card.version == 'margin') {
+		rawText = params.get('copyright'); //so people using CC for custom card games can customize their copyright info
+	}
+	var splitText = rawText.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	splitText.push('');
 	//Manages the redraw loop
