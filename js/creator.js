@@ -783,7 +783,7 @@ function watermarkEdited() {
 	watermarkContext.globalCompositeOperation = 'source-over';
 	watermarkContext.globalAlpha = 1;
 	watermarkContext.clearRect(0, 0, watermarkCanvas.width, watermarkCanvas.height);
-	if (card.watermarkLeft != 'none') {
+	if (card.watermarkLeft != 'none' && !card.watermarkSource.includes('/blank.png') && card.watermarkZoom > 0) {
 		if (card.watermarkRight != 'none') {
 			watermarkContext.drawImage(right, scaleX(0), scaleY(0), scaleWidth(1), scaleHeight(1));
 			watermarkContext.globalCompositeOperation = 'source-in';
