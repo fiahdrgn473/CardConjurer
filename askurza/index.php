@@ -64,16 +64,16 @@
     </style>
     <div class="askUrzaGrid layer margin-large">
         <div class="urzaCard">
-            <img src="/askUrza/urzaBlank.png">
+            <img src="/askurza/urzaBlank.png">
         </div>
         <div>
-            <img class="askUrzaButton" src="/askUrza/plus.png" onclick="randomAbility(0)">
+            <img class="askUrzaButton" src="/askurza/plus.png" onclick="randomAbility(0)">
         </div>
         <div>
-            <img class="askUrzaButton" src="/askUrza/minus.png" onclick="randomAbility(1)">
+            <img class="askUrzaButton" src="/askurza/minus.png" onclick="randomAbility(1)">
         </div>
         <div>
-            <img class="askUrzaButton" src="/askUrza/ultimate.png" onclick="randomAbility(2)">
+            <img class="askUrzaButton" src="/askurza/ultimate.png" onclick="randomAbility(2)">
         </div>
         <h3 id="askUrzaResult" class='readable-background'></h3>
     </div>
@@ -82,5 +82,5 @@
             Ask Urza 2.0 is a replacement for AskUrza.com that periodically compiles all planeswalker abilities and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Urza, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
         </h5>
     </div>
-    <script defer src="/askUrza/askUrza.js"></script>
+    <script defer src="/askurza/askUrza.js"></script>
 <?php include('../globalHTML/footer.php'); ?>

@@ -10,7 +10,7 @@ function loadAbilities() {
             }
         }
     }
-    xhttp.open("GET", "/askUrza/planeswalkerAbilities.txt", true);
+    xhttp.open("GET", "/askurza/planeswalkerAbilities.txt", true);
     xhttp.send();
 }
 
