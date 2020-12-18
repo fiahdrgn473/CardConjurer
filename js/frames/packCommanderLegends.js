@@ -3,22 +3,22 @@ var masks = [{src:'/img/frames/m15/commanderLegends/m15CommanderLegendsMaskFrame
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/commanderLegends/FrameW.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/commanderLegends/FrameU.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/commanderLegends/FrameB.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/commanderLegends/FrameR.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/commanderLegends/FrameG.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/commanderLegends/FrameM.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/commanderLegends/FrameA.png', masks:masks},
-	{name:'Colorless Frame', src:'/img/frames/m15/commanderLegends/FrameC.png', masks:masks},
-	{name:'White Power/Toughness', src:'/img/frames/m15/commanderLegends/PTW.png', bounds:bounds},
-	{name:'Blue Power/Toughness', src:'/img/frames/m15/commanderLegends/PTU.png', bounds:bounds},
-	{name:'Black Power/Toughness', src:'/img/frames/m15/commanderLegends/PTB.png', bounds:bounds},
-	{name:'Red Power/Toughness', src:'/img/frames/m15/commanderLegends/PTR.png', bounds:bounds},
-	{name:'Green Power/Toughness', src:'/img/frames/m15/commanderLegends/PTG.png', bounds:bounds},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/commanderLegends/PTM.png', bounds:bounds},
-	{name:'Artifact Power/Toughness', src:'/img/frames/m15/commanderLegends/PTA.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/m15/commanderLegends/PTC.png', bounds:bounds}
+	{name:'White Frame', src:'/img/frames/m15/commanderLegends/frameW.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/commanderLegends/frameU.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/commanderLegends/frameB.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/commanderLegends/frameR.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/commanderLegends/frameG.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/commanderLegends/frameM.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/commanderLegends/frameA.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/m15/commanderLegends/frameC.png', masks:masks},
+	{name:'White Power/Toughness', src:'/img/frames/m15/commanderLegends/ptW.png', bounds:bounds},
+	{name:'Blue Power/Toughness', src:'/img/frames/m15/commanderLegends/ptU.png', bounds:bounds},
+	{name:'Black Power/Toughness', src:'/img/frames/m15/commanderLegends/ptB.png', bounds:bounds},
+	{name:'Red Power/Toughness', src:'/img/frames/m15/commanderLegends/ptR.png', bounds:bounds},
+	{name:'Green Power/Toughness', src:'/img/frames/m15/commanderLegends/ptG.png', bounds:bounds},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/commanderLegends/ptM.png', bounds:bounds},
+	{name:'Artifact Power/Toughness', src:'/img/frames/m15/commanderLegends/ptA.png', bounds:bounds},
+	{name:'Colorless Power/Toughness', src:'/img/frames/m15/commanderLegends/ptC.png', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

@@ -1,22 +1,33 @@
+//URL Params
+var params = new URLSearchParams(window.location.search);
+//To save the server from being overloaded? Maybe?
+function fixUri(input) {
+	var prefix = 'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
+	if (input.includes(prefix) || input.includes('http') || params.get('testing')) {
+		return input;
+	} else {
+		return prefix + input; //input.replace('/img/frames', prefix + '/img/frames');
+	}
+}
 //card object
 var card = {width:1500, height:2100, marginX:0, marginY:0, frames:[], artSource:'/img/blank.png', artX:0, artY:0, artZoom:1, setSymbolSource:'/img/blank.png', setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:'/img/blank.png', watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
 //art
 art = new Image();
-art.src = '/img/blank.png';
+art.src = fixUri('/img/blank.png');
 art.crossOrigin = 'anonymous';
-art.onerror = function() {this.src = '/img/blank.png';}
+art.onerror = function() {this.src = fixUri('/img/blank.png');}
 art.onload = artEdited;
 //set symbol
 setSymbol = new Image()
-setSymbol.src = '/img/blank.png';
+setSymbol.src = fixUri('/img/blank.png');
 setSymbol.crossOrigin = 'anonymous';
-setSymbol.onerror = function() {this.src = '/img/blank.png';}
+setSymbol.onerror = function() {this.src = fixUri('/img/blank.png');}
 setSymbol.onload = setSymbolEdited;
 //watermark
 watermark = new Image()
-watermark.src = '/img/blank.png';
+watermark.src = fixUri('/img/blank.png');
 watermark.crossOrigin = 'anonymous';
-watermark.onerror = function() {this.src = '/img/blank.png';}
+watermark.onerror = function() {this.src = fixUri('/img/blank.png');}
 watermark.onload = watermarkEdited;
 //preview canvas
 var previewCanvas = document.querySelector('#previewCanvas');
@@ -28,17 +39,16 @@ var selectedFrameIndex = 0;
 var selectedMaskIndex = 0;
 var selectedTextIndex = 0;
 //core images/masks
-const black = new Image(); black.src = '/img/black.png';
-const blank = new Image(); blank.src = '/img/blank.png';
-const right = new Image(); right.src = '/img/frames/maskRightHalf.png';
-const middle = new Image(); middle.src = '/img/frames/maskMiddleThird.png';
-const corner = new Image(); corner.src = '/img/frames/cornerCutout.png';
+const black = new Image(); black.src = fixUri('/img/black.png');
+const blank = new Image(); blank.src = fixUri('/img/blank.png');
+const right = new Image(); right.src = fixUri('/img/frames/maskRightHalf.png');
+const middle = new Image(); middle.src = fixUri('/img/frames/maskMiddleThird.png');
+const corner = new Image(); corner.src = fixUri('/img/frames/cornerCutout.png');
 //for imports
 var scryfallArt;
 var scryfallCard;
 //for text
 var savedTextXPosition = 0;
-var params = new URLSearchParams(window.location.search);
 //for misc
 var date = new Date();
 //to avoid rerunning special scripts (planeswalker, saga, etc...)
@@ -200,7 +210,7 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 		if (!manaSymbolPath.includes('.png')) {
 			manaSymbolPath += '.svg';
 		}
-		manaSymbol.image.src = manaSymbolPath;
+		manaSymbol.image.src = fixUri(manaSymbolPath);
 		manaSymbols.push(manaSymbol);
 	});
 }
@@ -260,9 +270,9 @@ function loadFramePack(frameOptions = availableFrames) {
 			this.parentElement.classList.remove('hidden');
 		}
 		if (!item.noThumb && !item.src.includes('/img/black.png')) {
-			frameOptionImage.src = item.src.replace('.png', 'Thumb.png');
+			frameOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png'));
 		} else {
-			frameOptionImage.src = item.src;
+			frameOptionImage.src = fixUri(item.src);
 		}
 		document.querySelector('#frame-picker').appendChild(frameOption);
 
@@ -276,7 +286,7 @@ function frameOptionClicked(event) {
 	}
 	clickedFrameOption.classList.add('selected');
 	selectedFrameIndex = getElementIndex(clickedFrameOption);
-	document.querySelector('#mask-picker').innerHTML = '<div class="mask-option selected" onclick="maskOptionClicked(event)"><img src="/img/black.png"><p>No Mask</p></div>';
+	document.querySelector('#mask-picker').innerHTML = '<div class="mask-option selected" onclick="maskOptionClicked(event)"><img src="' + fixUri('/img/black.png') + '"><p>No Mask</p></div>';
 	selectedMaskIndex = 0;
 	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', No Mask)';
 	if (availableFrames[selectedFrameIndex].masks) {
@@ -289,7 +299,7 @@ function frameOptionClicked(event) {
 			maskOptionImage.onload = function() {
 				this.parentElement.classList.remove('hidden');
 			}
-			maskOptionImage.src = item.src.replace('.png', 'Thumb.png');
+			maskOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png'));
 			maskOptionLabel = document.createElement('p');
 			maskOptionLabel.innerHTML = item.name;
 			maskOption.appendChild(maskOptionLabel);
@@ -325,17 +335,17 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 	}
 	frameToAdd.masks.forEach(item => {
 		item.image = new Image();
-		item.image.src = '/img/blank.png';
+		item.image.src = fixUri('/img/blank.png');
 		item.image.onload = drawFrames;
-		item.image.src = item.src;
+		item.image.src = fixUri(item.src);
 	});
 	frameToAdd.image = new Image();
 	if (frameToAdd.name == 'Uploaded Image') {
 		frameToAdd.image.crossOrigin = 'anonymous'
 	}
-	frameToAdd.image.src = '/img/blank.png';
+	frameToAdd.image.src = fixUri('/img/blank.png');
 	frameToAdd.image.onload = drawFrames;
-	frameToAdd.image.src = frameToAdd.src;
+	frameToAdd.image.src = fixUri(frameToAdd.src);
 	if (!loadingFrame) {
 		card.frames.unshift(frameToAdd);
 	}
@@ -348,16 +358,16 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 	frameElement.onclick = frameElementClicked;
 	var frameElementImage = document.createElement('img');
 	if (frameToAdd.noThumb || frameToAdd.src.includes('/img/black.png')) {
-		frameElementImage.src = frameToAdd.src;
+		frameElementImage.src = fixUri(frameToAdd.src);
 	} else {
-		frameElementImage.src = frameToAdd.src.replace('.png', 'Thumb.png');
+		frameElementImage.src = fixUri(frameToAdd.src.replace('.png', 'Thumb.png'));
 	}
 	frameElement.appendChild(frameElementImage);
 	var frameElementMask = document.createElement('img');
 	if (maskThumbnail) {
-		frameElementMask.src = frameToAdd.masks[0].src.replace('.png', 'Thumb.png');
+		frameElementMask.src = fixUri(frameToAdd.masks[0].src.replace('.png', 'Thumb.png'));
 	} else {
-		frameElementMask.src = '/img/black.png';
+		frameElementMask.src = fixUri('/img/black.png');
 	}
 	frameElement.appendChild(frameElementMask);
 	var frameElementLabel = document.createElement('h4');

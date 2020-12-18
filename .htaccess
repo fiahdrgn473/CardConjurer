@@ -1,4 +1,4 @@
-ErrorDocument 404 https://cardconjurer.com/404.php
+ErrorDocument 404 /404.php
 
 <IfModule mod_headers.c>
 	#YEAR
