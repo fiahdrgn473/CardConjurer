@@ -215,6 +215,9 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 		var manaSymbolPath = '/img/manaSymbols/' + item;
 		if (!manaSymbolPath.includes('.png')) {
 			manaSymbolPath += '.svg';
+			// manaSymbol.image.onload = function() {
+			// 	console.log(this);
+			// }
 		}
 		manaSymbol.image.src = fixUri(manaSymbolPath);
 		manaSymbols.push(manaSymbol);
