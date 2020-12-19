@@ -13,20 +13,20 @@ function fixUri(input) {
 var card = {width:1500, height:2100, marginX:0, marginY:0, frames:[], artSource:'/img/blank.png', artX:0, artY:0, artZoom:1, setSymbolSource:'/img/blank.png', setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:'/img/blank.png', watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
 //art
 art = new Image();
-art.src = fixUri('/img/blank.png');
 art.crossOrigin = 'anonymous';
+art.src = fixUri('/img/blank.png');
 art.onerror = function() {this.src = fixUri('/img/blank.png');}
 art.onload = artEdited;
 //set symbol
-setSymbol = new Image()
-setSymbol.src = fixUri('/img/blank.png');
+setSymbol = new Image();
 setSymbol.crossOrigin = 'anonymous';
+setSymbol.src = fixUri('/img/blank.png');
 setSymbol.onerror = function() {this.src = fixUri('/img/blank.png');}
 setSymbol.onload = setSymbolEdited;
 //watermark
-watermark = new Image()
-watermark.src = fixUri('/img/blank.png');
+watermark = new Image();
 watermark.crossOrigin = 'anonymous';
+watermark.src = fixUri('/img/blank.png');
 watermark.onerror = function() {this.src = fixUri('/img/blank.png');}
 watermark.onload = watermarkEdited;
 //preview canvas
@@ -40,10 +40,15 @@ var selectedMaskIndex = 0;
 var selectedTextIndex = 0;
 //core images/masks
 const black = new Image(); black.src = fixUri('/img/black.png');
+black.crossOrigin = 'anonymous';
 const blank = new Image(); blank.src = fixUri('/img/blank.png');
+blank.crossOrigin = 'anonymous';
 const right = new Image(); right.src = fixUri('/img/frames/maskRightHalf.png');
+right.crossOrigin = 'anonymous';
 const middle = new Image(); middle.src = fixUri('/img/frames/maskMiddleThird.png');
+middle.crossOrigin = 'anonymous';
 const corner = new Image(); corner.src = fixUri('/img/frames/cornerCutout.png');
+corner.crossOrigin = 'anonymous';
 //for imports
 var scryfallArt;
 var scryfallCard;
@@ -206,6 +211,7 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 		manaSymbol.width = size[0];
 		manaSymbol.height = size[1];
 		manaSymbol.image = new Image();
+		manaSymbol.image.crossOrigin = 'anonymous';
 		var manaSymbolPath = '/img/manaSymbols/' + item;
 		if (!manaSymbolPath.includes('.png')) {
 			manaSymbolPath += '.svg';
@@ -335,11 +341,13 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 	}
 	frameToAdd.masks.forEach(item => {
 		item.image = new Image();
+		item.image.crossOrigin = 'anonymous';
 		item.image.src = fixUri('/img/blank.png');
 		item.image.onload = drawFrames;
 		item.image.src = fixUri(item.src);
 	});
 	frameToAdd.image = new Image();
+	frameToAdd.crossOrigin = 'anonymous';
 	if (frameToAdd.name == 'Uploaded Image') {
 		frameToAdd.image.crossOrigin = 'anonymous'
 	}
