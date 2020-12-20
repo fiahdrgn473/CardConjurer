@@ -2,7 +2,7 @@
 var params = new URLSearchParams(window.location.search);
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
-	var prefix = 'https://storage.googleapis.com/card-conjurer';//'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
+	var prefix = 'https://card-conjurer.storage.googleapis.com/';//'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
 	if (input.includes(prefix) || input.includes('http') || input.includes('data:image') || params.get('testing')) {
 		return input;
 	} else {
