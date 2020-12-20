@@ -13,4 +13,7 @@ ErrorDocument 404 /404.php
 	<filesMatch "\.(js)$">
 	    Header set Cache-Control "max-age=604800, public"
 	</filesMatch>
+	<files creator.js>
+	    Header set Cache-Control "max-age=0, public"
+	</files>
 </IfModule>
