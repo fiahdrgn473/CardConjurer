@@ -150,8 +150,10 @@ function dragEnd(event) {
 	Array.from(document.querySelectorAll('.dragging')).forEach(element => element.classList.remove('dragging'));
 }
 function touchMove(event) {
+	event.preventDefault();
 	var clientX = event.clientX;
 	var clientY = event.clientY;
+	console.log('touch move: ' + clientX + ', ' + clientY);
 	Array.from(document.querySelector('.dragging').parentElement.children).forEach(element => {
 		var elementBounds = element.getBoundingClientRect();
 		if (clientY > elementBounds.top && clientY < elementBounds.bottom) {
