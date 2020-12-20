@@ -151,7 +151,7 @@ function dragEnd(event) {
 	Array.from(document.querySelectorAll('.dragging')).forEach(element => element.classList.remove('dragging'));
 }
 function touchMove(event) {
-	if (event.target.nodeName == 'IMG') {
+	if (event.target.nodeName != 'H4') {
 		event.preventDefault();
 	}
 	var clientX = event.touches[0].clientX;
