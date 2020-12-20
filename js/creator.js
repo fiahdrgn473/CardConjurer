@@ -144,6 +144,7 @@ function selectSelectable(event) {
 	eventTarget.classList.add('selected');
 }
 function dragStart(event) {
+	Array.from(document.querySelectorAll('.dragging')).forEach(element => element.classList.remove('dragging'));
 	event.target.closest('.draggable').classList.add('dragging');
 }
 function dragEnd(event) {
