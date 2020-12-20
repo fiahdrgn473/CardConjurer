@@ -151,8 +151,8 @@ function dragEnd(event) {
 }
 function touchMove(event) {
 	event.preventDefault();
-	var clientX = event.clientX;
-	var clientY = event.clientY;
+	var clientX = event.touches[0].clientX;
+	var clientY = event.touches[0].clientY;
 	console.log('touch move: ' + clientX + ', ' + clientY);
 	Array.from(document.querySelector('.dragging').parentElement.children).forEach(element => {
 		var elementBounds = element.getBoundingClientRect();

@@ -480,6 +480,7 @@ textarea.input {
 /*Draggables*/
 .draggable {
 	background: #333;
+	touch-action: none;
 }
 .dragging {
 	box-shadow: 0 0px 16px black;
