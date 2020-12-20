@@ -6,12 +6,16 @@ ErrorDocument 404 /404.php
 	    Header set Cache-Control "max-age=31536000, public"
 	</filesMatch>
 	#MONTH
-	<filesMatch "\.(css|html)$">
+	<filesMatch "\.(css)$">
 	    Header set Cache-Control "max-age=2678400, public"
 	</filesMatch>
 	#WEEK
-	<filesMatch "\.(js|php)$">
+	<filesMatch "\.(js)$">
 	    Header set Cache-Control "max-age=604800, public"
+	</filesMatch>
+	#DAY
+	<filesMatch "\.(php)$">
+	    Header set Cache-Control "max-age=86400, public"
 	</filesMatch>
 	#creator.js
 	<files creator.js>
