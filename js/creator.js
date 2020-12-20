@@ -1174,7 +1174,12 @@ function loadTutorialVideo() {
 }
 //Various loaders
 function imageURL(url, destination, otherParams) {
-	destination('https://cors-anywhere.herokuapp.com/' + url, otherParams);
+	var imageurl = url;
+	if (params.get('noproxy') != '') {
+		imageurl = 'https://cors-anywhere.herokuapp.com/' + url;
+	}
+	console.log(imageurl)
+	destination(imageurl, otherParams);
 }
 async function imageLocal(event, destination, otherParams) {
 	var reader = new FileReader();
