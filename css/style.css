@@ -252,9 +252,9 @@ a:hover {
 	transition: 0.333s ease;
 }
 .hamburger:hover + .circle {
-	padding: 3rem;
+	/*padding: 3rem;
 	right: -1rem;
-	top: -1rem;
+	top: -1rem;*/
 }
 .hamburger.opened + .circle {
 	padding: var(--window-diagonal-size);
@@ -549,7 +549,9 @@ textarea.input {
 	position: fixed;
 	max-width: calc(100vw - 6rem);
 	width: 64rem; /*multiple of 16?*/
+	max-height: calc(100vh - 6rem);
 	height: auto;
+	overflow-y: scroll;
 	-webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);

@@ -149,8 +149,23 @@ function dragStart(event) {
 function dragEnd(event) {
 	Array.from(document.querySelectorAll('.dragging')).forEach(element => element.classList.remove('dragging'));
 }
-function dragOver(event) {
-	var eventTarget = event.target.closest('.draggable');
+function touchMove(event) {
+	var clientX = event.clientX;
+	var clientY = event.clientY;
+	Array.from(document.querySelector('.dragging').parentElement.children).forEach(element => {
+		var elementBounds = element.getBoundingClientRect();
+		if (clientY > elementBounds.top && clientY < elementBounds.bottom) {
+			dragOver(element, false);
+		}
+	})
+}
+function dragOver(event, drag=true) {
+	var eventTarget;
+	if (drag) {
+		eventTarget = event.target.closest('.draggable');
+	} else {
+		eventTarget = event;
+	}
 	var movingElement = document.querySelector('.dragging');
 	if (document.querySelector('.dragging') && !eventTarget.classList.contains('dragging') && eventTarget.parentElement == movingElement.parentElement) {
 		var parentElement = eventTarget.parentElement;
@@ -177,8 +192,11 @@ function dragOver(event) {
 		});
 		Array.from(elements.children).forEach(element => {
 			element.ondragstart = dragStart;
+			element.ontouchstart = dragStart;
 			element.ondragend = dragEnd;
+			element.ontouchend = dragEnd;
 			element.ondragover = dragOver;
+			element.ontouchmove = touchMove;
 			element.onclick = frameElementClicked;
 			element.children[3].onclick = removeFrame;
 		})
@@ -363,6 +381,9 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 	frameElement.ondragstart = dragStart;
 	frameElement.ondragend = dragEnd;
 	frameElement.ondragover = dragOver;
+	frameElement.ontouchstart = dragStart;
+	frameElement.ontouchend = dragEnd;
+	frameElement.ontouchmove = touchMove;
 	frameElement.onclick = frameElementClicked;
 	var frameElementImage = document.createElement('img');
 	if (frameToAdd.noThumb || frameToAdd.src.includes('/img/black.png')) {
