@@ -3,6 +3,7 @@
 			<h4>Card Conjurer</h4>
 			<h5><a href='https://twitter.com/ImKyle4815' target='_blank'>Twitter</a></h5>
 			<h5><a href='https://www.patreon.com/KyleBurton' target='_blank'>Patreon</a></h5>
+			<h5><a href='mailto:cardconjurermtg@gmail.com' target='_blank'>Email</a></h5>
 		</div>
 		<div>
 			<h4>Navigation</h4>
