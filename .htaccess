@@ -10,15 +10,15 @@ ErrorDocument 404 /404.php
 	    Header set Cache-Control "max-age=2678400, public"
 	</filesMatch>
 	#WEEK
-	<filesMatch "\.(js)$">
+	<filesMatch "\.(js|php)$">
 	    Header set Cache-Control "max-age=604800, public"
 	</filesMatch>
 	#DAY
-	<filesMatch "\.(php)$">
+	<files header.php>
 	    Header set Cache-Control "max-age=86400, public"
-	</filesMatch>
-	#creator.js
+	</files>
+	#HOUR
 	<files creator.js>
-	    Header set Cache-Control "max-age=60, public"
+	    Header set Cache-Control "max-age=3600, public"
 	</files>
 </IfModule>
