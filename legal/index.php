@@ -16,7 +16,7 @@
 				We are neither affiliated with, sponsored by, nor endorsed by Wizards of the Coast. Fonts, Mana symbols, card images, and other related images are trademarks and copyrights of Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.
 				<br><br>We are neither affiliated with, sponsored by, nor endorsed by Scryfall LLC.
 				<br><br>All user-uploaded material is property of the original artist, and it is the user's responsibility to ensure that these materials are properly credited.
-				<br><br>Some card frame images, or elements used therein, were sourced with permission from Chilli_Axe, Kentu, thevodkaboy, and Timmy XD69.
+				<br><br>Some card frame images, or elements used therein, were sourced with permission from Chilli_Axe, Kentu, thevodkaboy, Timmy XD69, and noSpace.
 				<br><br>All other content Copyright © 2020 Card Conjurer.
 			</h5>
 		</div>
