@@ -670,7 +670,13 @@ function writeText(textObject, targetContext) {
 						manaPlacementCounter ++;
 						newLine = true;
 					}
-					lineContext.drawImage(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
+					//fake shadow begins
+					var fakeShadow = lineCanvas.cloneNode();
+					var fakeShadowContext = fakeShadow.getContext('2d');
+					fakeShadowContext.clearRect(0, 0, fakeShadow.width, fakeShadow.height);
+					fakeShadowContext.drawImage(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
+					lineContext.drawImage(fakeShadow, 0, 0);
+					//fake shadow ends (thanks, safari)
 					currentX += manaSymbolWidth + manaSymbolSpacing * 2;
 				} else {
 					wordToWrite = word;
