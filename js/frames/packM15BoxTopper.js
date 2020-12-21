@@ -11,7 +11,9 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/m15/boxTopper/m15BoxTopperFrameM.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/m15/boxTopper/m15BoxTopperFrameA.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/boxTopper/m15BoxTopperFrameL.png', masks:masks},
-	{name:'Vehicle Frame', src:'/img/frames/m15/boxTopper/m15BoxTopperFrameV.png', masks:masks}
+	{name:'Vehicle Frame', src:'/img/frames/m15/boxTopper/m15BoxTopperFrameV.png', masks:masks},
+	{name:'Bevel Cutout for Nickname', src:'/img/black.png', bounds:{x:0.058, y:0.111, width:0.884, height:0.0381}, erase:true},
+	{name:'Nickname Bevel', src:'/img/frames/m15/boxTopper/m15BoxTopperNicknameBevel.png', bounds:{x:0.058, y:0.111, width:0.884, height:0.0381}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
