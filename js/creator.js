@@ -26,19 +26,19 @@ corner.crossOrigin = 'anonymous';
 art = new Image();
 art.crossOrigin = 'anonymous';
 art.src = blank.src;
-// art.onerror = function() {this.src = fixUri('/img/blank.png');}
+art.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 art.onload = artEdited;
 //set symbol
 setSymbol = new Image();
 setSymbol.crossOrigin = 'anonymous';
 setSymbol.src = blank.src;
-// setSymbol.onerror = function() {this.src = fixUri('/img/blank.png');}
+setSymbol.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 setSymbol.onload = setSymbolEdited;
 //watermark
 watermark = new Image();
 watermark.crossOrigin = 'anonymous';
 watermark.src = blank.src;
-// watermark.onerror = function() {this.src = fixUri('/img/blank.png');}
+watermark.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 watermark.onload = watermarkEdited;
 //preview canvas
 var previewCanvas = document.querySelector('#previewCanvas');
@@ -1191,7 +1191,7 @@ async function imageLocal(event, destination, otherParams) {
 		destination(reader.result, otherParams);
 	}
 	reader.onerror = function () {
-		// destination('/img/blank.png', otherParams);
+		destination('/img/blank.png', otherParams);
 	}
 	await reader.readAsDataURL(event.target.files[0]);
 }
