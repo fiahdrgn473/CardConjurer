@@ -122,10 +122,15 @@ img {
 /*Fonts*/
 .title {
 	font-family: belerenbsc;
+}
+h1.title {
+	font-size: 4rem;
+}
+.shadow {
 	text-shadow: 0.2rem 0.2rem 0.5rem black;
 }
 h1 {
-	font-size: 4rem;
+	font-size: 3rem;
 	font-family: Montserrat-SemiBold, Helvetica, Tahoma, Verdana, Geneva, sans-serif;
 	overflow-wrap: break-word;
 }
