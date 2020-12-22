@@ -10,6 +10,7 @@
 			<h5><a href='/'>Home</a></h5>
 			<h5><a href='/creator'>Creator</a></h5>
 			<h5><a href='/askurza'>Ask Urza</a></h5>
+			<h5><a href='/about'>About</a></h5>
 		</div>
 		<div>
 			<h4>Legal</h4>

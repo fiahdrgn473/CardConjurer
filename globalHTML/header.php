@@ -37,7 +37,7 @@
 				<h3><a href='/creator'>Card Creator</a></h3>
 				<!-- <h3><a href='/'>Card Gallery</a></h3> -->
 				<h3><a href='/askurza'>Ask Urza 2.0</a></h3>
-				<!-- <h3><a href='/'>About Me</a></h3> -->
+				<h3><a href='/about'>About Me</a></h3>
 				<h3><a href='/legal'>Legal</a></h3>
 				<h2>External Links</h2>
 				<h3><a href='https://twitter.com/ImKyle4815' target='_blank'>Twitter</a></h3>
