@@ -5,8 +5,16 @@ loadFramePacks([
 	{name:'M21', value:'M21'},
 	{name:'Eldraine Storybooks', value:'Storybook'},
 	{name:'Masterpieces/Other', value:'disabled'},
+	{name:'Nickname', value:'M15Nickname'},
+	{name:'Box Toppers', value:'M15BoxTopper'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR'},
 	{name:'Ixalan Maps', value:'Ixalan'},
 	{name:'Kaladesh Inventions', value:'Invention'},
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ'},
+	{name:'Addons', value:'disabled'},
+	{name:'Legend Crowns', value:'M15LegendCrowns'},
+	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
+	{name:'Inner Crowns', value:'M15InnerCrowns'},
+	{name:'Holo Stamps', value:'M15HoloStamps'},
+	{name:'Dark Power/Toughness', value:'M15DarkPT'}
 ])
