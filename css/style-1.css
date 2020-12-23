@@ -398,6 +398,31 @@ textarea.input {
 
 
 
+/*Animated cards*/
+.animated-scene {
+	perspective: 100rem;
+}
+.animated-card-1 {
+	animation: animatedcardone 3s ease-in-out 0s alternate infinite;
+	-moz-animation: animatedcardone 3s ease-in-out 0s alternate infinite;
+	-webkit-animation: animatedcardone 3s ease-in-out 0s alternate infinite;
+	-o-animation: animatedcardone 3s ease-in-out 0s alternate infinite;
+	transform-style: preserve-3d;
+}
+.animation-delay-2 {
+	animation-delay: 2s !important;
+}
+.animation-delay-4 {
+	animation-delay: 4s !important;
+}
+@keyframes animatedcardone {
+	0%   {transform: rotateY(15deg);}
+	100%   {transform: rotateY(-15deg);}
+}
+
+
+
+
 /*Home Page only*/
 .sample-grid {
 	display: grid;
@@ -405,9 +430,11 @@ textarea.input {
 	grid-template-columns: 1fr;
 }
 .sample-grid > img {
+	display: block;
 	max-width: 375px;
 	width: 100%;
 	height: auto;
+	margin: 1rem auto;
 }
 @media only screen and (min-width: 750px) {
 	.sample-grid {
