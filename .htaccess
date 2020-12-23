@@ -14,7 +14,7 @@ ErrorDocument 404 /404.php
 	    Header set Cache-Control "max-age=604800, public"
 	</filesMatch>
 	#HOUR
-	<files creator.js>
-	    Header set Cache-Control "max-age=3600, public"
-	</files>
+	#<files creator.js>
+	#    Header set Cache-Control "max-age=3600, public"
+	#</files>
 </IfModule>
