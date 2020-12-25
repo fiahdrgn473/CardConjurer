@@ -416,10 +416,10 @@ textarea.input {
 	transform-style: preserve-3d;
 }
 .animation-delay-2 {
-	animation-delay: 2s !important;
+	animation-delay: 1s !important;
 }
 .animation-delay-4 {
-	animation-delay: 4s !important;
+	animation-delay: 2s !important;
 }
 @keyframes animatedcardone {
 	0%   {transform: rotateY(15deg);}
