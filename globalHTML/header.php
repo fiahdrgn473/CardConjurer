@@ -7,7 +7,7 @@
 	<meta name="keywords" content="keywords">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/style-2.css">
 	<link rel="shortcut icon" href="/favicon.ico">
@@ -19,7 +19,7 @@
 	<script defer src='/js/main.js'></script>
 </head>
 <body>
-	<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> <!--https://stackoverflow.com/questions/2898740/iphone-safari-web-app-opens-links-in-new-window-->
+	<!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> --> <!--https://stackoverflow.com/questions/2898740/iphone-safari-web-app-opens-links-in-new-window-->
 	<div class='background'></div>
 	<header>
 		<h1 class='title center'>CARD CONJURER</h1>
