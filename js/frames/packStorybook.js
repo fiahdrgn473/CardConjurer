@@ -13,7 +13,8 @@ availableFrames = [
 	{name:'Black Power/Toughness', src:'/img/frames/storybook/storybookPTB.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/storybook/storybookPTR.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/storybook/storybookPTG.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/storybook/storybookPTC.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/storybook/storybookPTC.png', bounds:bounds},
+	{name:'Holo Stamp', src:'/img/frames/storybook/holo.png', bounds:{x:0.4507, y:0.9129, width:0.0987, height:0.0386}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

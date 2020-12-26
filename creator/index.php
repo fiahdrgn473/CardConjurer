@@ -325,6 +325,12 @@
 				Between hosting fees and paying for the domain, running Card Conjurer can take its toll. Plus, as a student on a tight budget, it can be hard to afford Magic. If you've enjoyed using Card Conjurer and would like to help me out, please consider joining my <a style='color: #f96854;' href="https://www.patreon.com/KyleBurton" target='_blank'>Patreon</a>. And if you'd like to make a one-time donation instead, I have a <a style='color: #3b7bbf;' href="https://www.paypal.me/kyleburtondonate" target='_blank'>PayPal</a> as well. Any assistance is greatly appreciated, even if it's simply checking out my <a style='color: #00aced;' href="https://twitter.com/ImKyle4815" target='_blank'>Twitter</a>!
 			</h4>
 		</div>
+		<div class='layer readable-background margin-bottom-large'>
+			<h1 class='center margin-bottom'>Have feedback?</h1>
+			<h4>
+				Whether you've found a bug, want to request a feature, or have some criticism to offer, I'd love to hear it! If there's anything you'd like to let me know, please don't hesitate to contact me via email at <a href='mailto:cardconjurermtg@gmail.com' target='_blank'>cardconjurermtg@gmail.com</a>.
+			</h4>
+		</div>
 	</div>
 	<script defer src='/js/creator.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
