@@ -1,6 +1,6 @@
 <?php include('../globalHTML/header.php'); ?>
     <title>Ask Urza 2.0</title>
-    <h2 class='readable-background header-extension title center'>Ask Urza 2.0</h2>
+    <h2 class='readable-background header-extension title center margin-bottom-large'>Ask Urza 2.0</h2>
     <style>
         .askUrzaGrid {
             display: grid;
@@ -62,7 +62,7 @@
             }
         }
     </style>
-    <div class="askUrzaGrid layer margin-large">
+    <div class="askUrzaGrid layer margin-bottom-large">
         <div class="urzaCard">
             <img src="/askurza/urzaBlank.png">
         </div>
@@ -77,7 +77,7 @@
         </div>
         <h3 id="askUrzaResult" class='readable-background'></h3>
     </div>
-    <div class="readable-background layer margin-large">
+    <div class="readable-background layer margin-bottom-large">
         <h5>
             Ask Urza 2.0 is a replacement for AskUrza.com that periodically compiles all planeswalker abilities and sorts them into three categories for use with Urza, Academy Headmaster. This allows for much more unpredictability and, in my opinion, much more fun. To use Ask Urza, simply click on the +1, -1, or -6, and let the gods of chaos decide your fate!
         </h5>

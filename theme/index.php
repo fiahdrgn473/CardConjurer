@@ -7,7 +7,7 @@
 		<h5>This feature is a bit of a work-in-progress</h5>
 	</div>
 	<div class='layer'></div>
-	<div class='layer readable-background'>
+	<div class='layer readable-background margin-bottom-large'>
 		<h3>Background</h3>
 		<h4>Choose a background</h4>
 		<select class='input' onchange='changeThemeVar(this.value, "background");'>
@@ -25,6 +25,5 @@
 		<input id='readable-brightness' class='input' type='range' min='0' max='1' step='0.01' oninput='changeThemeVar(this.value, "readablebrightness");'>
 		<button class='input margin-top' onclick='resetTheme();'>Reset Theme to Default</button>
 	</div>
-	<div class='layer'></div>
 	<script defer src='/js/themeEditor.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

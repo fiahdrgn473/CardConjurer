@@ -188,8 +188,8 @@ a:hover {
 .margin-bottom {
 	margin-bottom: 0.5rem;
 }
-.margin-large {
-	margin: 4rem 0;
+.margin-bottom-large {
+	margin-bottom: 2rem;
 }
 .margin-top {
 	margin-top: 0.5rem;
