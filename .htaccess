@@ -1,8 +1,9 @@
 ErrorDocument 404 /404.php
 
 <IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
 	#YEAR
-    <filesMatch "\.(png|svg|ttf|ico)$">
+	<filesMatch "\.(png|svg|ttf|ico)$">
 	    Header set Cache-Control "max-age=31536000, public"
 	</filesMatch>
 	#MONTH
