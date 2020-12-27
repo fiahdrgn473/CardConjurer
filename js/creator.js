@@ -12,32 +12,21 @@ function fixUri(input) {
 //card object
 var card = {width:1500, height:2100, marginX:0, marginY:0, frames:[], artSource:fixUri('/img/blank.png'), artX:0, artY:0, artZoom:1, setSymbolSource:fixUri('/img/blank.png'), setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:fixUri('/img/blank.png'), watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
 //core images/masks
-const black = new Image(); black.src = fixUri('/img/black.png');
-black.crossOrigin = 'anonymous';
-const blank = new Image(); blank.src = fixUri('/img/blank.png');
-blank.crossOrigin = 'anonymous';
-const right = new Image(); right.src = fixUri('/img/frames/maskRightHalf.png');
-right.crossOrigin = 'anonymous';
-const middle = new Image(); middle.src = fixUri('/img/frames/maskMiddleThird.png');
-middle.crossOrigin = 'anonymous';
-const corner = new Image(); corner.src = fixUri('/img/frames/cornerCutout.png');
-corner.crossOrigin = 'anonymous';
+const black = new Image(); black.crossOrigin = 'anonymous'; black.src = fixUri('/img/black.png');
+const blank = new Image(); blank.crossOrigin = 'anonymous'; blank.src = fixUri('/img/blank.png');
+const right = new Image(); right.crossOrigin = 'anonymous'; right.src = fixUri('/img/frames/maskRightHalf.png');
+const middle = new Image(); middle.crossOrigin = 'anonymous'; middle.src = fixUri('/img/frames/maskMiddleThird.png');
+const corner = new Image(); corner.crossOrigin = 'anonymous'; corner.src = fixUri('/img/frames/cornerCutout.png');
 //art
-art = new Image();
-art.crossOrigin = 'anonymous';
-art.src = blank.src;
+art = new Image(); art.crossOrigin = 'anonymous'; art.src = blank.src;
 art.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 art.onload = artEdited;
 //set symbol
-setSymbol = new Image();
-setSymbol.crossOrigin = 'anonymous';
-setSymbol.src = blank.src;
+setSymbol = new Image(); setSymbol.crossOrigin = 'anonymous'; setSymbol.src = blank.src;
 setSymbol.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 setSymbol.onload = setSymbolEdited;
 //watermark
-watermark = new Image();
-watermark.crossOrigin = 'anonymous';
-watermark.src = blank.src;
+watermark = new Image(); watermark.crossOrigin = 'anonymous'; watermark.src = blank.src;
 watermark.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
 watermark.onload = watermarkEdited;
 //preview canvas
