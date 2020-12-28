@@ -22,7 +22,17 @@ var usedManaSymbols = []
 var totalShift = [0, 0]
 date = new Date()
 var cornerCutout = new Image()
+cornerCutout.crossOrigin = 'anonymous';
 cornerCutout.src = '/data/images/cardImages/cornerCutout.png'
+//To save the server from being overloaded? Maybe?
+function fixUri(input) {
+	var prefix = 'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/master';
+	if (input.includes(prefix) || input.includes('http')) {
+		return input;
+	} else {
+		return prefix + input;
+	}
+}
 
 //URL Parameters
 var URLParams = new URLSearchParams(window.location.search)
@@ -33,11 +43,13 @@ function addToManaSymbolList(folderPath, newManaSymbolList) {
 			if (newManaSymbolList[i].includes('.svg')) {
 				manaSymbolCodeList.push(newManaSymbolList[i].replace('.svg', ''))
 				manaSymbolImageList.push(new Image())
-				manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i]
+				manaSymbolImageList[manaSymbolImageList.length - 1].crossOrigin = 'anonymous';
+				manaSymbolImageList[manaSymbolImageList.length - 1].src = fixUri(folderPath + newManaSymbolList[i])
 			} else {
 				manaSymbolCodeList.push(newManaSymbolList[i])
 				manaSymbolImageList.push(new Image())
-				manaSymbolImageList[manaSymbolImageList.length - 1].src = folderPath + newManaSymbolList[i] + '.png'
+				manaSymbolImageList[manaSymbolImageList.length - 1].crossOrigin = 'anonymous';
+				manaSymbolImageList[manaSymbolImageList.length - 1].src = fixUri(folderPath + newManaSymbolList[i] + '.png')
 			}
 		}
 	}
@@ -76,14 +88,14 @@ var artWidth = cardWidth, artHeight = cardHeight
 var setSymbolDrawX, setSymbolDrawY, setSymbolDrawWidth, setSymbolDrawHeight
 var watermarkDrawX = 0, watermarkDrawY = 0, watermarkDrawWidth = 0, watermarkDrawHeight = 0
 var cardArt = new Image()
-cardArt.src = '/data/images/cardImages/blank.png'
+cardArt.crossOrigin = 'anonymous';
+cardArt.src = fixUri('/data/images/cardImages/blank.png')
 var setSymbol = new Image()
-setSymbol.src = '/data/images/cardImages/blank.png'
+setSymbol.crossOrigin = 'anonymous';
+setSymbol.src = fixUri('/data/images/cardImages/blank.png')
 var watermark = new Image()
-watermark.src = '/data/images/cardImages/blank.png'
-cardArt.crossOrigin = "anonymous"
-setSymbol.crossOrigin = "anonymous"
-watermark.crossOrigin = "anonymous"
+watermark.crossOrigin = 'anonymous';
+watermark.src = fixUri('/data/images/cardImages/blank.png')
 cardArt.onload = function() {
 	cardMasterList[0].width = this.width / cardWidth
 	cardMasterList[0].height = this.height / cardHeight
@@ -106,16 +118,16 @@ function setSymbolFromGatherer() {
 		if (document.getElementById('inputSetRarity').value == '') {
 			newSetSymbolSource += 'c'
 		}
-		setSymbol.src = newSetSymbolSource + '.png'
+		setSymbol.src = (newSetSymbolSource + '.png')
 	} else if (document.getElementById('inputSetCode').value.toLowerCase() == 'none') {
-		setSymbol.src = '/data/images/cardImages/blank.png'
+		setSymbol.src = ('/data/images/cardImages/blank.png')
 	} else {
 		setSymbol.src = 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value
 		// autoCrop(setSymbol, 'https://cors-anywhere.herokuapp.com/http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + document.getElementById('inputSetCode').value + '&size=large&rarity=' + document.getElementById('inputSetRarity').value)
 	}
 }
 setSymbol.onerror = function () {
-	this.src = '/data/images/cardImages/blank.png'
+	this.src = fixUri('/data/images/cardImages/blank.png')
 }
 setSymbol.onload = function() {
 	if (setSymbol.width / setSymbol.height > setSymbolWidth / setSymbolHeight) {
@@ -199,8 +211,9 @@ class cardImage {
 	constructor(displayName = 'cardImage', imageSource = '/data/images/cardImages/blank.png', x = 0, y = 0, width = 1, height = 1, opacity = 1, masks = ['Full'], erase = false) {
 		this.name = displayName
 		this.image = new Image()
-		this.image.src = imageSource
-		this.imageSource = imageSource
+		this.image.crossOrigin = 'anonymous';
+		this.image.src = fixUri(imageSource)
+		this.imageSource = fixUri(imageSource)
 		this.x = x
 		this.y = y
 		this.width = width
@@ -320,10 +333,9 @@ class frameImage {
 	constructor(displayName = 'custom', imageSource = '', x = 0, y = 0, width = 1, height = 1, masks = [], frameImageListIndex, frameClass) {
 		this.name = displayName
 		this.image = new Image()
-		if (this.name == 'custom') {
-			this.image.crossOrigin = 'anonymous'
-		}
-		this.image.src = imageSource
+		this.image
+		this.image.crossOrigin = 'anonymous'
+		this.image.src = fixUri(imageSource)
 		this.x = x
 		this.y = y
 		this.width = width
@@ -380,7 +392,8 @@ function loadMaskImages(listOfMasks) {
 	for (var i = 0; i < listOfMasks.length; i++) {
 		if (!maskNameList.includes(listOfMasks[i][0])) {
 			var maskImage = new Image()
-			maskImage.src = listOfMasks[i][1]
+			maskImage.crossOrigin = 'anonymous';
+			maskImage.src = fixUri(listOfMasks[i][1])
 			maskImageList.push(maskImage)
 			maskNameList.push(listOfMasks[i][0])
 		}
