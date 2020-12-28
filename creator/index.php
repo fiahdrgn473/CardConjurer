@@ -328,7 +328,7 @@
 		<div class='layer readable-background margin-bottom-large'>
 			<h1 class='center margin-bottom'>Have feedback?</h1>
 			<h4>
-				Whether you've found a bug, want to request a feature, or have some criticism to offer, I'd love to hear it! If there's anything you'd like to let me know, please don't hesitate to contact me via email at <a href='mailto:cardconjurermtg@gmail.com' target='_blank'>cardconjurermtg@gmail.com</a>.
+				Whether you've encountered a bug, want to request a feature, or have some criticism to offer, I'd love to hear it! If there's anything you'd like to let me know, please don't hesitate to contact me via email at <a href='mailto:cardconjurermtg@gmail.com' target='_blank'>cardconjurermtg@gmail.com</a>.
 			</h4>
 		</div>
 	</div>
