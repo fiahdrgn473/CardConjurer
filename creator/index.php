@@ -55,7 +55,7 @@
 				<div id='creator-menu-sections' class='margin-bottom'>
 					<div id='creator-menu-frame'>
 						<div class='readable-background margin-bottom padding'>
-							<h5 class='margin-bottom padding input-description'>Select a Frame Group, a Frame Pack, then you may Load the selected Frame Version</h5>
+							<h5 class='margin-bottom padding input-description'>Select a Frame Group and a Frame Pack, then you may Load the selected Frame Version</h5>
 							<div class='input-grid margin-bottom'>
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 						<div class='readable-background margin-bottom padding'>
-							<h5 class='margin-bottom padding input-description'>Select a Frame Image, a Mask, then add it to your card</h5>
+							<h5 class='margin-bottom padding input-description'>Select a Frame Image and a Mask, then add it to your card</h5>
 							<div class='split-grid margin-bottom'>
 								<div id='frame-picker' class='frame-picker'></div>
 								<div id='mask-picker' class='mask-picker'></div>
