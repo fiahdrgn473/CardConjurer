@@ -29,6 +29,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'm21';
 	loadScript('/js/frames/manaSymbolsM21.js');
+	notify('The M21 version adds special mana symbols. To use them, place an "M21" or "DM21" before the following mana symbols: wubrg, 0-9, and x.');
 	//art bounds
 	card.artBounds = {x:0.0767, y:0.1129, width:0.8476, height:0.4429};
 	autoFitArt();

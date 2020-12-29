@@ -217,7 +217,8 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 		var manaSymbol = {};
 		manaSymbol.name = item.split('.')[0];
 		if (manaSymbol.name.includes('/')) {
-			manaSymbol.name = manaSymbol.name.split('/')[1];
+			manaSymbol.name = manaSymbol.name.split('/');
+			manaSymbol.name = manaSymbol.name[manaSymbol.name.length - 1];
 		}
 		manaSymbol.width = size[0];
 		manaSymbol.height = size[1];
@@ -226,9 +227,6 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 		var manaSymbolPath = '/img/manaSymbols/' + item;
 		if (!manaSymbolPath.includes('.png')) {
 			manaSymbolPath += '.svg';
-			// manaSymbol.image.onload = function() {
-			// 	console.log(this);
-			// }
 		}
 		manaSymbol.image.src = fixUri(manaSymbolPath);
 		manaSymbols.push(manaSymbol);
@@ -939,8 +937,8 @@ function drawCard() {
 }
 //DOWNLOADING
 async function downloadCard() {
-	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png')) {
-		alert('You must credit an artist before downloading!' + ' ' + card.artSource);
+	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
+		notify('You must credit an artist before downloading!');
 	} else {
 		var download = document.createElement('a');
 		var imageName = card.text.title.text;
@@ -1177,7 +1175,6 @@ function imageURL(url, destination, otherParams) {
 	if (params.get('noproxy') != '') {
 		imageurl = 'https://cors-anywhere.herokuapp.com/' + url;
 	}
-	console.log(imageurl)
 	destination(imageurl, otherParams);
 }
 async function imageLocal(event, destination, otherParams) {
@@ -1206,7 +1203,7 @@ function fetchScryfallData(cardName, callback = console.log) {
 			callback(JSON.parse(this.responseText));
 			// JSON.parse(this.responseText);
 		} else if (this.readyState == 4 && this.status == 404) {
-			alert('No cards found for "' + cardName + '"');
+			notify('No cards found for "' + cardName + '"');
 		}
 	}
 	xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D' + cardName.replace(/ /g, '_'), true);

@@ -1,4 +1,4 @@
-	<footer>
+	<footer class='readable-background'>
 		<div>
 			<h4>Card Conjurer</h4>
 			<h5><a href='https://twitter.com/ImKyle4815' target='_blank'>Twitter</a></h5>

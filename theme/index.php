@@ -15,7 +15,7 @@
 			<option value='/img/gradientBackground.svg'>Plain</option>
 		</select>
 		<h4>Enter a background image (URL ONLY)</h4>
-		<input id='background-url' class='input' type='text' placeholder='Enter a URL' onchange='changeThemeVar(this.value, "background");'>
+		<input id='background-url' class='input' type='url' placeholder='Enter a URL' onchange='changeThemeVar(this.value, "background");'>
 		<h4>Shift the Background's Hue</h4>
 		<input id='hue-rotate' class='input' type='range' min='0' max='360' step='1' oninput='changeThemeVar(this.value, "huerotate");'>
 		<h4>Enable Rainbow-Mode</h4>

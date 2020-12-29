@@ -264,8 +264,8 @@ a:hover {
 .circle {
 	z-index: 5;
 	position: fixed;
-	right: 2rem;
-	top: 2rem;
+	right: 0;
+	top: 0;
 	padding: 0;
 	background: var(--color-primary);
 	border-radius: 100%;
@@ -278,8 +278,8 @@ a:hover {
 }
 .hamburger.opened + .circle {
 	padding: var(--window-diagonal-size);
-	right: calc(2rem - var(--window-diagonal-size));
-	top: calc(2rem - var(--window-diagonal-size));
+	right: calc(0px - var(--window-diagonal-size));
+	top: calc(0px - var(--window-diagonal-size));
 	transition: 0.75s cubic-bezier(.53,.47,.76,-0.52);
 }
 /*Menus*/
@@ -310,6 +310,32 @@ a:hover {
 }
 .main-menu > h2 {
 	margin-top: 4rem;
+}
+/*notifications*/
+.notification-container {
+	position: fixed;
+	z-index: 10;
+	bottom: 0;
+	left: 1.5rem;
+	width: calc(100vw - 3rem);
+	max-height: 75vh;
+	overflow-y: scroll;
+	transition: 0.5s;
+}
+.notification {
+	border-top: 0.25rem solid var(--color-selected);
+	background: var(--input-background);
+	display: grid;
+	grid-template-columns: auto 2rem;
+	transition: 0.5s;
+}
+.notification > h3 {
+	text-align: center;
+	user-select: none;
+	cursor: pointer;
+}
+.notification.hidden {
+	opacity: 0;
 }
 /*Inputs*/
 .input {
@@ -354,7 +380,7 @@ a:hover {
 input[type=checkbox].input {
 	/*nothing for now*/
 }
-.input:not([type=text]):not([type=number]) {
+.input:not([type=text]):not([type=number]):not([type=url]) {
 	cursor: pointer;
 }
 textarea.input {

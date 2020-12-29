@@ -8,7 +8,7 @@ if (!loadedVersions.includes('/js/frames/versionSaga.js')) {
 	newHTML.classList.add('hidden');
 	newHTML.innerHTML = `
 	<div class='readable-background padding'>
-		<h5 class='padding margin-bottom input-description'>Adjust the height (first input) and loyalty chapter count (second input) of each Saga ability</h5>
+		<h5 class='padding margin-bottom input-description'>Adjust the height (first input) and chapter count (second input) of each Saga ability</h5>
 		<h5 class='padding margin-bottom input-description'>First Ability:</h5>
 		<div class='padding input-grid margin-bottom'>
 			<input id='saga-height-0' type='number' class='input' oninput='sagaEdited();' min='0'>
