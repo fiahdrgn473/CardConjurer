@@ -11,6 +11,7 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/token/tall/tokenFrameMTall.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/token/tall/tokenFrameATall.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/token/tall/tokenFrameLTall.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/token/tall/frameC.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/regular/m15PTB.png', bounds:bounds},
