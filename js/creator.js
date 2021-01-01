@@ -1128,6 +1128,20 @@ async function loadCard(selectedCardKey) {
 		}
 	}
 	card.manaSymbols.forEach(item => loadScript(item));
+	//canvases
+	var canvasesResized = false;
+	canvasList.forEach(name => {
+		if (window[name + 'Canvas'].width != card.width * (1 + card.marginX) || window[name + 'Canvas'].height != card.height * (1 + card.marginY)) {
+			sizeCanvas(name);
+			canvasesResized = true;
+		}
+	});
+	if (canvasesResized) {
+		drawTextBuffer();
+		drawFrames();
+		bottomInfoEdited();
+		watermarkEdited();
+	}
 }
 function deleteCard() {
 	var keyToDelete = document.querySelector('#load-card-options').value;
