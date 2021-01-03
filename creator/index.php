@@ -61,11 +61,11 @@
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
 									<option value='Standard'>Regular</option>
-									<option value='Token'>Tokens</option>
+									<option value='Token-1'>Tokens</option>
 									<option value='Saga'>Sagas</option>
 									<option value='Planeswalker'>Planeswalkers</option>
 									<option disabled>Special Frames</option>
-									<option value='Showcase'>Showcase Frames</option>
+									<option value='Showcase-1'>Showcase Frames</option>
 									<option value='Promo'>Promos (Tall Art)</option>
 									<option value='Textless'>Textless/Fullart</option>
 									<option value='Modal'>Short Modal DFC's</option>
