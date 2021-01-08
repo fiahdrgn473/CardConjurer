@@ -215,16 +215,30 @@ loadManaSymbols(['chaos'], [1, 10.2]);
 function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 	manaSymbolPaths.forEach(item => {
 		var manaSymbol = {};
-		manaSymbol.name = item.split('.')[0];
+		if (typeof item == 'string') {
+			manaSymbol.name = item.split('.')[0];
+			manaSymbol.path = item;
+		} else {
+			manaSymbol.name = item[0].split('.')[0];
+			manaSymbol.path = item[0];
+		}
 		if (manaSymbol.name.includes('/')) {
 			manaSymbol.name = manaSymbol.name.split('/');
 			manaSymbol.name = manaSymbol.name[manaSymbol.name.length - 1];
+		}
+		if (typeof item != 'string') {
+			manaSymbol.back = item[1];
+			manaSymbol.backs = item[2];
+			for (var i = 0; i < item[2]; i ++) {
+				loadManaSymbols([manaSymbol.path.replace(manaSymbol.name, 'back' + i + item[1])])
+				// console.log(manaSymbol.path.replace(manaSymbol.name, 'back' + i + item[1]))
+			}
 		}
 		manaSymbol.width = size[0];
 		manaSymbol.height = size[1];
 		manaSymbol.image = new Image();
 		manaSymbol.image.crossOrigin = 'anonymous';
-		var manaSymbolPath = '/img/manaSymbols/' + item;
+		var manaSymbolPath = '/img/manaSymbols/' + manaSymbol.path;
 		if (!manaSymbolPath.includes('.png')) {
 			manaSymbolPath += '.svg';
 		}
@@ -499,6 +513,9 @@ function writeText(textObject, targetContext) {
 	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
+	if (textManaCost && textObject.arcStart > 0) {
+		splitText.reverse();
+	}
 	splitText.push('');
 	//Manages the redraw loop
 	var drawingText = true;
@@ -512,6 +529,16 @@ function writeText(textObject, targetContext) {
 		var textShadowOffsetX = scaleWidth(textObject.shadowX) || 0;
 		var textShadowOffsetY = scaleHeight(textObject.shadowY) || 0;
 		var textShadowBlur = scaleHeight(textObject.shadowBlur) || 0;
+		var textArcRadius = scaleHeight(textObject.arcRadius) || 0;
+		if (textArcRadius > 0) {
+			//Buffers the canvases accordingly
+			var canvasMargin = 300 + textArcRadius;
+			paragraphCanvas.width = textWidth + 2 * canvasMargin;
+			paragraphCanvas.height = textHeight + 2 * canvasMargin;
+			lineCanvas.width = textWidth + 2 * canvasMargin;
+			lineCanvas.height = startingTextSize + 2 * canvasMargin;
+		}
+		var textArcStart = textObject.arcStart || 0;
 		//Variables for tracking text position/size/font
 		var currentX = 0;
 		var startingCurrentX = 0;
@@ -643,6 +670,10 @@ function writeText(textObject, targetContext) {
 					}
 				} else if (possibleCode.includes('permashift')) {
 					permaShift = [parseFloat(possibleCode.replace('permashift', '').split(',')[0]), parseFloat(possibleCode.split(',')[1])];
+				} else if (possibleCode.includes('arcradius')) {
+					textArcRadius = parseInt(possibleCode.replace('arcradius', '')) || 0;
+				} else if (possibleCode.includes('arcstart')) {
+					textArcStart = parseFloat(possibleCode.replace('arcstart', '')) || 0;
 				} else if (findManaSymbolIndex(possibleCode.replace('/', '')) > -1 || findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join('')) > -1) {
 					var manaSymbol = manaSymbols[findManaSymbolIndex(possibleCode.replace('/', ''))] || manaSymbols[findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join(''))];
 					var manaSymbolSpacing = textSize * 0.04 + textManaSpacing;
@@ -656,12 +687,28 @@ function writeText(textObject, targetContext) {
 						currentY = scaleY(textObject.manaPlacement.y[manaPlacementCounter] || 0);
 						manaPlacementCounter ++;
 						newLine = true;
+					} else if (textObject.manaLayout) {
+
 					}
 					//fake shadow begins
 					var fakeShadow = lineCanvas.cloneNode();
 					var fakeShadowContext = fakeShadow.getContext('2d');
 					fakeShadowContext.clearRect(0, 0, fakeShadow.width, fakeShadow.height);
-					fakeShadowContext.drawImage(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
+					var backImage = null;
+					if (manaSymbol.backs) {
+						backImage = manaSymbols[findManaSymbolIndex('back' + Math.floor(Math.random() * manaSymbol.backs) + manaSymbol.back)].image;
+					}
+					if (textArcRadius > 0) {
+						if (manaSymbol.backs) {
+							fakeShadowContext.drawImageArc(backImage, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight, textArcRadius, textArcStart, currentX);
+						}
+						fakeShadowContext.drawImageArc(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight, textArcRadius, textArcStart, currentX);
+					} else {
+						if (manaSymbol.backs) {
+							fakeShadowContext.drawImage(backImage, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
+						}
+						fakeShadowContext.drawImage(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
+					}
 					lineContext.drawImage(fakeShadow, 0, 0);
 					//fake shadow ends (thanks, safari)
 					currentX += manaSymbolWidth + manaSymbolSpacing * 2;
@@ -669,7 +716,7 @@ function writeText(textObject, targetContext) {
 					wordToWrite = word;
 				}
 			}
-			if (wordToWrite && lineContext.measureText(wordToWrite).width + currentX >= textWidth) {
+			if (wordToWrite && lineContext.measureText(wordToWrite).width + currentX >= textWidth && textArcRadius == 0) {
 				if (textOneLine && startingTextSize > 1) {
 					//doesn't fit... try again at a smaller text size?
 					startingTextSize -= 1;
@@ -693,13 +740,17 @@ function writeText(textObject, targetContext) {
 				newLine = false;
 			}
 			if (wordToWrite && (currentX != 0 || wordToWrite != ' ') && !textManaCost) {
-				if (textOutlineWidth >= 1) {
-					lineContext.strokeText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+				if (textArcRadius > 0) {
+					lineContext.fillTextArc(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY, textArcRadius, textArcStart, currentX, textOutlineWidth);
+				} else {
+					if (textOutlineWidth >= 1) {
+						lineContext.strokeText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+					}
+					lineContext.fillText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
 				}
-				lineContext.fillText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
 				currentX += lineContext.measureText(wordToWrite).width;
 			}
-			if (currentY > textHeight && textBounded && !textOneLine && startingTextSize > 1) {
+			if (currentY > textHeight && textBounded && !textOneLine && startingTextSize > 1 && textArcRadius == 0) {
 				//doesn't fit... try again at a smaller text size?
 				startingTextSize -= 1;
 				continue outerloop;
@@ -715,6 +766,30 @@ function writeText(textObject, targetContext) {
 			}
 		}
 	}
+}
+CanvasRenderingContext2D.prototype.fillTextArc = function(text, x, y, radius, startRotation, distance = 0, outlineWidth = 0) {
+	this.save();
+	this.translate(x - distance + scaleWidth(0.5), y + radius);
+	this.rotate(startRotation + widthToAngle(distance, radius));
+	for (var i = 0; i < text.length; i++) {
+		var letter = text[i];
+		if (outlineWidth >= 1) {
+			this.strokeText(letter, 0, -radius);
+		}
+		this.fillText(letter, 0, -radius);
+		this.rotate(widthToAngle(this.measureText(letter).width, radius));
+	}
+	this.restore();
+}
+CanvasRenderingContext2D.prototype.drawImageArc = function(image, x, y, width, height, radius, startRotation, distance = 0) {
+	this.save();
+	this.translate(x - distance + scaleWidth(0.5), y + radius);
+	this.rotate(startRotation + widthToAngle(distance, radius));
+	this.drawImage(image, 0, -radius, width, height);
+	this.restore();
+}
+function widthToAngle(width, radius) {
+	return width / radius;
 }
 //ART TAB
 function uploadArt(imageSource, otherParams) {
