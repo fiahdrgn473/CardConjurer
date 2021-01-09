@@ -70,6 +70,7 @@
 									<option value='Textless'>Textless/Fullart</option>
 									<option value='Modal'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>
+									<option value='Custom'>Custom</option>
 									<option value='Misc'>Old/Misc</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
