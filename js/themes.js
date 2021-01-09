@@ -41,4 +41,7 @@ function resetTheme() {
 	theme = {huerotate:0, background:'/img/lowpolyBackground.svg', readablebrightness:0.3, rainbow:0};
 	localStorage.setItem('theme', JSON.stringify(theme));
 	updateCSS();
+	if (window.location.href.includes('/theme/')) {
+		resetThemeControls();
+	}
 }

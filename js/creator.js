@@ -49,6 +49,8 @@ var date = new Date();
 var loadedVersions = [];
 //Card Object managament
 async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers = true} = {}) {
+	//misc details
+	card.margins = false;
 	//rotation
 	if (card.landscape) {
 		previewContext.scale(5/7, 7/5);
@@ -508,13 +510,16 @@ function writeText(textObject, targetContext) {
 	//Preps the text string
 	var splitString = '6GJt7eL8';
 	var rawText = textObject.text
-	if (params.get('copyright') != null && textObject.name == 'wizards' && card.version == 'margin') {
+	if (params.get('copyright') != null && textObject.name == 'wizards' && card.margins) {
 		rawText = params.get('copyright'); //so people using CC for custom card games can customize their copyright info
 	}
-	var splitText = rawText.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+	var splitText = rawText.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
-	if (textManaCost && textObject.arcStart > 0) {
-		splitText.reverse();
+	// if (textManaCost && textObject.arcStart > 0) {
+	// 	splitText.reverse();
+	// }
+	if (textObject.manaCost) {
+		splitText = splitText.filter(item => item != ' ');
 	}
 	splitText.push('');
 	//Manages the redraw loop
@@ -548,6 +553,7 @@ function writeText(textObject, targetContext) {
 		var textFontExtension = '';
 		var textFontStyle = textObject.fontStyle || '';
 		var manaPlacementCounter = 0;
+		var realTextAlign = textAlign;
 		//variables that track various... things?
 		var newLineSpacing = 0;
 		var textSize = startingTextSize;
@@ -580,10 +586,21 @@ function writeText(textObject, targetContext) {
 					var barWidth = textWidth * 0.95;
 					var barHeight = scaleHeight(0.002);
 					var barImageName = 'bar';
+					var barDistance = 0.45;
+					realTextAlign = textAlign;
+					textAlign = 'left';
 					if (textColor == 'white') {
 						barImageName = 'whitebar';
 					}
-					lineContext.drawImage(manaSymbols[findManaSymbolIndex(barImageName)].image, canvasMargin + (textWidth - barWidth) / 2, canvasMargin + 0.45 * textSize, barWidth, barHeight);
+					if (card.version == 'cartoony') {
+						barImageName = 'cflavor';
+						barWidth = scaleWidth(0.8547);
+						barHeight = scaleHeight(0.0458);
+						barDistance = -0.23;
+						newLineSpacing = textSize * -0.23;
+						textSize -= scaleHeight(0.0086);
+					}
+					lineContext.drawImage(manaSymbols[findManaSymbolIndex(barImageName)].image, canvasMargin + (textWidth - barWidth) / 2, canvasMargin + barDistance * textSize, barWidth, barHeight);
 				} else if (possibleCode == 'i') {
 					if (textFont == 'mplantin') {
 						textFontExtension = 'i';
@@ -674,21 +691,51 @@ function writeText(textObject, targetContext) {
 					textArcRadius = parseInt(possibleCode.replace('arcradius', '')) || 0;
 				} else if (possibleCode.includes('arcstart')) {
 					textArcStart = parseFloat(possibleCode.replace('arcstart', '')) || 0;
+				} else if (possibleCode.includes('fixtextalign')) {
+					textAlign = realTextAlign;
 				} else if (findManaSymbolIndex(possibleCode.replace('/', '')) > -1 || findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join('')) > -1) {
-					var manaSymbol = manaSymbols[findManaSymbolIndex(possibleCode.replace('/', ''))] || manaSymbols[findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join(''))];
+					possibleCode = possibleCode.replace('/', '')
+					var manaSymbol;
+					if (textObject.manaPrefix && (findManaSymbolIndex(textObject.manaPrefix + possibleCode) != -1 || findManaSymbolIndex(textObject.manaPrefix + possibleCode.split('').reverse().join('')) != -1)) {
+						manaSymbol = manaSymbols[findManaSymbolIndex(textObject.manaPrefix + possibleCode)] || manaSymbols[findManaSymbolIndex(textObject.manaPrefix + possibleCode.split('').reverse().join(''))];
+					} else {
+						manaSymbol = manaSymbols[findManaSymbolIndex(possibleCode)] || manaSymbols[findManaSymbolIndex(possibleCode.split('').reverse().join(''))];
+					}
 					var manaSymbolSpacing = textSize * 0.04 + textManaSpacing;
 					var manaSymbolWidth = manaSymbol.width * textSize * 0.78;
 					var manaSymbolHeight = manaSymbol.height * textSize * 0.78;
 					var manaSymbolX = currentX + canvasMargin + manaSymbolSpacing;
 					var manaSymbolY = canvasMargin + textSize * 0.34 - manaSymbolHeight / 2;
 					if (textObject.manaPlacement) {
-						manaSymbolX = scaleX(textObject.manaPlacement.x[manaPlacementCounter] || 0) + canvasMargin;
+						manaSymbolX = scaleWidth(textObject.manaPlacement.x[manaPlacementCounter] || 0) + canvasMargin;
 						manaSymbolY = canvasMargin;
-						currentY = scaleY(textObject.manaPlacement.y[manaPlacementCounter] || 0);
+						currentY = scaleHeight(textObject.manaPlacement.y[manaPlacementCounter] || 0);
 						manaPlacementCounter ++;
 						newLine = true;
 					} else if (textObject.manaLayout) {
-
+						var layoutOption = 0;
+						var manaSymbolCount = splitText.length - 1;
+						while (textObject.manaLayout[layoutOption].max < manaSymbolCount && layoutOption < textObject.manaLayout.length - 1) {
+							layoutOption ++;
+						}
+						var manaLayout = textObject.manaLayout[layoutOption];
+						if (manaLayout.pos[manaPlacementCounter] == undefined) {
+							manaLayout.pos[manaPlacementCounter] = [0, 0];
+						}
+						manaSymbolX = scaleWidth(manaLayout.pos[manaPlacementCounter][0] || 0) + canvasMargin;
+						manaSymbolY = canvasMargin;
+						currentY = scaleHeight(manaLayout.pos[manaPlacementCounter][1] || 0);
+						manaPlacementCounter ++;
+						manaSymbolWidth *= manaLayout.size;
+						manaSymbolHeight *= manaLayout.size;
+						newLine = true;
+					}
+					if (textObject.manaImageScale) {
+						currentX -= (textObject.manaImageScale - 1) * manaSymbolWidth;
+						manaSymbolX -= (textObject.manaImageScale - 1) / 2 * manaSymbolWidth;
+						manaSymbolY -= (textObject.manaImageScale - 1) / 2 * manaSymbolHeight;
+						manaSymbolWidth *= textObject.manaImageScale;
+						manaSymbolHeight *= textObject.manaImageScale;
 					}
 					//fake shadow begins
 					var fakeShadow = lineCanvas.cloneNode();

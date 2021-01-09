@@ -13,7 +13,8 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities({canvas:[1500, 2100, 0.044, 1/35], resetOthers:false});
 	//sets card version
-	card.version = 'margin';
+	// card.version = 'margin';
+	card.margins = true;
 	//art stuff
 	if (card.artBounds.width == 1) {
 		card.artBounds.width += 0.044;

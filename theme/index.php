@@ -18,7 +18,7 @@
 		<input id='background-url' class='input' type='url' placeholder='Enter a URL' onchange='changeThemeVar(this.value, "background");'>
 		<h4>Shift the Background's Hue</h4>
 		<input id='hue-rotate' class='input' type='range' min='0' max='360' step='1' oninput='changeThemeVar(this.value, "huerotate");'>
-		<h4>Enable Rainbow-Mode</h4>
+		<h4>Enable/Set Rainbow Speed</h4>
 		<input id='hue-rotate-auto' class='input' type='range' min='0' max='200' step='1' oninput='changeThemeVar(this.value, "rainbow");'>
 		<h3 class='margin-top'>Readable Areas</h3>
 		<h4>Adjust the Brightness</h4>

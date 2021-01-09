@@ -1,6 +1,9 @@
-document.querySelector('#hue-rotate').value = theme.huerotate;
-document.querySelector('#hue-rotate-auto').value = theme.rainbow;
-document.querySelector('#readable-brightness').value = theme.readablebrightness;
+function resetThemeControls() {
+	document.querySelector('#hue-rotate').value = theme.huerotate;
+	document.querySelector('#hue-rotate-auto').value = theme.rainbow;
+	document.querySelector('#readable-brightness').value = theme.readablebrightness;
+}
+resetThemeControls();
 
 var updateCSSTimer;
 var canUpdateCSS = true;
