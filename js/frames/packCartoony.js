@@ -1,5 +1,5 @@
 //defines available frames
-availableFrames = [{src:'/img/frames/m15/regular/m15FrameA.png', name:'unnamed'}];
+availableFrames = [{src:'/img/blank.png', name:'none'}];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
 //defines process for loading this version, if applicable
