@@ -173,7 +173,7 @@
 								<input id='art-artist' type='text' class='input' oninput='artistEdited(this.value);' placeholder='Artist'>
 							</div>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Position/scale your art (X, Y, Scale)</h5>
 							<div class='input-grid margin-bottom'>
 								<input id='art-x' type='number' class='input' oninput='artEdited();' value=0>
@@ -183,6 +183,10 @@
 							<div class='input-grid'>
 								<button class='input' onclick='autoFitArt();'>Auto Fit Art</button>
 							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='padding margin-bottom input-description'>Clears the art, making it blank</h5>
+							<button class='input margin-bottom' onclick='uploadArt(blank.src);'>Remove Art</button>
 						</div>
 					</div>
 					<div id='creator-menu-setSymbol' class='hidden'>
@@ -208,7 +212,7 @@
 								<p class='padding'>Generally, however, the set codes used by <a class='underline' href='https://scryfall.com/sets' target='_blank'>Scryfall</a> are accurate.</p>
 							</div>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Position/scale your Set Symbol (X, Y, Scale)</h5>
 							<div class='input-grid margin-bottom'>
 								<input id='setSymbol-x' type='number' class='input' oninput='setSymbolEdited();' value=0>
@@ -218,6 +222,10 @@
 							<div class='input-grid'>
 								<button class='input' onclick='resetSetSymbol();'>Reset Set Symbol</button>
 							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='padding margin-bottom input-description'>Clears the Set Symbol, making it blank</h5>
+							<button class='input margin-bottom' onclick='uploadSetSymbol(blank.src);'>Remove Set Symbol</button>
 						</div>
 					</div>
 					<div id='creator-menu-watermark' class='hidden'>
@@ -276,7 +284,7 @@
 								<input id='watermark-opacity' type='number' class='input' oninput='watermarkEdited();' value=40 step=1 min=0 max=100>
 							</div>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Position/scale your watermark (X, Y, Scale)</h5>
 							<div class='input-grid margin-bottom'>
 								<input id='watermark-x' type='number' class='input' oninput='watermarkEdited();' value=0>
@@ -286,6 +294,10 @@
 							<div class='input-grid'>
 								<button class='input' onclick='resetWatermark();'>Reset Watermark</button>
 							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='padding margin-bottom input-description'>Clears the watermark, making it blank</h5>
+							<button class='input margin-bottom' onclick='uploadWatermark(blank.src);'>Remove Watermark</button>
 						</div>
 					</div>
 					<div id='creator-menu-bottomInfo' class='hidden'>
@@ -314,10 +326,14 @@
 							<select id='load-card-options' class='input margin-bottom' type='text' onchange='loadCard(this.value);'></select>
 							<button class='input' onclick='deleteCard();'>Delete selected card</button>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='padding margin-bottom input-description'>Download/upload lists of saved cards</h5>
 							<button class='input margin-bottom' onclick='downloadSavedCards();'>Download all saved cards</button>
-							<input type='file' accept='.cardconjurer' class='input' oninput='uploadSavedCards(event);'>
+							<input type='file' accept='.cardconjurer,.txt' class='input' oninput='uploadSavedCards(event);'>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='padding margin-bottom input-description'>Deletes ALL saved cards</h5>
+							<button class='input margin-bottom' onclick='deleteSavedCards();'>Delete all saved cards</button>
 						</div>
 					</div>
 					<div id='creator-menu-tutorial' class='hidden'>
@@ -353,5 +369,5 @@
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator.js'></script>
+	<script defer src='/js/creator-1.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

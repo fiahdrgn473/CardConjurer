@@ -233,7 +233,6 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 			manaSymbol.backs = item[2];
 			for (var i = 0; i < item[2]; i ++) {
 				loadManaSymbols([manaSymbol.path.replace(manaSymbol.name, 'back' + i + item[1])])
-				// console.log(manaSymbol.path.replace(manaSymbol.name, 'back' + i + item[1]))
 			}
 		}
 		manaSymbol.width = size[0];
@@ -1195,12 +1194,6 @@ function saveCard(saveFromFile) {
 			}
 		}
 	}
-	if (!cardKeys.includes(cardKey)) {
-		cardKeys.push(cardKey);
-		cardKeys.sort();
-		localStorage.setItem('cardKeys', JSON.stringify(cardKeys));
-		loadAvailableCards(cardKeys);
-	}
 	if (saveFromFile) {
 		cardToSave = saveFromFile.data;
 	} else {
@@ -1210,59 +1203,73 @@ function saveCard(saveFromFile) {
 			frame.masks.forEach(mask => delete mask.image);
 		});
 	}
-	localStorage.setItem(cardKey, JSON.stringify(cardToSave));
+	try {
+		localStorage.setItem(cardKey, JSON.stringify(cardToSave));
+		if (!cardKeys.includes(cardKey)) {
+			cardKeys.push(cardKey);
+			cardKeys.sort();
+			localStorage.setItem('cardKeys', JSON.stringify(cardKeys));
+			loadAvailableCards(cardKeys);
+		}
+	} catch (error) {
+		notify('You have exceeded your 5MB of local storage, and your card has failed to save. If you would like to continue saving cards, please download all saved cards, then delete all saved cards to free up space.<br><br>Local storage is most often exceeded by uploading large images directly from your computer. If possible/convenient, using a URL avoids the need to save these large images.<br><br>Apologies for the inconvenience.');
+	}
 }
 async function loadCard(selectedCardKey) {
 	document.querySelector('#frame-list').innerHTML = null;
 	card = {};
 	card = JSON.parse(localStorage.getItem(selectedCardKey));
-	document.querySelector('#info-number').value = card.infoNumber;
-	document.querySelector('#info-rarity').value = card.infoRarity;
-	document.querySelector('#info-set').value = card.infoSet;
-	document.querySelector('#info-language').value = card.infoLanguage;
-	artistEdited(card.infoArtist);
-	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
-	loadTextOptions(card.text);
-	document.querySelector('#art-x').value = scaleX(card.artX);
-	document.querySelector('#art-y').value = scaleY(card.artY);
-	document.querySelector('#art-zoom').value = card.artZoom * 100;
-	uploadArt(card.artSource);
-	document.querySelector('#setSymbol-x').value = scaleX(card.setSymbolX);
-	document.querySelector('#setSymbol-y').value = scaleY(card.setSymbolY);
-	document.querySelector('#setSymbol-zoom').value = card.setSymbolZoom * 100;
-	uploadSetSymbol(card.setSymbolSource);
-	document.querySelector('#watermark-x').value = scaleX(card.watermarkX);
-	document.querySelector('#watermark-y').value = scaleY(card.watermarkY);
-	document.querySelector('#watermark-zoom').value = card.watermarkZoom * 100;
-	document.querySelector('#watermark-left').value = card.watermarkLeft;
-	document.querySelector('#watermark-right').value = card.watermarkRight;
-	document.querySelector('#watermark-opacity').value = card.watermarkOpacity * 100;
-	uploadWatermark(card.watermarkSource);
-	card.frames.reverse();
-	await card.frames.forEach(item => addFrame([], item));
-	card.frames.reverse();
-	if (card.onload) {
-		await loadScript(card.onload);
-		if (card.version.includes('planeswalker')) {
-			setTimeout(function(){
-				fixPlaneswalkerInputs(invertPlaneswalkerColors(true));
-			}, 1000);
+	if (card) {
+		document.querySelector('#info-number').value = card.infoNumber;
+		document.querySelector('#info-rarity').value = card.infoRarity;
+		document.querySelector('#info-set').value = card.infoSet;
+		document.querySelector('#info-language').value = card.infoLanguage;
+		artistEdited(card.infoArtist);
+		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
+		loadTextOptions(card.text);
+		document.querySelector('#art-x').value = scaleX(card.artX);
+		document.querySelector('#art-y').value = scaleY(card.artY);
+		document.querySelector('#art-zoom').value = card.artZoom * 100;
+		uploadArt(card.artSource);
+		document.querySelector('#setSymbol-x').value = scaleX(card.setSymbolX);
+		document.querySelector('#setSymbol-y').value = scaleY(card.setSymbolY);
+		document.querySelector('#setSymbol-zoom').value = card.setSymbolZoom * 100;
+		uploadSetSymbol(card.setSymbolSource);
+		document.querySelector('#watermark-x').value = scaleX(card.watermarkX);
+		document.querySelector('#watermark-y').value = scaleY(card.watermarkY);
+		document.querySelector('#watermark-zoom').value = card.watermarkZoom * 100;
+		document.querySelector('#watermark-left').value = card.watermarkLeft;
+		document.querySelector('#watermark-right').value = card.watermarkRight;
+		document.querySelector('#watermark-opacity').value = card.watermarkOpacity * 100;
+		uploadWatermark(card.watermarkSource);
+		card.frames.reverse();
+		await card.frames.forEach(item => addFrame([], item));
+		card.frames.reverse();
+		if (card.onload) {
+			await loadScript(card.onload);
+			if (card.version.includes('planeswalker')) {
+				setTimeout(function(){
+					fixPlaneswalkerInputs(invertPlaneswalkerColors(true));
+				}, 1000);
+			}
 		}
-	}
-	card.manaSymbols.forEach(item => loadScript(item));
-	//canvases
-	var canvasesResized = false;
-	canvasList.forEach(name => {
-		if (window[name + 'Canvas'].width != card.width * (1 + card.marginX) || window[name + 'Canvas'].height != card.height * (1 + card.marginY)) {
-			sizeCanvas(name);
-			canvasesResized = true;
+		card.manaSymbols.forEach(item => loadScript(item));
+		//canvases
+		var canvasesResized = false;
+		canvasList.forEach(name => {
+			if (window[name + 'Canvas'].width != card.width * (1 + card.marginX) || window[name + 'Canvas'].height != card.height * (1 + card.marginY)) {
+				sizeCanvas(name);
+				canvasesResized = true;
+			}
+		});
+		if (canvasesResized) {
+			drawTextBuffer();
+			drawFrames();
+			bottomInfoEdited();
+			watermarkEdited();
 		}
-	});
-	if (canvasesResized) {
-		drawTextBuffer();
-		drawFrames();
-		bottomInfoEdited();
-		watermarkEdited();
+	} else {
+		notify(selectedCardKey + ' failed to load.')
 	}
 }
 function deleteCard() {
@@ -1274,6 +1281,14 @@ function deleteCard() {
 		localStorage.setItem('cardKeys', JSON.stringify(cardKeys));
 		localStorage.removeItem(keyToDelete);
 		loadAvailableCards(cardKeys);
+	}
+}
+function deleteSavedCards() {
+	if (confirm('WARNING:\n\nALL of your saved cards will be deleted! If you would like to save these cards, please make sure you have downloaded them first. There is no way to undo this.')) {
+		var cardKeys = JSON.parse(localStorage.getItem('cardKeys'));
+		cardKeys.forEach(key => localStorage.removeItem(key));
+		localStorage.setItem('cardKeys', JSON.stringify([]));
+		loadAvailableCards([]);
 	}
 }
 async function downloadSavedCards() {
