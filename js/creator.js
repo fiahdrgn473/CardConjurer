@@ -3,7 +3,7 @@ var params = new URLSearchParams(window.location.search);
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
 	var prefix = 'https://card-conjurer.storage.googleapis.com';//'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
-	if (input.includes(prefix) || input.includes('http') || input.includes('data:image') || params.get('testing') == '') {
+	if (input.includes(prefix) || input.includes('http') || input.includes('data:image') || window.location.href.includes('localhost')) {
 		return input;
 	} else {
 		return prefix + input; //input.replace('/img/frames', prefix + '/img/frames');
@@ -874,7 +874,7 @@ function artFromScryfall(scryfallResponse) {
 	changeArtIndex();
 }
 function changeArtIndex() {
-	imageURL(scryfallArt[document.querySelector('#art-index').value - 1].image_uris.art_crop, uploadArt, "autoFit");
+	uploadArt(scryfallArt[document.querySelector('#art-index').value - 1].image_uris.art_crop, "autoFit");
 	artistEdited(scryfallArt[document.querySelector('#art-index').value - 1].artist);
 }
 //SET SYMBOL TAB
