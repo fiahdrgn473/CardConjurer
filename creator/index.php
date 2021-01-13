@@ -344,7 +344,7 @@
 								<h5 class='margin-top'>Cards are saved on your computer under your browser's localstorage, which usually has a limit of 5MB and cannot be changed.</h5>
 								<h5 class='margin-top'>Unfortunately, this means that if you save a lot of cards, you could run out of space.</h5>
 								<h5 class='margin-top'>Your localstorage runs out of space especially fast when you upload images directly from your computer, because the image itself has to be saved. However, if possible, uploading images via URL will save massive amounts of space, allowing you to save many more cards.</h5>
-								<h5 class='margin-top'>And if you do run out of space, don't worry. You can download all saved cards, then delete all saved cards,  freeing up all 5MB of space, and you can then reupload the downloaded cards via the file upload, under "Upload previously downloaded cards".</h5>
+								<h5 class='margin-top'>And if you do run out of space, don't worry! You can download all saved cards then delete all saved cards,  freeing up all 5MB of space. And when you'd like to edit the cards you previously downloaded/deleted, you can reupload them via the file upload (under "Upload previously downloaded cards").</h5>
 							</div>
 						</div>
 					</div>
