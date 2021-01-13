@@ -1284,7 +1284,7 @@ function deleteCard() {
 	}
 }
 function deleteSavedCards() {
-	if (confirm('WARNING:\n\nALL of your saved cards will be deleted! If you would like to save these cards, please make sure you have downloaded them first. There is no way to undo this.')) {
+	if (confirm('WARNING:\n\nALL of your saved cards will be deleted! If you would like to save these cards, please make sure you have downloaded them first. There is no way to undo this.\n\n(Press "OK" to delete your cards)')) {
 		var cardKeys = JSON.parse(localStorage.getItem('cardKeys'));
 		cardKeys.forEach(key => localStorage.removeItem(key));
 		localStorage.setItem('cardKeys', JSON.stringify([]));

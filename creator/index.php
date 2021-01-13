@@ -321,19 +321,31 @@
 							</div>
 						</div>
 						<div class='readable-background margin-bottom padding'>
-							<button class='input margin-bottom' onclick='saveCard();'>Save your card</button>
+							<h5 class='padding margin-bottom input-description'>Save your current card</h5>
+							<button class='input margin-bottom' onclick='saveCard();'>Save Card</button>
 							<h5 class='padding margin-bottom input-description'>Load a saved card</h5>
 							<select id='load-card-options' class='input margin-bottom' type='text' onchange='loadCard(this.value);'></select>
-							<button class='input' onclick='deleteCard();'>Delete selected card</button>
+							<h5 class='padding margin-bottom input-description'>Delete selected card</h5>
+							<button class='input' onclick='deleteCard();'>Delete Card</button>
 						</div>
 						<div class='readable-background padding margin-bottom'>
-							<h5 class='padding margin-bottom input-description'>Download/upload lists of saved cards</h5>
-							<button class='input margin-bottom' onclick='downloadSavedCards();'>Download all saved cards</button>
-							<input type='file' accept='.cardconjurer,.txt' class='input' oninput='uploadSavedCards(event);'>
+							<h5 class='padding margin-bottom input-description'>Download all saved cards</h5>
+							<button class='input margin-bottom' onclick='downloadSavedCards();'>Download All</button>
+							<h5 class='padding margin-bottom input-description'>Upload previously downloaded cards</h5>
+							<input type='file' accept='.cardconjurer,.txt' class='input margin-bottom' oninput='uploadSavedCards(event);'>
+							<h5 class='padding margin-bottom input-description'>Delete ALL saved cards</h5>
+							<button class='input margin-bottom' onclick='deleteSavedCards();'>Delete All</button>
 						</div>
-						<div class='readable-background padding'>
-							<h5 class='padding margin-bottom input-description'>Deletes ALL saved cards</h5>
-							<button class='input margin-bottom' onclick='deleteSavedCards();'>Delete all saved cards</button>
+						<div class='readable-background padding margin-bottom'>
+							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
+								How are my cards saved?
+							</h5>
+							<div class='padding'>
+								<h5 class='margin-top'>Cards are saved on your computer under your browser's localstorage, which usually has a limit of 5MB and cannot be changed.</h5>
+								<h5 class='margin-top'>Unfortunately, this means that if you save a lot of cards, you could run out of space.</h5>
+								<h5 class='margin-top'>Your localstorage runs out of space especially fast when you upload images directly from your computer, because the image itself has to be saved. However, if possible, uploading images via URL will save massive amounts of space, allowing you to save many more cards.</h5>
+								<h5 class='margin-top'>And if you do run out of space, don't worry. You can download all saved cards, then delete all saved cards,  freeing up all 5MB of space, and you can then reupload the downloaded cards via the file upload, under "Upload previously downloaded cards".</h5>
+							</div>
 						</div>
 					</div>
 					<div id='creator-menu-tutorial' class='hidden'>
