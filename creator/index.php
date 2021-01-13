@@ -131,6 +131,7 @@
 									<h5>{left}</h5><h5>Aligns text to the left</h5>
 									<h5>{center{</h5><h5>Aligns text to the center</h5>
 									<h5>{right}</h5><h5>Aligns text to the right</h5>
+									<h5>{permashift#,$}</h5><h5>Moves the text # pixels right and $ pixels down. Recommended for moving the text over large distances</h5>
 									<h5>{up#}</h5><h5>Moves the text # pixels up</h5>
 									<h5>{down#}</h5><h5>Moves the text # pixels down</h5>
 									<h5>{left#}</h5><h5>Moves the text # pixels left</h5>
