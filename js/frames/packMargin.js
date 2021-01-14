@@ -16,21 +16,28 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	// card.version = 'margin';
 	card.margins = true;
 	//art stuff
+	var changedArtBounds = false;
 	if (card.artBounds.width == 1) {
 		card.artBounds.width += 0.044;
+		changedArtBounds = true;
 	}
 	if (card.artBounds.x == 0) {
 		card.artBounds.x = -0.044;
 		card.artBounds.width += 0.044;
+		changedArtBounds = true;
 	}
 	if (card.artBounds.height == 1) {
 		card.artBounds.height += 1/35;
+		changedArtBounds = true;
 	}
 	if (card.artBounds.y == 0) {
 		card.artBounds.y = -1/35;
 		card.artBounds.height += 1/35;
+		changedArtBounds = true;
 	}
-	autoFitArt();
+	if (changedArtBounds) {
+		autoFitArt();
+	}
 	//runs anything that needs to run
 	drawTextBuffer();
 	drawFrames();
