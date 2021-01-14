@@ -39,6 +39,12 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		autoFitArt();
 	}
 	//runs anything that needs to run
+	if (card.version.includes('planeswalker')) {
+		planeswalkerEdited();
+	}
+	if (card.version.includes('saga')) {
+		sagaEdited();
+	}
 	drawTextBuffer();
 	drawFrames();
 	bottomInfoEdited();
