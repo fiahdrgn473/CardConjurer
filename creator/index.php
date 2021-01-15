@@ -383,5 +383,5 @@
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-1.js'></script>
+	<script defer src='/js/creator-2.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
