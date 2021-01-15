@@ -64,6 +64,7 @@
 									<option value='Token-1'>Tokens</option>
 									<option value='Saga'>Sagas</option>
 									<option value='Planeswalker'>Planeswalkers</option>
+									<option value='DFC'>Transform</option>
 									<option disabled>Special Frames</option>
 									<option value='Showcase-1'>Showcase Frames</option>
 									<option value='Promo'>Promos (Tall Art)</option>

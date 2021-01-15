@@ -303,7 +303,7 @@ function loadFramePack(frameOptions = availableFrames) {
 			this.parentElement.classList.remove('hidden');
 		}
 		if (!item.noThumb && !item.src.includes('/img/black.png')) {
-			frameOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png'));
+			frameOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png').replace('.svg', 'Thumb.png'));
 		} else {
 			frameOptionImage.src = fixUri(item.src);
 		}
@@ -332,7 +332,7 @@ function frameOptionClicked(event) {
 			maskOptionImage.onload = function() {
 				this.parentElement.classList.remove('hidden');
 			}
-			maskOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png'));
+			maskOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png').replace('.svg', 'Thumb.png'));
 			maskOptionLabel = document.createElement('p');
 			maskOptionLabel.innerHTML = item.name;
 			maskOption.appendChild(maskOptionLabel);
@@ -873,8 +873,10 @@ function artFromScryfall(scryfallResponse) {
 	changeArtIndex();
 }
 function changeArtIndex() {
-	uploadArt(scryfallArt[document.querySelector('#art-index').value - 1].image_uris.art_crop, "autoFit");
-	artistEdited(scryfallArt[document.querySelector('#art-index').value - 1].artist);
+	if (scryfallArt[document.querySelector('#art-index').value - 1].image_uris) {
+		uploadArt(scryfallArt[document.querySelector('#art-index').value - 1].image_uris.art_crop, "autoFit");
+		artistEdited(scryfallArt[document.querySelector('#art-index').value - 1].artist);
+	}
 }
 //SET SYMBOL TAB
 function uploadSetSymbol(imageSource, otherParams) {
