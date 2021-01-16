@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Regular Frames', value:'M15Regular'},
+	{name:'Lands', value:'M15Lands'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},

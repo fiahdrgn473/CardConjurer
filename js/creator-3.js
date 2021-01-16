@@ -1364,5 +1364,5 @@ function fetchScryfallData(cardName, callback = console.log) {
 }
 //Initialization
 document.querySelector('#info-number').value = date.getFullYear();
-loadScript('/js/frames/groupStandard.js');
+loadScript('/js/frames/groupStandard-1.js');
 loadAvailableCards();
