@@ -1,5 +1,5 @@
 <?php include('../globalHTML/header.php'); ?>
-    <title>Ask Urza 2.0</title>
+    <title>Phyrexian Text Generator</title>
     <h2 class='readable-background header-extension title center margin-bottom-large'>Phyrexian Text Generator</h2>
     <style>
         textarea.input.phyrexian-textarea {
