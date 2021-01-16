@@ -333,7 +333,7 @@
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='padding margin-bottom input-description'>Download all saved cards</h5>
 							<button class='input margin-bottom' onclick='downloadSavedCards();'>Download All</button>
-							<h5 class='padding margin-bottom input-description'>Upload previously downloaded cards</h5>
+							<h5 class='padding margin-bottom input-description'>Upload previously downloaded file of saved cards (downloaded from above)</h5>
 							<input type='file' accept='.cardconjurer,.txt' class='input margin-bottom' oninput='uploadSavedCards(event);'>
 							<h5 class='padding margin-bottom input-description'>Delete ALL saved cards</h5>
 							<button class='input margin-bottom' onclick='deleteSavedCards();'>Delete All</button>
