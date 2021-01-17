@@ -840,7 +840,7 @@ function initialize() {
 	window.updateTextDelay = setTimeout(drawCardTextReal, 250)
 	setTimeout(bottomInfoUpdated, 500)
 	textCodeReference()
-	notify("Card Conjurer will be moving to a new hosting provider sometime this month. Along with the move, there will be some major updates to the card creator. Unfortunately, previously saved cards will not be compatible new system... But fear not! I will continue hosting the old version under cardconjurer.com/old for the foreseeable future. So, you may want to download all saved cards if you'd like to continue editing them. Regardless, please forgive any downtime/problems during the month of December as we move.", '#ffffaae0')
+	notify("You are currently using the old version of Card Conjurer. Please go to <a href='https://cardconjurer.com/creator/'>the new version</a> if you are here by mistake.", '#ffffaae0')
 }
 
 function bottomInfoUpdated() {
