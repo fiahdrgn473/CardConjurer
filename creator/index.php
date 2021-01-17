@@ -60,7 +60,7 @@
 							<div class='input-grid margin-bottom'>
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
-									<option value='Standard-1'>Regular</option>
+									<option value='Standard-2'>Regular</option>
 									<option value='Token-1'>Tokens</option>
 									<option value='Saga'>Sagas</option>
 									<option value='Planeswalker'>Planeswalkers</option>
@@ -383,5 +383,5 @@
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-3.js'></script>
+	<script defer src='/js/creator-4.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

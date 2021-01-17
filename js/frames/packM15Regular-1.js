@@ -20,7 +20,9 @@ availableFrames = [
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/regular/m15PTM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/regular/m15PTA.png', bounds:bounds},
 	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds},
-	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/regular/m15PTV.png', bounds:bounds}
+	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/regular/m15PTV.png', bounds:bounds},
+	{name:'Midnight Frame', src:'/img/frames/m15/custom/m15Midnight.png', masks:masks},
+	{name:'PT Inner Fill', src:'/img/frames/m15/custom/m15CustomPTInnerFill.png', bounds:{x:0.79, y:0.8977, width:0.1414, height:0.04}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

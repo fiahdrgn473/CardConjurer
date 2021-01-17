@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Commander Legends', value:'CommanderLegends'},
 	{name:'Zendikar Rising', value:'ZendikarRising'},
 	{name:'M21', value:'M21'},
+	{name:'Theros Beyond Death', value:'M15NyxShowcase'},
 	{name:'Eldraine Storybooks', value:'Storybook'},
 	{name:'Generic Showcase', value:'GenericShowcase'},
 	{name:'Masterpieces/Other', value:'disabled'},
