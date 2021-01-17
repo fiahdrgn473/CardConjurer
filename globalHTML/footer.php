@@ -11,6 +11,7 @@
 			<h5><a href='/creator'>Creator</a></h5>
 			<h5><a href='/old'>Old Creator</a></h5>
 			<h5><a href='/askurza'>Ask Urza</a></h5>
+			<h5><a href='/phyrexian'>Phyrexian Generator</a></h5>
 			<h5><a href='/about'>About</a></h5>
 			<h5><a href='/theme'>Theme Editor</a></h5>
 		</div>
