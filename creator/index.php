@@ -56,7 +56,7 @@
 					<div id='creator-menu-frame'>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='margin-bottom padding input-description'>
-								Select a Frame Group and a Frame Pack, then you may Load the selected Frame Version</h5>
+								Select a Frame Group and a Frame Pack, then you may Load the selected Frame Version (loading the frame version configures text placement, art size, etc...)</h5>
 							<div class='input-grid margin-bottom'>
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
