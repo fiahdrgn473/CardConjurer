@@ -1007,7 +1007,9 @@ function getSetSymbolWatermark(setCode, targetImage = watermark) {
 //Bottom Info Tab
 async function loadBottomInfo(textObjects = []) {
 	await bottomInfoContext.clearRect(0, 0, bottomInfoCanvas.width, bottomInfoCanvas.height);
+	card.bottomInfo = null;
 	card.bottomInfo = textObjects;
+	await bottomInfoEdited();
 	bottomInfoEdited();
 }
 async function bottomInfoEdited() {
