@@ -644,7 +644,7 @@ textarea.input {
 	text-align: center;
 	padding: 0.5rem 0;
 }
-.frame-element-editor {
+.frame-element-editor, .textbox-editor {
 	display: none;
 	position: fixed;
 	max-width: calc(100vw - 6rem);
@@ -668,13 +668,13 @@ textarea.input {
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 	grid-gap: 1rem;
 }
-.frame-element-editor.opened {
+.frame-element-editor.opened, .textbox-editor.opened {
 	display: grid;
 }
-.frame-element-editor > .frame-element-editor-title {
+.frame-element-editor > .frame-element-editor-title, .textbox-editor > .textbox-editor-title {
 	grid-column: 1 / -2;
 }
-.frame-element-editor > .frame-element-editor-close {
+.frame-element-editor > .frame-element-editor-close, .textbox-editor > .textbox-editor-close {
 	cursor: pointer;
 	width: auto;
 	height: auto;

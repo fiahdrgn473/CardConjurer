@@ -38,6 +38,26 @@
 				<input id='frame-editor-erase'  class='input' type='checkbox' placeholder='Erase'>
 			</div>
 		</div>
+		<div id='textbox-editor' class='textbox-editor'>
+			<h2 class='textbox-editor-title'>Textbox Editor</h2>
+			<h2 class='textbox-editor-close' onclick='this.parentElement.classList.remove("opened");'>X</h2>
+			<div>
+				<h5 class='input-description'>X</h5>
+				<input id='textbox-editor-x' class='input' type='number' placeholder='X' step='1'>
+			</div>
+			<div>
+				<h5 class='input-description'>Y</h5>
+				<input id='textbox-editor-y' class='input' type='number' placeholder='X' step='1'>
+			</div>
+			<div>
+				<h5 class='input-description'>Width</h5>
+				<input id='textbox-editor-width' class='input' type='number' placeholder='X' step='1'>
+			</div>
+			<div>
+				<h5 class='input-description'>Height</h5>
+				<input id='textbox-editor-height' class='input' type='number' placeholder='X' step='1'>
+			</div>
+		</div>
 		<!-- Regular stuff -->
 		<div class='creator-grid margin-bottom-large'>
 			<canvas class='creator-canvas box-shadow' id='previewCanvas' width='750' height='1050'></canvas>
@@ -113,7 +133,9 @@
 						</div>
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Enter card text</h5>
-							<textarea id='text-editor' class='input' oninput='textEdited();'></textarea>
+							<textarea id='text-editor' class='input margin-bottom' oninput='textEdited();'></textarea>
+							<h5 class='margin-bottom padding input-description'>Edit the placement and size of the selected textbox</h5>
+							<button class='input' onclick='textboxEditor();'>Edit Bounds</button>
 						</div>
 						<div class='readable-background padding'>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
@@ -383,5 +405,5 @@
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-4.js'></script>
+	<script defer src='/js/creator-5.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

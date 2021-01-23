@@ -472,6 +472,18 @@ function textOptionClicked(event) {
 	document.querySelector('#text-editor').value = Object.entries(card.text)[selectedTextIndex][1].text;
 	selectSelectable(event);
 }
+function textboxEditor() {
+	var selectedTextbox = card.text[Object.keys(card.text)[selectedTextIndex]];
+	document.querySelector('#textbox-editor').classList.add('opened');
+	document.querySelector('#textbox-editor-x').value = scaleWidth(selectedTextbox.x || 0);
+	document.querySelector('#textbox-editor-x').onchange = (event) => {selectedTextbox.x = (event.target.value / card.width); textEdited();}
+	document.querySelector('#textbox-editor-y').value = scaleHeight(selectedTextbox.y || 0);
+	document.querySelector('#textbox-editor-y').onchange = (event) => {selectedTextbox.y = (event.target.value / card.height); textEdited();}
+	document.querySelector('#textbox-editor-width').value = scaleWidth(selectedTextbox.width || 1);
+	document.querySelector('#textbox-editor-width').onchange = (event) => {selectedTextbox.width = (event.target.value / card.width); textEdited();}
+	document.querySelector('#textbox-editor-height').value = scaleHeight(selectedTextbox.height || 1);
+	document.querySelector('#textbox-editor-height').onchange = (event) => {selectedTextbox.height = (event.target.value / card.height); textEdited();}
+}
 function textEdited() {
 	card.text[Object.keys(card.text)[selectedTextIndex]].text = document.querySelector('#text-editor').value;
 	drawTextBuffer();
