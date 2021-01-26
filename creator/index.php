@@ -376,11 +376,14 @@ include('../globalHTML/header-1.php');
 						</div>
 					</div>
 					<div id='creator-menu-tutorial' class='hidden'>
-						<div class='video margin-bottom'>
-							<iframe width="560" height="315" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+						<div class='padding readable-background margin-bottom'>
+							<h5 class='padding input-description'>This video is currently outdated, but still reflects the general process for making cards</h5>
 						</div>
-						<div class='padding readable-background'>
-							<h5 class='padding input-description'>(This video is currently outdated, but still reflects the general process for making cards)</h5>
+						<div class='padding readable-background margin-bottom'>
+							<h5 class='padding input-description'>The biggest difference is that you must click the "Load Frame Version" button after selecting your frame pack to load necessary details, such as text placement.</h5>
+						</div>
+						<div class='video'>
+							<iframe width="560" height="315" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
 						</div>
 					</div>
 				</div>
