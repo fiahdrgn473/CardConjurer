@@ -26,12 +26,17 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
+  <loc>https://cardconjurer.com/phyrexian</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
   <loc>https://cardconjurer.com/askurza</loc>
   <priority>0.60</priority>
   <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>https://cardconjurer.com/oldcreator</loc>
+  <loc>https://cardconjurer.com/old</loc>
   <priority>0.20</priority>
   <changefreq>monthly</changefreq>
 </url>
