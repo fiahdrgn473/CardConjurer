@@ -262,6 +262,7 @@ function drawFrames() {
 				frameContext.globalAlpha = 0;
 			}
 			var bounds = item.bounds || {};
+			var ogBounds = item.ogBounds || bounds;
 			frameX = Math.round(scaleX(bounds.x || 0));
 			frameY = Math.round(scaleY(bounds.y || 0));
 			frameWidth = Math.round(scaleWidth(bounds.width || 1));
@@ -269,7 +270,7 @@ function drawFrames() {
 			frameMaskingContext.globalCompositeOperation = 'source-over';
 			frameMaskingContext.drawImage(black, 0, 0, frameMaskingCanvas.width, frameMaskingCanvas.height);
 			frameMaskingContext.globalCompositeOperation = 'source-in';
-			item.masks.forEach(mask => frameMaskingContext.drawImage(mask.image, scaleX(0), scaleY(0), scaleWidth(1), scaleHeight(1)));
+			item.masks.forEach(mask => frameMaskingContext.drawImage(mask.image, scaleX((bounds.x || 0) - (ogBounds.x || 0) - ((ogBounds.x || 0) * ((bounds.width || 1) / (ogBounds.width || 1) - 1))), scaleY((bounds.y || 0) - (ogBounds.y || 0) - ((ogBounds.y || 0) * ((bounds.height || 1) / (ogBounds.height || 1) - 1))), scaleWidth((bounds.width || 1) / (ogBounds.width || 1)), scaleHeight((bounds.height || 1) / (ogBounds.height || 1))));
 			frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
 			if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
 			frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
@@ -429,6 +430,9 @@ function frameElementClicked(event) {
 		var selectedFrame = card.frames[Array.from(selectedFrameElement.parentElement.children).indexOf(selectedFrameElement)];
 		document.querySelector('#frame-element-editor').classList.add('opened');
 		selectedFrame.bounds = selectedFrame.bounds || {};
+		if (selectedFrame.ogBounds == undefined) {
+			selectedFrame.ogBounds = JSON.parse(JSON.stringify(selectedFrame.bounds));
+		}
 		document.querySelector('#frame-editor-x').value = scaleWidth(selectedFrame.bounds.x || 0);
 		document.querySelector('#frame-editor-x').onchange = (event) => {selectedFrame.bounds.x = (event.target.value / card.width); drawFrames();}
 		document.querySelector('#frame-editor-y').value = scaleHeight(selectedFrame.bounds.y || 0);

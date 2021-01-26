@@ -405,5 +405,5 @@
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-5.js'></script>
+	<script defer src='/js/creator-6.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
