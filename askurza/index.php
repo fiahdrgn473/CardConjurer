@@ -1,5 +1,8 @@
-<?php include('../globalHTML/header.php'); ?>
-    <title>Ask Urza 2.0</title>
+<?php
+$title = 'Ask Urza 2.0';
+$desc = 'Select random loyalty abilities from across all of Magic’s past planeswalkers. Gain 3 life? What a dud... Two extra turns? Yes please! Urza can do it all';
+include('../globalHTML/header-1.php');
+?>
     <h2 class='readable-background header-extension title center margin-bottom-large'>Ask Urza 2.0</h2>
     <style>
         .askUrzaGrid {

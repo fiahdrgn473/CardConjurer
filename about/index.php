@@ -1,5 +1,8 @@
-<?php include('../globalHTML/header.php'); ?>
-	<title>Card Conjurer - About</title>
+<?php
+$title = 'Card Conjurer - About';
+$desc = 'Card Conjurer has gone through a handful of major remakes. Click here for the full story!';
+include('../globalHTML/header-1.php');
+?>
 	<h2 class='readable-background header-extension title center'>About Me</h2>
 	<div class='layer center'></div>
 	<div class='layer center'>

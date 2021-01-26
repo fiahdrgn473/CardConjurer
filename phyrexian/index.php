@@ -1,5 +1,8 @@
-<?php include('../globalHTML/header.php'); ?>
-    <title>Phyrexian Text Generator</title>
+<?php
+$title = 'Phyrexian Text Generator';
+$desc = 'Generate random strands of phyrexian text for use with Card Conjurer, the custom Magic: The Gathering card creator';
+include('../globalHTML/header-1.php');
+?>
     <h2 class='readable-background header-extension title center margin-bottom-large'>Phyrexian Text Generator</h2>
     <style>
         textarea.input.phyrexian-textarea {

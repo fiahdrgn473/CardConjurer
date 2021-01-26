@@ -1,5 +1,8 @@
-<?php include('../globalHTML/header.php'); ?>
-	<title>Card Conjurer - Legal</title>
+<?php
+$title = 'Card Conjurer - Legal';
+$desc = 'One does not simply make custom cards. Inform yourself on any rules and restrictions by reading these terms and conditions.';
+include('../globalHTML/header-1.php');
+?>
 	<h2 class='readable-background header-extension title center margin-bottom-large'>Terms and Conditions</h2>
 	<div class='main-content'>
 		<div class='readable-background layer margin-bottom-large'>

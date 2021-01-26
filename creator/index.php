@@ -1,5 +1,8 @@
-<?php include('../globalHTML/header.php'); ?>
-	<title>Card Conjurer - Creator</title>
+<?php
+$title = 'Card Conjurer - Creator';
+$desc = 'Create custom Magic: The Gathering cards on any web-enabled device. Make creatures, tokens, planeswalkers, and more in showcase frames and high resolutions';
+include('../globalHTML/header-1.php');
+?>
 	<link rel="preload" href="/fonts/beleren-b.ttf" as="font" type="font/ttf" crossorigin="anonymous" as='font'>
 	<link rel="preload" href="/fonts/beleren-bsc.ttf" as="font" type="font/ttf" crossorigin="anonymous" as='font'>
 	<link rel="preload" href="/fonts/gotham-medium.ttf" as="font" type="font/ttf" crossorigin="anonymous" as='font'>

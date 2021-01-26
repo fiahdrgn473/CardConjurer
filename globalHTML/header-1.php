@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="description">
-	<meta name="keywords" content="keywords">
+	<meta name="description" content="<?php echo $desc; ?>">
+	<meta name="keywords" content="mtg, magic, card, creator, custom, maker">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,6 +17,7 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<script src='/js/themes.js'></script>
 	<script defer src='/js/main-1.js'></script>
+	<title><?php echo $title; ?></title>
 </head>
 <body>
 	<div class='background'></div>
