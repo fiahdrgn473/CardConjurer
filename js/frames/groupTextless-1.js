@@ -2,6 +2,7 @@ loadFramePacks([
 	{name:'Generic Showcase', value:'TextlessGenericShowcase'},
 	{name:'Inventions', value:'TextlessInvention'},
 	{name:'Unstable Basics', value:'Unstable'},
+	{name:'Zendikar Basics', value:'ZendikarBasic'},
 	{name:'Seventh', value:'SeventhTextless'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},

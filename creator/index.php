@@ -91,7 +91,7 @@ include('../globalHTML/header-1.php');
 									<option disabled>Special Frames</option>
 									<option value='Showcase-1'>Showcase Frames</option>
 									<option value='Promo'>Promos (Tall Art)</option>
-									<option value='Textless'>Textless/Fullart</option>
+									<option value='Textless-1'>Textless/Fullart</option>
 									<option value='Modal'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
