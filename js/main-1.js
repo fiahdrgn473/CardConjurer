@@ -8,7 +8,7 @@ function toggleMenu() {
 		document.querySelector('.menu').classList.add('menu-visible');
 	}
 }
-function notify(message = '') {
+function notify(message = '', seconds) {
 	var notification = document.createElement('div');
 	notification.classList = 'notification padding';
 	var notificationMessage = document.createElement('h4');
@@ -19,6 +19,9 @@ function notify(message = '') {
 	close.onclick = closeNotification;
 	notification.appendChild(close);
 	document.querySelector('.notification-container').appendChild(notification);
+	if (seconds) {
+		setTimeout(function(){close.click();}, seconds * 1000)
+	}
 }
 function closeNotification(event) {
 	var target = event.target.closest('.notification');

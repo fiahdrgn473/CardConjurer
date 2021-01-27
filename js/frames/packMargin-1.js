@@ -5,6 +5,7 @@ availableFrames = [
 	{name:'Black Border Extension', src:'/img/frames/margins/blackBorderExtension.png', bounds:bounds},
 	{name:'Borderless Border Extension', src:'/img/frames/margins/borderlessBorderExtension.png', bounds:bounds},
 	{name:'Box Topper Border Extension', src:'/img/frames/margins/boxTopperBorderExtension.png', bounds:bounds},
+	{name:'Black Corners', src:'/img/frames/margins/blackCorners.png', bounds:bounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

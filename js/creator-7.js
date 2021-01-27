@@ -23,7 +23,12 @@ art.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = 
 art.onload = artEdited;
 //set symbol
 setSymbol = new Image(); setSymbol.crossOrigin = 'anonymous'; setSymbol.src = blank.src;
-setSymbol.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
+setSymbol.onerror = function() {
+	if (this.src.includes('gatherer.wizards.com')) {
+		notify('<a target="_blank" href="http' + this.src.split('http')[2] + '">Loading the set symbol from Gatherer failed. Please check this link to see if it exists. If it does, it may be necessary to manually download and upload the image.</a>', 30);
+	}
+	if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}
+}
 setSymbol.onload = setSymbolEdited;
 //watermark
 watermark = new Image(); watermark.crossOrigin = 'anonymous'; watermark.src = blank.src;
@@ -1079,7 +1084,7 @@ function drawCard() {
 //DOWNLOADING
 async function downloadCard() {
 	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
-		notify('You must credit an artist before downloading!');
+		notify('You must credit an artist before downloading!', 10);
 	} else {
 		var download = document.createElement('a');
 		var imageName = card.text.title.text;
@@ -1247,16 +1252,16 @@ async function loadCard(selectedCardKey) {
 		artistEdited(card.infoArtist);
 		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 		loadTextOptions(card.text);
-		document.querySelector('#art-x').value = scaleX(card.artX);
-		document.querySelector('#art-y').value = scaleY(card.artY);
+		document.querySelector('#art-x').value = scaleX(card.artX) - scaleWidth(card.marginX);
+		document.querySelector('#art-y').value = scaleY(card.artY) - scaleHeight(card.marginY);
 		document.querySelector('#art-zoom').value = card.artZoom * 100;
 		uploadArt(card.artSource);
-		document.querySelector('#setSymbol-x').value = scaleX(card.setSymbolX);
-		document.querySelector('#setSymbol-y').value = scaleY(card.setSymbolY);
+		document.querySelector('#setSymbol-x').value = scaleX(card.setSymbolX) - scaleWidth(card.marginX);
+		document.querySelector('#setSymbol-y').value = scaleY(card.setSymbolY) - scaleHeight(card.marginY);
 		document.querySelector('#setSymbol-zoom').value = card.setSymbolZoom * 100;
 		uploadSetSymbol(card.setSymbolSource);
-		document.querySelector('#watermark-x').value = scaleX(card.watermarkX);
-		document.querySelector('#watermark-y').value = scaleY(card.watermarkY);
+		document.querySelector('#watermark-x').value = scaleX(card.watermarkX) - scaleWidth(card.marginX);
+		document.querySelector('#watermark-y').value = scaleY(card.watermarkY) - scaleHeight(card.marginY);
 		document.querySelector('#watermark-zoom').value = card.watermarkZoom * 100;
 		document.querySelector('#watermark-left').value = card.watermarkLeft;
 		document.querySelector('#watermark-right').value = card.watermarkRight;
@@ -1289,7 +1294,7 @@ async function loadCard(selectedCardKey) {
 			watermarkEdited();
 		}
 	} else {
-		notify(selectedCardKey + ' failed to load.')
+		notify(selectedCardKey + ' failed to load.', 10)
 	}
 }
 function deleteCard() {
@@ -1374,7 +1379,7 @@ function fetchScryfallData(cardName, callback = console.log) {
 			callback(JSON.parse(this.responseText));
 			// JSON.parse(this.responseText);
 		} else if (this.readyState == 4 && this.status == 404) {
-			notify('No cards found for "' + cardName + '"');
+			notify('No cards found for "' + cardName + '"', 10);
 		}
 	}
 	xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D' + cardName.replace(/ /g, '_'), true);

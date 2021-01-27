@@ -95,7 +95,7 @@ include('../globalHTML/header-1.php');
 									<option value='Modal'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
-									<option value='Misc'>Old/Misc</option>
+									<option value='Misc-1'>Old/Misc</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
 							</div>
@@ -411,5 +411,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-6.js'></script>
+	<script defer src='/js/creator-7.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
