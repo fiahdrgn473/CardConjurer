@@ -36,8 +36,12 @@
 	src: url("/fonts/goudy-medieval.ttf");
 }
 @font-face {
-	font-family: phyrexian;
+	font-family: phyrexianold;
 	src: url("/fonts/phyrexian.ttf");
+}
+@font-face {
+	font-family: phyrexian;
+	src: url("/fonts/phy.ttf");
 }
 @font-face {
 	font-family: Montserrat-SemiBold;
