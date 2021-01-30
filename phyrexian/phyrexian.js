@@ -1,21 +1,21 @@
-var randomCharacters = [/*'*',*/ 'N', 'V', 'O', 'A', 'I', 'T', '^', '>', 'M', '<', 'E', 'Q', 'G', 'J', 'L', 'K', 'F', 'H', '"', 'Z', /*'X',*/ '`', 'r', 't', /*'_',*/ 'v', 'x', 'j']
+var randomCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '%', '&', ','];
 
 function generatePhyrexianText() {
-    var inputText = document.getElementById('inputText').value
-    var outputText = ''
-    var paragraphs = inputText.split('\n')
+    var inputText = document.getElementById('inputText').value;
+    var outputText = '';
+    var paragraphs = inputText.split('\n');
     for (var i = 0; i < paragraphs.length; i ++) {
-        var sentences = paragraphs[i].split('. ')
+        var sentences = paragraphs[i].split('. ');
         for (var j = 0; j < sentences.length; j ++) {
-            outputText += '['
+            outputText += '|';
             for (var k = 0; k < sentences[j].length - 2; k ++) {
-                outputText += randomCharacters[Math.floor(Math.random() * randomCharacters.length)]
+                outputText += randomCharacters[Math.floor(Math.random() * randomCharacters.length)];
             }
-            outputText += '] '
+            outputText += '. ';
         }
         if (i != paragraphs.length - 1) {
-            outputText += '\n'
+            outputText += '\n';
         }
     }
-    document.getElementById('outputText').value = outputText
+    document.getElementById('outputText').value = outputText;
 }
