@@ -33,3 +33,53 @@ window.onload = function() {
 		element.autocomplete = 'off';
 	});
 }
+
+// Drop to upload
+const droppables = document.querySelectorAll('.drop-area');
+Array.from(droppables).forEach(element => {
+	element.addEventListener('dragenter', dropEnter, false);
+	element.addEventListener('dragleave', dropLeave, false);
+	element.addEventListener('dragover', dropOver, false);
+	element.addEventListener('drop', dropDrop, false);
+})
+function dropEnter(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	e.target.closest('.drop-area').classList.add('hover');
+}
+function dropLeave(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	e.target.closest('.drop-area').classList.remove('hover');
+}
+function dropOver(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	e.target.closest('.drop-area').classList.add('hover');
+}
+function dropDrop(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	e.target.closest('.drop-area').classList.remove('hover');
+	destination = window[e.target.closest('.drop-area').children[1].getAttribute('data-dropFunction')];
+	otherParams = window[e.target.closest('.drop-area').children[1].getAttribute('data-otherParams')];
+	uploadFiles(e.dataTransfer.files, destination, otherParams);
+}
+async function uploadFiles(filesRaw, destination, otherParams) {
+	var files = ([...filesRaw]);
+	if (files.length > 9) {
+		if (!confirm('You are uploading ' + files.length + ' images. Would you like to continue?')) {
+			return;
+		}
+	}
+	files.forEach(file => {
+		var reader = new FileReader();
+		reader.onloadend = function () {
+			destination(reader.result, otherParams);
+		}
+		reader.onerror = function () {
+			destination('/img/blank.png', otherParams);
+		}
+		reader.readAsDataURL(file);
+	})
+}
