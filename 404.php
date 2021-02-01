@@ -1,4 +1,4 @@
-<?php include('globalHTML/header.php'); ?>
+<?php include('globalHTML/header-1.php'); ?>
 	<title>404 - Card Conjurer</title>
 	<div class='layer center'>
 		<h2 class='padding margin-bottom' style='font-size: 10rem;'>404</h2>
