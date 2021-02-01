@@ -1,24 +1,15 @@
 //Configure sizes
-const ppi = 600;
-const pageWidth = 8.5 * ppi;
-const pageHeight = 11 * ppi;
-const cardWidth = 2.5 * ppi;
-const cardHeight = 3.5 * ppi;
-const cardMarginX = 10;
-const cardMarginY = 10;
+var ppi = 600;
+var pageWidth = 8.5 * ppi;
+var pageHeight = 11 * ppi;
+var cardWidth = 2.5 * ppi;
+var cardHeight = 3.5 * ppi;
+var cardMarginX = 10;
+var cardMarginY = 10;
 //Prepare variables/canvas/context
 var imageList = [];
 var canvas = document.querySelector('canvas');
-canvas.width = pageWidth;
-canvas.height = pageHeight;
 var context = canvas.getContext('2d');
-//Prepare pdf
-// const doc = new jsPDF({
-//     orientation: 'portrait',
-//     unit: 'in',
-//     format: [pageWidth / ppi, pageHeight / ppi]
-// });
-//Draw blank page
 drawSheet();
 
 function uploadCard(card) {
@@ -29,6 +20,8 @@ function uploadCard(card) {
 }
 
 function drawSheet() {
+    canvas.width = pageWidth;
+    canvas.height = pageHeight;
     context.fillStyle = 'white';
     context.fillRect(0, 0, pageWidth, pageHeight);
     const cardsX = Math.floor(pageWidth / cardWidth);
@@ -43,8 +36,6 @@ function drawSheet() {
 }
 
 async function downloadSheet() {
-    // doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 8.5, 11);
-    // doc.save('print.pdf');
     var download = document.createElement('a');
     download.download = 'print.png';
     download.href = canvas.toDataURL();
