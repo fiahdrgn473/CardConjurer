@@ -12,6 +12,7 @@ var canvas = document.querySelector('canvas');
 var context = canvas.getContext('2d');
 drawSheet();
 
+
 function uploadCard(card) {
     var img = new Image();
     img.crossOrigin = 'anonymous';
@@ -22,14 +23,13 @@ function uploadCard(card) {
 function drawSheet() {
     canvas.width = pageWidth;
     canvas.height = pageHeight;
-    context.fillStyle = 'white';
-    context.fillRect(0, 0, pageWidth, pageHeight);
+    context.clearRect(0, 0, pageWidth, pageHeight);
     const cardsX = Math.floor(pageWidth / cardWidth);
     const cardsY = Math.floor(pageHeight / cardHeight);
     var count = 0;
     for (var i = imageList.length - 1; i >= 0 && count < 9; i --) {
         if (imageList[i].width > 1) {
-            context.drawImage(imageList[i], (pageWidth - cardsX * cardWidth - cardMarginX) / 2 + (count % cardsX) * (cardWidth + cardMarginX), (pageHeight - cardsY * cardHeight - cardMarginY) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY), cardWidth, cardHeight);
+            context.drawImage(imageList[i], (pageWidth - cardsX * cardWidth) / 2 + (count % cardsX) * (cardWidth + cardMarginX) - cardMarginX, (pageHeight - cardsY * cardHeight) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY) - cardMarginY, cardWidth, cardHeight);
         }
         count ++;
     }
@@ -42,4 +42,26 @@ async function downloadSheet() {
     document.body.appendChild(download);
     await download.click();
     download.remove();
+}
+
+function downloadPDF() {
+    var doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'in',
+        format: [pageWidth / ppi, pageHeight / ppi]
+    });
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pageWidth / ppi, pageHeight / ppi);
+    doc.save('print.pdf');
+}
+
+function setPageSize(size = [8.5, 11]) {
+    pageWidth = parseFloat(size[0]) * ppi;
+    pageHeight = parseFloat(size[1]) * ppi;
+    drawSheet();
+}
+
+function setCardDistance(distance) {
+    cardMarginX = parseInt(distance);
+    cardMarginY = parseInt(distance);
+    drawSheet();
 }
