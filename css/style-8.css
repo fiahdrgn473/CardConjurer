@@ -402,6 +402,55 @@ textarea.input {
 	max-height: 20rem;
 	transition: height 0s;
 }
+/*Checkboxes*/
+.checkbox-container {
+	display: block;
+	position: relative;
+	padding-left: 2rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.checkbox-container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0.25rem;
+	height: 1.5rem;
+	width: 1.5rem;
+	border-radius: 0.25rem;
+	background-color: #efefef;
+}
+.checkbox-container input:checked ~ .checkmark {
+	background-color: var(--color-selected);
+}
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+.checkbox-container input:checked ~ .checkmark:after {
+	display: block;
+}
+.checkbox-container .checkmark:after {
+	left: 0.5rem;
+	top: 0.25rem;
+	width: 0.25rem;
+	height: 0.75rem;
+	border: solid var(--color-primary);
+	border-width: 0 0.25rem 0.25rem 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
 /*Collapsible*/
 .collapsible {
 	cursor: pointer;

@@ -38,7 +38,10 @@ include('../globalHTML/header-1.php');
 			</div>
 			<div>
 				<h5 class='input-description'>Erase</h5>
-				<input id='frame-editor-erase'  class='input' type='checkbox' placeholder='Erase'>
+				<label class='checkbox-container input'>Erase Card
+					<input id='frame-editor-erase' type='checkbox' placeholder='Erase'>
+					<span class='checkmark'></span>
+				</label>
 			</div>
 		</div>
 		<div id='textbox-editor' class='textbox-editor'>
