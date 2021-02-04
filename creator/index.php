@@ -99,12 +99,18 @@ include('../globalHTML/header-1.php');
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
 									<option value='Misc-1'>Old/Misc</option>
+									<option value='Margin'>1/8th Inch Margin</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
 							</div>
-							<div class='input-grid'>
+							<div class='input-grid margin-bottom'>
 								<button id='loadFrameVersion' class='input'>Load Frame Version</button>
 							</div>
+							<h5 class='input-description margin-bottom'>Automatically load Frame Version when loading Frame Packs</h5>
+							<label class='checkbox-container input'>Auto load
+								<input id='autoLoadFrameVersion' type='checkbox' onchange='autoLoadFrameVersion();' checked>
+								<span class='checkmark'></span>
+							</label>
 						</div>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='margin-bottom padding input-description'>Select a Frame Image and a Mask, then add it to your card</h5>
@@ -414,5 +420,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-7.js'></script>
+	<script defer src='/js/creator-8.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

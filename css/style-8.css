@@ -406,7 +406,7 @@ textarea.input {
 .checkbox-container {
 	display: block;
 	position: relative;
-	padding-left: 2rem;
+	padding-left: 2.25rem;
 	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;

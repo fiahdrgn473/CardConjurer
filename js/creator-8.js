@@ -25,7 +25,7 @@ art.onload = artEdited;
 setSymbol = new Image(); setSymbol.crossOrigin = 'anonymous'; setSymbol.src = blank.src;
 setSymbol.onerror = function() {
 	if (this.src.includes('gatherer.wizards.com')) {
-		notify('<a target="_blank" href="http' + this.src.split('http')[2] + '">Loading the set symbol from Gatherer failed. Please check this link to see if it exists. If it does, it may be necessary to manually download and upload the image.</a>', 30);
+		notify('<a target="_blank" href="http' + this.src.split('http')[2] + '">Loading the set symbol from Gatherer failed. Please check this link to see if it exists. If it does, it may be necessary to manually download and upload the image.</a>', 15);
 	}
 	if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}
 }
@@ -317,6 +317,12 @@ function loadFramePack(frameOptions = availableFrames) {
 
 	})
 	document.querySelector('#frame-picker').children[0].click();
+	if (localStorage.getItem('autoLoadFrameVersion') == 'true') {
+		document.querySelector('#loadFrameVersion').click();
+	}
+}
+function autoLoadFrameVersion() {
+	localStorage.setItem('autoLoadFrameVersion', document.querySelector('#autoLoadFrameVersion').checked);
 }
 function frameOptionClicked(event) {
 	var clickedFrameOption = event.target.closest('.frame-option');
@@ -1084,7 +1090,7 @@ function drawCard() {
 //DOWNLOADING
 async function downloadCard() {
 	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
-		notify('You must credit an artist before downloading!', 10);
+		notify('You must credit an artist before downloading!', 5);
 	} else {
 		var download = document.createElement('a');
 		var imageName = card.text.title.text;
@@ -1294,7 +1300,7 @@ async function loadCard(selectedCardKey) {
 			watermarkEdited();
 		}
 	} else {
-		notify(selectedCardKey + ' failed to load.', 10)
+		notify(selectedCardKey + ' failed to load.', 5)
 	}
 }
 function deleteCard() {
@@ -1379,13 +1385,17 @@ function fetchScryfallData(cardName, callback = console.log) {
 			callback(JSON.parse(this.responseText));
 			// JSON.parse(this.responseText);
 		} else if (this.readyState == 4 && this.status == 404) {
-			notify('No cards found for "' + cardName + '"', 10);
+			notify('No cards found for "' + cardName + '"', 5);
 		}
 	}
 	xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D' + cardName.replace(/ /g, '_'), true);
 	xhttp.send();
 }
 //Initialization
+if (!localStorage.getItem('autoLoadFrameVersion')) {
+	localStorage.setItem('autoLoadFrameVersion', document.querySelector('#autoLoadFrameVersion').checked);
+}
+document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage.getItem('autoLoadFrameVersion');
 document.querySelector('#info-number').value = date.getFullYear();
 loadScript('/js/frames/groupStandard-2.js');
 loadAvailableCards();
