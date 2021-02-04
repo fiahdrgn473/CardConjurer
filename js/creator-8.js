@@ -1372,7 +1372,7 @@ async function imageLocal(event, destination, otherParams) {
 function loadScript(scriptPath) {
 	var script = document.createElement('script');
 	script.setAttribute('type', 'text/javascript');
-	script.onerror = function(){notify('An error occured when trying to load a script, please try reloading the page. Sorry for the inconvenience.');}
+	script.onerror = function(){notify('A script failed to load, likely due to an update. Please reload your page. Sorry for the inconvenience.');}
 	script.setAttribute('src', scriptPath);
 	if (typeof script != 'undefined') {
 		document.querySelectorAll('head')[0].appendChild(script);
