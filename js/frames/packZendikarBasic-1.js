@@ -15,7 +15,12 @@ availableFrames = [
 	{name:'Black Mana Symbol', src:'/img/frames/textless/zendikar/sb.svg', bounds:bounds},
 	{name:'Red Mana Symbol', src:'/img/frames/textless/zendikar/sr.svg', bounds:bounds},
 	{name:'Green Mana Symbol', src:'/img/frames/textless/zendikar/sg.svg', bounds:bounds},
-	{name:'Colorless Mana Symbol', src:'/img/frames/textless/zendikar/sc.svg', bounds:bounds}
+	{name:'Colorless Mana Symbol', src:'/img/frames/textless/zendikar/sc.svg', bounds:bounds},
+	{name:'White Frame (Snow)', src:'/img/frames/textless/snowBasics/w.png', masks:masks},
+	{name:'Blue Frame (Snow)', src:'/img/frames/textless/snowBasics/u.png', masks:masks},
+	{name:'Black Frame (Snow)', src:'/img/frames/textless/snowBasics/b.png', masks:masks},
+	{name:'Red Frame (Snow)', src:'/img/frames/textless/snowBasics/r.png', masks:masks},
+	{name:'Green Frame (Snow)', src:'/img/frames/textless/snowBasics/g.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
