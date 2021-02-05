@@ -3,10 +3,10 @@ var masks = [{src:'/img/frames/textless/zendikar/pinline.png', name:'Pinline'}, 
 var bounds = {x:0.42, y:0.7867, width:0.16, height:0.1143};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/textless/snowBasics/w.2png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/textless/snowBasics/u.2png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/textless/snowBasics/b.2png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/textless/snowBasics/r.2png', masks:masks},
+	{name:'White Frame', src:'/img/frames/textless/snowBasics/w2.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/textless/snowBasics/u2.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/textless/snowBasics/b2.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/textless/snowBasics/r2.png', masks:masks},
 	{name:'Green Frame', src:'/img/frames/textless/snowBasics/g2.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
