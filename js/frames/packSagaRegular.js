@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/saga/sagaMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/saga/sagaMaskType.png', name:'Type'}, {src:'/img/frames/saga/sagaMaskFrame.png', name:'Frame'}, {src:'/img/frames/saga/sagaMaskBanner.png', name:'Banner'}, {src:'/img/frames/saga/sagaMaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/saga/sagaMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/saga/sagaMaskType.png', name:'Type'}, {src:'/img/frames/saga/sagaMaskFrame.png', name:'Frame'}, {src:'/img/frames/saga/sagaMaskBanner.png', name:'Banner'}, {src:'/img/frames/saga/sagaMaskBannerRight.png', name:'Banner (Right)'}, {src:'/img/frames/saga/sagaMaskText.png', name:'Text'}, {src:'/img/frames/saga/sagaMaskTextRight.png', name:'Text (Right)'}, {src:'/img/frames/saga/sagaMaskBorder.png', name:'Border'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/saga/regular/sagaFrameW.png', masks:masks},
@@ -8,6 +8,7 @@ availableFrames = [
 	{name:'Red Frame', src:'/img/frames/saga/regular/sagaFrameR.png', masks:masks},
 	{name:'Green Frame', src:'/img/frames/saga/regular/sagaFrameG.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/saga/regular/sagaFrameM.png', masks:masks},
+	{name:'Banner Pinstripe (Multicolored)', src:'/img/frames/saga/sagaMidStripe.png', bounds:{x:0.0727, y:0.3058, width:0.0087, height:0.4762}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
