@@ -1,6 +1,6 @@
 loadFramePacks([
 	{name:'Praetors', value:'Praetors'},
-	{name:'Kaldheim', value:'Kaldheim'},
+	{name:'Kaldheim', value:'Kaldheim-1'},
 	{name:'Commander Legends', value:'CommanderLegends'},
 	{name:'Zendikar Rising', value:'ZendikarRising'},
 	{name:'M21', value:'M21'},

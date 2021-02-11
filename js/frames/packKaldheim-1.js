@@ -4,6 +4,7 @@ var masks2 = [{src:'/img/frames/kaldheim/maskPTCorners.png', name:'Corners'}, {s
 var bounds = {x:0.7627, y:0.8853, width:0.188, height:0.0724};
 var bounds2 = {x:0.02, y:0.0529, width:0.098, height:0.0591};
 var bounds3 = {x:0.03, y:0.8886, width:0.438, height:0.0429};
+var bounds4 = {x:0.0414, y:0.0196, width:0.9174, height:0.0424};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/kaldheim/frameW.png', masks:masks},
@@ -20,6 +21,13 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/kaldheim/ptG.png', bounds:bounds, masks:masks2},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/kaldheim/ptM.png', bounds:bounds, masks:masks2},
 	{name:'Artifact Power/Toughness', src:'/img/frames/kaldheim/ptA.png', bounds:bounds, masks:masks2},
+	{name:'White Nonlegendary', src:'/img/frames/kaldheim/nonlegend/w.png', bounds:bounds4},
+	{name:'Blue Nonlegendary', src:'/img/frames/kaldheim/nonlegend/u.png', bounds:bounds4},
+	{name:'Black Nonlegendary', src:'/img/frames/kaldheim/nonlegend/b.png', bounds:bounds4},
+	{name:'Red Nonlegendary', src:'/img/frames/kaldheim/nonlegend/r.png', bounds:bounds4},
+	{name:'Green Nonlegendary', src:'/img/frames/kaldheim/nonlegend/g.png', bounds:bounds4},
+	{name:'Multicolored Nonlegendary', src:'/img/frames/kaldheim/nonlegend/m.png', bounds:bounds4},
+	{name:'Artifact Nonlegendary', src:'/img/frames/kaldheim/nonlegend/a.png', bounds:bounds4},
 	{name:'White Icon (Front)', src:'/img/frames/kaldheim/modal/wft.png', bounds:bounds2},
 	{name:'Blue Icon (Front)', src:'/img/frames/kaldheim/modal/uft.png', bounds:bounds2},
 	{name:'Black Icon (Front)', src:'/img/frames/kaldheim/modal/bft.png', bounds:bounds2},
