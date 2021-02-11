@@ -86,16 +86,16 @@ include('../globalHTML/header-1.php');
 							<div class='input-grid margin-bottom'>
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
-									<option value='Standard-2'>Regular</option>
-									<option value='Token-1'>Tokens</option>
-									<option value='Saga'>Sagas</option>
+									<option value='Standard-3'>Regular</option>
+									<option value='Token-2'>Tokens</option>
+									<option value='Saga-1'>Sagas</option>
 									<option value='Planeswalker'>Planeswalkers</option>
 									<option value='DFC'>Transform</option>
 									<option disabled>Special Frames</option>
-									<option value='Showcase-2'>Showcase Frames</option>
-									<option value='Promo'>Promos (Tall Art)</option>
-									<option value='Textless-2'>Textless/Fullart</option>
-									<option value='Modal'>Short Modal DFC's</option>
+									<option value='Showcase-3'>Showcase Frames</option>
+									<option value='Promo-1'>Promos (Tall Art)</option>
+									<option value='Textless-3'>Textless/Fullart</option>
+									<option value='Modal-1'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
 									<option value='Misc-1'>Old/Misc</option>
@@ -420,5 +420,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-8.js'></script>
+	<script defer src='/js/creator-9.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

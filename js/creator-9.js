@@ -331,8 +331,11 @@ function frameOptionClicked(event) {
 	}
 	clickedFrameOption.classList.add('selected');
 	selectedFrameIndex = getElementIndex(clickedFrameOption);
-	document.querySelector('#mask-picker').innerHTML = '<div class="mask-option selected" onclick="maskOptionClicked(event)"><img src="' + black.src + '"><p>No Mask</p></div>';
-	selectedMaskIndex = 0;
+	if (!availableFrames[selectedFrameIndex].noDefaultMask) {
+		document.querySelector('#mask-picker').innerHTML = '<div class="mask-option" onclick="maskOptionClicked(event)"><img src="' + black.src + '"><p>No Mask</p></div>';
+	} else {
+		document.querySelector('#mask-picker').innerHTML = '';
+	}
 	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', No Mask)';
 	if (availableFrames[selectedFrameIndex].masks) {
 		availableFrames[selectedFrameIndex].masks.forEach(item => {
@@ -351,10 +354,13 @@ function frameOptionClicked(event) {
 			document.querySelector('#mask-picker').appendChild(maskOption);
 		});
 	}
+	var firstChild = document.querySelector('#mask-picker').firstChild;
+	firstChild.classList.add('selected');
+	firstChild.click();
 }
 function maskOptionClicked(event) {
 	var clickedMaskOption = event.target.closest('.mask-option');
-	document.querySelector('.mask-option.selected').classList.remove('selected');
+	(document.querySelector('.mask-option.selected').classList || document.querySelector('body').classList).remove('selected');
 	clickedMaskOption.classList.add('selected');
 	selectedMaskIndex = getElementIndex(clickedMaskOption);
 	var selectedMaskName = 'No Mask'
@@ -365,8 +371,10 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 	var frameToAdd = JSON.parse(JSON.stringify(availableFrames[selectedFrameIndex]));
 	var maskThumbnail = true;
 	if (!loadingFrame) {
-		if (frameToAdd.masks && selectedMaskIndex > 0) {
-			frameToAdd.masks = frameToAdd.masks.slice(selectedMaskIndex - 1, selectedMaskIndex);
+		var noDefaultMask = 0;
+		if (frameToAdd.noDefaultMask) {noDefaultMask = 1;}
+		if (frameToAdd.masks && selectedMaskIndex + noDefaultMask > 0) {
+			frameToAdd.masks = frameToAdd.masks.slice(selectedMaskIndex - 1 + noDefaultMask, selectedMaskIndex + noDefaultMask);
 		} else {
 		 	frameToAdd.masks = [];
 		 	maskThumbnail = false;
@@ -1398,5 +1406,5 @@ if (!localStorage.getItem('autoLoadFrameVersion')) {
 }
 document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage.getItem('autoLoadFrameVersion');
 document.querySelector('#info-number').value = date.getFullYear();
-loadScript('/js/frames/groupStandard-2.js');
+loadScript('/js/frames/groupStandard-3.js');
 loadAvailableCards();

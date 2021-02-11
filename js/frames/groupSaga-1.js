@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
-	{name:'Holo Stamps', value:'M15HoloStamps'}
+	{name:'Holo Stamps', value:'M15HoloStamps'},
+	{name:'Colored Borders', value:'M15Borders'}
 ])
 notify('When you load the Saga frame version, a "Saga" tab will appear. This tab controls the placement and chapter counts for Saga chapters.')
