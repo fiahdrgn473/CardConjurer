@@ -27,7 +27,7 @@ function drawSheet() {
     const cardsX = Math.floor(pageWidth / cardWidth);
     const cardsY = Math.floor(pageHeight / cardHeight);
     var count = 0;
-    for (var i = imageList.length - 1; i >= 0 && count < 9; i --) {
+    for (var i = imageList.length - 1; i >= 0 && count < cardsX * cardsY; i --) {
         if (imageList[i].width > 1) {
             context.drawImage(imageList[i], (pageWidth - cardsX * cardWidth) / 2 + (count % cardsX) * (cardWidth + cardMarginX) - cardMarginX, (pageHeight - cardsY * cardHeight) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY) - cardMarginY, cardWidth, cardHeight);
         }
@@ -63,5 +63,12 @@ function setPageSize(size = [8.5, 11]) {
 function setCardDistance(distance) {
     cardMarginX = parseInt(distance);
     cardMarginY = parseInt(distance);
+    drawSheet();
+}
+
+function changeOrientation() {
+    var oldWidth = pageWidth;
+    pageWidth = pageHeight;
+    pageHeight = oldWidth;
     drawSheet();
 }

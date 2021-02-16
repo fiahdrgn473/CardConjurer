@@ -11,6 +11,8 @@ include('../globalHTML/header-1.php');
 			<option value='8.5,11'>Regular (8.5 by 11)</option>
 			<option value='8.2667,11.6934'>A4</option>
 		</select>
+        <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
+        <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
 		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
 		<input type='number' class='input margin-bottom' value='10' min='0' max='100' onchange='setCardDistance(this.value);'>
 	</div>
