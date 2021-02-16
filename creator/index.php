@@ -133,8 +133,13 @@ include('../globalHTML/header-1.php');
 						<div class='readable-background padding'>
 							<h5 class='margin-bottom padding input-description'>Upload custom frame images</h5>
 							<div class='input-grid'>
-								<input type='file' accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='Via File Upload' class='input' oninput='imageLocal(event, uploadFrameOption);'>
-								<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadFrameOption);'>
+								<div class='padding drop-area'>
+						            <h5 class='margin-bottom padding input-description'>Drag and drop</h5>
+						            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadFrameOption);' data-dropFunction='uploadFrameOption' data-otherParams=''>
+						        </div>
+						        <div>
+									<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadFrameOption);'>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -196,8 +201,13 @@ include('../globalHTML/header-1.php');
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Choose/upload your art</h5>
 							<div class='input-grid margin-bottom'>
-								<input type='file' accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='Via File Upload' class='input' oninput='imageLocal(event, uploadArt, "autoFit");'>
-								<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadArt, "autoFit");'>
+								<div class='padding drop-area'>
+						            <h5 class='margin-bottom padding input-description'>Drag and drop</h5>
+						            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadArt, "autoFit");' data-dropFunction='uploadArt' data-otherParams='autoFit'>
+						        </div>
+						        <div>
+									<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadArt, "autoFit");'>
+								</div>
 							</div>
 							<h5 class='margin-bottom padding input-description'>Or enter a card name (and index)</h5>
 							<div class='input-grid margin-bottom'>
@@ -229,8 +239,13 @@ include('../globalHTML/header-1.php');
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Choose/upload your set symbol</h5>
 							<div class='input-grid margin-bottom'>
-								<input type='file' accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='Via File Upload' class='input' oninput='imageLocal(event, uploadSetSymbol, "resetSetSymbol");'>
-								<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadSetSymbol, "resetSetSymbol");'>
+								<div class='padding drop-area'>
+						            <h5 class='margin-bottom padding input-description'>Drag and drop</h5>
+						            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadSetSymbol, "resetSetSymbol");' data-dropFunction='uploadSetSymbol' data-otherParams='resetSetSymbol'>
+						        </div>
+						        <div>
+									<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadSetSymbol, "resetSetSymbol");'>
+								</div>
 							</div>
 							<h5 class='margin-bottom padding input-description'>Or enter a set code/rarity</h5>
 							<div class='input-grid margin-bottom'>
@@ -268,9 +283,14 @@ include('../globalHTML/header-1.php');
 					<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Choose/upload your watermark</h5>
 							<div class='input-grid'>
-								<input type='file' accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='Via File Upload' class='input' oninput='imageLocal(event, uploadWatermark, "resetWatermark");'>
-								<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadWatermark, "resetWatermark");'>
-								<input type='text' placeholder='Via Set Code' class='input' onchange='getSetSymbolWatermark(this.value);'>
+								<div class='padding drop-area'>
+						            <h5 class='margin-bottom padding input-description'>Drag and drop</h5>
+						            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadWatermark, "resetWatermark");' data-dropFunction='uploadWatermark' data-otherParams='resetWatermark'>
+						        </div>
+						        <div>
+									<input type='url' placeholder='Via URL' class='input margin-bottom' onchange='imageURL(this.value, uploadWatermark, "resetWatermark");'>
+									<input type='text' placeholder='Via Set Code' class='input' onchange='getSetSymbolWatermark(this.value);'>
+								</div>
 							</div>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes

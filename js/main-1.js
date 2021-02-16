@@ -62,7 +62,7 @@ function dropDrop(e) {
 	e.stopPropagation();
 	e.target.closest('.drop-area').classList.remove('hover');
 	destination = window[e.target.closest('.drop-area').children[1].getAttribute('data-dropFunction')];
-	otherParams = window[e.target.closest('.drop-area').children[1].getAttribute('data-otherParams')];
+	otherParams = e.target.closest('.drop-area').children[1].getAttribute('data-otherParams');
 	uploadFiles(e.dataTransfer.files, destination, otherParams);
 }
 async function uploadFiles(filesRaw, destination, otherParams) {
