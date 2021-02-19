@@ -6,6 +6,7 @@ var cardWidth = 2.5 * ppi;
 var cardHeight = 3.5 * ppi;
 var cardMarginX = 10;
 var cardMarginY = 10;
+var pageOrientation = 'portrait';
 //Prepare variables/canvas/context
 var imageList = [];
 var canvas = document.querySelector('canvas');
@@ -46,7 +47,7 @@ async function downloadSheet() {
 
 function downloadPDF() {
     var doc = new jsPDF({
-        orientation: 'portrait',
+        orientation: pageOrientation,
         unit: 'in',
         format: [pageWidth / ppi, pageHeight / ppi]
     });
@@ -70,5 +71,10 @@ function changeOrientation() {
     var oldWidth = pageWidth;
     pageWidth = pageHeight;
     pageHeight = oldWidth;
+    if (pageWidth > pageHeight) {
+        pageOrientation = 'landscape';
+    } else {
+        pageOrientation = 'portrait';
+    }
     drawSheet();
 }
