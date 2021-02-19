@@ -93,7 +93,7 @@ include('../globalHTML/header-1.php');
 									<option value='DFC'>Transform</option>
 									<option disabled>Special Frames</option>
 									<option value='Showcase-5'>Showcase Frames</option>
-									<option value='Promo-1'>Promos (Tall Art)</option>
+									<option value='Promo-2'>Promos (Tall Art)</option>
 									<option value='Textless-3'>Textless/Fullart</option>
 									<option value='Modal-1'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>

@@ -18,7 +18,10 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/m15/regular/m15PTG.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/regular/m15PTM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/regular/m15PTA.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds},
+	{name:'Outline Cutout', src:'/img/frames/promo/outlineCutout.svg', erase:true},
+	{name:'Outline (Solid)', src:'/img/frames/promo/outline.svg'},
+	{name:'Outline (Bevel)', src:'/img/frames/promo/bevel.png'}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
