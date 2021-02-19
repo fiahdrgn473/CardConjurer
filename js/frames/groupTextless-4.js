@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Generic Showcase', value:'TextlessGenericShowcase'},
+	{name:'Magic Fest Promos', value:'MagicFest'},
 	{name:'Inventions', value:'TextlessInvention'},
 	{name:'Unstable Basics', value:'Unstable'},
 	{name:'Fullart Basics', value:'ZendikarBasic-1'},
