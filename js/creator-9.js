@@ -955,8 +955,8 @@ function resetSetSymbol() {
 function fetchSetSymbol() {
 	var setCode = document.querySelector('#set-symbol-code').value.toLowerCase() || 'cmd';
 	var setRarity = document.querySelector('#set-symbol-rarity').value.toLowerCase() || 'c';
-	if (setCode == 'cc') {
-		uploadSetSymbol('/img/setSymbols/cc-' + setRarity + '.png', 'resetSetSymbol');
+	if (['cc', 'logan', 'joe'].includes(setCode.toLowerCase())) {
+		uploadSetSymbol(`/img/setSymbols/${setCode.toLowerCase()}-${setRarity}.svg`, 'resetSetSymbol');
 	} else {
 		imageURL('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, uploadSetSymbol, 'resetSetSymbol');
 	}
