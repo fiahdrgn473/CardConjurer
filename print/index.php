@@ -3,7 +3,7 @@ $title = 'Print Page Setup';
 $desc = 'Upload card images and download a fully prepared page for printing';
 include('../globalHTML/header-1.php');
 ?>
-    <h2 class='readable-background header-extension title center margin-bottom-large'>Print Page Setup</h2>
+    <h2 class='readable-background header-extension title center margin-bottom-large'>Printing Tool</h2>
     <div class='readable-background padding layer margin-bottom-large'>
 		<h4 class='center padding margin-bottom'>Configure Page Settings</h4>
 		<h5 class='margin-bottom padding input-description'>Select your paper size</h5>
@@ -14,7 +14,7 @@ include('../globalHTML/header-1.php');
         <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
         <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
 		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
-		<input type='number' class='input margin-bottom' value='10' min='0' max='100' onchange='setCardDistance(this.value);'>
+		<input type='number' class='input margin-bottom' value='50' min='0' max='100' onchange='setCardDistance(this.value);'>
 	</div>
     <div class="layer">
         <div class='padding margin-bottom readable-background drop-area'>

@@ -1,12 +1,12 @@
 //Configure sizes
 var ppi = 600;
-var pageWidth = 8.5 * ppi;
-var pageHeight = 11 * ppi;
+var pageWidth = 11 * ppi;
+var pageHeight = 8.5 * ppi;
 var cardWidth = 2.5 * ppi;
 var cardHeight = 3.5 * ppi;
-var cardMarginX = 10;
-var cardMarginY = 10;
-var pageOrientation = 'portrait';
+var cardMarginX = 50;
+var cardMarginY = 50;
+var pageOrientation = 'landscape';
 //Prepare variables/canvas/context
 var imageList = [];
 var canvas = document.querySelector('canvas');
@@ -56,8 +56,8 @@ function downloadPDF() {
 }
 
 function setPageSize(size = [8.5, 11]) {
-    pageWidth = parseFloat(size[0]) * ppi;
-    pageHeight = parseFloat(size[1]) * ppi;
+    pageHeight = parseFloat(size[0]) * ppi;
+    pageWidth = parseFloat(size[1]) * ppi;
     drawSheet();
 }
 

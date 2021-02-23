@@ -36,7 +36,7 @@
 				<h2>Navigation</h2>
 				<h3><a href='/'>Home</a></h3>
 				<h3><a href='/creator'>Card Creator</a></h3>
-				<h3><a href='/old'>Old Card Creator</a></h3>
+				<h3><a href='/print'>Printing Tool</a></h3>
 				<h3><a href='/askurza'>Ask Urza 2.0</a></h3>
 				<h3><a href='/phyrexian'>Phyrexian Generator</a></h3>
 				<h3><a href='/about'>About Me</a></h3>
