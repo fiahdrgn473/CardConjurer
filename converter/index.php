@@ -10,7 +10,10 @@ include('../globalHTML/header-1.php');
     <div class="layer margin-bottom-large">
         <div class='padding margin-bottom readable-background'>
             <h5 class='margin-bottom padding input-description'>Upload the image that you'd like to convert</h5>
-            <input type='file' accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='imageLocal(event);'>
+            <div class='padding drop-area'>
+                <h5 class='margin-bottom padding input-description'>Drag and drop</h5>
+                <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, prepareImage, "filename");' data-dropFunction='prepareImage' data-otherParams='filename'>
+            </div>
         </div>
     </div>
     <div class="readable-background layer margin-bottom-large">
