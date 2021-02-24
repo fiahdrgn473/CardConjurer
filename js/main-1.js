@@ -75,6 +75,9 @@ async function uploadFiles(filesRaw, destination, otherParams) {
 	files.forEach(file => {
 		var reader = new FileReader();
 		reader.onloadend = function () {
+			if (otherParams.includes('filename')) {
+				otherParams = 'filename=' + file.name;
+			}
 			destination(reader.result, otherParams);
 		}
 		reader.onerror = function () {
