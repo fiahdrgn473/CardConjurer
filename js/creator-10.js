@@ -508,7 +508,7 @@ function textboxEditor() {
 	document.querySelector('#textbox-editor-height').onchange = (event) => {selectedTextbox.height = (event.target.value / card.height); textEdited();}
 }
 function textEdited() {
-	card.text[Object.keys(card.text)[selectedTextIndex]].text = document.querySelector('#text-editor').value;
+	card.text[Object.keys(card.text)[selectedTextIndex]].text = curlyQuotes(document.querySelector('#text-editor').value);
 	drawTextBuffer();
 }
 function drawTextBuffer() {
@@ -871,6 +871,9 @@ CanvasRenderingContext2D.prototype.drawImageArc = function(image, x, y, width, h
 }
 function widthToAngle(width, radius) {
 	return width / radius;
+}
+function curlyQuotes(input) {
+	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/' /g, '’ ').replace(/'$/, '’').replace(/ "/g, ' “').replace(/^"/, '“').replace(/" /g, '” ').replace(/"$/, '”');
 }
 //ART TAB
 function uploadArt(imageSource, otherParams) {
