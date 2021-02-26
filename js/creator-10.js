@@ -873,7 +873,7 @@ function widthToAngle(width, radius) {
 	return width / radius;
 }
 function curlyQuotes(input) {
-	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/' /g, '’ ').replace(/'$/, '’').replace(/ "/g, ' “').replace(/^"/, '“').replace(/" /g, '” ').replace(/"$/, '”');
+	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/' /g, '’ ').replace(/'$/, '’').replace(/ "/g, ' “').replace(/^"/, '“').replace(/" /g, '” ').replace(/\."/, '”').replace(/"$/, '”');
 }
 //ART TAB
 function uploadArt(imageSource, otherParams) {
@@ -1130,16 +1130,7 @@ function changeCardIndex() {
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = cardToImport.type_line || '';}
 	if (card.text.rules) {
-		var rulesText = (cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}');
-		var rulesTextCounter = 1;
-		while (rulesText.includes('"')) {
-			if (rulesTextCounter % 2) {
-				rulesText = rulesText.replace('"', '\u201c');
-			} else {
-				rulesText = rulesText.replace('"', '\u201d');
-			}
-			rulesTextCounter ++;
-		}
+		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}'));
 		card.text.rules.text = rulesText;
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
