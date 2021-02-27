@@ -14,7 +14,7 @@ include('../globalHTML/header-1.php');
         <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
         <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
 		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
-		<input type='number' class='input margin-bottom' value='50' min='0' max='100' onchange='setCardDistance(this.value);'>
+		<input type='number' id='cardMargin' class='input margin-bottom' value='60' min='0' max='100' onchange='setCardDistance(this.value);'>
 	</div>
     <div class="layer">
         <div class='padding margin-bottom readable-background drop-area'>

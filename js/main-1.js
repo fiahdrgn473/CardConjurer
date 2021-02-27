@@ -65,7 +65,7 @@ function dropDrop(e) {
 	otherParams = e.target.closest('.drop-area').children[1].getAttribute('data-otherParams');
 	uploadFiles(e.dataTransfer.files, destination, otherParams);
 }
-async function uploadFiles(filesRaw, destination, otherParams) {
+async function uploadFiles(filesRaw, destination, otherParams = '') {
 	var files = ([...filesRaw]);
 	if (files.length > 9) {
 		if (!confirm('You are uploading ' + files.length + ' images. Would you like to continue?')) {
