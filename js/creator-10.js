@@ -569,6 +569,7 @@ function writeText(textObject, targetContext) {
 		var textShadowOffsetY = scaleHeight(textObject.shadowY) || 0;
 		var textShadowBlur = scaleHeight(textObject.shadowBlur) || 0;
 		var textArcRadius = scaleHeight(textObject.arcRadius) || 0;
+		var manaSymbolColor = textObject.manaSymbolColor || null;
 		if (textArcRadius > 0) {
 			//Buffers the canvases accordingly
 			var canvasMargin = 300 + textArcRadius;
@@ -725,6 +726,8 @@ function writeText(textObject, targetContext) {
 					textArcRadius = parseInt(possibleCode.replace('arcradius', '')) || 0;
 				} else if (possibleCode.includes('arcstart')) {
 					textArcStart = parseFloat(possibleCode.replace('arcstart', '')) || 0;
+				} else if (possibleCode.includes('manacolor')) {
+					manaSymbolColor = possibleCode.replace('manacolor', '') || 'white';
 				} else if (possibleCode.includes('fixtextalign')) {
 					textAlign = realTextAlign;
 				} else if (findManaSymbolIndex(possibleCode.replace('/', '')) > -1 || findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join('')) > -1) {
@@ -784,6 +787,8 @@ function writeText(textObject, targetContext) {
 							fakeShadowContext.drawImageArc(backImage, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight, textArcRadius, textArcStart, currentX);
 						}
 						fakeShadowContext.drawImageArc(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight, textArcRadius, textArcStart, currentX);
+					} else if (manaSymbolColor) {
+						fakeShadowContext.fillImage(manaSymbol.image, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight, manaSymbolColor);
 					} else {
 						if (manaSymbol.backs) {
 							fakeShadowContext.drawImage(backImage, manaSymbolX, manaSymbolY, manaSymbolWidth, manaSymbolHeight);
@@ -869,11 +874,25 @@ CanvasRenderingContext2D.prototype.drawImageArc = function(image, x, y, width, h
 	this.drawImage(image, 0, -radius, width, height);
 	this.restore();
 }
+CanvasRenderingContext2D.prototype.fillImage = function(image, x, y, width, height, color = 'white', margin = 10) {
+	var canvas = document.createElement('canvas');
+	canvas.width = width + margin * 2;
+	canvas.height = height + margin * 2;
+	var context = canvas.getContext('2d');
+	context.drawImage(image, margin, margin, width, height);
+	context.globalCompositeOperation = 'source-in';
+	context.fillStyle = pinlineColors(color);
+	context.fillRect(0, 0, width + margin * 2, height + margin * 2);
+	this.drawImage(canvas, x - margin, y - margin, width + margin * 2, height + margin * 2);
+}
 function widthToAngle(width, radius) {
 	return width / radius;
 }
 function curlyQuotes(input) {
 	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/' /g, '’ ').replace(/'$/, '’').replace(/ "/g, ' “').replace(/^"/, '“').replace(/" /g, '” ').replace(/\."/, '”').replace(/"$/, '”');
+}
+function pinlineColors(color) {
+	return color.replace('white', '#fcfeff').replace('blue', '#0075be').replace('black', '#272624').replace('red', '#ef3827').replace('green', '#007b43')
 }
 //ART TAB
 function uploadArt(imageSource, otherParams) {
