@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Regular Frames', value:'PlaneswalkerRegular'},
+	{name:'Borderless Frames', value:'PlaneswalkerBorderless'},
 	{name:'Nickname Frames', value:'PlaneswalkerNickname'},
 	{name:'Tall Frames', value:'PlaneswalkerTall'}
 ])
