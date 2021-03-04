@@ -55,6 +55,10 @@
 	font-family: Acme-Regular;
 	src: url("/fonts/Acme-Regular.ttf");
 }
+@font-face {
+	font-family: fritz-quadrata;
+	src: url("/fonts/fritz-quadrata.ttf");
+}
 /*Variables*/
 :root {
 	--site-background: url('/img/lowpolyBackground.svg');
