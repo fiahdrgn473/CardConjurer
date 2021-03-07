@@ -58,9 +58,10 @@ async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers
 	card.margins = false;
 	//rotation
 	if (card.landscape) {
-		previewContext.scale(5/7, 7/5);
-		previewContext.rotate(Math.PI / 2);
-		previewContext.translate(0, -card.width / 2);
+		// previewContext.scale(card.width/card.height, card.height/card.width);
+		// previewContext.rotate(Math.PI / 2);
+		// previewContext.translate(0, -card.width / 2);
+		previewContext.setTransform(1, 0, 0, 1, 0, 0);
 		card.landscape = false;
 	}
 	//card size
