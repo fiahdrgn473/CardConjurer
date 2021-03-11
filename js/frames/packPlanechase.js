@@ -1,5 +1,6 @@
 //defines available frames
 availableFrames = [
+	{name:'Planar Frame (Phenomenon)', src:'/img/frames/planechase/phenomenon.png'},
 	{name:'Planar Frame (1)', src:'/img/frames/planechase/tallest.png'},
 	{name:'Planar Frame (2)', src:'/img/frames/planechase/taller.png'},
 	{name:'Planar Frame (3)', src:'/img/frames/planechase/tall.png'},
