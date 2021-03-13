@@ -33,8 +33,8 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	resetWatermark();
 	//text
 	loadTextOptions({
-		title: {name:'Title', text:'', x:0.0854, y:0.0577, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0434, align:'center'},
-		type: {name:'Type', text:'', x:0.2424, y:0.6667, width:0.5152, height:0.0543, oneLine:true, font:'belerenb', size:0.0339, align:'center'},
+		title: {name:'Title', text:'', x:0.0854, y:0.0643, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0434, align:'center'},
+		type: {name:'Type', text:'', x:0.2424, y:0.6658, width:0.5152, height:0.0543, oneLine:true, font:'belerenb', size:0.0339, align:'center'},
 		rules: {name:'Rules Text', text:'', x:0.1158, y:0.7174, width:0.7684, height:0.2087, size:0.0362},
 	});
 	//bottom info
