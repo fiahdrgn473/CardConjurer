@@ -12,6 +12,7 @@ availableFrames = [
 document.querySelector('#loadFrameVersion').disabled = false;
 //defines process for loading this version, if applicable
 document.querySelector('#loadFrameVersion').onclick = async function() {
+	notify('For the large chaos icon, use {planechase}. For smaller icons, use {chaos} and {planeswalker}.', 20);
 	//resets things so that every frame doesn't have to
 	var previousCardHeight = card.height
 	await resetCardIrregularities({canvas:[3000, 2100, 0, 0]});
