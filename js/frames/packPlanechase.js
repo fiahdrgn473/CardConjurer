@@ -38,6 +38,9 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		type: {name:'Type', text:'', x:0.2424, y:0.6658, width:0.5152, height:0.0543, oneLine:true, font:'belerenb', size:0.0339, align:'center'},
 		rules: {name:'Rules Text', text:'', x:0.1158, y:0.7174, width:0.7684, height:0.2087, size:0.0362},
 	});
+	if (card.text.rules.text == '') {
+		card.text.rules.text = '\n{planechase}Whenever you roll {chaos}, ';
+	}
 	//bottom info
 		await loadBottomInfo({
 			top: {text:'\uFFEE{elemidinfo-artist}', x:0.0647, y:0.9434, width:0.8707, height:0.0174, oneLine:true, font:'belerenbsc', size:0.0174, color:'white', outlineWidth:0.003, align:'center'},
