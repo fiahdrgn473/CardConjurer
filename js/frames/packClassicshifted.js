@@ -38,7 +38,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'classicshifted';
 	//art bounds
-	card.artBounds = {x:0.08, y:0.0954, width:0.84, height:0.4643};
+	card.artBounds = {x:0.08, y:0.0954, width:0.84, height:0.4653};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9213, y:0.5958, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
