@@ -1,28 +1,29 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
-var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
+var masks = []//[{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}];
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/regular/m15FrameW.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/regular/m15FrameU.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/regular/m15FrameB.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/regular/m15FrameR.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/regular/m15FrameG.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/regular/m15FrameM.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/regular/m15FrameA.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/m15/regular/m15FrameL.png', masks:masks}
+	{name:'White Frame', src:'/img/frames/mysticalArchive/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/mysticalArchive/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/mysticalArchive/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/mysticalArchive/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/mysticalArchive/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/mysticalArchive/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/mysticalArchive/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/mysticalArchive/c.png', masks:masks},
+	{name:'Power/Toughness', src:'/img/frames/mysticalArchive/pt.png', bounds:{x:0.7014, y:0.8924, width:0.222, height:0.0520}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
 //defines process for loading this version, if applicable
 document.querySelector('#loadFrameVersion').onclick = async function() {
+	notify("To change the color of your mana cost, use {manacolor#}, but replace '#' with your desired color. 'white', 'blue', 'black', 'red', and 'green', as well as hex/html color codes are currently supported.", 15)
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'mysticalArchive';
 	loadScript('/js/frames/manaSymbolsOutline.js');
 	//art bounds
-	card.artBounds = {x:0, y:0.1129, width:1, height:0.4429};
+	card.artBounds = {x:0, y:0.1205, width:1, height:0.7539};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9213, y:0.5910, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
@@ -35,7 +36,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		mana: {name:'Mana Cost', text:'', y:0.0613, width:0.9292, height:71/2100, oneLine:true, size:71/1638, align:'right', manaCost:true, manaSpacing:0, manaPrefix:'outline', manaSymbolColor:'white'},
 		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0381},
 		type: {name:'Type', text:'', x:0.0854, y:0.5664, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0324},
-		rules: {name:'Rules Text', text:'', x:0.086, y:0.6303, width:0.828, height:0.2875, size:0.0362},
+		rules: {name:'Rules Text', text:'', x:0.0934, y:0.6303, width:0.8134, height:0.2875, size:0.0362},
 		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}
 	});
 }

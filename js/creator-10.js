@@ -718,7 +718,7 @@ function writeText(textObject, targetContext) {
 						currentX = savedTextXPosition;
 					}
 				} else if (possibleCode.includes('ptshift')) {
-					if (card.frames.findIndex(element => element.name.toLowerCase().includes('power/toughness')) >= 0 || card.version.includes('planeswalker') || card.version == 'commanderLegends' || card.version == 'm21') {
+					if (card.frames.findIndex(element => element.name.toLowerCase().includes('power/toughness')) >= 0 || card.version.includes('planeswalker') || ['commanderLegends', 'm21', 'mysticalArchive'].includes(card.version)) {
 						ptShift[0] = scaleWidth(parseFloat(possibleCode.replace('ptshift', '').split(',')[0]));
 						ptShift[1] = scaleHeight(parseFloat(possibleCode.split(',')[1]));
 					}
