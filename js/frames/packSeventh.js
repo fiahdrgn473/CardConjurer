@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/seventh/regular/seventhMaskPinline.png', name:'Pinline'}, {src:'/img/frames/seventh/regular/seventhMaskRules.png', name:'Rules'}, {src:'/img/frames/seventh/regular/seventhMaskFrame.png', name:'Frame'}, {src:'/img/frames/seventh/regular/seventhMaskBorder.png', name:'Border'}];
+var borderMask = [{src:'/img/frames/seventh/regular/seventhMaskBorder.png', name:'Border'}]
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
@@ -16,7 +17,10 @@ availableFrames = [
 	{name:'Black Land Frame', src:'/img/frames/seventh/regular/seventhFrameBL.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/seventh/regular/seventhFrameRL.png', masks:masks},
 	{name:'Green Land Frame', src:'/img/frames/seventh/regular/seventhFrameGL.png', masks:masks},
-	{name:'DCI Star', src:'/img/frames/seventh/seventhFoilStamp.png', bounds:{x:0.1089, y:0.8345, width:0.4033, height:0.1107}}
+	{name:'DCI Star', src:'/img/frames/seventh/seventhFoilStamp.png', bounds:{x:0.1089, y:0.8345, width:0.4033, height:0.1107}},
+	{name:'White Border', src:'/img/frames/white.png', masks:borderMask, noDefaultMask:true},
+	{name:'Silver Border', src:'/img/frames/silver.png', masks:borderMask, noDefaultMask:true},
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:borderMask, noDefaultMask:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
