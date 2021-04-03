@@ -1089,6 +1089,18 @@ function artistEdited(value) {
 	document.querySelector('#info-artist').value = value;
 	bottomInfoEdited();
 }
+function toggleStarDot() {
+	for (var key of Object.keys(card.bottomInfo)) {
+		var text = card.bottomInfo[key].text
+		if (text.includes('*')) {
+			card.bottomInfo[key].text = text.replace('*', ' \u2022 ');
+		} else {
+			card.bottomInfo[key].text = text.replace(' \u2022 ', '*');
+		}
+		// console.log(textObject[1].text)
+	}
+	bottomInfoEdited();
+}
 //DRAWING THE CARD (putting it all together)
 function drawCard() {
 	cardContext.globalCompositeOperation = 'source-over';

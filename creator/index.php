@@ -357,7 +357,7 @@ include('../globalHTML/header-1.php');
 						</div>
 					</div>
 					<div id='creator-menu-bottomInfo' class='hidden'>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='padding margin-bottom input-description'>Enter the card number, rarity, set code, language, and artist's name</h5>
 							<div class='padding input-grid'>
 								<input id='info-number' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Number'>
@@ -365,6 +365,12 @@ include('../globalHTML/header-1.php');
 								<input id='info-set' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Set' value='MTG'>
 								<input id='info-language' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Language' value='EN'>
 								<input id='info-artist' type='text' class='input' oninput='artistEdited(this.value);' placeholder='Artist'>
+							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='input-description padding margin-bottom'>Toggle between star (seen on foils) and dot (seen on regular cards)</h5>
+							<div class='padding'>
+								<button class='input padding' onclick='toggleStarDot();'>Toggle Star/Dot</button>
 							</div>
 						</div>
 					</div>
@@ -440,5 +446,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-10.js'></script>
+	<script defer src='/js/creator-11.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
