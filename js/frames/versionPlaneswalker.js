@@ -59,11 +59,15 @@ function planeswalkerEdited() {
 	var planeswalkerTall = 0;
 	if (card.version == 'planeswalkerTall') {
 		planeswalkerTall = 1;
-		if (!planeswalkerTextMask.src.includes('Tall')) {
+		if (!planeswalkerTextMask.src.includes('tall')) {
 			planeswalkerTextMask.src = '/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png';
 		}
+	} else if (card.version == 'planeswalkerMDFC') {
+		if (!planeswalkerTextMask.src.includes('mdfc')) {
+			planeswalkerTextMask.src = '/img/frames/planeswalker/mdfc/text.svg';
+		}
 	} else {
-		if (planeswalkerTextMask.src.includes('Tall')) {
+		if (planeswalkerTextMask.src.includes('tall') || planeswalkerTextMask.includes('mdfc')) {
 			planeswalkerTextMask.src = '/img/frames/planeswalker/planeswalkerMaskText.png';
 		}
 	}
