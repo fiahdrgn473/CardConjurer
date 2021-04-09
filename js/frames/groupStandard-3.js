@@ -14,5 +14,7 @@ loadFramePacks([
 	{name:'Devoid', value:'M15Devoid'},
 	{name:'Special', value:'disabled'},
 	{name:'Nickname', value:'M15Nickname'},
-	{name:'Box Toppers', value:'M15BoxTopper'}
+	{name:'Box Toppers', value:'M15BoxTopper'},
+	{name:'Custom Addons', value:'disabled'},
+	{name:'Brawl Legend Crowns', value:'Brawl'}
 ])
