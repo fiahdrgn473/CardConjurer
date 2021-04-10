@@ -475,9 +475,15 @@ function uploadFrameOption(imageSource) {
 }
 //TEXT TAB
 var writingText;
-function loadTextOptions(textObject) {
+function loadTextOptions(textObject, replace=true) {
 	var oldCardText = card.text || {};
-	card.text = textObject;
+	if (replace) {
+		card.text = textObject;
+	} else {
+		Object.keys(textObject).forEach(key => {
+			card.text[key] = textObject[key];
+		});
+	}
 	document.querySelector('#text-options').innerHTML = null;
 	Object.entries(card.text).forEach(item => {
 		if (oldCardText[item[0]]) {
@@ -896,6 +902,18 @@ function curlyQuotes(input) {
 function pinlineColors(color) {
 	return color.replace('white', '#fcfeff').replace('blue', '#0075be').replace('black', '#272624').replace('red', '#ef3827').replace('green', '#007b43')
 }
+async function addTextbox(textboxType) {
+	if (textboxType == 'Nickname' && !card.text.nickname && card.text.title) {
+		await loadTextOptions({nickname: {name:'Nickname', text:card.text.title.text, x:0.14, y:0.1129, width:0.72, height:0.0243, oneLine:true, font:'mplantini', size:0.0229, color:'white', shadowX:0.0014, shadowY:0.001, align:'center'}}, false);
+		var nickname = card.text.title;
+		nickname.name = 'Nickname';
+		card.text.title = card.text.nickname;
+		card.text.title.name = 'Title';
+		card.text.nickname = nickname;
+	} else if (textboxType == 'Power/Toughness' && !card.text.pt) {
+		loadTextOptions({pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}}, false);
+	}
+}
 //ART TAB
 function uploadArt(imageSource, otherParams) {
 	art.src = imageSource;
@@ -1097,7 +1115,6 @@ function toggleStarDot() {
 		} else {
 			card.bottomInfo[key].text = text.replace(' \u2022 ', '*');
 		}
-		// console.log(textObject[1].text)
 	}
 	bottomInfoEdited();
 }

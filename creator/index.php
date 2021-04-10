@@ -154,7 +154,7 @@ include('../globalHTML/header-1.php');
 							<h5 class='margin-bottom padding input-description'>Edit the placement and size of the selected textbox</h5>
 							<button class='input' onclick='textboxEditor();'>Edit Bounds</button>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								Text Code / Mana Symbol Code Reference
 							</h5>
@@ -194,6 +194,13 @@ include('../globalHTML/header-1.php');
 									<h5>{e}</h5><h5>Energy symbol</h5>
 									<h5>Notes</h5><h5>Hybrid/Phyrexian mana only works with WUBRG</h5>
 								</div>
+							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='padding input-description'>Add a textbox to your card</h5>
+							<div class='padding input-grid'>
+								<button class='input' onclick='addTextbox("Nickname");'>Nickname</button>
+								<button class='input' onclick='addTextbox("Power/Toughness");'>Power/Toughness</button>
 							</div>
 						</div>
 					</div>
@@ -446,5 +453,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-11.js'></script>
+	<script defer src='/js/creator-12.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
