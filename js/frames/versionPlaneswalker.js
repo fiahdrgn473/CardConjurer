@@ -53,6 +53,8 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	planeswalkerTextMask.src = '/img/frames/planeswalker/planeswalkerMaskText.png';
 	var lightColor = 'white';
 	var darkColor = '#a4a4a4';
+} else {
+	planeswalkerEdited();
 }
 
 function planeswalkerEdited() {
