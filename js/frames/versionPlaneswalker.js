@@ -67,7 +67,7 @@ function planeswalkerEdited() {
 			planeswalkerTextMask.src = '/img/frames/planeswalker/mdfc/text.svg';
 		}
 	} else {
-		if (planeswalkerTextMask.src.includes('tall') || planeswalkerTextMask.includes('mdfc')) {
+		if (planeswalkerTextMask.src.includes('tall') || planeswalkerTextMask.src.includes('mdfc')) {
 			planeswalkerTextMask.src = '/img/frames/planeswalker/planeswalkerMaskText.png';
 		}
 	}
