@@ -90,12 +90,12 @@ include('../globalHTML/header-1.php');
 									<option value='Token-2'>Tokens</option>
 									<option value='Saga-1'>Sagas</option>
 									<option value='Planeswalker'>Planeswalkers</option>
+									<option value='Modal-1'>Modal DFC's</option>
 									<option value='DFC'>Transform</option>
 									<option disabled>Special Frames</option>
 									<option value='Showcase-5'>Showcase Frames</option>
 									<option value='Promo-2'>Promos (Tall Art)</option>
 									<option value='Textless-4'>Textless/Fullart</option>
-									<option value='Modal-1'>Short Modal DFC's</option>
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
 									<option value='Misc-1'>Old/Misc</option>
