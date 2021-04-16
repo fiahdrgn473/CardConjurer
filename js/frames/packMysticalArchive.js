@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = []//[{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}];
+var masks = [{src:'/img/frames/mysticalArchive/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/pinlineRight.svg', name:'Pinline (Right)'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/mysticalArchive/w.png', masks:masks},
