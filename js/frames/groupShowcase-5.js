@@ -1,4 +1,5 @@
 loadFramePacks([
+	{name:'Mystical Archive', value:'MysticalArchive'},
 	{name:'Praetors', value:'Praetors'},
 	{name:'Kaldheim', value:'Kaldheim-2'},
 	{name:'Kaldheim (Nonlegendary)', value:'KaldheimNonleg'},
