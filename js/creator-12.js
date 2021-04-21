@@ -1407,7 +1407,7 @@ function loadTutorialVideo() {
 function imageURL(url, destination, otherParams) {
 	var imageurl = url;
 	if (params.get('noproxy') != '') {
-		imageurl = 'https://cors-anywhere.herokuapp.com/' + url;
+		imageurl = 'https://cors.bridged.cc/' + url;
 	}
 	destination(imageurl, otherParams);
 }
