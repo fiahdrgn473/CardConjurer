@@ -2,8 +2,9 @@ loadFramePacks([
 	{name:'Standard 1/8 Inch Margin', value:'Margin-1'},
 	{name:'Mystical Archive 1/8 Inch Margin', value:'MarginMysticalArchive'}
 ])
+
 //For multiple Margin packs
-const loadMarginVersion = async () => {
+var loadMarginVersion = async () => {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities({canvas:[1500, 2100, 0.044, 1/35], resetOthers:false});
 	//sets card version
