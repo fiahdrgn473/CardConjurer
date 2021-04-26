@@ -555,7 +555,7 @@ function writeText(textObject, targetContext) {
 	if (params.get('copyright') != null && textObject.name == 'wizards' && card.margins) {
 		rawText = params.get('copyright'); //so people using CC for custom card games can customize their copyright info
 	}
-	var splitText = rawText.replace(/\n/g, '{line}').replace('{flavor}', '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+	var splitText = rawText.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	// if (textManaCost && textObject.arcStart > 0) {
 	// 	splitText.reverse();
