@@ -10,6 +10,7 @@ loadFramePacks([
 	{name:'Other Frames', value:'disabled'},
 	{name:'Lands', value:'M15Lands'},
 	{name:'Snow', value:'M15Snow'},
+	{name:'Mutate', value:'M15Mutate'},
 	{name:'Nyx', value:'M15Nyx'},
 	{name:'Devoid', value:'M15Devoid'},
 	{name:'Special', value:'disabled'},
