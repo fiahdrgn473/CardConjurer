@@ -964,7 +964,12 @@ function autoFitArt() {
 	artEdited();
 }
 function artFromScryfall(scryfallResponse) {
-	scryfallArt = scryfallResponse.data;
+	// importedData = scryfallResponse.data;
+	// importedData.forEach(card => {
+
+	// });
+	// scryfallArt = scryfallResponse.data;
+	scryfallArt = scryfallResponse;
 	document.querySelector('#art-index').value = 1;
 	document.querySelector('#art-index').max = scryfallArt.length;
 	changeArtIndex();
@@ -1187,7 +1192,7 @@ async function downloadCard() {
 }
 //IMPORT/SAVE TAB
 function importCard(cardObject) {
-	scryfallCard = cardObject.data;
+	scryfallCard = cardObject;
 	document.querySelector('#import-index').value = 1;
 	document.querySelector('#import-index').max = scryfallCard.length;
 	changeCardIndex();
@@ -1252,11 +1257,8 @@ function changeCardIndex() {
 	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 	textEdited();
 	//art
-	scryfallArt = scryfallCard;
 	document.querySelector('#art-name').value = cardToImport.name;
-	document.querySelector('#art-index').value = 1;
-	document.querySelector('#art-index').max = scryfallArt.length;
-	changeArtIndex();
+	fetchScryfallData(cardToImport.name, artFromScryfall, true);
 	//set symbol
 	document.querySelector('#set-symbol-code').value = cardToImport.set;
 	document.querySelector('#set-symbol-rarity').value = cardToImport.rarity.slice(0, 1);
@@ -1492,18 +1494,49 @@ function stretchSVGReal(data, frameObject) {
 	return returnData;
 }
 //SCRYFALL STUFF MAY BE CHANGED IN THE FUTURE
-function fetchScryfallData(cardName, callback = console.log) {
+function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '') {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			callback(JSON.parse(this.responseText));
-			// JSON.parse(this.responseText);
+			responseCards = [];
+			importedCards = JSON.parse(this.responseText).data;
+			importedCards.forEach(card => {
+				if ('card_faces' in card) {
+					card.card_faces.forEach(face => {
+						face.set = card.set;
+						face.rarity = card.rarity;
+						if (card.lang != 'en') {
+							face.oracle_text = face.printed_text;
+							face.name = face.printed_name;
+							face.type_line = face.printed_type_line;
+						}
+						responseCards.push(face);
+					});
+				} else {
+					if (card.lang != 'en') {
+						card.oracle_text = card.printed_text;
+						card.name = card.printed_name;
+						card.type_line = card.printed_type_line;
+					}
+					responseCards.push(card);
+				}
+			});
+			callback(responseCards);
 		} else if (this.readyState == 4 && this.status == 404) {
-			notify('No cards found for "' + cardName + '"', 5);
+			notify(`No cards found for "${cardName}" in "${cardLanguageSelect.options[cardLanguageSelect.selectedIndex].text}" language.`, 5);
 		}
 	}
-	xhttp.open('GET', 'https://api.scryfall.com/cards/search?order=released&unique=art&q=name%3D' + cardName.replace(/ /g, '_'), true);
-	xhttp.send();
+	var uniqueArt = '';
+	if (searchUniqueArt) {
+		uniqueArt = '&unique=art';
+	}
+	cardLanguageSelect = document.querySelector('#import-language');
+	xhttp.open('GET', `https://api.scryfall.com/cards/search?order=released&include_extras=true${uniqueArt}&q=lang%3D${cardLanguageSelect.value}%20name%3D${cardName.replace(/ /g, '_')}`, true);
+	try {
+		xhttp.send();
+	} catch {
+		console.log('Scryfall API search failed.')
+	}
 }
 //Initialization
 if (!localStorage.getItem('autoLoadFrameVersion')) {

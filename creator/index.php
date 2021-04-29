@@ -218,7 +218,7 @@ include('../globalHTML/header-1.php');
 							</div>
 							<h5 class='margin-bottom padding input-description'>Or enter a card name (and index)</h5>
 							<div class='input-grid margin-bottom'>
-								<input id='art-name' type='text' placeholder='Enter Card Name' class='input' onchange='fetchScryfallData(this.value, artFromScryfall);'>
+								<input id='art-name' type='text' placeholder='Enter Card Name' class='input' onchange='fetchScryfallData(this.value, artFromScryfall, true);'>
 								<input id='art-index' type='number' value=1 max=1 min=1 class='input' onchange='changeArtIndex();'>
 							</div>
 							<h5 class='margin-bottom padding input-description'>And credit the artist</h5>
@@ -384,10 +384,25 @@ include('../globalHTML/header-1.php');
 					<div id='creator-menu-import' class='hidden'>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='padding margin-bottom input-description'>Import a real card by name (and index)</h5>
-							<div class='padding input-grid'>
-								<input class='input' type='text' onchange='fetchScryfallData(this.value, importCard);' placeholder='Enter Card Name'>
+							<div class='input-grid margin-bottom'>
+								<input id='import-name' class='input' type='text' onchange='fetchScryfallData(this.value, importCard);' placeholder='Enter Card Name'>
 								<input id='import-index' class='input' type='number' onchange='changeCardIndex();' value=1 max=1 min=1>
 							</div>
+							<h5 class='padding input-description'>Select a language for card imports (not all languages will always be available)</h5>
+							<select class='input' id='import-language' onchange='fetchScryfallData(document.querySelector("#import-name").value, importCard);'>
+								<option value="en">English</option>
+								<option value="es">Spanish</option>
+								<option value="fr">French</option>
+								<option value="de">German</option>
+								<option value="it">Italian</option>
+								<option value="pt">Portuguese</option>
+								<option value="ja">Japanese</option>
+								<option value="ko">Korean</option>
+								<option value="ru">Russian</option>
+								<option value="zhs">Simplified Chinese</option>
+								<option value="zht">Traditional Chinese</option>
+								<option value="ph">Phyrexian</option>
+							</select>
 						</div>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='padding margin-bottom input-description'>Save your current card</h5>
@@ -453,5 +468,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-13.js'></script>
+	<script defer src='/js/creator-14.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
