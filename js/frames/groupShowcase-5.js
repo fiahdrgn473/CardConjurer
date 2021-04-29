@@ -1,4 +1,5 @@
 loadFramePacks([
+	{name:'Mystical Archive (Japanese)', value:'MysticalArchiveJP'},
 	{name:'Mystical Archive', value:'MysticalArchive'},
 	{name:'Praetors', value:'Praetors'},
 	{name:'Kaldheim', value:'Kaldheim-2'},

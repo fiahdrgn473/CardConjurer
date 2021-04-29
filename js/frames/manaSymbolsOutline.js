@@ -2,7 +2,7 @@
 if (!card.manaSymbols.includes('/js/frames/manaSymbolsOutline.js')) {
 	card.manaSymbols.push('/js/frames/manaSymbolsOutline.js');
 }
-if (findManaSymbolIndex('cw') == -1) {
+if (findManaSymbolIndex('outlinew') == -1) {
 	loadManaSymbols([
 		'outline/outlinew', 'outline/outlineu', 'outline/outlineb', 'outline/outliner', 'outline/outlineg',
 		'outline/outlinec', 'outline/outlines', 'outline/outlinex', 'outline/outline0', 'outline/outline1',

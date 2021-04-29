@@ -59,6 +59,14 @@
 	font-family: fritz-quadrata;
 	src: url("/fonts/fritz-quadrata.ttf");
 }
+@font-face {
+	font-family: japanese-title;
+	src: url("/fonts/NfMotoyaAporoStd-W1.otf");
+}
+@font-face {
+	font-family: japanese;
+	src: url('/fonts/2012c863631ba71f874aba70590795a1.otf');
+}
 /*Variables*/
 :root {
 	--site-background: url('/img/lowpolyBackground.svg');
