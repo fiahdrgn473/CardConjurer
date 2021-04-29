@@ -121,8 +121,12 @@ include('../globalHTML/header-1.php');
 							<div class='input-grid margin-bottom'>
 								<button class='input' onclick='addFrame()'>Add Frame to Card</button>
 								<button class='input' onclick='addFrame([{src:"/img/frames/maskRightHalf.png", name:"Right Half"}])'>Add Frame to Card (Right Half)</button>
-								<button class='input' onclick='addFrame([{src:"/img/frames/maskMiddleThird.png", name:"Middle Third"}])'>Add Frame to Card (Middle Third)</button>
 							</div>
+							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>More options</h5>
+								<div class='input-grid margin-bottom'>
+									<button class='input' onclick='addFrame([{src:"/img/frames/maskLeftHalf.png", name:"Left Half"}])'>Add Frame to Card (Left Half)</button>
+									<button class='input' onclick='addFrame([{src:"/img/frames/maskMiddleThird.png", name:"Middle Third"}])'>Add Frame to Card (Middle Third)</button>
+								</div>
 							<h5 id='selectedPreview' class='padding input-description'>(Selected: White Frame, No Mask)</h5>
 						</div>
 						<div class='readable-background padding margin-bottom'>
