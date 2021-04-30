@@ -917,7 +917,7 @@ function widthToAngle(width, radius) {
 	return width / radius;
 }
 function curlyQuotes(input) {
-	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/' /g, '’ ').replace(/'$/, '’').replace(/ "/g, ' “').replace(/^"/, '“').replace(/" /g, '” ').replace(/\."/, '”').replace(/"$/, '”');
+	return input.replace(/ '/g, ' ‘').replace(/^'/, '‘').replace(/'/g, '’').replace(/ "/g, ' “').replace(/" /g, '” ').replace(/\."/, '”').replace(/"$/, '”').replace(/"\)/g, '”)').replace(/"/g, '“');
 }
 function pinlineColors(color) {
 	return color.replace('white', '#fcfeff').replace('blue', '#0075be').replace('black', '#272624').replace('red', '#ef3827').replace('green', '#007b43')
@@ -1200,7 +1200,7 @@ function importCard(cardObject) {
 function changeCardIndex() {
 	var cardToImport = scryfallCard[document.querySelector('#import-index').value - 1];
 	//text
-	if (card.text.title) {card.text.title.text = cardToImport.name || '';}
+	if (card.text.title) {card.text.title.text = curlyQuotes(cardToImport.name || '');}
 	if (card.text.nickname) {card.text.nickname.text = cardToImport.flavor_name || '';}
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = cardToImport.type_line || '';}
@@ -1220,7 +1220,7 @@ function changeCardIndex() {
 				}
 				flavorTextCounter ++;
 			}
-			card.text.rules.text += '{flavor}' + flavorText.replace('\n', '{lns}');
+			card.text.rules.text += '{flavor}' + curlyQuotes(flavorText.replace('\n', '{lns}'));
 		}
 	}
 	if (card.text.pt) {card.text.pt.text = cardToImport.power + '/' + cardToImport.toughness || '';}
