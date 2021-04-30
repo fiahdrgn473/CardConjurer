@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {src:'/img/frames/m15/m15MaskBorderSliverCrown.png', name:'Border (With Crown)'}];
+var masks = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {src:'/img/frames/m15/m15MaskBorderSliverCrown.png', name:'Border (With Crown)'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Full Border'}];
 //defines available frames
 availableFrames = [
 	{name:'White Border', src:'/img/frames/white.png', masks:masks, noDefaultMask:true},
