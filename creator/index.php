@@ -231,7 +231,7 @@ include('../globalHTML/header-1.php');
 							</div>
 						</div>
 						<div class='readable-background padding margin-bottom'>
-							<h5 class='margin-bottom padding input-description'>Position/scale your art (X, Y, Scale)</h5>
+							<h5 class='margin-bottom padding input-description'>Position/scale your art (X, Y, Scale)<br>Art is now visually adjustable! Click and drag anywhere on the card to move your art around, and hold shift while doing so to scale your art.</h5>
 							<div class='input-grid margin-bottom'>
 								<input id='art-x' type='number' class='input' oninput='artEdited();' value=0>
 								<input id='art-y' type='number' class='input' oninput='artEdited();' value=0>
@@ -472,5 +472,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-14.js'></script>
+	<script defer src='/js/creator-15.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

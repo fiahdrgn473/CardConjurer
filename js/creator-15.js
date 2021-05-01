@@ -980,6 +980,51 @@ function changeArtIndex() {
 		artistEdited(scryfallArt[document.querySelector('#art-index').value - 1].artist);
 	}
 }
+function initDraggableArt() {
+	previewCanvas.onmousedown = artStartDrag;
+	previewCanvas.onmousemove = artDrag;
+	previewCanvas.onmouseout = artStopDrag;
+	previewCanvas.onmouseup = artStopDrag;
+	draggingArt = false;
+	lastArtDragTime = 0;
+}
+function artStartDrag(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	startX = parseInt(e.clientX);
+	startY = parseInt(e.clientY);
+	draggingArt = true;
+}
+function artDrag(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	if (draggingArt && Date.now() > lastArtDragTime + 25) {
+		lastArtDragTime = Date.now();
+		if (e.shiftKey) {
+			startX = parseInt(e.clientX);
+			const endY = parseInt(e.clientY);
+			document.querySelector('#art-zoom').value = Math.round((parseFloat(document.querySelector('#art-zoom').value) * (1.002 ** (startY - endY))) * 10) / 10;
+			startY = endY;
+			artEdited();
+		} else {
+			const endX = parseInt(e.clientX);
+			const endY = parseInt(e.clientY);
+			document.querySelector('#art-x').value = parseInt(document.querySelector('#art-x').value) + (endX - startX) * 2;
+			document.querySelector('#art-y').value = parseInt(document.querySelector('#art-y').value) + (endY - startY) * 2;
+			startX = endX;
+			startY = endY;
+			artEdited();
+		}
+		
+	}
+}
+function artStopDrag(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	if (draggingArt) {
+		draggingArt = false;
+	}
+}
 //SET SYMBOL TAB
 function uploadSetSymbol(imageSource, otherParams) {
 	setSymbol.src = imageSource;
@@ -1546,3 +1591,4 @@ document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage
 document.querySelector('#info-number').value = date.getFullYear();
 loadScript('/js/frames/groupStandard-3.js');
 loadAvailableCards();
+initDraggableArt();
