@@ -22,15 +22,15 @@ availableFrames = [
 	{name:'Uncommon', src:'/img/frames/mysticalArchive/jp/uncommon.png', bounds:bounds},
 	{name:'Rare', src:'/img/frames/mysticalArchive/jp/rare.png', bounds:bounds},
 	{name:'Mythic', src:'/img/frames/mysticalArchive/jp/mythic.png', bounds:bounds},
-	{name:'Power/Toughness Cutout', src:'/img/frames/mysticalArchive/jp/pt/cutout.svg', bounds:bounds2, erase:true},
-	{name:'White Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/w.svg', bounds:bounds2},
-	{name:'Blue Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/u.svg', bounds:bounds2},
-	{name:'Black Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/b.svg', bounds:bounds2},
-	{name:'Red Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/r.svg', bounds:bounds2},
-	{name:'Green Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/g.svg', bounds:bounds2},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/m.svg', bounds:bounds2},
-	{name:'Artifact Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/a.svg', bounds:bounds2},
-	{name:'Land Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/l.svg', bounds:bounds2}
+	{name:'White Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/w.svg', bounds:bounds2, complementary:19},
+	{name:'Blue Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/u.svg', bounds:bounds2, complementary:19},
+	{name:'Black Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/b.svg', bounds:bounds2, complementary:19},
+	{name:'Red Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/r.svg', bounds:bounds2, complementary:19},
+	{name:'Green Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/g.svg', bounds:bounds2, complementary:19},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/m.svg', bounds:bounds2, complementary:19},
+	{name:'Artifact Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/a.svg', bounds:bounds2, complementary:19},
+	{name:'Land Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/l.svg', bounds:bounds2, complementary:19},
+	{name:'Power/Toughness Cutout', src:'/img/frames/mysticalArchive/jp/pt/cutout.svg', bounds:bounds2, erase:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

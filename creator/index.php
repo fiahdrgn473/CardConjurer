@@ -259,8 +259,8 @@ include('../globalHTML/header-1.php');
 							</div>
 							<h5 class='margin-bottom padding input-description'>Or enter a set code/rarity</h5>
 							<div class='input-grid margin-bottom'>
-								<input id='set-symbol-code' type='text' placeholder='Set Code' class='input' oninput='fetchSetSymbol();'>
-								<input id='set-symbol-rarity' type='text' placeholder='Rarity' class='input' oninput='fetchSetSymbol();'>
+								<input id='set-symbol-code' type='text' placeholder='Set Code' class='input' onchange='fetchSetSymbol();'>
+								<input id='set-symbol-rarity' type='text' placeholder='Rarity' class='input' onchange='fetchSetSymbol();'>
 							</div>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes

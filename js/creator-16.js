@@ -369,10 +369,11 @@ function maskOptionClicked(event) {
 	if (selectedMaskIndex > 0) {selectedMaskName = availableFrames[selectedFrameIndex].masks[selectedMaskIndex - 1].name;}
 	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', ' + selectedMaskName + ')';
 }
-function addFrame(additionalMasks = [], loadingFrame = false) {
+async function addFrame(additionalMasks = [], loadingFrame = false) {
 	var frameToAdd = JSON.parse(JSON.stringify(availableFrames[selectedFrameIndex]));
 	var maskThumbnail = true;
 	if (!loadingFrame) {
+		// The frame is being added manually by the user, so we must process which mask(s) they have selected
 		var noDefaultMask = 0;
 		if (frameToAdd.noDefaultMask) {noDefaultMask = 1;}
 		if (frameToAdd.masks && selectedMaskIndex + noDefaultMask > 0) {
@@ -382,6 +383,20 @@ function addFrame(additionalMasks = [], loadingFrame = false) {
 		 	maskThumbnail = false;
 		}
 		additionalMasks.forEach(item => frameToAdd.masks.push(item));
+		// Likewise, we now add any complementary frames
+		if ('complementary' in frameToAdd && frameToAdd.masks.length == 0) {
+			if (typeof frameToAdd.complementary == 'number') {
+				frameToAdd.complementary = [frameToAdd.complementary];
+			}
+			const realFrameIndex = selectedFrameIndex;
+			for (const index of frameToAdd.complementary) {
+				selectedFrameIndex = index;
+				await addFrame();
+			}
+			selectedFrameIndex = realFrameIndex;
+		} else {
+			console.log(frameToAdd.masks)
+		}
 	} else {
 		frameToAdd = loadingFrame;
 		if (frameToAdd.masks.length == 0 || (frameToAdd.masks[0].src.includes('/img/frames/mask'))) {
