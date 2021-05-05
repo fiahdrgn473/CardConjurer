@@ -50,6 +50,7 @@ var scryfallCard;
 var savedTextXPosition = 0;
 //for misc
 var date = new Date();
+const year = 'WOW' //date.getFullYear();
 //to avoid rerunning special scripts (planeswalker, saga, etc...)
 var loadedVersions = [];
 //Card Object managament
@@ -394,8 +395,6 @@ async function addFrame(additionalMasks = [], loadingFrame = false) {
 				await addFrame();
 			}
 			selectedFrameIndex = realFrameIndex;
-		} else {
-			console.log(frameToAdd.masks)
 		}
 	} else {
 		frameToAdd = loadingFrame;
@@ -1205,7 +1204,23 @@ function toggleStarDot() {
 			card.bottomInfo[key].text = text.replace(' \u2022 ', '*');
 		}
 	}
+	defaultCollector.starDot = !defaultCollector.starDot;
 	bottomInfoEdited();
+}
+function removeDefaultCollector() {
+	defaultCollector = {}; //{number: year, rarity:'P', setCode:'MTG', lang:'EN', starDot:false};
+	localStorage.removeItem('defaultCollector'); //localStorage.setItem('defaultCollector', JSON.stringify(defaultCollector));
+}
+function setDefaultCollector() {
+	starDot = defaultCollector.starDot;
+	defaultCollector = {
+		number: document.querySelector('#info-number').value,
+		rarity: document.querySelector('#info-rarity').value,
+		setCode: document.querySelector('#info-set').value,
+		lang: document.querySelector('#info-language').value,
+		starDot: starDot
+	};
+	localStorage.setItem('defaultCollector', JSON.stringify(defaultCollector));
 }
 //DRAWING THE CARD (putting it all together)
 function drawCard() {
@@ -1611,12 +1626,27 @@ function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '
 		console.log('Scryfall API search failed.')
 	}
 }
-//Initialization
+// INITIALIZATION
+
+// auto load frame version (user defaults)
 if (!localStorage.getItem('autoLoadFrameVersion')) {
 	localStorage.setItem('autoLoadFrameVersion', document.querySelector('#autoLoadFrameVersion').checked);
 }
 document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage.getItem('autoLoadFrameVersion');
-document.querySelector('#info-number').value = date.getFullYear();
+
+// collector info (user defaults)
+var defaultCollector = JSON.parse(localStorage.getItem('defaultCollector') || '{}');
+if ('number' in defaultCollector) {
+	document.querySelector('#info-number').value = defaultCollector.number;
+	document.querySelector('#info-rarity').value = defaultCollector.rarity;
+	document.querySelector('#info-set').value = defaultCollector.setCode;
+	document.querySelector('#info-language').value = defaultCollector.lang;
+	if (defaultCollector.starDot) {setTimeout(function(){defaultCollector.starDot = false; toggleStarDot();}, 500);}
+} else {
+	document.querySelector('#info-number').value = date.getFullYear();
+}
+
+// Load / init whatever
 loadScript('/js/frames/groupStandard-3.js');
 loadAvailableCards();
 initDraggableArt();
