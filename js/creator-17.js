@@ -43,6 +43,7 @@ var availableFrames = [];
 var selectedFrameIndex = 0;
 var selectedMaskIndex = 0;
 var selectedTextIndex = 0;
+var replacementMasks = {};
 //for imports
 var scryfallArt;
 var scryfallCard;
@@ -57,6 +58,7 @@ var loadedVersions = [];
 async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers = true} = {}) {
 	//misc details
 	card.margins = false;
+	replacementMasks = {};
 	//rotation
 	if (card.landscape) {
 		// previewContext.scale(card.width/card.height, card.height/card.width);
@@ -383,7 +385,12 @@ async function addFrame(additionalMasks = [], loadingFrame = false) {
 		 	frameToAdd.masks = [];
 		 	maskThumbnail = false;
 		}
-		additionalMasks.forEach(item => frameToAdd.masks.push(item));
+		additionalMasks.forEach(item => {
+			if (item.name in replacementMasks) {
+				item.src = replacementMasks[item.name];
+			}
+			frameToAdd.masks.push(item);
+		});
 		// Likewise, we now add any complementary frames
 		if ('complementary' in frameToAdd && frameToAdd.masks.length == 0) {
 			if (typeof frameToAdd.complementary == 'number') {
