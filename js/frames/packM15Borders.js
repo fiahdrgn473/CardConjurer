@@ -3,8 +3,8 @@ var masks = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {sr
 //defines available frames
 availableFrames = [
 	{name:'White Border', src:'/img/frames/white.png', masks:masks, noDefaultMask:true},
-	{name:'White Border', src:'/img/frames/silver.png', masks:masks, noDefaultMask:true},
-	{name:'White Border', src:'/img/frames/gold.png', masks:masks, noDefaultMask:true},
+	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks, noDefaultMask:true},
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks, noDefaultMask:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = true;

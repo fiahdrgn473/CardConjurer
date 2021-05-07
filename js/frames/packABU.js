@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/old/abu/dualLand.png', name:'Dual Land'}];
+var masks2 = [{src:'/img/frames/old/abu/border.svg', name:'ABU Border'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/old/abu/w.png'},
@@ -13,7 +14,10 @@ availableFrames = [
 	{name:'Blue Land Frame', src:'/img/frames/old/abu/ul.png', masks:masks},
 	{name:'Black Land Frame', src:'/img/frames/old/abu/bl.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/old/abu/rl.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/old/abu/gl.png', masks:masks}
+	{name:'Green Land Frame', src:'/img/frames/old/abu/gl.png', masks:masks},
+	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
+	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
@@ -44,7 +48,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//bottom info
 	loadBottomInfo({
 		artist: {text:'Illus. \u00a9 {elemidinfo-artist}', x:0.1, y:0.9, width:0.7334, height:0.0334, oneLine:true, size:0.0334, align:'left', shadowX:0.0027, shadowY:0.002, color:'#ababab'},
-		cc: {text:'NOT FOR SALE   CardConjurer.com', x:0.0614, y:9791, width:0.8774, height:0.0124, oneLine:true, size:0.0124, align:'center', shadowX:0.0027, shadowY:0.002, color:'#ababab'}
+		cc: {text:'NOT FOR SALE   CardConjurer.com', x:0.0614, y:0.9791, width:0.8774, height:0.0124, oneLine:true, size:0.0124, align:'center', color:'#ababab', outlineWidth:0.003}
 	});
 }
 //loads available frames
