@@ -1034,8 +1034,15 @@ function artDrag(e) {
 		} else {
 			const endX = parseInt(e.clientX);
 			const endY = parseInt(e.clientY);
-			document.querySelector('#art-x').value = parseInt(document.querySelector('#art-x').value) + (endX - startX) * 2;
-			document.querySelector('#art-y').value = parseInt(document.querySelector('#art-y').value) + (endY - startY) * 2;
+			var changeX = (endX - startX) * 2;
+			var changeY = (endY - startY) * 2;
+			if (card.landscape) {
+				const temp = changeX;
+				changeX = -changeY;
+				changeY = temp;
+			}
+			document.querySelector('#art-x').value = parseInt(document.querySelector('#art-x').value) + changeX;
+			document.querySelector('#art-y').value = parseInt(document.querySelector('#art-y').value) + changeY;
 			startX = endX;
 			startY = endY;
 			artEdited();
