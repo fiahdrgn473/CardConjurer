@@ -43,6 +43,13 @@ include('../globalHTML/header-1.php');
 					<span class='checkmark'></span>
 				</label>
 			</div>
+			<div>
+				<h5 class='input-description'>Overlay Mode</h5>
+				<label class='checkbox-container input'>Preserve Alpha
+					<input id='frame-editor-alpha' type='checkbox' placeholder='Preserve Alpha'>
+					<span class='checkmark'></span>
+				</label>
+			</div>
 		</div>
 		<div id='textbox-editor' class='textbox-editor'>
 			<h2 class='textbox-editor-title'>Textbox Editor</h2>

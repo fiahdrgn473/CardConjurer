@@ -283,7 +283,19 @@ function drawFrames() {
 			item.masks.forEach(mask => frameMaskingContext.drawImage(mask.image, scaleX((bounds.x || 0) - (ogBounds.x || 0) - ((ogBounds.x || 0) * ((bounds.width || 1) / (ogBounds.width || 1) - 1))), scaleY((bounds.y || 0) - (ogBounds.y || 0) - ((ogBounds.y || 0) * ((bounds.height || 1) / (ogBounds.height || 1) - 1))), scaleWidth((bounds.width || 1) / (ogBounds.width || 1)), scaleHeight((bounds.height || 1) / (ogBounds.height || 1))));
 			frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
 			if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
+			var oldAlphaData;
+			if (item.preserveAlpha) {
+				oldAlphaData = frameContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height).data;
+			}
 			frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
+			if (item.preserveAlpha) {
+				var newRGBData = frameContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height);
+				var pixels = newRGBData.data;
+				for (var i = 3; i < oldAlphaData.length; i += 4) {
+					pixels[i] = oldAlphaData[i];
+				}
+				frameContext.putImageData(newRGBData, 0, 0);
+			}
 		}
 	});
 	drawCard();
@@ -491,6 +503,8 @@ function frameElementClicked(event) {
 		document.querySelector('#frame-editor-opacity').onchange = (event) => {selectedFrame.opacity = event.target.value; drawFrames();}
 		document.querySelector('#frame-editor-erase').checked = selectedFrame.erase || false;
 		document.querySelector('#frame-editor-erase').onchange = (event) => {selectedFrame.erase = event.target.checked; drawFrames();}
+		document.querySelector('#frame-editor-alpha').checked = selectedFrame.preserveAlpha || false;
+		document.querySelector('#frame-editor-alpha').onchange = (event) => {selectedFrame.preserveAlpha = event.target.checked; drawFrames();}
 	}
 }
 function uploadFrameOption(imageSource) {
