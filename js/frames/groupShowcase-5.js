@@ -15,7 +15,7 @@ loadFramePacks([
 	{name:'Extended Art (Box Topper)', value:'M15BoxTopper'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
 	{name:'Ixalan Maps', value:'Ixalan'},
-	{name:'Amonkhet Invocations (Custom)', value:'Invocation'},
+	{name:'Amonkhet Invocations (u/Smyris)', value:'Invocation'},
 	{name:'Kaladesh Inventions', value:'Invention'},
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ-1'},
 	{name:'Addons', value:'disabled'},
