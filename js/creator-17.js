@@ -1,6 +1,6 @@
 //URL Params
 var params = new URLSearchParams(window.location.search);
-const debugging = params.get('debug') != '';
+const debugging = params.get('debug') != null;
 console.log('debugging: ' + debugging);
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
