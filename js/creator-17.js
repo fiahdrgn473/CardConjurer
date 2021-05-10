@@ -1,7 +1,7 @@
 //URL Params
 var params = new URLSearchParams(window.location.search);
 const debugging = params.get('debug') != null;
-if (debugging) {alert('debugging - 2.3');}
+if (debugging) {alert('debugging - 2.4');}
 
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
@@ -1295,9 +1295,6 @@ async function downloadCard() {
 		}
 		imageName += '.png';
 		downloadElement.download = imageName;
-		if (debugging) {
-			// alert(`el.download: "${downloadElement.download}"\nexpected el.download: "${imageName}.png"`);
-		}
 		downloadElement.href = cardCanvas.toDataURL();
 		if (debugging) {
 			console.log(imageName);
@@ -1305,6 +1302,7 @@ async function downloadCard() {
 			downloadElement.href = downloadElement.href.replace(/^data:image\/png/, `data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=${imageName}`);
 			console.log(downloadElement.href.split(';')[0]);
 			console.log(downloadElement.href.split(';')[1]);
+			console.log(downloadElement);
 		}
 		document.body.appendChild(downloadElement);
 		await downloadElement.click();
