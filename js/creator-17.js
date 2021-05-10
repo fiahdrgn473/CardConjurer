@@ -1,7 +1,8 @@
 //URL Params
 var params = new URLSearchParams(window.location.search);
 const debugging = params.get('debug') != null;
-console.log('debugging: ' + debugging);
+if (debugging) {alert('debugging - 2.3');}
+
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
 	var prefix = 'https://card-conjurer.storage.googleapis.com';//'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
@@ -1288,15 +1289,23 @@ async function downloadCard() {
 		notify('You must credit an artist before downloading!', 5);
 	} else {
 		var downloadElement = document.createElement('a');
-		var imageName = card.text.title.text;
+		var imageName = card.text.title.text || 'card';
 		if (card.text.nickname) {
-			imageName = card.text.nickname.text + ' (' + imageName + ')'
+			imageName = imageName + ' (' + card.text.nickname.text + ')'
 		}
-		downloadElement.download = imageName + '.png';
+		imageName += '.png';
+		downloadElement.download = imageName;
 		if (debugging) {
-			alert(`el.download: "${downloadElement.download}"\nexpected el.download: "${imageName}.png"`);
+			// alert(`el.download: "${downloadElement.download}"\nexpected el.download: "${imageName}.png"`);
 		}
 		downloadElement.href = cardCanvas.toDataURL();
+		if (debugging) {
+			console.log(imageName);
+			console.log(downloadElement.href.split(';')[0]);
+			downloadElement.href = downloadElement.href.replace(/^data:image\/png/, `data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=${imageName}`);
+			console.log(downloadElement.href.split(';')[0]);
+			console.log(downloadElement.href.split(';')[1]);
+		}
 		document.body.appendChild(downloadElement);
 		await downloadElement.click();
 		downloadElement.remove();
