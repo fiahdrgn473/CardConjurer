@@ -1287,19 +1287,19 @@ async function downloadCard() {
 	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
 		notify('You must credit an artist before downloading!', 5);
 	} else {
-		var download = document.createElement('a');
+		var downloadElement = document.createElement('a');
 		var imageName = card.text.title.text;
 		if (card.text.nickname) {
 			imageName = card.text.nickname.text + ' (' + imageName + ')'
 		}
-		download.download = imageName + '.png';
+		downloadElement.download = imageName + '.png';
 		if (debugging) {
-			alert(download.download, '\n', imageName + '.png');
+			alert(`el.download: "${downloadElement.download}"\nexpected el.download: "${imageName}.png"`);
 		}
-		download.href = cardCanvas.toDataURL();
-		document.body.appendChild(download);
-		await download.click();
-		download.remove();
+		downloadElement.href = cardCanvas.toDataURL();
+		document.body.appendChild(downloadElement);
+		await downloadElement.click();
+		downloadElement.remove();
 	}
 }
 //IMPORT/SAVE TAB
