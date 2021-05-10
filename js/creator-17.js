@@ -1,5 +1,7 @@
 //URL Params
 var params = new URLSearchParams(window.location.search);
+const debugging = params.get('debug') != '';
+console.log('debugging: ' + debugging);
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
 	var prefix = 'https://card-conjurer.storage.googleapis.com';//'https://raw.githubusercontent.com/ImKyle4815/cardconjurer/remake';
@@ -1291,6 +1293,9 @@ async function downloadCard() {
 			imageName = card.text.nickname.text + ' (' + imageName + ')'
 		}
 		download.download = imageName + '.png';
+		if (debugging) {
+			alert(download.download, '\n', imageName + '.png');
+		}
 		download.href = cardCanvas.toDataURL();
 		document.body.appendChild(download);
 		await download.click();
