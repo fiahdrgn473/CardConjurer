@@ -1,7 +1,10 @@
 //URL Params
 var params = new URLSearchParams(window.location.search);
 const debugging = params.get('debug') != null;
-if (debugging) {alert('debugging - 2.5');}
+if (debugging) {
+	alert('debugging - 3.1');
+	document.querySelectorAll('.debugging').forEach(element => element.classList.remove('hidden'));
+}
 
 //To save the server from being overloaded? Maybe?
 function fixUri(input) {
@@ -1284,26 +1287,35 @@ function drawCard() {
 	previewContext.drawImage(cardCanvas, 0, 0, previewCanvas.width, previewCanvas.height);
 }
 //DOWNLOADING
-async function downloadCard() {
+async function downloadCard(alt = false) {
 	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
 		notify('You must credit an artist before downloading!', 5);
 	} else {
-		var downloadElement = document.createElement('a');
+		//Prep file information
+		const imageDataURL = cardCanvas.toDataURL('image/png');
 		var imageName = card.text.title.text || 'card';
 		if (card.text.nickname) {
 			imageName = imageName + ' (' + card.text.nickname.text + ')'
 		}
 		imageName += '.png';
-		downloadElement.download = imageName;
-		downloadElement.href = cardCanvas.toDataURL();
-		downloadElement.target = '_blank';
-		if (!debugging) {downloadElement.style.display = 'none';} else {
-			downloadElement.innerHTML = 'Try clicking me :)'
+		//download image
+		if (alt) {
+			var w = window.open('about:blank');
+			setTimeout(function(){
+				w.document.body.appendChild(w.document.createElement('img'))
+					.src = imageDataURL;
+				w.document.querySelector('img').style = 'max-height: 90vh; max-width: 90vw;';
+			}, 0);
+		} else {
+			var downloadElement = document.createElement('a');
+			downloadElement.download = imageName;
+			downloadElement.target = '_blank';
+			downloadElement.href = imageDataURL;
+			document.body.appendChild(downloadElement);
+			// if (alt) {alert('test');}
+			downloadElement.click();
+			downloadElement.remove();
 		}
-		document.body.appendChild(downloadElement);
-		await downloadElement.click();
-		if (debugging) {return}
-		downloadElement.remove();
 	}
 }
 //IMPORT/SAVE TAB
