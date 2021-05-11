@@ -4,13 +4,13 @@ var bounds = {x:0.8587, y:0.8186, width:0.062, height:0.1258};
 var bounds2 = {x:0.0527, y:0.0496, width:0.8947, height:0.0515};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/invocation/W.png'},
-	{name:'Blue Frame', src:'/img/frames/invocation/U.png'},
-	{name:'Black Frame', src:'/img/frames/invocation/B.png'},
-	{name:'Red Frame', src:'/img/frames/invocation/R.png'},
-	{name:'Green Frame', src:'/img/frames/invocation/G.png'},
-	{name:'Multicolored Frame', src:'/img/frames/invocation/M.png'},
-	{name:'Artifact Frame', src:'/img/frames/invocation/A.png'},
+	{name:'White Frame', src:'/img/frames/invocation/w.png'},
+	{name:'Blue Frame', src:'/img/frames/invocation/u.png'},
+	{name:'Black Frame', src:'/img/frames/invocation/b.png'},
+	{name:'Red Frame', src:'/img/frames/invocation/r.png'},
+	{name:'Green Frame', src:'/img/frames/invocation/g.png'},
+	{name:'Multicolored Frame', src:'/img/frames/invocation/m.png'},
+	{name:'Artifact Frame', src:'/img/frames/invocation/a.png'},
 	{name:'Power/Toughness', src:'/img/frames/invocation/pt.png', bounds:bounds},
 	{name:'Set Symbol Cover', src:'/img/frames/invocation/set.png', bounds:{x:0.8494, y:0.5705, width:0.0907, height:0.0434}},
 	{name:'Mana Bracket (1)', src:'/img/frames/invocation/mana/1.png', bounds:bounds2},
