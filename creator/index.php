@@ -465,10 +465,7 @@ include('../globalHTML/header-1.php');
 				</div>
 				<div class='readable-background padding'>
 					<h3 class='download padding' onclick='downloadCard();'>Download your card</h3>
-					<h5 class='collapsible collapsed padding input-description debugging hidden' onclick='toggleCollapse(event);'>Not downloading? </h5>
-					<div class='input-grid margin-bottom debugging hidden'>
-						<h4 onclick='downloadCard(true);' id='downloadAlt' href='' target='_blank' class='padding download' style='text-align: left;'>Use this link to open your card image in a new window, then save it manually.</h4>
-					</div>
+					<h5 onclick='downloadCard(true);' id='downloadAlt' href='' target='_blank' class='padding download input-description' style='text-align: left;'>Click here for an alternative download</h5>
 				</div>
 			</div>
 		</div>
@@ -491,5 +488,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-17.js'></script>
+	<script defer src='/js/creator-18.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
