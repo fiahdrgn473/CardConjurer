@@ -639,6 +639,7 @@ function writeText(textObject, targetContext) {
 		var textShadowBlur = scaleHeight(textObject.shadowBlur) || 0;
 		var textArcRadius = scaleHeight(textObject.arcRadius) || 0;
 		var manaSymbolColor = textObject.manaSymbolColor || null;
+		var textRotation = textObject.rotation || 0;
 		if (textArcRadius > 0) {
 			//Buffers the canvases accordingly
 			var canvasMargin = 300 + textArcRadius;
@@ -795,6 +796,8 @@ function writeText(textObject, targetContext) {
 					textArcRadius = parseInt(possibleCode.replace('arcradius', '')) || 0;
 				} else if (possibleCode.includes('arcstart')) {
 					textArcStart = parseFloat(possibleCode.replace('arcstart', '')) || 0;
+				} else if (possibleCode.includes('rotate')) {
+					textRotation = parseInt(possibleCode.replace('rotate', '')) % 360;
 				} else if (possibleCode.includes('manacolor')) {
 					manaSymbolColor = possibleCode.replace('manacolor', '') || 'white';
 				} else if (possibleCode.includes('fixtextalign')) {
@@ -916,7 +919,18 @@ function writeText(textObject, targetContext) {
 				if (!textObject.noVerticalCenter) {
 					verticalAdjust = (textHeight - currentY + textSize * 0.15) / 2;
 				}
-				targetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
+				if (textRotation) {
+					targetContext.save();
+					targetContext
+					const shapeX = textX + ptShift[0] + permaShift[0];
+					const shapeY = textY + verticalAdjust + ptShift[1] + permaShift[1];
+					targetContext.translate(shapeX, shapeY);
+					targetContext.rotate(Math.PI * textRotation / 180);
+					targetContext.drawImage(paragraphCanvas, -canvasMargin, -canvasMargin);
+					targetContext.restore();
+				} else {
+					targetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
+				}
 				drawingText = false;
 			}
 		}
@@ -1590,11 +1604,14 @@ function loadScript(scriptPath) {
 }
 // Stretchable SVGs
 function stretchSVG(frameObject) {
+	// console.log(frameObject);
 	xhr = new XMLHttpRequest();
 	xhr.open('GET', fixUri(frameObject.src), true);
 	xhr.overrideMimeType('image/svg+xml');
 	xhr.onload = function(e) {
-		frameObject.image.src = 'data:image/svg+xml;charset=utf-8,' + stretchSVGReal((new XMLSerializer).serializeToString(xhr.responseXML.documentElement), frameObject);
+		if (this.readyState == 4 && this.status == 200) {
+			frameObject.image.src = 'data:image/svg+xml;charset=utf-8,' + stretchSVGReal((new XMLSerializer).serializeToString(this.responseXML.documentElement), frameObject);
+		}
 	}
 	xhr.send();
 }
