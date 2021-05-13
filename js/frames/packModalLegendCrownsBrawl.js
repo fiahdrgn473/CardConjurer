@@ -1,6 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/custom/brawl/center.svg', name:'Center'}, {src:'/img/frames/custom/brawl/second.svg', name:'Second'}, {src:'/img/frames/custom/brawl/third.svg', name:'Third'}, {src:'/img/frames/custom/brawl/wings.svg', name:'Wings'}];
-var bounds = {x:0.0087, y:0, width:0.9814, height:0.1262};
+var bounds = {x:0.0094, y:0.0005, width:0.9814, height:0.1262};
 //defines available frames
 availableFrames = [
 	{name:'White Crown', src:'/img/frames/modal/crowns/brawl/w.png', masks:masks, bounds:bounds, complementary:8},
