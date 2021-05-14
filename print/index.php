@@ -11,15 +11,24 @@ include('../globalHTML/header-1.php');
 			<option value='8.5,11'>Regular (8.5 by 11)</option>
 			<option value='8.2667,11.6934'>A4</option>
 		</select>
+        <h5 class='margin-bottom padding input-description'>Select your card size</h5>
+        <select onchange='setCardSize(this.value.split(","));' class='input margin-bottom'>
+            <option value='2.5,3.5'>2.5 x 3.5 Inches</option>
+            <option value='2.74,3.74'>2.74 x 3.74 Inches</option>
+            <option value='2.75,3.75'>2.75 x 3.75 Inches</option>
+            <option value='2.48031,3.46457'>63 x 88 mm</option>
+        </select>
         <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
         <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
 		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
-		<input type='number' id='cardMargin' class='input margin-bottom' value='60' min='0' max='100' onchange='setCardDistance(this.value);'>
+        <input type='number' id='cardMargin' class='input margin-bottom' value='60' min='0' max='100' onchange='setCardDistance(this.value);'>
+        <h5 class='margin-bottom padding input-description'>Set PPI (pixels per inch; only relevant when exporting as a PNG)</h5>
+        <input type='number' id='cardPPI' class='input margin-bottom' value='600' min='1' max='2400' onchange='setPPI(this.value);'>
 	</div>
     <div class="layer">
         <div class='padding margin-bottom readable-background drop-area'>
             <h5 class='margin-bottom padding input-description'>Drag and drop the images that you'd like to print</h5>
-            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadCard);' data-dropFunction='uploadCard' data-otherParams=''>
+            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadCard, "filename");' data-dropFunction='uploadCard' data-otherParams='filename'>
         </div>
     </div>
     <div class="layer margin-bottom-large center">
