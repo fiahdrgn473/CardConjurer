@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}];
+var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}, {src:'/img/frames/custom/classicshifted/pinline.svg', name:'Pinline'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:0.026, y:0.0129, width:0.948, height:0.1015};
 //defines available frames
@@ -12,6 +12,11 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/custom/classicshifted/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/custom/classicshifted/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/custom/classicshifted/l.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/custom/classicshifted/wl.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/custom/classicshifted/ul.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/custom/classicshifted/bl.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/custom/classicshifted/rl.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/custom/classicshifted/gl.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/custom/classicshifted/ptW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/custom/classicshifted/ptU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/custom/classicshifted/ptB.png', bounds:bounds},

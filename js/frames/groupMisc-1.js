@@ -1,4 +1,5 @@
 loadFramePacks([
+	{name:'Flip (Kamigawa)', value:'Flip'},
 	{name:'Future Shifted', value:'FutureRegular'},
 	{name:'Seventh Edition', value:'Seventh'},
 	{name:'Fifth Edition', value:'SeventhButFifth'},

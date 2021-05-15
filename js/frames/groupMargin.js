@@ -1,6 +1,6 @@
 loadFramePacks([
-	{name:'Standard 1/8 Inch Margin', value:'Margin-1'},
-	{name:'Mystical Archive 1/8 Inch Margin', value:'MarginMysticalArchive'}
+	{name:'Generic Margins', value:'Margin-1'},
+	{name:'Mystical Archive Margin', value:'MarginMysticalArchive'}
 ])
 
 //For multiple Margin packs
