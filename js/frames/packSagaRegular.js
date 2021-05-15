@@ -8,6 +8,7 @@ availableFrames = [
 	{name:'Red Frame', src:'/img/frames/saga/regular/sagaFrameR.png', masks:masks},
 	{name:'Green Frame', src:'/img/frames/saga/regular/sagaFrameG.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/saga/regular/sagaFrameM.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/saga/regular/l.png', masks:masks},
 	{name:'Banner Pinstripe (Multicolored)', src:'/img/frames/saga/sagaMidStripe.png', bounds:{x:0.0727, y:0.3058, width:0.0087, height:0.4762}}
 ];
 //disables/enables the "Load Frame Version" button
