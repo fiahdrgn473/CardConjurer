@@ -922,14 +922,11 @@ function writeText(textObject, targetContext) {
 				if (textRotation) {
 					targetContext.save();
 					targetContext
-					const shapeX = textX + ptShift[0] + permaShift[0];
-					if (!textOneLine) {
-						verticalAdjust *= (textRotation / 180 * -1);
-					}
-					const shapeY = textY + verticalAdjust + ptShift[1] + permaShift[1];
+					const shapeX = textX + ptShift[0];
+					const shapeY = textY + ptShift[1];
 					targetContext.translate(shapeX, shapeY);
 					targetContext.rotate(Math.PI * textRotation / 180);
-					targetContext.drawImage(paragraphCanvas, -canvasMargin, -canvasMargin);
+					targetContext.drawImage(paragraphCanvas, permaShift[0] - canvasMargin, verticalAdjust - canvasMargin + permaShift[1]);
 					targetContext.restore();
 				} else {
 					targetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
