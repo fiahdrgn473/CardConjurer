@@ -237,11 +237,12 @@ include('../globalHTML/header-1.php');
 							</div>
 						</div>
 						<div class='readable-background padding margin-bottom'>
-							<h5 class='margin-bottom padding input-description'>Position/scale your art (X, Y, Scale)<br>Art is now visually adjustable! Click and drag anywhere on the card to move your art around, and hold shift while doing so to scale your art.</h5>
+							<h5 class='margin-bottom padding input-description'>Position/scale your art (X, Y, Scale, Rotation)<br>Art is now visually adjustable! Click and drag anywhere on the card to move your art around. Hold shift while doing so to scale, or control to rotate.</h5>
 							<div class='input-grid margin-bottom'>
 								<input id='art-x' type='number' class='input' oninput='artEdited();' value=0>
 								<input id='art-y' type='number' class='input' oninput='artEdited();' value=0>
 								<input id='art-zoom' type='number' class='input' oninput='artEdited();' value=100 step=0.1 min=0>
+								<input id='art-rotate' type='number' class='input' oninput='artEdited();' value=0 step=1 min=0 max=360>
 							</div>
 							<div class='input-grid'>
 								<button class='input' onclick='autoFitArt();'>Auto Fit Art</button>
