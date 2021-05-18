@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Generic Margins', value:'Margin-1'},
-	{name:'Mystical Archive Margin', value:'MarginMysticalArchive'}
+	{name:'Mystical Archive Margin', value:'MarginMysticalArchive'},
+	{name:'Unstable Basics Margin', value:'MarginUnstable'}
 ])
 
 //For multiple Margin packs
