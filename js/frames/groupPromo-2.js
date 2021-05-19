@@ -1,5 +1,6 @@
 loadFramePacks([
-	{name:'Regular Frames', value:'PromoRegular-1'},
+	{name:'Regular Frames', value:'PromoOpenHouse'},
+	{name:'Borderless Frames', value:'PromoRegular-1'},
 	{name:'Extended Art Frames', value:'PromoExtended'},
 	{name:'Nickname Frames', value:'PromoNickname'},
 	{name:'Generic Showcase', value:'PromoGenericShowcase'},
