@@ -41,6 +41,9 @@ Array.from(droppables).forEach(element => {
 	element.addEventListener('dragleave', dropLeave, false);
 	element.addEventListener('dragover', dropOver, false);
 	element.addEventListener('drop', dropDrop, false);
+	element.children[1].addEventListener('click', function() {
+		this.value = null;
+	}, false);
 })
 function dropEnter(e) {
 	e.preventDefault();
@@ -86,3 +89,14 @@ async function uploadFiles(filesRaw, destination, otherParams = '') {
 		reader.readAsDataURL(file);
 	})
 }
+
+//Input same value still enters
+const urlInputs = Array.from(document.querySelectorAll('input[type=url]'));
+urlInputs.forEach(element => {
+	element.addEventListener('keyup', function(event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			element.dispatchEvent(new Event('change'));
+		}
+	});
+});
