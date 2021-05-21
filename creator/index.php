@@ -212,6 +212,7 @@ include('../globalHTML/header-1.php');
 							<div class='padding input-grid'>
 								<button class='input' onclick='addTextbox("Nickname");'>Nickname</button>
 								<button class='input' onclick='addTextbox("Power/Toughness");'>Power/Toughness</button>
+								<button class='input' onclick='addTextbox("DateStamp");'>Date Stamp</button>
 							</div>
 						</div>
 					</div>

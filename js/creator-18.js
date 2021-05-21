@@ -987,6 +987,8 @@ async function addTextbox(textboxType) {
 		card.text.nickname = nickname;
 	} else if (textboxType == 'Power/Toughness' && !card.text.pt) {
 		loadTextOptions({pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}}, false);
+	} else if (textboxType == 'DateStamp' && !card.text.dateStamp) {
+		loadTextOptions({dateStamp: {name:'Date Stamp', text:'', x:0.11, y:0.5072, width:0.78, height:0.0286, size:0.0286, font:'belerenb', oneLine:true, align:'right', color:'#ffd35b', shadowX:-0.0007, shadowY:-0.001}}, false);
 	}
 }
 //ART TAB
