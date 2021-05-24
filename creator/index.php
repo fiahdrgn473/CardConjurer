@@ -50,6 +50,15 @@ include('../globalHTML/header-1.php');
 					<span class='checkmark'></span>
 				</label>
 			</div>
+			<div>
+				<h5 class='input-description'>Select and remove masks</h5>
+				<select id='frame-editor-masks' class='input margin-bottom'></select>
+				<button onclick='frameElementMaskRemoved();' class='input'>Remove mask</button>
+			</div>
+			<div class='drop-area'>
+	            <h5 class='margin-bottom padding input-description'>Drag and drop masks to add</h5>
+	            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadMaskOption);' data-dropFunction='uploadMaskOption' data-otherParams=''>
+			</div>
 		</div>
 		<div id='textbox-editor' class='textbox-editor'>
 			<h2 class='textbox-editor-title'>Textbox Editor</h2>
@@ -490,5 +499,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-18.js'></script>
+	<script defer src='/js/creator-19.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

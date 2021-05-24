@@ -46,10 +46,12 @@ var previewContext = previewCanvas.getContext('2d');
 var canvasList = [];
 //frame/mask picker stuff
 var availableFrames = [];
+var selectedFrame = null;
 var selectedFrameIndex = 0;
 var selectedMaskIndex = 0;
 var selectedTextIndex = 0;
 var replacementMasks = {};
+var customCount = 0;
 //for imports
 var scryfallArt;
 var scryfallCard;
@@ -491,12 +493,13 @@ function removeFrame(event) {
 function frameElementClicked(event) {
 	if (!event.target.classList.contains('frame-element-close')) {
 		var selectedFrameElement = event.target.closest('.frame-element');
-		var selectedFrame = card.frames[Array.from(selectedFrameElement.parentElement.children).indexOf(selectedFrameElement)];
+		selectedFrame = card.frames[Array.from(selectedFrameElement.parentElement.children).indexOf(selectedFrameElement)];
 		document.querySelector('#frame-element-editor').classList.add('opened');
 		selectedFrame.bounds = selectedFrame.bounds || {};
 		if (selectedFrame.ogBounds == undefined) {
 			selectedFrame.ogBounds = JSON.parse(JSON.stringify(selectedFrame.bounds));
 		}
+		// Basic manipulations
 		document.querySelector('#frame-editor-x').value = scaleWidth(selectedFrame.bounds.x || 0);
 		document.querySelector('#frame-editor-x').onchange = (event) => {selectedFrame.bounds.x = (event.target.value / card.width); drawFrames();}
 		document.querySelector('#frame-editor-y').value = scaleHeight(selectedFrame.bounds.y || 0);
@@ -511,10 +514,46 @@ function frameElementClicked(event) {
 		document.querySelector('#frame-editor-erase').onchange = (event) => {selectedFrame.erase = event.target.checked; drawFrames();}
 		document.querySelector('#frame-editor-alpha').checked = selectedFrame.preserveAlpha || false;
 		document.querySelector('#frame-editor-alpha').onchange = (event) => {selectedFrame.preserveAlpha = event.target.checked; drawFrames();}
+		// Removing masks
+		const selectMaskElement = document.querySelector('#frame-editor-masks');
+		selectMaskElement.innerHTML = null;
+		const maskOptionNone = document.createElement('option');
+		maskOptionNone.disabled = true;
+		maskOptionNone.innerHTML = 'None Selected';
+		selectMaskElement.appendChild(maskOptionNone);
+		selectedFrame.masks.forEach(mask => {
+			const maskOption = document.createElement('option');
+			maskOption.innerHTML = mask.name;
+			selectMaskElement.appendChild(maskOption);
+		});
+		selectMaskElement.selectedIndex = 0;
 	}
 }
+function frameElementMaskRemoved() {
+	const selectElement = document.querySelector('#frame-editor-masks');
+	const selectedOption = selectElement.value;
+	console.log(selectedOption)
+	if (selectedOption != 'None Selected') {
+		selectElement.remove(selectElement.selectedIndex);
+		selectElement.selectedIndex = 0;
+		selectedFrame.masks.forEach(mask => {
+			if (mask.name == selectedOption) {
+				selectedFrame.masks = selectedFrame.masks.filter(item => item.name != selectedOption);
+				drawFrames();
+			}
+		});
+	}
+}
+function uploadMaskOption(imageSource) {
+	const uploadedMask = {name:`Uploaded Image (${customCount})`, src:imageSource, noThumb:true, image: new Image()};
+	customCount ++;
+	selectedFrame.masks.push(uploadedMask);
+	uploadedMask.image.onload = drawFrames;
+	uploadedMask.image.src = imageSource;
+}
 function uploadFrameOption(imageSource) {
-	var uploadedFrame = {name:'Uploaded Image', src:imageSource, noThumb:true}
+	const uploadedFrame = {name:`Uploaded Image (${customCount})`, src:imageSource, noThumb:true};
+	customCount ++;
 	availableFrames.push(uploadedFrame);
 	loadFramePack();
 }
