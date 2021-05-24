@@ -40,7 +40,7 @@ include('../globalHTML/header-1.php');
 	</div>
 	<div class='readable-background padding layer margin-bottom-large'>
 		<h3 class='download padding' onclick='downloadPDF();'>Download your Sheet (PDF)</h3>
-		<h4 class='padding center'>(WARNING: This can take around 30 seconds...)</h4>
+		<h4 class='padding center'>(WARNING: This can take around 15 seconds...)</h4>
 	</div>
     <div class="readable-background layer margin-bottom-large">
         <h3 class='padding margin-bottom center'>
