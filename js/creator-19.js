@@ -650,7 +650,13 @@ function writeText(textObject, targetContext) {
 				newSplitText.push(`{down${scaleHeight(0.01)}}`);
 			} else {
 				item.split('').forEach(char => {
-					newSplitText.push(char, '{lns}');
+					if (char == '’') {
+						console.log(char);
+						newSplitText.push(`{right${startingTextSize * 0.6}}`, '’', '{lns}', `{up${startingTextSize * 0.75}}`);
+						console.log(newSplitText);
+					} else {
+						newSplitText.push(char, '{lns}');
+					}
 				});
 				// newSplitText = newSplitText.concat(item.split(''));
 			}
