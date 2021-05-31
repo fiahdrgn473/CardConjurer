@@ -34,7 +34,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'futureRegular';
 	loadScript('/js/frames/manaSymbolsFuture.js');
-	notify('The Future version adds special mana symbols. To use them, place an "F" before the following mana symbols: wubrg, 0-20, x, and hybrid mana symbols.');
+	// notify('The Future version adds special mana symbols. To use them, place an "F" before the following mana symbols: wubrg, 0-20, x, and hybrid mana symbols.');
 	//art bounds
 	card.artBounds = {x:0.086, y:0.0843, width:0.8714, height:0.5853};
 	autoFitArt();
@@ -46,7 +46,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	resetWatermark();
 	//text
 	loadTextOptions({
-		mana: {name:'Mana Cost', text:'', size:119/1638, manaCost:true, manaPlacement:{x:[0.1224, 0.082, 0.0619, 0.0619, 0.0794, 0.1425], y:[0.1348, 0.1993, 0.2705, 0.3427, 0.4206, 0.4928]}, noVerticalCenter:true},
+		mana: {name:'Mana Cost', text:'', size:119/1638, manaCost:true, manaPlacement:{x:[0.1224, 0.082, 0.0619, 0.0619, 0.0794, 0.1425], y:[0.1348, 0.1993, 0.2705, 0.3427, 0.4206, 0.4928]}, noVerticalCenter:true, manaPrefix:'f'},
 		title: {name:'Title', text:'', x:0.176, y:0.0491, width:0.832, height:0.0643, oneLine:true, font:'matrixb', size:0.0448, color:'white'},
 		type: {name:'Type', text:'', x:0.1214, y:0.5615, width:0.832, height:0.0586, oneLine:true, font:'matrixb', size:0.0362, color:'white'},
 		rules: {name:'Rules Text', text:'', x:0.1027, y:0.6248, width:0.8074, height:0.2639, size:0.0362},

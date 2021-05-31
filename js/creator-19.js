@@ -57,6 +57,7 @@ var scryfallArt;
 var scryfallCard;
 //for text
 var savedTextXPosition = 0;
+var savedTextContents = {};
 //for misc
 var date = new Date();
 const year = 'WOW' //date.getFullYear();
@@ -532,7 +533,6 @@ function frameElementClicked(event) {
 function frameElementMaskRemoved() {
 	const selectElement = document.querySelector('#frame-editor-masks');
 	const selectedOption = selectElement.value;
-	console.log(selectedOption)
 	if (selectedOption != 'None Selected') {
 		selectElement.remove(selectElement.selectedIndex);
 		selectElement.selectedIndex = 0;
@@ -561,6 +561,9 @@ function uploadFrameOption(imageSource) {
 var writingText;
 function loadTextOptions(textObject, replace=true) {
 	var oldCardText = card.text || {};
+	Object.entries(oldCardText).forEach(item => {
+		savedTextContents[item[0]] = oldCardText[item[0]].text;
+	});
 	if (replace) {
 		card.text = textObject;
 	} else {
@@ -572,6 +575,8 @@ function loadTextOptions(textObject, replace=true) {
 	Object.entries(card.text).forEach(item => {
 		if (oldCardText[item[0]]) {
 			card.text[item[0]].text = oldCardText[item[0]].text;
+		} else if (savedTextContents[item[0]]) {
+			card.text[item[0]].text = savedTextContents[item[0]];
 		}
 		var textOptionElement = document.createElement('h4');
 		textOptionElement.innerHTML = item[1].name;
@@ -651,9 +656,7 @@ function writeText(textObject, targetContext) {
 			} else {
 				item.split('').forEach(char => {
 					if (char == '’') {
-						console.log(char);
 						newSplitText.push(`{right${startingTextSize * 0.6}}`, '’', '{lns}', `{up${startingTextSize * 0.75}}`);
-						console.log(newSplitText);
 					} else {
 						newSplitText.push(char, '{lns}');
 					}
@@ -1662,7 +1665,6 @@ function loadScript(scriptPath) {
 }
 // Stretchable SVGs
 function stretchSVG(frameObject) {
-	// console.log(frameObject);
 	xhr = new XMLHttpRequest();
 	xhr.open('GET', fixUri(frameObject.src), true);
 	xhr.overrideMimeType('image/svg+xml');
