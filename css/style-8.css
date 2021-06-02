@@ -216,6 +216,12 @@ a.underline {
 .hidden {
 	display: none;
 }
+.fake-hidden {
+	opacity: 0;
+	position: absolute;
+	top: -100%;
+	left: -100%;
+}
 .margin-bottom {
 	margin-bottom: 0.5rem;
 }

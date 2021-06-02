@@ -109,11 +109,14 @@ function sizeCanvas(name, width = Math.round(card.width * (1 + 2 * card.marginX)
 	}
 	window[name + 'Canvas'].width = width;
 	window[name + 'Canvas'].height = height;
-	// var label = document.createElement('p');
-	// label.innerHTML = name;
-	// window[name + 'Canvas'].style = 'width: 20rem; height: 28rem; border: 1px solid red;';
-	// document.body.appendChild(window[name + 'Canvas']);
-	// document.body.appendChild(label);
+	if (name == 'line') { //force true to view all canvases
+		window[name + 'Canvas'].style = 'width: 20rem; height: 28rem; border: 1px solid red;';
+		const label = document.createElement('div');
+		label.innerHTML = name + '<br>If you can see this and don\'t want to, please clear you cache.';
+		label.appendChild(window[name + 'Canvas']);
+		label.classList = 'fake-hidden'; //Comment this out to view canvases
+		document.body.appendChild(label);
+	}
 }
 //create main canvases
 sizeCanvas('card');
@@ -715,6 +718,10 @@ function writeText(textObject, targetContext) {
 		//Finish prepping canvases
 		paragraphContext.clearRect(0, 0, paragraphCanvas.width, paragraphCanvas.height);
 		lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
+		lineCanvas.style.letterSpacing = textObject.kerning || '0px';
+		if (textFont == 'goudymedieval') {
+			lineCanvas.style.letterSpacing = '3.5px';
+		}
 		lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 		lineContext.fillStyle = textColor;
 		lineContext.shadowColor = textShadowColor;
@@ -850,6 +857,9 @@ function writeText(textObject, targetContext) {
 					manaSymbolColor = possibleCode.replace('manacolor', '') || 'white';
 				} else if (possibleCode.includes('fixtextalign')) {
 					textAlign = realTextAlign;
+				} else if (possibleCode.includes('kerning')) {
+					lineCanvas.style.letterSpacing = possibleCode.replace('kerning', '') + 'px';
+					lineContext.font = lineContext.font; //necessary for the letterspacing update to be recognized
 				} else if (findManaSymbolIndex(possibleCode.replace('/', '')) > -1 || findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join('')) > -1) {
 					possibleCode = possibleCode.replace('/', '')
 					var manaSymbol;
