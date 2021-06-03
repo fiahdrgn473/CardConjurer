@@ -135,13 +135,16 @@ include('../globalHTML/header-1.php');
 								<div id='mask-picker' class='mask-picker'></div>
 							</div>
 							<div class='input-grid margin-bottom'>
-								<button class='input' onclick='addFrame()'>Add Frame to Card</button>
-								<button class='input' onclick='addFrame([{src:"/img/frames/maskRightHalf.png", name:"Right Half"}])'>Add Frame to Card (Right Half)</button>
+								<button id='addToFull' class='input' onclick='addFrame()'>Add Frame to Card</button>
+								<button id='addToRightHalf' class='input' onclick='addFrame([{src:"/img/frames/maskRightHalf.png", name:"Right Half"}])'>Add Frame to Card (Right Half)</button>
 							</div>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>More options</h5>
-								<div class='input-grid margin-bottom'>
-									<button class='input' onclick='addFrame([{src:"/img/frames/maskLeftHalf.png", name:"Left Half"}])'>Add Frame to Card (Left Half)</button>
-									<button class='input' onclick='addFrame([{src:"/img/frames/maskMiddleThird.png", name:"Middle Third"}])'>Add Frame to Card (Middle Third)</button>
+								<div>
+									<div class='input-grid margin-bottom'>
+										<button id='addToLeftHalf' class='input' onclick='addFrame([{src:"/img/frames/maskLeftHalf.png", name:"Left Half"}])'>Add Frame to Card (Left Half)</button>
+										<button id='addToMiddleThird' class='input' onclick='addFrame([{src:"/img/frames/maskMiddleThird.png", name:"Middle Third"}])'>Add Frame to Card (Middle Third)</button>
+									</div>
+									<h5 class='padding input-description'>You can now double click frames and masks to add them to the card. You can do so while holding the shift, control, or alt keys to add to the right half, left half, or middle third, respectively.</h5>
 								</div>
 							<h5 id='selectedPreview' class='padding input-description'>(Selected: White Frame, No Mask)</h5>
 						</div>
@@ -500,5 +503,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-19.js'></script>
+	<script defer src='/js/creator-20.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

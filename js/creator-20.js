@@ -52,6 +52,8 @@ var selectedMaskIndex = 0;
 var selectedTextIndex = 0;
 var replacementMasks = {};
 var customCount = 0;
+var lastFrameClick = null;
+var lastMaskClick = null;
 //for imports
 var scryfallArt;
 var scryfallCard;
@@ -345,6 +347,7 @@ function loadFramePack(frameOptions = availableFrames) {
 		document.querySelector('#frame-picker').appendChild(frameOption);
 
 	})
+	document.querySelector('#mask-picker').innerHTML = '';
 	document.querySelector('#frame-picker').children[0].click();
 	if (localStorage.getItem('autoLoadFrameVersion') == 'true') {
 		document.querySelector('#loadFrameVersion').click();
@@ -354,47 +357,78 @@ function autoLoadFrameVersion() {
 	localStorage.setItem('autoLoadFrameVersion', document.querySelector('#autoLoadFrameVersion').checked);
 }
 function frameOptionClicked(event) {
-	var clickedFrameOption = event.target.closest('.frame-option');
-	if (document.querySelector('.frame-option.selected')) {
-		document.querySelector('.frame-option.selected').classList.remove('selected');
-	}
-	clickedFrameOption.classList.add('selected');
-	selectedFrameIndex = getElementIndex(clickedFrameOption);
-	if (!availableFrames[selectedFrameIndex].noDefaultMask) {
-		document.querySelector('#mask-picker').innerHTML = '<div class="mask-option" onclick="maskOptionClicked(event)"><img src="' + black.src + '"><p>No Mask</p></div>';
-	} else {
-		document.querySelector('#mask-picker').innerHTML = '';
-	}
-	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', No Mask)';
-	if (availableFrames[selectedFrameIndex].masks) {
-		availableFrames[selectedFrameIndex].masks.forEach(item => {
-			var maskOption = document.createElement('div');
-			maskOption.classList = 'mask-option hidden';
-			maskOption.onclick = maskOptionClicked;
-			var maskOptionImage = document.createElement('img');
-			maskOption.appendChild(maskOptionImage);
-			maskOptionImage.onload = function() {
-				this.parentElement.classList.remove('hidden');
-			}
-			maskOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png').replace('.svg', 'Thumb.png'));
-			maskOptionLabel = document.createElement('p');
-			maskOptionLabel.innerHTML = item.name;
-			maskOption.appendChild(maskOptionLabel);
-			document.querySelector('#mask-picker').appendChild(maskOption);
-		});
-	}
-	var firstChild = document.querySelector('#mask-picker').firstChild;
-	firstChild.classList.add('selected');
-	firstChild.click();
+	const button = doubleClick(event, 'frame');
+	const clickedFrameOption = event.target.closest('.frame-option');
+	const newFrameIndex = getElementIndex(clickedFrameOption);
+	if (newFrameIndex != selectedFrameIndex || document.querySelector('#mask-picker').innerHTML == '') {
+		Array.from(document.querySelectorAll('.frame-option.selected')).forEach(element => element.classList.remove('selected'));
+		clickedFrameOption.classList.add('selected');
+		selectedFrameIndex = newFrameIndex;
+		if (!availableFrames[selectedFrameIndex].noDefaultMask) {
+			document.querySelector('#mask-picker').innerHTML = '<div class="mask-option" onclick="maskOptionClicked(event)"><img src="' + black.src + '"><p>No Mask</p></div>';
+		} else {
+			document.querySelector('#mask-picker').innerHTML = '';
+		}
+		document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', No Mask)';
+		if (availableFrames[selectedFrameIndex].masks) {
+			availableFrames[selectedFrameIndex].masks.forEach(item => {
+				const maskOption = document.createElement('div');
+				maskOption.classList = 'mask-option hidden';
+				maskOption.onclick = maskOptionClicked;
+				const maskOptionImage = document.createElement('img');
+				maskOption.appendChild(maskOptionImage);
+				maskOptionImage.onload = function() {
+					this.parentElement.classList.remove('hidden');
+				}
+				maskOptionImage.src = fixUri(item.src.replace('.png', 'Thumb.png').replace('.svg', 'Thumb.png'));
+				const maskOptionLabel = document.createElement('p');
+				maskOptionLabel.innerHTML = item.name;
+				maskOption.appendChild(maskOptionLabel);
+				document.querySelector('#mask-picker').appendChild(maskOption);
+			});
+		}
+		const firstChild = document.querySelector('#mask-picker').firstChild;
+		firstChild.classList.add('selected');
+		firstChild.click();
+	} else if (button) { button.click(); lastFrameClick = null; }
 }
 function maskOptionClicked(event) {
-	var clickedMaskOption = event.target.closest('.mask-option');
-	(document.querySelector('.mask-option.selected').classList || document.querySelector('body').classList).remove('selected');
+	var button = doubleClick(event, 'mask');
+	const clickedMaskOption = event.target.closest('.mask-option');
+	// (document.querySelector('.mask-option.selected').classList || document.querySelector('body').classList).remove('selected');
 	clickedMaskOption.classList.add('selected');
-	selectedMaskIndex = getElementIndex(clickedMaskOption);
+	const newMaskIndex = getElementIndex(clickedMaskOption)
+	if (newMaskIndex != selectedMaskIndex) { button = null; }
+	selectedMaskIndex = newMaskIndex;
 	var selectedMaskName = 'No Mask'
 	if (selectedMaskIndex > 0) {selectedMaskName = availableFrames[selectedFrameIndex].masks[selectedMaskIndex - 1].name;}
 	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', ' + selectedMaskName + ')';
+	if (button) { button.click(); lastMaskClick = null; }
+}
+function doubleClick(event, maskOrFrame) {
+	const currentClick = (new Date()).getTime();
+	var lastClick = null;
+	if (maskOrFrame == 'mask') {
+		lastClick = lastMaskClick;
+		lastMaskClick = currentClick;
+	} else {
+		lastClick = lastFrameClick + 0;
+		lastFrameClick = currentClick + 0;
+	}
+	if (lastClick && lastClick + 500 > currentClick) {
+		var buttonID = null;
+		if (event.shiftKey) {
+			buttonID = '#addToRightHalf';
+		} else if (event.ctrlKey) {
+			buttonID = '#addToLeftHalf';
+		} else if (event.altKey) {
+			buttonID = '#addToMiddleThird';
+		} else {
+			buttonID = '#addToFull';
+		}
+		return document.querySelector(buttonID);
+	}
+	return null;
 }
 async function addFrame(additionalMasks = [], loadingFrame = false) {
 	var frameToAdd = JSON.parse(JSON.stringify(availableFrames[selectedFrameIndex]));
