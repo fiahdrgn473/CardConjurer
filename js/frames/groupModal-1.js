@@ -1,5 +1,7 @@
 loadFramePacks([
 	{name:'Regular', value:'ModalRegular'},
+	{name:'Borderless', value:'ModalBorderless'},
+	{name:'Nickname', value:'ModalNickname'},
 	{name:'Short', value:'ModalShort'},
 	{name:'Short-Nickname', value:'ModalShortNickname'},
 	{name:'Addons', value:'disabled'},

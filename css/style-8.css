@@ -702,6 +702,9 @@ textarea.input {
 	align-items: center;
 	height: 6rem;
 }
+.mask-option > img {
+	max-height: 6rem;
+}
 /*Frame Elements*/
 .frame-element {
 	display: grid;

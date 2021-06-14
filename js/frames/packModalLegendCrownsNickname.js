@@ -10,7 +10,7 @@ availableFrames = [
 	{name:'Multicolored Legend Crown', src:'/img/frames/modal/crowns/nickname/m.png', bounds:bounds, complementary:8},
 	{name:'Artifact Legend Crown', src:'/img/frames/modal/crowns/nickname/a.png', bounds:bounds, complementary:8},
 	{name:'Land Legend Crown', src:'/img/frames/modal/crowns/nickname/l.png', bounds:bounds, complementary:8},
-	{name:'Legend Crown Cutout', src:'/img/frames/modal/crowns/cutout.svg', erase:true}
+	{name:'Legend Crown Cutout', src:'/img/frames/modal/nickname/cutout.svg', erase:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = true;

@@ -329,6 +329,7 @@ function loadFramePacks(framePackOptions = []) {
 	loadScript("/js/frames/pack" + document.querySelector('#selectFramePack').value + ".js");
 }
 function loadFramePack(frameOptions = availableFrames) {
+	resetDoubleClick();
 	document.querySelector('#frame-picker').innerHTML = null;
 	frameOptions.forEach(item => {
 		var frameOption = document.createElement('div');
@@ -361,6 +362,7 @@ function frameOptionClicked(event) {
 	const clickedFrameOption = event.target.closest('.frame-option');
 	const newFrameIndex = getElementIndex(clickedFrameOption);
 	if (newFrameIndex != selectedFrameIndex || document.querySelector('#mask-picker').innerHTML == '') {
+		resetDoubleClick();
 		Array.from(document.querySelectorAll('.frame-option.selected')).forEach(element => element.classList.remove('selected'));
 		clickedFrameOption.classList.add('selected');
 		selectedFrameIndex = newFrameIndex;
@@ -390,12 +392,12 @@ function frameOptionClicked(event) {
 		const firstChild = document.querySelector('#mask-picker').firstChild;
 		firstChild.classList.add('selected');
 		firstChild.click();
-	} else if (button) { button.click(); lastFrameClick = null; }
+	} else if (button) { button.click(); resetDoubleClick(); }
 }
 function maskOptionClicked(event) {
 	var button = doubleClick(event, 'mask');
 	const clickedMaskOption = event.target.closest('.mask-option');
-	// (document.querySelector('.mask-option.selected').classList || document.querySelector('body').classList).remove('selected');
+	(document.querySelector('.mask-option.selected').classList || document.querySelector('body').classList).remove('selected');
 	clickedMaskOption.classList.add('selected');
 	const newMaskIndex = getElementIndex(clickedMaskOption)
 	if (newMaskIndex != selectedMaskIndex) { button = null; }
@@ -403,7 +405,10 @@ function maskOptionClicked(event) {
 	var selectedMaskName = 'No Mask'
 	if (selectedMaskIndex > 0) {selectedMaskName = availableFrames[selectedFrameIndex].masks[selectedMaskIndex - 1].name;}
 	document.querySelector('#selectedPreview').innerHTML = '(Selected: ' + availableFrames[selectedFrameIndex].name + ', ' + selectedMaskName + ')';
-	if (button) { button.click(); lastMaskClick = null; }
+	if (button) { button.click(); resetDoubleClick(); }
+}
+function resetDoubleClick() {
+	lastFrameClick, lastMaskClick = null, null;
 }
 function doubleClick(event, maskOrFrame) {
 	const currentClick = (new Date()).getTime();
