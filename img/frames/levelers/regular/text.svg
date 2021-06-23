@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1500" height="2100" viewBox="0 0 1500 2100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="Card" x="0" y="0" width="1500" height="2100" style="fill:none;"/>
+    <g id="Card1" serif:id="Card">
+        <path id="Textbox" d="M1389,1354L1183,1354C1170.14,1371.15 1164.87,1390.66 1165,1416L1165,1416C1164.88,1441.34 1170.15,1460.85 1183,1478L1389,1478L1389,1552L1183,1552C1170.14,1569.15 1164.87,1588.66 1165,1614L1165,1614C1164.88,1639.34 1170.15,1658.85 1183,1676L1389,1676L1389,1760L1183,1760C1170.14,1777.15 1164.87,1796.66 1165,1822L1165,1822C1164.88,1847.34 1170.15,1866.85 1183,1884L1389,1884L1389,1937L111,1937L111,1898.72L228.484,1898.72L295.604,1826.6L229,1755L111,1755L111,1684.72L228.484,1684.72L295.604,1612.6L229,1541L111,1541L111,1314L1389,1314L1389,1354Z" style="fill:rgb(0,117,190);"/>
+    </g>
+</svg>
