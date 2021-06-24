@@ -199,7 +199,7 @@ include('../globalHTML/header-1.php');
 									<h5>{down#}</h5><h5>Moves the text # pixels down</h5>
 									<h5>{left#}</h5><h5>Moves the text # pixels left</h5>
 									<h5>{right#}</h5><h5>Moves the text # pixels right</h5>
-									<h5>{shadow#}</h5><h5>Changes the shadow distance to #</h5>
+									<h5>{shadow#}</h5><h5>Changes the shadow distance to # (use {shadow0} to remove the shadow)</h5>
 									<h5>{shadowcolor#}</h5><h5>Changes the shadow color to #</h5>
 									<h5>{kerning#}</h5><h5>Changes the kerning (letter spacing) to #</h5>
 									<h5>Notes</h5><h5>For colors, you may use HTML color codes (ie 'green'), hex color codes (ie '#00FF00'), or rgb (ie 'rgb(0,255,0)'')</h5>
