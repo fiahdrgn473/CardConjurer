@@ -228,6 +228,9 @@ a.underline {
 .margin-bottom-large {
 	margin-bottom: 2rem;
 }
+.margin-bottom-larger {
+	margin-bottom: 3rem;
+}
 .margin-top {
 	margin-top: 0.5rem;
 }
@@ -793,4 +796,11 @@ textarea.input {
 }
 .download:hover {
 	text-decoration: underline;
+}
+/*supporters*/
+.supporters {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	grid-gap: 0.5rem;
+	padding: 1rem 2rem;
 }
