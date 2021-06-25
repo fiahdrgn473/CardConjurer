@@ -484,22 +484,56 @@ include('../globalHTML/header-1.php');
 				</div>
 			</div>
 		</div>
-		<div class='layer readable-background margin-bottom-large'>
+		<div class='layer readable-background margin-bottom-larger'>
 			<h1 class='center margin-bottom'>Share your cards</h1>
 			<h4>
 				I'd love to see the cards you're making, and I'm sure that others would too! Post a picture on Twitter with the hashtag <a style='color: #00aced;' href="https://twitter.com/search?q=%23CardConjurer&src=typed_query&f=live" target='_blank'>#CardConjurer</a>, or just check out what others have made!
 			</h4>
 		</div>
-		<div class='layer readable-background margin-bottom-large'>
+		<div class='layer readable-background margin-bottom-larger'>
 			<h1 class='center margin-bottom'>How you can help</h1>
 			<h4>
-				Between hosting fees and paying for the domain, running Card Conjurer can take its toll. Plus, as a student on a tight budget, it can be hard to afford Magic. If you've enjoyed using Card Conjurer and would like to help me out, please consider joining my <a style='color: #f96854;' href="https://www.patreon.com/KyleBurton" target='_blank'>Patreon</a>. And if you'd like to make a one-time donation instead, I have a <a style='color: #3b7bbf;' href="https://www.paypal.me/kyleburtondonate" target='_blank'>PayPal</a> as well. Any assistance is greatly appreciated, even if it's simply checking out my <a style='color: #00aced;' href="https://twitter.com/ImKyle4815" target='_blank'>Twitter</a>!
+				Between server costs and paying for the domain, running Card Conjurer can take its toll - especially as a student! If you've enjoyed using Card Conjurer and would like to help me out, please consider joining my <a style='color: #f96854;' href="https://www.patreon.com/KyleBurton" target='_blank'>Patreon</a>. And if you'd like to make a one-time donation instead, I have a <a style='color: #3b7bbf;' href="https://www.paypal.me/kyleburtondonate" target='_blank'>PayPal</a> as well. Any assistance is greatly appreciated, even if it's simply checking out my <a style='color: #00aced;' href="https://twitter.com/ImKyle4815" target='_blank'>Twitter</a>!
 			</h4>
 		</div>
-		<div class='layer readable-background margin-bottom-large'>
+		<div class='layer readable-background margin-bottom-larger'>
+			<h1 class='center margin-bottom'>Supporters</h1>
+			<h4 class='margin-bottom'>Thank you so much to all of my supporters on <a style='color: #f96854;' href="https://www.patreon.com/KyleBurton" target='_blank'>Patreon</a>. Because of you, I can continue running and updating Card Conjurer.</h4>
+			<div class='supporters margin-bottom'>
+				<h4>Caprat</h4>
+				<h4>Kobe P.</h4>
+				<h4>Paul C.</h4>
+				<h4>Alex W.</h4>
+				<h4>Aaron C.</h4>
+				<h4>Mike S.</h4>
+				<h4>Ancestral MTG</h4>
+				<h4>Sheepwave</h4>
+				<h4>Yunas</h4>
+				<h4>Ritchie T.</h4>
+				<h4>Samuel T.</h4>
+				<h4>Aurelian M.</h4>
+				<h4>Rodney F.</h4>
+				<h4>The Bell-Horwaths</h4>
+				<h4>Swimmaf</h4>
+				<h4>Gwynayne W.</h4>
+				<h4>Cesar P.</h4>
+				<h4>Marcos N.</h4>
+			</div>
+			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
+			<div class='supporters margin-bottom'>
+				<h4>Nicholas P.</h4>
+				<h4>Chikara K.</h4>
+				<h4>David C.</h4>
+				<h4>Aaron J.</h4>
+				<h4>Leif T.</h4>
+				<h4>Martin C.</h4>
+			</div>
+			<h5 class='input-description'>(Please email me if you would like your name/nickname changed.)</h5>
+		</div>
+		<div class='layer readable-background margin-bottom-larger'>
 			<h1 class='center margin-bottom'>Have feedback?</h1>
 			<h4>
-				Whether you've encountered a bug, want to request a feature, or have some criticism to offer, I'd love to hear it! If there's anything you'd like to let me know, please don't hesitate to contact me via email at <a href='mailto:cardconjurermtg@gmail.com' target='_blank'>cardconjurermtg@gmail.com</a>.
+				Whether you've encountered a bug, want to request a feature, or have some criticism to offer, I'd love to hear it! If there's anything you'd like to let me know, please don't hesitate to send me an email at <a href='mailto:cardconjurermtg@gmail.com' target='_blank'>cardconjurermtg@gmail.com</a>.
 			</h4>
 		</div>
 	</div>
