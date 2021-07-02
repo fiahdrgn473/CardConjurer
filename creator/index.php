@@ -189,8 +189,8 @@ include('../globalHTML/header-1.php');
 									<h5>{/i}</h5><h5>Removes italicization</h5>
 									<h5>{lns}</h5><h5>Moves to the next line without an extra space (stands for line-no-space)</h5>
 									<h5>{flavor}</h5><h5>Moves to the next line, draws the flavor text bar, and italicizes</h5>
-									<h5>{fontsize#}</h5><h5>Changes the font size by # pixels (relative - use negative integers to shrink text)</h5>
-									<h5>{fontcolor#}</h5><h5>Changes the font color to #</h5>
+									<h5>{fontsize#}</h5><h5>Changes the font size by # pixels (relative - use negative integers to shrink text - ie '{fontsize-12}')</h5>
+									<h5>{fontcolor___}</h5><h5>Changes the font color to ___ (ie '{fontcolor#00FF00}')</h5>
 									<h5>{left}</h5><h5>Aligns text to the left</h5>
 									<h5>{center{</h5><h5>Aligns text to the center</h5>
 									<h5>{right}</h5><h5>Aligns text to the right</h5>
