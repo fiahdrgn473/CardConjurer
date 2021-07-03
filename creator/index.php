@@ -114,7 +114,7 @@ include('../globalHTML/header-1.php');
 									<option value='Textless-4'>Textless/Fullart</option>
 									<option disabled>Other Frames</option>
 									<option value='Custom'>Custom</option>
-									<option value='Misc-1'>Old/Misc</option>
+									<option value='Misc-2'>Old/Misc</option>
 									<option value='Margin'>1/8th Inch Margin</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
@@ -538,5 +538,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-20.js'></script>
+	<script defer src='/js/creator-21.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
