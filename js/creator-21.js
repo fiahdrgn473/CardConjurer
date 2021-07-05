@@ -59,6 +59,8 @@ var scryfallArt;
 var scryfallCard;
 //for text
 var savedTextXPosition = 0;
+var savedRollYPosition = null;
+var savedFont = null;
 var savedTextContents = {};
 //for misc
 var date = new Date();
@@ -773,7 +775,7 @@ function writeText(textObject, targetContext) {
 		//Begin looping through words/codes
 		innerloop: for (word of splitText) {
 			var wordToWrite = word;
-			if (wordToWrite.includes('{') && wordToWrite.includes('}') || textManaCost) {
+			if (wordToWrite.includes('{') && wordToWrite.includes('}') || textManaCost || savedFont) {
 				var possibleCode = wordToWrite.toLowerCase().replace('{', '').replace('}', '');
 				wordToWrite = null;
 				if (possibleCode == 'line') {
@@ -825,11 +827,16 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode.includes('fontsize')) {
 					textSize += parseInt(possibleCode.replace('fontsize', '')) || 0;
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
-				} else if (possibleCode.includes('font')) {
+				} else if (possibleCode.includes('font') || savedFont) {
 					textFont = word.replace('{font', '').replace('}', '');
+					if (savedFont) {
+						textFont = savedFont;
+						wordToWrite = word;
+					}
 					textFontExtension = '';
 					textFontStyle = '';
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
+					savedFont = null;
 				} else if (possibleCode.includes('outlinecolor')) {
 					lineContext.strokeStyle = possibleCode.replace('outlinecolor', '');
 				} else if (possibleCode.includes('outline')) {
@@ -884,6 +891,15 @@ function writeText(textObject, targetContext) {
 						ptShift[0] = scaleWidth(parseFloat(possibleCode.replace('ptshift', '').split(',')[0]));
 						ptShift[1] = scaleHeight(parseFloat(possibleCode.split(',')[1]));
 					}
+				} else if (possibleCode.includes('roll')) {
+					if (savedRollYPosition == null) {
+						savedRollYPosition = currentY;
+					} else {
+						savedRollYPosition = -1;
+					}
+					savedFont = textFont;
+					lineContext.font = textFontStyle + textSize + 'px ' + 'belerenb' + textFontExtension;
+					wordToWrite = possibleCode.replace('roll', '');
 				} else if (possibleCode.includes('permashift')) {
 					permaShift = [parseFloat(possibleCode.replace('permashift', '').split(',')[0]), parseFloat(possibleCode.split(',')[1])];
 				} else if (possibleCode.includes('arcradius')) {
@@ -989,6 +1005,22 @@ function writeText(textObject, targetContext) {
 				paragraphContext.drawImage(lineCanvas, horizontalAdjust, currentY);
 				lineY = 0;
 				lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
+				//boxes for roll a d20 cards
+				if (savedRollYPosition && (newLineSpacing != 0 || !(newLine && !textOneLine))) {
+					if (savedRollYPosition != -1) {
+						console.log(savedRollYPosition);
+						paragraphContext.globalCompositeOperation = 'destination-over';
+						paragraphContext.globalAlpha = 0.25;
+						paragraphContext.fillStyle = 'black';
+						paragraphContext.fillRect(canvasMargin - textSize * 0.1, savedRollYPosition + canvasMargin - textSize * 0.28, paragraphCanvas.width - 2 * canvasMargin + textSize * 0.2, currentY - savedRollYPosition + textSize * 1.3);
+						paragraphContext.globalCompositeOperation = 'source-over';
+						paragraphContext.globalAlpha = 1;
+						savedRollYPosition = -1;
+					} else {
+						savedRollYPosition = null;
+					}
+				}
+				//reset
 				currentX = startingCurrentX;
 				currentY += textSize + newLineSpacing;
 				newLineSpacing = 0;
