@@ -75,6 +75,10 @@
 	font-family: invocation-text;
 	src: url('/fonts/shango-gothic-bold.ttf');
 }
+@font-face {
+	font-family: souvenir;
+	src: url('/fonts/Souvenir-Itc-T-OT-Bold.otf');
+}
 /*Variables*/
 :root {
 	--site-background: url('/img/lowpolyBackground.svg');

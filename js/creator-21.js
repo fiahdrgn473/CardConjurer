@@ -1008,7 +1008,6 @@ function writeText(textObject, targetContext) {
 				//boxes for roll a d20 cards
 				if (savedRollYPosition && (newLineSpacing != 0 || !(newLine && !textOneLine))) {
 					if (savedRollYPosition != -1) {
-						console.log(savedRollYPosition);
 						paragraphContext.globalCompositeOperation = 'destination-over';
 						paragraphContext.globalAlpha = 0.25;
 						paragraphContext.fillStyle = 'black';
