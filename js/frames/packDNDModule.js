@@ -33,7 +33,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		module: {name:'Module #', text:'R13', x:0, y:0.02, width:0.08, height:0.0191, oneLine:true, font:'souvenir', size:0.0191, color:'#ECDB2D', align:'center'},
 		dnd: {name:'D&D', text:'DUNGEONS & DRAGONS', x:-0.01, y:0.0953, width:0.204, height:0.0643, font:'souvenir', size:0.0215, align:'center', rotation:-45},
 		type: {name:'Type', text:'', x:0.0854, y:0.6181, width:0.8292, height:0.0324, oneLine:true, font:'souvenir', size:0.0324, color:'white'},
-		rules: {name:'Rules Text', text:'', x:0.086, y:0.6762, width:0.828, height:0.24, size:0.0362, noVerticalCenter:true, color:'white'},
+		rules: {name:'Rules Text', text:'', x:0.086, y:0.6762, width:0.828, height:0.24, size:0.0362, noVerticalCenter:true, color:'white', font:'souvenir'},
 		pt: {name:'Power/Toughness', text:'', x:0.8634, y:0.8858, width:0.1367, height:0.0372, size:0.0372, font:'souvenir', oneLine:true, align:'center', color:'white'}
 	});
 }
