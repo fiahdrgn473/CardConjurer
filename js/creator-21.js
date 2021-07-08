@@ -686,7 +686,7 @@ function writeText(textObject, targetContext) {
 	var splitString = '6GJt7eL8';
 	var rawText = textObject.text
 	if (params.get('copyright') != null && textObject.name == 'wizards' && card.margins) {
-		rawText = params.get('copyright'); //so people using CC for custom card games can customize their copyright info
+		rawText = params.get('copyright'); //so people using CC for custom card games without WotC's IP can customize their copyright info
 	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
@@ -1482,10 +1482,12 @@ function importCard(cardObject) {
 	importIndex.innerHTML = null;
 	var optionIndex = 0;
 	cardObject.forEach(card => {
-		var option = document.createElement('option');
-		option.innerHTML = `${card.name} (${card.type_line})`;
-		option.value = optionIndex;
-		importIndex.appendChild(option);
+		if (card.type_line != 'Card') {
+			var option = document.createElement('option');
+			option.innerHTML = `${card.name} (${card.type_line})`;
+			option.value = optionIndex;
+			importIndex.appendChild(option);
+		}
 		optionIndex ++;
 	});
 	changeCardIndex();

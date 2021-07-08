@@ -5,6 +5,8 @@ availableFrames = [
 	{name:'Black Frame', src:'/img/frames/dndModule/b.svg'},
 	{name:'Red Frame', src:'/img/frames/dndModule/r.svg'},
 	{name:'Green Frame', src:'/img/frames/dndModule/g.svg'},
+	{name:'Multicolored Frame', src:'/img/frames/dndModule/m.svg'},
+	{name:'Artifact Frame', src:'/img/frames/dndModule/a.svg'},
 	{name:'Colorless Frame', src:'/img/frames/dndModule/c.svg'}
 ];
 //disables/enables the "Load Frame Version" button

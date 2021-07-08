@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Generic Margins', value:'Margin-1'},
+	{name:'D&D Module Margin', value:'MarginDNDModule'},
 	{name:'Mystical Archive Margin', value:'MarginMysticalArchive'},
 	{name:'Unstable Basics Margin', value:'MarginUnstable'}
 ])
