@@ -9,6 +9,7 @@ loadFramePacks([
 	{name:'Colored Borders', value:'M15Borders'},
 	{name:'Other Frames', value:'disabled'},
 	{name:'Lands', value:'M15Lands'},
+	{name:'Class (D&D)', value:'Class'},
 	{name:'Snow (Kaldheim)', value:'M15Snow'},
 	{name:'Mutate (Ikoria)', value:'M15Mutate'},
 	{name:'Nyx (Theros)', value:'M15Nyx'},

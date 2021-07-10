@@ -1422,8 +1422,9 @@ function drawCard() {
 	cardContext.drawImage(watermarkCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	if (card.version.includes('saga') && typeof sagaCanvas !== "undefined") {
 		cardContext.drawImage(sagaCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	}
-	if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
+	} else if (card.version.includes('class') && typeof classCanvas !== "undefined") {
+		cardContext.drawImage(classCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	} else if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
 		cardContext.drawImage(dungeonCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
 	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
