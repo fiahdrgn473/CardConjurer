@@ -1,4 +1,5 @@
 loadFramePacks([
+	{name:'Misc. Custom Frames', value:'MiscCustom'},
 	{name:'Cartoony - Sheepwave', value:'Cartoony'},
 	{name:'Classic-Shifted', value:'Classicshifted'},
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
