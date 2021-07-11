@@ -1483,7 +1483,7 @@ function importCard(cardObject) {
 	importIndex.innerHTML = null;
 	var optionIndex = 0;
 	cardObject.forEach(card => {
-		if (card.type_line != 'Card') {
+		if (card.type_line && card.type_line != 'Card') {
 			var option = document.createElement('option');
 			option.innerHTML = `${card.name} (${card.type_line})`;
 			option.value = optionIndex;
