@@ -1157,7 +1157,7 @@ function artFromScryfall(scryfallResponse) {
 	var optionIndex = 0;
 	scryfallResponse.forEach(card => {
 		var option = document.createElement('option');
-		option.innerHTML = `${card.name} (${card.set_name})`;
+		option.innerHTML = `${card.name} (${card.set.toUpperCase()} - ${card.artist})`;
 		option.value = optionIndex;
 		artIndex.appendChild(option);
 		optionIndex ++;
