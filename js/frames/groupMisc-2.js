@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Dungeon (AFR)', value:'Dungeon'},
+	{name:'Conspiracies (Draft Matters)', value:'Conspiracy'},
 	{name:'Future Shifted', value:'FutureRegular'},
 	{name:'Seventh Edition', value:'Seventh'},
 	{name:'Fifth Edition', value:'SeventhButFifth'},
