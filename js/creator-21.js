@@ -1649,11 +1649,6 @@ async function loadCard(selectedCardKey) {
 		card.frames.reverse();
 		if (card.onload) {
 			await loadScript(card.onload);
-			if (card.version.includes('planeswalker')) {
-				setTimeout(function(){
-					fixPlaneswalkerInputs(invertPlaneswalkerColors(true));
-				}, 1000);
-			}
 		}
 		card.manaSymbols.forEach(item => loadScript(item));
 		//canvases

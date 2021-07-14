@@ -13,6 +13,7 @@ loadFramePacks([
 	{name:'Snow (Kaldheim)', value:'M15Snow'},
 	{name:'Mutate (Ikoria)', value:'M15Mutate'},
 	{name:'Nyx (Theros)', value:'M15Nyx'},
+	{name:'Adventures (Eldraine)', value:'Adventure'},
 	{name:'Devoid (Zendikar)', value:'M15Devoid'},
 	{name:'Aftermath (Amonkhet)', value:'Aftermath'},
 	{name:'Flip (Kamigawa)', value:'Flip'},

@@ -1,5 +1,6 @@
 //checks to see if it needs to run
 if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
+	console.log('LOADING PLANESWALKER VERSION SCRIPT')
 	loadedVersions.push('/js/frames/versionPlaneswalker.js');
 	sizeCanvas('planeswalker');
 	document.querySelector('#creator-menu-tabs').innerHTML += '<h3 class="selectable readable-background" onclick="toggleCreatorTabs(event, `planeswalker`)">Planeswalker</h3>';
@@ -42,22 +43,22 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	window.planeswalkerAbilityLayout = [[[0.7467], [0.6953, 0.822], [0.6639, 0.7467, 0.8362], [0.6505, 0.72, 0.7905, 0.861]],[[0.72], [0.6391, 0.801], [0.5986, 0.72, 0.8415], [0.5986, 0.6796, 0.7605, 0.8415]]];
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	var plusIcon = new Image();
-	plusIcon.src = '/img/frames/planeswalker/planeswalkerPlus.png';
+	plusIcon.src = fixUri('/img/frames/planeswalker/planeswalkerPlus.png');
 	var minusIcon = new Image();
-	minusIcon.src = '/img/frames/planeswalker/planeswalkerMinus.png';
+	minusIcon.src = fixUri('/img/frames/planeswalker/planeswalkerMinus.png');
 	var neutralIcon = new Image();
-	neutralIcon.src = '/img/frames/planeswalker/planeswalkerNeutral.png';
+	neutralIcon.src = fixUri('/img/frames/planeswalker/planeswalkerNeutral.png');
 	var lightToDark = new Image();
-	lightToDark.src = '/img/frames/planeswalker/abilityLineOdd.png';
+	lightToDark.src = fixUri('/img/frames/planeswalker/abilityLineOdd.png');
 	var darkToLight = new Image();
-	darkToLight.src = '/img/frames/planeswalker/abilityLineEven.png';
+	darkToLight.src = fixUri('/img/frames/planeswalker/abilityLineEven.png');
 	var planeswalkerTextMask = new Image();
 	planeswalkerTextMask.onload = function(){fixPlaneswalkerInputs(planeswalkerEdited);}
-	planeswalkerTextMask.src = '/img/frames/planeswalker/planeswalkerMaskText.png';
+	planeswalkerTextMask.src = fixUri('/img/frames/planeswalker/planeswalkerMaskText.png');
 	var lightColor = 'white';
 	var darkColor = '#a4a4a4';
 } else {
-	planeswalkerEdited();
+	fixPlaneswalkerInputs(planeswalkerEdited);
 }
 
 function planeswalkerEdited() {
@@ -65,15 +66,15 @@ function planeswalkerEdited() {
 	if (card.version == 'planeswalkerTall') {
 		planeswalkerTall = 1;
 		if (!planeswalkerTextMask.src.includes('tall')) {
-			planeswalkerTextMask.src = '/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png';
+			planeswalkerTextMask.src = fixUri('/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png');
 		}
 	} else if (card.version == 'planeswalkerMDFC') {
 		if (!planeswalkerTextMask.src.includes('mdfc')) {
-			planeswalkerTextMask.src = '/img/frames/planeswalker/mdfc/text.svg';
+			planeswalkerTextMask.src = fixUri('/img/frames/planeswalker/mdfc/text.svg');
 		}
 	} else {
 		if (planeswalkerTextMask.src.includes('tall') || planeswalkerTextMask.src.includes('mdfc')) {
-			planeswalkerTextMask.src = '/img/frames/planeswalker/planeswalkerMaskText.png';
+			planeswalkerTextMask.src = fixUri('/img/frames/planeswalker/planeswalkerMaskText.png');
 		}
 	}
 	card.planeswalker.abilities[0] = document.querySelector('#planeswalker-cost-0').value;
@@ -190,12 +191,12 @@ function invertPlaneswalkerColors(reverse = false) {
 	if (card.planeswalker.invert) {
 		darkColor = '#5b5b5b';
 		lightColor = 'black';
-		lightToDark.src = '/img/frames/planeswalker/abilityLineOddDarkened.png';
-		darkToLight.src = '/img/frames/planeswalker/abilityLineEvenDarkened.png';
+		lightToDark.src = fixUri('/img/frames/planeswalker/abilityLineOddDarkened.png');
+		darkToLight.src = fixUri('/img/frames/planeswalker/abilityLineEvenDarkened.png');
 	} else {
 		darkColor = '#a4a4a4';
 		lightColor = 'white';
-		lightToDark.src = '/img/frames/planeswalker/abilityLineOdd.png';
-		darkToLight.src = '/img/frames/planeswalker/abilityLineEven.png';
+		lightToDark.src = fixUri('/img/frames/planeswalker/abilityLineOdd.png');
+		darkToLight.src = fixUri('/img/frames/planeswalker/abilityLineEven.png');
 	}
 }

@@ -7,7 +7,10 @@ availableFrames = [
 	{name:'Blue Frame', src:'/img/frames/levelers/regular/u.png', masks:masks},
 	{name:'Black Frame', src:'/img/frames/levelers/regular/b.png', masks:masks},
 	{name:'Red Frame', src:'/img/frames/levelers/regular/r.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/levelers/regular/g.png', masks:masks}
+	{name:'Green Frame', src:'/img/frames/levelers/regular/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/levelers/regular/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/levelers/regular/a.png', masks:masks},
+	{name:'Vehicle Frame', src:'/img/frames/levelers/regular/v.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
