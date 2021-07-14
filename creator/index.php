@@ -324,6 +324,39 @@ include('../globalHTML/header-1.php');
 									<input type='text' placeholder='Via Set Code' class='input' onchange='getSetSymbolWatermark(this.value);'>
 								</div>
 							</div>
+							<h5 class='margin-bottom padding input-description'>Select lore-based watermarks</h5>
+							<select class='input padding margin-bottom' onchange='getSetSymbolWatermark("https://raw.githubusercontent.com/andrewgioia/mana/master/svg/" + this.value + ".svg");'>
+								<option disabled selected='selected'>None</option>
+								<option disabled>Guilds (Ravnica)</option>
+								<option value="guild-azorius">Azorius</option>
+								<option value="guild-dimir">Dimir</option>
+								<option value="guild-rakdos">Rakdos</option>
+								<option value="guild-gruul">Gruul</option>
+								<option value="guild-selesnya">Selesnya</option>
+								<option value="guild-orzhov">Orzhov</option>
+								<option value="guild-izzet">Izzet</option>
+								<option value="guild-golgari">Golgari</option>
+								<option value="guild-boros">Boros</option>
+								<option value="guild-simic">Simic</option>
+								<option disabled>Schools (Strixhaven)</option>
+								<option value="school-silverquill">Silverquill</option>
+								<option value="school-prismari">Prismari</option>
+								<option value="school-witherbloom">Witherbloom</option>
+								<option value="school-lorehold">Lorehold</option>
+								<option value="school-quandrix">Quandrix</option>
+								<option disabled>Clans (Tarkir - Old Timeline)</option>
+								<option value="clan-abzan">Abzan</option>
+								<option value="clan-jeskai">Jeskai</option>
+								<option value="clan-sultai">Sultai</option>
+								<option value="clan-mardu">Mardu</option>
+								<option value="clan-temur">Temur</option>
+								<option disabled>Clans (Tarkir - New Timeline)</option>
+								<option value="clan-ojutai">Ojutai</option>
+								<option value="clan-silumgar">Silumgar</option>
+								<option value="clan-kolaghan">Kolaghan</option>
+								<option value="clan-atarka">Atarka</option>
+								<option value="clan-dromoka">Dromoka</option>
+							</select>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes
 							</h5>

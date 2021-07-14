@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'D&D Module', value:'DNDModule'},
+	{name:'Sketch Cards (MH2)', value:'MH2'},
 	{name:'Mystical Archive (Japanese)', value:'MysticalArchiveJP'},
 	{name:'Mystical Archive', value:'MysticalArchive'},
 	{name:'Praetors', value:'Praetors'},
@@ -25,5 +26,6 @@ loadFramePacks([
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Holo Stamps', value:'M15HoloStamps'},
 	{name:'Dark Power/Toughness', value:'M15DarkPT'},
-	{name:'Colored Borders', value:'M15Borders'}
+	{name:'Colored Borders', value:'M15Borders'},
+	{name:'Color Identity Pips', value:'M15CIPips'}
 ])

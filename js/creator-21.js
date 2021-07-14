@@ -1334,9 +1334,12 @@ function resetWatermark() {
 	watermarkEdited();
 }
 //svg cropper
-function getSetSymbolWatermark(setCode, targetImage = watermark) {
+function getSetSymbolWatermark(url, targetImage = watermark) {
+	if (!url.includes('http')) {
+		url = 'https://cdn.jsdelivr.net/npm/keyrune/svg/' + url + '.svg';
+	}
 	xhttp = new XMLHttpRequest();
-	xhttp.open('GET', 'https://raw.githubusercontent.com/andrewgioia/keyrune/4073ac89bb943978c29be504275e6f3160a07255/svg/' + setCode + '.svg', true);
+	xhttp.open('GET', url, true);
 	xhttp.overrideMimeType('image/svg+xml');
 	xhttp.onload = function(event) {
 		if (this.readyState == 4 && this.status == 200) {
