@@ -8,7 +8,8 @@ availableFrames = [
 	{name:'Black Frame', src:'/img/frames/mh2/b.png'},
 	{name:'Red Frame', src:'/img/frames/mh2/r.png'},
 	{name:'Green Frame', src:'/img/frames/mh2/g.png'},
-	// {name:'Multicolored Frame', src:'/img/frames/mh2/m.png'},
+	{name:'Multicolored Frame', src:'/img/frames/mh2/m.png'},
+	{name:'Multicolored Overlay', src:'/img/frames/mh2/mOverlay.png'},
 	// {name:'Artifact Frame', src:'/img/frames/mh2/a.png'},
 	// {name:'Vehicle Frame', src:'/img/frames/mh2/v.png'},
 	{name:'White Power/Toughness', src:'/img/frames/mh2/wpt.png', bounds:bounds},
@@ -16,7 +17,7 @@ availableFrames = [
 	{name:'Black Power/Toughness', src:'/img/frames/mh2/bpt.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/mh2/rpt.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/mh2/gpt.png', bounds:bounds},
-	// {name:'Multicolored Power/Toughness', src:'/img/frames/mh2/mpt.png', bounds:bounds},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/mh2/mpt.png', bounds:bounds},
 	// {name:'Artifact Power/Toughness', src:'/img/frames/mh2/apt.png', bounds:bounds},
 	// {name:'Vehicle Power/Toughness', src:'/img/frames/mh2/vpt.png', bounds:bounds}
 ];
@@ -24,8 +25,6 @@ availableFrames = [
 document.querySelector('#loadFrameVersion').disabled = false;
 //defines process for loading this version, if applicable
 document.querySelector('#loadFrameVersion').onclick = async function() {
-	// notifies
-	notify('Currently only monocolored frames are available. Due to the nature of the sketch frame, I\'m not sure if/when I\'ll be able to add the remaining frames.', 10);
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
