@@ -1,25 +1,34 @@
 //Create objects for common properties across available frames
-// var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/mh2/pinline.png', name:'Pinline/Rules'}, {src:'/img/frames/mh2/rightHalf.png', name:'Pinline/Rules (Right Half)'}, {src:'/img/frames/mh2/title.png', name:'Title'}, {src:'/img/frames/mh2/type.png', name:'Type'}, {src:'/img/frames/mh2/frame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks2 = [{src:'/img/frames/mh2/crowns/rightHalf.png', name:'Right Half for Legend Crowns'}];
 var bounds = {x:0.748, y:0.8796, width:0.204, height:0.072};
+var bounds2 = {x:0, y:0, width:1, height:0.1862};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/mh2/w.png'},
-	{name:'Blue Frame', src:'/img/frames/mh2/u.png'},
-	{name:'Black Frame', src:'/img/frames/mh2/b.png'},
-	{name:'Red Frame', src:'/img/frames/mh2/r.png'},
-	{name:'Green Frame', src:'/img/frames/mh2/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/mh2/m.png'},
-	{name:'Multicolored Overlay', src:'/img/frames/mh2/mOverlay.png'},
-	// {name:'Artifact Frame', src:'/img/frames/mh2/a.png'},
-	// {name:'Vehicle Frame', src:'/img/frames/mh2/v.png'},
+	{name:'White Frame', src:'/img/frames/mh2/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/mh2/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/mh2/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/mh2/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/mh2/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/mh2/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/mh2/a.png', masks:masks},
+	// {name:'Vehicle Frame', src:'/img/frames/mh2/v.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/mh2/wpt.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/mh2/upt.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/mh2/bpt.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/mh2/rpt.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/mh2/gpt.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/mh2/mpt.png', bounds:bounds},
-	// {name:'Artifact Power/Toughness', src:'/img/frames/mh2/apt.png', bounds:bounds},
-	// {name:'Vehicle Power/Toughness', src:'/img/frames/mh2/vpt.png', bounds:bounds}
+	{name:'Artifact Power/Toughness', src:'/img/frames/mh2/apt.png', bounds:bounds},
+	// {name:'Vehicle Power/Toughness', src:'/img/frames/mh2/vpt.png', bounds:bounds},
+	{name:'White Legend Crown', src:'/img/frames/mh2/crowns/w.png', bounds:bounds2, masks:masks2},
+	{name:'Blue Legend Crown', src:'/img/frames/mh2/crowns/u.png', bounds:bounds2, masks:masks2},
+	{name:'Black Legend Crown', src:'/img/frames/mh2/crowns/b.png', bounds:bounds2, masks:masks2},
+	{name:'Red Legend Crown', src:'/img/frames/mh2/crowns/r.png', bounds:bounds2, masks:masks2},
+	{name:'Green Legend Crown', src:'/img/frames/mh2/crowns/g.png', bounds:bounds2, masks:masks2},
+	{name:'Multicolored Legend Crown', src:'/img/frames/mh2/crowns/m.png', bounds:bounds2, masks:masks2},
+	{name:'Artifact Legend Crown', src:'/img/frames/mh2/crowns/a.png', bounds:bounds2, masks:masks2},
+	// {name:'Vehicle Legend Crown', src:'/img/frames/mh2/crowns/v.png', bounds:bounds2, masks:masks2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
