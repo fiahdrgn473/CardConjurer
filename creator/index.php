@@ -572,5 +572,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-21.js'></script>
+	<script defer src='/js/creator-22.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

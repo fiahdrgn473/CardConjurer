@@ -15,6 +15,10 @@ function fixUri(input) {
 		return prefix + input; //input.replace('/img/frames', prefix + '/img/frames');
 	}
 }
+function setImageUrl(image, source) {
+	image.crossOrigin = 'anonymous';
+	image.src = fixUri(source);
+}
 //card object
 var card = {width:1500, height:2100, marginX:0, marginY:0, frames:[], artSource:fixUri('/img/blank.png'), artX:0, artY:0, artZoom:1, artRotate:0, setSymbolSource:fixUri('/img/blank.png'), setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:fixUri('/img/blank.png'), watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
 //core images/masks

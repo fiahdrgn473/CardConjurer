@@ -35,9 +35,9 @@ if (!loadedVersions.includes('/js/frames/versionSaga.js')) {
 	}
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	var sagaChapter = new Image();
-	sagaChapter.src = fixUri('/img/frames/saga/sagaChapter.png');
+	setImageUrl(sagaChapter, '/img/frames/saga/sagaChapter.png');
 	var sagaDivider = new Image();
-	sagaDivider.src = fixUri('/img/frames/saga/sagaDivider.png');
+	setImageUrl(sagaDivider, '/img/frames/saga/sagaDivider.png');
 	sagaChapter.onload = sagaDivider.onload = sagaEdited;
 	fixSagaInputs(sagaEdited);
 }

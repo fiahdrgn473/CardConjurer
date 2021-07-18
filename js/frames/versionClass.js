@@ -31,7 +31,7 @@ if (!loadedVersions.includes('/js/frames/versionClass.js')) {
 	}
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	var classHeader = new Image();
-	classHeader.src = fixUri('/img/frames/class/header.png');
+	setImageUrl(classHeader, '/img/frames/class/header.png');
 	classHeader.onload = classEdited;
 	fixClassInputs(classEdited);
 } else {
