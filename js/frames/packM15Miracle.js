@@ -1,5 +1,4 @@
 //Create objects for common properties across available frames
-// var masks = [{src:'/img/frames/m15/crowns/m15MaskLegendCrown.png', name:'Crown Without Pinlines'}, {src:'/img/frames/m15/crowns/m15MaskLegendCrownPinline.png', name:'Crown With Pinlines'}];
 var bounds = {x:0.04, y:0.0286, width:0.92, height:0.5324};
 //defines available frames
 availableFrames = [
