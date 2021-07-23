@@ -135,6 +135,7 @@ sizeCanvas('paragraph');
 sizeCanvas('line');
 sizeCanvas('watermark');
 sizeCanvas('bottomInfo');
+sizeCanvas('guidelines');
 //Scaling
 function scaleX(input) {
 	return Math.round((input + card.marginX) * card.width);
@@ -635,6 +636,7 @@ function loadTextOptions(textObject, replace=true) {
 	});
 	document.querySelector('#text-options').firstChild.click();
 	drawTextBuffer();
+	drawNewGuidelines();
 }
 function textOptionClicked(event) {
 	selectedTextIndex = getElementIndex(event.target);
@@ -1416,13 +1418,16 @@ function setDefaultCollector() {
 }
 //DRAWING THE CARD (putting it all together)
 function drawCard() {
+	// reset
 	cardContext.globalCompositeOperation = 'source-over';
 	cardContext.clearRect(0, 0, cardCanvas.width, cardCanvas.height);
+	// art
 	cardContext.save();
 	cardContext.translate(scaleX(card.artX), scaleY(card.artY));
 	cardContext.rotate(Math.PI / 180 * (card.artRotate || 0));
 	cardContext.drawImage(art, 0, 0, art.width * card.artZoom, art.height * card.artZoom);
 	cardContext.restore();
+	// frame elements, text, set symbol, etc...
 	cardContext.drawImage(frameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
 		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
@@ -1438,6 +1443,11 @@ function drawCard() {
 	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	// guidelines
+	if (document.querySelector('#show-guidelines').checked) {
+		cardContext.drawImage(guidelinesCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	}
+	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
 	if (card.marginX == 0 && card.marginY == 0) {
 		cardContext.drawImage(corner, 0, 0, scaleWidth(59/1500), scaleWidth(59/1500));
@@ -1449,6 +1459,7 @@ function drawCard() {
 		cardContext.drawImage(corner, -card.height, 0, scaleWidth(59/1500), scaleWidth(59/1500));
 		cardContext.rotate(Math.PI / 2);
 	}
+	// show preview
 	previewContext.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
 	previewContext.drawImage(cardCanvas, 0, 0, previewCanvas.width, previewCanvas.height);
 }
@@ -1724,6 +1735,44 @@ function loadTutorialVideo() {
 	if (video.src == '') {
 		video.src = 'https://www.youtube-nocookie.com/embed/UrNk6I55S0Q?rel=0';
 	}
+}
+// GUIDELINES
+function drawNewGuidelines() {
+	// clear
+	guidelinesContext.clearRect(0, 0, guidelinesCanvas.width, guidelinesCanvas.height);
+	// set opacity
+	guidelinesContext.globalAlpha = 0.25;
+	// textboxes
+	guidelinesContext.fillStyle = 'blue';
+	Object.entries(card.text).forEach(item => {
+		guidelinesContext.fillRect(scaleX(item[1].x || 0), scaleY(item[1].y || 0), scaleWidth(item[1].width || 1), scaleHeight(item[1].height || 1));
+	});
+	// art
+	guidelinesContext.fillStyle = 'green';
+	guidelinesContext.fillRect(scaleX(card.artBounds.x), scaleY(card.artBounds.y), scaleWidth(card.artBounds.width), scaleHeight(card.artBounds.height));
+	// watermark
+	guidelinesContext.fillStyle = 'yellow';
+	var watermarkWidth = scaleWidth(card.watermarkBounds.width);
+	var watermarkHeight = scaleHeight(card.watermarkBounds.height);
+	guidelinesContext.fillRect(scaleX(card.watermarkBounds.x) - watermarkWidth / 2, scaleY(card.watermarkBounds.y) - watermarkHeight / 2, watermarkWidth, watermarkHeight);
+	// set symbol
+	var setSymbolX = scaleX(card.setSymbolBounds.x);
+	var setSymbolY = scaleY(card.setSymbolBounds.y);
+	var setSymbolWidth = scaleWidth(card.setSymbolBounds.width);
+	var setSymbolHeight = scaleHeight(card.setSymbolBounds.height);
+	if (card.setSymbolBounds.vertical == 'center') {
+		setSymbolY -= setSymbolHeight / 2;
+	} else if (card.setSymbolBounds.vertical == 'bottom') {
+		setSymbolY -= setSymbolHeight;
+	}
+	if (card.setSymbolBounds.horizontal == 'center') {
+		setSymbolX -= setSymbolWidth / 2;
+	} else if (card.setSymbolBounds.horizontal == 'right') {
+		setSymbolX -= setSymbolWidth;
+	}
+	guidelinesContext.fillStyle = 'red';
+	guidelinesContext.fillRect(setSymbolX, setSymbolY, setSymbolWidth, setSymbolHeight);
+	drawCard();
 }
 //Various loaders
 function imageURL(url, destination, otherParams) {

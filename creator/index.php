@@ -153,7 +153,7 @@ include('../globalHTML/header-1.php');
 							<div id='frame-list' class='frame-list margin-bottom'></div>
 							<h5 class='padding input-description'>You may also click to edit opacity, position, size, and more</h5>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Upload custom frame images</h5>
 							<div class='input-grid'>
 								<div class='padding drop-area'>
@@ -164,6 +164,13 @@ include('../globalHTML/header-1.php');
 									<input type='url' placeholder='Via URL' class='input' onchange='imageURL(this.value, uploadFrameOption);'>
 								</div>
 							</div>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='input-description margin-bottom'>Show guidelines for text, art, watermark, and set symbols</h5>
+							<label class='checkbox-container input'>Guidelines
+								<input id='show-guidelines' type='checkbox' onchange='drawCard();'>
+								<span class='checkmark'></span>
+							</label>
 						</div>
 					</div>
 					<div id='creator-menu-text' class='hidden'>
