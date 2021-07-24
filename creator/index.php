@@ -570,6 +570,8 @@ include('../globalHTML/header-1.php');
 				<h4>Aaron J.</h4>
 				<h4>Leif T.</h4>
 				<h4>Martin C.</h4>
+				<h4>Donovan M.</h4>
+				<h4>Nathan C.</h4>
 			</div>
 			<h5 class='input-description'>(Please email me if you would like your name/nickname changed.)</h5>
 		</div>
