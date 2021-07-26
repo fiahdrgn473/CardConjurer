@@ -23,6 +23,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	loadTextOptions({
 		mana: {name:'Color Identity', text:'', y:0.9167, width:0.9292, height:83/2100, oneLine:true, size:83/1638, align:'right', manaCost:true, manaSpacing:0},
 		title: {name:'Title', text:'', x:0.0474, y:0.7039, width:0.9054, height:0.0534, oneLine:true, font:'gothammedium', size:0.0534, color:'white', align:'center'},
+		subtitle: {name:'Subtitle', text:'', x:0.0474, y:0.7543, width:0.9054, height:0.03, oneLine:true, font:'belerenbsc', size:0.03, color:'white', align:'center'}
 	});
 	//bottom info
 	await loadBottomInfo({
