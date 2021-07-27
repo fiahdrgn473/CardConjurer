@@ -1,16 +1,16 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/adventure/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}];
+var masks = [{src:'/img/frames/adventure/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/adventure/regular/book.svg', name:'Rules'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/adventure/regular/w.png'},
-	{name:'Blue Frame', src:'/img/frames/adventure/regular/u.png'},
-	{name:'Black Frame', src:'/img/frames/adventure/regular/b.png'},
-	{name:'Red Frame', src:'/img/frames/adventure/regular/r.png'},
-	{name:'Green Frame', src:'/img/frames/adventure/regular/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/adventure/regular/m.png'},
-	{name:'Artifact Frame', src:'/img/frames/adventure/regular/a.png'},
-	{name:'Land Frame', src:'/img/frames/adventure/regular/l.png'},
+	{name:'White Frame', src:'/img/frames/adventure/regular/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/adventure/regular/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/adventure/regular/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/adventure/regular/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/adventure/regular/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/adventure/regular/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/adventure/regular/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/adventure/regular/l.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/regular/m15PTB.png', bounds:bounds},

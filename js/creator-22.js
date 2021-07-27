@@ -758,6 +758,7 @@ function writeText(textObject, targetContext) {
 		var textFontStyle = textObject.fontStyle || '';
 		var manaPlacementCounter = 0;
 		var realTextAlign = textAlign;
+		savedRollYPosition = null;
 		//variables that track various... things?
 		var newLineSpacing = 0;
 		var textSize = startingTextSize;
@@ -1012,8 +1013,8 @@ function writeText(textObject, targetContext) {
 				paragraphContext.drawImage(lineCanvas, horizontalAdjust, currentY);
 				lineY = 0;
 				lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
-				//boxes for roll a d20 cards
-				if (savedRollYPosition && (newLineSpacing != 0 || !(newLine && !textOneLine))) {
+				// boxes for 'roll a d20' cards
+				if (savedRollYPosition != null && (newLineSpacing != 0 || !(newLine && !textOneLine))) {
 					if (savedRollYPosition != -1) {
 						paragraphContext.globalCompositeOperation = 'destination-over';
 						paragraphContext.globalAlpha = 0.25;
