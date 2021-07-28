@@ -1521,7 +1521,7 @@ function changeCardIndex() {
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = cardToImport.type_line || '';}
 	if (card.text.rules) {
-		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}'));
+		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}')).replace(/{Q}/g, '{untap}');
 		card.text.rules.text = rulesText;
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
