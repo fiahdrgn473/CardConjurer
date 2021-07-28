@@ -7,7 +7,7 @@ include('../globalHTML/header-1.php');
 	<div class='layer center'></div>
 	<div class='layer center'>
 		<h1>Hello!</h1>
-		<h4>It's me, Kyle Burton &#x1F440;</h4>
+		<h4>It's me, Kyle &#x1F440;</h4>
 	</div>
 	<div class='layer center'></div>
 	<div class='layer readable-background margin-bottom-large'>
