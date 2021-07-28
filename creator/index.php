@@ -550,7 +550,6 @@ include('../globalHTML/header-1.php');
 				<h4>Sheepwave</h4>
 				<h4>Yunas</h4>
 				<h4>Ritchie T.</h4>
-				<h4>Samuel T.</h4>
 				<h4>Aurelian M.</h4>
 				<h4>Rodney F.</h4>
 				<h4>The Bell-Horwaths</h4>
@@ -570,6 +569,8 @@ include('../globalHTML/header-1.php');
 				<h4>Aaron J.</h4>
 				<h4>Leif T.</h4>
 				<h4>Martin C.</h4>
+				<h4>Will A.</h4>
+				<h4>Samuel T.</h4>
 				<h4>Donovan M.</h4>
 				<h4>Nathan C.</h4>
 			</div>
