@@ -1,7 +1,12 @@
+//Create objects for common properties across available frames
+var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'Invention Frame', src:'/img/frames/m15/invention/inventionFrameA.png', masks:[{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}]},
-	{name:'Invention Power/Toughness', src:'/img/frames/m15/invention/inventionPT.png', bounds:{x:0.7573, y:0.8848, width:0.188, height:0.0733}}
+	{name:'Invention Frame', src:'/img/frames/m15/invention/inventionFrameA.png', masks:masks},
+	{name:'Invention Power/Toughness', src:'/img/frames/m15/invention/inventionPT.png', bounds:bounds},
+	{name:'Silver Frame', src:'/img/frames/m15/invention/a.png', masks:masks},
+	{name:'Silver Power/Toughness', src:'/img/frames/m15/invention/apt.png', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
@@ -26,7 +31,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0381, shadow:'white', shadowX:-0.0007, shadowY:0.0005},
 		type: {name:'Type', text:'', x:0.0854, y:0.5664, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0324, shadow:'white', shadowX:-0.0007, shadowY:0.0005},
 		rules: {name:'Rules Text', text:'', x:0.086, y:0.6303, width:0.828, height:0.2875, size:0.0362},
-		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}
+		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center', shadow:'white', shadowX:-0.0007, shadowY:0.0005}
 	});
 }
 //loads available frames
