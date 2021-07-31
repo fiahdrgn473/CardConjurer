@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskText.png', name:'Rules'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskText.png', name:'Rules'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/zendikarRising/m15ZendikarRisingMaskBorder.png', name:'Border'}, {src:'/img/frames/m15/zendikarRising/opaque.svg', name:'Opaque Portion'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:0.0294, y:0.0234, width:0.9414, height:0.1167};
 var bounds3 = {x:0.0374, y:0.0262, width:0.9254, height:0.1091};
