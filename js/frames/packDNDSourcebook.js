@@ -3,7 +3,8 @@
 //defines available frames
 availableFrames = [
 	{name:'Frame', src:'/img/frames/dndSourcebook/frame.png'},
-	{name:'Power/Toughness', src:'/img/frames/dndSourcebook/pt.png', bounds:{x:0.774, y:0.8862, width:0.1734, height:0.0629}}
+	{name:'Power/Toughness', src:'/img/frames/dndSourcebook/pt.png', bounds:{x:0.774, y:0.8862, width:0.1734, height:0.0629}},
+	{name:'Legend Crown', src:'/img/frames/dndSourcebook/crown.png', bounds:{x:0, y:0, width:1, height:0.1162}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
