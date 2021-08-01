@@ -192,8 +192,10 @@ include('../globalHTML/header-1.php');
 								<h5 class='margin-top'>Text Codes:</h5>
 								<div class='text-codes margin-bottom padding'>
 									<h5>Code</h5><h5>Result</h5>
-									<h5>{i}</h5><h5>Italicizes</h5>
+									<h5>{i}</h5><h5>Italicizes text</h5>
 									<h5>{/i}</h5><h5>Removes italicization</h5>
+									<h5>{bold}</h5><h5>Bolds text</h5>
+									<h5>{/bold}</h5><h5>Removes bold</h5>
 									<h5>{lns}</h5><h5>Moves to the next line without an extra space (stands for line-no-space)</h5>
 									<h5>{flavor}</h5><h5>Moves to the next line, draws the flavor text bar, and italicizes</h5>
 									<h5>{fontsize#}</h5><h5>Changes the font size by # pixels (relative - use negative integers to shrink text - ie '{fontsize-12}')</h5>

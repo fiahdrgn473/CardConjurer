@@ -62,6 +62,8 @@ var lastMaskClick = null;
 var scryfallArt;
 var scryfallCard;
 //for text
+var drawTextBetweenFrames = false;
+var redrawFrames = false;
 var savedTextXPosition = 0;
 var savedRollYPosition = null;
 var savedFont = null;
@@ -286,8 +288,15 @@ function findManaSymbolIndex(string) {
 function drawFrames() {
 	frameContext.clearRect(0, 0, frameCanvas.width, frameCanvas.height);
 	var frameToDraw = card.frames.slice().reverse();
+	var haveDrawnPrePTCanvas = false;
 	frameToDraw.forEach(item => {
 		if (item.image) {
+			if (!haveDrawnPrePTCanvas && drawTextBetweenFrames && item.name.includes('Power/Toughness')) {
+				haveDrawnPrePTCanvas = true;
+				frameContext.globalCompositeOperation = 'source-over';
+				frameContext.globalAlpha = 1;
+				frameContext.drawImage(textCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
+			}
 			frameContext.globalCompositeOperation = item.mode || 'source-over';
 			frameContext.globalAlpha = item.opacity / 100 || 1;
 			if (item.opacity == 0) {
@@ -320,6 +329,12 @@ function drawFrames() {
 			}
 		}
 	});
+	if (!haveDrawnPrePTCanvas && drawTextBetweenFrames) {
+		haveDrawnPrePTCanvas = true;
+		frameContext.globalCompositeOperation = 'source-over';
+		frameContext.globalAlpha = 1;
+		frameContext.drawImage(textCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
+	}
 	drawCard();
 }
 function loadFramePacks(framePackOptions = []) {
@@ -665,11 +680,19 @@ function drawTextBuffer() {
 }
 async function drawText() {
 	textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
+	drawTextBetweenFrames = false;
 	for (var textObject of Object.entries(card.text)) {
 		await writeText(textObject[1], textContext);
 		continue;
 	}
-	drawCard();
+	if (drawTextBetweenFrames || redrawFrames) {
+		drawFrames();
+		if (!drawTextBetweenFrames) {
+			redrawFrames = false;
+		}
+	} else {
+		drawCard();
+	}
 }
 function writeText(textObject, targetContext) {
 	//Most bits of info about text loaded, with defaults when needed
@@ -813,15 +836,21 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode == 'i') {
 					if (textFont == 'mplantin') {
 						textFontExtension = 'i';
-						textFontStyle = '';
+						textFontStyle = textFontStyle.replace('italic ', '');
 					} else {
 						textFontExtension = '';
-						textFontStyle = 'italic ';
+						if (!textFontStyle.includes('italic')) {textFontStyle += 'italic ';}
 					}
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode == '/i') {
 					textFontExtension = '';
-					textFontStyle = '';
+					textFontStyle = textFontStyle.replace('italic ', '');
+					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
+				} else if (possibleCode == 'bold') {
+					if (!textFontStyle.includes('bold')) {textFontStyle += 'bold ';}
+					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
+				} else if (possibleCode == '/bold') {
+					textFontStyle = textFontStyle.replace('bold ', '');
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode == 'left') {
 					textAlign = 'left';
@@ -900,6 +929,8 @@ function writeText(textObject, targetContext) {
 						ptShift[1] = scaleHeight(parseFloat(possibleCode.split(',')[1]));
 					}
 				} else if (possibleCode.includes('roll')) {
+					drawTextBetweenFrames = true;
+					redrawFrames = true;
 					if (savedRollYPosition == null) {
 						savedRollYPosition = currentY;
 					} else {
@@ -1441,7 +1472,7 @@ function drawCard() {
 	} else if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
 		cardContext.drawImage(dungeonCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
-	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	if (!drawTextBetweenFrames) {cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);}
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// guidelines
