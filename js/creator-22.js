@@ -138,6 +138,7 @@ sizeCanvas('line');
 sizeCanvas('watermark');
 sizeCanvas('bottomInfo');
 sizeCanvas('guidelines');
+sizeCanvas('prePT');
 //Scaling
 function scaleX(input) {
 	return Math.round((input + card.marginX) * card.width);
@@ -295,7 +296,7 @@ function drawFrames() {
 				haveDrawnPrePTCanvas = true;
 				frameContext.globalCompositeOperation = 'source-over';
 				frameContext.globalAlpha = 1;
-				frameContext.drawImage(textCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
+				frameContext.drawImage(prePTCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
 			}
 			frameContext.globalCompositeOperation = item.mode || 'source-over';
 			frameContext.globalAlpha = item.opacity / 100 || 1;
@@ -333,7 +334,7 @@ function drawFrames() {
 		haveDrawnPrePTCanvas = true;
 		frameContext.globalCompositeOperation = 'source-over';
 		frameContext.globalAlpha = 1;
-		frameContext.drawImage(textCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
+		frameContext.drawImage(prePTCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
 	}
 	drawCard();
 }
@@ -680,6 +681,7 @@ function drawTextBuffer() {
 }
 async function drawText() {
 	textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
+	prePTContext.clearRect(0, 0, prePTCanvas.width, prePTCanvas.height);
 	drawTextBetweenFrames = false;
 	for (var textObject of Object.entries(card.text)) {
 		await writeText(textObject[1], textContext);
@@ -782,6 +784,7 @@ function writeText(textObject, targetContext) {
 		var manaPlacementCounter = 0;
 		var realTextAlign = textAlign;
 		savedRollYPosition = null;
+		var drawToPrePTCanvas = false;
 		//variables that track various... things?
 		var newLineSpacing = 0;
 		var textSize = startingTextSize;
@@ -931,6 +934,7 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode.includes('roll')) {
 					drawTextBetweenFrames = true;
 					redrawFrames = true;
+					drawToPrePTCanvas = true;
 					if (savedRollYPosition == null) {
 						savedRollYPosition = currentY;
 					} else {
@@ -1086,17 +1090,21 @@ function writeText(textObject, targetContext) {
 				if (!textObject.noVerticalCenter) {
 					verticalAdjust = (textHeight - currentY + textSize * 0.15) / 2;
 				}
+				var trueTargetContext = targetContext;
+				if (drawToPrePTCanvas) {
+					trueTargetContext = prePTContext;
+				}
 				if (textRotation) {
-					targetContext.save();
-					targetContext
+					trueTargetContext.save();
+					trueTargetContext
 					const shapeX = textX + ptShift[0];
 					const shapeY = textY + ptShift[1];
-					targetContext.translate(shapeX, shapeY);
-					targetContext.rotate(Math.PI * textRotation / 180);
-					targetContext.drawImage(paragraphCanvas, permaShift[0] - canvasMargin, verticalAdjust - canvasMargin + permaShift[1]);
-					targetContext.restore();
+					trueTargetContext.translate(shapeX, shapeY);
+					trueTargetContext.rotate(Math.PI * textRotation / 180);
+					trueTargetContext.drawImage(paragraphCanvas, permaShift[0] - canvasMargin, verticalAdjust - canvasMargin + permaShift[1]);
+					trueTargetContext.restore();
 				} else {
-					targetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
+					trueTargetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
 				}
 				drawingText = false;
 			}
@@ -1472,7 +1480,7 @@ function drawCard() {
 	} else if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
 		cardContext.drawImage(dungeonCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
-	if (!drawTextBetweenFrames) {cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);}
+	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// guidelines

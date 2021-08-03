@@ -30,7 +30,15 @@ availableFrames = [
 	{name:'Multicolored Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/m.svg', bounds:bounds2, complementary:19},
 	{name:'Artifact Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/a.svg', bounds:bounds2, complementary:19},
 	{name:'Land Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/l.svg', bounds:bounds2, complementary:19},
-	{name:'Power/Toughness Cutout', src:'/img/frames/mysticalArchive/jp/pt/cutout.svg', bounds:bounds2, erase:true}
+	{name:'Power/Toughness Cutout', src:'/img/frames/mysticalArchive/jp/pt/cutout.svg', bounds:bounds2, erase:true},
+	{name:'White Crown', src:'/img/frames/mysticalArchive/jp/crowns/w.svg'},
+	{name:'Blue Crown', src:'/img/frames/mysticalArchive/jp/crowns/u.svg'},
+	{name:'Black Crown', src:'/img/frames/mysticalArchive/jp/crowns/b.svg'},
+	{name:'Red Crown', src:'/img/frames/mysticalArchive/jp/crowns/r.svg'},
+	{name:'Green Crown', src:'/img/frames/mysticalArchive/jp/crowns/g.svg'},
+	{name:'Multicolored Crown', src:'/img/frames/mysticalArchive/jp/crowns/m.svg'},
+	{name:'Artifact Crown', src:'/img/frames/mysticalArchive/jp/crowns/a.svg'},
+	{name:'Land Crown', src:'/img/frames/mysticalArchive/jp/crowns/l.svg'}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
