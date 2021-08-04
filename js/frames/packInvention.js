@@ -6,7 +6,9 @@ availableFrames = [
 	{name:'Invention Frame', src:'/img/frames/m15/invention/inventionFrameA.png', masks:masks},
 	{name:'Invention Power/Toughness', src:'/img/frames/m15/invention/inventionPT.png', bounds:bounds},
 	{name:'Silver Frame', src:'/img/frames/m15/invention/a.png', masks:masks},
-	{name:'Silver Power/Toughness', src:'/img/frames/m15/invention/apt.png', bounds:bounds}
+	{name:'Silver Power/Toughness', src:'/img/frames/m15/invention/apt.png', bounds:bounds},
+	{name:'Phyrexian Frame', src:'/img/frames/m15/invention/phyrexian.png', masks:masks},
+	{name:'Phyrexian Power/Toughness', src:'/img/frames/m15/invention/phyrexianPT.png', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

@@ -1812,6 +1812,31 @@ function drawNewGuidelines() {
 	}
 	guidelinesContext.fillStyle = 'red';
 	guidelinesContext.fillRect(setSymbolX, setSymbolY, setSymbolWidth, setSymbolHeight);
+	// grid
+	guidelinesContext.globalAlpha = 1;
+	guidelinesContext.beginPath();
+	guidelinesContext.strokeStyle = 'gray';
+	guidelinesContext.lineWidth = 1;
+	const boxPadding = 25;
+	for (var x = 0; x <= card.width; x += boxPadding) {
+		guidelinesContext.moveTo(x, 0);
+		guidelinesContext.lineTo(x, card.height);
+	}
+	for (var y = 0; y <= card.height; y += boxPadding) {
+		guidelinesContext.moveTo(0, y);
+		guidelinesContext.lineTo(card.width, y);
+	}
+	guidelinesContext.stroke();
+	//center lines
+	guidelinesContext.beginPath();
+	guidelinesContext.strokeStyle = 'black';
+	guidelinesContext.lineWidth = 3;
+	guidelinesContext.moveTo(card.width / 2, 0);
+	guidelinesContext.lineTo(card.width / 2, card.height);
+	guidelinesContext.moveTo(0, card.height / 2);
+	guidelinesContext.lineTo(card.width, card.height / 2);
+	guidelinesContext.stroke();
+	//draw to card
 	drawCard();
 }
 //Various loaders
