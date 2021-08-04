@@ -1467,12 +1467,18 @@ function drawCard() {
 	cardContext.rotate(Math.PI / 180 * (card.artRotate || 0));
 	cardContext.drawImage(art, 0, 0, art.width * card.artZoom, art.height * card.artZoom);
 	cardContext.restore();
-	// frame elements, text, set symbol, etc...
+	// frame elements
 	cardContext.drawImage(frameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
 		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
+	// guidelines
+	if (document.querySelector('#show-guidelines').checked) {
+		cardContext.drawImage(guidelinesCanvas, scaleX(card.marginX) / 2, scaleY(card.marginY) / 2, cardCanvas.width, cardCanvas.height);
+	}
+	// watermark
 	cardContext.drawImage(watermarkCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	// custom elements for sagas, classes, and dungeons
 	if (card.version.includes('saga') && typeof sagaCanvas !== "undefined") {
 		cardContext.drawImage(sagaCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	} else if (card.version.includes('class') && typeof classCanvas !== "undefined") {
@@ -1480,13 +1486,12 @@ function drawCard() {
 	} else if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
 		cardContext.drawImage(dungeonCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
+	// text
 	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	// set symbol
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
+	// bottom info
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	// guidelines
-	if (document.querySelector('#show-guidelines').checked) {
-		cardContext.drawImage(guidelinesCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	}
 	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
 	if (card.marginX == 0 && card.marginY == 0) {
