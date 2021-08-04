@@ -46,4 +46,5 @@ var loadMarginVersion = async () => {
 	drawFrames();
 	bottomInfoEdited();
 	watermarkEdited();
+	drawNewGuidelines();
 }
