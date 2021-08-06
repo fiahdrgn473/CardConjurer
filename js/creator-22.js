@@ -757,6 +757,7 @@ function writeText(textObject, targetContext) {
 		var textColor = textObject.color || 'black';
 		var textFont = textObject.font || 'mplantin';
 		var textAlign = textObject.align || 'left';
+		var textJustify = textObject.justify || 'left';
 		var textShadowColor = textObject.shadow || 'black';
 		var textShadowOffsetX = scaleWidth(textObject.shadowX) || 0;
 		var textShadowOffsetY = scaleHeight(textObject.shadowY) || 0;
@@ -785,6 +786,7 @@ function writeText(textObject, targetContext) {
 		var realTextAlign = textAlign;
 		savedRollYPosition = null;
 		var drawToPrePTCanvas = false;
+		var widestLineWidth = 0;
 		//variables that track various... things?
 		var newLineSpacing = 0;
 		var textSize = startingTextSize;
@@ -861,6 +863,12 @@ function writeText(textObject, targetContext) {
 					textAlign = 'center';
 				} else if (possibleCode == 'right') {
 					textAlign = 'right';
+				} else if (possibleCode == 'justify-left') {
+					textJustify = 'left';
+				} else if (possibleCode == 'justify-center') {
+					textJustify = 'center';
+				} else if (possibleCode == 'justify-right') {
+					textJustify = 'right';
 				} else if (possibleCode.includes('fontcolor')) {
 					textColor = possibleCode.replace('fontcolor', '');
 					lineContext.fillStyle = textColor;
@@ -1045,6 +1053,10 @@ function writeText(textObject, targetContext) {
 				} else if (textAlign == 'right') {
 					horizontalAdjust = textWidth - currentX;
 				}
+				if (currentX > widestLineWidth) {
+					console.log(currentX);
+					widestLineWidth = currentX;
+				}
 				paragraphContext.drawImage(lineCanvas, horizontalAdjust, currentY);
 				lineY = 0;
 				lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
@@ -1090,6 +1102,19 @@ function writeText(textObject, targetContext) {
 				if (!textObject.noVerticalCenter) {
 					verticalAdjust = (textHeight - currentY + textSize * 0.15) / 2;
 				}
+				var finalHorizontalAdjust = 0;
+				const horizontalAdjustUnit = (textWidth - widestLineWidth) / 2;
+				if (textJustify == 'right' && textAlign != 'right') {
+					finalHorizontalAdjust = 2 * horizontalAdjustUnit;
+					if (textAlign == 'center') {
+						finalHorizontalAdjust = horizontalAdjustUnit;
+					}
+				} else if (textJustify == 'center' && textAlign != 'center') {
+					finalHorizontalAdjust = horizontalAdjustUnit;
+					if (textAlign == 'right') {
+						finalHorizontalAdjust = - horizontalAdjustUnit;
+					}
+				}
 				var trueTargetContext = targetContext;
 				if (drawToPrePTCanvas) {
 					trueTargetContext = prePTContext;
@@ -1101,10 +1126,10 @@ function writeText(textObject, targetContext) {
 					const shapeY = textY + ptShift[1];
 					trueTargetContext.translate(shapeX, shapeY);
 					trueTargetContext.rotate(Math.PI * textRotation / 180);
-					trueTargetContext.drawImage(paragraphCanvas, permaShift[0] - canvasMargin, verticalAdjust - canvasMargin + permaShift[1]);
+					trueTargetContext.drawImage(paragraphCanvas, permaShift[0] - canvasMargin + finalHorizontalAdjust, verticalAdjust - canvasMargin + permaShift[1]);
 					trueTargetContext.restore();
 				} else {
-					trueTargetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0], textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
+					trueTargetContext.drawImage(paragraphCanvas, textX - canvasMargin + ptShift[0] + permaShift[0] + finalHorizontalAdjust, textY - canvasMargin + verticalAdjust + ptShift[1] + permaShift[1]);
 				}
 				drawingText = false;
 			}
