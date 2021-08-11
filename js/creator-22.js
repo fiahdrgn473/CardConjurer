@@ -1054,7 +1054,6 @@ function writeText(textObject, targetContext) {
 					horizontalAdjust = textWidth - currentX;
 				}
 				if (currentX > widestLineWidth) {
-					console.log(currentX);
 					widestLineWidth = currentX;
 				}
 				paragraphContext.drawImage(lineCanvas, horizontalAdjust, currentY);
