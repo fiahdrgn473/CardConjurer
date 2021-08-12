@@ -1802,7 +1802,7 @@ function uploadSavedCards(event) {
 function loadTutorialVideo() {
 	var video = document.querySelector('.video > iframe');
 	if (video.src == '') {
-		video.src = 'https://www.youtube-nocookie.com/embed/UrNk6I55S0Q?rel=0';
+		video.src = 'https://www.youtube-nocookie.com/embed/e4tnOiub41g?rel=0';
 	}
 }
 // GUIDELINES

@@ -201,7 +201,7 @@ include('../globalHTML/header-1.php');
 									<h5>{fontsize#}</h5><h5>Changes the font size by # pixels (relative - use negative integers to shrink text - ie '{fontsize-12}')</h5>
 									<h5>{fontcolor___}</h5><h5>Changes the font color to ___ (ie '{fontcolor#00FF00}')</h5>
 									<h5>{left}</h5><h5>Aligns text to the left</h5>
-									<h5>{center{</h5><h5>Aligns text to the center</h5>
+									<h5>{center}</h5><h5>Aligns text to the center</h5>
 									<h5>{right}</h5><h5>Aligns text to the right</h5>
 									<h5>{permashift#,$}</h5><h5>Moves the text # pixels right and $ pixels down. Recommended for moving the text over large distances</h5>
 									<h5>{up#}</h5><h5>Moves the text # pixels up</h5>
@@ -510,11 +510,14 @@ include('../globalHTML/header-1.php');
 						</div>
 					</div>
 					<div id='creator-menu-tutorial' class='hidden'>
-						<div class='padding readable-background margin-bottom'>
+						<!-- <div class='padding readable-background margin-bottom'>
 							<h5 class='padding input-description'>This video is currently outdated, but still reflects the general process for making cards</h5>
-						</div>
-						<div class='padding readable-background margin-bottom'>
+						</div> -->
+						<!-- <div class='padding readable-background margin-bottom'>
 							<h5 class='padding input-description'>The biggest difference is that you must click the "Load Frame Version" button after selecting your frame pack to load necessary details, such as text placement.</h5>
+						</div> -->
+						<div class='padding readable-background margin-bottom'>
+							<h5 class='padding input-description'>Here is a tutorial that covers the basics of using Card Conjurer:</h5>
 						</div>
 						<div class='video'>
 							<iframe width="560" height="315" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
