@@ -796,9 +796,9 @@ function writeText(textObject, targetContext) {
 		paragraphContext.clearRect(0, 0, paragraphCanvas.width, paragraphCanvas.height);
 		lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
 		lineCanvas.style.letterSpacing = textObject.kerning || '0px';
-		if (textFont == 'goudymedieval') {
-			lineCanvas.style.letterSpacing = '3.5px';
-		}
+		// if (textFont == 'goudymedieval') {
+		// 	lineCanvas.style.letterSpacing = '3.5px';
+		// }
 		lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 		lineContext.fillStyle = textColor;
 		lineContext.shadowColor = textShadowColor;
