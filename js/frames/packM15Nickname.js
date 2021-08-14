@@ -1,7 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/m15/regular/m15MaskPinlineSuper.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
 var masks2 = [{src:'/img/frames/m15/nickname/m15MaskNicknameLegendCrownStrokeless.png', name:'Strokeless Crown'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/nickname/m15NicknameMaskTrueName.png', name:'True Title'}];
-var masks3 = [{src:'/img/frames/m15/nickname/m15MaskNicknameTitleStrokeless.png', name:'Strokeless Title'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/nickname/m15NicknameMaskTrueName.png', name:'True Title'}];
+var masks3 = [{src:'/img/frames/m15/nickname/m15MaskNicknameTitleStrokeless.png', name:'Strokeless Title'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/nickname/m15NicknameMaskTrueName.png', name:'True Title'}, {src:'/img/frames/m15/nickname/truenameAddon.svg', name:'Lower Section'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:0.024, y:0.0172, width:0.952, height:0.1286};
 var bounds3 = {x:0.0494, y:0.0405, width:0.9014, height:0.1053};
