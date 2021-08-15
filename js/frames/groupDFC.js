@@ -3,6 +3,8 @@ loadFramePacks([
 	{name:'Transform (Back)', value:'M15TransformBack'},
 	{name:'Color Identity Pips', value:'M15CIPips'},
 	{name:'Transform Icons', value:'M15TransformTypes'},
+	{name:'Other Frames', value:'disabled'},
+	{name:'SDCC15 (Blackout)', value:'TransformSDCC15'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'TransformLegendCrowns'},
 	{name:'Floating Legend Crowns', value:'TransformLegendCrownsFloating'},

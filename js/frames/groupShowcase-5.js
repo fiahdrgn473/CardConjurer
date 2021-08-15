@@ -21,6 +21,7 @@ loadFramePacks([
 	{name:'Amonkhet Invocations (u/Smyris)', value:'Invocation'},
 	{name:'Kaladesh Inventions', value:'Invention'},
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ-1'},
+	{name:'SDCC15 (Blackout)', value:'SDCC15'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
