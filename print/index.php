@@ -20,6 +20,11 @@ include('../globalHTML/header-1.php');
         </select>
         <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
         <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
+        <h5 class='margin-bottom padding input-description'>Include cutting aids (black background and centerlines)</h5>
+        <label class='checkbox-container input'>Cutting aids
+            <input id='cuttingAids' type='checkbox' onchange='drawSheet();'>
+            <span class='checkmark'></span>
+        </label>
 		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
         <input type='number' id='cardMargin' class='input margin-bottom' value='60' min='0' max='100' onchange='setCardDistance(this.value);'>
         <h5 class='margin-bottom padding input-description'>Set PPI (pixels per inch; only relevant when exporting as a PNG)</h5>

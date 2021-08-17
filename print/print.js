@@ -9,6 +9,8 @@ var cardMarginY = parseInt(document.querySelector('#cardMargin').value) / ppi;
 var imageList = [];
 var canvas = document.querySelector('canvas');
 var context = canvas.getContext('2d');
+var aidCanvas = document.createElement('canvas');
+var aidContext = aidCanvas.getContext('2d');
 drawSheet();
 
 
@@ -23,7 +25,10 @@ function uploadCard(card, filename) {
 function drawSheet() {
     canvas.width = page[0] * ppi;
     canvas.height = page[1] * ppi;
-    context.clearRect(0, 0, page[0], page[1]);
+    context.clearRect(0, 0, page[0] * ppi, page[1] * ppi);
+    aidCanvas.width = canvas.width;
+    aidCanvas.height = canvas.height;
+    aidContext.clearRect(0, 0, page[0] * ppi, page[1] * ppi);
     const cardsX = Math.floor(page[0] / cardWidth);
     const cardsY = Math.floor(page[1] / cardHeight);
     var count = 0;
@@ -33,11 +38,30 @@ function drawSheet() {
             const cardY = (page[1] - cardsY * cardHeight) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY) - cardMarginY;
             try {
                 context.drawImage(imageList[i], cardX * ppi, cardY * ppi, cardWidth * ppi, cardHeight * ppi);
+                if (document.querySelector('#cuttingAids').checked) {
+                    aidContext.fillStyle = 'black';
+                    aidContext.fillRect(Math.floor((cardX - cardMarginX / 2) * ppi + 2), Math.floor((cardY - cardMarginY / 2) * ppi + 2), Math.ceil((cardWidth + cardMarginX) * ppi - 4), Math.ceil((cardHeight + cardMarginY) * ppi - 4));
+                    if ((Math.floor(count / cardsX) % cardsY) == 0) {
+                        aidContext.clearRect((cardX - cardMarginX / 2) * ppi, (cardY - cardMarginY / 2) * ppi, (cardWidth + cardMarginX) * ppi, cardMarginY * ppi / 2);
+                    } else if ((Math.floor(count / cardsX) % cardsY) == cardsY - 1) {
+                        aidContext.clearRect((cardX - cardMarginX / 2) * ppi, (cardY + cardHeight) * ppi, (cardWidth + cardMarginX) * ppi, cardMarginY * ppi / 2);
+                    }
+                    if ((count % cardsX) == 0) {
+                        aidContext.clearRect((cardX - cardMarginX / 2) * ppi, (cardY - cardMarginY / 2) * ppi, cardMarginX * ppi / 2, (cardHeight + cardMarginY) * ppi);
+                    } else if ((count % cardsX) == cardsX - 1) {
+                        aidContext.clearRect((cardX + cardWidth) * ppi, (cardY - cardMarginY / 2) * ppi, cardMarginX * ppi / 2, (cardHeight + cardMarginY) * ppi);
+                    }
+                }
             } catch {
                 console.log('image failed.');
             }
         }
         count ++;
+    }
+    if (document.querySelector('#cuttingAids').checked) {
+        context.globalCompositeOperation = 'destination-over';
+        context.drawImage(aidCanvas, 0, 0, aidCanvas.width, aidCanvas.height);
+        context.globalCompositeOperation = 'source-over';
     }
 }
 
@@ -63,6 +87,9 @@ function downloadPDF() {
     const cardsX = Math.floor(page[0] / cardWidth);
     const cardsY = Math.floor(page[1] / cardHeight);
     var count = 0;
+    if (document.querySelector('#cuttingAids').checked) {
+        doc.addImage(aidCanvas, 'PNG', 0, 0, page[0], page[1]);
+    }
     for (var i = imageList.length - 1; i >= 0 && count < cardsX * cardsY; i --) {
         if (imageList[i].width > 1) {
             const cardX = (page[0] - cardsX * cardWidth) / 2 + (count % cardsX) * (cardWidth + cardMarginX) - cardMarginX;
