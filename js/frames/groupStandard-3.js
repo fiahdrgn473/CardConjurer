@@ -9,6 +9,7 @@ loadFramePacks([
 	{name:'Dark Power/Toughness', value:'M15DarkPT'},
 	{name:'Colored Borders', value:'M15Borders'},
 	{name:'Color Identity Pips', value:'M15CIPips'},
+	{name:'"The List" Stamp', value:'TheList'},
 	{name:'Other Frames', value:'disabled'},
 	{name:'Lands', value:'M15Lands'},
 	{name:'Class (D&D)', value:'Class'},

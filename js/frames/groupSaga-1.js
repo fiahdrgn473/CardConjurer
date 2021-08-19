@@ -5,6 +5,7 @@ loadFramePacks([
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Holo Stamps', value:'M15HoloStamps'},
 	{name:'Colored Borders', value:'M15Borders'},
+	{name:'"The List" Stamp', value:'TheList'},
 	{name:'Custom Addons', value:'disabled'},
 	{name:'Brawl Legend Crowns', value:'Brawl'}
 ])

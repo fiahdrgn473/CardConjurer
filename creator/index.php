@@ -335,37 +335,56 @@ include('../globalHTML/header-1.php');
 								</div>
 							</div>
 							<h5 class='margin-bottom padding input-description'>Select lore-based watermarks</h5>
-							<select class='input padding margin-bottom' onchange='getSetSymbolWatermark("https://raw.githubusercontent.com/andrewgioia/mana/master/svg/" + this.value + ".svg");'>
+							<select class='input padding margin-bottom' onchange='getSetSymbolWatermark(fixUri(this.value));'>
 								<option disabled selected='selected'>None</option>
+								<option disabled>General</option>
+								<option value="/img/watermarks/planeswalker.svg">Planeswalker</option>
+								<option value="/img/watermarks/misc-star.svg">DCI Star</option>
+								<option value="/img/watermarks/misc-dci.svg">DCI Logo</option>
+								<option disabled>Mechanics</option>
+								<option value="/img/watermarks/ability-foretell.svg">Foretell</option>
+								<option disabled>Phyrexian/Mirrodin</option>
+								<option value="/img/watermarks/phyrexian.svg">Phyrexian</option>
+								<option value="/img/watermarks/mirran.svg">Mirran</option>
 								<option disabled>Guilds (Ravnica)</option>
-								<option value="guild-azorius">Azorius</option>
-								<option value="guild-dimir">Dimir</option>
-								<option value="guild-rakdos">Rakdos</option>
-								<option value="guild-gruul">Gruul</option>
-								<option value="guild-selesnya">Selesnya</option>
-								<option value="guild-orzhov">Orzhov</option>
-								<option value="guild-izzet">Izzet</option>
-								<option value="guild-golgari">Golgari</option>
-								<option value="guild-boros">Boros</option>
-								<option value="guild-simic">Simic</option>
+								<option value="/img/watermarks/guild-azorius.svg">Azorius</option>
+								<option value="/img/watermarks/guild-dimir.svg">Dimir</option>
+								<option value="/img/watermarks/guild-rakdos.svg">Rakdos</option>
+								<option value="/img/watermarks/guild-gruul.svg">Gruul</option>
+								<option value="/img/watermarks/guild-selesnya.svg">Selesnya</option>
+								<option value="/img/watermarks/guild-orzhov.svg">Orzhov</option>
+								<option value="/img/watermarks/guild-izzet.svg">Izzet</option>
+								<option value="/img/watermarks/guild-golgari.svg">Golgari</option>
+								<option value="/img/watermarks/guild-boros.svg">Boros</option>
+								<option value="/img/watermarks/guild-simic.svg">Simic</option>
 								<option disabled>Schools (Strixhaven)</option>
-								<option value="school-silverquill">Silverquill</option>
-								<option value="school-prismari">Prismari</option>
-								<option value="school-witherbloom">Witherbloom</option>
-								<option value="school-lorehold">Lorehold</option>
-								<option value="school-quandrix">Quandrix</option>
+								<option value="/img/watermarks/school-silverquill.svg">Silverquill</option>
+								<option value="/img/watermarks/school-prismari.svg">Prismari</option>
+								<option value="/img/watermarks/school-witherbloom.svg">Witherbloom</option>
+								<option value="/img/watermarks/school-lorehold.svg">Lorehold</option>
+								<option value="/img/watermarks/school-quandrix.svg">Quandrix</option>
 								<option disabled>Clans (Tarkir - Old Timeline)</option>
-								<option value="clan-abzan">Abzan</option>
-								<option value="clan-jeskai">Jeskai</option>
-								<option value="clan-sultai">Sultai</option>
-								<option value="clan-mardu">Mardu</option>
-								<option value="clan-temur">Temur</option>
+								<option value="/img/watermarks/clan-abzan.svg">Abzan</option>
+								<option value="/img/watermarks/clan-jeskai.svg">Jeskai</option>
+								<option value="/img/watermarks/clan-sultai.svg">Sultai</option>
+								<option value="/img/watermarks/clan-mardu.svg">Mardu</option>
+								<option value="/img/watermarks/clan-temur.svg">Temur</option>
 								<option disabled>Clans (Tarkir - New Timeline)</option>
-								<option value="clan-ojutai">Ojutai</option>
-								<option value="clan-silumgar">Silumgar</option>
-								<option value="clan-kolaghan">Kolaghan</option>
-								<option value="clan-atarka">Atarka</option>
-								<option value="clan-dromoka">Dromoka</option>
+								<option value="/img/watermarks/clan-ojutai.svg">Ojutai</option>
+								<option value="/img/watermarks/clan-silumgar.svg">Silumgar</option>
+								<option value="/img/watermarks/clan-kolaghan.svg">Kolaghan</option>
+								<option value="/img/watermarks/clan-atarka.svg">Atarka</option>
+								<option value="/img/watermarks/clan-dromoka.svg">Dromoka</option>
+								<option disabled>Poleis (Theros)</option>
+								<option value="/img/watermarks/polis-akros.svg">Akros</option>
+								<option value="/img/watermarks/polis-meletis.svg">Meletis</option>
+								<option value="/img/watermarks/polis-setessa.svg">Setessa</option>
+								<option disabled>Unstable Factions (Bablovia)</option>
+								<option value="/img/watermarks/faction-order-of-the-widget.svg">Order of the Widget</option>
+								<option value="/img/watermarks/faction-agents-of-sneak.svg">Agents of S.N.E.A.K.</option>
+								<option value="/img/watermarks/faction-league-of-dastardly-doom.svg">League of Dastardly Doom</option>
+								<option value="/img/watermarks/faction-goblin-explosioneers.svg">Goblin Explosioneers</option>
+								<option value="/img/watermarks/faction-crossbreed-labs.svg">Crossbreed Labs</option>
 							</select>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes
@@ -595,5 +614,5 @@ include('../globalHTML/header-1.php');
 			</h4>
 		</div>
 	</div>
-	<script defer src='/js/creator-22.js'></script>
+	<script defer src='/js/creator-23.js'></script>
 <?php include('../globalHTML/footer.php'); ?>

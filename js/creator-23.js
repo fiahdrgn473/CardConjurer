@@ -1406,7 +1406,8 @@ function resetWatermark() {
 }
 //svg cropper
 function getSetSymbolWatermark(url, targetImage = watermark) {
-	if (!url.includes('http')) {
+	console.log(url);
+	if (!url.includes('/')) {
 		url = 'https://cdn.jsdelivr.net/npm/keyrune/svg/' + url + '.svg';
 	}
 	xhttp = new XMLHttpRequest();
@@ -1422,7 +1423,7 @@ function getSetSymbolWatermark(url, targetImage = watermark) {
 			uploadWatermark('data:image/svg+xml,' + encodeURIComponent(svg.outerHTML), 'resetWatermark');
 			svg.remove();
 		} else if (this.status == 404) {
-			throw new Error('woopsie');
+			throw new Error('Improper Set Code');
 		}
 	}
 	xhttp.send();

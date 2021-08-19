@@ -15,6 +15,7 @@ loadFramePacks([
 	{name:'Holo Stamps', value:'M15HoloStamps'},
 	{name:'Dark Power/Toughness', value:'M15DarkPT'},
 	{name:'Colored Borders', value:'M15Borders'},
+	{name:'"The List" Stamp', value:'TheList'},
 	{name:'Custom Addons', value:'disabled'},
 	{name:'Brawl Legend Crowns', value:'Brawl'}
 ])
