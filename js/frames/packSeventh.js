@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/seventh/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/seventh/regular/rules.svg', name:'Rules'}, {src:'/img/frames/seventh/regular/frame.svg', name:'Frame'}, {src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/seventh/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/seventh/regular/rules.svg', name:'Rules'}, {src:'/img/frames/seventh/regular/frame.svg', name:'Frame'}, {src:'/img/frames/seventh/regular/trim.svg', name:'Textbox Pinline'}, {src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
 var borderMask = [{src:'/img/frames/seventh/regular/border.svg', name:'Border'}]
 //defines available frames
 availableFrames = [
@@ -10,6 +10,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/seventh/regular/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/seventh/regular/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/seventh/regular/a.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/seventh/regular/c.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/seventh/regular/l.png', masks:masks},
 	{name:'White Land Frame', src:'/img/frames/seventh/regular/wl.png', masks:masks},
 	{name:'Blue Land Frame', src:'/img/frames/seventh/regular/ul.png', masks:masks},
