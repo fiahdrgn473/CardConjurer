@@ -565,7 +565,6 @@ include('../globalHTML/header-1.php');
 			<h1 class='center margin-bottom'>Supporters</h1>
 			<h4 class='margin-bottom'>Thank you so much to all of my supporters on <a style='color: #f96854;' href="https://www.patreon.com/KyleBurton" target='_blank'>Patreon</a>. Because of you, I can continue running and updating Card Conjurer.</h4>
 			<div class='supporters margin-bottom'>
-				<h4>Caprat</h4>
 				<h4>Kobe P.</h4>
 				<h4>Paul C.</h4>
 				<h4>Alex W.</h4>
@@ -604,6 +603,7 @@ include('../globalHTML/header-1.php');
 				<h4>Samuel T.</h4>
 				<h4>Donovan M.</h4>
 				<h4>Nathan C.</h4>
+				<h4>Caprat</h4>
 			</div>
 			<h5 class='input-description'>(Please email me if you would like your name/nickname changed.)</h5>
 		</div>
