@@ -579,6 +579,30 @@ textarea.input {
 
 
 
+
+/*Tutorial Page only*/
+.tutorial-grid {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr;
+}
+.tutorial-grid > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 1rem auto;
+}
+.readable-background > .tutorial-grid > img {
+	border: 0.1rem solid gray;
+}
+@media only screen and (min-width: 750px) {
+	.tutorial-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+
+
 /*Creator related only*/
 /*Creator Grid/Canvas/Menu*/
 .creator-grid {

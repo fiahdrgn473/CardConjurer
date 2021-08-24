@@ -1,6 +1,5 @@
 //checks to see if it needs to run
 if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
-	console.log('LOADING PLANESWALKER VERSION SCRIPT')
 	loadedVersions.push('/js/frames/versionPlaneswalker.js');
 	sizeCanvas('planeswalker');
 	document.querySelector('#creator-menu-tabs').innerHTML += '<h3 class="selectable readable-background" onclick="toggleCreatorTabs(event, `planeswalker`)">Planeswalker</h3>';
@@ -53,12 +52,12 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	var darkToLight = new Image();
 	setImageUrl(darkToLight, '/img/frames/planeswalker/abilityLineEven.png');
 	var planeswalkerTextMask = new Image();
-	planeswalkerTextMask.onload = function(){fixPlaneswalkerInputs(planeswalkerEdited);}
+	planeswalkerTextMask.onload = function(){resetPlaneswalkerImages(fixPlaneswalkerInputs(planeswalkerEdited));}
 	setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/planeswalkerMaskText.png');
 	var lightColor = 'white';
 	var darkColor = '#a4a4a4';
 } else {
-	fixPlaneswalkerInputs(planeswalkerEdited);
+	resetPlaneswalkerImages(fixPlaneswalkerInputs(planeswalkerEdited));
 }
 
 function planeswalkerEdited() {
@@ -99,32 +98,34 @@ function planeswalkerEdited() {
 	fixPlaneswalkerInputs();
 	var transitionHeight = scaleHeight(0.0048);
 	planeswalkerContext.clearRect(0, 0, planeswalkerCanvas.width, planeswalkerCanvas.height);
-	for (var i = 0; i < card.planeswalker.count; i ++) {
-		var x = scaleX(card.planeswalker.x);
-		var y = scaleY(card.text['ability' + i].y);
-		var width = scaleWidth(card.planeswalker.width);
-		var height = scaleHeight(card.text['ability' + i].height);
-		if (i == 0) {
-			y -= scaleHeight(0.1);
-			height += scaleHeight(0.1);
-		} else if (i == card.planeswalker.count - 1) {
-			height += scaleHeight(0.5);
-		}
-		if (i % 2 == 0) {
-			planeswalkerContext.fillStyle = lightColor;
-			planeswalkerContext.globalAlpha = 0.608;
-			planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
-			planeswalkerContext.globalAlpha = 1;
-			if (lightToDark.complete) {
-				planeswalkerContext.drawImage(lightToDark, x, y + height - transitionHeight, width, 2 * transitionHeight);
+	if (card.version != 'planeswalkerSDCC15') {
+		for (var i = 0; i < card.planeswalker.count; i ++) {
+			var x = scaleX(card.planeswalker.x);
+			var y = scaleY(card.text['ability' + i].y);
+			var width = scaleWidth(card.planeswalker.width);
+			var height = scaleHeight(card.text['ability' + i].height);
+			if (i == 0) {
+				y -= scaleHeight(0.1);
+				height += scaleHeight(0.1);
+			} else if (i == card.planeswalker.count - 1) {
+				height += scaleHeight(0.5);
 			}
-		} else {
-			planeswalkerContext.fillStyle = darkColor;
-			planeswalkerContext.globalAlpha = 0.706;
-			planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
-			planeswalkerContext.globalAlpha = 1;
-			if (darkToLight.complete) {
-				planeswalkerContext.drawImage(darkToLight, x, y + height - transitionHeight, width, 2 * transitionHeight);
+			if (i % 2 == 0) {
+				planeswalkerContext.fillStyle = lightColor;
+				planeswalkerContext.globalAlpha = 0.608;
+				planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
+				planeswalkerContext.globalAlpha = 1;
+				if (lightToDark.complete) {
+					planeswalkerContext.drawImage(lightToDark, x, y + height - transitionHeight, width, 2 * transitionHeight);
+				}
+			} else {
+				planeswalkerContext.fillStyle = darkColor;
+				planeswalkerContext.globalAlpha = 0.706;
+				planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
+				planeswalkerContext.globalAlpha = 1;
+				if (darkToLight.complete) {
+					planeswalkerContext.drawImage(darkToLight, x, y + height - transitionHeight, width, 2 * transitionHeight);
+				}
 			}
 		}
 	}
@@ -173,6 +174,26 @@ function fixPlaneswalkerInputs(callback) {
 	document.querySelector('#planeswalker-height-3').value = scaleHeight(card.text.ability3.height);
 	document.querySelector('#planeswalker-cost-3').value = card.planeswalker.abilities[3];
 	document.querySelector('#planeswalker-shift-3').value = scaleHeight(card.planeswalker.abilityAdjust[3]);
+	if (callback) {
+		callback();
+	}
+}
+
+function resetPlaneswalkerImages(callback) {
+	var planeswalkerImageFolder = '';
+	var planeswalkerImageExtension = 'png';
+	if (card.version == 'planeswalkerSDCC15') {
+		planeswalkerImageFolder = '/sdcc15';
+		planeswalkerImageExtension = 'svg';
+	}
+	setImageUrl(plusIcon, `/img/frames/planeswalker${planeswalkerImageFolder}/planeswalkerPlus.${planeswalkerImageExtension}`);
+	setImageUrl(minusIcon, `/img/frames/planeswalker${planeswalkerImageFolder}/planeswalkerMinus.${planeswalkerImageExtension}`);
+	setImageUrl(neutralIcon, `/img/frames/planeswalker${planeswalkerImageFolder}/planeswalkerNeutral.${planeswalkerImageExtension}`);
+	setImageUrl(lightToDark, `/img/frames/planeswalker${planeswalkerImageFolder}/abilityLineOdd.${planeswalkerImageExtension}`);
+	setImageUrl(darkToLight, `/img/frames/planeswalker${planeswalkerImageFolder}/abilityLineEven.${planeswalkerImageExtension}`);
+	if (!darkToLight.onload) {
+		darkToLight.onload = function() {planeswalkerEdited();}
+	}
 	if (callback) {
 		callback();
 	}
