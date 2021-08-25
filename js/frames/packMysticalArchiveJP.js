@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/mysticalArchive/jp/pinline.svg', name:'Pinline'}];
+var masks = [{src:'/img/frames/mysticalArchive/jp/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/jp/rightHalf.svg', name:'Right Half'}];
+var masks2 = [{src:'/img/frames/mysticalArchive/jp/rightHalf.svg', name:'Right Half'}];
 var stretch = [
 	{name:'adjustable', targets: [0, 1, 6, 7, 8, 10, 11, 16, 17, 18, 20, 21, 22, 27, 28], change:[0, 0]},
 	{name:'typePinline', targets: [0, 1, 2, 3, 4, 5, 6, 12, 14, 18, 19, 20, 21, 22, 23], change:[0, 0]},
@@ -31,14 +32,14 @@ availableFrames = [
 	{name:'Artifact Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/a.svg', bounds:bounds2, complementary:19},
 	{name:'Land Power/Toughness', src:'/img/frames/mysticalArchive/jp/pt/l.svg', bounds:bounds2, complementary:19},
 	{name:'Power/Toughness Cutout', src:'/img/frames/mysticalArchive/jp/pt/cutout.svg', bounds:bounds2, erase:true},
-	{name:'White Crown', src:'/img/frames/mysticalArchive/jp/crowns/w.svg'},
-	{name:'Blue Crown', src:'/img/frames/mysticalArchive/jp/crowns/u.svg'},
-	{name:'Black Crown', src:'/img/frames/mysticalArchive/jp/crowns/b.svg'},
-	{name:'Red Crown', src:'/img/frames/mysticalArchive/jp/crowns/r.svg'},
-	{name:'Green Crown', src:'/img/frames/mysticalArchive/jp/crowns/g.svg'},
-	{name:'Multicolored Crown', src:'/img/frames/mysticalArchive/jp/crowns/m.svg'},
-	{name:'Artifact Crown', src:'/img/frames/mysticalArchive/jp/crowns/a.svg'},
-	{name:'Land Crown', src:'/img/frames/mysticalArchive/jp/crowns/l.svg'}
+	{name:'White Crown', src:'/img/frames/mysticalArchive/jp/crowns/w.svg', masks:masks2},
+	{name:'Blue Crown', src:'/img/frames/mysticalArchive/jp/crowns/u.svg', masks:masks2},
+	{name:'Black Crown', src:'/img/frames/mysticalArchive/jp/crowns/b.svg', masks:masks2},
+	{name:'Red Crown', src:'/img/frames/mysticalArchive/jp/crowns/r.svg', masks:masks2},
+	{name:'Green Crown', src:'/img/frames/mysticalArchive/jp/crowns/g.svg', masks:masks2},
+	{name:'Multicolored Crown', src:'/img/frames/mysticalArchive/jp/crowns/m.svg', masks:masks2},
+	{name:'Artifact Crown', src:'/img/frames/mysticalArchive/jp/crowns/a.svg', masks:masks2},
+	{name:'Land Crown', src:'/img/frames/mysticalArchive/jp/crowns/l.svg', masks:masks2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
