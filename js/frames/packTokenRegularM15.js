@@ -1,18 +1,16 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/token/tokenMaskRegularPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/token/tokenMaskRegularType.png', name:'Type'}, {src:'/img/frames/token/tokenMaskRegularRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/token/m15/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/token/m15/regular/frame.svg', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/token/tokenMaskRegularType.png', name:'Type'}, {src:'/img/frames/token/tokenMaskRegularRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/token/regular/tokenFrameWRegular.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/token/regular/tokenFrameURegular.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/token/regular/tokenFrameBRegular.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/token/regular/tokenFrameRRegular.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/token/regular/tokenFrameGRegular.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/token/regular/tokenFrameMRegular.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/token/regular/tokenFrameARegular.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/token/regular/tokenFrameLRegular.png', masks:masks},
-	{name:'Colorless Frame', src:'/img/frames/token/regular/frameC.png', masks:masks},
-	{name:'Snow Frame', src:'/img/frames/token/regular/snow.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/token/m15/regular/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/token/m15/regular/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/token/m15/regular/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/token/m15/regular/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/token/m15/regular/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/token/m15/regular/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/token/m15/regular/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/token/m15/regular/l.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/regular/m15PTB.png', bounds:bounds},
@@ -29,7 +27,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
-	card.version = 'tokenRegular';
+	card.version = 'tokenRegularM15';
 	//art bounds
 	card.artBounds = {x:0.04, y:0.0286, width:0.92, height:0.8953};
 	autoFitArt();
@@ -42,7 +40,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//text
 	loadTextOptions({
 		mana: {name:'Mana Cost', text:'', y:0.0613, width:0.9292, height:71/2100, oneLine:true, size:71/1638, align:'right', shadowX:-0.001, shadowY:0.0029, manaCost:true, manaSpacing:0},
-		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenbsc', size:0.0381, color:'white', align:'center'},
+		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenbsc', size:0.0381, color:'#fde367', align:'center'},
 		type: {name:'Type', text:'', x:0.0854, y:0.65, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0324},
 		rules: {name:'Rules Text', text:'', x:0.086, y:0.7143, width:0.828, height:0.2048, size:0.0362},
 		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}

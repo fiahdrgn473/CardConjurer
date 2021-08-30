@@ -1222,22 +1222,25 @@ function autoFitArt() {
 	artEdited();
 }
 function artFromScryfall(scryfallResponse) {
-	scryfallArt = scryfallResponse;
+	scryfallArt = []
 	const artIndex = document.querySelector('#art-index');
 	artIndex.innerHTML = null;
 	var optionIndex = 0;
 	scryfallResponse.forEach(card => {
-		var option = document.createElement('option');
-		option.innerHTML = `${card.name} (${card.set.toUpperCase()} - ${card.artist})`;
-		option.value = optionIndex;
-		artIndex.appendChild(option);
-		optionIndex ++;
+		if (card.image_uris && (card.object == 'card' || card.type_line != 'Card')) {
+			scryfallArt.push(card);
+			var option = document.createElement('option');
+			option.innerHTML = `${card.name} (${card.set.toUpperCase()} - ${card.artist})`;
+			option.value = optionIndex;
+			artIndex.appendChild(option);
+			optionIndex ++;
+		}
 	});
 	changeArtIndex();
 }
 function changeArtIndex() {
 	const artIndexValue = document.querySelector('#art-index').value;
-	if (scryfallArt[artIndexValue].image_uris) {
+	if (artIndexValue != 0 || artIndexValue == '0') {
 		uploadArt(scryfallArt[artIndexValue].image_uris.art_crop, 'autoFit');
 		artistEdited(scryfallArt[artIndexValue].artist);
 	}
@@ -1406,7 +1409,6 @@ function resetWatermark() {
 }
 //svg cropper
 function getSetSymbolWatermark(url, targetImage = watermark) {
-	console.log(url);
 	if (!url.includes('/')) {
 		url = 'https://cdn.jsdelivr.net/npm/keyrune/svg/' + url + '.svg';
 	}

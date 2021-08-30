@@ -12,6 +12,7 @@ availableFrames = [
 	{name:'Artifact Frame', src:'/img/frames/token/tall/tokenFrameATall.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/token/tall/tokenFrameLTall.png', masks:masks},
 	{name:'Colorless Frame', src:'/img/frames/token/tall/frameC.png', masks:masks},
+	{name:'Snow Frame', src:'/img/frames/token/tall/snow.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/regular/m15PTB.png', bounds:bounds},
@@ -28,7 +29,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
-	card.version = 'promoTall';
+	card.version = 'tokenTall';
 	//art bounds
 	card.artBounds = {x:0.04, y:0.0286, width:0.92, height:0.8953};
 	autoFitArt();
