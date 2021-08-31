@@ -156,6 +156,13 @@ function scaleHeight(input) {
 function getElementIndex(element) {
 	return Array.prototype.indexOf.call(element.parentElement.children, element);
 }
+function getCardName() {
+	var imageName = card.text.title.text || 'unnamed';
+	if (card.text.nickname) {
+		imageName += ' (' + card.text.nickname.text + ')';
+	}
+	return imageName.replace(/\{[^}]+\}/g, '') + '.png';
+}
 //UI
 function toggleCreatorTabs(event, target) {
 	Array.from(document.querySelector('#creator-menu-sections').children).forEach(element => element.classList.add('hidden'));
@@ -1542,11 +1549,7 @@ function downloadCard(alt = false) {
 	} else {
 		// Prep file information
 		const imageDataURL = cardCanvas.toDataURL('image/png');
-		var imageName = card.text.title.text || 'card';
-		if (card.text.nickname) {
-			imageName = imageName + ' (' + card.text.nickname.text + ')'
-		}
-		imageName += '.png';
+		var imageName = getCardName();
 		// Download image
 		if (alt) {
 			const newWindow = window.open('about:blank');
@@ -1670,7 +1673,7 @@ function saveCard(saveFromFile) {
 	if (saveFromFile) {
 		cardKey = saveFromFile.key;
 	} else {
-		cardKey = card.text.title.text || 'unnamed';
+		cardKey = getCardName();
 	}
 	if (!saveFromFile) {
 		cardKey = prompt('Enter the name you would like to save your card under:', cardKey);
