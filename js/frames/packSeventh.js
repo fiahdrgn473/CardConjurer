@@ -31,7 +31,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'seventh';
 	//art bounds
-	card.artBounds = {x:0.12, y:0.0991, width:0.76, height:0.4429};
+	card.artBounds = {x:0.12, y:0.0991, width:0.7667, height:0.4429};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9, y:0.5739, width:0.12, height:0.0372, vertical:'center', horizontal: 'right'};

@@ -29,7 +29,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'tokenTextlessM15';
 	//art bounds
-	card.artBounds = {x:0.04, y:0.0286, width:0.92, height:0.8953};
+	card.artBounds = {x:0.0767, y:0.1248, width:0.8476, height:0.6843};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9213, y:0.8439, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
