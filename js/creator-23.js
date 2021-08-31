@@ -2,7 +2,7 @@
 var params = new URLSearchParams(window.location.search);
 const debugging = params.get('debug') != null;
 if (debugging) {
-	alert('debugging - 3.1');
+	alert('debugging - 4.0');
 	document.querySelectorAll('.debugging').forEach(element => element.classList.remove('hidden'));
 }
 
