@@ -1,7 +1,8 @@
 //checks to see if it needs to run
 if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	loadedVersions.push('/js/frames/versionPlaneswalker.js');
-	sizeCanvas('planeswalker');
+	sizeCanvas('planeswalkerPreFrame');
+	sizeCanvas('planeswalkerPostFrame');
 	document.querySelector('#creator-menu-tabs').innerHTML += '<h3 class="selectable readable-background" onclick="toggleCreatorTabs(event, `planeswalker`)">Planeswalker</h3>';
 	var newHTML = document.createElement('div');
 	newHTML.id = 'creator-menu-planeswalker';
@@ -53,7 +54,7 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	setImageUrl(darkToLight, '/img/frames/planeswalker/abilityLineEven.png');
 	var planeswalkerTextMask = new Image();
 	planeswalkerTextMask.onload = function(){resetPlaneswalkerImages(fixPlaneswalkerInputs(planeswalkerEdited));}
-	setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/planeswalkerMaskText.png');
+	setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/text.svg');
 	var lightColor = 'white';
 	var darkColor = '#a4a4a4';
 } else {
@@ -61,20 +62,29 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 }
 
 function planeswalkerEdited() {
+	// manage text masks
 	var planeswalkerTall = 0;
 	if (card.version == 'planeswalkerTall') {
 		planeswalkerTall = 1;
 		if (!planeswalkerTextMask.src.includes('tall')) {
 			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png');
 		}
-	} else if (card.version == 'planeswalkerMDFC') {
-		if (!planeswalkerTextMask.src.includes('mdfc')) {
-			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/mdfc/text.svg');
+	} else if (card.version == 'planeswalkerTransformFront') {
+		if (!planeswalkerTextMask.src.includes('transform/textFront')) {
+			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/transform/textFront.svg');
 		}
 	} else {
-		if (planeswalkerTextMask.src.includes('tall') || planeswalkerTextMask.src.includes('mdfc')) {
-			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/planeswalkerMaskText.png');
+		if (!planeswalkerTextMask.src.includes('planeswalker/text.svg')) {
+			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/text.svg');
 		}
+	}
+	// manage textbox size
+	if (card.version == 'planeswalkerTransformFront') {
+		card.planeswalker.x = 0.1167;
+		card.planeswalker.width = 0.8334;
+	} else {
+		card.planeswalker.x = 0.1167;
+		card.planeswalker.width = 0.8094;
 	}
 	card.planeswalker.abilities[0] = document.querySelector('#planeswalker-cost-0').value;
 	card.planeswalker.abilities[1] = document.querySelector('#planeswalker-cost-1').value;
@@ -97,7 +107,9 @@ function planeswalkerEdited() {
 	}
 	fixPlaneswalkerInputs();
 	var transitionHeight = scaleHeight(0.0048);
-	planeswalkerContext.clearRect(0, 0, planeswalkerCanvas.width, planeswalkerCanvas.height);
+	planeswalkerPreFrameContext.clearRect(0, 0, planeswalkerPreFrameCanvas.width, planeswalkerPreFrameCanvas.height);
+	planeswalkerPreFrameContext.globalCompositeOperation = 'source-over';
+	planeswalkerPostFrameContext.clearRect(0, 0, planeswalkerPostFrameCanvas.width, planeswalkerPostFrameCanvas.height);
 	if (card.version != 'planeswalkerSDCC15') {
 		for (var i = 0; i < card.planeswalker.count; i ++) {
 			var x = scaleX(card.planeswalker.x);
@@ -111,50 +123,50 @@ function planeswalkerEdited() {
 				height += scaleHeight(0.5);
 			}
 			if (i % 2 == 0) {
-				planeswalkerContext.fillStyle = lightColor;
-				planeswalkerContext.globalAlpha = 0.608;
-				planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
-				planeswalkerContext.globalAlpha = 1;
+				planeswalkerPreFrameContext.fillStyle = lightColor;
+				planeswalkerPreFrameContext.globalAlpha = 0.608;
+				planeswalkerPreFrameContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
+				planeswalkerPreFrameContext.globalAlpha = 1;
 				if (lightToDark.complete) {
-					planeswalkerContext.drawImage(lightToDark, x, y + height - transitionHeight, width, 2 * transitionHeight);
+					planeswalkerPreFrameContext.drawImage(lightToDark, x, y + height - transitionHeight, width, 2 * transitionHeight);
 				}
 			} else {
-				planeswalkerContext.fillStyle = darkColor;
-				planeswalkerContext.globalAlpha = 0.706;
-				planeswalkerContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
-				planeswalkerContext.globalAlpha = 1;
+				planeswalkerPreFrameContext.fillStyle = darkColor;
+				planeswalkerPreFrameContext.globalAlpha = 0.706;
+				planeswalkerPreFrameContext.fillRect(x, y + transitionHeight, width, height - 2 * transitionHeight);
+				planeswalkerPreFrameContext.globalAlpha = 1;
 				if (darkToLight.complete) {
-					planeswalkerContext.drawImage(darkToLight, x, y + height - transitionHeight, width, 2 * transitionHeight);
+					planeswalkerPreFrameContext.drawImage(darkToLight, x, y + height - transitionHeight, width, 2 * transitionHeight);
 				}
 			}
 		}
 	}
-	planeswalkerContext.globalCompositeOperation = 'destination-in';
+	planeswalkerPreFrameContext.globalCompositeOperation = 'destination-in';
 	if (planeswalkerTextMask.complete) {
-		planeswalkerContext.drawImage(planeswalkerTextMask, scaleX(0), scaleY(0), scaleWidth(1), scaleHeight(1));
+		planeswalkerPreFrameContext.drawImage(planeswalkerTextMask, scaleX(0), scaleY(0), scaleWidth(1), scaleHeight(1));
 	}
-	planeswalkerContext.globalCompositeOperation = 'source-over';
-	planeswalkerContext.fillStyle = 'white'
-	planeswalkerContext.font = scaleHeight(0.0286) + 'px belerenbsc';
-	planeswalkerContext.textAlign = 'center';
+	planeswalkerPostFrameContext.globalCompositeOperation = 'source-over';
+	planeswalkerPostFrameContext.fillStyle = 'white'
+	planeswalkerPostFrameContext.font = scaleHeight(0.0286) + 'px belerenbsc';
+	planeswalkerPostFrameContext.textAlign = 'center';
 	for (var i = 0; i < card.planeswalker.count; i ++) {
 		var planeswalkerIconValue = card.planeswalker.abilities[i];
 		var planeswalkerPlacement = scaleY(planeswalkerAbilityLayout[planeswalkerTall][card.planeswalker.count - 1][i] + card.planeswalker.abilityAdjust[i])
 		if (planeswalkerIconValue.includes('+')) {
 			if (plusIcon.complete) {
-				planeswalkerContext.drawImage(plusIcon, scaleX(0.0294), planeswalkerPlacement - scaleHeight(0.0258), scaleWidth(0.14), scaleHeight(0.0724));
+				planeswalkerPostFrameContext.drawImage(plusIcon, scaleX(0.0294), planeswalkerPlacement - scaleHeight(0.0258), scaleWidth(0.14), scaleHeight(0.0724));
 			}
-			planeswalkerContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0172));
+			planeswalkerPostFrameContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0172));
 		} else if (planeswalkerIconValue.includes('-')) {
 			if (minusIcon.complete) {
-				planeswalkerContext.drawImage(minusIcon, scaleX(0.028), planeswalkerPlacement - scaleHeight(0.0153), scaleWidth(0.1414), scaleHeight(0.0705));
+				planeswalkerPostFrameContext.drawImage(minusIcon, scaleX(0.028), planeswalkerPlacement - scaleHeight(0.0153), scaleWidth(0.1414), scaleHeight(0.0705));
 			}
-			planeswalkerContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0181));
+			planeswalkerPostFrameContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0181));
 		} else if (planeswalkerIconValue != '') {
 			if (neutralIcon.complete) {
-				planeswalkerContext.drawImage(neutralIcon, scaleX(0.028), planeswalkerPlacement - scaleHeight(0.0153), scaleWidth(0.1414), scaleHeight(0.061));
+				planeswalkerPostFrameContext.drawImage(neutralIcon, scaleX(0.028), planeswalkerPlacement - scaleHeight(0.0153), scaleWidth(0.1414), scaleHeight(0.061));
 			}
-			planeswalkerContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0191));
+			planeswalkerPostFrameContext.fillText(planeswalkerIconValue, scaleX(0.1027), planeswalkerPlacement + scaleHeight(0.0191));
 		}
 	}
 	drawTextBuffer();

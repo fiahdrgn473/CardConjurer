@@ -119,10 +119,10 @@ function sizeCanvas(name, width = Math.round(card.width * (1 + 2 * card.marginX)
 	}
 	window[name + 'Canvas'].width = width;
 	window[name + 'Canvas'].height = height;
-	if (name == 'line') { //force true to view all canvases
+	if (name == 'line') { //force true to view all canvases - must restore to name == 'line' for proper kerning adjustments
 		window[name + 'Canvas'].style = 'width: 20rem; height: 28rem; border: 1px solid red;';
 		const label = document.createElement('div');
-		label.innerHTML = name + '<br>If you can see this and don\'t want to, please clear you cache.';
+		label.innerHTML = name + '<br>If you can see this and don\'t want to, please clear your cache.';
 		label.appendChild(window[name + 'Canvas']);
 		label.classList = 'fake-hidden'; //Comment this out to view canvases
 		document.body.appendChild(label);
@@ -1502,10 +1502,15 @@ function drawCard() {
 	cardContext.drawImage(art, 0, 0, art.width * card.artZoom, art.height * card.artZoom);
 	cardContext.restore();
 	// frame elements
-	cardContext.drawImage(frameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
-		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	if (card.version.includes('planeswalker') && typeof planeswalkerPreFrameCanvas !== "undefined") {
+		cardContext.drawImage(planeswalkerPreFrameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
+	cardContext.drawImage(frameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	if (card.version.includes('planeswalker') && typeof planeswalkerPostFrameCanvas !== "undefined") {
+		cardContext.drawImage(planeswalkerPostFrameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	} else if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
+		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	} // REMOVE/DELETE ME AFTER A FEW WEEKS
 	// guidelines
 	if (document.querySelector('#show-guidelines').checked) {
 		cardContext.drawImage(guidelinesCanvas, scaleX(card.marginX) / 2, scaleY(card.marginY) / 2, cardCanvas.width, cardCanvas.height);
