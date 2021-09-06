@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}];
+var masks = [{src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/praetors/frame.svg', name:'Frame'}];
 var bounds = {x:0.746, y:0.8858, width:0.212, height:0.0772};
 //defines available frames
 availableFrames = [
