@@ -32,6 +32,10 @@
 	src: url("/fonts/plantin-semibold.otf");
 }
 @font-face {
+	font-family: plantinsemibolditalic;
+	src: url("/fonts/Plantin-SemiboldItalic.otf");
+}
+@font-face {
 	font-family: goudymedieval;
 	src: url("/fonts/goudy-medieval.ttf");
 }
