@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Textless', value:'TokenTextless-1'},
 	{name:'Tall', value:'TokenTall-1'},
 	{name:'Jumpstart Front Cards', value:'JMPFront'},
+	{name:'Planeswalker Emblems', value:'Emblem'},
 	{name:'Old Tokens (Bordered M15)', value:'disabled'},
 	{name:'Regular (Bordered M15)', value:'TokenRegularM15'},
 	{name:'Textless (Bordered M15)', value:'TokenTextlessM15'},
