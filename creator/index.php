@@ -116,6 +116,8 @@ include('../globalHTML/header-1.php');
 									<option value='Custom'>Custom</option>
 									<option value='Misc-2'>Old/Misc</option>
 									<option value='Margin'>1/8th Inch Margin</option>
+									<option disabled>Other Games</option>
+									<option value='FleshAndBlood'>Flesh and Blood</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
 							</div>
