@@ -83,6 +83,14 @@
 	font-family: souvenir;
 	src: url('/fonts/Souvenir-Itc-T-OT-Bold.otf');
 }
+@font-face {
+	font-family: palatino;
+	src: url('/fonts/Palatino Font.ttf');
+}
+@font-face {
+	font-family: amanda;
+	src: url('/fonts/Amanda Std Regular.otf');
+}
 /*Variables*/
 :root {
 	--site-background: url('/img/lowpolyBackground.svg');

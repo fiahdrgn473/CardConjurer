@@ -19,7 +19,7 @@
 		<div>
 			<h4>Legal</h4>
 			<h5><a href='/legal'>Terms and Conditions</a></h5>
-			<p>We are neither affiliated with, sponsored by, nor endorsed by Wizards of the Coast. Fonts, Mana symbols, card images, and other related images are trademarks and copyrights of Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.<br>We are neither affiliated with, sponsored by, nor endorsed by Scryfall LLC.<br>All user-uploaded material is property of the original artist, and it is the user's responsibility to ensure that these materials are properly credited.<br>All other content Copyright © <?php echo date("Y"); ?> Card Conjurer.<br>For more information on the Disclaimer or Terms and Conditions, please click the link above.</p>
+			<p>We are neither affiliated with, sponsored by, nor endorsed by Wizards of the Coast. Fonts, Mana symbols, card images, and other related images are trademarks and copyrights of Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc.<br>We are neither affiliated with, sponsored by, nor endorsed by Legend Story Studios. Fonts, icons, card images, and other related images are trademarks and copyrights of Legend Story Studios.<br>We are neither affiliated with, sponsored by, nor endorsed by Scryfall LLC.<br>All user-uploaded material is property of the original artist, and it is the user's responsibility to ensure that these materials are properly credited.<br>All other content Copyright © <?php echo date("Y"); ?> Card Conjurer.<br>For more information on the Disclaimer or Terms and Conditions, please click the link above.</p>
 		</div>
 	</footer>
 </body>
