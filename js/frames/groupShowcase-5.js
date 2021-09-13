@@ -1,4 +1,5 @@
 loadFramePacks([
+	{name:'Eternal Night (MID)', value:'EternalNight'},
 	{name:'D&D Sourcebook', value:'DNDSourcebook'},
 	{name:'D&D Module', value:'DNDModule'},
 	{name:'Sketch Cards (MH2)', value:'MH2'},
