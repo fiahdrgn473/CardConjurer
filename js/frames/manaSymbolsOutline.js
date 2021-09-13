@@ -7,6 +7,6 @@ if (findManaSymbolIndex('outlinew') == -1) {
 		'outline/outlinew', 'outline/outlineu', 'outline/outlineb', 'outline/outliner', 'outline/outlineg',
 		'outline/outlinec', 'outline/outlines', 'outline/outlinex', 'outline/outline0', 'outline/outline1',
 		'outline/outline2', 'outline/outline3', 'outline/outline4', 'outline/outline5', 'outline/outline6',
-		'outline/outline7', 'outline/outline8', 'outline/outline9'
+		'outline/outline7', 'outline/outline8', 'outline/outline9', 'outline/outlinet'
 	]);
 }

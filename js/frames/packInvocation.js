@@ -43,11 +43,11 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	card.watermarkBounds = {x:0.5, y:0.7762, width:0.75, height:0.2305};
 	resetWatermark();
 	//text
-	loadTextOptions({
+	loadTextOptions({ //old color: 24150E
 		mana: {name:'Mana Cost', text:'', y:0.0613, width:0.93, height:78/2100, oneLine:true, size:78/1638, align:'right', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', manaCost:true, manaSpacing:-0.002, manaPrefix:'outline', manaSymbolColor:'#24150E'},
-		title: {name:'Title', text:'', x:0.0834, y:0.05, width:0.8334, height:0.0515, oneLine:true, font:'invocation', size:0.0515, shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'#24150E'},
-		type: {name:'Type', text:'', x:0.0767, y:0.5672, width:0.7334, height:0.0496, oneLine:true, font:'invocation', size:0.0496, align:'center', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'#24150E'},
-		rules: {name:'Rules Text', text:'', x:0.1, y:0.6334, width:0.8, height:0.2429, size:0.0334, font:'invocation-text', align:'center', manaPrefix:'outline', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'#24150E', manaPrefix:'outline', manaSymbolColor:'#24150E'},
+		title: {name:'Title', text:'', x:0.0834, y:0.05, width:0.8334, height:0.0515, oneLine:true, font:'invocation', size:0.0515, shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'black'},
+		type: {name:'Type', text:'', x:0.0767, y:0.5672, width:0.7334, height:0.0496, oneLine:true, font:'invocation', size:0.0496, align:'center', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'black'},
+		rules: {name:'Rules Text', text:'', x:0.1, y:0.6334, width:0.8, height:0.2429, size:0.0334, font:'invocation-text', align:'center', manaPrefix:'outline', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'black', manaPrefix:'outline', manaSymbolColor:'#24150E'},
 		pt: {name:'Power/Toughness', text:'', x:0.8707, y:0.8315, width:0.0387, height:0.0929, size:0.0372, font:'belerenbsc', align:'center', shadowX:-0.0007, shadowY:0.0005, shadow:'#ccb28b', color:'#24150E'}
 	});
 	//bottom info

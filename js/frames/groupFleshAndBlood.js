@@ -1,7 +1,8 @@
 loadFramePacks([
 	{name:'Generic Frames', value:'FABRegular'},
-	{name:'Classes', value:'FABClasses'},
-	{name:'Heroes', value:'FABHeroes'},
+	{name:'Class Frames', value:'FABClasses'},
+	{name:'Hero Frames', value:'FABHeroes'},
+	{name:'Region Frames', value:'FABRegions'},
 	{name:'Fabled Frame', value:'FABFabled'}
 ])
 
