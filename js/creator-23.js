@@ -795,8 +795,8 @@ function writeText(textObject, targetContext) {
 		var drawToPrePTCanvas = false;
 		var widestLineWidth = 0;
 		//variables that track various... things?
-		var newLineSpacing = 0;
 		var textSize = startingTextSize;
+		var newLineSpacing = (textObject.lineSpacing || 0) * textSize;
 		var ptShift = [0, 0];
 		var permaShift = [0, 0];
 		//Finish prepping canvases
@@ -1083,7 +1083,7 @@ function writeText(textObject, targetContext) {
 				//reset
 				currentX = startingCurrentX;
 				currentY += textSize + newLineSpacing;
-				newLineSpacing = 0;
+				newLineSpacing = (textObject.lineSpacing || 0) * textSize;
 				newLine = false;
 			}
 			if (wordToWrite && (currentX != 0 || wordToWrite != ' ') && !textManaCost) {
