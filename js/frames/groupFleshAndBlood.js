@@ -7,6 +7,8 @@ loadFramePacks([
 
 //For multiple Flesh and Blood packs
 var LoadFABVersion = async () => {
+	// notification
+	notify('To use Flesh and Blood icons in card text, use {w}, {u}, {b}, {r}, or {g}. This may change in the future.', 15);
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
