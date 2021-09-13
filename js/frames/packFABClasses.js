@@ -1,9 +1,11 @@
 //defines available frames
 availableFrames = [
-	{name:'Weapon', src:'/img/frames/fab/generic/weapon.png'},
-	{name:'Equipment (Gray)', src:'/img/frames/fab/generic/equipment.png'},
-	{name:'Equipment (Gold)', src:'/img/frames/fab/generic/equipment2.png'},
-	{name:'Generic Action', src:'/img/frames/fab/generic/action.png'},
+	{name:'Brute', src:'/img/frames/fab/classes/brute.png'},
+	{name:'Ninja', src:'/img/frames/fab/classes/ninja.png'},
+	{name:'Ranger', src:'/img/frames/fab/classes/ranger.png'},
+	{name:'Runeblade', src:'/img/frames/fab/classes/runeblade.png'},
+	{name:'Warrior', src:'/img/frames/fab/classes/warrior.png'},
+	{name:'Wizard', src:'/img/frames/fab/classes/wizard.png'},
 	{name:'Pitch (1)', src:'/img/frames/fab/pitch/1.svg'},
 	{name:'Pitch (2)', src:'/img/frames/fab/pitch/2.svg'},
 	{name:'Pitch (3)', src:'/img/frames/fab/pitch/3.svg'},
