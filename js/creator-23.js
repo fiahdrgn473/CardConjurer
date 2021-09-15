@@ -823,6 +823,7 @@ function writeText(textObject, targetContext) {
 				wordToWrite = null;
 				if (possibleCode == 'line') {
 					newLine = true;
+					startingCurrentX = 0;
 					newLineSpacing = textSize * 0.35;
 				} else if (possibleCode == 'lns' || possibleCode == 'linenospace') {
 					newLine = true;
@@ -931,6 +932,10 @@ function writeText(textObject, targetContext) {
 					lineContext.drawImage(manaSymbols[findManaSymbolIndex('chaos')].image, currentX + canvasMargin, canvasMargin, planechaseHeight * 1.2, planechaseHeight);
 					currentX += planechaseHeight * 1.3;
 					startingCurrentX += planechaseHeight * 1.3;
+				} else if (possibleCode == 'indent') {
+					startingCurrentX += currentX;
+				} else if (possibleCode == '/indent') {
+					startingCurrentX = 0;
 				} else if (possibleCode.includes('elemid')) {
 					if (document.querySelector('#' + word.replace('{elemid', '').replace('}', ''))) {
 						wordToWrite = document.querySelector('#' + word.replace('{elemid', '').replace('}', '')).value || '';
@@ -1600,7 +1605,7 @@ function changeCardIndex() {
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = cardToImport.type_line || '';}
 	if (card.text.rules) {
-		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}')).replace(/{Q}/g, '{untap}');
+		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}')).replace(/{Q}/g, '{untap}').replace(/• /g, '• {indent}');
 		card.text.rules.text = rulesText;
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
