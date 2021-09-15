@@ -213,7 +213,7 @@ include('../globalHTML/header-1.php');
 									<h5>{shadow#}</h5><h5>Changes the shadow distance to # (use {shadow0} to remove the shadow)</h5>
 									<h5>{shadowcolor#}</h5><h5>Changes the shadow color to #</h5>
 									<h5>{kerning#}</h5><h5>Changes the kerning (letter spacing) to #</h5>
-									<h5>{roll___}</h5><h5>Used for dice-rolling cards (like from AFR) - whatever you fill in for '___' will be bolded, and alternating paragraphs will be marked.</h5>
+									<h5>{roll___}</h5><h5>Used for dice-rolling cards (like from AFR) - whatever you fill in for '___' will be bolded, and alternating paragraphs will be shaded.</h5>
 									<h5>Notes</h5><h5>For colors, you may use HTML color codes (ie 'green'), hex color codes (ie '#00FF00'), or rgb (ie 'rgb(0,255,0)'')</h5>
 								</div>
 								<h5>Mana Symbol Codes:</h5>
@@ -224,10 +224,12 @@ include('../globalHTML/header-1.php');
 									<h5>{wu}, {wb}, {ub}... {2w}, {2u}...</h5><h5>Hybrid mana</h5>
 									<h5>{pw}, {pu}...</h5><h5>Phyrexian mana</h5>
 									<h5>{t}, {untap}</h5><h5>Respective tapping-related symbol</h5>
+									<h5>{oldtap}, {originaltap}</h5><h5>Old tap symbols</h5>
 									<h5>{x}, {y}, {z}</h5><h5>Respective variable-related symbol</h5>
 									<h5>{c}</h5><h5>Colorless-specific mana</h5>
 									<h5>{snow}</h5><h5>Snow mana</h5>
 									<h5>{e}</h5><h5>Energy symbol</h5>
+									<h5>{+1}</h5><h5>+1 loyalty icon</h5>
 									<h5>Notes</h5><h5>Hybrid/Phyrexian mana only works with WUBRG</h5>
 								</div>
 							</div>
@@ -592,6 +594,7 @@ include('../globalHTML/header-1.php');
 				<h4>Michael J.</h4>
 				<h4>Benjamin D.</h4>
 				<h4>Brent O.</h4>
+				<h4>Austin M.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>

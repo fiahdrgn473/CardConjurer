@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/seventh/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/seventh/regular/rules.svg', name:'Rules'}, {src:'/img/frames/seventh/regular/frame.svg', name:'Frame'}, {src:'/img/frames/seventh/regular/trim.svg', name:'Textbox Pinline'}, {src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
-var borderMask = [{src:'/img/frames/seventh/regular/border.svg', name:'Border'}]
+var borderMask = [{src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
+var bounds = {x:0.3354, y:0.6239, width:0.33, height:0.2386};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/seventh/regular/w.png', masks:masks},
@@ -17,6 +18,12 @@ availableFrames = [
 	{name:'Black Land Frame', src:'/img/frames/seventh/regular/bl.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/seventh/regular/rl.png', masks:masks},
 	{name:'Green Land Frame', src:'/img/frames/seventh/regular/gl.png', masks:masks},
+	{name:'Plains Watermark', src:'/img/frames/m15/basics/w.png', bounds:bounds},
+	{name:'Island Watermark', src:'/img/frames/m15/basics/u.png', bounds:bounds},
+	{name:'Swamp Watermark', src:'/img/frames/m15/basics/b.png', bounds:bounds},
+	{name:'Mountain Watermark', src:'/img/frames/m15/basics/r.png', bounds:bounds},
+	{name:'Forest Watermark', src:'/img/frames/m15/basics/g.png', bounds:bounds},
+	{name:'Wastes Watermark', src:'/img/frames/m15/basics/c.png', bounds:bounds},
 	{name:'DCI Star', src:'/img/frames/seventh/foilStar.svg'},
 	{name:'White Border', src:'/img/frames/white.png', masks:borderMask, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:borderMask, noDefaultMask:true},
