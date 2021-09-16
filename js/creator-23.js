@@ -724,7 +724,7 @@ function writeText(textObject, targetContext) {
 	//Preps the text string
 	var splitString = '6GJt7eL8';
 	var rawText = textObject.text
-	if (params.get('copyright') != null && textObject.name == 'wizards' && card.margins) {
+	if (params.get('copyright') != null && (textObject.name == 'wizards' || textObject.name == 'copyright') && card.margins) {
 		rawText = params.get('copyright'); //so people using CC for custom card games without WotC's IP can customize their copyright info
 	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
