@@ -4,6 +4,8 @@ loadFramePacks([
 	{name:'Color Identity Pips', value:'M15CIPips'},
 	{name:'Transform Icons', value:'M15TransformTypes'},
 	{name:'Other Frames', value:'disabled'},
+	{name:'Borderless (Front)', value:'TransformBorderlessFront'},
+	{name:'Borderless (Back)', value:'TransformBorderlessBack'},
 	{name:'SDCC15 (Blackout)', value:'TransformSDCC15'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'TransformLegendCrowns'},
