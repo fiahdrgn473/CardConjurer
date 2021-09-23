@@ -64,7 +64,7 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 function planeswalkerEdited() {
 	// manage text masks
 	var planeswalkerTall = 0;
-	if (card.version == 'planeswalkerTall') {
+	if (card.version.includes('Tall')) {
 		planeswalkerTall = 1;
 		if (!planeswalkerTextMask.src.includes('tall')) {
 			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png');
