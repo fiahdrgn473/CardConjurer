@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Borderless', value:'PlaneswalkerBorderless'},
 	{name:'Extended Art', value:'PlaneswalkerBoxTopper'},
 	{name:'Tall', value:'PlaneswalkerTall'},
+	{name:'Tall Borderless', value:'PlaneswalkerTallBorderless'},
 	{name:'Special Frames', value:'disabled'},
 	{name:'Nickname', value:'PlaneswalkerNickname'},
 	{name:'Blackout (SDCC15)', value:'PlaneswalkerSDCC15'},
