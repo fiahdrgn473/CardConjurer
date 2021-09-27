@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Cartoony - Sheepwave', value:'Cartoony'},
 	{name:'Classic-Shifted', value:'Classicshifted'},
 	{name:'Classic-Shifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},
+	{name:'Classic-Shifted Sagas', value:'ClassicshiftedSaga'},
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
 	{name:'Tapped (Horizontal M15)', value:'Tapped'},
 	{name:'Simple Inventions', value:'SimpleInventions'},
