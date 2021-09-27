@@ -18,6 +18,10 @@ ErrorDocument 404 /404.php
 	<files header.php>
 	    Header set Cache-Control "max-age=86400, public"
 	</files>
+	#DAY
+	<filesMatch "\.(js)$">
+	    Header set Cache-Control "max-age=86400, public"
+	</filesMatch>
 	#HOUR
 	#<files creator.js>
 	#    Header set Cache-Control "max-age=3600, public"
