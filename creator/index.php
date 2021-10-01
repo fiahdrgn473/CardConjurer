@@ -322,9 +322,21 @@ include('../globalHTML/header-1.php');
 								<button class='input' onclick='resetSetSymbol();'>Reset Set Symbol</button>
 							</div>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='padding margin-bottom input-description'>Clears the Set Symbol, making it blank</h5>
 							<button class='input margin-bottom' onclick='uploadSetSymbol(blank.src);'>Remove Set Symbol</button>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='input-description margin-bottom'>Lock the set symbol code (saves between reloads)</h5>
+							<label class='checkbox-container input margin-bottom'>Lock set symbol code
+								<input id='lockSetSymbolCode' type='checkbox' onchange='lockSetSymbolCode();'>
+								<span class='checkmark'></span>
+							</label>
+							<h5 class='input-description margin-bottom'>Lock the set symbol URL (saves between reloads)</h5>
+							<label class='checkbox-container input'>Lock set symbol URL
+								<input id='lockSetSymbolURL' type='checkbox' onchange='lockSetSymbolURL();'>
+								<span class='checkmark'></span>
+							</label>
 						</div>
 					</div>
 					<div id='creator-menu-watermark' class='hidden'>
@@ -599,6 +611,7 @@ include('../globalHTML/header-1.php');
 				<h4>Elry</h4>
 				<h4>Edward E.</h4>
 				<h4>Blake M.</h4>
+				<h4>Avery D.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>

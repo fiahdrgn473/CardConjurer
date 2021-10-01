@@ -1325,12 +1325,18 @@ function uploadSetSymbol(imageSource, otherParams) {
 }
 function setSymbolEdited() {
 	card.setSymbolSource = setSymbol.src;
+	if (document.querySelector('#lockSetSymbolURL').checked) {
+		localStorage.setItem('lockSetSymbolURL', card.setSymbolSource);
+	}
 	card.setSymbolX = document.querySelector('#setSymbol-x').value / card.width;
 	card.setSymbolY = document.querySelector('#setSymbol-y').value / card.height;
 	card.setSymbolZoom = document.querySelector('#setSymbol-zoom').value / 100;
 	drawCard();
 }
 function resetSetSymbol() {
+	if (card.setSymbolBounds == undefined) {
+		return;
+	}
 	document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x));
 	document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y));
 	var setSymbolZoom;
@@ -1354,12 +1360,29 @@ function resetSetSymbol() {
 }
 function fetchSetSymbol() {
 	var setCode = document.querySelector('#set-symbol-code').value.toLowerCase() || 'cmd';
+	if (document.querySelector('#lockSetSymbolCode').checked) {
+		localStorage.setItem('lockSetSymbolCode', setCode);
+	}
 	var setRarity = document.querySelector('#set-symbol-rarity').value.toLowerCase() || 'c';
 	if (['cc', 'logan', 'joe'].includes(setCode.toLowerCase())) {
 		uploadSetSymbol(fixUri(`/img/setSymbols/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
 	} else {
 		imageURL('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, uploadSetSymbol, 'resetSetSymbol');
 	}
+}
+function lockSetSymbolCode() {
+	var savedValue = '';
+	if (document.querySelector('#lockSetSymbolCode').checked) {
+		savedValue = document.querySelector('#set-symbol-code').value;
+	}
+	localStorage.setItem('lockSetSymbolCode', savedValue);
+}
+function lockSetSymbolURL() {
+	var savedValue = '';
+	if (document.querySelector('#lockSetSymbolURL').checked) {
+		savedValue = card.setSymbolSource;
+	}
+	localStorage.setItem('lockSetSymbolURL', savedValue);
 }
 //WATERMARK TAB
 function uploadWatermark(imageSource, otherParams) {
@@ -1660,9 +1683,13 @@ function changeCardIndex() {
 	document.querySelector('#art-name').value = cardToImport.name;
 	fetchScryfallData(cardToImport.name, artFromScryfall, true);
 	//set symbol
-	document.querySelector('#set-symbol-code').value = cardToImport.set;
+	if (!document.querySelector('#lockSetSymbolCode').checked) {
+		document.querySelector('#set-symbol-code').value = cardToImport.set;
+	}
 	document.querySelector('#set-symbol-rarity').value = cardToImport.rarity.slice(0, 1);
-	fetchSetSymbol();
+	if (!document.querySelector('#lockSetSymbolURL').checked) {
+		fetchSetSymbol();
+	}
 }
 function loadAvailableCards(cardKeys = JSON.parse(localStorage.getItem('cardKeys'))) {
 	if (!cardKeys) {
@@ -2019,6 +2046,26 @@ if ('number' in defaultCollector) {
 } else {
 	document.querySelector('#info-number').value = date.getFullYear();
 }
+
+// lock set symbol code (user defaults)
+if (!localStorage.getItem('lockSetSymbolCode')) {
+	localStorage.setItem('lockSetSymbolCode', '');
+}
+document.querySelector('#lockSetSymbolCode').checked = '' != localStorage.getItem('lockSetSymbolCode');
+if (document.querySelector('#lockSetSymbolCode').checked) {
+	document.querySelector('#set-symbol-code').value = localStorage.getItem('lockSetSymbolCode');
+	fetchSetSymbol();
+}
+
+// lock set symbol url (user defaults)
+if (!localStorage.getItem('lockSetSymbolURL')) {
+	localStorage.setItem('lockSetSymbolURL', '');
+}
+document.querySelector('#lockSetSymbolURL').checked = '' != localStorage.getItem('lockSetSymbolURL');
+if (document.querySelector('#lockSetSymbolURL').checked) {
+	setSymbol.src = localStorage.getItem('lockSetSymbolURL');
+}
+
 
 // Load / init whatever
 loadScript('/js/frames/groupStandard-3.js');
