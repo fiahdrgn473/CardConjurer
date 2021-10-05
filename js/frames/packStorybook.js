@@ -1,21 +1,21 @@
 //Create objects for common properties across available frames
-var bounds = {x:0.7427, y:0.8858, width:0.2213, height:0.0658};
+var bounds = {x:0.7414, y:0.8839, width:0.2134, height:0.0681};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/storybook/storybookFrameW.png'},
-	{name:'Blue Frame', src:'/img/frames/storybook/storybookFrameU.png'},
-	{name:'Black Frame', src:'/img/frames/storybook/storybookFrameB.png'},
-	{name:'Red Frame', src:'/img/frames/storybook/storybookFrameR.png'},
-	{name:'Green Frame', src:'/img/frames/storybook/storybookFrameG.png'},
+	{name:'White Frame', src:'/img/frames/storybook/w.png'},
+	{name:'Blue Frame', src:'/img/frames/storybook/u.png'},
+	{name:'Black Frame', src:'/img/frames/storybook/b.png'},
+	{name:'Red Frame', src:'/img/frames/storybook/r.png'},
+	{name:'Green Frame', src:'/img/frames/storybook/g.png'},
 	{name:'Multicolored Frame', src:'/img/frames/storybook/m.png'},
-	{name:'Colorless Frame', src:'/img/frames/storybook/storybookFrameC.png'},
-	{name:'White Power/Toughness', src:'/img/frames/storybook/storybookPTW.png', bounds:bounds},
-	{name:'Blue Power/Toughness', src:'/img/frames/storybook/storybookPTU.png', bounds:bounds},
-	{name:'Black Power/Toughness', src:'/img/frames/storybook/storybookPTB.png', bounds:bounds},
-	{name:'Red Power/Toughness', src:'/img/frames/storybook/storybookPTR.png', bounds:bounds},
-	{name:'Green Power/Toughness', src:'/img/frames/storybook/storybookPTG.png', bounds:bounds},
+	{name:'Colorless Frame', src:'/img/frames/storybook/c.png'},
+	{name:'White Power/Toughness', src:'/img/frames/storybook/wpt.png', bounds:bounds},
+	{name:'Blue Power/Toughness', src:'/img/frames/storybook/upt.png', bounds:bounds},
+	{name:'Black Power/Toughness', src:'/img/frames/storybook/bpt.png', bounds:bounds},
+	{name:'Red Power/Toughness', src:'/img/frames/storybook/rpt.png', bounds:bounds},
+	{name:'Green Power/Toughness', src:'/img/frames/storybook/gpt.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/storybook/mpt.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/storybook/storybookPTC.png', bounds:bounds},
+	{name:'Colorless Power/Toughness', src:'/img/frames/storybook/cpt.png', bounds:bounds},
 	{name:'Holo Stamp', src:'/img/frames/storybook/holo.png', bounds:{x:0.4507, y:0.9129, width:0.0987, height:0.0386}}
 ];
 //disables/enables the "Load Frame Version" button
