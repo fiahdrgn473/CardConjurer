@@ -157,11 +157,14 @@ function getElementIndex(element) {
 	return Array.prototype.indexOf.call(element.parentElement.children, element);
 }
 function getCardName() {
+	if (card.text == undefined) {
+		return 'unnamed';
+	}
 	var imageName = card.text.title.text || 'unnamed';
 	if (card.text.nickname) {
 		imageName += ' (' + card.text.nickname.text + ')';
 	}
-	return imageName.replace(/\{[^}]+\}/g, '') + '.png';
+	return imageName.replace(/\{[^}]+\}/g, '');
 }
 //UI
 function toggleCreatorTabs(event, target) {
@@ -726,6 +729,9 @@ function writeText(textObject, targetContext) {
 	var rawText = textObject.text
 	if (params.get('copyright') != null && (textObject.name == 'wizards' || textObject.name == 'copyright') && card.margins) {
 		rawText = params.get('copyright'); //so people using CC for custom card games without WotC's IP can customize their copyright info
+	}
+	if (rawText.toLowerCase().includes('{cardname}')) {
+		rawText = rawText.replace(/{cardname}/ig, getCardName());
 	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
@@ -1582,7 +1588,7 @@ function downloadCard(alt = false) {
 	} else {
 		// Prep file information
 		const imageDataURL = cardCanvas.toDataURL('image/png');
-		var imageName = getCardName();
+		var imageName = getCardName() + '.png';
 		// Download image
 		if (alt) {
 			const newWindow = window.open('about:blank');
