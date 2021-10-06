@@ -194,6 +194,7 @@ include('../globalHTML/header-1.php');
 								<h5 class='margin-top'>Text Codes:</h5>
 								<div class='text-codes margin-bottom padding'>
 									<h5>Code</h5><h5>Result</h5>
+									<h5>{cardname}</h5><h5>Inserts the name of the card</h5>
 									<h5>{i}</h5><h5>Italicizes text</h5>
 									<h5>{/i}</h5><h5>Removes italicization</h5>
 									<h5>{bold}</h5><h5>Bolds text</h5>
@@ -205,6 +206,9 @@ include('../globalHTML/header-1.php');
 									<h5>{left}</h5><h5>Aligns text to the left</h5>
 									<h5>{center}</h5><h5>Aligns text to the center</h5>
 									<h5>{right}</h5><h5>Aligns text to the right</h5>
+									<h5>{justify-left}</h5><h5>Justifies text to the left</h5>
+									<h5>{justify-center}</h5><h5>Justifies text to the center</h5>
+									<h5>{justify-right}</h5><h5>Justifies text to the right</h5>
 									<h5>{permashift#,$}</h5><h5>Moves the text # pixels right and $ pixels down. Recommended for moving the text over large distances</h5>
 									<h5>{up#}</h5><h5>Moves the text # pixels up</h5>
 									<h5>{down#}</h5><h5>Moves the text # pixels down</h5>
