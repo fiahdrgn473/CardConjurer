@@ -1,25 +1,42 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/equinox/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/equinox/title.svg', name:'Title'}, {src:'/img/frames/m15/equinox/type.svg', name:'Type'}, {src:'/img/frames/m15/equinox/text.svg', name:'Rules'}];
 var bounds = {x:0.7787, y:0.8777, width:0.1747, height:0.0686};
+var masks2 = [{src:'/img/frames/m15/equinox/back/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/equinox/back/title.svg', name:'Title'}, {src:'/img/frames/m15/equinox/back/type.svg', name:'Type'}, {src:'/img/frames/m15/equinox/back/text.svg', name:'Rules'}];
+var bounds2 = {x:0.7794, y:0.8839, width:0.1827, height:0.0639};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/equinox/w.png'},
-	{name:'Blue Frame', src:'/img/frames/m15/equinox/u.png'},
-	{name:'Black Frame', src:'/img/frames/m15/equinox/b.png'},
-	{name:'Red Frame', src:'/img/frames/m15/equinox/r.png'},
-	{name:'Green Frame', src:'/img/frames/m15/equinox/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/m15/equinox/m.png'},
+	{name:'White Frame', src:'/img/frames/m15/equinox/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/equinox/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/equinox/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/equinox/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/equinox/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/equinox/m.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/equinox/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/equinox/pt/u.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/equinox/pt/b.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/m15/equinox/pt/r.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/m15/equinox/pt/g.png', bounds:bounds},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/equinox/pt/m.png', bounds:bounds}
+	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/equinox/pt/m.png', bounds:bounds},
+	{name:'Sun (Frontside Indicator)', src:'/img/frames/m15/equinox/sun.png', bounds:{x:0.02, y:0.0186, width:0.1534, height:0.1229}},
+	{name:'White Frame (Back)', src:'/img/frames/m15/equinox/back/w.png', masks:masks2},
+	{name:'Blue Frame (Back)', src:'/img/frames/m15/equinox/back/u.png', masks:masks2},
+	{name:'Black Frame (Back)', src:'/img/frames/m15/equinox/back/b.png', masks:masks2},
+	{name:'Red Frame (Back)', src:'/img/frames/m15/equinox/back/r.png', masks:masks2},
+	{name:'Green Frame (Back)', src:'/img/frames/m15/equinox/back/g.png', masks:masks2},
+	{name:'Multicolored Frame (Back)', src:'/img/frames/m15/equinox/back/m.png', masks:masks2},
+	{name:'White Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/w.png', bounds:bounds2},
+	{name:'Blue Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/u.png', bounds:bounds2},
+	{name:'Black Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/b.png', bounds:bounds2},
+	{name:'Red Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/r.png', bounds:bounds2},
+	{name:'Green Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/g.png', bounds:bounds2},
+	{name:'Multicolored Power/Toughness (Back)', src:'/img/frames/m15/equinox/back/pt/m.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
 //defines process for loading this version, if applicable
 document.querySelector('#loadFrameVersion').onclick = async function() {
+	//notification
+	notify('For back-faces, add {right20} before your Type Line, and {fontcolorwhite} before all text.', 15);
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
