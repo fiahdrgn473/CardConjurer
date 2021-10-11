@@ -727,8 +727,9 @@ function writeText(textObject, targetContext) {
 	//Preps the text string
 	var splitString = '6GJt7eL8';
 	var rawText = textObject.text
-	if (params.get('copyright') != null && (textObject.name == 'wizards' || textObject.name == 'copyright') && card.margins) {
+	if ((textObject.name == 'wizards' || textObject.name == 'copyright') && params.get('copyright') != null && (params.get('copyright') != '' || card.margins)) {
 		rawText = params.get('copyright'); //so people using CC for custom card games without WotC's IP can customize their copyright info
+		if (rawText == 'none') { rawText = ''; }
 	}
 	if (rawText.toLowerCase().includes('{cardname}')) {
 		rawText = rawText.replace(/{cardname}/ig, getCardName());
