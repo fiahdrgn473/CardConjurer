@@ -574,7 +574,7 @@ include('../globalHTML/header-1.php');
 		<div class='layer readable-background margin-bottom-larger'>
 			<h1 class='center margin-bottom'>Share your cards</h1>
 			<h4>
-				I'd love to see the cards you're making, and I'm sure that others would too! Post a picture on Twitter with the hashtag <a style='color: #00aced;' href="https://twitter.com/search?q=((%22card%20conjurer%22)%20OR%20(cardconjurer)%20OR%20(%23cardconjurer)%20OR%20(cardconjurer.com))%20filter%3Amedia&src=typed_query&f=live" target='_blank'>#CardConjurer</a>, or just check out what others have made!
+				I'd love to see the cards you're making, and I'm sure that others would too! Feel free to tag me <a style='color: #00aced;' href="https://twitter.com/ImKyle4815" target='_blank'>@ImKyle4815</a> on Twitter, or just check out <a style='color: #00aced;' href="https://twitter.com/search?q=((%22card%20conjurer%22)%20OR%20(cardconjurer)%20OR%20(%23cardconjurer)%20OR%20(cardconjurer.com))%20filter%3Amedia&src=typed_query&f=live" target='_blank'>what others have made</a>!
 			</h4>
 		</div>
 		<div class='layer readable-background margin-bottom-larger'>
