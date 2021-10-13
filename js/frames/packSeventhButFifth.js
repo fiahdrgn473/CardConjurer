@@ -27,7 +27,11 @@ availableFrames = [
 	{name:'DCI Star', src:'/img/frames/seventh/foilStar.svg'},
 	{name:'White Border', src:'/img/frames/white.png', masks:borderMask, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:borderMask, noDefaultMask:true},
-	{name:'Gold Border', src:'/img/frames/gold.png', masks:borderMask, noDefaultMask:true}
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:borderMask, noDefaultMask:true},
+	{name:'Homelands Land Frame', src:'/img/frames/seventh/regular/lHomelands.png', masks:masks},
+	{name:'Alliances Frame', src:'/img/frames/seventh/regular/lAlliances.png', masks:masks},
+	{name:'Mirage Frame', src:'/img/frames/seventh/regular/lMirage.png', masks:masks},
+	{name:'Ice Age Frame', src:'/img/frames/seventh/regular/lIceAge.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
