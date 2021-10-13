@@ -1922,7 +1922,9 @@ function drawNewGuidelines() {
 function imageURL(url, destination, otherParams) {
 	var imageurl = url;
 	if (params.get('noproxy') != '') {
-		imageurl = 'https://cors.bridged.cc/' + url;
+		//CORS PROXY LINKS
+		//Previously: https://cors.bridged.cc/
+		imageurl = 'https://api.codetabs.com/v1/proxy?quest=' + url;
 	}
 	destination(imageurl, otherParams);
 }
