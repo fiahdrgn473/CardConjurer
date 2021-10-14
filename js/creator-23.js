@@ -1263,7 +1263,7 @@ function changeArtIndex() {
 		const scryfallCardForArt = scryfallArt[artIndexValue];
 		uploadArt(scryfallCardForArt.image_uris.art_crop, 'autoFit');
 		artistEdited(scryfallCardForArt.artist);
-		if (params.get('mtgpics') == 'true') {
+		if (params.get('mtgpics') != null) {
 			imageURL(`https://www.mtgpics.com/pics/art/${scryfallCardForArt.set.toLowerCase()}/${("00" + scryfallCardForArt.collector_number).slice(-3)}.jpg`, tryMTGPicsArt);
 		}
 	}
