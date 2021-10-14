@@ -1260,9 +1260,26 @@ function artFromScryfall(scryfallResponse) {
 function changeArtIndex() {
 	const artIndexValue = document.querySelector('#art-index').value;
 	if (artIndexValue != 0 || artIndexValue == '0') {
-		uploadArt(scryfallArt[artIndexValue].image_uris.art_crop, 'autoFit');
-		artistEdited(scryfallArt[artIndexValue].artist);
+		const scryfallCardForArt = scryfallArt[artIndexValue];
+		uploadArt(scryfallCardForArt.image_uris.art_crop, 'autoFit');
+		artistEdited(scryfallCardForArt.artist);
+		if (params.get('mtgpics') == 'true') {
+			imageURL(`https://www.mtgpics.com/pics/art/${scryfallCardForArt.set.toLowerCase()}/${("00" + scryfallCardForArt.collector_number).slice(-3)}.jpg`, tryMTGPicsArt);
+		}
 	}
+}
+function tryMTGPicsArt(src) {
+	var attemptedImage = new Image();
+	attemptedImage.onload = function() {
+		if (this.complete) {
+			art.onload = function() {
+				autoFitArt();
+				art.onload = artEdited;
+			};
+			art.src = this.src;
+		}
+	}
+	attemptedImage.src = src;
 }
 function initDraggableArt() {
 	previewCanvas.onmousedown = artStartDrag;
