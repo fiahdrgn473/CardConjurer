@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/praetors/frame.svg', name:'Frame'}];
+var masks = [{src:'/img/frames/m15/praetors/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/praetors/frame.svg', name:'Frame'}, {src:'/img/frames/m15/praetors/text.svg', name:'Rules Text'}, {src:'/img/frames/m15/praetors/border.svg', name:'Border'}];
 var bounds = {x:0.746, y:0.8858, width:0.212, height:0.0772};
+var bounds2 = {x:0.418, y:0.9, width:0.164, height:0.0491};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/m15/praetors/w.png', masks:masks},
@@ -16,7 +17,14 @@ availableFrames = [
 	{name:'Red Power/Toughness', src:'/img/frames/m15/praetors/rpt.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/m15/praetors/gpt.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/praetors/mpt.png', bounds:bounds},
-	{name:'Artifact Power/Toughness', src:'/img/frames/m15/praetors/apt.png', bounds:bounds}
+	{name:'Artifact Power/Toughness', src:'/img/frames/m15/praetors/apt.png', bounds:bounds},
+	{name:'White Holo Stamp', src:'/img/frames/m15/praetors/holo/w.png', bounds:bounds2},
+	{name:'Blue Holo Stamp', src:'/img/frames/m15/praetors/holo/u.png', bounds:bounds2},
+	{name:'Black Holo Stamp', src:'/img/frames/m15/praetors/holo/b.png', bounds:bounds2},
+	{name:'Red Holo Stamp', src:'/img/frames/m15/praetors/holo/r.png', bounds:bounds2},
+	{name:'Green Holo Stamp', src:'/img/frames/m15/praetors/holo/g.png', bounds:bounds2},
+	{name:'Multicolored Holo Stamp', src:'/img/frames/m15/praetors/holo/m.png', bounds:bounds2},
+	{name:'Artifact Holo Stamp', src:'/img/frames/m15/praetors/holo/a.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
