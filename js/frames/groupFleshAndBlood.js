@@ -2,8 +2,11 @@ loadFramePacks([
 	{name:'Generic Frames', value:'FABRegular'},
 	{name:'Class Frames', value:'FABClasses'},
 	{name:'Hero Frames', value:'FABHeroes'},
-	{name:'Region Frames', value:'FABRegions'},
-	{name:'Fabled Frame', value:'FABFabled'}
+	{name:'Fabled Frame', value:'FABFabled'},
+	{name:'Talents', value:'disabled'},
+	{name:'Light Frames', value:'FABLight'},
+	{name:'Shadow Frames', value:'FABShadow'},
+	{name:'Elemental Frames', value:'FABElemental'}
 ])
 
 //For multiple Flesh and Blood packs

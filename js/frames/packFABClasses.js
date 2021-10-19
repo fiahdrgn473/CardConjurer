@@ -1,6 +1,9 @@
 //defines available frames
 availableFrames = [
 	{name:'Brute', src:'/img/frames/fab/classes/brute.png'},
+	{name:'Guardian', src:'/img/frames/fab/classes/guardian.png'},
+	{name:'Illusionist', src:'/img/frames/fab/classes/illusionist.png'},
+	{name:'Mechanologist', src:'/img/frames/fab/classes/mechanologist.png'},
 	{name:'Ninja', src:'/img/frames/fab/classes/ninja.png'},
 	{name:'Ranger', src:'/img/frames/fab/classes/ranger.png'},
 	{name:'Runeblade', src:'/img/frames/fab/classes/runeblade.png'},
