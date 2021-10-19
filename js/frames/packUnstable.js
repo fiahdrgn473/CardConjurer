@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/textless/m15TextlessMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/textless/m15TextlessMaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/unstable/title.svg', name:'Title'}, {src:'/img/frames/unstable/pinline.svg', name:'Bottom'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/unstable/unstableFrameW.png', masks:masks},
