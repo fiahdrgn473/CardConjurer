@@ -132,6 +132,7 @@ function sizeCanvas(name, width = Math.round(card.width * (1 + 2 * card.marginX)
 sizeCanvas('card');
 sizeCanvas('frame');
 sizeCanvas('frameMasking');
+sizeCanvas('frameCompositing');
 sizeCanvas('text');
 sizeCanvas('paragraph');
 sizeCanvas('line');
@@ -323,21 +324,30 @@ function drawFrames() {
 			frameMaskingContext.drawImage(black, 0, 0, frameMaskingCanvas.width, frameMaskingCanvas.height);
 			frameMaskingContext.globalCompositeOperation = 'source-in';
 			item.masks.forEach(mask => frameMaskingContext.drawImage(mask.image, scaleX((bounds.x || 0) - (ogBounds.x || 0) - ((ogBounds.x || 0) * ((bounds.width || 1) / (ogBounds.width || 1) - 1))), scaleY((bounds.y || 0) - (ogBounds.y || 0) - ((ogBounds.y || 0) * ((bounds.height || 1) / (ogBounds.height || 1) - 1))), scaleWidth((bounds.width || 1) / (ogBounds.width || 1)), scaleHeight((bounds.height || 1) / (ogBounds.height || 1))));
-			frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
-			if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
-			var oldAlphaData;
-			if (item.preserveAlpha) {
-				oldAlphaData = frameContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height).data;
-			}
-			frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
-			if (item.preserveAlpha) {
-				var newRGBData = frameContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height);
-				var pixels = newRGBData.data;
-				for (var i = 3; i < oldAlphaData.length; i += 4) {
-					pixels[i] = oldAlphaData[i];
+			if (item.preserveAlpha) { //preserves alpha, and blends colors using an alpha that only cares about the mask(s), and the user-set opacity value
+				//draw the image onto a separate canvas to view its unaltered state
+				frameCompositingContext.clearRect(0, 0, frameCanvas.width, frameCanvas.height);
+				frameCompositingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
+				//create pixel arrays for the existing image, new image, and alpha mask
+				var existingData = frameContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height)
+				var existingPixels = existingData.data;
+				var newPixels = frameCompositingContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height).data;
+				var maskPixels = frameMaskingContext.getImageData(0, 0, frameCanvas.width, frameCanvas.height).data;
+				const functionalAlphaMultiplier = frameContext.globalAlpha / 255;
+				//manually blends colors, basing blending-alpha on the masks and desired draw-opacity, but preserving alpha
+				for (var i = 0; i < existingPixels.length; i += 4) {
+					const functionalAlpha = maskPixels[i + 3] * functionalAlphaMultiplier //functional alpha = alpha ignoring source image
+					existingPixels[  i  ] = existingPixels[  i  ] * (1 - functionalAlpha) + newPixels[  i  ] * functionalAlpha; //RED
+					existingPixels[i + 1] = existingPixels[i + 1] * (1 - functionalAlpha) + newPixels[i + 1] * functionalAlpha; //GREEN
+					existingPixels[i + 2] = existingPixels[i + 2] * (1 - functionalAlpha) + newPixels[i + 2] * functionalAlpha; //BLUE
 				}
-				frameContext.putImageData(newRGBData, 0, 0);
+				frameContext.putImageData(existingData, 0, 0);
+			} else {
+				frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
+				if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
+				frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
 			}
+			
 		}
 	});
 	if (!haveDrawnPrePTCanvas && drawTextBetweenFrames) {
