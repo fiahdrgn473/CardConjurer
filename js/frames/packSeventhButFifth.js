@@ -31,7 +31,8 @@ availableFrames = [
 	{name:'Homelands Land Frame', src:'/img/frames/seventh/regular/lHomelands.png', masks:masks},
 	{name:'Alliances Land Frame', src:'/img/frames/seventh/regular/lAlliances.png', masks:masks},
 	{name:'Mirage Land Frame', src:'/img/frames/seventh/regular/lMirage.png', masks:masks},
-	{name:'Ice Age Land Frame', src:'/img/frames/seventh/regular/lIceAge.png', masks:masks}
+	{name:'Ice Age Land Frame', src:'/img/frames/seventh/regular/lIceAge.png', masks:masks},
+	{name:'The Dark Land Frame', src:'/img/frames/seventh/regular/lTheDark.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
