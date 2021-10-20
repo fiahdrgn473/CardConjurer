@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/seventh/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/seventh/regular/rules.svg', name:'Rules'}, {src:'/img/frames/seventh/regular/frame.svg', name:'Frame'}, {src:'/img/frames/seventh/regular/trim.svg', name:'Textbox Pinline'}, {src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/seventh/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/seventh/regular/rules.svg', name:'Rules'}, {src:'/img/frames/seventh/regular/frame.svg', name:'Frame'}, {src:'/img/frames/seventh/regular/trim.svg', name:'Textbox Pinline'}, {src:'/img/frames/seventh/regular/dual.svg', name:'Dual Land'}, {src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
 var borderMask = [{src:'/img/frames/seventh/regular/border.svg', name:'Border'}];
 var bounds = {x:0.3354, y:0.6239, width:0.33, height:0.2386};
 //defines available frames
@@ -28,11 +28,14 @@ availableFrames = [
 	{name:'White Border', src:'/img/frames/white.png', masks:borderMask, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:borderMask, noDefaultMask:true},
 	{name:'Gold Border', src:'/img/frames/gold.png', masks:borderMask, noDefaultMask:true},
-	{name:'Homelands Land Frame', src:'/img/frames/seventh/regular/lHomelands.png', masks:masks},
+	{name:'The Dark Land Frame', src:'/img/frames/seventh/regular/lTheDark.png', masks:masks},
 	{name:'Alliances Land Frame', src:'/img/frames/seventh/regular/lAlliances.png', masks:masks},
 	{name:'Mirage Land Frame', src:'/img/frames/seventh/regular/lMirage.png', masks:masks},
 	{name:'Ice Age Land Frame', src:'/img/frames/seventh/regular/lIceAge.png', masks:masks},
-	{name:'The Dark Land Frame', src:'/img/frames/seventh/regular/lTheDark.png', masks:masks}
+	{name:'Homelands Land Frame', src:'/img/frames/seventh/regular/lHomelands.png', masks:masks},
+	{name:'Fallen Empires Land Frame', src:'/img/frames/seventh/regular/lFallenEmpires.png', masks:masks},
+	{name:'Arabian Nights Land Frame', src:'/img/frames/seventh/regular/lArabianNights.png', masks:masks},
+	{name:'Antiquities Land Frame', src:'/img/frames/seventh/regular/lAntiquities.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
