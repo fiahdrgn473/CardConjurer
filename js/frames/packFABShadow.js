@@ -1,6 +1,8 @@
 //defines available frames
 availableFrames = [
-	{name:'Shadow Frame', src:'/img/frames/fab/talents/shadow/shadow.png', complementary:[1,4]},
+	{name:'Shadow Frame', src:'/img/frames/fab/talents/shadow/shadow.png', complementary:[3,6]},
+	{name:'Shadow Brute Frame', src:'/img/frames/fab/talents/shadow/brute.png', complementary:[3,6]},
+	{name:'Shadow Runeblade Frame', src:'/img/frames/fab/talents/shadow/runeblade.png', complementary:[3,6]},
 	{name:'Pitch (1)', src:'/img/frames/fab/talents/1.svg'},
 	{name:'Pitch (2)', src:'/img/frames/fab/talents/2.svg'},
 	{name:'Pitch (3)', src:'/img/frames/fab/talents/3.svg'},

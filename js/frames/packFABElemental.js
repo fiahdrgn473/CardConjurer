@@ -1,6 +1,12 @@
 //defines available frames
 availableFrames = [
-	{name:'Elemental Frame', src:'/img/frames/fab/talents/elemental/elemental.png', complementary:[1,4]},
+	{name:'Elemental Frame', src:'/img/frames/fab/talents/elemental/elemental.png', complementary:[7,10]},
+	{name:'Earth Frame', src:'/img/frames/fab/talents/elemental/earth.png', complementary:[7,10]},
+	{name:'Ice Frame', src:'/img/frames/fab/talents/elemental/ice.png', complementary:[7,10]},
+	{name:'Lightning Frame', src:'/img/frames/fab/talents/elemental/lightning.png', complementary:[7,10]},
+	{name:'Elemental Guardian Frame', src:'/img/frames/fab/talents/elemental/guardian.png', complementary:[7,10]},
+	{name:'Elemental Ranger Frame', src:'/img/frames/fab/talents/elemental/ranger.png', complementary:[7,10]},
+	{name:'Elemental Runeblade Frame', src:'/img/frames/fab/talents/elemental/runeblade.png', complementary:[7,10]},
 	{name:'Pitch (1)', src:'/img/frames/fab/talents/1.svg'},
 	{name:'Pitch (2)', src:'/img/frames/fab/talents/2.svg'},
 	{name:'Pitch (3)', src:'/img/frames/fab/talents/3.svg'},
