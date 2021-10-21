@@ -9,5 +9,6 @@ loadFramePacks([
 	{name:'Misc', value:'disabled'},
 	{name:'Dungeon (AFR)', value:'Dungeon'},
 	{name:'Planechase', value:'Planechase'},
-	{name:'Vanguard', value:'Vanguard'}
+	{name:'Vanguard', value:'Vanguard'},
+	{name:'Cardback', value:'Cardback'}
 ])
