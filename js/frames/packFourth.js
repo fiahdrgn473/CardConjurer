@@ -21,7 +21,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'fourth';
 	//art bounds
-	card.artBounds = {x:0.1054, y:0.0896, width:0.7667, height:0.792};
+	card.artBounds = {x:0.1034, y:0.0886, width:0.794, height:0.4543};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9, y:0.5758, width:0.12, height:0.0362, vertical:'center', horizontal: 'right'};
