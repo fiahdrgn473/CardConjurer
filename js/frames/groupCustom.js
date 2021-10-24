@@ -11,7 +11,7 @@ loadFramePacks([
 	{name:'Horizontal Japanese Mystical Archive (STA)', value:'MysticalArchiveJPHorizontal'},
 	{name:'Custom Addons', value:'disabled'},
 	{name:'Brawl Legend Crowns', value:'Brawl'},
-	{name:'Community Frames', value:'disabled'},
+	{name:'Custom Community Frames', value:'disabled'},
 	{name:'Cartoony - Sheepwave', value:'Cartoony'},
 	{name:'Neon - Elry', value:'CustomNeon'},
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'}
