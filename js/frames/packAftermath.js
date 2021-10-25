@@ -1,15 +1,15 @@
 //Create objects for common properties across available frames
-// var masks = [{src:'/img/frames/m15/aftermath/pinline.svg', name:'Pinline'}];
+var masks = [{src:'/img/frames/m15/aftermath/top.svg', name:'Top Half'}, {src:'/img/frames/m15/aftermath/bottom.svg', name:'Bottom Half'}];
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/aftermath/w.png'},
-	{name:'Blue Frame', src:'/img/frames/m15/aftermath/u.png'},
-	{name:'Black Frame', src:'/img/frames/m15/aftermath/b.png'},
-	{name:'Red Frame', src:'/img/frames/m15/aftermath/r.png'},
-	{name:'Green Frame', src:'/img/frames/m15/aftermath/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/m15/aftermath/m.png'},
-	{name:'Artifact Frame', src:'/img/frames/m15/aftermath/a.png'},
-	{name:'Land Frame', src:'/img/frames/m15/aftermath/l.png'}
+	{name:'White Frame', src:'/img/frames/m15/aftermath/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/aftermath/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/aftermath/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/aftermath/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/aftermath/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/aftermath/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/aftermath/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/aftermath/l.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
