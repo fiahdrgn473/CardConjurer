@@ -1,6 +1,6 @@
 //defines available frames
 availableFrames = [
-	{name:'Multicolored Frame', src:'/img/frames/old/legends/legendsFrameM.png'}
+	{name:'Multicolored Frame', src:'/img/frames/old/legends/m.png'}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
