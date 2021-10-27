@@ -30,9 +30,9 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	});
 	//bottom info
 	loadBottomInfo({
-		top: {text:'Illus: {elemidinfo-artist}', x:0.0614, y:0.8972, width:0.8774, height:0.0281, oneLine:true, size:0.0281, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'},
-		wizards: {name:'wizards', text:'\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x:0.0614, y:0.9267, width:0.8774, height:0.0172, oneLine:true, size:0.0172, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'},
-		bottom: {text:'NOT FOR SALE   CardConjurer.com', x:0.0614, y:0.9458, width:0.8774, height:0.0143, oneLine:true, size:0.0143, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'}
+		top: {text:'Illus: {elemidinfo-artist}', x:0.0614, y:0.902, width:0.8774, height:0.0281, oneLine:true, size:0.0281, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'},
+		wizards: {name:'wizards', text:'\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x:0.0614, y:0.9315, width:0.8774, height:0.0172, oneLine:true, size:0.0172, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'},
+		bottom: {text:'NOT FOR SALE   CardConjurer.com', x:0.0614, y:0.9505, width:0.8774, height:0.0143, oneLine:true, size:0.0143, align:'center', shadowX:0.0027, shadowY:0.002, color:'white'}
 	});
 }
 //loads available frames
