@@ -9,6 +9,7 @@ loadFramePacks([
 	{name:'Regular (Bordered M15)', value:'TokenRegularM15'},
 	{name:'Textless (Bordered M15)', value:'TokenTextlessM15'},
 	{name:'Original (Old Bordered)', value:'TokenOld'},
+	{name:'Unglued', value:'TokenUnglued'},
 	{name:'Addons', value:'disabled'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
