@@ -1,8 +1,9 @@
 loadFramePacks([
 	{name:'Misc. Custom Frames', value:'MiscCustom'},
-	{name:'Classic-Shifted', value:'Classicshifted'},
-	{name:'Classic-Shifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},
-	{name:'Classic-Shifted Sagas', value:'ClassicshiftedSaga'},
+	{name:'Classicshifted', value:'Classicshifted'},
+	{name:'Classicshifted Lands', value:'ClassicshiftedLands'},
+	{name:'Classicshifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},
+	{name:'Classicshifted Sagas', value:'ClassicshiftedSaga'},
 	{name:'Textless Duals', value:'CustomDualLands'},
 	{name:'Tapped (Horizontal M15)', value:'Tapped'},
 	{name:'Simple Inventions', value:'SimpleInventions'},

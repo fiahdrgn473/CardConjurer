@@ -25,6 +25,7 @@ availableFrames = [
 	{name:'Forest Watermark', src:'/img/frames/m15/basics/g.png', bounds:bounds},
 	{name:'Wastes Watermark', src:'/img/frames/m15/basics/c.png', bounds:bounds},
 	{name:'DCI Star', src:'/img/frames/seventh/foilStar.svg'},
+	{name:'Foil Layer', src:'/img/frames/effects/foil.png', opacity:20, masks:[{src:'/img/frames/seventh/foil.svg', name:'With Star'}, {src:'/img/frames/seventh/foil2.svg', name:'Without Star'}]},
 	{name:'White Border', src:'/img/frames/white.png', masks:borderMask, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:borderMask, noDefaultMask:true},
 	{name:'Gold Border', src:'/img/frames/gold.png', masks:borderMask, noDefaultMask:true},

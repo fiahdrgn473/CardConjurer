@@ -13,11 +13,6 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/custom/classicshifted/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/custom/classicshifted/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/custom/classicshifted/l.png', masks:masks},
-	{name:'White Land Frame', src:'/img/frames/custom/classicshifted/wl.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/custom/classicshifted/ul.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/custom/classicshifted/bl.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/custom/classicshifted/rl.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/custom/classicshifted/gl.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/custom/classicshifted/ptW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/custom/classicshifted/ptU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/custom/classicshifted/ptB.png', bounds:bounds},
@@ -34,12 +29,6 @@ availableFrames = [
 	{name:'Multicolored Crown', src:'/img/frames/custom/classicshifted/cm.png', bounds:bounds2},
 	{name:'Artifact Crown', src:'/img/frames/custom/classicshifted/ca.png', bounds:bounds2},
 	{name:'Land Crown', src:'/img/frames/custom/classicshifted/cl.png', bounds:bounds2},
-	{name:'Plains Watermark', src:'/img/frames/m15/basics/w.png', bounds:bounds3},
-	{name:'Island Watermark', src:'/img/frames/m15/basics/u.png', bounds:bounds3},
-	{name:'Swamp Watermark', src:'/img/frames/m15/basics/b.png', bounds:bounds3},
-	{name:'Mountain Watermark', src:'/img/frames/m15/basics/r.png', bounds:bounds3},
-	{name:'Forest Watermark', src:'/img/frames/m15/basics/g.png', bounds:bounds3},
-	{name:'Wastes Watermark', src:'/img/frames/m15/basics/c.png', bounds:bounds3},
 	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'}
 ];
 //disables/enables the "Load Frame Version" button
