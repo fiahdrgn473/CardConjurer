@@ -15,5 +15,6 @@ loadFramePacks([
 	{name:'Custom Community Frames', value:'disabled'},
 	{name:'Cartoony - Sheepwave', value:'Cartoony'},
 	{name:'Neon - Elry', value:'CustomNeon'},
-	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'}
+	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
+	{name:'Kaldheim, Fullart - @feuer_ameise', value:'FeuerAmeiseKaldheim'}
 ])
