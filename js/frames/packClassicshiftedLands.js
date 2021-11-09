@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}, {src:'/img/frames/custom/classicshifted/pinline.svg', name:'Pinline'}, {src:'/img/frames/custom/classicshifted/dual.svg', name:'Dual Land Pinline'}];
 var bounds = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
+var bounds2 = {x:0.026, y:0.0129, width:0.948, height:0.1015};
 //defines available frames
 availableFrames = [
 	{name:'Land Frame', src:'/img/frames/custom/classicshifted/l.png', masks:masks},
@@ -23,7 +24,15 @@ availableFrames = [
 	{name:'Mountain Watermark', src:'/img/frames/m15/basics/r.png', bounds:bounds},
 	{name:'Forest Watermark', src:'/img/frames/m15/basics/g.png', bounds:bounds},
 	{name:'Wastes Watermark', src:'/img/frames/m15/basics/c.png', bounds:bounds},
-	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'}
+	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'},
+	{name:'The Dark Legend Crown', src:'/img/frames/custom/classicshifted/crowns/theDark.png', bounds:bounds2},
+	{name:'Alliances Legend Crown', src:'/img/frames/custom/classicshifted/crowns/alliances.png', bounds:bounds2},
+	{name:'Mirage Legend Crown', src:'/img/frames/custom/classicshifted/crowns/mirage.png', bounds:bounds2},
+	{name:'Ice Age Legend Crown', src:'/img/frames/custom/classicshifted/crowns/iceAge.png', bounds:bounds2},
+	{name:'Homelands Legend Crown', src:'/img/frames/custom/classicshifted/crowns/homelands.png', bounds:bounds2},
+	{name:'Fallen Empires Legend Crown', src:'/img/frames/custom/classicshifted/crowns/fallenEmpires.png', bounds:bounds2},
+	{name:'Arabian Nights Legend Crown', src:'/img/frames/custom/classicshifted/crowns/arabianNights.png', bounds:bounds2},
+	{name:'Antiquities Legend Crown', src:'/img/frames/custom/classicshifted/crowns/antiquities.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
