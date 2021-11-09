@@ -158,7 +158,7 @@ function getElementIndex(element) {
 	return Array.prototype.indexOf.call(element.parentElement.children, element);
 }
 function getCardName() {
-	if (card.text == undefined) {
+	if (card.text == undefined || card.text.title == undefined) {
 		return 'unnamed';
 	}
 	var imageName = card.text.title.text || 'unnamed';
