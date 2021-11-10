@@ -55,6 +55,14 @@ include('../globalHTML/header-1.php');
         	Upload up to nine images, and they will automatically arrange themselves on an 8.5" by 11" sheet, so you can print them at home at up to 600PPI.
         </h4>
     </div>
+    <div style="display:none;">
+        <svg id='cuttingGuides' width="1500" height="2100" viewBox="0 0 1500 2100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <path d="M1470,3L1470,0L1500,0L1500,30L1497,30L1497,3L1470,3Z" style="fill:rgb(0,166,80);"/>
+            <path d="M30,2097L30,2100L0,2100L0,2070L3,2070L3,2097L30,2097Z" style="fill:rgb(0,174,239);"/>
+            <path d="M1470,2097L1470,2100L1500,2100L1500,2070L1497,2070L1497,2097L1470,2097Z" style="fill:rgb(236,3,140);"/>
+            <path d="M30,3L30,0L0,0L0,30L3,30L3,3L30,3Z" style="fill:rgb(255,242,0);"/>
+        </svg>
+    </div>
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js'></script>
     <script defer src="/print/print.js"></script>
 <?php include('../globalHTML/footer.php'); ?>

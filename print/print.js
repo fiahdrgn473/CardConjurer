@@ -12,7 +12,12 @@ var context = canvas.getContext('2d');
 var aidCanvas = document.createElement('canvas');
 var aidContext = aidCanvas.getContext('2d');
 drawSheet();
-
+//svgs
+var cuttingGuides = new Image();
+cuttingGuides.src = 'cuttingGuides.svg';
+var testImg = document.createElement('IMG');
+testImg.src = cuttingGuides.src;
+document.body.appendChild(testImg);
 
 function uploadCard(card, filename) {
     var img = new Image();
@@ -38,6 +43,9 @@ function drawSheet() {
             const cardY = (page[1] - cardsY * cardHeight) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY) - cardMarginY;
             try {
                 context.drawImage(imageList[i], cardX * ppi, cardY * ppi, cardWidth * ppi, cardHeight * ppi);
+                if (document.querySelector('#cuttingAids').checked) {
+                    context.drawImage(cuttingGuides, cardX * ppi, cardY * ppi, cardWidth * ppi, cardHeight * ppi);
+                }
                 if (document.querySelector('#cuttingAids').checked) {
                     aidContext.fillStyle = 'black';
                     aidContext.fillRect(Math.floor((cardX - cardMarginX / 2) * ppi + 2), Math.floor((cardY - cardMarginY / 2) * ppi + 2), Math.ceil((cardWidth + cardMarginX) * ppi - 4), Math.ceil((cardHeight + cardMarginY) * ppi - 4));
@@ -94,8 +102,11 @@ function downloadPDF() {
         if (imageList[i].width > 1) {
             const cardX = (page[0] - cardsX * cardWidth) / 2 + (count % cardsX) * (cardWidth + cardMarginX) - cardMarginX;
             const cardY = (page[1] - cardsY * cardHeight) / 2 + (Math.floor(count / cardsX) % cardsY) * (cardHeight + cardMarginY) - cardMarginY;
-            console.log(`image: ${imageList[i].filename}, bounds: ${cardX}, ${cardY}, ${cardWidth}, ${cardHeight}`)
+            console.log(`image: ${imageList[i].filename}, bounds: ${cardX}, ${cardY}, ${cardWidth}, ${cardHeight}`);
             doc.addImage(imageList[i], 'PNG', cardX, cardY, cardWidth, cardHeight);
+            if (document.querySelector('#cuttingAids').checked) {
+                doc.addImage(cuttingGuides, 'PNG', cardX, cardY, cardWidth, cardHeight);
+            }
         }
         count ++;
     }
