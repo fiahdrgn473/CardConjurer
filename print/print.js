@@ -15,9 +15,6 @@ drawSheet();
 //svgs
 var cuttingGuides = new Image();
 cuttingGuides.src = 'cuttingGuides.svg';
-var testImg = document.createElement('IMG');
-testImg.src = cuttingGuides.src;
-document.body.appendChild(testImg);
 
 function uploadCard(card, filename) {
     var img = new Image();
