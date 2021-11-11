@@ -21,6 +21,7 @@ loadFramePacks([
 	{name:'Aftermath (Amonkhet)', value:'Aftermath'},
 	{name:'Flip (Kamigawa)', value:'Flip'},
 	{name:'Levelers (Zendikar)', value:'Levelers'},
+	{name:'Split Cards', value:'Split'},
 	{name:'Conspiracies (Draft Matters)', value:'Conspiracy'},
 	{name:'Colorshifted (Planar Chaos)', value:'Colorshifted'},
 	{name:'Custom Addons', value:'disabled'},
