@@ -22,6 +22,7 @@ loadFramePacks([
 	{name:'Nickname', value:'M15Nickname'},
 	{name:'Extended Art (Regular)', value:'M15BoxTopper'},
 	{name:'Extended Art (Shorter Textbox)', value:'M15ExtendedArtShort'},
+	{name:'FNM Promo (Inverted Promos)', value:'FNM'},
 	{name:'Masterpieces/Other', value:'disabled'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
 	{name:'Signature Spellbook (Jace/Gideon)', value:'SignatureSpellbook'},
