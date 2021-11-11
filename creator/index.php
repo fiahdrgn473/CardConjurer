@@ -625,6 +625,7 @@ include('../globalHTML/header-1.php');
 				<h4>Britton N.</h4>
 				<h4>Westane</h4>
 				<h4>MoldyAce</h4>
+				<h4>Kerby</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
