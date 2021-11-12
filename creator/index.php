@@ -44,11 +44,18 @@ include('../globalHTML/header-1.php');
 				</label>
 			</div>
 			<div>
-				<h5 class='input-description'>Overlay Mode</h5>
+				<h5 class='input-description'>Blending Mode</h5>
 				<label class='checkbox-container input'>Preserve Alpha
 					<input id='frame-editor-alpha' type='checkbox' placeholder='Preserve Alpha'>
 					<span class='checkmark'></span>
 				</label>
+			</div>
+			<div>
+				<label class='checkbox-container input'>Color Overlay
+					<input id='frame-editor-color-overlay-check' type='checkbox' placeholder='Color Overlay'>
+					<span class='checkmark'></span>
+				</label>
+				<input id='frame-editor-color-overlay' class='input' type='color' placeholder='Color' value='#000000'>
 			</div>
 			<div>
 				<h5 class='input-description'>Select and remove masks</h5>

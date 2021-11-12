@@ -346,10 +346,10 @@ function drawFrames() {
 				frameContext.putImageData(existingData, 0, 0);
 			} else {
 				frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
+				if (item.colorOverlayCheck) {frameMaskingContext.globalCompositeOperation = 'source-in'; frameMaskingContext.fillStyle = item.colorOverlay; frameMaskingContext.fillRect(0, 0, frameMaskingCanvas.width, frameMaskingCanvas.height);}
 				if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
 				frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
 			}
-			
 		}
 	});
 	if (!haveDrawnPrePTCanvas && drawTextBetweenFrames) {
@@ -603,6 +603,10 @@ function frameElementClicked(event) {
 		document.querySelector('#frame-editor-erase').onchange = (event) => {selectedFrame.erase = event.target.checked; drawFrames();}
 		document.querySelector('#frame-editor-alpha').checked = selectedFrame.preserveAlpha || false;
 		document.querySelector('#frame-editor-alpha').onchange = (event) => {selectedFrame.preserveAlpha = event.target.checked; drawFrames();}
+		document.querySelector('#frame-editor-color-overlay-check').checked = selectedFrame.colorOverlayCheck || false;
+		document.querySelector('#frame-editor-color-overlay-check').onchange = (event) => {selectedFrame.colorOverlayCheck = event.target.checked; drawFrames();}
+		document.querySelector('#frame-editor-color-overlay').value = selectedFrame.colorOverlay || false;
+		document.querySelector('#frame-editor-color-overlay').onchange = (event) => {selectedFrame.colorOverlay = event.target.value; drawFrames();}
 		// Removing masks
 		const selectMaskElement = document.querySelector('#frame-editor-masks');
 		selectMaskElement.innerHTML = null;
