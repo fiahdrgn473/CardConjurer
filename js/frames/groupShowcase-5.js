@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Fang (VOW)', value:'Fang'},
 	{name:'Equinox (MID)', value:'Equinox'},
 	{name:'Eternal Night (MID)', value:'EternalNight'},
 	{name:'D&D Sourcebook (AFR)', value:'DNDSourcebook'},
