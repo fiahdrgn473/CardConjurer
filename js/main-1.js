@@ -100,3 +100,11 @@ urlInputs.forEach(element => {
 		}
 	});
 });
+
+//bind two inputs to match values
+function bindInputs(query1, query2) {
+	var e1 = document.querySelector(query1);
+	var e2 = document.querySelector(query2);
+	e1.oninput = (event) => {e2.value = e1.value;}
+	e2.oninput = (event) => {e1.value = e2.value;}
+}
