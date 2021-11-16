@@ -345,8 +345,15 @@ function drawFrames() {
 				}
 				frameContext.putImageData(existingData, 0, 0);
 			} else {
+				//mask the image
 				frameMaskingContext.drawImage(item.image, frameX, frameY, frameWidth, frameHeight);
+				//color overlay
 				if (item.colorOverlayCheck) {frameMaskingContext.globalCompositeOperation = 'source-in'; frameMaskingContext.fillStyle = item.colorOverlay; frameMaskingContext.fillRect(0, 0, frameMaskingCanvas.width, frameMaskingCanvas.height);}
+				//HSL adjustments
+				if (item.hslHue || item.hslSaturation || item.hslLightness) {
+					hsl(frameMaskingCanvas, item.hslHue || 0, item.hslSaturation || 0, item.hslLightness || 0);
+				}
+				//erase mode
 				if (item.erase) {frameContext.globalCompositeOperation = 'destination-out';}
 				frameContext.drawImage(frameMaskingCanvas, 0, 0, frameCanvas.width, frameCanvas.height);
 			}
@@ -607,6 +614,18 @@ function frameElementClicked(event) {
 		document.querySelector('#frame-editor-color-overlay-check').onchange = (event) => {selectedFrame.colorOverlayCheck = event.target.checked; drawFrames();}
 		document.querySelector('#frame-editor-color-overlay').value = selectedFrame.colorOverlay || false;
 		document.querySelector('#frame-editor-color-overlay').onchange = (event) => {selectedFrame.colorOverlay = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-hue').value = selectedFrame.hslHue || 0;
+		document.querySelector('#frame-editor-hsl-hue-slider').value = selectedFrame.hslHue || 0;
+		document.querySelector('#frame-editor-hsl-hue').onchange = (event) => {selectedFrame.hslHue = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-hue-slider').onchange = (event) => {selectedFrame.hslHue = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-saturation').value = selectedFrame.hslSaturation || 0;
+		document.querySelector('#frame-editor-hsl-saturation-slider').value = selectedFrame.hslSaturation || 0;
+		document.querySelector('#frame-editor-hsl-saturation').onchange = (event) => {selectedFrame.hslSaturation = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-saturation-slider').onchange = (event) => {selectedFrame.hslSaturation = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-lightness').value = selectedFrame.hslLightness || 0;
+		document.querySelector('#frame-editor-hsl-lightness-slider').value = selectedFrame.hslLightness || 0;
+		document.querySelector('#frame-editor-hsl-lightness').onchange = (event) => {selectedFrame.hslLightness = event.target.value; drawFrames();}
+		document.querySelector('#frame-editor-hsl-lightness-slider').onchange = (event) => {selectedFrame.hslLightness = event.target.value; drawFrames();}
 		// Removing masks
 		const selectMaskElement = document.querySelector('#frame-editor-masks');
 		selectMaskElement.innerHTML = null;
@@ -648,6 +667,91 @@ function uploadFrameOption(imageSource) {
 	customCount ++;
 	availableFrames.push(uploadedFrame);
 	loadFramePack();
+}
+function hsl(canvas, inputH, inputS, inputL) {
+	//adjust inputs
+	var hue = parseInt(inputH) / 360;
+	var saturation = parseInt(inputS) / 100;
+	var lightness = parseInt(inputL) / 100;
+	//create needed objects
+	var context = canvas.getContext('2d')
+	var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+	var pixels = imageData.data;
+	//for every pixel...
+	for (var i = 0; i < pixels.length; i += 4) {
+		//grab rgb
+		var r = pixels[i];
+		var g = pixels[i + 1];
+		var b = pixels[i + 2];
+		//convert to hsl
+		var res = rgbToHSL(r, g, b);
+		h = res[0];
+		s = res[1];
+		l = res[2];
+		//make adjustments
+		h += hue;
+		while (h > 1) {h --;}
+		s = Math.min(Math.max(s + saturation, 0), 1);
+		l = Math.min(Math.max(l + lightness, 0), 1);
+		//convert back to rgb
+		res = hslToRGB(h, s, l);
+		r = res[0];
+		g = res[1];
+		b = res[2];
+		//and reassign
+		pixels[i] = r;
+		pixels[i + 1] = g;
+		pixels[i + 2] = b;
+	}
+	//then put the new image data back
+	context.putImageData(imageData, 0, 0);
+}
+/*
+shoutout to https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion for providing the hsl-rgb conversion algorithms
+*/
+function rgbToHSL(r, g, b){
+    r /= 255, g /= 255, b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    }else{
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return [h, s, l];
+}
+function hslToRGB(h, s, l){
+    var r, g, b;
+
+    if(s == 0){
+        r = g = b = l; // achromatic
+    }else{
+        var hue2rgb = function hue2rgb(p, q, t){
+            if(t < 0) t += 1;
+            if(t > 1) t -= 1;
+            if(t < 1/6) return p + (q - p) * 6 * t;
+            if(t < 1/2) return q;
+            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        }
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 //TEXT TAB
 var writingText;
@@ -2108,6 +2212,10 @@ if (document.querySelector('#lockSetSymbolURL').checked) {
 	setSymbol.src = localStorage.getItem('lockSetSymbolURL');
 }
 
+//bind inputs together
+bindInputs('#frame-editor-hsl-hue', '#frame-editor-hsl-hue-slider');
+bindInputs('#frame-editor-hsl-saturation', '#frame-editor-hsl-saturation-slider');
+bindInputs('#frame-editor-hsl-lightness', '#frame-editor-hsl-lightness-slider');
 
 // Load / init whatever
 loadScript('/js/frames/groupStandard-3.js');

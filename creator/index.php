@@ -58,6 +58,15 @@ include('../globalHTML/header-1.php');
 				<input id='frame-editor-color-overlay' class='input' type='color' placeholder='Color' value='#000000'>
 			</div>
 			<div>
+				<h5 class='input-description'>HSL Adjustments</h5>
+				<input id='frame-editor-hsl-hue-slider' class='input' type='range' min='-180' max='180' value='0' step='1'>
+				<input id='frame-editor-hsl-hue' class='input' type='number' min='-180' max='180' value='0' step='1'>
+				<input id='frame-editor-hsl-saturation-slider' class='input' type='range' min='-100' max='100' value='0' step='1'>
+				<input id='frame-editor-hsl-saturation' class='input' type='number' min='-100' max='100' value='0' step='1'>
+				<input id='frame-editor-hsl-lightness-slider' class='input' type='range' min='-100' max='100' value='0' step='1'>
+				<input id='frame-editor-hsl-lightness' class='input' type='number' min='-100' max='100' value='0' step='1'>
+			</div>
+			<div>
 				<h5 class='input-description'>Select and remove masks</h5>
 				<select id='frame-editor-masks' class='input margin-bottom'></select>
 				<button onclick='frameElementMaskRemoved();' class='input'>Remove mask</button>
@@ -654,7 +663,7 @@ include('../globalHTML/header-1.php');
 				<h4>Mike S.</h4>
 				<h4>DaveO J.</h4>
 			</div>
-			<h5 class='input-description'>(Please email me if you would like your name/nickname changed.)</h5>
+			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
 		<div class='layer readable-background margin-bottom-larger'>
 			<h1 class='center margin-bottom'>Have feedback?</h1>
