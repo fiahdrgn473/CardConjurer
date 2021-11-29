@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/fang/frame.svg', name:'Frame'}, {src:'/img/frames/m15/fang/title.svg', name:'Title'}, {src:'/img/frames/m15/fang/type.svg', name:'Type'}, {src:'/img/frames/m15/fang/rules.svg', name:'Rules'}, {src:'/img/frames/m15/fang/gold.svg', name:'Gold Accents'}, {src:'/img/frames/m15/fang/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/m15/fang/frame.svg', name:'Frame'}, {src:'/img/frames/m15/fang/title.svg', name:'Title'}, {src:'/img/frames/m15/fang/type.svg', name:'Type'}, {src:'/img/frames/m15/fang/typeSides.svg', name:'Type Sides'}, {src:'/img/frames/m15/fang/rules.svg', name:'Rules'}, {src:'/img/frames/m15/fang/gold.svg', name:'Gold Accents'}, {src:'/img/frames/m15/fang/border.svg', name:'Border'}];
 var bounds = {x:0.76, y:0.8762, width:0.204, height:0.0781};
 var bounds2 = {x:0.0814, y:0.0191, width:0.838, height:0.021};
 //defines available frames
