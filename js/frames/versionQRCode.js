@@ -1,0 +1,47 @@
+//checks to see if it needs to run
+if (!loadedVersions.includes('/js/frames/versionQRCode.js')) {
+	loadedVersions.push('/js/frames/versionQRCode.js');
+	card.qrCode = {
+		x:0.35,
+		y:0.7224,
+		size:0.2143,
+		fgColor:'#fff',
+		fgAlpha:1,
+		bgColor:'#000',
+		bgAlpha:0,
+		padding:0,
+		url:'https://cardconjurer.com/'
+	}
+	sizeCanvas('qrious');
+	sizeCanvas('qrCode');
+	document.querySelector('#creator-menu-tabs').innerHTML += '<h3 class="selectable readable-background" onclick="toggleCreatorTabs(event, `qrCode`)">QR Code</h3>';
+	var newHTML = document.createElement('div');
+	newHTML.id = 'creator-menu-qrCode';
+	newHTML.classList.add('hidden');
+	newHTML.innerHTML = `
+	<div class='readable-background padding'>
+		<h5 class='padding margin-bottom input-description'>Enter the URL of your decklist:</h5>
+		<input id='qr-code-url' class='input' type='URL' oninput='updateQRCode(this.value);'>
+	</div>
+	`;
+	document.querySelector('#creator-menu-sections').appendChild(newHTML);
+	loadScript('/js/qrious.min.js');
+}
+
+function updateQRCode(url = card.qrCode.url) {
+	//generate qr code
+	var qr = new QRious({
+		background: card.qrCode.bgColor,
+		backgroundAlpha: card.qrCode.bgAlpha,
+		foreground: card.qrCode.fgColor,
+		foregroundAlpha: card.qrCode.fgAlpha,
+		padding: scaleHeight(card.qrCode.padding),
+		size: scaleHeight(card.qrCode.size),
+		element: qriousCanvas,
+		value: url
+	});
+	//draw cropped qr code to correct location
+	qrCodeCanvas.getContext('2d').drawImage(croppedCanvas(qriousCanvas), scaleWidth(card.qrCode.x), scaleHeight(card.qrCode.y), scaleHeight(card.qrCode.size), scaleHeight(card.qrCode.size));
+	//draw the card
+	drawCard();
+}

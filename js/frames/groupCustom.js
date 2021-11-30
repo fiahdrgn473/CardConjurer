@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Misc. Custom Frames', value:'MiscCustom'},
+	{name:'Deck Covers', value:'CustomDeckCover'},
 	{name:'Classicshifted', value:'Classicshifted'},
 	{name:'Classicshifted Lands', value:'ClassicshiftedLands'},
 	{name:'Classicshifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},

@@ -706,6 +706,31 @@ function hsl(canvas, inputH, inputS, inputL) {
 	//then put the new image data back
 	context.putImageData(imageData, 0, 0);
 }
+function croppedCanvas(oldCanvas, sensitivity = 0) {
+	var oldContext = oldCanvas.getContext('2d');
+	var newCanvas = document.createElement('canvas');
+	var newContext = newCanvas.getContext('2d');
+	var pixels = oldContext.getImageData(0, 0, oldCanvas.width, oldCanvas.height).data;
+	var pixX = [];
+	var pixY = [];
+	for (var x = 0; x < oldCanvas.width; x += 1) {
+		for (var y = 0; y < oldCanvas.height; y += 1) {
+			if (pixels[(y * oldCanvas.width + x) * 4 + 3] > sensitivity) {
+				pixX.push(x);
+				pixY.push(y);
+			}
+		}
+	}
+	pixX.sort(function(a, b) { return a - b });
+	pixY.sort(function(a, b) { return a - b });
+	var n = pixX.length - 1;
+	var newWidth = 1 + pixX[n] - pixX[0];
+	var newHeight = 1 + pixY[n] - pixY[0];
+	newCanvas.width = newWidth;
+	newCanvas.height = newHeight;
+	newContext.putImageData(oldCanvas.getContext('2d').getImageData(pixX[0], pixY[0], newWidth, newHeight), 0, 0);
+	return newCanvas;
+}
 /*
 shoutout to https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion for providing the hsl-rgb conversion algorithms
 */
@@ -854,7 +879,7 @@ function writeText(textObject, targetContext) {
 	if (rawText.toLowerCase().includes('{cardname}')) {
 		rawText = rawText.replace(/{cardname}/ig, getCardName());
 	}
-	var splitText = rawText.replace(/\n/g, '{line}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+	var splitText = rawText.replace(/\n/g, '{line}').replace(/{divider}/g, '{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	if (textObject.vertical) {
 		newSplitText = [];
@@ -1682,7 +1707,9 @@ function drawCard() {
 		cardContext.drawImage(planeswalkerPostFrameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	} else if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
 		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	} // REMOVE/DELETE ME AFTER A FEW WEEKS
+	} else if (card.version.includes('QRCode') && typeof qrCodeCanvas !== "undefined") {
+		cardContext.drawImage(qrCodeCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	} // REMOVE/DELETE PLANESWALKERCANVAS AFTER A FEW WEEKS
 	// guidelines
 	if (document.querySelector('#show-guidelines').checked) {
 		cardContext.drawImage(guidelinesCanvas, scaleX(card.marginX) / 2, scaleY(card.marginY) / 2, cardCanvas.width, cardCanvas.height);
