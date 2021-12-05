@@ -1391,7 +1391,7 @@ function artFromScryfall(scryfallResponse) {
 	artIndex.innerHTML = null;
 	var optionIndex = 0;
 	scryfallResponse.forEach(card => {
-		if (card.image_uris && (card.object == 'card' || card.type_line != 'Card')) {
+		if (card.image_uris && (card.object == 'card' || card.type_line != 'Card') && card.artist) {
 			scryfallArt.push(card);
 			var option = document.createElement('option');
 			option.innerHTML = `${card.name} (${card.set.toUpperCase()} - ${card.artist})`;
