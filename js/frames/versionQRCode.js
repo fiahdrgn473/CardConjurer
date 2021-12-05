@@ -23,6 +23,19 @@ if (!loadedVersions.includes('/js/frames/versionQRCode.js')) {
 		<h5 class='padding margin-bottom input-description'>Enter the URL of your decklist:</h5>
 		<input id='qr-code-url' class='input' type='URL' oninput='updateQRCode(this.value);'>
 	</div>
+	<!--<div class='readable-background padding'>
+		<h5 class='padding margin-bottom input-description'>Select the QR code color:</h5>
+		<select id='dungeon-color' class='input' onchange='dungeonEditedBuffer();'>
+			<option value="#fff" selected="selected">True White</option>
+			<option value="W">White</option>
+			<option value="U">Blue</option>
+			<option value="B">Black</option>
+			<option value="R">Red</option>
+			<option value="G">Green</option>
+			<option value="M">Multicolored</option>
+			<option value="C">Colorless</option>
+		</select>
+	</div>-->
 	`;
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	loadScript('/js/qrious.min.js');
