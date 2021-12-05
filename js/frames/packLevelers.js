@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/levelers/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/levelers/regular/text.svg', name:'Rules'}, {src:'/img/frames/levelers/regular/pt.svg', name:'Boxes'}, {src:'/img/frames/levelers/regular/frame.svg', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
-// var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
+var masks = [{src:'/img/frames/levelers/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/levelers/regular/text.svg', name:'Rules'}, {src:'/img/frames/levelers/regular/rulesTop.svg', name:'Rules (Top)'}, {src:'/img/frames/levelers/regular/rulesMid.svg', name:'Rules (Middle)'}, {src:'/img/frames/levelers/regular/rulesBottom.svg', name:'Rules (Bottom)'}, {src:'/img/frames/levelers/regular/levelMid.svg', name:'Level (Middle)'}, {src:'/img/frames/levelers/regular/levelBottom.svg', name:'Level (Bottom)'}, {src:'/img/frames/levelers/regular/frame.svg', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks2 = [{src:'/img/frames/levelers/regular/pt/top.svg', name:'PT (Top)'}, {src:'/img/frames/levelers/regular/pt/mid.svg', name:'PT (Middle)'}, {src:'/img/frames/levelers/regular/pt/bottom.svg', name:'PT (Bottom)'}];
+var bounds = {x:0.7574, y:0.6415, width:0.188, height:0.2667};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/levelers/regular/w.png', masks:masks},
@@ -10,7 +11,15 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/levelers/regular/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/levelers/regular/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/levelers/regular/a.png', masks:masks},
-	{name:'Vehicle Frame', src:'/img/frames/levelers/regular/v.png', masks:masks}
+	{name:'Vehicle Frame', src:'/img/frames/levelers/regular/v.png', masks:masks},
+	{name:'White PT', src:'/img/frames/levelers/regular/pt/w.png', bounds:bounds, masks:masks2},
+	{name:'Blue PT', src:'/img/frames/levelers/regular/pt/u.png', bounds:bounds, masks:masks2},
+	{name:'Black PT', src:'/img/frames/levelers/regular/pt/b.png', bounds:bounds, masks:masks2},
+	{name:'Red PT', src:'/img/frames/levelers/regular/pt/r.png', bounds:bounds, masks:masks2},
+	{name:'Green PT', src:'/img/frames/levelers/regular/pt/g.png', bounds:bounds, masks:masks2},
+	{name:'Multicolored PT', src:'/img/frames/levelers/regular/pt/m.png', bounds:bounds, masks:masks2},
+	{name:'Artifact PT', src:'/img/frames/levelers/regular/pt/a.png', bounds:bounds, masks:masks2},
+	{name:'Vehicle PT', src:'/img/frames/levelers/regular/pt/v.png', bounds:bounds, masks:masks2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
