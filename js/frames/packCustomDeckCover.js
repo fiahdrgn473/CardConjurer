@@ -34,8 +34,8 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	resetWatermark();
 	//text
 	loadTextOptions({
-		title: {name:'Title', text:'', x:0.0474, y:0.0234, width:0.9054, height:0.0534, oneLine:true, font:'beleren', size:0.0534, color:'white', align:'center', shadowX:0.0027, shadowY:0.002},
-		notes: {name:'Description', text:'', x:0.69, y:0.7358, width:0.27, height:0.18, font:'beleren', size:0.0362, color:'white', align:'center', shadowX:0.002, shadowY:0.0015}
+		title: {name:'Title', text:'', x:0.0474, y:0.0234, width:0.9054, height:0.0534, oneLine:true, font:'belerenb', size:0.0534, color:'white', align:'center', shadowX:0.0027, shadowY:0.002},
+		notes: {name:'Description', text:'', x:0.69, y:0.7358, width:0.27, height:0.18, font:'belerenb', size:0.0362, color:'white', align:'center', shadowX:0.002, shadowY:0.0015}
 	});
 	//bottom info
 	await loadBottomInfo({
