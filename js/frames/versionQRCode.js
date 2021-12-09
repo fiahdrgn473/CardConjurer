@@ -54,7 +54,9 @@ function updateQRCode(url = card.qrCode.url) {
 		value: url
 	});
 	//draw cropped qr code to correct location
-	qrCodeCanvas.getContext('2d').drawImage(croppedCanvas(qriousCanvas), scaleWidth(card.qrCode.x), scaleHeight(card.qrCode.y), scaleHeight(card.qrCode.size), scaleHeight(card.qrCode.size));
+	var qrCodeContext = qrCodeCanvas.getContext('2d');
+	qrCodeContext.clearRect(0, 0, qrCodeCanvas.width, qrCodeCanvas.height);
+	qrCodeContext.drawImage(croppedCanvas(qriousCanvas), scaleWidth(card.qrCode.x), scaleHeight(card.qrCode.y), scaleHeight(card.qrCode.size), scaleHeight(card.qrCode.size));
 	//draw the card
 	drawCard();
 }
