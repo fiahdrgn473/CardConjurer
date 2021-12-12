@@ -439,7 +439,7 @@ include('../globalHTML/header-1.php');
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Select watermark colors (left, right)</h5>
 							<div class='input-grid margin-bottom'>
-								<select class='input' id='watermark-left' onchange='watermarkEdited();'>
+								<select class='input' id='watermark-left' onchange='watermarkLeftColor(this.value);'>
 									<option value="none">None</option>
 					                <option value="default">Actual Image</option>
 					                <option value="#b79d58" selected="selected">White</option>
@@ -453,7 +453,7 @@ include('../globalHTML/header-1.php');
 					                <option value="#ffffff">True White</option>
 					                <option value="#000000">True Black</option>
 								</select>
-								<select class='input' id='watermark-right' onchange='watermarkEdited();'>
+								<select class='input' id='watermark-right' onchange='watermarkRightColor(this.value);'>
 									<option value="none" selected="selected">None</option>
 					                <option value="default">Actual Image</option>
 					                <option value="#b79d58">White</option>
@@ -467,6 +467,11 @@ include('../globalHTML/header-1.php');
 					                <option value="#ffffff">True White</option>
 					                <option value="#000000">True Black</option>
 								</select>
+							</div>
+							<h5 class='margin-bottom padding input-description'>Or choose them manually (left, right)</h5>
+							<div class='input-grid margin-bottom'>
+								<input class='input' type='color' placeholder='Color' value='#000000' onchange='watermarkLeftColor(this.value);'>
+								<input class='input' type='color' placeholder='Color' value='#000000' onchange='watermarkRightColor(this.value);'>
 							</div>
 							<h5 class='margin-bottom padding input-description'>And enter an opacity</h5>
 							<div class='input-grid margin-bottom'>
@@ -499,6 +504,13 @@ include('../globalHTML/header-1.php');
 								<input id='info-language' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Language' value='EN'>
 								<input id='info-artist' type='text' class='input' oninput='artistEdited(this.value);' placeholder='Artist'>
 							</div>
+						</div>
+						<div class='readable-background padding margin-bottom'>
+							<h5 class='input-description margin-bottom'>Enable importing collector information</h5>
+							<label class='checkbox-container input margin-bottom'>Enable imports
+								<input id='enableImportCollectorInfo' type='checkbox' onchange='enableImportCollectorInfo();'>
+								<span class='checkmark'></span>
+							</label>
 						</div>
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='input-description padding margin-bottom'>Toggle between star (seen on foils) and dot (seen on regular cards)</h5>

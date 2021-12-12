@@ -1563,13 +1563,24 @@ function uploadWatermark(imageSource, otherParams) {
 		};
 	}
 }
+function watermarkLeftColor(c) {
+	card.watermarkLeft = c;
+	watermarkEdited();
+}
+function watermarkRightColor(c) {
+	card.watermarkRight = c;
+	watermarkEdited();
+}
 function watermarkEdited() {
 	card.watermarkSource = watermark.src;
 	card.watermarkX = document.querySelector('#watermark-x').value / card.width;
 	card.watermarkY = document.querySelector('#watermark-y').value / card.height;
 	card.watermarkZoom = document.querySelector('#watermark-zoom').value / 100;
-	card.watermarkLeft = document.querySelector('#watermark-left').value;
-	card.watermarkRight =  document.querySelector('#watermark-right').value;
+	if (card.watermarkLeft == "none" && document.querySelector('#watermark-left').value != "none") {
+		card.watermarkLeft = document.querySelector('#watermark-left').value;
+	}
+	// card.watermarkLeft = document.querySelector('#watermark-left').value;
+	// card.watermarkRight =  document.querySelector('#watermark-right').value;
 	card.watermarkOpacity = document.querySelector('#watermark-opacity').value / 100;
 	watermarkContext.globalCompositeOperation = 'source-over';
 	watermarkContext.globalAlpha = 1;
@@ -1671,6 +1682,9 @@ function toggleStarDot() {
 	}
 	defaultCollector.starDot = !defaultCollector.starDot;
 	bottomInfoEdited();
+}
+function enableImportCollectorInfo() {
+	localStorage.setItem('enableImportCollectorInfo', document.querySelector('#enableImportCollectorInfo').checked);
 }
 function removeDefaultCollector() {
 	defaultCollector = {}; //{number: year, rarity:'P', setCode:'MTG', lang:'EN', starDot:false};
@@ -1794,13 +1808,15 @@ function importCard(cardObject) {
 function changeCardIndex() {
 	var cardToImport = scryfallCard[document.querySelector('#import-index').value];
 	//text
-	if (card.text.title) {card.text.title.text = curlyQuotes(cardToImport.name || '');}
+	var langFontCode = "";
+	if (cardToImport.lang == "ph") {langFontCode = "{fontphyrexian}"}
+	if (card.text.title) {card.text.title.text = langFontCode + curlyQuotes(cardToImport.name || '');}
 	if (card.text.nickname) {card.text.nickname.text = cardToImport.flavor_name || '';}
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
-	if (card.text.type) {card.text.type.text = cardToImport.type_line || '';}
+	if (card.text.type) {card.text.type.text = langFontCode + cardToImport.type_line || '';}
 	if (card.text.rules) {
 		var rulesText = curlyQuotes((cardToImport.oracle_text || '').replace('(', '{i}(').replace(')', '){/i}')).replace(/{Q}/g, '{untap}').replace(/• /g, '• {indent}');
-		card.text.rules.text = rulesText;
+		card.text.rules.text = langFontCode + rulesText;
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
 			var flavorTextCounter = 1;
@@ -1850,6 +1866,29 @@ function changeCardIndex() {
 	}
 	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 	textEdited();
+	//collector's info
+	if (localStorage.getItem('enableImportCollectorInfo') == 'true') {
+		document.querySelector('#info-number').value = cardToImport.collector_number || "";
+		document.querySelector('#info-rarity').value = (cardToImport.rarity || "")[0].toUpperCase();
+		document.querySelector('#info-set').value = (cardToImport.set || "").toUpperCase();
+		document.querySelector('#info-language').value = (cardToImport.lang || "").toUpperCase();
+		var setXhttp = new XMLHttpRequest();
+		setXhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var setObject = JSON.parse(this.responseText)
+				if (setObject.printed_size) {
+					document.querySelector('#info-number').value += "/" + setObject.printed_size;
+					bottomInfoEdited();
+				}
+			}
+		}
+		setXhttp.open('GET', "https://api.scryfall.com/sets/" + cardToImport.set, true);
+		try {
+			setXhttp.send();
+		} catch {
+			console.log('Scryfall API search failed.')
+		}
+	}
 	//art
 	document.querySelector('#art-name').value = cardToImport.name;
 	fetchScryfallData(cardToImport.name, artFromScryfall, true);
@@ -1942,8 +1981,8 @@ async function loadCard(selectedCardKey) {
 		document.querySelector('#watermark-x').value = scaleX(card.watermarkX) - scaleWidth(card.marginX);
 		document.querySelector('#watermark-y').value = scaleY(card.watermarkY) - scaleHeight(card.marginY);
 		document.querySelector('#watermark-zoom').value = card.watermarkZoom * 100;
-		document.querySelector('#watermark-left').value = card.watermarkLeft;
-		document.querySelector('#watermark-right').value = card.watermarkRight;
+		// document.querySelector('#watermark-left').value = card.watermarkLeft;
+		// document.querySelector('#watermark-right').value = card.watermarkRight;
 		document.querySelector('#watermark-opacity').value = card.watermarkOpacity * 100;
 		uploadWatermark(card.watermarkSource);
 		card.frames.reverse();
@@ -2218,6 +2257,11 @@ if ('number' in defaultCollector) {
 	if (defaultCollector.starDot) {setTimeout(function(){defaultCollector.starDot = false; toggleStarDot();}, 500);}
 } else {
 	document.querySelector('#info-number').value = date.getFullYear();
+}
+if (!localStorage.getItem('enableImportCollectorInfo')) {
+	localStorage.setItem('enableImportCollectorInfo', 'false');
+} else {
+	document.querySelector('#enableImportCollectorInfo').checked = (localStorage.getItem('enableImportCollectorInfo') == 'true');
 }
 
 // lock set symbol code (user defaults)
