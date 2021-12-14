@@ -20,7 +20,7 @@ include('../globalHTML/header-1.php');
 				<br><br>We are neither affiliated with, sponsored by, nor endorsed by Legend Story Studios. Fonts, icons, card images, and other related images are trademarks and copyrights of Legend Story Studios.
 				<br><br>We are neither affiliated with, sponsored by, nor endorsed by Scryfall LLC.
 				<br><br>All user-uploaded material is property of the original artist, and it is the user's responsibility to ensure that these materials are properly credited.
-				<br><br>Some card frame images, or elements used therein, were sourced from <a target="_blank" href="https://www.reddit.com/user/Chilli_Axe/">Chilli_Axe</a>, Kentu, thevodkaboy, Timmy XD69, noSpace, <a target='blank' href='https://twitter.com/sheepycutie'>Sheepwave</a>, <a target='blank' href='https://twitter.com/feuer_ameise'>FeuerAmeise</a>, <a target='blank' href='https://www.reddit.com/user/Smyris'>Smyris</a>, <a target='blank' href='https://twitter.com/vote_checkbox'>Checkbox</a> and TheGnomeRobotic.
+				<br><br>Some card frame images, or elements used therein, were sourced from <a target="_blank" href="https://www.reddit.com/user/Chilli_Axe/">Chilli_Axe</a>, Kentu, thevodkaboy, Timmy XD69, <a target='blank' href='https://twitter.com/sheepycutie'>Sheepwave</a>, <a target='blank' href='https://twitter.com/feuer_ameise'>FeuerAmeise</a>, <a target='blank' href='https://www.reddit.com/user/Smyris'>Smyris</a>, <a target='blank' href='https://twitter.com/vote_checkbox'>Checkbox</a> and TheGnomeRobotic.
 				<br><br>All other content Copyright © 2020 Card Conjurer.
 			</h5>
 		</div>
