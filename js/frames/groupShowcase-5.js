@@ -33,6 +33,7 @@ loadFramePacks([
 	{name:'Kaladesh Inventions', value:'Invention'},
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ-1'},
 	{name:'SDCC15 (Blackout)', value:'SDCC15'},
+	{name:'Future Shifted', value:'FutureRegular'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
