@@ -8,27 +8,39 @@ include('../globalHTML/header-1.php');
 		<h4 class='center padding margin-bottom'>Configure Page Settings</h4>
 		<h5 class='margin-bottom padding input-description'>Select your paper size</h5>
 		<select onchange='setPageSize(this.value.split(","));' class='input margin-bottom'>
-			<option value='8.5,11'>Regular (8.5 by 11)</option>
+			<option value='8.5,11'>Letter (8.5 by 11)</option>
 			<option value='8.2667,11.6934'>A4</option>
 		</select>
-        <h5 class='margin-bottom padding input-description'>Select your card size</h5>
-        <select onchange='setCardSize(this.value.split(","));' class='input margin-bottom'>
-            <option value='2.5,3.5'>2.5 x 3.5 Inches</option>
-            <option value='2.74,3.74'>2.74 x 3.74 Inches</option>
-            <option value='2.75,3.75'>2.75 x 3.75 Inches</option>
-            <option value='2.48031,3.46457'>63 x 88 mm</option>
-        </select>
         <h5 class='margin-bottom padding input-description'>Toggle the paper orientation (Portrait / Landscape)</h5>
         <button onclick='changeOrientation();' class='input margin-bottom'>Toggle orientation</button>
-        <h5 class='margin-bottom padding input-description'>Include cutting aids (black background and centerlines)</h5>
-        <label class='checkbox-container input'>Cutting aids
-            <input id='cuttingAids' type='checkbox' onchange='drawSheet();'>
+        <h5 class='margin-bottom padding input-description'>Select a default card size</h5>
+        <select onchange='setCardSize(this.value.split(","));' class='input margin-bottom'>
+            <option value='2.5,3.5'>2.5 x 3.5 Inches</option>
+            <option value='2.48031,3.46457'>63 x 88 mm</option>
+        </select>
+        <h5 class='margin-bottom padding input-description'>Or enter your own card size</h5>
+        <div class='margin-bottom split-grid'>
+            <input type='number' id='cardWidth' class='input' value='1500' onchange='setCardSize();'>
+            <input type='number' id='cardHeight' class='input' value='2100' onchange='setCardSize();'>
+        </div>
+        <h5 class='margin-bottom padding input-description'>Enter your bleed edge thickness (in pixels)</h5>
+        <input type='number' id='cardPadding' class='input margin-bottom' value='0' min='0' onchange='setPaddingSize(this.value);'>
+		<h5 class='margin-bottom padding input-description'>Enter the distance between cards (in pixels)</h5>
+        <input type='number' id='cardMargin' class='input margin-bottom' value='30' min='0' onchange='setMarginSize(this.value);'>
+        <h5 class='margin-bottom padding input-description'>Set PPI (pixels per inch)</h5>
+        <input type='number' id='cardPPI' class='input margin-bottom' value='600' min='1' max='2400' onchange='setPPI(this.value);'>
+        <h5 class='margin-bottom padding input-description'>Include cutting aids (colored marks to help guide cuts)</h5>
+        <label class='checkbox-container input margin-bottom'>Cutting aids
+            <input id='cuttingAidsCheckbox' type='checkbox' onchange='setCuttingAids(this.checked);'>
             <span class='checkmark'></span>
         </label>
-		<h5 class='margin-bottom padding input-description'>Set the distance between cards (in pixels)</h5>
-        <input type='number' id='cardMargin' class='input margin-bottom' value='60' min='0' max='100' onchange='setCardDistance(this.value);'>
-        <h5 class='margin-bottom padding input-description'>Set PPI (pixels per inch; only relevant when exporting as a PNG)</h5>
-        <input type='number' id='cardPPI' class='input margin-bottom' value='600' min='1' max='2400' onchange='setPPI(this.value);'>
+        <h5 class='margin-bottom padding input-description'>Images already include bleed edge</h5>
+        <label class='checkbox-container input margin-bottom'>Bleed edge included
+            <input id='bleedEdgeCheckbox' type='checkbox' onchange='setBleedEdge(this.checked);' checked>
+            <span class='checkmark'></span>
+        </label>
+        <h5 class='margin-bottom padding input-description'>Save your current configurations as default</h5>
+        <button onclick='saveDefaults();' class='input margin-bottom'>Save configuration</button>
 	</div>
     <div class="layer">
         <div class='padding margin-bottom readable-background drop-area'>
@@ -40,7 +52,7 @@ include('../globalHTML/header-1.php');
         <canvas style='height: auto; max-width:850px; width: 100%; background: #fff;'></canvas>
     </div>
     <div class='readable-background padding layer margin-bottom-large'>
-		<h3 class='download padding' onclick='downloadSheet();'>Download your Sheet (PNG)</h3>
+		<h3 class='download padding' onclick='downloadCanvas();'>Download your Sheet (PNG)</h3>
 		<h4 class='padding center'>(Can take a few seconds)</h4>
 	</div>
 	<div class='readable-background padding layer margin-bottom-large'>
