@@ -90,6 +90,11 @@ async function uploadFiles(filesRaw, destination, otherParams = '') {
 	})
 }
 
+//Collapsible elements
+function toggleCollapse(event) {
+	event.target.closest('.collapsible').classList.toggle('collapsed');
+}
+
 //Input same value still enters
 const urlInputs = Array.from(document.querySelectorAll('input[type=url]'));
 urlInputs.forEach(element => {
