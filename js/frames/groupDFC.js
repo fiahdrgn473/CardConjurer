@@ -6,6 +6,8 @@ loadFramePacks([
 	{name:'Other Frames', value:'disabled'},
 	{name:'Borderless (Front)', value:'TransformBorderlessFront'},
 	{name:'Borderless (Back)', value:'TransformBorderlessBack'},
+	{name:'Extended Art (Front)', value:'TransformExtendedFront'},
+	{name:'Extended Art (Back)', value:'TransformExtendedBack'},
 	{name:'SDCC15 (Blackout)', value:'TransformSDCC15'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'TransformLegendCrowns'},
