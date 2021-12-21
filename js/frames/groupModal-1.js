@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Regular', value:'ModalRegular'},
 	{name:'Borderless', value:'ModalBorderless'},
+	{name:'Extended Art', value:'ModalExtended'},
 	{name:'Nickname', value:'ModalNickname'},
 	{name:'Short', value:'ModalShort'},
 	{name:'Short-Nickname', value:'ModalShortNickname'},
