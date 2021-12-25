@@ -15,6 +15,7 @@ availableFrames = [
 	{name:'Black Land Frame', src:'/img/frames/old/abu/bl.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/old/abu/rl.png', masks:masks},
 	{name:'Green Land Frame', src:'/img/frames/old/abu/gl.png', masks:masks},
+	{name:'Pure Black Border', src:'/img/black.png', masks:masks2, noDefaultMask:true},
 	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
 	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true}
