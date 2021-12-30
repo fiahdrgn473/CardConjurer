@@ -20,6 +20,10 @@
 	src: url("/fonts/matrix-b.ttf");
 }
 @font-face {
+	font-family: matrixbsc;
+	src: url("/fonts/Matrix Bold Small Caps.ttf");
+}
+@font-face {
 	font-family: mplantin;
 	src: url("/fonts/mplantin.ttf");
 }

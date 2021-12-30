@@ -1026,6 +1026,15 @@ function writeText(textObject, targetContext) {
 					textJustify = 'center';
 				} else if (possibleCode == 'justify-right') {
 					textJustify = 'right';
+				} else if (possibleCode.includes('conditionalcolor')) {
+					var codeParams = possibleCode.split(":");
+					for (var eligibleFrame of codeParams[1].split(",")) {
+						eligibleFrame = eligibleFrame.replace(/_/g, " ");
+						if (card.frames.findIndex(element => element.name.toLowerCase().includes(eligibleFrame)) != -1) {
+							textColor = codeParams[2];
+							lineContext.fillStyle = textColor;
+						}
+					}
 				} else if (possibleCode.includes('fontcolor')) {
 					textColor = possibleCode.replace('fontcolor', '');
 					lineContext.fillStyle = textColor;
