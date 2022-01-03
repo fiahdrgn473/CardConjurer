@@ -627,11 +627,9 @@ include('../globalHTML/header-1.php');
 				<h4>Aurelian M.</h4>
 				<h4>The Bell-Horwaths</h4>
 				<h4>Swimmaf</h4>
-				<h4>Gwynayne W.</h4>
 				<h4>Cesar P.</h4>
 				<h4>Bradley C.</h4>
 				<h4>Endiron</h4>
-				<h4>Guillaume D.</h4>
 				<h4>Beezchurgr</h4>
 				<h4>John C.</h4>
 				<h4>Michael J.</h4>
@@ -651,7 +649,6 @@ include('../globalHTML/header-1.php');
 				<h4>James M.</h4>
 				<h4>Britton N.</h4>
 				<h4>Westane</h4>
-				<h4>MoldyAce</h4>
 				<h4>Kerby</h4>
 				<h4>Taya</h4>
 				<h4>Ayah N.</h4>
@@ -686,6 +683,9 @@ include('../globalHTML/header-1.php');
 				<h4>Joel T.</h4>
 				<h4>Geoffrey T.</h4>
 				<h4>Jimmy M.</h4>
+				<h4>Gwynayne W.</h4>
+				<h4>Guillaume D.</h4>
+				<h4>MoldyAce</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
