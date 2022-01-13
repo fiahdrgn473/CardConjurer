@@ -876,6 +876,9 @@ function writeText(textObject, targetContext) {
 	if (rawText.toLowerCase().includes('{cardname}')) {
 		rawText = rawText.replace(/{cardname}/ig, getCardName());
 	}
+	if (document.querySelector('#info-artist').value == '') {
+		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
+	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{divider}/g, '{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	if (textObject.vertical) {
