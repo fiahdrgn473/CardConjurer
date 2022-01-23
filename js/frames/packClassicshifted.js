@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}, {src:'/img/frames/custom/classicshifted/pinline.svg', name:'Pinline'}, {src:'/img/frames/custom/classicshifted/dual.svg', name:'Dual Land Pinline'}];
+var masks2 = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {src:'/img/frames/m15/m15MaskBorderSliverCrown.png', name:'Border (With Crown)'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Full Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:0.026, y:0.0129, width:0.948, height:0.1015};
 var bounds3 = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
@@ -29,7 +30,10 @@ availableFrames = [
 	{name:'Multicolored Crown', src:'/img/frames/custom/classicshifted/cm.png', bounds:bounds2},
 	{name:'Artifact Crown', src:'/img/frames/custom/classicshifted/ca.png', bounds:bounds2},
 	{name:'Land Crown', src:'/img/frames/custom/classicshifted/cl.png', bounds:bounds2},
-	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'}
+	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'},
+	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
+	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
