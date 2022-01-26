@@ -102,6 +102,17 @@ function planeswalkerEdited() {
 	 	if (height > 0) {
 	 		card.planeswalker.count ++;
 	 	}
+	 	if (document.querySelector('#planeswalker-cost-' + i).value == "") {
+	 		if (!card.planeswalker.orig_ability_textbox_x) {
+		 		card.planeswalker.orig_ability_textbox_x = card.text['ability' + i].x;
+		 		card.planeswalker.orig_ability_textbox_width = card.text['ability' + i].width;
+	 		}
+	 		card.text['ability' + i].x = card.planeswalker.orig_ability_textbox_x - 0.044;
+	 		card.text['ability' + i].width = card.planeswalker.orig_ability_textbox_width + 0.044;
+	 	} else if (card.planeswalker.orig_ability_textbox_x) {
+	 		card.text['ability' + i].x = card.planeswalker.orig_ability_textbox_x;
+	 		card.text['ability' + i].width = card.planeswalker.orig_ability_textbox_width;
+	 	}
 	 	card.text['ability' + i].height = height;
 	 	lastY += height;
 	}
