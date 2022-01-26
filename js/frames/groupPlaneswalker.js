@@ -4,6 +4,8 @@ loadFramePacks([
 	{name:'Extended Art', value:'PlaneswalkerBoxTopper'},
 	{name:'Tall', value:'PlaneswalkerTall'},
 	{name:'Tall Borderless', value:'PlaneswalkerTallBorderless'},
+	{name:'Addons', value:'disabled'},
+	{name:'Holo Stamps', value:'PlaneswalkerHoloStamps'},
 	{name:'Special Frames', value:'disabled'},
 	{name:'Nickname', value:'PlaneswalkerNickname'},
 	{name:'Blackout (SDCC15)', value:'PlaneswalkerSDCC15'},
