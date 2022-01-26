@@ -1855,7 +1855,7 @@ function changeCardIndex() {
 			if (planeswalkerAbilities[i]) {
 				var planeswalkerAbility = planeswalkerAbilities[i].replace(': ', 'splitstring').split('splitstring');
 				if (!planeswalkerAbility[1]) {
-					planeswalkerAbility = ['', '{permashift' + scaleWidth(-0.04) + ',0}' + planeswalkerAbility[0]];
+					planeswalkerAbility = ['', planeswalkerAbility[0]];
 				}
 				card.text['ability' + i].text = planeswalkerAbility[1].replace('(', '{i}(').replace(')', '){/i}');
 				if (card.version == 'planeswalkerTall') {
