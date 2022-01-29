@@ -2,7 +2,7 @@
 if (!card.manaSymbols.includes('/js/frames/manaSymbolsCartoony.js')) {
 	card.manaSymbols.push('/js/frames/manaSymbolsCartoony.js');
 }
-if (findManaSymbolIndex('cw') == -1) {
+if (!mana.get('cw')) {
 	loadManaSymbols([
 		['cartoony/cw.png', 'cw', 4], ['cartoony/cu.png', 'cu', 4], ['cartoony/cb.png', 'cb', 4], ['cartoony/cr.png', 'cr', 4], ['cartoony/cg.png', 'cg', 4],
 		['cartoony/c0.png', 'cc', 15], ['cartoony/c1.png', 'cc', 15], ['cartoony/c2.png', 'cc', 15], ['cartoony/c3.png', 'cc', 15], ['cartoony/c4.png', 'cc', 15],

@@ -250,9 +250,12 @@ function dragOver(event, drag=true) {
 	}
 }
 //Mana Symbols
-var manaSymbols = [];
-loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple']);
-loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p'], [1.2, 1.2]);
+const mana = new Map();
+// var manaSymbols = [];
+loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple']);
+loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p',
+				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup'], [1.2, 1.2]);
 loadManaSymbols(['bar.png', 'whitebar.png']);
 loadManaSymbols(['chaos'], [1.2, 1]);
 loadManaSymbols(['planeswalker'], [0.6, 1.2]);
@@ -287,11 +290,15 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 			manaSymbolPath += '.svg';
 		}
 		manaSymbol.image.src = fixUri(manaSymbolPath);
-		manaSymbols.push(manaSymbol);
+		mana.set(manaSymbol.name, manaSymbol);
+		// manaSymbols.push(manaSymbol);
 	});
 }
 function findManaSymbolIndex(string) {
-	return manaSymbols.findIndex(element => element.name == string);
+	return mana.get(key) || -1;
+}
+function getManaSymbol(key) {
+	return mana.get(key);
 }
 //FRAME TAB
 function drawFrames() {
@@ -997,7 +1004,7 @@ function writeText(textObject, targetContext) {
 						newLineSpacing = textSize * -0.23;
 						textSize -= scaleHeight(0.0086);
 					}
-					lineContext.drawImage(manaSymbols[findManaSymbolIndex(barImageName)].image, canvasMargin + (textWidth - barWidth) / 2, canvasMargin + barDistance * textSize, barWidth, barHeight);
+					lineContext.drawImage(getManaSymbol(barImageName).image, canvasMargin + (textWidth - barWidth) / 2, canvasMargin + barDistance * textSize, barWidth, barHeight);
 				} else if (possibleCode == 'i') {
 					if (textFont == 'mplantin') {
 						textFontExtension = 'i';
@@ -1061,7 +1068,7 @@ function writeText(textObject, targetContext) {
 					lineContext.lineWidth = textOutlineWidth;
 				} else if (possibleCode.includes('upinline')) {
 					lineY -= parseInt(possibleCode.replace('upinline', '')) || 0;
-				} else if (possibleCode.includes('up') && possibleCode != 'up') {
+				} else if (possibleCode.substring(0, 2) == 'up' && possibleCode != 'up') {
 					currentY -= parseInt(possibleCode.replace('up', '')) || 0;
 				} else if (possibleCode.includes('down')) {
 					currentY += parseInt(possibleCode.replace('down', '')) || 0;
@@ -1090,7 +1097,7 @@ function writeText(textObject, targetContext) {
 					}
 				} else if (possibleCode == 'planechase') {
 					var planechaseHeight = textSize * 1.8;
-					lineContext.drawImage(manaSymbols[findManaSymbolIndex('chaos')].image, currentX + canvasMargin, canvasMargin, planechaseHeight * 1.2, planechaseHeight);
+					lineContext.drawImage(getManaSymbol('chaos').image, currentX + canvasMargin, canvasMargin, planechaseHeight * 1.2, planechaseHeight);
 					currentX += planechaseHeight * 1.3;
 					startingCurrentX += planechaseHeight * 1.3;
 				} else if (possibleCode == 'indent') {
@@ -1139,13 +1146,13 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode.includes('kerning')) {
 					lineCanvas.style.letterSpacing = possibleCode.replace('kerning', '') + 'px';
 					lineContext.font = lineContext.font; //necessary for the letterspacing update to be recognized
-				} else if (findManaSymbolIndex(possibleCode.replace('/', '')) > -1 || findManaSymbolIndex(possibleCode.replace('/', '').split('').reverse().join('')) > -1) {
+				} else if (getManaSymbol(possibleCode.replace('/', '')) != undefined || getManaSymbol(possibleCode.replace('/', '').split('').reverse().join('')) != undefined) {
 					possibleCode = possibleCode.replace('/', '')
 					var manaSymbol;
-					if (textObject.manaPrefix && (findManaSymbolIndex(textObject.manaPrefix + possibleCode) != -1 || findManaSymbolIndex(textObject.manaPrefix + possibleCode.split('').reverse().join('')) != -1)) {
-						manaSymbol = manaSymbols[findManaSymbolIndex(textObject.manaPrefix + possibleCode)] || manaSymbols[findManaSymbolIndex(textObject.manaPrefix + possibleCode.split('').reverse().join(''))];
+					if (textObject.manaPrefix && (getManaSymbol(textObject.manaPrefix + possibleCode) != undefined || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join('')) != undefined)) {
+						manaSymbol = getManaSymbol(textObject.manaPrefix + possibleCode) || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join(''));
 					} else {
-						manaSymbol = manaSymbols[findManaSymbolIndex(possibleCode)] || manaSymbols[findManaSymbolIndex(possibleCode.split('').reverse().join(''))];
+						manaSymbol = getManaSymbol(possibleCode) || getManaSymbol(possibleCode.split('').reverse().join(''));
 					}
 					var manaSymbolSpacing = textSize * 0.04 + textManaSpacing;
 					var manaSymbolWidth = manaSymbol.width * textSize * 0.78;
@@ -1189,7 +1196,7 @@ function writeText(textObject, targetContext) {
 					fakeShadowContext.clearRect(0, 0, fakeShadow.width, fakeShadow.height);
 					var backImage = null;
 					if (manaSymbol.backs) {
-						backImage = manaSymbols[findManaSymbolIndex('back' + Math.floor(Math.random() * manaSymbol.backs) + manaSymbol.back)].image;
+						backImage = getManaSymbol('back' + Math.floor(Math.random() * manaSymbol.backs) + manaSymbol.back).image;
 					}
 					if (textArcRadius > 0) {
 						if (manaSymbol.backs) {

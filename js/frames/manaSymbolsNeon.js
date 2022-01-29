@@ -2,7 +2,7 @@
 if (!card.manaSymbols.includes('/js/frames/manaSymbolsNeon.js')) {
 	card.manaSymbols.push('/js/frames/manaSymbolsNeon.js');
 }
-if (findManaSymbolIndex('neonw') == -1) {
+if (!mana.get('neonw')) {
 	loadManaSymbols([
 		'neon/neonw', 'neon/neonu', 'neon/neonb', 'neon/neonr', 'neon/neong',
 		'neon/neonc', 'neon/neonx', 'neon/neon0', 'neon/neon1',

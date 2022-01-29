@@ -2,7 +2,7 @@
 if (!card.manaSymbols.includes('/js/frames/manaSymbolsMysticalArchiveJP.js')) {
 	card.manaSymbols.push('/js/frames/manaSymbolsMysticalArchiveJP.js');
 }
-if (findManaSymbolIndex('majpw') == -1) {
+if (!mana.get('majpw')) {
 	loadManaSymbols([
 		'majp/majpw', 'majp/majpu', 'majp/majpb', 'majp/majpr', 'majp/majpg',
 		'majp/majpc', 'majp/majpx', 'majp/majp0', 'majp/majp1',
