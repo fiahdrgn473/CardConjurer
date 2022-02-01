@@ -246,6 +246,7 @@ include('../globalHTML/header-1.php');
 									<h5>{w}, {u}, {b}, {r}, {g}</h5><h5>Colored mana</h5>
 									<h5>{wu}, {wb}, {ub}... {2w}, {2u}...</h5><h5>Hybrid mana</h5>
 									<h5>{pw}, {pu}...</h5><h5>Phyrexian mana</h5>
+									<h5>{wup}, {wbp}, {ubp}...</h5><h5>Hybrid phyrexian mana</h5>
 									<h5>{t}, {untap}</h5><h5>Respective tapping-related symbol</h5>
 									<h5>{oldtap}, {originaltap}</h5><h5>Old tap symbols</h5>
 									<h5>{x}, {y}, {z}</h5><h5>Respective variable-related symbol</h5>
