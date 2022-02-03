@@ -655,7 +655,6 @@ include('../globalHTML/header-1.php');
 				<h4>Ayah N.</h4>
 				<h4>Aibis D.</h4>
 				<h4>Alex</h4>
-				<h4>J. Skene</h4>
 				<h4>Dominic F.</h4>
 				<h4>Brendan R.</h4>
 				<h4>SE</h4>
@@ -664,6 +663,8 @@ include('../globalHTML/header-1.php');
 				<h4>Damian Z.</h4>
 				<h4>Adjicio</h4>
 				<h4>Makoto Takahashi</h4>
+				<h4>Slamtown J.</h4>
+				<h4>Vincent G.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
@@ -695,6 +696,7 @@ include('../globalHTML/header-1.php');
 				<h4>MoldyAce</h4>
 				<h4>Fabien S.</h4>
 				<h4>Adam T.</h4>
+				<h4>J. Skene</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
