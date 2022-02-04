@@ -1218,6 +1218,7 @@ function writeText(textObject, targetContext) {
 					wordToWrite = word;
 				}
 			}
+			//if the word goes past the max line width, go to the next line
 			if (wordToWrite && lineContext.measureText(wordToWrite).width + currentX >= textWidth && textArcRadius == 0) {
 				if (textOneLine && startingTextSize > 1) {
 					//doesn't fit... try again at a smaller text size?
@@ -1226,6 +1227,7 @@ function writeText(textObject, targetContext) {
 				}
 				newLine = true;
 			}
+			//if we need a new line, go to the next line
 			if ((newLine && !textOneLine) || splitText.indexOf(word) == splitText.length - 1) {
 				var horizontalAdjust = 0
 				if (textAlign == 'center') {
@@ -1259,7 +1261,8 @@ function writeText(textObject, targetContext) {
 				newLineSpacing = (textObject.lineSpacing || 0) * textSize;
 				newLine = false;
 			}
-			if (wordToWrite && (currentX != 0 || wordToWrite != ' ') && !textManaCost) {
+			//if there's a word to write, it's not a space on a new line, and it's allowed to write words, then we write the word
+			if (wordToWrite && (currentX != startingCurrentX || wordToWrite != ' ') && !textManaCost) {
 				if (textArcRadius > 0) {
 					lineContext.fillTextArc(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY, textArcRadius, textArcStart, currentX, textOutlineWidth);
 				} else {
