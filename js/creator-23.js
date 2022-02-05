@@ -1152,6 +1152,7 @@ function writeText(textObject, targetContext) {
 					if (!possibleCode.includes("default") && textObject.manaPrefix && (getManaSymbol(textObject.manaPrefix + possibleCode) != undefined || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join('')) != undefined)) {
 						manaSymbol = getManaSymbol(textObject.manaPrefix + possibleCode) || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join(''));
 					} else {
+						possibleCode = possibleCode.replace("default", "");
 						manaSymbol = getManaSymbol(possibleCode) || getManaSymbol(possibleCode.split('').reverse().join(''));
 					}
 					var manaSymbolSpacing = textSize * 0.04 + textManaSpacing;
