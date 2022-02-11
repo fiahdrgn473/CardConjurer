@@ -20,14 +20,14 @@ availableFrames = [
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/fang/pt/m.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/fang/pt/a.png', bounds:bounds},
 	{name:'Land Power/Toughness', src:'/img/frames/m15/fang/pt/l.png', bounds:bounds},
-	{name:'White Power/Toughness', src:'/img/frames/m15/fang/crown/w.png', bounds:bounds2},
-	{name:'Blue Power/Toughness', src:'/img/frames/m15/fang/crown/u.png', bounds:bounds2},
-	{name:'Black Power/Toughness', src:'/img/frames/m15/fang/crown/b.png', bounds:bounds2},
-	{name:'Red Power/Toughness', src:'/img/frames/m15/fang/crown/r.png', bounds:bounds2},
-	{name:'Green Power/Toughness', src:'/img/frames/m15/fang/crown/g.png', bounds:bounds2},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/fang/crown/m.png', bounds:bounds2},
-	{name:'Artifact Power/Toughness', src:'/img/frames/m15/fang/crown/a.png', bounds:bounds2},
-	{name:'Land Power/Toughness', src:'/img/frames/m15/fang/crown/l.png', bounds:bounds2}
+	{name:'White Legend Crown', src:'/img/frames/m15/fang/crown/w.png', bounds:bounds2},
+	{name:'Blue Legend Crown', src:'/img/frames/m15/fang/crown/u.png', bounds:bounds2},
+	{name:'Black Legend Crown', src:'/img/frames/m15/fang/crown/b.png', bounds:bounds2},
+	{name:'Red Legend Crown', src:'/img/frames/m15/fang/crown/r.png', bounds:bounds2},
+	{name:'Green Legend Crown', src:'/img/frames/m15/fang/crown/g.png', bounds:bounds2},
+	{name:'Multicolored Legend Crown', src:'/img/frames/m15/fang/crown/m.png', bounds:bounds2},
+	{name:'Artifact Legend Crown', src:'/img/frames/m15/fang/crown/a.png', bounds:bounds2},
+	{name:'Land Legend Crown', src:'/img/frames/m15/fang/crown/l.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
@@ -57,7 +57,3 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 }
 //loads available frames
 loadFramePack();
-//Only for the main version as the webpage loads:
-if (!card.text) {
-	document.querySelector('#loadFrameVersion').click();
-}
