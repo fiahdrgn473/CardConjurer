@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Samurai (Neo)', value:'NeoSamurai'},
 	{name:'Neon (Neo)', value:'NeoNeon'},
 	{name:'Fang (VOW)', value:'Fang'},
 	{name:'Equinox (MID)', value:'Equinox'},
