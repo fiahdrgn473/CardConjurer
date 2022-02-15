@@ -1,7 +1,8 @@
 //Create objects for common properties across available frames
 //defines available frames
 availableFrames = [
-	{name:'Frame', src:'/img/frames/modal/helper/regular.png'}
+	{name:'Modal DFC', src:'/img/frames/modal/helper/regular.png'},
+	{name:'Transform DFC', src:'/img/frames/modal/helper/transform.png'}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

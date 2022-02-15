@@ -662,8 +662,9 @@ include('../globalHTML/header-1.php');
 				<h4>Damian Z.</h4>
 				<h4>Adjicio</h4>
 				<h4>Makoto Takahashi</h4>
+				<h4>Molta</h4>
 				<h4>Slamtown J.</h4>
-				<h4>Vincent G.</h4>
+				<h4>Curtis H.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
