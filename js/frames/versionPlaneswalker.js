@@ -40,6 +40,9 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 	if (!card.planeswalker) {
 		card.planeswalker = {abilities:['+1', '0', '-7', ''], abilityAdjust:[0, 0, 0, 0], count:3, x:0.1167, width:0.8094};
 	}
+	if (card.version == 'planeswalkerSeventh') {
+		card.planeswalker.abilityAdjust = [-0.0143, -0.0143, -0.0143, -0.0143];
+	}
 	window.planeswalkerAbilityLayout = [[[0.7467], [0.6953, 0.822], [0.6639, 0.7467, 0.8362], [0.6505, 0.72, 0.7905, 0.861]],[[0.72], [0.6391, 0.801], [0.5986, 0.72, 0.8415], [0.5986, 0.6796, 0.7605, 0.8415]]];
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	var plusIcon = new Image();
@@ -121,7 +124,7 @@ function planeswalkerEdited() {
 	planeswalkerPreFrameContext.clearRect(0, 0, planeswalkerPreFrameCanvas.width, planeswalkerPreFrameCanvas.height);
 	planeswalkerPreFrameContext.globalCompositeOperation = 'source-over';
 	planeswalkerPostFrameContext.clearRect(0, 0, planeswalkerPostFrameCanvas.width, planeswalkerPostFrameCanvas.height);
-	if (card.version != 'planeswalkerSDCC15') {
+	if (!['planeswalkerSDCC15', 'planeswalkerSeventh'].includes(card.version)) {
 		for (var i = 0; i < card.planeswalker.count; i ++) {
 			var x = scaleX(card.planeswalker.x);
 			var y = scaleY(card.text['ability' + i].y);
