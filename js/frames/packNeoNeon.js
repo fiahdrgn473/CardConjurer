@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = []//[{src:'/img/frames/neo/neon/frame.svg', name:'Frame'}, {src:'/img/frames/neo/neon/title.svg', name:'Title'}, {src:'/img/frames/neo/neon/type.svg', name:'Type'}, {src:'/img/frames/neo/neon/typeSides.svg', name:'Type Sides'}, {src:'/img/frames/neo/neon/rules.svg', name:'Rules'}, {src:'/img/frames/neo/neon/gold.svg', name:'Gold Accents'}, {src:'/img/frames/neo/neon/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/neo/neon/frame.svg', name:'Frame'}];
 var bounds = {x:0.7627, y:0.8886, width:0.1967, height:0.06};
 var bounds2 = {x:0.1567, y:0.021, width:0.6867, height:0.0486};
 //defines available frames

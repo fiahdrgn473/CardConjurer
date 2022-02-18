@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = []//[{src:'/img/frames/neo/samurai/frame.svg', name:'Frame'}, {src:'/img/frames/neo/samurai/title.svg', name:'Title'}, {src:'/img/frames/neo/samurai/type.svg', name:'Type'}, {src:'/img/frames/neo/samurai/typeSides.svg', name:'Type Sides'}, {src:'/img/frames/neo/samurai/rules.svg', name:'Rules'}, {src:'/img/frames/neo/samurai/gold.svg', name:'Gold Accents'}, {src:'/img/frames/neo/samurai/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/neo/samurai/frame.svg', name:'Frame'}, {src:'/img/frames/neo/samurai/frame2.svg', name:'Rules & Accents'}];
 var bounds = {x:0.7634, y:0.8858, width:0.1954, height:0.0677};
 var bounds2 = {x:0.0294, y:0.0162, width:0.942, height:0.0753};
 //defines available frames
@@ -23,7 +23,7 @@ availableFrames = [
 	{name:'Red Legend Crown', src:'/img/frames/neo/samurai/crown/r.png', bounds:bounds2},
 	{name:'Green Legend Crown', src:'/img/frames/neo/samurai/crown/g.png', bounds:bounds2},
 	{name:'Multicolored Legend Crown', src:'/img/frames/neo/samurai/crown/m.png', bounds:bounds2},
-	{name:'Rare Stamp', src:'/img/frames/neo/stamp.png', bounds:{x:0.4554, y:0.9172, width:0.0894, height:0.0320}}
+	{name:'Rare Stamp', src:'/img/frames/neo/samurai/stamp.png', bounds:{x:0.4354, y:0.9072, width:0.1294, height:0.042}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
