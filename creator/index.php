@@ -300,9 +300,16 @@ include('../globalHTML/header-1.php');
 								<button class='input' onclick='autoFitArt();'>Auto Fit Art</button>
 							</div>
 						</div>
-						<div class='readable-background padding'>
+						<div class='readable-background padding margin-bottom'>
 							<h5 class='padding margin-bottom input-description'>Clears the art, making it blank</h5>
 							<button class='input margin-bottom' onclick='uploadArt(blank.src);'>Remove Art</button>
+						</div>
+						<div class='readable-background padding'>
+							<h5 class='input-description margin-bottom'>Show guidelines for text, art, watermark, and set symbols</h5>
+							<label class='checkbox-container input'>Guidelines
+								<input id='show-guidelines-2' type='checkbox' onchange='drawCard();'>
+								<span class='checkmark'></span>
+							</label>
 						</div>
 					</div>
 					<div id='creator-menu-setSymbol' class='hidden'>

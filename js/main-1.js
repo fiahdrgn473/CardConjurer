@@ -107,9 +107,14 @@ urlInputs.forEach(element => {
 });
 
 //bind two inputs to match values
-function bindInputs(query1, query2) {
+function bindInputs(query1, query2, checkbox = false) {
 	var e1 = document.querySelector(query1);
 	var e2 = document.querySelector(query2);
-	e1.oninput = (event) => {e2.value = e1.value;}
-	e2.oninput = (event) => {e1.value = e2.value;}
+	if (checkbox) {
+		e1.oninput = (event) => {e2.checked = e1.checked;}
+		e2.oninput = (event) => {e1.checked = e2.checked;}
+	} else {
+		e1.oninput = (event) => {e2.value = e1.value;}
+		e2.oninput = (event) => {e1.value = e2.value;}
+	}
 }

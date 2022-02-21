@@ -2306,6 +2306,7 @@ if (document.querySelector('#lockSetSymbolURL').checked) {
 bindInputs('#frame-editor-hsl-hue', '#frame-editor-hsl-hue-slider');
 bindInputs('#frame-editor-hsl-saturation', '#frame-editor-hsl-saturation-slider');
 bindInputs('#frame-editor-hsl-lightness', '#frame-editor-hsl-lightness-slider');
+bindInputs('#show-guidelines', '#show-guidelines-2', true);
 
 // Load / init whatever
 loadScript('/js/frames/groupStandard-3.js');
