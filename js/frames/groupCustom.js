@@ -4,6 +4,7 @@ loadFramePacks([
 	{name:'Simple Inventions', value:'SimpleInventions'},
 	{name:'Tapped (Horizontal M15)', value:'Tapped'},
 	{name:'Textless Duals', value:'CustomDualLands'},
+	{name:'Seventh Edition Planeswalkers', value:'PlaneswalkerSeventh'},
 	{name:'Classicshifted Series', value:'disabled'},
 	{name:'Classicshifted', value:'Classicshifted'},
 	{name:'Classicshifted Lands', value:'ClassicshiftedLands'},
