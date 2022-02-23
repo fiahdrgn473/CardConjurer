@@ -672,6 +672,7 @@ include('../globalHTML/header-1.php');
 				<h4>Molta</h4>
 				<h4>Slamtown J.</h4>
 				<h4>Curtis H.</h4>
+				<h4>Morgan S.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
