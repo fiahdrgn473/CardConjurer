@@ -2189,20 +2189,22 @@ function stretchSVGReal(data, frameObject) {
 		const name = stretch.name;
 		const oldData = returnData.split(name + '" d="')[1].split('" style=')[0];
 		var newData = '';
-		const listData = oldData.replace(/L/g, '|L').replace(/C/g, '|C').replace(/M/g, '|M').replace(/Z/g, '|Z').replace('|', '').split('|');
+		const listData = oldData.split(/(?=[clmz])/gi);
 		for (i = 0; i < listData.length; i ++) {
-			const item = listData[i]
-			if (targets.includes(i)) {
-				if (item[0] == 'C') {
+			const item = listData[i];
+			if (targets.includes(i) || targets.includes(-i)) {
+				let sign = 1;
+				if (i != 0 && targets.includes(-i)) {sign = -1};
+				if (item[0] == 'C' || item[0] == 'c') {
 					newCoords = [];
 					item.slice(1).split(' ').forEach(pair => {
 						coords = pair.split(',');
-						newCoords.push((scaleWidth(change[0]) + parseFloat(coords[0])) + ',' + (scaleHeight(change[1]) + parseFloat(coords[1])));
+						newCoords.push((scaleWidth(change[0]) * sign + parseFloat(coords[0])) + ',' + (scaleHeight(change[1]) * sign + parseFloat(coords[1])));
 					});
-					newData += 'C' + newCoords.join(' ');
+					newData += item[0] + newCoords.join(' ');
 				} else {
-					const coords = item.slice(1).split(',');
-					newData += item[0] + (scaleWidth(change[0]) + parseFloat(coords[0])) + ',' + (scaleHeight(change[1]) + parseFloat(coords[1]))
+					const coords = item.slice(1).split(/[, ]/);
+					newData += item[0] + (scaleWidth(change[0]) * sign + parseFloat(coords[0])) + ',' + (scaleHeight(change[1]) * sign + parseFloat(coords[1]))
 				}
 			} else {
 				newData += item;

@@ -639,14 +639,12 @@ include('../globalHTML/header-1.php');
 				<h4>Endiron</h4>
 				<h4>Beezchurgr</h4>
 				<h4>John C.</h4>
-				<h4>Michael J.</h4>
 				<h4>Benjamin D.</h4>
 				<h4>Brent O.</h4>
 				<h4>Austin M.</h4>
 				<h4>Elry</h4>
 				<h4>Edward E.</h4>
 				<h4>Blake M.</h4>
-				<h4>Avery D.</h4>
 				<h4>Zachary C.</h4>
 				<h4>Andrew K.</h4>
 				<h4>Joshua R.</h4>
@@ -708,6 +706,8 @@ include('../globalHTML/header-1.php');
 				<h4>J. Skene</h4>
 				<h4>Cesar P.</h4>
 				<h4>Elizabeth S.</h4>
+				<h4>Avery D.</h4>
+				<h4>Michael J.</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
