@@ -18,7 +18,14 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/m15/regular/m15PTG.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/regular/m15PTM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/regular/m15PTA.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds},
+	{name:'White Nyx Frame', src:'/img/frames/token/m15/regular/nyx/w.png', masks:masks},
+	{name:'Blue Nyx Frame', src:'/img/frames/token/m15/regular/nyx/u.png', masks:masks},
+	{name:'Black Nyx Frame', src:'/img/frames/token/m15/regular/nyx/b.png', masks:masks},
+	{name:'Red Nyx Frame', src:'/img/frames/token/m15/regular/nyx/r.png', masks:masks},
+	{name:'Green Nyx Frame', src:'/img/frames/token/m15/regular/nyx/g.png', masks:masks},
+	{name:'Multicolored Nyx Frame', src:'/img/frames/token/m15/regular/nyx/m.png', masks:masks},
+	{name:'Artifact Nyx Frame', src:'/img/frames/token/m15/regular/nyx/a.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
