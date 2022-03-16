@@ -511,7 +511,7 @@ include('../globalHTML/header-1.php');
 								<input id='info-set' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Set' value='MTG'>
 								<input id='info-language' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Language' value='EN'>
 								<input id='info-artist' type='text' class='input' oninput='artistEdited(this.value);' placeholder='Artist'>
-								<input id='info-year' type='number' class='input' oninput='bottomInfoEdited();' placeholder='0' value='1993' min='0' max='9999'>
+								<input id='info-year' type='number' class='input' oninput='bottomInfoEdited();' placeholder='0' value='1993'>
 							</div>
 						</div>
 						<div class='readable-background padding margin-bottom'>
