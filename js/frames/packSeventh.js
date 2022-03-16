@@ -18,6 +18,7 @@ availableFrames = [
 	{name:'Black Land Frame', src:'/img/frames/seventh/regular/bl.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/seventh/regular/rl.png', masks:masks},
 	{name:'Green Land Frame', src:'/img/frames/seventh/regular/gl.png', masks:masks},
+	{name:'Tombstone Icon', src:'/img/frames/old/icons/tombstone.svg', bounds: {x:0.0687, y:0.0491, width:0.0338, height:0.0329}},
 	{name:'Plains Watermark', src:'/img/frames/m15/basics/w.png', bounds:bounds},
 	{name:'Island Watermark', src:'/img/frames/m15/basics/u.png', bounds:bounds},
 	{name:'Swamp Watermark', src:'/img/frames/m15/basics/b.png', bounds:bounds},
