@@ -33,7 +33,8 @@ availableFrames = [
 	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'},
 	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
-	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true}
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true},
+	{name:'Black Frame (Alt)', src:'/img/frames/custom/classicshifted/b2.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

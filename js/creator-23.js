@@ -70,7 +70,8 @@ var savedFont = null;
 var savedTextContents = {};
 //for misc
 var date = new Date();
-const year = 'WOW' //date.getFullYear();
+card.infoYear = date.getFullYear();
+document.querySelector("#info-year").value = card.infoYear;
 //to avoid rerunning special scripts (planeswalker, saga, etc...)
 var loadedVersions = [];
 //Card Object managament
@@ -103,7 +104,7 @@ async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers
 			midLeft: {text:'{elemidinfo-set}*{elemidinfo-language}  {savex}{fontbelerenbsc}{fontsize' + scaleHeight(0.001) + '}{upinline' + scaleHeight(0.0005) + '}\uFFEE{elemidinfo-artist}', x:0.0647, y:0.9548, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			topLeft: {text:'{elemidinfo-number}  {loadx}{elemidinfo-rarity}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			bottomLeft: {text:'NOT FOR SALE', x:0.0647, y:0.9719, width:0.8707, height:0.0143, oneLine:true, font:'gothammedium', size:0.0143, color:'white', outlineWidth:0.003},
-			wizards: {name:'wizards', text:'{ptshift0,0.0172}\u2122 & \u00a9 ' + date.getFullYear() + ' Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
+			wizards: {name:'wizards', text:'{ptshift0,0.0172}\u2122 & \u00a9 {elemidinfo-year} Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
 			bottomRight: {text:'{ptshift0,0.0172}CardConjurer.com', x:0.0647, y:0.9548, width:0.8707, height:0.0143, oneLine:true, font:'mplantin', size:0.0143, color:'white', align:'right', outlineWidth:0.003}
 		});
 		//onload
@@ -1679,6 +1680,7 @@ async function bottomInfoEdited() {
 	card.infoSet = document.querySelector('#info-set').value;
 	card.infoLanguage = document.querySelector('#info-language').value;
 	card.infoArtist = document.querySelector('#info-artist').value;
+	card.infoYear = document.querySelector('#info-year').value;
 	for (var textObject of Object.entries(card.bottomInfo)) {
 		await writeText(textObject[1], bottomInfoContext);
 		continue;
@@ -1986,6 +1988,7 @@ async function loadCard(selectedCardKey) {
 		document.querySelector('#info-rarity').value = card.infoRarity;
 		document.querySelector('#info-set').value = card.infoSet;
 		document.querySelector('#info-language').value = card.infoLanguage;
+		document.querySelector('#info-year').value = card.infoYear;
 		artistEdited(card.infoArtist);
 		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 		loadTextOptions(card.text);

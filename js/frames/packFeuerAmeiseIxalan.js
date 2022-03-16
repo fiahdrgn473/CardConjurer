@@ -13,7 +13,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'feuerAmeiseIxalan';
-	document.querySelector('#info-number').value = document.querySelector('#info-number').value.replace(date.getFullYear(), 'FeuerAmeise');
+	document.querySelector('#info-number').value = document.querySelector('#info-number').value.replace(card.infoYear, 'FeuerAmeise');
 	bottomInfoEdited();
 	//art bounds
 	card.artBounds = {x:0.0394, y:0.0286, width:0.9214, height:0.8939};
