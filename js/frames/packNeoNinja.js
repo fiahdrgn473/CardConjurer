@@ -10,18 +10,21 @@ availableFrames = [
 	{name:'Red Frame', src:'/img/frames/neo/ninja/r.png', masks:masks},
 	{name:'Green Frame', src:'/img/frames/neo/ninja/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/neo/ninja/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/neo/ninja/a.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/neo/ninja/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/neo/ninja/pt/u.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/neo/ninja/pt/b.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/neo/ninja/pt/r.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/neo/ninja/pt/g.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/neo/ninja/pt/m.png', bounds:bounds},
+	{name:'Artifact Power/Toughness', src:'/img/frames/neo/ninja/pt/a.png', bounds:bounds},
 	{name:'White Legend Crown', src:'/img/frames/neo/ninja/crown/w.png', bounds:bounds2},
 	{name:'Blue Legend Crown', src:'/img/frames/neo/ninja/crown/u.png', bounds:bounds2},
 	{name:'Black Legend Crown', src:'/img/frames/neo/ninja/crown/b.png', bounds:bounds2},
 	{name:'Red Legend Crown', src:'/img/frames/neo/ninja/crown/r.png', bounds:bounds2},
 	{name:'Green Legend Crown', src:'/img/frames/neo/ninja/crown/g.png', bounds:bounds2},
 	{name:'Multicolored Legend Crown', src:'/img/frames/neo/ninja/crown/m.png', bounds:bounds2},
+	{name:'Artifact Legend Crown', src:'/img/frames/neo/ninja/crown/a.png', bounds:bounds2},
 	{name:'Rare Stamp', src:'/img/frames/neo/stamp.png', bounds:{x:0.4554, y:0.9172, width:0.0894, height:0.0320}}
 ];
 //disables/enables the "Load Frame Version" button
