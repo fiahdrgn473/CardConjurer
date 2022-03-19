@@ -1980,15 +1980,19 @@ function saveCard(saveFromFile) {
 	}
 }
 async function loadCard(selectedCardKey) {
+	//clear the draggable frames
 	document.querySelector('#frame-list').innerHTML = null;
+	//clear the existing card, then replace it with the new JSON
 	card = {};
 	card = JSON.parse(localStorage.getItem(selectedCardKey));
+	//if the card was loaded properly...
 	if (card) {
+		//load values from card into html inputs
 		document.querySelector('#info-number').value = card.infoNumber;
 		document.querySelector('#info-rarity').value = card.infoRarity;
 		document.querySelector('#info-set').value = card.infoSet;
 		document.querySelector('#info-language').value = card.infoLanguage;
-		document.querySelector('#info-year').value = card.infoYear;
+		document.querySelector('#info-year').value = card.infoYear || date.getFullYear();
 		artistEdited(card.infoArtist);
 		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 		loadTextOptions(card.text);
