@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-//var masks = [{src:'/img/frames/saga/sagaMaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/saga/sagaMaskType.png', name:'Type'}, {src:'/img/frames/saga/sagaMaskFrame.png', name:'Frame'}, {src:'/img/frames/saga/sagaMaskBanner.png', name:'Banner'}, {src:'/img/frames/saga/sagaMaskBannerRight.png', name:'Banner (Right)'}, {src:'/img/frames/saga/sagaMaskText.png', name:'Text'}, {src:'/img/frames/saga/sagaMaskTextRight.png', name:'Text (Right)'}, {src:'/img/frames/saga/sagaMaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/saga/dfc/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/transform/regular/maskTitle.png', name:'Title'}, {src:'/img/frames/saga/sagaMaskType.png', name:'Type'}, {src:'/img/frames/saga/dfc/frame.svg', name:'Frame'}, {src:'/img/frames/saga/dfc/banner.svg', name:'Banner'}, {src:'/img/frames/saga/dfc/bannerRight.svg', name:'Banner (Right)'}, {src:'/img/frames/saga/dfc/rules.svg', name:'Rules'}, {src:'/img/frames/saga/sagaMaskTextRight.png', name:'Rules (Right)'}, {src:'/img/frames/saga/sagaMaskBorder.png', name:'Border'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/saga/dfc/w.png', masks:masks},
