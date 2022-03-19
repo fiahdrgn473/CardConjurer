@@ -640,6 +640,7 @@ include('../globalHTML/header-1.php');
 				<h4>Endiron</h4>
 				<h4>Beezchurgr</h4>
 				<h4>John C.</h4>
+				<h4>Michael J.</h4>
 				<h4>Benjamin D.</h4>
 				<h4>Brent O.</h4>
 				<h4>Austin M.</h4>
@@ -674,6 +675,7 @@ include('../globalHTML/header-1.php');
 				<h4>Morgan S.</h4>
 				<h4>Jonathan D.</h4>
 				<h4>Jay S.</h4>
+				<h4>Louis C.</h4>
 				<h4>James T.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
@@ -709,7 +711,6 @@ include('../globalHTML/header-1.php');
 				<h4>J. Skene</h4>
 				<h4>Cesar P.</h4>
 				<h4>Elizabeth S.</h4>
-				<h4>Michael J.</h4>
 				<h4>Andrew K.</h4>
 				<h4>Wren</h4>
 				<h4>Camille D.</h4>

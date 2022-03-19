@@ -10,7 +10,9 @@ availableFrames = [
 	{name:'Land', src:'/img/frames/m15/transform/icons/land.svg', bounds:bounds},
 	{name:'Planeswalker Ember', src:'/img/frames/m15/transform/icons/spark.svg', bounds:bounds},
 	{name:'Planeswalker Spark', src:'/img/frames/m15/transform/icons/planeswalker.svg', bounds:bounds},
-	{name:'Lesson', src:'/img/frames/m15/transform/icons/lesson.svg', bounds:bounds}
+	{name:'Lesson', src:'/img/frames/m15/transform/icons/lesson.svg', bounds:bounds},
+	{name:'Closed Fan', src:'/img/frames/m15/transform/icons/fanClosed.svg', bounds:bounds},
+	{name:'Open Fan', src:'/img/frames/m15/transform/icons/fanOpen.svg', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = true;

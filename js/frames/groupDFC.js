@@ -3,6 +3,8 @@ loadFramePacks([
 	{name:'Transform (Back)', value:'M15TransformBack'},
 	{name:'Color Identity Pips', value:'M15CIPips'},
 	{name:'Transform Icons', value:'M15TransformTypes'},
+	{name:'Other Cardtypes', value:'disabled'},
+	{name:'Sagas (Front)', value:'SagaDFC'},
 	{name:'Other Frames', value:'disabled'},
 	{name:'Borderless (Front)', value:'TransformBorderlessFront'},
 	{name:'Borderless (Back)', value:'TransformBorderlessBack'},
