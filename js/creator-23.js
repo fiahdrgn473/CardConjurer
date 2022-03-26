@@ -952,6 +952,7 @@ function writeText(textObject, targetContext) {
 		var manaPlacementCounter = 0;
 		var realTextAlign = textAlign;
 		savedRollYPosition = null;
+		var savedRollColor = 'black';
 		var drawToPrePTCanvas = false;
 		var widestLineWidth = 0;
 		//variables that track various... things?
@@ -1120,6 +1121,8 @@ function writeText(textObject, targetContext) {
 						ptShift[0] = scaleWidth(parseFloat(possibleCode.replace('ptshift', '').split(',')[0]));
 						ptShift[1] = scaleHeight(parseFloat(possibleCode.split(',')[1]));
 					}
+				} else if (possibleCode.includes('rollcolor')) {
+					savedRollColor = possibleCode.replace('rollcolor', '') || 'black';
 				} else if (possibleCode.includes('roll')) {
 					drawTextBetweenFrames = true;
 					redrawFrames = true;
@@ -1247,7 +1250,7 @@ function writeText(textObject, targetContext) {
 					if (savedRollYPosition != -1) {
 						paragraphContext.globalCompositeOperation = 'destination-over';
 						paragraphContext.globalAlpha = 0.25;
-						paragraphContext.fillStyle = 'black';
+						paragraphContext.fillStyle = savedRollColor;
 						paragraphContext.fillRect(canvasMargin - textSize * 0.1, savedRollYPosition + canvasMargin - textSize * 0.28, paragraphCanvas.width - 2 * canvasMargin + textSize * 0.2, currentY - savedRollYPosition + textSize * 1.3);
 						paragraphContext.globalCompositeOperation = 'source-over';
 						paragraphContext.globalAlpha = 1;
