@@ -10,6 +10,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/iko/short/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/iko/short/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/iko/short/a.png', masks:masks},
+	{name:'Artifact Frame (Alt)', src:'/img/frames/iko/short/a2.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/iko/short/l.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTU.png', bounds:bounds},

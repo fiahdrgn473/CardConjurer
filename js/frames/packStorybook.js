@@ -1,14 +1,16 @@
 //Create objects for common properties across available frames
+var masks = [{src:'/img/frames/storybook/pinline.png', name:'Pinline'}];
+//Create objects for common properties across available frames
 var bounds = {x:0.7414, y:0.8839, width:0.2134, height:0.0681};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/storybook/w.png'},
-	{name:'Blue Frame', src:'/img/frames/storybook/u.png'},
-	{name:'Black Frame', src:'/img/frames/storybook/b.png'},
-	{name:'Red Frame', src:'/img/frames/storybook/r.png'},
-	{name:'Green Frame', src:'/img/frames/storybook/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/storybook/m.png'},
-	{name:'Colorless Frame', src:'/img/frames/storybook/c.png'},
+	{name:'White Frame', src:'/img/frames/storybook/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/storybook/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/storybook/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/storybook/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/storybook/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/storybook/m.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/storybook/c.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/storybook/wpt.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/storybook/upt.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/storybook/bpt.png', bounds:bounds},
