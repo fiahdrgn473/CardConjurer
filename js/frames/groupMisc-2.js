@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Old', value:'disabled'},
 	{name:'Future Shifted', value:'FutureRegular'},
+	{name:'Colorshifted', value:'8thColorshifted'},
 	{name:'8th Edition', value:'8th'},
 	{name:'Seventh Edition', value:'Seventh'},
 	{name:'Fifth Edition', value:'SeventhButFifth'},
