@@ -388,6 +388,12 @@ include('../globalHTML/header-1.php');
 								<option value="/img/watermarks/planeswalker.svg">Planeswalker</option>
 								<option value="/img/watermarks/misc-star.svg">DCI Star</option>
 								<option value="/img/watermarks/misc-dci.svg">DCI Logo</option>
+								<option disabled>Monocolors</option>
+								<option value="/img/watermarks/w.svg">White</option>
+								<option value="/img/watermarks/u.svg">Blue</option>
+								<option value="/img/watermarks/b.svg">Black</option>
+								<option value="/img/watermarks/r.svg">Red</option>
+								<option value="/img/watermarks/g.svg">Green</option>
 								<option disabled>Mechanics</option>
 								<option value="/img/watermarks/ability-foretell.svg">Foretell</option>
 								<option disabled>Phyrexian/Mirrodin</option>
