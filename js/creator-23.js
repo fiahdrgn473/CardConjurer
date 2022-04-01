@@ -2151,6 +2151,14 @@ function drawNewGuidelines() {
 	//draw to card
 	drawCard();
 }
+//HIGHLIGHT TRANSPARENCIES
+function toggleCardBackgroundColor(highlight) {
+	if (highlight) {
+		previewCanvas.style["background-color"] = "#ff007fff";
+	} else {
+		previewCanvas.style["background-color"] = "#0000";
+	}
+}
 //Various loaders
 function imageURL(url, destination, otherParams) {
 	var imageurl = url;

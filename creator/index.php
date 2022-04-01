@@ -185,8 +185,13 @@ include('../globalHTML/header-1.php');
 						</div>
 						<div class='readable-background padding'>
 							<h5 class='input-description margin-bottom'>Show guidelines for text, art, watermark, and set symbols</h5>
-							<label class='checkbox-container input'>Guidelines
+							<label class='checkbox-container input margin-bottom'>Guidelines
 								<input id='show-guidelines' type='checkbox' onchange='drawCard();'>
+								<span class='checkmark'></span>
+							</label>
+							<h5 class='input-description margin-bottom'>Highlight transparencies in card</h5>
+							<label class='checkbox-container input'>Transparencies
+								<input id='highlight-transparencies' type='checkbox' onchange='toggleCardBackgroundColor(this.checked);'>
 								<span class='checkmark'></span>
 							</label>
 						</div>
