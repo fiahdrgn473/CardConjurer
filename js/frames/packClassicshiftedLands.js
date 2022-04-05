@@ -1,7 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}, {src:'/img/frames/custom/classicshifted/pinline.svg', name:'Pinline'}, {src:'/img/frames/custom/classicshifted/dual.svg', name:'Dual Land Pinline'}];
 var bounds = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
-var bounds2 = {x:0.026, y:0.0129, width:0.948, height:0.1015};
+var bounds2 = {x:0.0267, y:0.0134, width:0.9467, height:0.1005};
 //defines available frames
 availableFrames = [
 	{name:'Land Frame', src:'/img/frames/custom/classicshifted/l.png', masks:masks},
@@ -25,14 +25,15 @@ availableFrames = [
 	{name:'Forest Watermark', src:'/img/frames/m15/basics/g.png', bounds:bounds},
 	{name:'Wastes Watermark', src:'/img/frames/m15/basics/c.png', bounds:bounds},
 	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'},
-	{name:'The Dark Legend Crown', src:'/img/frames/custom/classicshifted/crowns/theDark.png', bounds:bounds2},
-	{name:'Alliances Legend Crown', src:'/img/frames/custom/classicshifted/crowns/alliances.png', bounds:bounds2},
-	{name:'Mirage Legend Crown', src:'/img/frames/custom/classicshifted/crowns/mirage.png', bounds:bounds2},
-	{name:'Ice Age Legend Crown', src:'/img/frames/custom/classicshifted/crowns/iceAge.png', bounds:bounds2},
-	{name:'Homelands Legend Crown', src:'/img/frames/custom/classicshifted/crowns/homelands.png', bounds:bounds2},
-	{name:'Fallen Empires Legend Crown', src:'/img/frames/custom/classicshifted/crowns/fallenEmpires.png', bounds:bounds2},
-	{name:'Arabian Nights Legend Crown', src:'/img/frames/custom/classicshifted/crowns/arabianNights.png', bounds:bounds2},
-	{name:'Antiquities Legend Crown', src:'/img/frames/custom/classicshifted/crowns/antiquities.png', bounds:bounds2}
+	{name:'The Dark Legend Crown', src:'/img/frames/custom/classicshifted/crowns/theDark.png', bounds:bounds2, complementary:29},
+	{name:'Alliances Legend Crown', src:'/img/frames/custom/classicshifted/crowns/alliances.png', bounds:bounds2, complementary:29},
+	{name:'Mirage Legend Crown', src:'/img/frames/custom/classicshifted/crowns/mirage.png', bounds:bounds2, complementary:29},
+	{name:'Ice Age Legend Crown', src:'/img/frames/custom/classicshifted/crowns/iceAge.png', bounds:bounds2, complementary:29},
+	{name:'Homelands Legend Crown', src:'/img/frames/custom/classicshifted/crowns/homelands.png', bounds:bounds2, complementary:29},
+	{name:'Fallen Empires Legend Crown', src:'/img/frames/custom/classicshifted/crowns/fallenEmpires.png', bounds:bounds2, complementary:29},
+	{name:'Arabian Nights Legend Crown', src:'/img/frames/custom/classicshifted/crowns/arabianNights.png', bounds:bounds2, complementary:29},
+	{name:'Antiquities Legend Crown', src:'/img/frames/custom/classicshifted/crowns/antiquities.png', bounds:bounds2, complementary:29},
+	{name:'Legend Crown Border Cover', src:'/img/black.png', bounds:{x:0.0394, y:0.0277, width:0.9214, height:0.021}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

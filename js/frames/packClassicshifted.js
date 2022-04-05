@@ -1,9 +1,8 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/custom/classicshifted/maskFrame.png', name:'Frame'}, {src:'/img/frames/custom/classicshifted/maskText.png', name:'Textbox'}, {src:'/img/frames/custom/classicshifted/pinline.svg', name:'Pinline'}, {src:'/img/frames/custom/classicshifted/dual.svg', name:'Dual Land Pinline'}];
-var masks2 = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {src:'/img/frames/m15/m15MaskBorderSliverCrown.png', name:'Border (With Crown)'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Full Border'}];
+var masks2 = [{src:'/img/frames/m15/m15MaskBorderSliver.png', name:'Border'}, {src:'/img/frames/custom/classicshifted/crowns/borderMask.svg', name:'Legend Crown Cover'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Full Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
-var bounds2 = {x:0.026, y:0.0129, width:0.948, height:0.1015};
-var bounds3 = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
+var bounds2 = {x:0.0267, y:0.0134, width:0.9467, height:0.1005};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/custom/classicshifted/w.png', masks:masks},
@@ -22,16 +21,18 @@ availableFrames = [
 	{name:'Multicolored Power/Toughness', src:'/img/frames/custom/classicshifted/ptM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/custom/classicshifted/ptA.png', bounds:bounds},
 	{name:'Land Power/Toughness', src:'/img/frames/custom/classicshifted/ptL.png', bounds:bounds},
-	{name:'White Crown', src:'/img/frames/custom/classicshifted/cw.png', bounds:bounds2},
-	{name:'Blue Crown', src:'/img/frames/custom/classicshifted/cu.png', bounds:bounds2},
-	{name:'Black Crown', src:'/img/frames/custom/classicshifted/cb.png', bounds:bounds2},
-	{name:'Red Crown', src:'/img/frames/custom/classicshifted/cr.png', bounds:bounds2},
-	{name:'Green Crown', src:'/img/frames/custom/classicshifted/cg.png', bounds:bounds2},
-	{name:'Multicolored Crown', src:'/img/frames/custom/classicshifted/cm.png', bounds:bounds2},
-	{name:'Artifact Crown', src:'/img/frames/custom/classicshifted/ca.png', bounds:bounds2},
-	{name:'Land Crown', src:'/img/frames/custom/classicshifted/cl.png', bounds:bounds2},
+	{name:'White Crown', src:'/img/frames/custom/classicshifted/crowns/w.png', bounds:bounds2, complementary:24},
+	{name:'Blue Crown', src:'/img/frames/custom/classicshifted/crowns/u.png', bounds:bounds2, complementary:24},
+	{name:'Black Crown', src:'/img/frames/custom/classicshifted/crowns/b.png', bounds:bounds2, complementary:24},
+	{name:'Red Crown', src:'/img/frames/custom/classicshifted/crowns/r.png', bounds:bounds2, complementary:24},
+	{name:'Green Crown', src:'/img/frames/custom/classicshifted/crowns/g.png', bounds:bounds2, complementary:24},
+	{name:'Multicolored Crown', src:'/img/frames/custom/classicshifted/crowns/m.png', bounds:bounds2, complementary:24},
+	{name:'Artifact Crown', src:'/img/frames/custom/classicshifted/crowns/a.png', bounds:bounds2, complementary:24},
+	{name:'Land Crown', src:'/img/frames/custom/classicshifted/crowns/l.png', bounds:bounds2, complementary:24},
+	{name:'Legend Crown Border Cover', src:'/img/black.png', bounds:{x:0.0394, y:0.0277, width:0.9214, height:0.021}},
 	{name:'Snow Overlay', src:'/img/frames/custom/classicshifted/snow.png'},
 	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
+	{name:'Black Border', src:'/img/black.png', masks:masks2, noDefaultMask:true},
 	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
 	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true},
 	{name:'Black Frame (Alt)', src:'/img/frames/custom/classicshifted/b2.png', masks:masks}
