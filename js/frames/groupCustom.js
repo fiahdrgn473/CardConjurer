@@ -6,6 +6,7 @@ loadFramePacks([
 	{name:'Textless Duals', value:'CustomDualLands'},
 	{name:'Seventh Edition Planeswalkers', value:'PlaneswalkerSeventh'},
 	{name:'Floating Old Border', value:'OldFloating'},
+	{name:'Floating Old Border (Short)', value:'OldFloatingShort'},
 	{name:'Classicshifted Series', value:'disabled'},
 	{name:'Classicshifted', value:'Classicshifted'},
 	{name:'Classicshifted Lands', value:'ClassicshiftedLands'},
