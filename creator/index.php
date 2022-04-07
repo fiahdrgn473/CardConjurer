@@ -682,7 +682,6 @@ include('../globalHTML/header-1.php');
 				<h4>Makoto Takahashi</h4>
 				<h4>Molta</h4>
 				<h4>Slamtown J.</h4>
-				<h4>Curtis H.</h4>
 				<h4>Morgan S.</h4>
 				<h4>Jonathan D.</h4>
 				<h4>Jay S.</h4>
@@ -728,6 +727,7 @@ include('../globalHTML/header-1.php');
 				<h4>Wren</h4>
 				<h4>Camille D.</h4>
 				<h4>Michael G.</h4>
+				<h4>Curtis H.</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
