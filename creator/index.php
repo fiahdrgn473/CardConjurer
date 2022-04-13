@@ -216,6 +216,7 @@ include('../globalHTML/header-1.php');
 								<div class='text-codes margin-bottom padding'>
 									<h5>Code</h5><h5>Result</h5>
 									<h5>{cardname}</h5><h5>Inserts the name of the card</h5>
+									<h5>{-}</h5><h5>Inserts an em-dash</h5>
 									<h5>{i}</h5><h5>Italicizes text</h5>
 									<h5>{/i}</h5><h5>Removes italicization</h5>
 									<h5>{bold}</h5><h5>Bolds text</h5>
@@ -256,7 +257,7 @@ include('../globalHTML/header-1.php');
 									<h5>{oldtap}, {originaltap}</h5><h5>Old tap symbols</h5>
 									<h5>{x}, {y}, {z}</h5><h5>Respective variable-related symbol</h5>
 									<h5>{c}</h5><h5>Colorless-specific mana</h5>
-									<h5>{snow}</h5><h5>Snow mana</h5>
+									<h5>{s}</h5><h5>Snow mana</h5>
 									<h5>{e}</h5><h5>Energy symbol</h5>
 									<h5>{+1}</h5><h5>+1 loyalty icon</h5>
 									<h5>Notes</h5><h5>Hybrid/Phyrexian mana only works with WUBRG</h5>
