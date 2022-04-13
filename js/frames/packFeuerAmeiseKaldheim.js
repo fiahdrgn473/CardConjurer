@@ -10,6 +10,7 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/custom/feuerAmeise/kaldheim/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/custom/feuerAmeise/kaldheim/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/custom/feuerAmeise/kaldheim/l.png', masks:masks},
+	{name:'Snow Overlay', src:'/img/frames/custom/feuerAmeise/kaldheim/snow.png'},
 	{name:'Textbox', src:'/img/frames/custom/feuerAmeise/kaldheim/textbox.svg'}
 ];
 //disables/enables the "Load Frame Version" button
