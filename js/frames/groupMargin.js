@@ -3,7 +3,9 @@ loadFramePacks([
 	{name:'D&D Module Margins', value:'MarginDNDModule'},
 	{name:'Mystical Archive Margins', value:'MarginMysticalArchive'},
 	{name:'Unstable Basics Margins', value:'MarginUnstable'},
-	{name:'Invocation Margins', value:'MarginInvocation'}
+	{name:'Invocation Margins', value:'MarginInvocation'},
+	{name:'Custom Margins', value:'disabled'},
+	{name:'Celid\'s Asap Margins', value:'CustomMarginCelidAsap'}
 ])
 
 //For multiple Margin packs

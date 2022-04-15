@@ -23,5 +23,6 @@ loadFramePacks([
 	{name:'Cartoony - Sheepwave', value:'Cartoony'},
 	{name:'Neon - Elry', value:'CustomNeon'},
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
-	{name:'Kaldheim, Fullart - @feuer_ameise', value:'FeuerAmeiseKaldheim'}
+	{name:'Kaldheim, Fullart - @feuer_ameise', value:'FeuerAmeiseKaldheim'},
+	{name:'Celid\'s Asap', value:'CustomCelidAsap'}
 ])
