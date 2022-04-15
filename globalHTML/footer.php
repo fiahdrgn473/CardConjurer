@@ -14,6 +14,7 @@
 			<h5><a href='/askurza'>Ask Urza</a></h5>
 			<h5><a href='/phyrexian'>Phyrexian Generator</a></h5>
 			<h5><a href='/about'>About</a></h5>
+			<h5><a href='/gallery'>Gallery</a></h5>
 			<h5><a href='/theme'>Theme Editor</a></h5>
 		</div>
 		<div>

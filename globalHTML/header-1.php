@@ -40,6 +40,7 @@
 				<h3><a href='/askurza'>Ask Urza 2.0</a></h3>
 				<h3><a href='/phyrexian'>Phyrexian Generator</a></h3>
 				<h3><a href='/about'>About Me</a></h3>
+				<h3><a href='/gallery'>Gallery</a></h3>
 				<h3><a href='/theme'>Theme Editor</a></h3>
 				<h3><a href='/legal'>Legal</a></h3>
 				<h2>External Links</h2>
