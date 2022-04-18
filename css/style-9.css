@@ -697,6 +697,33 @@ textarea.input {
 	grid-gap: 0.25rem;
 	user-select: none;
 }
+/* Frame Search */
+.autocomplete {
+	position: relative;
+}
+.autocomplete-items {
+  	position: absolute;
+  	border: 1px solid black;
+  	border-bottom: none;
+  	top: 100%;
+  	left: 0;
+  	right: 0;
+  	z-index: 99;
+  	max-height: 8rem;
+  	height: auto;
+  	overflow-y: scroll;
+}
+.autocomplete-items div {
+  	border-bottom: 1px solid black !important;
+  	z-index: 99;
+}
+.autocomplete-items div:hover {
+	background-color: var(--input-background-selected);
+}
+.autocomplete-active {
+  	background-color: var(--color-highlight) !important;
+  	color: black;
+}
 /*Frame/Mask-Pickers*/
 .frame-picker, .mask-picker {
 	display: grid;

@@ -114,7 +114,7 @@ include('../globalHTML/header-1.php');
 					<div id='creator-menu-frame'>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='margin-bottom padding input-description'>
-								Select a Frame Group and a Frame Pack, then you may Load the selected Frame Version (loading the frame version configures text placement, art size, etc...)</h5>
+								Select a Frame Group and a Frame Pack, or type to search. Then you may Load the selected Frame Version (loading the frame version configures text placement, art size, etc...)</h5>
 							<div class='input-grid margin-bottom'>
 								<select id='selectFrameGroup' onchange='loadScript("/js/frames/group" + this.value + ".js")' class='input'>
 									<option disabled>Standard Frames</option>
@@ -136,6 +136,7 @@ include('../globalHTML/header-1.php');
 									<option value='FleshAndBlood'>Flesh and Blood</option>
 								</select>
 								<select id='selectFramePack' onchange='loadScript("/js/frames/pack" + this.value + ".js")' class='input'></select>
+								<div class="autocomplete"><input id='frameSearch' onchange="frameSearch(this.value)" type='text' class='input' placeholder='Search Frames...'></div>
 							</div>
 							<div class='input-grid margin-bottom'>
 								<button id='loadFrameVersion' class='input'>Load Frame Version</button>
@@ -741,4 +742,5 @@ include('../globalHTML/header-1.php');
 		</div>
 	</div>
 	<script defer src='/js/creator-23.js'></script>
+	<script defer src='/js/frameSearch.js'></script>
 <?php include('../globalHTML/footer.php'); ?>
