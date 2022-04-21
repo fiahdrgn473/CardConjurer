@@ -1,8 +1,9 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
-	{name:'Ninja (Neo)', value:'NeoNinja'},
-	{name:'Samurai (Neo)', value:'NeoSamurai'},
-	{name:'Neon (Neo)', value:'NeoNeon'},
+	{name:'Gilded (SNC)', value:'SNCGilded'},
+	{name:'Ninja (NEO)', value:'NeoNinja'},
+	{name:'Samurai (NEO)', value:'NeoSamurai'},
+	{name:'Neon (NEO)', value:'NeoNeon'},
 	{name:'Fang (VOW)', value:'Fang'},
 	{name:'Equinox (MID)', value:'Equinox'},
 	{name:'Eternal Night (MID)', value:'EternalNight'},

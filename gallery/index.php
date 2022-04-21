@@ -41,6 +41,7 @@ include('../globalHTML/header-1.php');
 	<script>
 		//template data
 		const templates = [
+			{name: "Gilded (SNC)", location: "Showcase Frames > Gilded (SNC)", image: "sncGilded.png"},
 			{name: "Ninja (NEO)", location: "Showcase Frames > Ninja (NEO)", image: "neoNinja.png"},
 			{name: "Samurai (NEO)", location: "Showcase Frames > Samurai (NEO)", image: "neoSamurai.png"},
 			{name: "Neon (NEO)", location: "Showcase Frames > Neon (NEO)", image: "neoNeon.png"},
