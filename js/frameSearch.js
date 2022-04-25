@@ -160,6 +160,7 @@ const frameNames = new Map ([
 	['Classicshifted Sagas', 'ClassicshiftedSaga'],
 	['Classicshifted MDFC Addons', 'ClassicshiftedDFC'],
 	['Classicshifted Color Identity Pips', 'ClassicshiftedCIPips'],
+	['Textless Gilded (SNC)', 'SNCGildedTextless'],
 	['Textless Equinox (MID)', 'EquinoxTextless'],
 	['Horizontal Japanese Mystical Archive (STA)', 'MysticalArchiveJPHorizontal'],
 	['Brawl Legend Crowns', 'Brawl'],

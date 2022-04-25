@@ -15,6 +15,7 @@ loadFramePacks([
 	{name:'Classicshifted MDFC Addons', value:'ClassicshiftedDFC'},
 	{name:'Color Identity Pips', value:'ClassicshiftedCIPips'},
 	{name:'Showcase Frame Varients', value:'disabled'},
+	{name:'Textless Gilded (SNC)', value:'SNCGildedTextless'},
 	{name:'Textless Equinox (MID)', value:'EquinoxTextless'},
 	{name:'Horizontal Japanese Mystical Archive (STA)', value:'MysticalArchiveJPHorizontal'},
 	{name:'Custom Addons', value:'disabled'},
