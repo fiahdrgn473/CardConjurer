@@ -260,7 +260,7 @@ loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w
 loadManaSymbols(['bar.png', 'whitebar.png']);
 loadManaSymbols(['chaos'], [1.2, 1]);
 loadManaSymbols(['planeswalker'], [0.6, 1.2]);
-loadManaSymbols(['+1'], [1.6, 1]);
+loadManaSymbols(['+1', '+2', '+3', '+4', '+5', '+6', '+7', '+8', '+9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '+0'], [1.6, 1]);
 function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 	manaSymbolPaths.forEach(item => {
 		var manaSymbol = {};
