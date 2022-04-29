@@ -9,8 +9,6 @@ loadFramePacks([
 	{name:'Other', value:'disabled'},
 	{name:'Generic Showcase', value:'TextlessGenericShowcase'},
 	{name:'Magic Fest Promos', value:'MagicFest'},
-	{name:'Inventions', value:'TextlessInvention'},
-	{name:'Seventh', value:'SeventhTextless'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
