@@ -30,6 +30,7 @@ loadFramePacks([
 	{name:'FNM Promo (Inverted Promos)', value:'FNM'},
 	{name:'Universes Beyond', value:'UB'},
 	{name:'Full Text', value:'FullText'},
+	{name:'Etched (Commander Precons)', value:'Etched'},
 	{name:'Masterpieces/Other', value:'disabled'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
 	{name:'Signature Spellbook (Jace/Gideon)', value:'SignatureSpellbook'},
