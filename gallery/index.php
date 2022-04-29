@@ -5,15 +5,38 @@ include('../globalHTML/header-1.php');
 ?>
 	<h2 class='readable-background header-extension title center'>Available Frames</h2>
 	<h4 class='readable-background header-extension center'>What they're called, and where to find them</h4>
-	<h3 class='layer center'>Showcase Frames</h3>
-	<div class='layer center galleryGrid' id="showcaseGrid"></div>
-	<h3 class='layer center'>Regular Frames</h3>
-	<div class='layer center galleryGrid' id="regularGrid"></div>
-	<h3 class='layer center'>Token Frames</h3>
-	<div class='layer center galleryGrid' id="tokenGrid"></div>
-	<h3 class='layer center'>Other Card Types</h3>
-	<div class='layer center galleryGrid' id="otherGrid"></div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Showcase Frames</h3>
+		<div class='galleryGrid' id="showcaseGrid"></div>
+	</div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Promo Frames</h3>
+		<div class='galleryGrid' id="promoGrid"></div>
+	</div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Textless Frames</h3>
+		<div class='galleryGrid' id="textlessGrid"></div>
+	</div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Custom Frames</h3>
+		<div class='galleryGrid' id="customGrid"></div>
+	</div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Regular Frames</h3>
+		<div class='galleryGrid' id="regularGrid"></div>
+	</div>
+	<div class='layer'>
+		<h3 class='center galleryGridTitle'>Token Frames</h3>
+		<div class='galleryGrid' id="tokenGrid"></div>
+	</div>
+	<!-- <div class='layer'>
+		<h3 class='center galleryGridTitle'>Other Frames</h3>
+		<div class='galleryGrid' id="otherGrid"></div>
+	</div> -->
 	<style>
+		.galleryGridTitle {
+			margin-bottom: 4rem;
+		}
 		.galleryGrid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -93,7 +116,6 @@ include('../globalHTML/header-1.php');
 			{name: "Sketch Cards (MH2)", location: "Showcase Frames > Sketch Cards (MH2)", image: "mh2Sketch.png"},
 			{name: "Mystical Archive (STA)", location: "Showcase Frames > Mystical Archive (STA)", image: "staMysticalArchive.png"},
 			{name: "Japanese Mystical Archive (STA)", location: "Showcase Frames > Japanese Mystical Archive (STA)", image: "staMysticalArchiveJP.png"},
-			{name: "Horizontal Japanese Mystical Archive (STA)", location: "Showcase Frames > Horizontal Japanese Mystical Archive (STA)", image: "staMysticalArchiveJPHorizontal.png"},
 			{name: "Phyrexian (KHM)", location: "Showcase Frames > Praetors (KHM)", image: "khmPraetors.png"},
 			{name: "Viking (KHM)", location: "Showcase Frames > Kaldheim (KHM)", image: "khm.png"},
 			{name: "Nonlegendary Viking (KHM)", location: "Showcase Frames > Nonlegendary Kaldheim (KHM)", image: "khmNonlegendary.png"},
@@ -123,9 +145,53 @@ include('../globalHTML/header-1.php');
 			{name: "Future Shifted (FUT)", location: "Showcase Frames > Future Shifted", image: "futFutureshifted.png"},
 			{name: "Brawl Legend Crowns", location: "Showcase Frames > Brawl Legend Crowns", image: "brawlCrown.png"},
 		];
+		//PROMO FRAMES
+		const promoTemplates = [
+			{name: "Regular Promo", location: "Promos (Tall Art) > Regular Frames", image: "promoRegular.png"},
+			{name: "Borderless Promo", location: "Promos (Tall Art) > Borderless Frames", image: "promoBorderless.png"},
+			{name: "Borderless Promo (Extra Short)", location: "Promos (Tall Art) > Borderless Frames (Extra Short)", image: "promoBorderlessShort.png"},
+			{name: "Extended Art Promo", location: "Promos (Tall Art) > Extended Art Frames", image: "promoExtended.png"},
+			{name: "Nickname Promo", location: "Promos (Tall Art) > Nickname Frames", image: "promoNickname.png"},
+			{name: "Generic Showcase Promo", location: "Promos (Tall Art) > Generic Showcase", image: "promoGenericShowcase.png"},
+		];
+		//TEXTLESS FRAMES
+		const textlessTemplates = [
+			{name: "Kamigawa Basics", location: "Textless/Fullart > Kamigawa Basics", image: "basicNEO.png"},
+			{name: "Fullart Basics (THB)", location: "Textless/Fullart > Fullart Basics (THB)", image: "basicTHB.png"},
+			{name: "Fullart Basics (ZEN)", location: "Textless/Fullart > Fullart Basics (ZEN)", image: "basicZEN.png"},
+			{name: "Fullart Snow Basics", location: "Textless/Fullart > Fullart Snow Basics", image: "basicSnow.png"},
+			{name: "Unstable Basics (UST)", location: "Textless/Fullart > Unstable Basics (UST)", image: "basicUST.png"},
+			{name: "Unhinged Basics (UNH)", location: "Textless/Fullart > Unhinged Basics (UNH)", image: "basicUNH.png"},
+			{name: "Textless Generic Showcase", location: "Textless/Fullart > Generic Showcase", image: "textlessGenericShowcase.png"},
+			{name: "Magic Fest Promos", location: "Textless/Fullart > Regular", image: "magicFest.png"},
+		];
+		//CUSTOM FRAMES
+		const customTemplates = [
+			{name: "Deck Covers", location: "Custom > Deck Covers", image: "deckCover.png"},
+			{name: "Simple Invention", location: "Custom > Simple Inventiosn", image: "inventionSimple.png"},
+			{name: "Tapped (Horizontal M15)", location: "Custom > Tapped (Horizontal M15)", image: "tapped.png"},
+			{name: "Textless Duals", location: "Custom > Textless Duals", image: "textlessDual.png"},
+			{name: "Seventh Edition Planeswalkers", location: "Custom > Seventh Edition Planeswalkers", image: "seventhPlaneswalker.png"},
+			{name: "Textless Seventh Edition", location: "Custom > Textless Seventh Edition", image: "seventhTextless.png"},
+			{name: "Floating Old Border", location: "Custom > Floating Old Border", image: "floatingOldBorder.png"},
+			{name: "Floating Old Border (Short)", location: "Custom > Floating Old Border (Short)", image: "floatingOldBorderShort.png"},
+			{name: "Classicshifted", location: "Custom > Classicshifted", image: "classicshifted.png"},
+			{name: "Classichshifted Lands", location: "Custom > Classichshifted Lands", image: "classicshiftedLand.png"},
+			{name: "Classichshifted Planeswalkers", location: "Custom > Classichshifted Planeswalkers", image: "classicshiftedPlaneswalker.png"},
+			{name: "Classichshifted Sagas", location: "Custom > Classichshifted Sagas", image: "classicshiftedSaga.png"},
+			{name: "Colored Gilded (SNC)", location: "Custom > Colored Gilded (SNC)", image: "gildedColored.png"},
+			{name: "Textless Gilded (SNC)", location: "Custom > Textless Gilded (SNC)", image: "gildedTextless.png"},
+			{name: "Textless Equinox (MID)", location: "Custom > Textless Equinox (MID)", image: "equinoxTextless.png"},
+			{name: "Horizontal Japanese Mystical Archive (STA)", location: "Showcase Frames > Horizontal Japanese Mystical Archive (STA)", image: "staMysticalArchiveJPHorizontal.png"},
+			{name: "Textless Inventions (KLD)", location: "Custom > Textless Inventions (KLD)", image: "inventionTextless.png"},
+			{name: "Cartoony - Sheepwave", location: "Custom > Cartoony - Sheepwave", image: "sheepwaveCartoony.png"},
+			{name: "Neon - Elry", location: "Custom > Neon - Elry", image: "elryNeon.png"},
+			{name: "Ixalan - @feuer_ameise", location: "Custom > Ixalan - @feuer_ameise", image: "feuerIxalan.png"},
+			{name: "Kaldheim, Fullart - @feuer_ameise", location: "Custom > Kaldheim, Fullart - @feuer_ameise", image: "feuerKaldheim.png"},
+			{name: "Celid's Asap", location: "Custom > Celid's Asap", image: "celidAsap.png"},
+		];
 		//functions
 		getURL = (imageName) => {
-			return "img/" + imageName;
 			return "https://raw.githubusercontent.com/ImKyle4815/cardconjurer/master/gallery/img/" + imageName;
 		}
 		templateSample = (name, location, image) => {
@@ -155,9 +221,12 @@ include('../globalHTML/header-1.php');
 			}
 		}
 		//Populate everything
-		populateGroup("regularGrid", regularTemplates);
 		populateGroup("showcaseGrid", showcaseTemplates);
+		populateGroup("promoGrid", promoTemplates);
+		populateGroup("textlessGrid", textlessTemplates);
+		populateGroup("customGrid", customTemplates);
+		populateGroup("regularGrid", regularTemplates);
 		populateGroup("tokenGrid", tokenTemplates);
-		populateGroup("otherGrid", otherTemplates);
+		// populateGroup("otherGrid", otherTemplates);
 	</script>
 <?php include('../globalHTML/footer.php'); ?>
