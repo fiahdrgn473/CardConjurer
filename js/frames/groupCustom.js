@@ -28,5 +28,6 @@ loadFramePacks([
 	{name:'Neon - Elry', value:'CustomNeon'},
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
 	{name:'Kaldheim, Fullart - @feuer_ameise', value:'FeuerAmeiseKaldheim'},
-	{name:'Celid\'s Asap', value:'CustomCelidAsap'}
+	{name:'Celid\'s Asap', value:'CustomCelidAsap'},
+	{name:'Magrao\'s Kaldheim', value:'CustomMagraoKaldheim'}
 ])

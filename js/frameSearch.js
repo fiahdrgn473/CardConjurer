@@ -171,6 +171,7 @@ const frameNames = new Map ([
 	['Ixalan - @feuer_ameise', 'FeuerAmeiseIxalan'],
 	['Kaldheim, Fullart - @feuer_ameise', 'FeuerAmeiseKaldheim'],
 	['Celid\'s Asap', 'CustomCelidAsap'],
+	['Magrao\'s Kaldheim', 'CustomMagraoKaldheim'],
 ]);
 
 frameSearch = (str) => {

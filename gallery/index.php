@@ -189,6 +189,7 @@ include('../globalHTML/header-1.php');
 			{name: "Ixalan - @feuer_ameise", location: "Custom > Ixalan - @feuer_ameise", image: "feuerIxalan.png"},
 			{name: "Kaldheim, Fullart - @feuer_ameise", location: "Custom > Kaldheim, Fullart - @feuer_ameise", image: "feuerKaldheim.png"},
 			{name: "Celid's Asap", location: "Custom > Celid's Asap", image: "celidAsap.png"},
+			{name: "Magrao's Kaldheim", location: "Custom > Magrao's Kaldheim", image: "magraoKaldheim.png"},
 		];
 		//functions
 		getURL = (imageName) => {
