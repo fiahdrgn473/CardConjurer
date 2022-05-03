@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
-	{name:'Gilded (SNC)', value:'SNCGilded'},
+	{name:'Golden Age (SNC)', value:'SNCGilded'},
+	{name:'Skyscraper (SNC)', value:'SNCSkyscraper'},
 	{name:'Ninja (NEO)', value:'NeoNinja'},
 	{name:'Samurai (NEO)', value:'NeoSamurai'},
 	{name:'Neon (NEO)', value:'NeoNeon'},

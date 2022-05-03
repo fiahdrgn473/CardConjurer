@@ -104,7 +104,8 @@ include('../globalHTML/header-1.php');
 		];
 		//SHOWCASE FRAMES
 		const showcaseTemplates = [
-			{name: "Gilded (SNC)", location: "Showcase Frames > Gilded (SNC)", image: "sncGilded.png"},
+			{name: "Golden Age (SNC)", location: "Showcase Frames > Golden Age (SNC)", image: "sncGilded.png"},
+			{name: "Skyscraper (SNC)", location: "Showcase Frames > Skyscraper (SNC)", image: "sncSkyscraper.png"},
 			{name: "Ninja (NEO)", location: "Showcase Frames > Ninja (NEO)", image: "neoNinja.png"},
 			{name: "Samurai (NEO)", location: "Showcase Frames > Samurai (NEO)", image: "neoSamurai.png"},
 			{name: "Neon (NEO)", location: "Showcase Frames > Neon (NEO)", image: "neoNeon.png"},
@@ -179,8 +180,8 @@ include('../globalHTML/header-1.php');
 			{name: "Classichshifted Lands", location: "Custom > Classichshifted Lands", image: "classicshiftedLand.png"},
 			{name: "Classichshifted Planeswalkers", location: "Custom > Classichshifted Planeswalkers", image: "classicshiftedPlaneswalker.png"},
 			{name: "Classichshifted Sagas", location: "Custom > Classichshifted Sagas", image: "classicshiftedSaga.png"},
-			{name: "Colored Gilded (SNC)", location: "Custom > Colored Gilded (SNC)", image: "gildedColored.png"},
-			{name: "Textless Gilded (SNC)", location: "Custom > Textless Gilded (SNC)", image: "gildedTextless.png"},
+			{name: "Colored Golden Age (SNC)", location: "Custom > Colored Golden Age (SNC)", image: "gildedColored.png"},
+			{name: "Textless Golden Age (SNC)", location: "Custom > Textless Golden Age (SNC)", image: "gildedTextless.png"},
 			{name: "Textless Equinox (MID)", location: "Custom > Textless Equinox (MID)", image: "equinoxTextless.png"},
 			{name: "Horizontal Japanese Mystical Archive (STA)", location: "Showcase Frames > Horizontal Japanese Mystical Archive (STA)", image: "staMysticalArchiveJPHorizontal.png"},
 			{name: "Textless Inventions (KLD)", location: "Custom > Textless Inventions (KLD)", image: "inventionTextless.png"},
