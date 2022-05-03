@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var bounds = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/m15/snow/w.png', masks:masks},
@@ -14,7 +15,12 @@ availableFrames = [
 	{name:'Blue Land Frame', src:'/img/frames/m15/snow/ul.png', masks:masks},
 	{name:'Black Land Frame', src:'/img/frames/m15/snow/bl.png', masks:masks},
 	{name:'Red Land Frame', src:'/img/frames/m15/snow/rl.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/snow/gl.png', masks:masks}
+	{name:'Green Land Frame', src:'/img/frames/m15/snow/gl.png', masks:masks},
+	{name:'Plains Watermark', src:'/img/frames/snow/watermarks/w.png', bounds:bounds},
+	{name:'Island Watermark', src:'/img/frames/snow/watermarks/u.png', bounds:bounds},
+	{name:'Swamp Watermark', src:'/img/frames/snow/watermarks/b.png', bounds:bounds},
+	{name:'Mountain Watermark', src:'/img/frames/snow/watermarks/r.png', bounds:bounds},
+	{name:'Forest Watermark', src:'/img/frames/snow/watermarks/g.png', bounds:bounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
