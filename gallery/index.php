@@ -90,6 +90,7 @@ include('../globalHTML/header-1.php');
 			{name: "Regular Token", location: "Token > Regular", image: "tokenRegular.png"},
 			{name: "Textless Token", location: "Token > Textless", image: "tokenTextless.png"},
 			{name: "Tall Token", location: "Token > Tall", image: "tokenTall.png"},
+			{name: "Monarch Token", location: "Token > Monarch Token", image: "tokenMonarch.png"},
 			{name: "Day/Night Marker", location: "Token > Day/Night Marker", image: "tokenDayNight.png"},
 			{name: "Jumpstart Front Cards", location: "Token > Jumpstart Front Cards", image: "tokenJumpstart.png"},
 			{name: "Planeswalker Emblems", location: "Token > Planeswalker Emblems", image: "emblem.png"},

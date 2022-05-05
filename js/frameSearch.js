@@ -109,6 +109,7 @@ const frameNames = new Map ([
 	['Regular Tokens', 'TokenRegular-1'],
 	['Textless Tokens', 'TokenTextless-1'],
 	['Tall Tokens', 'TokenTall-1'],
+	['Monarch Token', 'TokenMonarch'],
 	['Day/Night Marker', 'TokenDayNight'],
 	['Jumpstart Front Cards', 'JMPFront'],
 	['Planeswalker Emblems', 'Emblem'],

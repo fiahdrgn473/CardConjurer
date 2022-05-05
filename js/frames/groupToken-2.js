@@ -2,6 +2,7 @@ loadFramePacks([
 	{name:'Regular', value:'TokenRegular-1'},
 	{name:'Textless', value:'TokenTextless-1'},
 	{name:'Tall', value:'TokenTall-1'},
+	{name:'Monarch Token', value:'TokenMonarch'},
 	{name:'Day/Night Marker', value:'TokenDayNight'},
 	{name:'Jumpstart Front Cards', value:'JMPFront'},
 	{name:'Planeswalker Emblems', value:'Emblem'},
