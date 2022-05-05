@@ -27,6 +27,7 @@ const frameNames = new Map ([
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
 	['Golden Age (SNC)', 'SNCGilded'],
+	['Art Deco (SNC)', 'SNCArtDeco'],
 	['Skyscraper (SNC)', 'SNCSkyscraper'],
 	['Ninja (NEO)', 'NeoNinja'],
 	['Samurai (NEO)', 'NeoSamurai'],

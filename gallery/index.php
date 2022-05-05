@@ -105,6 +105,7 @@ include('../globalHTML/header-1.php');
 		//SHOWCASE FRAMES
 		const showcaseTemplates = [
 			{name: "Golden Age (SNC)", location: "Showcase Frames > Golden Age (SNC)", image: "sncGilded.png"},
+			{name: "Art Deco (SNC)", location: "Showcase Frames > Art Deco (SNC)", image: "sncArtDeco.png"},
 			{name: "Skyscraper (SNC)", location: "Showcase Frames > Skyscraper (SNC)", image: "sncSkyscraper.png"},
 			{name: "Ninja (NEO)", location: "Showcase Frames > Ninja (NEO)", image: "neoNinja.png"},
 			{name: "Samurai (NEO)", location: "Showcase Frames > Samurai (NEO)", image: "neoSamurai.png"},
