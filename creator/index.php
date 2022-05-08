@@ -225,6 +225,7 @@ include('../globalHTML/header-1.php');
 									<h5>{lns}</h5><h5>Moves to the next line without an extra space (stands for line-no-space)</h5>
 									<h5>{divider}</h5><h5>Moves to the next line and draws the flavor text bar</h5>
 									<h5>{flavor}</h5><h5>Moves to the next line, draws the flavor text bar, and italicizes</h5>
+									<h5>{fontsize#pt}</h5><h5>Changes the font size to #pt (absolute)</h5>
 									<h5>{fontsize#}</h5><h5>Changes the font size by # pixels (relative - use negative integers to shrink text - ie '{fontsize-12}')</h5>
 									<h5>{fontcolor___}</h5><h5>Changes the font color to ___ (ie '{fontcolor#00FF00}')</h5>
 									<h5>{left}</h5><h5>Aligns text to the left</h5>

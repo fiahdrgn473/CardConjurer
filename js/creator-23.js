@@ -1051,7 +1051,11 @@ function writeText(textObject, targetContext) {
 					textColor = possibleCode.replace('fontcolor', '');
 					lineContext.fillStyle = textColor;
 				} else if (possibleCode.includes('fontsize')) {
-					textSize += parseInt(possibleCode.replace('fontsize', '')) || 0;
+					if (possibleCode.slice(-2) === "pt") {
+						textSize = (parseInt(possibleCode.replace('fontsize', '').replace('pt', '')) * 600 / 72) || 0;
+					} else {
+						textSize += parseInt(possibleCode.replace('fontsize', '')) || 0;
+					}
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode.includes('font') || savedFont) {
 					textFont = word.replace('{font', '').replace('}', '');
