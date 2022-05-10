@@ -1,12 +1,14 @@
+//Create objects for common properties across available frames
+var masks = [{src:'/img/frames/snc/skyscraper/title.svg', name:'Title'}, {src:'/img/frames/snc/skyscraper/type.svg', name:'Type'}, {src:'/img/frames/snc/skyscraper/pinline.svg', name:'Pinline'}, {src:'/img/frames/snc/skyscraper/rules.svg', name:'Rules'}, {src:'/img/frames/snc/skyscraper/frame.svg', name:'Frame'}, {src:'/img/frames/snc/skyscraper/border.svg', name:'Border'}];
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/snc/skyscraper/w.png'},
-	{name:'Blue Frame', src:'/img/frames/snc/skyscraper/u.png'},
-	{name:'Black Frame', src:'/img/frames/snc/skyscraper/b.png'},
-	{name:'Red Frame', src:'/img/frames/snc/skyscraper/r.png'},
-	{name:'Green Frame', src:'/img/frames/snc/skyscraper/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/snc/skyscraper/m.png'},
-	{name:'Colorless Frame', src:'/img/frames/snc/skyscraper/c.png'},
+	{name:'White Frame', src:'/img/frames/snc/skyscraper/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/snc/skyscraper/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/snc/skyscraper/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/snc/skyscraper/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/snc/skyscraper/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/snc/skyscraper/m.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/snc/skyscraper/c.png', masks:masks},
 	{name:'Rare Stamp', src:'/img/frames/snc/stamp.png', bounds:{x:0.4554, y:0.9172, width:0.0894, height:0.0320}}
 ];
 //disables/enables the "Load Frame Version" button

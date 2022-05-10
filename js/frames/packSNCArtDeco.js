@@ -1,15 +1,16 @@
 //Create objects for common properties across available frames
+var masks = [{src:'/img/frames/snc/artDeco/title.svg', name:'Title'}, {src:'/img/frames/snc/artDeco/type.svg', name:'Type'}, {src:'/img/frames/snc/artDeco/pinline.svg', name:'Pinline'}, {src:'/img/frames/snc/artDeco/rules.svg', name:'Rules'}, {src:'/img/frames/snc/artDeco/border.svg', name:'Border'}];
 var bounds = {x:0.7674, y:0.8862, width:0.194, height:0.0581};
 var bounds2 = {x:0.028, y:0.0205, width:0.944, height:0.0972};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/snc/artDeco/w.png'},
-	{name:'Blue Frame', src:'/img/frames/snc/artDeco/u.png'},
-	{name:'Black Frame', src:'/img/frames/snc/artDeco/b.png'},
-	{name:'Red Frame', src:'/img/frames/snc/artDeco/r.png'},
-	{name:'Green Frame', src:'/img/frames/snc/artDeco/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/snc/artDeco/m.png'},
-	{name:'Artifact Frame', src:'/img/frames/snc/artDeco/a.png'},
+	{name:'White Frame', src:'/img/frames/snc/artDeco/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/snc/artDeco/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/snc/artDeco/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/snc/artDeco/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/snc/artDeco/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/snc/artDeco/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/snc/artDeco/a.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/snc/artDeco/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/snc/artDeco/pt/u.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/snc/artDeco/pt/b.png', bounds:bounds},
