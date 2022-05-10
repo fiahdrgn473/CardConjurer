@@ -12,6 +12,7 @@ loadFramePacks([
 	{name:'Classicshifted', value:'Classicshifted'},
 	{name:'Classicshifted Lands', value:'ClassicshiftedLands'},
 	{name:'Classicshifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},
+	{name:'Classicshifted Planeswalker Transform Addons', value:'ClassicshiftedPlaneswalkerTransform'},
 	{name:'Classicshifted Sagas', value:'ClassicshiftedSaga'},
 	{name:'Classicshifted MDFC Addons', value:'ClassicshiftedDFC'},
 	{name:'Classicshifted Transform Addons', value:'ClassicshiftedTransform'},

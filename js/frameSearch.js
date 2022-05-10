@@ -161,6 +161,7 @@ const frameNames = new Map ([
 	['Classicshifted', 'Classicshifted'],
 	['Classicshifted Lands', 'ClassicshiftedLands'],
 	['Classicshifted Planeswalkers', 'ClassicshiftedPlaneswalker'],
+	['Classicshifted Planeswalker Transform Addons', 'ClassicshiftedPlaneswalkerTransform'],
 	['Classicshifted Sagas', 'ClassicshiftedSaga'],
 	['Classicshifted MDFC Addons', 'ClassicshiftedDFC'],
 	['Classicshifted Transform Addons', 'ClassicshiftedTransform'],
