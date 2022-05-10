@@ -163,6 +163,7 @@ const frameNames = new Map ([
 	['Classicshifted Planeswalkers', 'ClassicshiftedPlaneswalker'],
 	['Classicshifted Sagas', 'ClassicshiftedSaga'],
 	['Classicshifted MDFC Addons', 'ClassicshiftedDFC'],
+	['Classicshifted Transform Addons', 'ClassicshiftedTransform'],
 	['Classicshifted Color Identity Pips', 'ClassicshiftedCIPips'],
 	['Colored Golden Age (SNC)', 'SNCGildedColored'],
 	['Textless Golden Age (SNC)', 'SNCGildedTextless'],

@@ -14,6 +14,7 @@ loadFramePacks([
 	{name:'Classicshifted Planeswalkers', value:'ClassicshiftedPlaneswalker'},
 	{name:'Classicshifted Sagas', value:'ClassicshiftedSaga'},
 	{name:'Classicshifted MDFC Addons', value:'ClassicshiftedDFC'},
+	{name:'Classicshifted Transform Addons', value:'ClassicshiftedTransform'},
 	{name:'Color Identity Pips', value:'ClassicshiftedCIPips'},
 	{name:'Showcase Frame Varients', value:'disabled'},
 	{name:'Colored Golden Age (SNC)', value:'SNCGildedColored'},
