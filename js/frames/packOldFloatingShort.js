@@ -10,6 +10,7 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/old/floating/short/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/old/floating/short/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/old/floating/short/l.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/old/floating/short/c.png', masks:masks},
 	{name:'Tombstone Icon', src:'/img/frames/old/icons/tombstone.svg', bounds: {x:0.0687, y:0.0491, width:0.0338, height:0.0329}},
 	{name:'DCI Star', src:'/img/frames/seventh/foilStar.svg'},
 	{name:'Foil Layer', src:'/img/frames/effects/foil.png', opacity:20, masks:[{src:'/img/frames/seventh/foil.svg', name:'With Star'}, {src:'/img/frames/seventh/foil2.svg', name:'Without Star'}]},
