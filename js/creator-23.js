@@ -1561,9 +1561,10 @@ function fetchSetSymbol() {
 	}
 	var setRarity = document.querySelector('#set-symbol-rarity').value.toLowerCase().replace('uncommon', 'u').replace('common', 'c').replace('rare', 'r').replace('mythic', 'm') || 'c';
 	if (['cc', 'logan', 'joe'].includes(setCode.toLowerCase())) {
-		uploadSetSymbol(fixUri(`/img/setSymbols/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
+		uploadSetSymbol(fixUri(`/img/setSymbols/custom/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
 	} else {
-		imageURL('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, uploadSetSymbol, 'resetSetSymbol');
+		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
+		//imageURL('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, uploadSetSymbol, 'resetSetSymbol');
 	}
 }
 function lockSetSymbolCode() {
