@@ -343,9 +343,8 @@ include('../globalHTML/header-1.php');
 							<div class='padding'>
 								<h5 class='margin-top'>Set codes are the two-three character combinations that represent sets. For sets released after 2015, the three-character set code can be found in the lower left hand corner.</h5>
 								<h5 class='margin-top'>For older sets, the code may be different depending on your use:</h5>
-								<p class='margin-top padding'>Set symbol images are fetched from the <a class='underline' href='https://gatherer.wizards.com/Pages/Default.aspx' target='_blank'>Gatherer</a>. After finding a card with the desired set symbol, right click the set symbol image and open it in a new tab. In the URL you should find the set code, following the 'set='</p>
+								<p class='margin-top padding'>Set symbol images are named using the same codes as used in <a class='underline' href='https://scryfall.com/sets' target='_blank'>Scryfall</a>.</p>
 								<p class='padding'>For watermarks, please reference <a class='underline' href='https://keyrune.andrewgioia.com/icons.html' target='_blank'>Keyrune</a>.</p>
-								<p class='padding'>Generally, however, the set codes used by <a class='underline' href='https://scryfall.com/sets' target='_blank'>Scryfall</a> are accurate.</p>
 							</div>
 						</div>
 						<div class='readable-background padding margin-bottom'>
@@ -453,9 +452,8 @@ include('../globalHTML/header-1.php');
 							<div class='padding'>
 								<h5 class='margin-top'>Set codes are the two-three character combinations that represent sets. For sets released after 2015, the three-character set code can be found in the lower left hand corner.</h5>
 								<h5 class='margin-top'>For older sets, the code may be different depending on your use:</h5>
-								<p class='margin-top padding'>Set symbol images are fetched from the <a class='underline' href='https://gatherer.wizards.com/Pages/Default.aspx' target='_blank'>Gatherer</a>. After finding a card with the desired set symbol, right click the set symbol image and open it in a new tab. In the URL you should find the set code, following the 'set='</p>
+								<p class='margin-top padding'>Set symbol images are named using the same codes as used in <a class='underline' href='https://scryfall.com/sets' target='_blank'>Scryfall</a>.</p>
 								<p class='padding'>For watermarks, please reference <a class='underline' href='https://keyrune.andrewgioia.com/icons.html' target='_blank'>Keyrune</a>.</p>
-								<p class='padding'>Generally, however, the set codes used by <a class='underline' href='https://scryfall.com/sets' target='_blank'>Scryfall</a> are accurate.</p>
 							</div>
 						</div>
 						<div class='readable-background padding margin-bottom'>
