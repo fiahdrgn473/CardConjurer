@@ -1147,6 +1147,8 @@ function writeText(textObject, targetContext) {
 					textArcStart = parseFloat(possibleCode.replace('arcstart', '')) || 0;
 				} else if (possibleCode.includes('rotate')) {
 					textRotation = parseInt(possibleCode.replace('rotate', '')) % 360;
+				} else if (possibleCode === 'manacolordefault') {
+					manaSymbolColor = null;
 				} else if (possibleCode.includes('manacolor')) {
 					manaSymbolColor = possibleCode.replace('manacolor', '') || 'white';
 				} else if (possibleCode.includes('fixtextalign')) {
