@@ -674,6 +674,7 @@ include('../globalHTML/header-1.php');
 				<h4>Dominic F.</h4>
 				<h4>Brendan R.</h4>
 				<h4>SE</h4>
+				<h4>Connor S.</h4>
 				<h4>Damian Z.</h4>
 				<h4>Adjicio</h4>
 				<h4>Makoto Takahashi</h4>
@@ -728,7 +729,6 @@ include('../globalHTML/header-1.php');
 				<h4>Gwynayne W.</h4>
 				<h4>Guillaume D.</h4>
 				<h4>MoldyAce</h4>
-				<h4>Fabien S.</h4>
 				<h4>Adam T.</h4>
 				<h4>J. Skene</h4>
 				<h4>Cesar P.</h4>
@@ -740,7 +740,6 @@ include('../globalHTML/header-1.php');
 				<h4>Curtis H.</h4>
 				<h4>Viet D.</h4>
 				<h4>Pedro P.</h4>
-				<h4>Connor S.</h4>
 				<h4>Brian L.</h4>
 				<h4>Greg R.</h4>
 				<h4>Paul W.</h4>
