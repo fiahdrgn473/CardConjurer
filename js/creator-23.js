@@ -250,6 +250,10 @@ function dragOver(event, drag=true) {
 		}
 	}
 }
+//Set Symbols
+const setSymbolAliases = new Map([
+	["anb", "ana"],
+]);
 //Mana Symbols
 const mana = new Map();
 // var manaSymbols = [];
@@ -1565,6 +1569,7 @@ function fetchSetSymbol() {
 	if (['cc', 'logan', 'joe'].includes(setCode.toLowerCase())) {
 		uploadSetSymbol(fixUri(`/img/setSymbols/custom/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
 	} else {
+		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
 		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
 		//imageURL('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, uploadSetSymbol, 'resetSetSymbol');
 	}
