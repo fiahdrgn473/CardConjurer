@@ -660,7 +660,6 @@ include('../globalHTML/header-1.php');
 				<h4>Edward E.</h4>
 				<h4>Avery D.</h4>
 				<h4>Zachary C.</h4>
-				<h4>Joshua R.</h4>
 				<h4>TheSapphireTri</h4>
 				<h4>Rhys W.</h4>
 				<h4>Ross G.</h4>
@@ -701,6 +700,8 @@ include('../globalHTML/header-1.php');
 				<h4>Frank R.</h4>
 				<h4>Georg H.</h4>
 				<h4>dave</h4>
+				<h4>Josh C.</h4>
+				<h4>Leo H.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
@@ -746,6 +747,7 @@ include('../globalHTML/header-1.php');
 				<h4>Paul W.</h4>
 				<h4>Ayah N.</h4>
 				<h4>Blake M.</h4>
+				<h4>Joshua R.</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
