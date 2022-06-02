@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/8th/pinline.png', name:'Pinline'}, {src:'/img/frames/8th/title.png', name:'Title'}, {src:'/img/frames/8th/type.png', name:'Type'}, {src:'/img/frames/8th/rules.png', name:'Rules'}, {src:'/img/frames/8th/frame.png', name:'Frame'}];
+var masks2 = [{src:'/img/frames/8th/border.svg', name:'Border'}];
 var bounds = {x:0.7227, y:0.8796, width:0.2147, height:0.0839};
 //defines available frames
 availableFrames = [
@@ -10,6 +11,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/8th/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/8th/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/8th/a.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/8th/c.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/8th/l.png', masks:masks},
 	{name:'White Land Frame', src:'/img/frames/8th/wl.png', masks:masks},
 	{name:'Blue Land Frame', src:'/img/frames/8th/ul.png', masks:masks},
@@ -24,7 +26,10 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/8th/pt/g.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/8th/pt/m.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/8th/pt/a.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/8th/pt/l.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/8th/pt/l.png', bounds:bounds},
+	{name:'White Border', src:'/img/frames/white.png', masks:masks2, noDefaultMask:true},
+	{name:'Silver Border', src:'/img/frames/silver.png', masks:masks2, noDefaultMask:true},
+	{name:'Gold Border', src:'/img/frames/gold.png', masks:masks2, noDefaultMask:true}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
@@ -53,9 +58,9 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	});
 	//bottom info
 	loadBottomInfo({
-		top: {text:'{conditionalcolor:Black_Frame,Land_Frame:white}\uFFEE {elemidinfo-artist}', x:0.094, y:1904/2100, width:0.8107, height:0.0248, oneLine:true, font:'matrixb', size:0.0248, color:'black', shadowX:0.0007, shadowY:0.0005},
-		wizards: {name:'wizards', text:'{conditionalcolor:Black_Frame,Land_Frame:white}\u2122 & \u00a9 1993-{elemidinfo-year} Wizards of the Coast, Inc. {elemidinfo-number}', x:0.094, y:1958/2100, width:0.8107, height:0.0153, oneLine:true, font:'mplantin', size:0.0153, color:'black', shadowX:0.0007, shadowY:0.0005},
-		bottom: {text:'{conditionalcolor:Black_Frame,Land_Frame:white}NOT FOR SALE   CardConjurer.com', x:0.094, y:1994/2100, width:0.8107, height:0.0134, oneLine:true, font:'mplantin', size:0.0134, color:'black', shadowX:0.0007, shadowY:0.0005}
+		top: {text:'{conditionalcolor:Black_Frame,Land_Frame,Colorless_Frame:white}\uFFEE {elemidinfo-artist}', x:0.094, y:1904/2100, width:0.8107, height:0.0248, oneLine:true, font:'matrixb', size:0.0248, color:'black', shadowX:0.0007, shadowY:0.0005},
+		wizards: {name:'wizards', text:'{conditionalcolor:Black_Frame,Land_Frame,Colorless_Frame:white}\u2122 & \u00a9 1993-{elemidinfo-year} Wizards of the Coast, Inc. {elemidinfo-number}', x:0.094, y:1958/2100, width:0.8107, height:0.0153, oneLine:true, font:'mplantin', size:0.0153, color:'black', shadowX:0.0007, shadowY:0.0005},
+		bottom: {text:'{conditionalcolor:Black_Frame,Land_Frame,Colorless_Frame:white}NOT FOR SALE   CardConjurer.com', x:0.094, y:1994/2100, width:0.8107, height:0.0134, oneLine:true, font:'mplantin', size:0.0134, color:'black', shadowX:0.0007, shadowY:0.0005}
 	});
 }
 //loads available frames
