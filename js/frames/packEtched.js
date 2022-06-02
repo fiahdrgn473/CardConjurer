@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/commanderLegends/m15CommanderLegendsMaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/commanderLegends/m15CommanderLegendsMaskTitle.png', name:'Title'}, {src:'/img/frames/m15/commanderLegends/m15CommanderLegendsMaskType.png', name:'Type'}, {src:'/img/frames/m15/commanderLegends/m15CommanderLegendsMaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/etched/legends/frame.svg', name:'Frame'}, {src:'/img/frames/etched/legends/title.svg', name:'Title'}, {src:'/img/frames/etched/legends/type.svg', name:'Type'}, {src:'/img/frames/etched/legends/rules.svg', name:'Rules'}, {src:'/img/frames/etched/legends/border.svg', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
+var bounds2 = {x:0.42, y:0.9062, width:0.16, height:0.0453};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/etched/legends/w.png', masks:masks},
@@ -17,6 +18,13 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/m15/commanderLegends/ptG.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/commanderLegends/ptM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/commanderLegends/ptA.png', bounds:bounds},
+	{name:'White Holo Stamp', src:'/img/frames/etched/legends/holo/w.png', bounds:bounds2},
+	{name:'Blue Holo Stamp', src:'/img/frames/etched/legends/holo/u.png', bounds:bounds2},
+	{name:'Black Holo Stamp', src:'/img/frames/etched/legends/holo/b.png', bounds:bounds2},
+	{name:'Red Holo Stamp', src:'/img/frames/etched/legends/holo/r.png', bounds:bounds2},
+	{name:'Green Holo Stamp', src:'/img/frames/etched/legends/holo/g.png', bounds:bounds2},
+	{name:'Multicolored Holo Stamp', src:'/img/frames/etched/legends/holo/m.png', bounds:bounds2},
+	{name:'Artifact Holo Stamp', src:'/img/frames/etched/legends/holo/a.png', bounds:bounds2},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
