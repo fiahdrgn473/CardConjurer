@@ -12,6 +12,7 @@ var cardMarginX =  parseInt(document.querySelector("#cardMargin").value);
 var cardMarginY = cardMarginX;
 //booleans
 var imgIncludesBleedEdge = true;
+var bleedEdgeColor = "black";
 var useCuttingAids = false;
 //Prepare variables/canvas/context
 var imageList = [];
@@ -62,6 +63,7 @@ function drawSheetReal() {
                 if (imgIncludesBleedEdge) {
                     context.drawImage(imageList[i], x - cardPaddingX, y - cardPaddingY, w + 2 * cardPaddingX, h + 2 * cardPaddingY);
                 } else {
+                    context.fillStyle = bleedEdgeColor;
                     context.fillRect(x - cardPaddingX, y - cardPaddingY, w + 2 * cardPaddingX, h + 2 * cardPaddingY);
                     context.drawImage(imageList[i], x, y, w, h);
                 }
@@ -100,6 +102,7 @@ function downloadPDF() {
     defaultPadding.width = 1;
     defaultPadding.height = 1;
     var defaultPaddingContext = defaultPadding.getContext("2d");
+    defaultPaddingContext.fillStyle = bleedEdgeColor;
     defaultPaddingContext.fillRect(0, 0, 1, 1);
     //Calc actual card size
     const cw =  cardWidth + 2 * cardPaddingX + cardMarginX;
@@ -180,6 +183,10 @@ function setBleedEdge(bool) {
     imgIncludesBleedEdge = bool;
     drawSheet();
 }
+function setBleedEdgeColor(color) {
+    bleedEdgeColor = color;
+    drawSheet();
+}
 function setCuttingAids(bool) {
     useCuttingAids = bool;
     drawSheet();
@@ -196,6 +203,7 @@ function saveDefaults() {
         cardPaddingX:cardPaddingX,
         cardPaddingY:cardPaddingY,
         bleedEdge:imgIncludesBleedEdge,
+        bleedEdgeColor:bleedEdgeColor,
         cuttingAids:useCuttingAids
     }
     localStorage.setItem("cardPrintConfig", JSON.stringify(cardObject));
@@ -218,6 +226,8 @@ function loadDefaults() {
         document.querySelector("#cardPadding").value = cardPaddingX;
         imgIncludesBleedEdge = cardObject.bleedEdge;
         document.querySelector("#bleedEdgeCheckbox").checked = imgIncludesBleedEdge;
+        bleedEdgeColor = cardObject.bleedEdgeColor;
+        document.querySelector("#bleedEdgeColor").value = bleedEdgeColor;
         useCuttingAids = cardObject.cuttingAids;
         document.querySelector("#cuttingAidsCheckbox").checked = useCuttingAids;
     }

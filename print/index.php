@@ -40,6 +40,8 @@ include('../globalHTML/header-1.php');
                 <input id='bleedEdgeCheckbox' type='checkbox' onchange='setBleedEdge(this.checked);' checked>
                 <span class='checkmark'></span>
             </label>
+            <h5 class='margin-bottom padding input-description'>Bleed Edge Color</h5>
+            <input id='bleedEdgeColor' type='color' class='input margin-bottom' onchange='setBleedEdgeColor(this.value);'>
             <h5 class='margin-bottom padding input-description'>Save your current configurations as default</h5>
             <button onclick='saveDefaults();' class='input margin-bottom'>Save configuration</button>
         </div>
