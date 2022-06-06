@@ -226,7 +226,7 @@ function loadDefaults() {
         document.querySelector("#cardPadding").value = cardPaddingX;
         imgIncludesBleedEdge = cardObject.bleedEdge;
         document.querySelector("#bleedEdgeCheckbox").checked = imgIncludesBleedEdge;
-        bleedEdgeColor = cardObject.bleedEdgeColor;
+        bleedEdgeColor = cardObject.bleedEdgeColor || bleedEdgeColor;
         document.querySelector("#bleedEdgeColor").value = bleedEdgeColor;
         useCuttingAids = cardObject.cuttingAids;
         document.querySelector("#cuttingAidsCheckbox").checked = useCuttingAids;
