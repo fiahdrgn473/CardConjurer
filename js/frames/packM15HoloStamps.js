@@ -11,7 +11,8 @@ availableFrames = [
 	{name:'Artifact Holo Stamp', src:'/img/frames/m15/holoStamps/m15HoloStampA.png', bounds:bounds},
 	{name:'Land Holo Stamp', src:'/img/frames/m15/holoStamps/m15HoloStampL.png', bounds:bounds},
 	{name:'Artifact (2) Holo Stamp', src:'/img/frames/m15/holoStamps/m15HoloStampA2.png', bounds:bounds},
-	{name:'Artifact (3) Holo Stamp', src:'/img/frames/m15/holoStamps/m15HoloStampA3.png', bounds:bounds}
+	{name:'Artifact (3) Holo Stamp', src:'/img/frames/m15/holoStamps/m15HoloStampA3.png', bounds:bounds},
+	{name:'Plain Holo Stamp', src:'/img/frames/m15/holoStamps/stamp.png', bounds:{x:0.4554, y:0.9172, width:0.0894, height:0.0320}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = true;
