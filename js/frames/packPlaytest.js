@@ -39,7 +39,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		mana: {name:'Mana Cost', text:'', y:0.0939, width:0.8534, height:71/2100, oneLine:true, size:71/1638, align:'right', manaCost:true, manaSpacing:0, manaPrefix:'outline'},
 		title: {name:'Title', text:'', x:0.1547, y:0.0896, width:0.6907, height:0.0372, oneLine:true, font:'Calibri', size:0.0372, fontStyle:"bold "},
 		type: {name:'Type', text:'', x:0.1547, y:0.5048, width:0.6907, height:0.0372, oneLine:true, font:'Calibri', size:0.0372},
-		rules: {name:'Rules Text', text:'', x:0.1547, y:0.5624, width:0.6907, height:0.3086, size:0.0372, font:'Calibri'},
+		rules: {name:'Rules Text', text:'', x:0.1547, y:0.5624, width:0.6907, height:0.3086, size:0.0372, font:'Calibri', manaPrefix:'outline'},
 		pt: {name:'Power/Toughness', text:'', x:0.7307, y:0.8848, width:0.1334, height:0.0372, size:0.0372, font:'Calibri', oneLine:true, align:'center'},
 		reminder: {name:'Reminder', text:'TEST CARD {/bold}- Not for constructed play', x:0.1547, y:0.8896, width:0.6907, height:0.0253, oneLine:true, font:'Calibri', size:0.0253, fontStyle:"italic bold "}
 	});
