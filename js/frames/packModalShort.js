@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/modal/short/shortModalMaskPinline.png', name:'Pinline'}, {src:'/img/frames/modal/modalMaskTitle.png', name:'Title'}, {src:'/img/frames/modal/short/shortMaskType.png', name:'Type'}, {src:'/img/frames/modal/short/shortModalMaskText.png', name:'Rules'}, {src:'/img/frames/modal/modalMaskReminder.png', name:'Flipside'}, {src:'/img/frames/modal/short/shortModalMaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/modal/short/shortModalMaskPinline.png', name:'Pinline'}, {src:'/img/frames/modal/modalMaskTitle.png', name:'Title'}, {src:'/img/frames/modal/short/shortMaskType.png', name:'Type'}, {src:'/img/frames/modal/short/shortModalMaskText.png', name:'Rules'}, {src:'/img/frames/modal/titleMDFCArrow.svg', name:'MDFC Arrow'}, {src:'/img/frames/modal/modalMaskReminder.png', name:'Flipside'}, {src:'/img/frames/modal/short/shortModalMaskBorder.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [

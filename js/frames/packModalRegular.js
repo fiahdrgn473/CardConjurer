@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/modal/regular/reminder.svg', name:'Flipside'}, {src:'/img/frames/modal/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/modal/regular/title.svg', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/modal/regular/textbox.svg', name:'Rules'}, {src:'/img/frames/modal/regular/frame.svg', name:'Frame'}, {src:'/img/frames/modal/regular/border.svg', name:'Border'}];
+var masks = [{src:'/img/frames/modal/regular/reminder.svg', name:'Flipside'}, {src:'/img/frames/modal/regular/pinline.svg', name:'Pinline'}, {src:'/img/frames/modal/regular/title.svg', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/modal/regular/textbox.svg', name:'Rules'}, {src:'/img/frames/modal/titleMDFCArrow.svg', name:'MDFC Arrow'}, {src:'/img/frames/modal/regular/frame.svg', name:'Frame'}, {src:'/img/frames/modal/regular/border.svg', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
