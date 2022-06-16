@@ -147,6 +147,7 @@ const frameNames = new Map ([
 	['Unhinged Basics (UNH)', 'Unhinged'],
 	['Generic Showcase', 'TextlessGenericShowcase'],
 	['Magic Fest Promos', 'MagicFest'],
+	['Extended Art Invocations', 'AKHInvocationExtended'],
 	['Textless Inventions', 'TextlessInvention'],
 	['Textless Seventh', 'SeventhTextless'],
 	//custom

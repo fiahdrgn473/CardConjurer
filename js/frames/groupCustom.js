@@ -22,6 +22,7 @@ loadFramePacks([
 	{name:'Textless Golden Age (SNC)', value:'SNCGildedTextless'},
 	{name:'Textless Equinox (MID)', value:'EquinoxTextless'},
 	{name:'Horizontal Japanese Mystical Archive (STA)', value:'MysticalArchiveJPHorizontal'},
+	{name:'Extended Art Invocations', value:'AKHInvocationExtended'},
 	{name:'Textless Inventions', value:'TextlessInvention'},
 	{name:'Custom Addons', value:'disabled'},
 	{name:'Brawl Legend Crowns', value:'Brawl'},
