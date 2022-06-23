@@ -1,6 +1,8 @@
+//Create objects for common properties across available frames
+var masks = [{src:'/img/frames/token/monarch/pinline.svg', name:'Pinline (With Bevel)'}, {src:'/img/frames/token/monarch/pinline2.svg', name:'Pinline'}, {src:'/img/frames/token/monarch/type.svg', name:'Type'}, {src:'/img/frames/token/monarch/rules.svg', name:'Rules'}];
 //defines available frames
 availableFrames = [
-	{name:'Monarch Frame', src:'/img/frames/token/monarch/monarch.png'}
+	{name:'Monarch Frame', src:'/img/frames/token/monarch/monarch.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
