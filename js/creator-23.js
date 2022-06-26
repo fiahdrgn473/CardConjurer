@@ -1783,7 +1783,7 @@ function drawCard() {
 	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
-	if (card.marginX == 0 && card.marginY == 0) {
+	if (!card.noCorners && (card.marginX == 0 && card.marginY == 0)) {
 		cardContext.drawImage(corner, 0, 0, scaleWidth(59/1500), scaleWidth(59/1500));
 		cardContext.rotate(Math.PI / 2);
 		cardContext.drawImage(corner, 0, -card.width, scaleWidth(59/1500), scaleWidth(59/1500));
@@ -2027,6 +2027,7 @@ async function loadCard(selectedCardKey) {
 		// document.querySelector('#watermark-left').value = card.watermarkLeft;
 		// document.querySelector('#watermark-right').value = card.watermarkRight;
 		document.querySelector('#watermark-opacity').value = card.watermarkOpacity * 100;
+		document.getElementById("rounded-corners").checked = !card.noCorners;
 		uploadWatermark(card.watermarkSource);
 		card.frames.reverse();
 		await card.frames.forEach(item => addFrame([], item));
@@ -2171,6 +2172,12 @@ function toggleCardBackgroundColor(highlight) {
 	} else {
 		previewCanvas.style["background-color"] = "#0000";
 	}
+}
+//Rounded Corners
+function setRoundedCorners(value) {
+	card.noCorners = !value;
+	console.log(card.noCorners);
+	drawCard();
 }
 //Various loaders
 function imageURL(url, destination, otherParams) {

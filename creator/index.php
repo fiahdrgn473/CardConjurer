@@ -185,6 +185,11 @@ include('../globalHTML/header-1.php');
 							</div>
 						</div>
 						<div class='readable-background padding'>
+							<h5 class='input-description margin-bottom'>Rounded Corners (When Downloaded)</h5>
+							<label class='checkbox-container input margin-bottom'>Rounded Corners
+								<input id='rounded-corners' checked="true" type='checkbox' onchange='setRoundedCorners(this.checked);'>
+								<span class='checkmark'></span>
+							</label>
 							<h5 class='input-description margin-bottom'>Show guidelines for text, art, watermark, and set symbols</h5>
 							<label class='checkbox-container input margin-bottom'>Guidelines
 								<input id='show-guidelines' type='checkbox' onchange='drawCard();'>
