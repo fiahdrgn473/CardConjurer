@@ -2176,7 +2176,6 @@ function toggleCardBackgroundColor(highlight) {
 //Rounded Corners
 function setRoundedCorners(value) {
 	card.noCorners = !value;
-	console.log(card.noCorners);
 	drawCard();
 }
 //Various loaders
