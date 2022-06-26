@@ -167,6 +167,7 @@ const frameNames = new Map ([
 	['Classicshifted MDFC Addons', 'ClassicshiftedDFC'],
 	['Classicshifted Transform Addons', 'ClassicshiftedTransform'],
 	['Classicshifted Color Identity Pips', 'ClassicshiftedCIPips'],
+	['Short Neon (NEO)', 'NEONeonShort'],
 	['Colored Golden Age (SNC)', 'SNCGildedColored'],
 	['Textless Golden Age (SNC)', 'SNCGildedTextless'],
 	['Textless Equinox (MID)', 'EquinoxTextless'],

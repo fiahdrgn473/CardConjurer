@@ -18,6 +18,7 @@ loadFramePacks([
 	{name:'Classicshifted Transform Addons', value:'ClassicshiftedTransform'},
 	{name:'Color Identity Pips', value:'ClassicshiftedCIPips'},
 	{name:'Showcase Frame Varients', value:'disabled'},
+	{name:'Short Neon (NEO)', value:'NEONeonShort'},
 	{name:'Colored Golden Age (SNC)', value:'SNCGildedColored'},
 	{name:'Textless Golden Age (SNC)', value:'SNCGildedTextless'},
 	{name:'Textless Equinox (MID)', value:'EquinoxTextless'},
