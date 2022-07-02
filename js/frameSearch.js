@@ -157,6 +157,7 @@ const frameNames = new Map ([
 	['Tapped (Horizontal M15)', 'Tapped'],
 	['Textless Duals', 'CustomDualLands'],
 	['Seventh Edition Planeswalkers', 'PlaneswalkerSeventh'],
+	['Seventh Edition Sagas', 'OldSaga'],
 	['Floating Old Border', 'OldFloating'],
 	['Floating Old Border (Short)', 'OldFloatingShort'],
 	['Classicshifted', 'Classicshifted'],

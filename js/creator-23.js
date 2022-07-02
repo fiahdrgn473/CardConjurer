@@ -1754,11 +1754,11 @@ function drawCard() {
 		cardContext.drawImage(planeswalkerPreFrameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
 	cardContext.drawImage(frameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	if (card.version.includes('planeswalker') && typeof planeswalkerPostFrameCanvas !== "undefined") {
+	if (card.version.toLowerCase().includes('planeswalker') && typeof planeswalkerPostFrameCanvas !== "undefined") {
 		cardContext.drawImage(planeswalkerPostFrameCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	} else if (card.version.includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
+	} else if (card.version.toLowerCase().includes('planeswalker') && typeof planeswalkerCanvas !== "undefined") {
 		cardContext.drawImage(planeswalkerCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	} else if (card.version.includes('QRCode') && typeof qrCodeCanvas !== "undefined") {
+	} else if (card.version.toLowerCase().includes('qrcode') && typeof qrCodeCanvas !== "undefined") {
 		cardContext.drawImage(qrCodeCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	} // REMOVE/DELETE PLANESWALKERCANVAS AFTER A FEW WEEKS
 	// guidelines
@@ -1768,11 +1768,11 @@ function drawCard() {
 	// watermark
 	cardContext.drawImage(watermarkCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// custom elements for sagas, classes, and dungeons
-	if (card.version.includes('saga') && typeof sagaCanvas !== "undefined") {
+	if (card.version.toLowerCase().includes('saga') && typeof sagaCanvas !== "undefined") {
 		cardContext.drawImage(sagaCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	} else if (card.version.includes('class') && typeof classCanvas !== "undefined") {
+	} else if (card.version.toLowerCase().includes('class') && typeof classCanvas !== "undefined") {
 		cardContext.drawImage(classCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
-	} else if (card.version.includes('dungeon') && typeof dungeonCanvas !== "undefined") {
+	} else if (card.version.toLowerCase().includes('dungeon') && typeof dungeonCanvas !== "undefined") {
 		cardContext.drawImage(dungeonCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
 	// text

@@ -31,7 +31,7 @@ if (!loadedVersions.includes('/js/frames/versionSaga.js')) {
 		</div>
 	</div>`;
 	if (!card.saga) {
-		card.saga = {abilities:[1, 1, 1, 0], count:3, x:0.1, width:0.3947};
+		card.saga = {abilities:[1, 1, 1, 0], count:3, x:(card.version === "oldSaga" ? 0.1114 : 0.1), width:(card.version === "oldSaga" ? 0.3727 : 0.3947)};
 	}
 	document.querySelector('#creator-menu-sections').appendChild(newHTML);
 	var sagaChapter = new Image();
