@@ -12,6 +12,7 @@ availableFrames = [
 	{name:'Artifact Frame', src:'/img/frames/iko/short/a.png', masks:masks},
 	{name:'Artifact Frame (Alt)', src:'/img/frames/iko/short/a2.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/iko/short/l.png', masks:masks},
+
 	{name:'White Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTB.png', bounds:bounds},
@@ -19,7 +20,17 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTG.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTA.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTC.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/m15/nickname/m15NicknamePTC.png', bounds:bounds},
+
+	{name:'White Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/w.png', masks:masks},
+	{name:'Blue Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/u.png', masks:masks},
+	{name:'Black Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/b.png', masks:masks},
+	{name:'Red Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/r.png', masks:masks},
+	{name:'Green Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/g.png', masks:masks},
+	{name:'Multicolored Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/m.png', masks:masks},
+	{name:'Artifact Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/a.png', masks:masks},
+	{name:'Artifact Frame (Alt, Colored Textboxes)', src:'/img/frames/iko/short/colored/a2.png', masks:masks},
+	{name:'Land Frame (Colored Textboxes)', src:'/img/frames/iko/short/colored/l.png', masks:masks},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

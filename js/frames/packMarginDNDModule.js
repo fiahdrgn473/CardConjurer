@@ -10,7 +10,8 @@ availableFrames = [
 	{name:'Green Extension', src:'/img/frames/dndModule/margin/g.svg', bounds:bounds, ogBounds:ogBounds},
 	{name:'Multicolored Extension', src:'/img/frames/dndModule/margin/m.svg', bounds:bounds, ogBounds:ogBounds},
 	{name:'Artifact Extension', src:'/img/frames/dndModule/margin/a.svg', bounds:bounds, ogBounds:ogBounds},
-	{name:'Colorless Extension', src:'/img/frames/dndModule/margin/c.svg', bounds:bounds, ogBounds:ogBounds}
+	{name:'Colorless Extension', src:'/img/frames/dndModule/margin/c.svg', bounds:bounds, ogBounds:ogBounds},
+	{name:'Land Extension', src:'/img/frames/dndModule/margin/l.svg', bounds:bounds, ogBounds:ogBounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

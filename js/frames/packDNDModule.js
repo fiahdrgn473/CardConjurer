@@ -7,7 +7,8 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/dndModule/g.svg'},
 	{name:'Multicolored Frame', src:'/img/frames/dndModule/m.svg'},
 	{name:'Artifact Frame', src:'/img/frames/dndModule/a.svg'},
-	{name:'Colorless Frame', src:'/img/frames/dndModule/c.svg'}
+	{name:'Colorless Frame', src:'/img/frames/dndModule/c.svg'},
+	{name:'Land Frame', src:'/img/frames/dndModule/l.svg'}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
