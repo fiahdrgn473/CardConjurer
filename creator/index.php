@@ -267,6 +267,8 @@ include('../globalHTML/header-1.php');
 									<h5>{s}</h5><h5>Snow mana</h5>
 									<h5>{e}</h5><h5>Energy symbol</h5>
 									<h5>{+1}</h5><h5>+1 loyalty icon</h5>
+									<h5>{planeswalker}</h5><h5>Planeswalker icon</h5>
+									<h5>{chaos}</h5><h5>Chaos symbol (planechase)</h5>
 									<h5>Notes</h5><h5>Hybrid/Phyrexian mana only works with WUBRG</h5>
 								</div>
 							</div>

@@ -254,6 +254,7 @@ function dragOver(event, drag=true) {
 const setSymbolAliases = new Map([
 	["anb", "ana"],
 	["tsb", "tsp"],
+	["pmei", "sld"],
 ]);
 //Mana Symbols
 const mana = new Map();
