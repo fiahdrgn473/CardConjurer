@@ -430,6 +430,12 @@ include('../globalHTML/header-1.php');
 								<option value="/img/watermarks/school-witherbloom.svg">Witherbloom</option>
 								<option value="/img/watermarks/school-lorehold.svg">Lorehold</option>
 								<option value="/img/watermarks/school-quandrix.svg">Quandrix</option>
+								<option disabled>Families (New Capenna)</option>
+								<option value="/img/watermarks/family-brokers.svg">Brokers</option>
+								<option value="/img/watermarks/family-obscura.svg">Obscura</option>
+								<option value="/img/watermarks/family-maestros.svg">Maestros</option>
+								<option value="/img/watermarks/family-riveteers.svg">Riveteers</option>
+								<option value="/img/watermarks/family-cabaretti.svg">Cabaretti</option>
 								<option disabled>Clans (Tarkir - Old Timeline)</option>
 								<option value="/img/watermarks/clan-abzan.svg">Abzan</option>
 								<option value="/img/watermarks/clan-jeskai.svg">Jeskai</option>
