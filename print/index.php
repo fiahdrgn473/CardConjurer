@@ -30,7 +30,7 @@ include('../globalHTML/header-1.php');
             <input type='number' id='cardMargin' class='input margin-bottom' value='30' min='0' onchange='setMarginSize(this.value);'>
             <h5 class='margin-bottom padding input-description'>Set PPI (pixels per inch)</h5>
             <input type='number' id='cardPPI' class='input margin-bottom' value='600' min='1' max='2400' onchange='setPPI(this.value);'>
-            <h5 class='margin-bottom padding input-description'>Include cutting aids (colored marks to help guide cuts)</h5>
+            <h5 class='margin-bottom padding input-description'>Include cutting aids (colored marks to help guide cuts; may not be visible in preview)</h5>
             <label class='checkbox-container input margin-bottom'>Cutting aids
                 <input id='cuttingAidsCheckbox' type='checkbox' onchange='setCuttingAids(this.checked);'>
                 <span class='checkmark'></span>

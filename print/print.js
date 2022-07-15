@@ -1,6 +1,9 @@
 //Configure sizes
 var ppi = 600;
 var page = [8.5, 11];
+//Constants
+const aidWidth = 2;
+const aidOffset = aidWidth / 2;
 //card size
 var cardWidth = parseInt(document.querySelector("#cardWidth").value);
 var cardHeight = parseInt(document.querySelector("#cardHeight").value);
@@ -22,6 +25,8 @@ drawSheet();
 //svgs
 var cuttingGuides = new Image();
 cuttingGuides.src = 'cuttingGuides.svg';
+var blackPixel = new Image();
+blackPixel.src = 'black.png';
 
 function uploadCard(card, filename) {
     var img = new Image();
@@ -50,8 +55,22 @@ function drawSheetReal() {
     //Calc page margins
     const pageMarginX = Math.floor((page[0] * ppi - cardsX * cw) / 2);
     const pageMarginY = Math.floor((page[1] * ppi - cardsY * ch) / 2);
-    //Iterate through every viable space and draw the card there
+    //Draw cutting guides that cover the page
     var count = 0;
+    if (useCuttingAids) {
+        for (var i = 0; i < cardsX; i++) {
+            var x = pageMarginX + i * cw + Math.floor(cardMarginX / 2) + cardPaddingX - aidOffset;
+            context.fillRect(x,  0, aidWidth, page[1] * ppi);
+            context.fillRect(x + cardWidth, 0, aidWidth, page[1] * ppi);
+        }
+        for (var j = 0; j < cardsY; j++) {
+            var y = pageMarginY + j * ch + Math.floor(cardMarginY / 2) + cardPaddingY - aidOffset;
+            context.fillRect(0, y, page[0] * ppi, aidWidth);
+            context.fillRect(0, y + cardHeight, page[0] * ppi, aidWidth);
+        }
+    }
+    //Iterate through every viable space and draw the card there
+    count = 0;
     for (var i = imageList.length - 1; i >= 0 && count < cardsX * cardsY; i--) {
         if (imageList[i].width > 1) {
             try {
@@ -113,8 +132,22 @@ function downloadPDF() {
     //Calc page margins
     const pageMarginX = Math.floor((page[0] * ppi - cardsX * cw) / 2);
     const pageMarginY = Math.floor((page[1] * ppi - cardsY * ch) / 2);
-    //Iterate through every viable space and draw the card there
+    //Draw cutting guides that cover the page
     var count = 0;
+    if (useCuttingAids) {
+        for (var i = 0; i < cardsX; i++) {
+            var x = pageMarginX + i * cw + Math.floor(cardMarginX / 2) + cardPaddingX - aidOffset;
+            doc.addImage(blackPixel, "PNG", x / ppi, 0, aidWidth / ppi, page[1]);
+            doc.addImage(blackPixel, "PNG", (x + cardWidth) / ppi, 0, aidWidth / ppi, page[1]);
+        }
+        for (var j = 0; j < cardsY; j++) {
+            var y = pageMarginY + j * ch + Math.floor(cardMarginY / 2) + cardPaddingY - aidOffset;
+            doc.addImage(blackPixel, "PNG", 0, y / ppi, page[0], aidWidth / ppi);
+            doc.addImage(blackPixel, "PNG", 0, (y + cardHeight) / ppi, page[0], aidWidth / ppi);
+        }
+    }
+    //Iterate through every viable space and draw the card there
+    count = 0;
     for (var i = imageList.length - 1; i >= 0 && count < cardsX * cardsY; i--) {
         if (imageList[i].width > 1) {
             try {
