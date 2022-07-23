@@ -721,6 +721,7 @@ include('../globalHTML/header-1.php');
 				<h4>Ap0c4lyptyc</h4>
 				<h4>MTG FOR DUMMIES</h4>
 				<h4>Sam E.</h4>
+				<h4>Tim L.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
