@@ -9,7 +9,8 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/token/old/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/token/old/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/token/old/a.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/token/old/l.png', masks:masks}
+	{name:'Land Frame', src:'/img/frames/token/old/l.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/token/old/c.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

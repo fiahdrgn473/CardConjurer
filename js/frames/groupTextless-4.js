@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Basic Lands', value:'disabled'},
 	{name:'Kamigawa Basics (NEO)', value:'NeoBasics'},
+	{name:'Fullart Basics (SNC)', value:'TextlessBasicsSNC'},
 	{name:'Fullart Basics (THB)', value:'TextlessBasics'},
 	{name:'Fullart Basics (ZEN)', value:'ZendikarBasic-1'},
 	{name:'Fullart Snow Basics', value:'FullartBasicRoundBottom'},
