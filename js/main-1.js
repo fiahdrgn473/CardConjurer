@@ -64,8 +64,8 @@ function dropDrop(e) {
 	e.preventDefault();
 	e.stopPropagation();
 	e.target.closest('.drop-area').classList.remove('hover');
-	destination = window[e.target.closest('.drop-area').children[1].getAttribute('data-dropFunction')];
-	otherParams = e.target.closest('.drop-area').children[1].getAttribute('data-otherParams');
+	destination = window[e.target.closest('.drop-area')?.querySelector("input").getAttribute('data-dropFunction')];
+	otherParams = e.target.closest('.drop-area')?.querySelector("input").getAttribute('data-otherParams');
 	uploadFiles(e.dataTransfer.files, destination, otherParams);
 }
 async function uploadFiles(filesRaw, destination, otherParams = '') {

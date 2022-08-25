@@ -538,7 +538,7 @@ textarea.input {
 }
 /*drop to upload*/
 .drop-area {
-	border: 2px dashed gray;
+	border: 0.125rem dashed gray;
 	transition: 0.25s;
 }
 .drop-area.hover {
