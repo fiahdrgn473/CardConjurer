@@ -46,14 +46,16 @@ include('../globalHTML/header-1.php');
             <button onclick='saveDefaults();' class='input margin-bottom'>Save configuration</button>
         </div>
 	</div>
-    <div class="layer">
-        <div class='padding margin-bottom readable-background drop-area'>
-            <h5 class='margin-bottom padding input-description'>Drag and drop the images that you'd like to print</h5>
-            <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadCard, "filename");' data-dropFunction='uploadCard' data-otherParams='filename'>
+    <div class="layer margin-bottom-large">
+        <div class="drop-area" style="padding: 1rem">
+            <div class='padding margin-bottom-large readable-background'>
+                <h5 class='margin-bottom padding input-description'>Upload the images that you'd like to print, or drag-and-drop them</h5>
+                <input type='file' multiple accept='.png, .svg, .jpg, .jpeg, .bmp' placeholder='File Upload' class='input' oninput='uploadFiles(event.target.files, uploadCard, "filename");' data-dropFunction='uploadCard' data-otherParams='filename'>
+            </div>
+            <div class="center">
+                <canvas style='height: auto; max-width:850px; width: 100%; background: #fff;'></canvas>
+            </div>
         </div>
-    </div>
-    <div class="layer margin-bottom-large center">
-        <canvas style='height: auto; max-width:850px; width: 100%; background: #fff;'></canvas>
     </div>
     <div class='readable-background padding layer margin-bottom-large'>
 		<h3 class='download padding' onclick='downloadCanvas();'>Download your Sheet (PNG)</h3>
