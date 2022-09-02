@@ -725,6 +725,7 @@ include('../globalHTML/header-1.php');
 				<h4>ChayGamin</h4>
 				<h4>Justin J.</h4>
 				<h4>Sam B.</h4>
+				<h4>Damian Z.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
@@ -776,7 +777,6 @@ include('../globalHTML/header-1.php');
 				<h4>Britton N.</h4>
 				<h4>Raziel</h4>
 				<h4>Kilian T.</h4>
-				<h4>Damian Z.</h4>
 				<h4>Michael J.</h4>
 				<h4>Robin S.</h4>
 				<h4>Ben K.</h4>
