@@ -26,6 +26,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
+	['Stained Glass (DMU)', 'DMUStainedGlass'],
 	['Golden Age (SNC)', 'SNCGilded'],
 	['Art Deco (SNC)', 'SNCArtDeco'],
 	['Skyscraper (SNC)', 'SNCSkyscraper'],
