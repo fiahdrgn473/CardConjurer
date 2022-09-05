@@ -19,7 +19,22 @@ availableFrames = [
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/regular/m15PTM.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/m15/regular/m15PTA.png', bounds:bounds},
 	{name:'Bevel Cutout for Nickname', src:'/img/black.png', bounds:{x:0.058, y:0.111, width:0.884, height:0.0381}, erase:true},
-	{name:'Nickname Bevel', src:'/img/frames/m15/boxTopper/m15BoxTopperNicknameBevel.png', bounds:{x:0.058, y:0.111, width:0.884, height:0.0381}}
+	{name:'Nickname Bevel', src:'/img/frames/m15/boxTopper/m15BoxTopperNicknameBevel.png', bounds:{x:0.058, y:0.111, width:0.884, height:0.0381}},
+	{name:'White Nyx Frame', src:'/img/frames/extended/shorter/nyx/w.png', masks:masks},
+	{name:'Blue Nyx Frame', src:'/img/frames/extended/shorter/nyx/u.png', masks:masks},
+	{name:'Black Nyx Frame', src:'/img/frames/extended/shorter/nyx/b.png', masks:masks},
+	{name:'Red Nyx Frame', src:'/img/frames/extended/shorter/nyx/r.png', masks:masks},
+	{name:'Green Nyx Frame', src:'/img/frames/extended/shorter/nyx/g.png', masks:masks},
+	{name:'Multicolored Nyx Frame', src:'/img/frames/extended/shorter/nyx/m.png', masks:masks},
+	{name:'Artifact Nyx Frame', src:'/img/frames/extended/shorter/nyx/a.png', masks:masks},
+	{name:'White Snow Frame', src:'/img/frames/extended/shorter/snow/w.png', masks:masks},
+	{name:'Blue Snow Frame', src:'/img/frames/extended/shorter/snow/u.png', masks:masks},
+	{name:'Black Snow Frame', src:'/img/frames/extended/shorter/snow/b.png', masks:masks},
+	{name:'Red Snow Frame', src:'/img/frames/extended/shorter/snow/r.png', masks:masks},
+	{name:'Green Snow Frame', src:'/img/frames/extended/shorter/snow/g.png', masks:masks},
+	{name:'Multicolored Snow Frame', src:'/img/frames/extended/shorter/snow/m.png', masks:masks},
+	{name:'Artifact Snow Frame', src:'/img/frames/extended/shorter/snow/a.png', masks:masks},
+	{name:'Land Snow Frame', src:'/img/frames/extended/shorter/snow/l.png', masks:masks}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
