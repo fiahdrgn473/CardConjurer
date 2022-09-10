@@ -458,6 +458,8 @@ include('../globalHTML/header-1.php');
 								<option value="/img/watermarks/faction-league-of-dastardly-doom.svg">League of Dastardly Doom</option>
 								<option value="/img/watermarks/faction-goblin-explosioneers.svg">Goblin Explosioneers</option>
 								<option value="/img/watermarks/faction-crossbreed-labs.svg">Crossbreed Labs</option>
+								<option disabled>Custome</option>
+								<option value="/img/watermarks/purple.svg">Purple Mana</option>
 							</select>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes
