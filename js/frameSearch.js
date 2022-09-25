@@ -94,6 +94,7 @@ const frameNames = new Map ([
 	['SDCC15 (Blackout)', 'TransformSDCC15'],
 	['DFC Legend Crowns', 'TransformLegendCrowns'],
 	['DFC Floating Legend Crowns', 'TransformLegendCrownsFloating'],
+	['DFC Nickname Legend Crowns', 'TransformLegendCrownsNickname'],
 	//modal
 	['Modal DFC', 'ModalRegular'],
 	['Modal DFC Borderless', 'ModalBorderless'],
