@@ -706,7 +706,6 @@ include('../globalHTML/header-1.php');
 				<h4>Geovani N.</h4>
 				<h4>Karl G.</h4>
 				<h4>Travis P.</h4>
-				<h4>Tom B.</h4>
 				<h4>Frank R.</h4>
 				<h4>Georg H.</h4>
 				<h4>dave</h4>
@@ -716,7 +715,6 @@ include('../globalHTML/header-1.php');
 				<h4>Mason L.</h4>
 				<h4>Andreas H.</h4>
 				<h4>Ben S.</h4>
-				<h4>Morgan F.</h4>
 				<h4>Ap0c4lyptyc</h4>
 				<h4>MTG FOR DUMMIES</h4>
 				<h4>Sam E.</h4>
@@ -732,6 +730,7 @@ include('../globalHTML/header-1.php');
 				<h4>Augusto V.</h4>
 				<h4>Charles R.</h4>
 				<h4>Pugg</h4>
+				<h4>Morgan F.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
@@ -788,6 +787,8 @@ include('../globalHTML/header-1.php');
 				<h4>Ben K.</h4>
 				<h4>Mike W.</h4>
 				<h4>Kacem K.</h4>
+				<h4>Tom B.</h4>
+				<h4>Mathias H.</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
