@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/mysticalArchive/jp/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/jp/rightHalf.svg', name:'Right Half'}];
+var masks = [{src:'/img/frames/mysticalArchive/jp/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/jp/horizontal/rightHalf.svg', name:'Right Half'}];
 var masks2 = [{src:'/img/frames/mysticalArchive/jp/rightHalf.svg', name:'Right Half'}];
 var stretch = [
 	{name:'adjustableHorizontal', targets: [0, 1, 6, 7, 8, 10, 11, 16, 17, 18, 20, 21, 22, 27, 28], change:[0, 0]},
