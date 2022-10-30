@@ -738,6 +738,8 @@ include('../globalHTML/header-1.php');
 				<h4>Johnny S.</h4>
 				<h4>Stef B.</h4>
 				<h4>Jovanny S.</h4>
+				<h4>Junkman</h4>
+				<h4>Marco S.</h4>
 			</div>
 			<h4 class='margin-bottom'>And of course, thank you to all of those who have made donations in the past.</h4>
 			<div class='supporters margin-bottom'>
