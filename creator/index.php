@@ -662,14 +662,11 @@ include('../globalHTML/header-1.php');
 				<h4>Ritchie T.</h4>
 				<h4>Aurelian M.</h4>
 				<h4>The Bell-Horwaths</h4>
-				<h4>Swimmaf</h4>
 				<h4>Bradley C.</h4>
 				<h4>Endiron</h4>
-				<h4>Beezchurgr</h4>
 				<h4>John C.</h4>
 				<h4>Benjamin D.</h4>
 				<h4>Brent O.</h4>
-				<h4>Austin M.</h4>
 				<h4>Elry</h4>
 				<h4>Edward E.</h4>
 				<h4>Avery D.</h4>
@@ -693,7 +690,6 @@ include('../globalHTML/header-1.php');
 				<h4>Morgan S.</h4>
 				<h4>Jonathan D.</h4>
 				<h4>Jay S.</h4>
-				<h4>Louis C.</h4>
 				<h4>James T.</h4>
 				<h4>Devin L.</h4>
 				<h4>Palmer S.</h4>
@@ -704,7 +700,6 @@ include('../globalHTML/header-1.php');
 				<h4>Fabien S.</h4>
 				<h4>Trentyn D.</h4>
 				<h4>Geovani N.</h4>
-				<h4>Karl G.</h4>
 				<h4>Travis P.</h4>
 				<h4>Frank R.</h4>
 				<h4>Georg H.</h4>
@@ -721,7 +716,6 @@ include('../globalHTML/header-1.php');
 				<h4>Tim L.</h4>
 				<h4>Lewis</h4>
 				<h4>Jayson M.</h4>
-				<h4>ChayGamin</h4>
 				<h4>Justin J.</h4>
 				<h4>Sam B.</h4>
 				<h4>Damian Z.</h4>
@@ -799,6 +793,13 @@ include('../globalHTML/header-1.php');
 				<h4>Tom B.</h4>
 				<h4>Mathias H.</h4>
 				<h4>Mystic Syntax</h4>
+				<h4>Brittany C.</h4>
+				<h4>Beezchurgr</h4>
+				<h4>Swimmaf</h4>
+				<h4>Austin M.</h4>
+				<h4>Karl G.</h4>
+				<h4>Louis C.</h4>
+				<h4>ChayGamin</h4>
 			</div>
 			<h5 class='input-description'>(Please contact me if you would like your name/nickname changed.)</h5>
 		</div>
