@@ -1,103 +1,103 @@
 /*fonts*/
 @font-face {
 	font-family: gothammedium;
-	src: url("/fonts/gotham-medium.ttf") format('truetype');
+	src: url("../fonts/gotham-medium.ttf") format('truetype');
 }
 @font-face {
 	font-family: belerenb;
-	src: url("/fonts/beleren-b.ttf") format('truetype');
+	src: url("../fonts/beleren-b.ttf") format('truetype');
 }
 @font-face {
 	font-family: belerenbsc;
-	src: url("/fonts/beleren-bsc.ttf") format('truetype');
+	src: url("../fonts/beleren-bsc.ttf") format('truetype');
 }
 @font-face {
 	font-family: matrix;
-	src: url("/fonts/matrix.ttf") format('truetype');
+	src: url("../fonts/matrix.ttf") format('truetype');
 }
 @font-face {
 	font-family: matrixb;
-	src: url("/fonts/matrix-b.ttf") format('truetype');
+	src: url("../fonts/matrix-b.ttf") format('truetype');
 }
 @font-face {
 	font-family: matrixbsc;
-	src: url("/fonts/Matrix Bold Small Caps.ttf") format('truetype');
+	src: url("../fonts/Matrix Bold Small Caps.ttf") format('truetype');
 }
 @font-face {
 	font-family: mplantin;
-	src: url("/fonts/mplantin.ttf") format('truetype');
+	src: url("../fonts/mplantin.ttf") format('truetype');
 }
 @font-face {
 	font-family: mplantini;
-	src: url("/fonts/mplantin-i.ttf") format('truetype');
+	src: url("../fonts/mplantin-i.ttf") format('truetype');
 }
 @font-face {
 	font-family: plantinsemibold;
-	src: url("/fonts/plantin-semibold.otf") format('opentype');
+	src: url("../fonts/plantin-semibold.otf") format('opentype');
 }
 @font-face {
 	font-family: plantinsemibolditalic;
-	src: url("/fonts/Plantin-SemiboldItalic.otf") format('opentype');
+	src: url("../fonts/Plantin-SemiboldItalic.otf") format('opentype');
 }
 @font-face {
 	font-family: goudymedieval;
-	src: url("/fonts/goudy-medieval.ttf") format('truetype');
+	src: url("../fonts/goudy-medieval.ttf") format('truetype');
 }
 @font-face {
 	font-family: phyrexianold;
-	src: url("/fonts/phyrexian.ttf") format('truetype');
+	src: url("../fonts/phyrexian.ttf") format('truetype');
 }
 @font-face {
 	font-family: phyrexian;
-	src: url("/fonts/phy.woff2") format("woff2");
+	src: url("../fonts/phy.woff2") format("woff2");
 }
 @font-face {
 	font-family: Montserrat-SemiBold;
-	src: url("/fonts/Montserrat-SemiBold.ttf") format('truetype');
+	src: url("../fonts/Montserrat-SemiBold.ttf") format('truetype');
 }
 @font-face {
 	font-family: Montserrat-Medium;
-	src: url("/fonts/Montserrat-Medium.ttf") format('truetype');
+	src: url("../fonts/Montserrat-Medium.ttf") format('truetype');
 }
 @font-face {
 	font-family: Acme-Regular;
-	src: url("/fonts/Acme-Regular.ttf") format('truetype');
+	src: url("../fonts/Acme-Regular.ttf") format('truetype');
 }
 @font-face {
 	font-family: fritz-quadrata;
-	src: url("/fonts/fritz-quadrata.ttf") format('truetype');
+	src: url("../fonts/fritz-quadrata.ttf") format('truetype');
 }
 @font-face {
 	font-family: japanese-title;
-	src: url("/fonts/NudMotoyaExAporo_W6.ttf") format('truetype');
+	src: url("../fonts/NudMotoyaExAporo_W6.ttf") format('truetype');
 }
 @font-face {
 	font-family: japanese;
-	src: url('/fonts/2012c863631ba71f874aba70590795a1.otf') format('opentype');
+	src: url('../fonts/2012c863631ba71f874aba70590795a1.otf') format('opentype');
 }
 @font-face {
 	font-family: invocation;
-	src: url('/fonts/invocation.ttf') format('truetype');
+	src: url('../fonts/invocation.ttf') format('truetype');
 }
 @font-face {
 	font-family: invocation-text;
-	src: url('/fonts/shango-gothic-bold.ttf') format('truetype');
+	src: url('../fonts/shango-gothic-bold.ttf') format('truetype');
 }
 @font-face {
 	font-family: souvenir;
-	src: url('/fonts/Souvenir-Itc-T-OT-Bold.otf') format('opentype');
+	src: url('../fonts/Souvenir-Itc-T-OT-Bold.otf') format('opentype');
 }
 @font-face {
 	font-family: palatino;
-	src: url('/fonts/Palatino Font.ttf') format('truetype');
+	src: url('../fonts/Palatino Font.ttf') format('truetype');
 }
 @font-face {
 	font-family: amanda;
-	src: url('/fonts/Amanda Std Regular.otf') format('opentype');
+	src: url('../fonts/Amanda Std Regular.otf') format('opentype');
 }
 /*Variables*/
 :root {
-	--site-background: url('/img/lowpolyBackground.svg');
+	--site-background: url('../img/lowpolyBackground.svg');
 	--color-primary: #35603E;
 	--color-selected: #ae9;
 	--color-highlight: #8f8;

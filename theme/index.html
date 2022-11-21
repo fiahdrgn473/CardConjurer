@@ -1,8 +1,4 @@
-<?php
-$title = 'Card Conjurer - Theme Editor';
-$desc = 'Customize your experience by adjusting the look of Card Conjurer. Upload a background, adjust the lightness, or maybe discover what rainbow-mode is!';
-include('../globalHTML/header-1.php');
-?>
+<!-- START OF CONTENT -->
 	<h2 class='readable-background header-extension title center'>Theme Editor</h2>
 	<div class='layer center'></div>
 	<div class='layer center'>
@@ -14,8 +10,8 @@ include('../globalHTML/header-1.php');
 		<h3>Background</h3>
 		<h4>Choose a background</h4>
 		<select class='input' onchange='changeThemeVar(this.value, "background");'>
-			<option value='/img/lowpolyBackground.svg'>Lowpoly</option>
-			<option value='/img/gradientBackground.svg'>Plain</option>
+			<option value='../img/lowpolyBackground.svg'>Lowpoly</option>
+			<option value='../img/gradientBackground.svg'>Plain</option>
 		</select>
 		<h4>Enter a background image (URL ONLY)</h4>
 		<input id='background-url' class='input' type='url' placeholder='Enter a URL' onchange='changeThemeVar(this.value, "background");'>
@@ -28,5 +24,5 @@ include('../globalHTML/header-1.php');
 		<input id='readable-brightness' class='input' type='range' min='0' max='1' step='0.01' oninput='changeThemeVar(this.value, "readablebrightness");'>
 		<button class='input margin-top' onclick='resetTheme();'>Reset Theme to Default</button>
 	</div>
-	<script defer src='/js/themeEditor.js'></script>
-<?php include('../globalHTML/footer.php'); ?>
+	<script defer src='../js/themeEditor.js'></script>
+<!-- END OF CONTENT -->

@@ -10,7 +10,7 @@ if (localStorage.getItem('theme')) {
 
 function updateCSS() {
 	if (!root.getPropertyValue('--site-background').includes(theme.background)) {
-		root.setProperty('--site-background', 'url("' + (theme.background || '/img/lowpolyBackground.svg') + '")');
+		root.setProperty('--site-background', 'url("' + (theme.background || '../img/lowpolyBackground.svg') + '")');
 	}
 	// root.setProperty("--color-primary", theme.SOMETHING);
 	// root.setProperty("--color-selected", theme.SOMETHING);
@@ -38,7 +38,7 @@ function rainbowMode() {
 }
 
 function resetTheme() {
-	theme = {huerotate:0, background:'/img/lowpolyBackground.svg', readablebrightness:0.3, rainbow:0};
+	theme = {huerotate:0, background:'../img/lowpolyBackground.svg', readablebrightness:0.3, rainbow:0};
 	localStorage.setItem('theme', JSON.stringify(theme));
 	updateCSS();
 	if (window.location.href.includes('/theme/')) {
