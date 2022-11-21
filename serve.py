@@ -1,5 +1,6 @@
 # Python 3 server example
 from http.server import SimpleHTTPRequestHandler, HTTPServer
+import webbrowser
 import os
 
 NAME = "localhost"
@@ -16,6 +17,7 @@ if __name__ == "__main__":
     print("Server started http://%s:%s" % (NAME, PORT))
 
     try:
+        webbrowser.open('http://localhost:8080', new=2)
         webServer.serve_forever()
     except KeyboardInterrupt:
         pass
