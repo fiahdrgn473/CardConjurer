@@ -9,6 +9,7 @@ jobs:
   build:
     name: Build packages
     runs-on: ${{ matrix.os }}
+    continue-on-error: true
     strategy:
       matrix:
         include:
@@ -34,12 +35,15 @@ jobs:
     - name: Build with PyInstaller
       run: |
         poetry run pyinstaller launcher.spec
-    - name: Upload artifact
+    - name: Upload artifact Windows
+      if: matrix.os == "windows-latest"
       uses: actions/upload-artifact@v2
       with:
-        path:
-          if matrix.os == "windows-latest":
-            ./dist/launcher.exe
-          else:
-            ./dist/launcher
+        path: ./dist/launcher.exe
+        name: CC Server (${{ matrix.TARGET }})
+    - name: Upload artifact macos
+      if: matrix.os != "windows-latest"
+      uses: actions/upload-artifact@v2
+      with:
+        path: ./dist/launcher
         name: CC Server (${{ matrix.TARGET }})
