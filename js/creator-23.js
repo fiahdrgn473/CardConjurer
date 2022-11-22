@@ -15,7 +15,7 @@ function fixUri(input) {
 	} else {
 		return prefix + input; //input.replace('/img/frames', prefix + '/img/frames');
 	} */
-	return input
+	return input;
 }
 function setImageUrl(image, source) {
 	image.crossOrigin = 'anonymous';
