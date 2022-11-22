@@ -30,12 +30,16 @@ jobs:
         version: 1.2.2
     - name: Install dependencies
       run: |
-        poetry install
+        poetry install --no-interaction
     - name: Build with PyInstaller
       run: |
-        poetry run pyinstaller launcher.spec ${{ github.ref_name }}
+        poetry run pyinstaller launcher.spec
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        path: ./dist/cardconjurer-server.${{ github.ref_name }}.zip
+        path:
+          if matrix.os == "windows-latest":
+            ./dist/launcher.exe
+          else:
+            ./dist/launcher
         name: CC Server (${{ matrix.TARGET }})
