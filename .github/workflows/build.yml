@@ -39,7 +39,7 @@ jobs:
       run: |
         poetry run pyinstaller launcher.spec
     - name: Upload artifact Windows
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         path: ./dist/${{ matrix.OUTPUT_FILE }}
         name: CC Server (${{ matrix.TARGET }})
