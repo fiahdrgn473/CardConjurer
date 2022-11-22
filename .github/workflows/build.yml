@@ -33,7 +33,7 @@ jobs:
         poetry install
     - name: Build with PyInstaller
       run: |
-        poetry run pyinstaller server.spec ${{ github.ref_name }}
+        poetry run pyinstaller launcher.spec ${{ github.ref_name }}
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
