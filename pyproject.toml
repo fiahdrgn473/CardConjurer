@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "cardconjurer"
+version = "0.1.0"
+description = "Run card conjurer locally, credit to Kyle for original repo, remember the legends."
+authors = ["MrTeferi <freethoughtleft@gmail.com>"]
+license = "GPL3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+pyinstaller = "5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
