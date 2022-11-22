@@ -15,10 +15,13 @@ jobs:
         include:
           - os: macos-latest
             TARGET: macos
+            OUTPUT_FILE: launcher
           - os: windows-latest
             TARGET: windows
+            OUTPUT_FILE: launcher.exe
           - os: ubuntu-latest
             TARGET: linux
+            OUTPUT_FILE: launcher
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.10
@@ -36,14 +39,7 @@ jobs:
       run: |
         poetry run pyinstaller launcher.spec
     - name: Upload artifact Windows
-      if: matrix.os == "windows-latest"
       uses: actions/upload-artifact@v2
       with:
-        path: ./dist/launcher.exe
-        name: CC Server (${{ matrix.TARGET }})
-    - name: Upload artifact macos
-      if: matrix.os != "windows-latest"
-      uses: actions/upload-artifact@v2
-      with:
-        path: ./dist/launcher
+        path: ./dist/${{ matrix.OUTPUT_FILE }}
         name: CC Server (${{ matrix.TARGET }})
