@@ -827,6 +827,7 @@ function loadTextOptions(textObject, replace=true) {
 function textOptionClicked(event) {
 	selectedTextIndex = getElementIndex(event.target);
 	document.querySelector('#text-editor').value = Object.entries(card.text)[selectedTextIndex][1].text;
+	document.querySelector('#text-editor-font-size').value = Object.entries(card.text)[selectedTextIndex][1].fontSize;
 	selectSelectable(event);
 }
 function textboxEditor() {
@@ -843,6 +844,10 @@ function textboxEditor() {
 }
 function textEdited() {
 	card.text[Object.keys(card.text)[selectedTextIndex]].text = curlyQuotes(document.querySelector('#text-editor').value);
+	drawTextBuffer();
+}
+function fontSizedEdited() {
+	card.text[Object.keys(card.text)[selectedTextIndex]].fontSize = document.querySelector('#text-editor-font-size').value;
 	drawTextBuffer();
 }
 function drawTextBuffer() {
@@ -977,6 +982,7 @@ function writeText(textObject, targetContext) {
 		// if (textFont == 'goudymedieval') {
 		// 	lineCanvas.style.letterSpacing = '3.5px';
 		// }
+		textSize += parseInt(textObject.fontSize || '0');
 		lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 		lineContext.fillStyle = textColor;
 		lineContext.shadowColor = textShadowColor;
@@ -1911,6 +1917,7 @@ function changeCardIndex() {
 		card.text.ability0.text = cardToImport.oracle_text.replace('(', '{i}(').replace(')', '){/i}') || '';
 	}
 	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
+	document.querySelector('#text-editor-font-size').value = 0;
 	textEdited();
 	//collector's info
 	if (localStorage.getItem('enableImportCollectorInfo') == 'true') {
@@ -1946,6 +1953,10 @@ function changeCardIndex() {
 	if (!document.querySelector('#lockSetSymbolURL').checked) {
 		fetchSetSymbol();
 	}
+	//font size
+	Object.keys(card.text).forEach(key => {
+			card.text[key].fontSize = 0;
+		});
 }
 function loadAvailableCards(cardKeys = JSON.parse(localStorage.getItem('cardKeys'))) {
 	if (!cardKeys) {
@@ -2020,6 +2031,7 @@ async function loadCard(selectedCardKey) {
 		document.querySelector('#info-year').value = card.infoYear || date.getFullYear();
 		artistEdited(card.infoArtist);
 		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
+		document.querySelector('#text-editor-font-size').value = card.text[Object.keys(card.text)[selectedTextIndex]].fontSize || 0;
 		loadTextOptions(card.text);
 		document.querySelector('#art-x').value = scaleX(card.artX) - scaleWidth(card.marginX);
 		document.querySelector('#art-y').value = scaleY(card.artY) - scaleHeight(card.marginY);
