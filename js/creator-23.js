@@ -902,6 +902,9 @@ function writeText(textObject, targetContext) {
 	if (document.querySelector('#info-artist').value == '') {
 		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
 	}
+	if (rawText.includes('//')) {
+		rawText = rawText.replace('//', '{lns}');
+	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{lns}{bar}{lns}{fixtextalign}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	if (textObject.vertical) {
