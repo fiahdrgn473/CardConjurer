@@ -1011,15 +1011,12 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode == 'lns' || possibleCode == 'linenospace') {
 					newLine = true;
 				} else if (possibleCode == 'bar') {
-					var barWidth = textWidth * 0.95;
-					var barHeight = scaleHeight(0.002);
+					var barWidth = textWidth * 0.96;
+					var barHeight = scaleHeight(0.03);
 					var barImageName = 'bar';
-					var barDistance = 0.45;
+					var barDistance = 0;
 					realTextAlign = textAlign;
 					textAlign = 'left';
-					if (textColor == 'white') {
-						barImageName = 'whitebar';
-					}
 					if (card.version == 'cartoony') {
 						barImageName = 'cflavor';
 						barWidth = scaleWidth(0.8547);
