@@ -903,7 +903,7 @@ function writeText(textObject, targetContext) {
 		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
 	}
 	if (rawText.includes('//')) {
-		rawText = rawText.replace('//', '{lns}');
+		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
