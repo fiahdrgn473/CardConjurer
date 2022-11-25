@@ -616,7 +616,59 @@ function autoFrame(frame) {
 
 	if (frame == 'M15') {
 		autoM15Frame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
-	}	
+	} else if (frame == 'UB') {
+		autoUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	}
+}
+async function autoUBFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+
+	// Set frames
+
+	if (type_line.includes('Legendary')) {
+		if (properties.pinlineRulesRight) {
+			frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Crown', true));
+		}
+		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown", false));
+		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown Border Cover", false));
+	}
+	if (properties.pinlineRulesRight) {
+		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Stamp', true));
+	}
+	frames.push(makeUBFrameByLetter(properties.pinlineRules, "Stamp", false));
+	if (properties.pt) {
+		frames.push(makeM15FrameByLetter(properties.pt, 'PT', false));
+	}
+	if (properties.pinlineRulesRight) {
+		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Pinline', true));
+	}
+	frames.push(makeUBFrameByLetter(properties.pinlineRules, 'Pinline', false));
+	frames.push(makeUBFrameByLetter(properties.typeTitle, 'Type', false));
+	frames.push(makeUBFrameByLetter(properties.typeTitle, 'Title', false));
+	if (properties.pinlineRulesRight) {
+		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Rules', true));
+	}
+	frames.push(makeUBFrameByLetter(properties.pinlineRules, 'Rules', false));
+	if (properties.frameRight) {
+		frames.push(makeUBFrameByLetter(properties.frameRight, 'Frame', true));
+	}
+	frames.push(makeUBFrameByLetter(properties.frame, 'Frame', false));
+	frames.push(makeUBFrameByLetter(properties.frame, 'Border', false));
+
+	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
+		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
+	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
 }
 async function autoM15Frame(colors, mana_cost, type_line, power) {
 	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
@@ -733,6 +785,121 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false) {
 	var frame = {
 		'name': frameName + ' Frame',
 		'src': '/img/frames/m15/regular/m15Frame' + letter + '.png',
+	}
+
+	if (mask) {
+		frame.masks = [
+			{
+				'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+				'name': mask
+			}
+		]
+		
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+	letter = letter.toUpperCase();
+
+	if (letter == 'C') {
+		letter = 'L';
+	}
+
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Vehicle'
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Border Cover',
+			'src': '/img/black.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0177,
+				'width': 0.9214,
+				'x': 0.0394,
+				'y': 0.0277
+			}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/m15/crowns/m15Crown' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1667,
+				'width': 0.9454,
+				'x': 0.0274,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	} else if (mask == "Stamp") {
+		var frame = {
+			'name': frameName + ' Holo Stamp',
+			'src': '/img/frames/m15/ub/regular/stamp/' + letter.toLowerCase() + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0486,
+				'width': 0.1494,
+				'x': 0.4254,
+				'y': 0.9005
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/regular/m15PT' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0733,
+				'width': 0.188,
+				'x': 0.7573,
+				'y': 0.8848
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/m15/ub/regular/' + letter.toLowerCase() + '.png',
 	}
 
 	if (mask) {
