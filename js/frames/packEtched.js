@@ -12,6 +12,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/etched/regular/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/etched/regular/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/etched/regular/a.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/etched/regular/c.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/etched/regular/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/etched/regular/pt/u.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/etched/regular/pt/b.png', bounds:bounds},
@@ -19,13 +20,15 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/etched/regular/pt/g.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/etched/regular/pt/m.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/etched/regular/pt/a.png', bounds:bounds},
-	{name:'White Legend Crown', src:'/img/frames/etched/regular/crowns/w.png', bounds:bounds3, complementary:21},
-	{name:'Blue Legend Crown', src:'/img/frames/etched/regular/crowns/u.png', bounds:bounds3, complementary:21},
-	{name:'Black Legend Crown', src:'/img/frames/etched/regular/crowns/b.png', bounds:bounds3, complementary:21},
-	{name:'Red Legend Crown', src:'/img/frames/etched/regular/crowns/r.png', bounds:bounds3, complementary:21},
-	{name:'Green Legend Crown', src:'/img/frames/etched/regular/crowns/g.png', bounds:bounds3, complementary:21},
-	{name:'Multicolored Legend Crown', src:'/img/frames/etched/regular/crowns/m.png', bounds:bounds3, complementary:21},
-	{name:'Artifact Legend Crown', src:'/img/frames/etched/regular/crowns/a.png', bounds:bounds3, complementary:21},
+	{name:'Colorless Power/Toughness', src:'/img/frames/etched/regular/pt/c.png', bounds:bounds},
+	{name:'White Legend Crown', src:'/img/frames/etched/regular/crowns/w.png', bounds:bounds3, complementary:24},
+	{name:'Blue Legend Crown', src:'/img/frames/etched/regular/crowns/u.png', bounds:bounds3, complementary:24},
+	{name:'Black Legend Crown', src:'/img/frames/etched/regular/crowns/b.png', bounds:bounds3, complementary:24},
+	{name:'Red Legend Crown', src:'/img/frames/etched/regular/crowns/r.png', bounds:bounds3, complementary:24},
+	{name:'Green Legend Crown', src:'/img/frames/etched/regular/crowns/g.png', bounds:bounds3, complementary:24},
+	{name:'Multicolored Legend Crown', src:'/img/frames/etched/regular/crowns/m.png', bounds:bounds3, complementary:24},
+	{name:'Artifact Legend Crown', src:'/img/frames/etched/regular/crowns/a.png', bounds:bounds3, complementary:24},
+	{name:'Colorless Crown', src:'/img/frames/etched/regular/crowns/c.png', bounds:bounds3, complementary:24},
 	{name:'Legend Crown Cover', src:'/img/frames/etched/regular/crowns/cover.svg'},
 	{name:'White Holo Stamp', src:'/img/frames/etched/regular/holo/w.png', bounds:bounds2},
 	{name:'Blue Holo Stamp', src:'/img/frames/etched/regular/holo/u.png', bounds:bounds2},
@@ -34,6 +37,7 @@ availableFrames = [
 	{name:'Green Holo Stamp', src:'/img/frames/etched/regular/holo/g.png', bounds:bounds2},
 	{name:'Multicolored Holo Stamp', src:'/img/frames/etched/regular/holo/m.png', bounds:bounds2},
 	{name:'Artifact Holo Stamp', src:'/img/frames/etched/regular/holo/a.png', bounds:bounds2},
+	{name:'Colorless Holo Stamp', src:'/img/frames/etched/regular/holo/c.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
