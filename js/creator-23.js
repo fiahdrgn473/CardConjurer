@@ -2192,7 +2192,7 @@ function imageURL(url, destination, otherParams) {
 	var imageurl = url;
 	// If an image URL does not have HTTP in it, assume it's a local file at the HTML root directory.
 	if (!url.includes('http')) {
-		imageurl = '/' + url;
+		imageurl = '/local_art/' + url;
 	} else if (params.get('noproxy') != '') {
 		//CORS PROXY LINKS
 		//Previously: https://cors.bridged.cc/
