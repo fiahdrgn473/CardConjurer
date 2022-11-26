@@ -2190,7 +2190,10 @@ function setRoundedCorners(value) {
 //Various loaders
 function imageURL(url, destination, otherParams) {
 	var imageurl = url;
-	if (params.get('noproxy') != '') {
+	// If an image URL does not have HTTP in it, assume it's a local file at the HTML root directory.
+	if (!url.includes('http')) {
+		imageurl = '/' + url;
+	} else if (params.get('noproxy') != '') {
 		//CORS PROXY LINKS
 		//Previously: https://cors.bridged.cc/
 		imageurl = 'https://api.codetabs.com/v1/proxy?quest=' + url;
