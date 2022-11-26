@@ -2190,7 +2190,7 @@ function setRoundedCorners(value) {
 //Various loaders
 function imageURL(url, destination, otherParams) {
 	var imageurl = url;
-	// If an image URL does not have HTTP in it, assume it's a local file at the HTML root directory.
+	// If an image URL does not have HTTP in it, assume it's a local file in the repo local_art directory.
 	if (!url.includes('http')) {
 		imageurl = '/local_art/' + url;
 	} else if (params.get('noproxy') != '') {
