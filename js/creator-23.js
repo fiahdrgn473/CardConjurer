@@ -660,11 +660,6 @@ function autoFrame() {
 	// autoFramePack = frame;
 
 	if (autoFramePack != frame) {
-		// Can't set pack before group, because setting the group resets the pack.
-		// document.querySelector('#selectFrameGroup').value = group;
-		// loadScript('/js/frames/group' + group + '.js');
-
-		// document.querySelector('#selectFramePack').value = frame;
 		loadScript('/js/frames/pack' + frame + '.js');
 		autoFramePack = frame;
 	}
