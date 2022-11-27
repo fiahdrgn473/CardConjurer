@@ -2647,8 +2647,6 @@ function changeCardIndex() {
 	if (!document.querySelector('#lockSetSymbolURL').checked) {
 		fetchSetSymbol();
 	}
-	//autoframe
-	// autoFrame();
 }
 function loadAvailableCards(cardKeys = JSON.parse(localStorage.getItem('cardKeys'))) {
 	if (!cardKeys) {
