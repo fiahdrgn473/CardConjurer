@@ -585,11 +585,6 @@
 								<option value="zht">Traditional Chinese</option>
 								<option value="ph">Phyrexian</option>
 							</select>
-							<h5 class='padding input-description margin-bottom'>Enable automatically setting card frames</h5>
-							<label class='checkbox-container input margin-bottom'>Automatically set frames
-								<input id='enableAutoFrame' type='checkbox' onchange='enableAutoFrame();'>
-								<span class='checkmark'></span>
-							</label>
 						</div>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='padding margin-bottom input-description'>Save your current card</h5>
@@ -634,11 +629,16 @@
 						</div>
 					</div>
 				</div>
-				<div class='readable-background padding'>
-					<h5 class='padding input-description'>Auto-set frames</h5>
+				<div class='readable-background padding margin-bottom'>
+					<h5 class='padding input-description'>Automatically update frame</h5>
 					<div class='padding input-grid'>
-						<button class='input' onclick='autoFrame("M15");'>M15</button>
-						<button class='input' onclick='autoFrame("UB");'>Universes Beyond</button>
+						<select id="autoFrame" class="input" onchange="setAutoFrame()">
+							<option value="false">Disabled</option>
+							<option value="M15">Regular</option>
+							<option value="UB">Universes Beyond</option>
+						</select>
+						<!-- <button class='input' onclick='autoFrame("M15");'>M15</button>
+						<button class='input' onclick='autoFrame("UB");'>Universes Beyond</button> -->
 					</div>
 				</div>
 				<div class='readable-background padding'>
