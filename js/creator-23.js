@@ -503,7 +503,7 @@ function doubleClick(event, maskOrFrame) {
 	}
 	return null;
 }
-function cardFrameProperties(colors, manaCost, typeLine, power) {
+function cardFrameProperties(colors, manaCost, typeLine, power, etched = false) {
 	var colors = colors.map(color => color.toUpperCase())
 	if ([
 			['U', 'W'],
@@ -528,7 +528,11 @@ function cardFrameProperties(colors, manaCost, typeLine, power) {
 
 	var pinlineRules;
 	if (colors.length > 2) {
-		pinlineRules = 'M';
+		if (etched && typeLine.includes('Artifact')) {
+			pinlineRules = 'A';
+		} else {
+			pinlineRules = 'M';
+		}
 	} else if (colors.length != 0) {
 		pinlineRules = colors[0];
 	} else if (typeLine.includes('Land')) {
@@ -582,7 +586,7 @@ function cardFrameProperties(colors, manaCost, typeLine, power) {
 	} else if (colors.length > 2) {
 		frame = 'M';
 	} else if (colors.length == 2) {
-		if (isHybrid) {
+		if (isHybrid || etched) {
 			frame = colors[0];
 		} else {
 			frame = 'M';
@@ -594,10 +598,12 @@ function cardFrameProperties(colors, manaCost, typeLine, power) {
 	}
 
 	var frameRight;
-	if (typeLine.includes('Land')) {
-		frameRight = landRight;
-	} else if (colors.length == 2 && isHybrid) {
-		frameRight = colors[1];
+	if (!(typeLine.includes('Vehicle') || typeLine.includes('Artifact'))) {
+		if (typeLine.includes('Land')) {
+			frameRight = landRight;
+		} else if (colors.length == 2 && (isHybrid || etched)) {
+			frameRight = colors[1];
+		}
 	}
 
 	return {
@@ -613,14 +619,21 @@ function cardFrameProperties(colors, manaCost, typeLine, power) {
 }
 function autoFrame() {
 	var frame = document.querySelector('#autoFrame').value;
-	if (!frame) { return; }
+	if (frame == 'false') { return; }
 
 	var colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
 
-	if (frame == 'M15') {
+	if (frame == 'M15Regular-1') {
 		autoM15Frame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	} else if (frame == 'UB') {
 		autoUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	} else if (frame == 'Etched') {
+		autoEtchedFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	}
+
+	if (document.querySelector('#selectFramePack') != frame) {
+		document.querySelector('#selectFramePack').value = frame;
+		loadScript('/js/frames/pack' + frame + '.js');
 	}
 }
 async function autoUBFrame(colors, mana_cost, type_line, power) {
@@ -713,6 +726,44 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoEtchedFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power, true);
+
+	// Set frames
+
+	if (type_line.includes('Legendary')) {
+		if (properties.frameRight) {
+			frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Crown', true));
+		}
+		frames.push(makeEtchedFrameByLetter(properties.frame, "Crown", false));
+		frames.push(makeEtchedFrameByLetter(properties.frame, "Crown Border Cover", false));
+	}
+	if (properties.pt) {
+		frames.push(makeEtchedFrameByLetter(properties.pt, 'PT', false));
+	}
+	frames.push(makeEtchedFrameByLetter(properties.typeTitle, 'Type', false));
+	frames.push(makeEtchedFrameByLetter(properties.typeTitle, 'Title', false));
+	if (properties.pinlineRulesRight) {
+		frames.push(makeEtchedFrameByLetter(properties.pinlineRulesRight, 'Rules', true));
+	}
+	frames.push(makeEtchedFrameByLetter(properties.pinlineRules, 'Rules', false));
+	if (properties.frameRight) {
+		frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Frame', true));
+	}
+	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false));
+	frames.push(makeEtchedFrameByLetter(properties.frame, 'Border', false));
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -909,6 +960,96 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 		frame.masks = [
 			{
 				'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+				'name': mask
+			}
+		]
+		
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+	if (letter == 'L') {
+		letter = 'C';
+	}
+
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Vehicle'
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Cover',
+			'src': '/img/frames/etched/regular/crowns/cover.svg',
+			'masks': [],
+			'bounds': {	}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/etched/regular/crowns/' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.092,
+				'width': 0.9387,
+				'x': 0.0307,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/etched/regular/pt/' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0733,
+				'width': 0.188,
+				'x': 0.7573,
+				'y': 0.8848
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/etched/regular/' + letter + '.png',
+	}
+
+	if (mask) {
+		frame.masks = [
+			{
+				'src': '/img/frames/etched/regular/' + mask + '.svg',
 				'name': mask
 			}
 		]
@@ -1217,6 +1358,7 @@ function hslToRGB(h, s, l){
 }
 //TEXT TAB
 var writingText;
+var autoFrameTimer;
 function loadTextOptions(textObject, replace=true) {
 	var oldCardText = card.text || {};
 	Object.entries(oldCardText).forEach(item => {
@@ -1267,6 +1409,7 @@ function textboxEditor() {
 function textEdited() {
 	card.text[Object.keys(card.text)[selectedTextIndex]].text = curlyQuotes(document.querySelector('#text-editor').value);
 	drawTextBuffer();
+	autoFrameBuffer();
 }
 function fontSizedEdited() {
 	card.text[Object.keys(card.text)[selectedTextIndex]].fontSize = document.querySelector('#text-editor-font-size').value;
@@ -1275,6 +1418,10 @@ function fontSizedEdited() {
 function drawTextBuffer() {
 	clearTimeout(writingText);
 	writingText = setTimeout(drawText, 500);
+}
+function autoFrameBuffer() {
+	clearTimeout(autoFrameTimer);
+	autoFrameTimer = setTimeout(autoFrame, 500);
 }
 async function drawText() {
 	textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
@@ -1292,7 +1439,6 @@ async function drawText() {
 	} else {
 		drawCard();
 	}
-	autoFrame();
 }
 function writeText(textObject, targetContext) {
 	//Most bits of info about text loaded, with defaults when needed
