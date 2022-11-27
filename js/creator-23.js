@@ -611,7 +611,10 @@ function cardFrameProperties(colors, manaCost, typeLine, power) {
 		'frameRight': frameRight,
 	}
 }
-function autoFrame(frame) {
+function autoFrame() {
+	var frame = document.querySelector('#autoFrame').value;
+	if (!frame) { return; }
+
 	var colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
 
 	if (frame == 'M15') {
@@ -631,7 +634,7 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 
 	// Set frames
 
-	if (type_line.includes('Legendary')) {
+	if (type_line.toLowerCase().includes('legendary')) {
 		if (properties.pinlineRulesRight) {
 			frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Crown', true));
 		}
@@ -1289,6 +1292,7 @@ async function drawText() {
 	} else {
 		drawCard();
 	}
+	autoFrame();
 }
 function writeText(textObject, targetContext) {
 	//Most bits of info about text loaded, with defaults when needed
@@ -1327,6 +1331,7 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
+	rawText = rawText.replace(/ - /g, ' — ');
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 	splitText = splitText.filter(item => item);
 	if (textObject.vertical) {
@@ -2162,8 +2167,9 @@ function toggleStarDot() {
 function enableImportCollectorInfo() {
 	localStorage.setItem('enableImportCollectorInfo', document.querySelector('#enableImportCollectorInfo').checked);
 }
-function enableAutoFrame() {
-	localStorage.setItem('enableAutoFrame', document.querySelector('#enableAutoFrame').checked);
+function setAutoFrame() {
+	localStorage.setItem('autoFrame', document.querySelector('#autoFrame').value);
+	autoFrame();
 }
 function removeDefaultCollector() {
 	defaultCollector = {}; //{number: year, rarity:'P', setCode:'MTG', lang:'EN', starDot:false};
@@ -2381,9 +2387,7 @@ function changeCardIndex() {
 		fetchSetSymbol();
 	}
 	//autoframe
-	if (localStorage.getItem('enableAutoFrame') == 'true') {
-		autoM15Frame(cardToImport.colors, cardToImport.mana_cost, cardToImport.type_line, cardToImport.power);
-	}
+	autoFrame();
 	//font size
 	Object.keys(card.text).forEach(key => {
 			card.text[key].fontSize = 0;
@@ -2774,10 +2778,10 @@ if (!localStorage.getItem('enableImportCollectorInfo')) {
 } else {
 	document.querySelector('#enableImportCollectorInfo').checked = (localStorage.getItem('enableImportCollectorInfo') == 'true');
 }
-if (!localStorage.getItem('enableAutoFrame')) {
-	localStorage.setItem('enableAutoFrame', 'false');
+if (!localStorage.getItem('autoFrame')) {
+	localStorage.setItem('autoFrame', 'false');
 } else {
-	document.querySelector('#enableAutoFrame').checked = (localStorage.getItem('enableAutoFrame') == 'true');
+	document.querySelector('#autoFrame').value = localStorage.getItem('autoFrame');
 }
 
 // lock set symbol code (user defaults)
