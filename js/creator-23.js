@@ -638,7 +638,7 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 var autoFramePack;
 function autoFrame() {
 	var frame = document.querySelector('#autoFrame').value;
-	if (frame == 'false') { return; }
+	if (frame == 'false') { autoFramePack = null; return; }
 
 	var colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
 
@@ -707,8 +707,6 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
 
-	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
-
 	card.frames = frames;
 	card.frames.reverse();
 	await card.frames.forEach(item => addFrame([], item));
@@ -755,8 +753,6 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
 
-	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
-
 	card.frames = frames;
 	card.frames.reverse();
 	await card.frames.forEach(item => addFrame([], item));
@@ -795,8 +791,6 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false));
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Border', false));
 
-	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
-
 	card.frames = frames;
 	card.frames.reverse();
 	await card.frames.forEach(item => addFrame([], item));
@@ -817,8 +811,6 @@ async function autoSeventhEditionFrame(colors, mana_cost, type_line, power) {
 	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Frame', false));
 	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Textbox Pinline', false));
 	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Border', false));
-
-	card.text.rules.text = card.text.rules.text.replace(/{flavor}/g, '{oldflavor}');
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -1584,6 +1576,9 @@ function writeText(textObject, targetContext) {
 	}
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
+	}
+	if (autoFramePack == 'Seventh') {
+		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
