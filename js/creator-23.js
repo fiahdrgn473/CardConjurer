@@ -657,8 +657,6 @@ function autoFrame() {
 		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	}
 
-	// autoFramePack = frame;
-
 	if (autoFramePack != frame) {
 		loadScript('/js/frames/pack' + frame + '.js');
 		autoFramePack = frame;
