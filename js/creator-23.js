@@ -2608,6 +2608,10 @@ function changeCardIndex() {
 	}
 	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 	document.querySelector('#text-editor-font-size').value = 0;
+	//font size
+	Object.keys(card.text).forEach(key => {
+			card.text[key].fontSize = 0;
+		});
 	textEdited();
 	//collector's info
 	if (localStorage.getItem('enableImportCollectorInfo') == 'true') {
@@ -2644,11 +2648,7 @@ function changeCardIndex() {
 		fetchSetSymbol();
 	}
 	//autoframe
-	autoFrame();
-	//font size
-	Object.keys(card.text).forEach(key => {
-			card.text[key].fontSize = 0;
-		});
+	// autoFrame();
 }
 function loadAvailableCards(cardKeys = JSON.parse(localStorage.getItem('cardKeys'))) {
 	if (!cardKeys) {
