@@ -503,7 +503,7 @@ function doubleClick(event, maskOrFrame) {
 	}
 	return null;
 }
-function cardFrameProperties(colors, manaCost, typeLine, power, etched = false) {
+function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 	var colors = colors.map(color => color.toUpperCase())
 	if ([
 			['U', 'W'],
@@ -527,18 +527,32 @@ function cardFrameProperties(colors, manaCost, typeLine, power, etched = false) 
 	var isHybrid = manaCost.includes('/');
 
 	var pinlineRules;
-	if (colors.length > 2) {
-		if (etched && typeLine.includes('Artifact')) {
-			pinlineRules = 'A';
-		} else {
+	if (style == 'Seventh') {
+		if (colors.length == 1) {
+			pinlineRules = colors[0];
+		} else if (colors.length >=2) {
 			pinlineRules = 'M';
+		} else if (typeLine.includes("Artifact")) {
+			pinlineRules = 'A';
+		} else if (typeLine.includes("Land")) {
+			pinlineRules = 'L';
+		} else {
+			pinlineRules = 'C';
 		}
-	} else if (colors.length != 0) {
-		pinlineRules = colors[0];
-	} else if (typeLine.includes('Land')) {
-		pinlineRules = land;
 	} else {
-		pinlineRules = 'A';
+		if (colors.length > 2) {
+			if (style == 'Etched' && typeLine.includes('Artifact')) {
+				pinlineRules = 'A';
+			} else {
+				pinlineRules = 'M';
+			}
+		} else if (colors.length != 0) {
+			pinlineRules = colors[0];
+		} else if (typeLine.includes('Land')) {
+			pinlineRules = land;
+		} else {
+			pinlineRules = 'A';
+		}
 	}
 
 	var pinelineRulesRight;
@@ -577,31 +591,35 @@ function cardFrameProperties(colors, manaCost, typeLine, power, etched = false) 
 	}
 	
 	var frame;
-	if (typeLine.includes('Land')) {
-		frame = 'L';
-	} else if (typeLine.includes('Vehicle')) {
-		frame = 'V';
-	} else if (typeLine.includes('Artifact')) {
-		frame = 'A';
-	} else if (colors.length > 2) {
-		frame = 'M';
-	} else if (colors.length == 2) {
-		if (isHybrid || etched) {
+	if (style == 'Seventh') {
+		frame = pinlineRules;
+	} else {
+		if (typeLine.includes('Land')) {
+			frame = 'L';
+		} else if (typeLine.includes('Vehicle')) {
+			frame = 'V';
+		} else if (typeLine.includes('Artifact')) {
+			frame = 'A';
+		} else if (colors.length > 2) {
+			frame = 'M';
+		} else if (colors.length == 2) {
+			if (isHybrid || style == 'Etched') {
+				frame = colors[0];
+			} else {
+				frame = 'M';
+			}
+		} else if (colors.length == 1) {
 			frame = colors[0];
 		} else {
-			frame = 'M';
+			frame = 'L';
 		}
-	} else if (colors.length == 1) {
-		frame = colors[0];
-	} else {
-		frame = 'L';
 	}
 
 	var frameRight;
 	if (!(typeLine.includes('Vehicle') || typeLine.includes('Artifact'))) {
 		if (typeLine.includes('Land')) {
 			frameRight = landRight;
-		} else if (colors.length == 2 && (isHybrid || etched)) {
+		} else if (colors.length == 2 && (isHybrid || style == 'Etched')) {
 			frameRight = colors[1];
 		}
 	}
@@ -629,6 +647,8 @@ function autoFrame() {
 		autoUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	} else if (frame == 'Etched') {
 		autoEtchedFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	} else if (frame == 'Seventh') {
+		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	}
 
 	if (document.querySelector('#selectFramePack') != frame) {
@@ -681,6 +701,8 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
 
+	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
+
 	card.frames = frames;
 	card.frames.reverse();
 	await card.frames.forEach(item => addFrame([], item));
@@ -727,6 +749,8 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
 
+	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
+
 	card.frames = frames;
 	card.frames.reverse();
 	await card.frames.forEach(item => addFrame([], item));
@@ -739,7 +763,7 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	card.frames = [];
 	document.querySelector('#frame-list').innerHTML = null;
 
-	var properties = cardFrameProperties(colors, mana_cost, type_line, power, true);
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Etched');
 
 	// Set frames
 
@@ -764,6 +788,31 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false));
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Border', false));
+
+	card.text.rules.text = card.text.rules.text.replace(/{oldflavor}/g, '{flavor}');
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoSeventhEditionFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Seventh');
+
+	// Set frames
+	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Pinline', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Rules', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Frame', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Textbox Pinline', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Border', false));
+
+	card.text.rules.text = card.text.rules.text.replace(/{flavor}/g, '{oldflavor}');
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -1053,6 +1102,62 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 				'name': mask
 			}
 		]
+		
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Vehicle'
+	}
+
+	if (letter == 'V') {
+		letter = 'A';
+	}
+
+	var frameName = frameNames[letter];
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/seventh/regular/' + letter + '.png',
+	}
+
+	if (mask) {
+		if (mask == 'Textbox Pinline') {
+			frame.masks = [
+				{
+					'src': '/img/frames/seventh/regular/trim.svg',
+					'name': 'Textbox Pinline'
+				}
+			]
+		} else {
+			frame.masks = [
+				{
+					'src': '/img/frames/seventh/regular/' + mask + '.svg',
+					'name': mask
+				}
+			]
+		}
+		
 		
 		if (maskToRightHalf) {
 			frame.masks.push({
