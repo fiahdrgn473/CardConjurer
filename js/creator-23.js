@@ -635,25 +635,38 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 		'frameRight': frameRight,
 	}
 }
+var autoFramePack;
 function autoFrame() {
 	var frame = document.querySelector('#autoFrame').value;
 	if (frame == 'false') { return; }
 
 	var colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
 
+	var group;
 	if (frame == 'M15Regular-1') {
 		autoM15Frame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		group = 'Standard-3';
 	} else if (frame == 'UB') {
 		autoUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		group = 'Showcase-5';
 	} else if (frame == 'Etched') {
+		group = 'Showcase-5';
 		autoEtchedFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	} else if (frame == 'Seventh') {
+		group = 'Misc-2';
 		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	}
 
-	if (document.querySelector('#selectFramePack') != frame) {
-		document.querySelector('#selectFramePack').value = frame;
+	// autoFramePack = frame;
+
+	if (autoFramePack != frame) {
+		// Can't set pack before group, because setting the group resets the pack.
+		// document.querySelector('#selectFrameGroup').value = group;
+		// loadScript('/js/frames/group' + group + '.js');
+
+		// document.querySelector('#selectFramePack').value = frame;
 		loadScript('/js/frames/pack' + frame + '.js');
+		autoFramePack = frame;
 	}
 }
 async function autoUBFrame(colors, mana_cost, type_line, power) {
