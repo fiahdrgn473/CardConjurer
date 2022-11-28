@@ -665,7 +665,10 @@ function autoFrame() {
 		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	} else if (frame == 'M15BoxTopper') {
 		group = 'Showcase-5';
-		autoExtendedArtFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		autoExtendedArtFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text, false);
+	} else if (frame == 'M15ExtendedArtShort') {
+		group = 'Showcase-5';
+		autoExtendedArtFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text, true);
 	}
 
 	if (autoFramePack != frame) {
@@ -778,7 +781,7 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	await card.frames.forEach(item => addFrame([], item));
 	card.frames.reverse();
 }
-async function autoExtendedArtFrame(colors, mana_cost, type_line, power) {
+async function autoExtendedArtFrame(colors, mana_cost, type_line, power, short) {
 	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
 
 	//clear the draggable frames
@@ -795,38 +798,38 @@ async function autoExtendedArtFrame(colors, mana_cost, type_line, power) {
 
 	// Set frames
 	if (type_line.includes('Legendary')) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Outline", false, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Outline", false, style, short));
 
 		if (style == 'Nyx') {
-			frames.push(makeExtendedArtFrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+			frames.push(makeExtendedArtFrameByLetter(properties.innerCrown, 'Inner Crown', false, style, short));
 		}
 
 		if (properties.pinlineRulesRight) {
-			frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Crown', true, style));
+			frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Crown', true, style, short));
 		}
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown", false, style));
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Border Cover", false, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown", false, style, short));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Border Cover", false, style, short));
 	} else {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Title Cutout", false, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Title Cutout", false, style, short));
 	}
 	if (properties.pt) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pt, 'PT', false, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pt, 'PT', false, style, short));
 	}
 	if (properties.pinlineRulesRight) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Pinline', true, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Pinline', true, style, short));
 	}
-	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Pinline', false, style));
-	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Type', false, style));
-	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Title', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Pinline', false, style, short));
+	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Type', false, style, short));
+	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Title', false, style, short));
 	if (properties.pinlineRulesRight) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Rules', true, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Rules', true, style, short));
 	}
-	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Rules', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Rules', false, style, short));
 	if (properties.frameRight) {
-		frames.push(makeExtendedArtFrameByLetter(properties.frameRight, 'Frame', true, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.frameRight, 'Frame', true, style, short));
 	}
-	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Frame', false, style));
-	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Border', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Frame', false, style, short));
+	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Border', false, style, short));
 
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
@@ -1014,7 +1017,7 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 
 	return frame;
 }
-function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
+function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular', short = false) {
 	letter = letter.toUpperCase();
 	var frameNames = {
 		'W': 'White',
@@ -1123,12 +1126,18 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 	}
 
 	var frame = {
-		'name': frameName + ' Frame',
-		'src': '/img/frames/m15/boxTopper/m15BoxTopperFrame' + letter + '.png',
+		'name': frameName + ' Frame'
 	}
 
 	if (style != 'regular') {
 		frame.src = '/img/frames/extended/regular/' + style.toLowerCase() + '/' + letter.toLowerCase() + '.png';
+		if (short) {
+			frame.src = frame.src.replace('/regular/', '/shorter/');
+		}
+	} else if (short) {
+		frame.src = '/img/frames/m15/boxTopper/short/' + letter.toLowerCase() + '.png';
+	} else {
+		frame.src = '/img/frames/m15/boxTopper/m15BoxTopperFrame' + letter + '.png';
 	}
 
 	if (mask) {
@@ -1137,6 +1146,13 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 				{
 					'src': '/img/frames/m15/boxTopper/m15BoxTopperTitleCutout.png',
 					'name': 'Title Cutout'
+				}
+			]
+		} else if (short && ['Frame', 'Rules', 'Type', 'Pinline'].includes(mask)) {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/boxTopper/short/' + mask.toLowerCase().replace('rules', 'text') + '.svg',
+					'name': mask
 				}
 			]
 		} else {
