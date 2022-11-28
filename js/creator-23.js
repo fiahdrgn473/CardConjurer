@@ -663,6 +663,9 @@ function autoFrame() {
 	} else if (frame == 'Seventh') {
 		group = 'Misc-2';
 		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	} else if (frame == 'M15BoxTopper') {
+		group = 'Showcase-5';
+		autoExtendedArtFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	}
 
 	if (autoFramePack != frame) {
@@ -765,6 +768,65 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeM15FrameByLetter(properties.frame, 'Frame', false, style));
 	frames.push(makeM15FrameByLetter(properties.frame, 'Border', false, style));
+
+	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
+		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
+	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoExtendedArtFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+	var style = 'regular';
+	if (type_line.toLowerCase().includes('snow')) {
+		style = 'snow';
+	} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+		style = 'Nyx';
+	}
+
+	// Set frames
+	if (type_line.includes('Legendary')) {
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Outline", false, style));
+
+		if (style == 'Nyx') {
+			frames.push(makeExtendedArtFrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+		}
+
+		if (properties.pinlineRulesRight) {
+			frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Crown', true, style));
+		}
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown", false, style));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Border Cover", false, style));
+	} else {
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Title Cutout", false, style));
+	}
+	if (properties.pt) {
+		frames.push(makeExtendedArtFrameByLetter(properties.pt, 'PT', false, style));
+	}
+	if (properties.pinlineRulesRight) {
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Pinline', true, style));
+	}
+	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Pinline', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Type', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Title', false, style));
+	if (properties.pinlineRulesRight) {
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Rules', true, style));
+	}
+	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Rules', false, style));
+	if (properties.frameRight) {
+		frames.push(makeExtendedArtFrameByLetter(properties.frameRight, 'Frame', true, style));
+	}
+	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Frame', false, style));
+	frames.push(makeExtendedArtFrameByLetter(properties.frame, 'Border', false, style));
 
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
@@ -940,6 +1002,152 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 			}
 		]
 		
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Artifact'
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Border Cover',
+			'src': '/img/black.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0177,
+				'width': 0.9214,
+				'x': 0.0394,
+				'y': 0.0277
+			}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/m15/crowns/m15Crown' + letter + 'Floating.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1024,
+				'width': 0.9387,
+				'x': 0.0307,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == "Crown Outline") {
+		var frame = {
+			'name': 'Legend Crown Outline',
+			'src': '/img/frames/m15/crowns/m15CrownFloatingOutline.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1062,
+				'width': 0.944,
+				'x': 0.028,
+				'y': 0.0172
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == "Inner Crown") {
+		var frame = {
+			'name': frameName + '(' + style + ')' + mask,
+			'src': '/img/frames/m15/innerCrowns/m15InnerCrown' + letter + style + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0239,
+				'width': 0.672,
+				'x': 0.164,
+				'y': 0.0239
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/regular/m15PT' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0733,
+				'width': 0.188,
+				'x': 0.7573,
+				'y': 0.8848
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/m15/boxTopper/m15BoxTopperFrame' + letter + '.png',
+	}
+
+	if (style != 'regular') {
+		frame.src = '/img/frames/extended/regular/' + style.toLowerCase() + '/' + letter.toLowerCase() + '.png';
+	}
+
+	if (mask) {
+		if (mask == 'Title Cutout') {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/boxTopper/m15BoxTopperTitleCutout.png',
+					'name': 'Title Cutout'
+				}
+			]
+		} else {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+					'name': mask
+				}
+			]
+		}
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
