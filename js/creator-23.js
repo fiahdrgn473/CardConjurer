@@ -1142,12 +1142,21 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 
 	if (mask) {
 		if (mask == 'Title Cutout') {
-			frame.masks = [
-				{
-					'src': '/img/frames/m15/boxTopper/m15BoxTopperTitleCutout.png',
-					'name': 'Title Cutout'
-				}
-			]
+			if (short) {
+				frame.masks = [
+					{
+						'src': '/img/frames/extended/shorter/titleCutout.png',
+						'name': 'Title Cutout'
+					}
+				]
+			} else {
+				frame.masks = [
+					{
+						'src': '/img/frames/m15/boxTopper/m15BoxTopperTitleCutout.png',
+						'name': 'Title Cutout'
+					}
+				]
+			}
 		} else if (short && ['Frame', 'Rules', 'Type', 'Pinline'].includes(mask)) {
 			frame.masks = [
 				{
