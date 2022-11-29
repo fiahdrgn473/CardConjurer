@@ -743,6 +743,9 @@ function autoFrame() {
 	} else if (frame == 'M15ExtendedArtShort') {
 		group = 'Showcase-5';
 		autoExtendedArtFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text, true);
+	} else if (frame == '8th') {
+		group = 'Misc-2';
+		auto8thEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text, false);
 	}
 
 	if (autoFramePack != frame) {
@@ -849,6 +852,40 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function auto8thEditionFrame(colors, mana_cost, type_line, power, colorshifted = false) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+
+	// Set frames
+	if (properties.pt) {
+		frames.push(make8thEditionFrameByLetter(properties.pt, 'PT', false, colorshifted));
+	}
+	if (properties.pinlineRight) {
+		frames.push(make8thEditionFrameByLetter(properties.pinlineRight, 'Pinline', true, colorshifted));
+	}
+	frames.push(make8thEditionFrameByLetter(properties.pinline, 'Pinline', false, colorshifted));
+	frames.push(make8thEditionFrameByLetter(properties.typeTitle, 'Type', false, colorshifted));
+	frames.push(make8thEditionFrameByLetter(properties.typeTitle, 'Title', false, colorshifted));
+	if (properties.pinlineRight) {
+		frames.push(make8thEditionFrameByLetter(properties.rulesRight, 'Rules', true, colorshifted));
+	}
+	frames.push(make8thEditionFrameByLetter(properties.rules, 'Rules', false, colorshifted));
+	if (properties.frameRight) {
+		frames.push(make8thEditionFrameByLetter(properties.frameRight, 'Frame', true, colorshifted));
+	}
+	frames.push(make8thEditionFrameByLetter(properties.frame, 'Frame', false, colorshifted));
+	frames.push(make8thEditionFrameByLetter(properties.frame, 'Border', false, colorshifted));
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -1095,6 +1132,79 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 				'name': mask
 			}
 		]
+		
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if (letter == 'V') {
+		letter = 'A';
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/8th/pt/' + letter.toLowerCase() + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0839,
+				'width': 0.2147,
+				'x': 0.7227,
+				'y': 0.8796
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/8th/' + letter.toLowerCase() + '.png',
+	}
+
+	if (letter.includes('L') && letter.length > 1) {
+		frame.src = frame.src.replace(('m15Frame' + letter), 'l' + letter[0].toLowerCase())
+	}
+
+	if (mask) {
+		frame.masks = [
+			{
+				'src': '/img/frames/8th/' + mask.toLowerCase() + '.png',
+				'name': mask
+			}
+		]
+
+		if (mask == 'Border') {
+			frame.masks[0].src = frame.masks[0].src.replace('.png', '.svg');
+		}
 		
 		if (maskToRightHalf) {
 			frame.masks.push({
@@ -1982,7 +2092,7 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
-	if (autoFramePack == 'Seventh') {
+	if (autoFramePack == 'Seventh' || autoFramePack == '8th') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
