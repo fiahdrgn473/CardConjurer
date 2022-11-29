@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/8th/pinline.png', name:'Pinline'}, {src:'/img/frames/8th/title.png', name:'Title'}, {src:'/img/frames/8th/type.png', name:'Type'}, {src:'/img/frames/8th/rules.png', name:'Rules'}, {src:'/img/frames/8th/frame.png', name:'Frame'}];
+var masks = [{src:'/img/frames/8th/pinline.png', name:'Pinline'}, {src:'/img/frames/8th/title.png', name:'Title'}, {src:'/img/frames/8th/type.png', name:'Type'}, {src:'/img/frames/8th/rules.png', name:'Rules'}, {src:'/img/frames/8th/frame.png', name:'Frame'}, {src:'/img/frames/8th/border.svg', name:'Border'}];
 var masks2 = [{src:'/img/frames/8th/border.svg', name:'Border'}];
 var bounds = {x:0.7227, y:0.8796, width:0.2147, height:0.0839};
 //defines available frames
