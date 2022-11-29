@@ -520,61 +520,92 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 		colors.reverse();
 	}
 
-	var land = 'L';
-
-	var landRight;
-
 	var isHybrid = manaCost.includes('/');
 
-	var pinlineRules;
+	var rules;
 	if (style == 'Seventh') {
-		if (colors.length == 1) {
-			pinlineRules = colors[0];
-		} else if (colors.length >=2) {
-			pinlineRules = 'M';
-		} else if (typeLine.includes("Artifact")) {
-			pinlineRules = 'A';
-		} else if (typeLine.includes("Land")) {
-			pinlineRules = 'L';
-		} else {
-			pinlineRules = 'C';
-		}
-	} else {
-		if (colors.length > 2) {
-			if (style == 'Etched' && typeLine.includes('Artifact')) {
-				pinlineRules = 'A';
+		if (typeLine.includes('Land')) {
+			if (colors.length == 0 || colors.length > 2) {
+				rules = 'L';
 			} else {
-				pinlineRules = 'M';
+				rules = colors[0] + 'L';
+			}
+		} else {
+			if (colors.length == 1) {
+				rules = colors[0];
+			} else if (colors.length >=2) {
+				rules = 'M';
+			} else if (typeLine.includes("Artifact")) {
+				rules = 'A';
+			} else {
+				rules = 'C';
+			}
+		}
+		
+	} else {
+		if (typeLine.includes('Land')) {
+			if (colors.length == 0) {
+				rules = 'L';
+			} else if (colors.length > 2) {
+				rules = 'ML';
+			} else {
+				rules = colors[0] + 'L';
+			}
+		} else if (colors.length > 2) {
+			if (style == 'Etched' && typeLine.includes('Artifact')) {
+				rules = 'A';
+			} else {
+				rules = 'M';
 			}
 		} else if (colors.length != 0) {
-			pinlineRules = colors[0];
-		} else if (typeLine.includes('Land')) {
-			pinlineRules = land;
+			rules = colors[0];
 		} else {
-			pinlineRules = 'A';
+			rules = 'A';
 		}
 	}
 
-	var pinelineRulesRight;
-	if (typeLine.includes('Land')) {
-		pinelineRulesRight = landRight;
-	} else if (colors.length == 2) {
-		pinelineRulesRight = colors[1];
+	var rulesRight;
+	if (colors.length == 2) {
+		if (typeLine.includes('Land')) {
+			rulesRight = colors[1] + 'L';
+		} else if (style != 'Seventh') {
+			rulesRight = colors[1];
+		}
+	}
+
+	var pinline = rules;
+	var pinlineRight = rulesRight;
+
+	if (style == 'Seventh' && typeLine.includes('Land') && colors.length >= 2) {
+		pinline = 'L';
+		pinlineRight = null;
 	}
 
 	var typeTitle;
 	if (colors.length >= 2) {
-		if (colors.length > 2) {
-			typeTitle = 'M'
-		} else if (isHybrid) {
-			typeTitle = 'L';
+		if (isHybrid || typeLine.includes('Land')) {
+			if (colors.length >= 3) {
+				typeTitle = 'M';
+			} else {
+				typeTitle = 'L';
+			}
 		} else {
 			typeTitle = 'M';
 		}
+	} else if (typeLine.includes('Land')) {
+		if (colors.length == 0) {
+			typeTitle = 'L';
+		} else if (style == 'Etched') {
+			if (colors.length > 2) {
+				typeTitle = 'M';
+			} else {
+				typeTitle = 'L';
+			}
+		} else {
+			typeTitle = colors[0] + 'L';
+		}
 	} else if (colors.length == 1) {
 		typeTitle = colors[0];
-	} else if (typeLine.includes('Land')) {
-		typeTitle = land;
 	} else {
 		typeTitle = 'A';
 	}
@@ -599,43 +630,53 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 	
 	var frame;
 	if (style == 'Seventh') {
-		frame = pinlineRules;
-	} else {
 		if (typeLine.includes('Land')) {
-			frame = 'L';
-		} else if (typeLine.includes('Vehicle')) {
-			frame = 'V';
-		} else if (typeLine.includes('Artifact')) {
-			frame = 'A';
-		} else if (colors.length > 2) {
-			frame = 'M';
-		} else if (colors.length == 2) {
-			if (isHybrid || style == 'Etched') {
+			frame = 'L'
+		} else {
+			frame = pinline;
+		}
+	} else if (typeLine.includes('Land')) {
+		if (style == 'Etched') {
+			if (colors.length > 2) {
+				frame = 'M';
+			} else if (colors.length > 0) {
 				frame = colors[0];
 			} else {
-				frame = 'M';
+				frame = 'L';
 			}
-		} else if (colors.length == 1) {
-			frame = colors[0];
 		} else {
 			frame = 'L';
 		}
+	} else if (typeLine.includes('Vehicle')) {
+		frame = 'V';
+	} else if (typeLine.includes('Artifact')) {
+		frame = 'A';
+	} else if (colors.length > 2) {
+		frame = 'M';
+	} else if (colors.length == 2) {
+		if (isHybrid || style == 'Etched') {
+			frame = colors[0];
+		} else {
+			frame = 'M';
+		}
+	} else if (colors.length == 1) {
+		frame = colors[0];
+	} else {
+		frame = 'L';
 	}
 
 	var frameRight;
 	if (!(typeLine.includes('Vehicle') || typeLine.includes('Artifact'))) {
-		if (typeLine.includes('Land')) {
-			frameRight = landRight;
-		} else if (colors.length == 2 && (isHybrid || style == 'Etched')) {
+		if (colors.length == 2 && (isHybrid || style == 'Etched')) {
 			frameRight = colors[1];
 		}
 	}
 
 	return {
-		'land': land,
-		'landRight': landRight,
-		'pinlineRules': pinlineRules,
-		'pinlineRulesRight': pinelineRulesRight,
+		'pinline': pinline,
+		'pinlineRight': pinlineRight,
+		'rules': rules,
+		'rulesRight': rulesRight,
 		'typeTitle': typeTitle,
 		'pt': pt,
 		'frame': frame,
@@ -648,7 +689,40 @@ function autoFrame() {
 	var frame = document.querySelector('#autoFrame').value;
 	if (frame == 'false') { autoFramePack = null; return; }
 
-	var colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
+	var colors = [];
+	if (card.text.type.text.toLowerCase().includes('land')) {
+		if (card.text.rules.text.includes('{W}') || card.text.rules.text.toLowerCase().includes('plains') || card.text.type.text.toLowerCase().includes('plains')) {
+			colors.push('W');
+		}
+		if (card.text.rules.text.includes('{U}') || card.text.rules.text.toLowerCase().includes('island') || card.text.type.text.toLowerCase().includes('island')) {
+			colors.push('U');
+		}
+		if (card.text.rules.text.includes('{B}') || card.text.rules.text.toLowerCase().includes('swamp') || card.text.type.text.toLowerCase().includes('swamp')) {
+			colors.push('B');
+		}
+		if (card.text.rules.text.includes('{R}') || card.text.rules.text.toLowerCase().includes('mountain') || card.text.type.text.toLowerCase().includes('mountain')) {
+			colors.push('R');
+		}
+		if (card.text.rules.text.includes('{G}') || card.text.rules.text.toLowerCase().includes('forest') || card.text.type.text.toLowerCase().includes('forest')) {
+			colors.push('G');
+		}
+
+		if (card.text.rules.text.toLowerCase().includes('search')) {
+			if (card.text.rules.text.includes('tapped') && !(card.text.rules.text.toLowerCase().includes('enters the battlefield tapped')) && !(card.text.rules.text.toLowerCase().includes('untap'))) {
+				colors = [];
+			} else if (colors.length == 0) {
+				colors = ['W', 'U', 'B', 'R', 'G'];
+			}
+		}
+
+		if (card.text.rules.text.includes('any color') || card.text.rules.text.includes('chosen color')) {
+			colors = ['W', 'U', 'B', 'R', 'G'];
+		}
+
+
+	} else {
+		colors = [...new Set(card.text.mana.text.toUpperCase().split('').filter(char => ['W', 'U', 'B', 'R', 'G'].includes(char)))];
+	}
 
 	var group;
 	if (frame == 'M15Regular-1') {
@@ -688,29 +762,29 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 	// Set frames
 
 	if (type_line.toLowerCase().includes('legendary')) {
-		if (properties.pinlineRulesRight) {
-			frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Crown', true));
+		if (properties.pinlineRight) {
+			frames.push(makeM15FrameByLetter(properties.pinlineRight, 'Crown', true));
 		}
-		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown", false));
-		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown Border Cover", false));
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown", false));
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown Border Cover", false));
 	}
-	if (properties.pinlineRulesRight) {
-		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Stamp', true));
+	if (properties.pinlineRight) {
+		frames.push(makeUBFrameByLetter(properties.pinlineRight, 'Stamp', true));
 	}
-	frames.push(makeUBFrameByLetter(properties.pinlineRules, "Stamp", false));
+	frames.push(makeUBFrameByLetter(properties.pinline, "Stamp", false));
 	if (properties.pt) {
 		frames.push(makeM15FrameByLetter(properties.pt, 'PT', false));
 	}
-	if (properties.pinlineRulesRight) {
-		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Pinline', true));
+	if (properties.pinlineRight) {
+		frames.push(makeUBFrameByLetter(properties.pinlineRight, 'Pinline', true));
 	}
-	frames.push(makeUBFrameByLetter(properties.pinlineRules, 'Pinline', false));
+	frames.push(makeUBFrameByLetter(properties.pinline, 'Pinline', false));
 	frames.push(makeUBFrameByLetter(properties.typeTitle, 'Type', false));
 	frames.push(makeUBFrameByLetter(properties.typeTitle, 'Title', false));
-	if (properties.pinlineRulesRight) {
-		frames.push(makeUBFrameByLetter(properties.pinlineRulesRight, 'Rules', true));
+	if (properties.pinlineRight) {
+		frames.push(makeUBFrameByLetter(properties.rulesRight, 'Rules', true));
 	}
-	frames.push(makeUBFrameByLetter(properties.pinlineRules, 'Rules', false));
+	frames.push(makeUBFrameByLetter(properties.rules, 'Rules', false));
 	if (properties.frameRight) {
 		frames.push(makeUBFrameByLetter(properties.frameRight, 'Frame', true));
 	}
@@ -747,25 +821,25 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 			frames.push(makeM15FrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
 		}
 
-		if (properties.pinlineRulesRight) {
-			frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Crown', true, style));
+		if (properties.pinlineRight) {
+			frames.push(makeM15FrameByLetter(properties.pinlineRight, 'Crown', true, style));
 		}
-		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown", false, style));
-		frames.push(makeM15FrameByLetter(properties.pinlineRules, "Crown Border Cover", false, style));
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown", false, style));
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown Border Cover", false, style));
 	}
 	if (properties.pt) {
 		frames.push(makeM15FrameByLetter(properties.pt, 'PT', false, style));
 	}
-	if (properties.pinlineRulesRight) {
-		frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Pinline', true, style));
+	if (properties.pinlineRight) {
+		frames.push(makeM15FrameByLetter(properties.pinlineRight, 'Pinline', true, style));
 	}
-	frames.push(makeM15FrameByLetter(properties.pinlineRules, 'Pinline', false, style));
+	frames.push(makeM15FrameByLetter(properties.pinline, 'Pinline', false, style));
 	frames.push(makeM15FrameByLetter(properties.typeTitle, 'Type', false, style));
 	frames.push(makeM15FrameByLetter(properties.typeTitle, 'Title', false, style));
-	if (properties.pinlineRulesRight) {
-		frames.push(makeM15FrameByLetter(properties.pinlineRulesRight, 'Rules', true, style));
+	if (properties.pinlineRight) {
+		frames.push(makeM15FrameByLetter(properties.rulesRight, 'Rules', true, style));
 	}
-	frames.push(makeM15FrameByLetter(properties.pinlineRules, 'Rules', false, style));
+	frames.push(makeM15FrameByLetter(properties.rules, 'Rules', false, style));
 	if (properties.frameRight) {
 		frames.push(makeM15FrameByLetter(properties.frameRight, 'Frame', true, style));
 	}
@@ -798,33 +872,33 @@ async function autoExtendedArtFrame(colors, mana_cost, type_line, power, short) 
 
 	// Set frames
 	if (type_line.includes('Legendary')) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Outline", false, style, short));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinline, "Crown Outline", false, style, short));
 
 		if (style == 'Nyx') {
 			frames.push(makeExtendedArtFrameByLetter(properties.innerCrown, 'Inner Crown', false, style, short));
 		}
 
-		if (properties.pinlineRulesRight) {
-			frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Crown', true, style, short));
+		if (properties.pinlineRight) {
+			frames.push(makeExtendedArtFrameByLetter(properties.pinlineRight, 'Crown', true, style, short));
 		}
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown", false, style, short));
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Crown Border Cover", false, style, short));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinline, "Crown", false, style, short));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinline, "Crown Border Cover", false, style, short));
 	} else {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, "Title Cutout", false, style, short));
+		frames.push(makeExtendedArtFrameByLetter(properties.pinline, "Title Cutout", false, style, short));
 	}
 	if (properties.pt) {
 		frames.push(makeExtendedArtFrameByLetter(properties.pt, 'PT', false, style, short));
 	}
-	if (properties.pinlineRulesRight) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Pinline', true, style, short));
+	if (properties.pinlineRight) {
+		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRight, 'Pinline', true, style, short));
 	}
-	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Pinline', false, style, short));
+	frames.push(makeExtendedArtFrameByLetter(properties.pinline, 'Pinline', false, style, short));
 	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Type', false, style, short));
 	frames.push(makeExtendedArtFrameByLetter(properties.typeTitle, 'Title', false, style, short));
-	if (properties.pinlineRulesRight) {
-		frames.push(makeExtendedArtFrameByLetter(properties.pinlineRulesRight, 'Rules', true, style, short));
+	if (properties.pinlineRight) {
+		frames.push(makeExtendedArtFrameByLetter(properties.rulesRight, 'Rules', true, style, short));
 	}
-	frames.push(makeExtendedArtFrameByLetter(properties.pinlineRules, 'Rules', false, style, short));
+	frames.push(makeExtendedArtFrameByLetter(properties.rules, 'Rules', false, style, short));
 	if (properties.frameRight) {
 		frames.push(makeExtendedArtFrameByLetter(properties.frameRight, 'Frame', true, style, short));
 	}
@@ -863,10 +937,10 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeEtchedFrameByLetter(properties.typeTitle, 'Type', false));
 	frames.push(makeEtchedFrameByLetter(properties.typeTitle, 'Title', false));
-	if (properties.pinlineRulesRight) {
-		frames.push(makeEtchedFrameByLetter(properties.pinlineRulesRight, 'Rules', true));
+	if (properties.pinlineRight) {
+		frames.push(makeEtchedFrameByLetter(properties.rulesRight, 'Rules', true));
 	}
-	frames.push(makeEtchedFrameByLetter(properties.pinlineRules, 'Rules', false));
+	frames.push(makeEtchedFrameByLetter(properties.rules, 'Rules', false));
 	if (properties.frameRight) {
 		frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Frame', true));
 	}
@@ -879,7 +953,7 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	card.frames.reverse();
 }
 async function autoSeventhEditionFrame(colors, mana_cost, type_line, power) {
-	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('DCI Star'));
 
 	//clear the draggable frames
 	card.frames = [];
@@ -888,10 +962,13 @@ async function autoSeventhEditionFrame(colors, mana_cost, type_line, power) {
 	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Seventh');
 
 	// Set frames
-	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Pinline', false));
-	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Rules', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.pinline, 'Pinline', false));
+	if (properties.rulesRight) {
+		frames.push(makeSeventhEditionFrameByLetter(properties.rulesRight, 'Rules', true));
+	}
+	frames.push(makeSeventhEditionFrameByLetter(properties.rules, 'Rules', false));
 	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Frame', false));
-	frames.push(makeSeventhEditionFrameByLetter(properties.pinlineRules, 'Textbox Pinline', false));
+	frames.push(makeSeventhEditionFrameByLetter(properties.pinline, 'Textbox Pinline', false));
 	frames.push(makeSeventhEditionFrameByLetter(properties.frame, 'Border', false));
 
 	card.frames = frames;
@@ -911,7 +988,17 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 		'A': 'Artifact',
 		'L': 'Land',
 		'C': 'Colorless',
-		'V': 'Vehicle'
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
 	}
 
 	var frameName = frameNames[letter];
@@ -991,6 +1078,10 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 		'src': '/img/frames/m15/' + style.toLowerCase() + '/m15Frame' + letter + '.png',
 	}
 
+	if (letter.includes('L') && letter.length > 1) {
+		frame.src = frame.src.replace(('m15Frame' + letter), 'l' + letter[0].toLowerCase())
+	}
+
 	if (style == 'Nyx') {
 		frame.src = frame.src.replace('.png', 'Nyx.png');
 	} else if (style == 'snow') {
@@ -1029,7 +1120,17 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 		'A': 'Artifact',
 		'L': 'Land',
 		'C': 'Colorless',
-		'V': 'Artifact'
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
 	}
 
 	var frameName = frameNames[letter];
@@ -1202,7 +1303,17 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 		'A': 'Artifact',
 		'L': 'Land',
 		'C': 'Colorless',
-		'V': 'Vehicle'
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
 	}
 
 	var frameName = frameNames[letter];
@@ -1319,6 +1430,12 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 		'V': 'Vehicle'
 	}
 
+	if (letter == 'ML') {
+		letter = 'M';
+	} else if (letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
 	var frameName = frameNames[letter];
 
 	if (mask == "Crown Border Cover") {
@@ -1402,19 +1519,28 @@ function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf =
 		'A': 'Artifact',
 		'L': 'Land',
 		'C': 'Colorless',
-		'V': 'Vehicle'
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land'
 	}
 
 	if (letter == 'V') {
 		letter = 'A';
 	}
 
+	if (letter == 'ML') {
+		letter = 'L';
+	}
+
 	var frameName = frameNames[letter];
 
 	var frame = {
 		'name': frameName + ' Frame',
-		'src': '/img/frames/seventh/regular/' + letter + '.png',
-	}
+		'src': '/img/frames/seventh/regular/' + letter + '.png'
+	};
 
 	if (mask) {
 		if (mask == 'Textbox Pinline') {
@@ -1432,7 +1558,6 @@ function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf =
 				}
 			]
 		}
-		
 		
 		if (maskToRightHalf) {
 			frame.masks.push({
