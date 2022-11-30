@@ -1144,14 +1144,16 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 		'src': '/img/frames/m15/' + style.toLowerCase() + '/m15Frame' + letter + '.png',
 	}
 
-	if (letter.includes('L') && letter.length > 1) {
-		frame.src = frame.src.replace(('m15Frame' + letter), 'l' + letter[0].toLowerCase())
-	}
+	if (style == 'snow') {
+		frame.src = frame.src.replace('m15Frame' + letter, letter.toLowerCase());
+	} else {
+		if (letter.includes('L') && letter.length > 1) {
+			frame.src = frame.src.replace(('m15Frame' + letter), 'l' + letter[0].toLowerCase())
+		}
 
-	if (style == 'Nyx') {
-		frame.src = frame.src.replace('.png', 'Nyx.png');
-	} else if (style == 'snow') {
-		frame.src = frame.src.replace('m15Frame', '');
+		if (style == 'Nyx') {
+			frame.src = frame.src.replace('.png', 'Nyx.png');
+		}
 	}
 
 	if (mask) {
