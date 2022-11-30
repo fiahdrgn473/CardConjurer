@@ -1106,7 +1106,7 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 
 	if (mask == "Inner Crown") {
 		var frame = {
-			'name': frameName + '(' + style + ')' + mask,
+			'name': frameName + ' ' + mask + ' (' + style + ')',
 			'src': '/img/frames/m15/innerCrowns/m15InnerCrown' + letter + style + '.png',
 			'masks': [],
 			'bounds': {
