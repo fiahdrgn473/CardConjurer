@@ -691,7 +691,16 @@ function autoFrame() {
 
 	var colors = [];
 	if (card.text.type.text.toLowerCase().includes('land')) {
-		var lines = card.text.rules.text.split('\n');
+		var rules = card.text.rules.text;
+		var flavorIndex = rules.indexOf('{flavor}');
+		if (flavorIndex == -1) {
+			flavorIndex = rules.indexOf('{oldflavor}');
+		}
+		if (flavorIndex != -1) {
+			rules = rules.substring(0, flavorIndex);
+		}
+
+		var lines = rules.split('\n');
 
 		lines.forEach(function(line) {
 			var addIndex = line.indexOf('Add');
@@ -710,31 +719,32 @@ function autoFrame() {
 			}
 		});
 
-		if (!colors.includes('W') && (card.text.rules.text.toLowerCase().includes('plains') || card.text.type.text.toLowerCase().includes('plains'))) {
+		if (!colors.includes('W') && (rules.toLowerCase().includes('plains') || card.text.type.text.toLowerCase().includes('plains'))) {
 			colors.push('W');
 		}
-		if (!colors.includes('U') && (card.text.rules.text.toLowerCase().includes('island') || card.text.type.text.toLowerCase().includes('island'))) {
+		if (!colors.includes('U') && (rules.toLowerCase().includes('island') || card.text.type.text.toLowerCase().includes('island'))) {
 			colors.push('U');
 		}
-		if (!colors.includes('B') && (card.text.rules.text.toLowerCase().includes('swamp') || card.text.type.text.toLowerCase().includes('swamp'))) {
+		if (!colors.includes('B') && (rules.toLowerCase().includes('swamp') || card.text.type.text.toLowerCase().includes('swamp'))) {
 			colors.push('B');
 		}
-		if (!colors.includes('R') && (card.text.rules.text.toLowerCase().includes('mountain') || card.text.type.text.toLowerCase().includes('mountain'))) {
+		if (!colors.includes('R') && (rules.toLowerCase().includes('mountain') || card.text.type.text.toLowerCase().includes('mountain'))) {
 			colors.push('R');
 		}
-		if (!colors.includes('G') && (card.text.rules.text.toLowerCase().includes('forest') || card.text.type.text.toLowerCase().includes('forest'))) {
+		if (!colors.includes('G') && (rules.toLowerCase().includes('forest') || card.text.type.text.toLowerCase().includes('forest'))) {
 			colors.push('G');
 		}
 
-		if (card.text.rules.text.toLowerCase().includes('search')) {
-			if (card.text.rules.text.includes('tapped') && !(card.text.rules.text.toLowerCase().includes('enters the battlefield tapped')) && !(card.text.rules.text.toLowerCase().includes('untap'))) {
+		if (rules.toLowerCase().includes('search') && colors.length == 0) {
+			// TODO: This doesn't match Bog Wreckage
+			if (rules.includes('into your hand') || (rules.includes('tapped') && !(rules.toLowerCase().includes('enters the battlefield tapped')) && !(rules.toLowerCase().includes('untap')))) {
 				colors = [];
 			} else if (colors.length == 0) {
 				colors = ['W', 'U', 'B', 'R', 'G'];
 			}
 		}
 
-		if (card.text.rules.text.includes('any color') || card.text.rules.text.includes('chosen color')) {
+		if (rules.includes('any color') || rules.includes('any one color') || rules.includes('chosen color') || rules.includes('any combination of colors')) {
 			colors = ['W', 'U', 'B', 'R', 'G'];
 		}
 
@@ -1053,7 +1063,7 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 		'ML': 'Multicolored Land'
 	}
 
-	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
 		letter = letter[0];
 	}
 
@@ -1184,6 +1194,10 @@ function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = fal
 		'ML': 'Multicolored Land'
 	}
 
+	if (mask == 'PT' && letter.length > 1) {
+		letter = letter[0];
+	}
+
 	if (letter == 'V') {
 		letter = 'A';
 	}
@@ -1258,7 +1272,7 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 		'ML': 'Multicolored Land'
 	}
 
-	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
 		letter = letter[0];
 	}
 
@@ -1441,7 +1455,7 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 		'ML': 'Multicolored Land'
 	}
 
-	if ((mask.includes('Crown') || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
 		letter = letter[0];
 	}
 
@@ -1557,6 +1571,10 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 		'L': 'Land',
 		'C': 'Colorless',
 		'V': 'Vehicle'
+	}
+
+	if (mask == 'PT' && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
 	}
 
 	if (letter == 'ML') {
