@@ -44,7 +44,13 @@ availableFrames = [
 	{name:'Green Snow Frame', src:'/img/frames/extended/regular/snow/g.png', masks:masks},
 	{name:'Multicolored Snow Frame', src:'/img/frames/extended/regular/snow/m.png', masks:masks},
 	{name:'Artifact Snow Frame', src:'/img/frames/extended/regular/snow/a.png', masks:masks},
-	{name:'Land Snow Frame', src:'/img/frames/extended/regular/snow/l.png', masks:masks}
+	{name:'Land Snow Frame', src:'/img/frames/extended/regular/snow/l.png', masks:masks},
+	{name:'White Snow Land Frame', src:'/img/frames/extended/regular/snow/wl.png', masks:masks},
+	{name:'Blue Snow Land Frame', src:'/img/frames/extended/regular/snow/ul.png', masks:masks},
+	{name:'Black Snow Land Frame', src:'/img/frames/extended/regular/snow/bl.png', masks:masks},
+	{name:'Red Snow Land Frame', src:'/img/frames/extended/regular/snow/rl.png', masks:masks},
+	{name:'Green Snow Land Frame', src:'/img/frames/extended/regular/snow/gl.png', masks:masks},
+	{name:'Multicolored Snow Land Frame', src:'/img/frames/extended/regular/snow/ml.png', masks:masks},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
