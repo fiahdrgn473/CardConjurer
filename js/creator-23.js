@@ -2974,6 +2974,9 @@ function setAutoFrame() {
 	localStorage.setItem('autoFrame', document.querySelector('#autoFrame').value);
 	autoFrame();
 }
+function setAutofit() {
+	localStorage.setItem('autoFit', document.querySelector('#art-update-autofit').checked);
+}
 function removeDefaultCollector() {
 	defaultCollector = {}; //{number: year, rarity:'P', setCode:'MTG', lang:'EN', starDot:false};
 	localStorage.removeItem('defaultCollector'); //localStorage.setItem('defaultCollector', JSON.stringify(defaultCollector));
@@ -3588,6 +3591,11 @@ if (!localStorage.getItem('autoFrame')) {
 	localStorage.setItem('autoFrame', 'false');
 } else {
 	document.querySelector('#autoFrame').value = localStorage.getItem('autoFrame');
+}
+if (!localStorage.getItem('autoFit')) {
+	localStorage.setItem('autoFit', 'true');
+} else {
+	document.querySelector('#art-update-autofit').checked = localStorage.getItem('autoFit');
 }
 
 // lock set symbol code (user defaults)
