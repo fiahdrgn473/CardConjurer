@@ -691,19 +691,38 @@ function autoFrame() {
 
 	var colors = [];
 	if (card.text.type.text.toLowerCase().includes('land')) {
-		if (card.text.rules.text.includes('{W}') || card.text.rules.text.toLowerCase().includes('plains') || card.text.type.text.toLowerCase().includes('plains')) {
+		var lines = card.text.rules.text.split('\n');
+
+		lines.forEach(function(line) {
+			var addIndex = line.indexOf('Add');
+			var length = 3;
+			if (addIndex == -1) {
+				addIndex = line.toLowerCase().indexOf(' add');
+				length = 4;
+			}
+			if (addIndex != -1) {
+				var upToAdd = line.substring(addIndex+length);
+              	['W', 'U', 'B', 'R', 'G'].forEach(function (color) {
+                	if (upToAdd.includes('{' + color + '}')) {
+                  		colors.push(color);
+                	}
+                });
+			}
+		});
+
+		if (!colors.includes('W') && (card.text.rules.text.toLowerCase().includes('plains') || card.text.type.text.toLowerCase().includes('plains'))) {
 			colors.push('W');
 		}
-		if (card.text.rules.text.includes('{U}') || card.text.rules.text.toLowerCase().includes('island') || card.text.type.text.toLowerCase().includes('island')) {
+		if (!colors.includes('U') && (card.text.rules.text.toLowerCase().includes('island') || card.text.type.text.toLowerCase().includes('island'))) {
 			colors.push('U');
 		}
-		if (card.text.rules.text.includes('{B}') || card.text.rules.text.toLowerCase().includes('swamp') || card.text.type.text.toLowerCase().includes('swamp')) {
+		if (!colors.includes('B') && (card.text.rules.text.toLowerCase().includes('swamp') || card.text.type.text.toLowerCase().includes('swamp'))) {
 			colors.push('B');
 		}
-		if (card.text.rules.text.includes('{R}') || card.text.rules.text.toLowerCase().includes('mountain') || card.text.type.text.toLowerCase().includes('mountain')) {
+		if (!colors.includes('R') && (card.text.rules.text.toLowerCase().includes('mountain') || card.text.type.text.toLowerCase().includes('mountain'))) {
 			colors.push('R');
 		}
-		if (card.text.rules.text.includes('{G}') || card.text.rules.text.toLowerCase().includes('forest') || card.text.type.text.toLowerCase().includes('forest')) {
+		if (!colors.includes('G') && (card.text.rules.text.toLowerCase().includes('forest') || card.text.type.text.toLowerCase().includes('forest'))) {
 			colors.push('G');
 		}
 
