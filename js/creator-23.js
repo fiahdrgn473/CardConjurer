@@ -1196,8 +1196,12 @@ function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = fal
 		'ML': 'Multicolored Land'
 	}
 
-	if (mask == 'PT' && letter.length > 1) {
-		letter = letter[0];
+	if (mask == 'PT') {
+		if (letter.length > 1) {
+			letter = letter[0];
+		} else if (letter = 'C') {
+			letter = 'L';
+		}
 	}
 
 	if (letter == 'V') {
