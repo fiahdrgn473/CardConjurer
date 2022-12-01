@@ -259,10 +259,10 @@ const setSymbolAliases = new Map([
 	["pmei", "sld"],
 ]);
 //Mana Symbols
-const mana = new Map();
+const mana = new Map();""
 // var manaSymbols = [];
 loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple', "a", "inf"]);
+				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple', "a", "inf", "alchemy"]);
 loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p',
 				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup', 'purplew', 'purpleu', 'purpleb', 'purpler', 'purpleg', 
 				 '2purple', 'purplep'], [1.2, 1.2]);
@@ -3105,7 +3105,9 @@ function changeCardIndex() {
 	//text
 	var langFontCode = "";
 	if (cardToImport.lang == "ph") {langFontCode = "{fontphyrexian}"}
-	if (card.text.title) {card.text.title.text = langFontCode + curlyQuotes(cardToImport.name || '');}
+	var name = cardToImport.name || '';
+	if (name.startsWith('A-')) { name = name.replace('A-', '{alchemy}'); }
+	if (card.text.title) {card.text.title.text = langFontCode + curlyQuotes(name);}
 	if (card.text.nickname) {card.text.nickname.text = cardToImport.flavor_name || '';}
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = langFontCode + cardToImport.type_line || '';}
