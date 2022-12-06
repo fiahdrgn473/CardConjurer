@@ -12,7 +12,7 @@ This repository is for the purpose of making the application usable on your loca
 ) ← Help out Card Conjurer's original creator, Kyle. We love you buddy.
 
 
-## Start with Docker
+## Start with Docker (http://localhost:4242/)
 
 <details>
   <summary>Install Make on Ubuntu</summary>
@@ -73,6 +73,10 @@ This repository is for the purpose of making the application usable on your loca
 ```bash
 $ make start
 ```
+
+Open your Browser with the following URL 
+
+http://localhost:4242/
 
 ### Important
 
