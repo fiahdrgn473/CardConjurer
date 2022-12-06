@@ -25,3 +25,7 @@ dev/*
 
 npm-debug.log*
 yarn-debug.log*
+
+cardconjurer.iml
+access.log
+error.log
