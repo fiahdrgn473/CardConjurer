@@ -15,6 +15,7 @@ dev/*
 /build
 /dist
 /.idea
+/.git
 
 # misc
 .DS_Store
