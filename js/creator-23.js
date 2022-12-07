@@ -892,7 +892,7 @@ function writeText(textObject, targetContext) {
 		if (rawText == 'none') { rawText = ''; }
 	}
 	if (rawText.toLowerCase().includes('{cardname}' || '~')) {
-		rawText = rawText.replace(/{cardname}/ig, getCardName());
+		rawText = rawText.replace(/{cardname}|~/ig, getCardName());
 	}
 	if (document.querySelector('#info-artist').value == '') {
 		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
