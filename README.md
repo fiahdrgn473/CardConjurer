@@ -81,3 +81,16 @@ http://localhost:4242/
 ### Important
 
 Be sure, that you are running Docker Desktop under Windows or Mac before you can run the make command.
+
+## Using Local Images
+
+If you're saving a lot of cards custom images you might hit the data limit for uploaded images (about 2MB).
+
+You can avoid this by putting the image files in the `local_art` directory of this repo. Then, when selecting the image in the Art tab of the card creator, instead of uploading the image you can type the file name in the "Via URL" field. This will use the image directly from the `local_art` directory instead of needing to store the whole image in the save file.
+
+For example if you add the file:
+`cardconjurer/local_art/my_art.jpg`
+
+You can load it in the "Via URL" box by typing:
+`my_art.jpg`
+then hitting enter.
