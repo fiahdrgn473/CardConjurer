@@ -67,6 +67,7 @@ var scryfallCard;
 var drawTextBetweenFrames = false;
 var redrawFrames = false;
 var savedTextXPosition = 0;
+var savedTextXPosition2 = 0;
 var savedRollYPosition = null;
 var savedFont = null;
 var savedTextContents = {};
@@ -102,9 +103,11 @@ async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers
 	});
 	if (resetOthers) {
 		//bottom info
+
 		await loadBottomInfo({
-			midLeft: {text:'{elemidinfo-set} \u2022 {elemidinfo-language}  {savex}{fontbelerenbsc}{fontsize' + scaleHeight(0.001) + '}{upinline' + scaleHeight(0.0005) + '}\uFFEE{elemidinfo-artist}', x:0.0647, y:0.9548, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
+			midLeft: {text:'{elemidinfo-set} \u2022 {elemidinfo-language}  {savex}{fontbelerenbsc}{fontsize' + scaleHeight(0.001) + '}{upinline' + scaleHeight(0.0005) + '}\uFFEE{savex2}{elemidinfo-artist}', x:0.0647, y:0.9548, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			topLeft: {text:'{elemidinfo-number}  {loadx}{elemidinfo-rarity}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
+			note: {text:'{loadx2}{elemidinfo-note}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			bottomLeft: {text:'NOT FOR SALE', x:0.0647, y:0.9719, width:0.8707, height:0.0143, oneLine:true, font:'gothammedium', size:0.0143, color:'white', outlineWidth:0.003},
 			wizards: {name:'wizards', text:'{ptshift0,0.0172}\u2122 & \u00a9 {elemidinfo-year} Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
 			bottomRight: {text:'{ptshift0,0.0172}CardConjurer.com', x:0.0647, y:0.9548, width:0.8707, height:0.0143, oneLine:true, font:'mplantin', size:0.0143, color:'white', align:'right', outlineWidth:0.003}
@@ -2367,6 +2370,12 @@ function writeText(textObject, targetContext) {
 					if (savedTextXPosition > currentX) {
 						currentX = savedTextXPosition;
 					}
+				} else if (possibleCode == 'savex2') {
+					savedTextXPosition2 = currentX;
+				} else if (possibleCode == 'loadx2') {
+					if (savedTextXPosition2 > currentX) {
+						currentX = savedTextXPosition2;
+					}
 				} else if (possibleCode.includes('ptshift')) {
 					if (card.frames.findIndex(element => element.name.toLowerCase().includes('power/toughness')) >= 0 || card.version.includes('planeswalker') || ['commanderLegends', 'm21', 'mysticalArchive', 'customDualLands', 'feuerAmeiseKaldheim'].includes(card.version)) {
 						ptShift[0] = scaleWidth(parseFloat(possibleCode.replace('ptshift', '').split(',')[0]));
@@ -2941,6 +2950,7 @@ async function bottomInfoEdited() {
 	card.infoLanguage = document.querySelector('#info-language').value;
 	card.infoArtist = document.querySelector('#info-artist').value;
 	card.infoYear = document.querySelector('#info-year').value;
+	card.infoNote = document.querySelector('#info-note').value;
 	for (var textObject of Object.entries(card.bottomInfo)) {
 		if (["NOT FOR SALE", "Wizards of the Coast", "CardConjurer.com", "cardconjurer.com"].some(v => textObject[1].text.includes(v))) {
 			continue;
@@ -2989,6 +2999,7 @@ function setDefaultCollector() {
 		rarity: document.querySelector('#info-rarity').value,
 		setCode: document.querySelector('#info-set').value,
 		lang: document.querySelector('#info-language').value,
+		note: document.querySelector('#info-note').value,
 		starDot: starDot
 	};
 	localStorage.setItem('defaultCollector', JSON.stringify(defaultCollector));
@@ -3181,7 +3192,13 @@ function changeCardIndex() {
 			if (this.readyState == 4 && this.status == 200) {
 				var setObject = JSON.parse(this.responseText)
 				if (setObject.printed_size) {
-					document.querySelector('#info-number').value += "/" + setObject.printed_size;
+					var number = document.querySelector('#info-number').value;
+
+					while (number.length < 3) {
+						number = '0' + number;
+					}
+
+					document.querySelector('#info-number').value = number + "/" + setObject.printed_size;
 					bottomInfoEdited();
 				}
 			}
@@ -3275,6 +3292,7 @@ async function loadCard(selectedCardKey) {
 		document.querySelector('#info-rarity').value = card.infoRarity;
 		document.querySelector('#info-set').value = card.infoSet;
 		document.querySelector('#info-language').value = card.infoLanguage;
+		document.querySelector('#info-note').value = card.infoNote;
 		document.querySelector('#info-year').value = card.infoYear || date.getFullYear();
 		artistEdited(card.infoArtist);
 		document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
@@ -3581,6 +3599,7 @@ document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage
 var defaultCollector = JSON.parse(localStorage.getItem('defaultCollector') || '{}');
 if ('number' in defaultCollector) {
 	document.querySelector('#info-number').value = defaultCollector.number;
+	document.querySelector('#info-note').value = defaultCollector.note;
 	document.querySelector('#info-rarity').value = defaultCollector.rarity;
 	document.querySelector('#info-set').value = defaultCollector.setCode;
 	document.querySelector('#info-language').value = defaultCollector.lang;
