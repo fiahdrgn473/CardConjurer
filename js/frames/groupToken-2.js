@@ -7,6 +7,7 @@ loadFramePacks([
 	{name:'Day/Night Marker', value:'TokenDayNight'},
 	{name:'Planeswalker Emblems', value:'Emblem'},
 	{name:'Jumpstart Front Cards', value:'JMPFront'},
+	{name:'Jumpstart 2022 Front Cards', value:'J22Front'},
 	{name:'Older Tokens', value:'disabled'},
 	{name:'Regular (Bordered M15)', value:'TokenRegularM15'},
 	{name:'Textless (Bordered M15)', value:'TokenTextlessM15'},
