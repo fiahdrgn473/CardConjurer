@@ -267,7 +267,7 @@ const mana = new Map();""
 loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
 				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple', "a", "inf", "alchemy"]);
 loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p',
-				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup', 'purplew', 'purpleu', 'purpleb', 'purpler', 'purpleg', 
+				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup', 'purplew', 'purpleu', 'purpleb', 'purpler', 'purpleg',
 				 '2purple', 'purplep'], [1.2, 1.2]);
 loadManaSymbols(['bar.png', 'whitebar.png']);
 loadManaSymbols(['chaos'], [1.2, 1]);
@@ -544,7 +544,7 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 				rules = 'C';
 			}
 		}
-		
+
 	} else {
 		if (typeLine.includes('Land')) {
 			if (colors.length == 0) {
@@ -630,7 +630,7 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 			pt = typeTitle;
 		}
 	}
-	
+
 	var frame;
 	if (style == 'Seventh') {
 		if (typeLine.includes('Land')) {
@@ -1166,7 +1166,7 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 				'name': mask
 			}
 		]
-		
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
@@ -1247,7 +1247,7 @@ function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = fal
 		if (mask == 'Border') {
 			frame.masks[0].src = frame.masks[0].src.replace('.png', '.svg');
 		}
-		
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
@@ -1550,7 +1550,7 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 				'name': mask
 			}
 		]
-		
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
@@ -1650,7 +1650,7 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 				'name': mask
 			}
 		]
-		
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
@@ -1714,7 +1714,7 @@ function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf =
 				}
 			]
 		}
-		
+
 		if (maskToRightHalf) {
 			frame.masks.push({
 				'src': '/img/frames/maskRightHalf.png',
@@ -2127,7 +2127,7 @@ function writeText(textObject, targetContext) {
 		if (rawText == 'none') { rawText = ''; }
 	}
 	if (rawText.includes('~')) {
-		rawText = rawText.replace('~', getCardName());
+		rawText = rawText.replace(/~/g, getCardName());
 	}
 	if (rawText.toLowerCase().includes('{cardname}')) {
 		rawText = rawText.replace(/{cardname}/ig, getCardName());
@@ -2760,7 +2760,7 @@ function artDrag(e) {
 			startY = endY;
 			artEdited();
 		}
-		
+
 	}
 }
 function artStopDrag(e) {
