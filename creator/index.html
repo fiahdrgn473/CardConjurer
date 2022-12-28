@@ -348,6 +348,10 @@
 								<input id='set-symbol-code' type='text' placeholder='Set Code' class='input' onchange='fetchSetSymbol();'>
 								<input id='set-symbol-rarity' type='text' placeholder='Rarity' class='input' onchange='fetchSetSymbol();'>
 							</div>
+							<label class='checkbox-container input margin-bottom'>Fetch from Gatherer
+								<input id='fetchSetSymbolFromGatherer' type='checkbox' checked onchange='fetchSetSymbol();'>
+								<span class='checkmark'></span>
+							</label>
 							<h5 class='collapsible collapsed padding input-description' onclick='toggleCollapse(event);'>
 								How to find set codes
 							</h5>
