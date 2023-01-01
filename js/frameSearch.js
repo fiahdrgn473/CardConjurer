@@ -11,6 +11,7 @@ const frameNames = new Map ([
 	['Color Identity Pips', 'M15CIPips'],
 	['"The List" Stamp', 'TheList'],
 	['Lands', 'M15Lands'],
+	['Prototype (Brothers\' War)', 'Prototype'],
 	['Class (D&D)', 'Class'],
 	['Snow (Kaldheim)', 'M15Snow'],
 	['Mutate (Ikoria)', 'M15Mutate'],
