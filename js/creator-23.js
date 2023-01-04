@@ -713,9 +713,9 @@ function autoFrame() {
 				length = 4;
 			}
 			if (addIndex != -1) {
-				var upToAdd = line.substring(addIndex+length);
+				var upToAdd = line.substring(addIndex+length).toLowerCase();
               	['W', 'U', 'B', 'R', 'G'].forEach(function (color) {
-                	if (upToAdd.includes('{' + color + '}')) {
+					if (upToAdd.includes('{' + color.toLowerCase() + '}')) {
                   		colors.push(color);
                 	}
                 });
@@ -1606,7 +1606,7 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 	if (mask == "Crown") {
 		var frame = {
 			'name': frameName + ' Legend Crown',
-			'src': '/img/frames/etched/regular/crowns/' + letter + '.png',
+			'src': '/img/frames/etched/regular/crowns/' + letter.toLowerCase() + '.png',
 			'masks': [],
 			'bounds': {
 				'height': 0.092,
@@ -1627,7 +1627,7 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 	if (mask == 'PT') {
 		return {
 			'name': frameName + ' Power/Toughness',
-			'src': '/img/frames/etched/regular/pt/' + letter + '.png',
+			'src': '/img/frames/etched/regular/pt/' + letter.toLowerCase() + '.png',
 			'masks': [],
 			'bounds': {
 				'height': 0.0733,
@@ -1640,13 +1640,13 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 
 	var frame = {
 		'name': frameName + ' Frame',
-		'src': '/img/frames/etched/regular/' + letter + '.png',
+		'src': '/img/frames/etched/regular/' + letter.toLowerCase() + '.png',
 	}
 
 	if (mask) {
 		frame.masks = [
 			{
-				'src': '/img/frames/etched/regular/' + mask + '.svg',
+				'src': '/img/frames/etched/regular/' + mask.toLowerCase() + '.svg',
 				'name': mask
 			}
 		]
@@ -1695,7 +1695,7 @@ function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf =
 
 	var frame = {
 		'name': frameName + ' Frame',
-		'src': '/img/frames/seventh/regular/' + letter + '.png'
+		'src': '/img/frames/seventh/regular/' + letter.toLowerCase() + '.png'
 	};
 
 	if (mask) {
@@ -1709,7 +1709,7 @@ function makeSeventhEditionFrameByLetter(letter, mask = false, maskToRightHalf =
 		} else {
 			frame.masks = [
 				{
-					'src': '/img/frames/seventh/regular/' + mask + '.svg',
+					'src': '/img/frames/seventh/regular/' + mask.toLowerCase() + '.svg',
 					'name': mask
 				}
 			]
