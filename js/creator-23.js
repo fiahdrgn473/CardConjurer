@@ -2415,8 +2415,8 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode.includes('kerning')) {
 					lineCanvas.style.letterSpacing = possibleCode.replace('kerning', '') + 'px';
 					lineContext.font = lineContext.font; //necessary for the letterspacing update to be recognized
-				} else if (getManaSymbol(possibleCode.replace('/', '')) != undefined || getManaSymbol(possibleCode.replace('/', '').split('').reverse().join('')) != undefined) {
-					possibleCode = possibleCode.replace('/', '')
+				} else if (getManaSymbol(possibleCode.replaceAll('/', '')) != undefined || getManaSymbol(possibleCode.replaceAll('/', '').split('').reverse().join('')) != undefined) {
+					possibleCode = possibleCode.replaceAll('/', '')
 					var manaSymbol;
 					if (textObject.manaPrefix && (getManaSymbol(textObject.manaPrefix + possibleCode) != undefined || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join('')) != undefined)) {
 						manaSymbol = getManaSymbol(textObject.manaPrefix + possibleCode) || getManaSymbol(textObject.manaPrefix + possibleCode.split('').reverse().join(''));
