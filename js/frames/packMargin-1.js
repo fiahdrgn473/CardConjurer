@@ -6,6 +6,7 @@ var masks = [{name:'Border Extension', src:'/img/frames/margins/blackBorderExten
 availableFrames = [
 	{name:'Black Extension', src:'/img/frames/margins/blackBorderExtension.png', bounds:bounds},
 	{name:'Borderless Extension', src:'/img/frames/margins/borderlessBorderExtension.png', bounds:bounds},
+	{name:'Borderless Extension (Bottom Bar)', src:'/img/frames/margins/borderlessBottomBarExtension.png', bounds:bounds},
 	{name:'Box Topper Extension', src:'/img/frames/margins/boxTopperBorderExtension.png', bounds:bounds},
 	{name:'Box Topper Extension (Planeswalker)', src:'/img/frames/planeswalker/boxTopper/margin.png', bounds:bounds},
 	{name:'Box Topper Extension (Promo / Tall Art)', src:'/img/frames/promo/extended/margin.png', bounds:bounds},
