@@ -2295,7 +2295,7 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
-	if (autoFramePack == 'Seventh' || autoFramePack == '8th') {
+	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
