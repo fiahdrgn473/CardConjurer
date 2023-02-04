@@ -43,7 +43,7 @@ const frameNames = new Map ([
 	['Sketch Cards (MH2)', 'MH2'],
 	['Mystical Archive (STA)', 'MysticalArchive'],
 	['Japanese Mystical Archive (STA)', 'MysticalArchiveJP'],
-	['Praetors (KHM)', 'Praetors'],
+	['Phyrexian', 'Praetors'],
 	['Kaldheim (KHM)', 'Kaldheim-2'],
 	['Nonlegendary Kaldheim (KHM)', 'KaldheimNonleg'],
 	['Commander Legends (CMR)', 'CommanderLegends'],
