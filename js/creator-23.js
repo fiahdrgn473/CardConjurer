@@ -766,6 +766,9 @@ function autoFrame() {
 	} else if (frame == 'Etched') {
 		group = 'Showcase-5';
 		autoEtchedFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+	} else if (frame == 'Praetors') {
+		group = 'Showcase-5';
+		autoPhyrexianFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	} else if (frame == 'Seventh') {
 		group = 'Misc-2';
 		autoSeventhEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
@@ -1015,6 +1018,47 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false));
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Border', false));
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoPhyrexianFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Phyrexian');
+
+	// Set frames
+
+	if (type_line.toLowerCase().includes('legendary')) {
+		if (properties.pinlineRight) {
+			frames.push(makePhyrexianFrameByLetter(properties.pinlineRight, 'Crown', true));
+		}
+		frames.push(makePhyrexianFrameByLetter(properties.pinline, "Crown", false));
+	}
+	if (properties.pt) {
+		frames.push(makePhyrexianFrameByLetter(properties.pt, 'PT', false));
+	}
+	if (properties.pinlineRight) {
+		frames.push(makePhyrexianFrameByLetter(properties.pinlineRight, 'Pinline', true));
+	}
+	frames.push(makePhyrexianFrameByLetter(properties.pinline, 'Pinline', false));
+	frames.push(makePhyrexianFrameByLetter(properties.typeTitle, 'Type', false));
+	frames.push(makePhyrexianFrameByLetter(properties.typeTitle, 'Title', false));
+	if (properties.pinlineRight) {
+		frames.push(makePhyrexianFrameByLetter(properties.rulesRight, 'Rules', true));
+	}
+	frames.push(makePhyrexianFrameByLetter(properties.rules, 'Rules', false));
+	if (properties.frameRight) {
+		frames.push(makePhyrexianFrameByLetter(properties.frameRight, 'Frame', true));
+	}
+	frames.push(makePhyrexianFrameByLetter(properties.frame, 'Frame', false));
+	frames.push(makePhyrexianFrameByLetter(properties.frame, 'Border', false));
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -1647,6 +1691,122 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 		frame.masks = [
 			{
 				'src': '/img/frames/etched/regular/' + mask.toLowerCase() + '.svg',
+				'name': mask
+			}
+		]
+
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makePhyrexianFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+	if (letter == 'C' || letter == 'V') {
+		letter = 'L';
+	}
+
+	if (mask == 'Rules') {
+		mask = 'Rules Text';
+	}
+
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land'
+	}
+
+	if (mask == 'PT' && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	if (letter == 'ML') {
+		letter = 'M';
+	} else if (letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legendary Crown',
+			'src': '/img/frames/m15/praetors/' + letter.toLowerCase() + 'Crown.png',
+			'masks': [],
+			'bounds': {
+				'height': 100/2100,
+				'width': 1,
+				'x': 0,
+				'y': 0
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/praetors/' + letter.toLowerCase() + 'pt.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0772,
+				'width': 0.212,
+				'x': 0.746,
+				'y': 0.8858
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/m15/praetors/' + letter.toLowerCase() + '.png',
+	}
+
+	if (mask == 'Type' || mask == 'Title') {
+		frame.masks = [
+			{
+				'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+				'name': mask
+			}
+		]
+
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else if (mask) {
+		var extension = "png";
+		var name = mask.toLowerCase();
+		if (mask == 'Frame') {
+			extension = 'svg';
+		} else if (mask == 'Rules Text') {
+			extension = 'svg';
+			name = 'text';
+		}
+
+		frame.masks = [
+			{
+				'src': '/img/frames/m15/praetors/' + name + '.' + extension,
 				'name': mask
 			}
 		]
