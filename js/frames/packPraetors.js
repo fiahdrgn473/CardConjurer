@@ -3,6 +3,7 @@ var masks = [{src:'/img/frames/m15/praetors/pinline.png', name:'Pinline'}, {src:
 var bounds = {x:0.746, y:0.8858, width:0.212, height:0.0772};
 var bounds2 = {x:0.418, y:0.9, width:0.164, height:0.0491};
 var bounds3 = {x:0, y:0, width:1, height:100/2100};
+var bounds4 = {x:125/1500, y:1325/2100, width: 1250/1500, height:602/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/m15/praetors/w.png', masks:masks},
@@ -36,7 +37,15 @@ availableFrames = [
 	{name:'Green Holo Stamp', src:'/img/frames/m15/praetors/holo/g.png', bounds:bounds2},
 	{name:'Multicolored Holo Stamp', src:'/img/frames/m15/praetors/holo/m.png', bounds:bounds2},
 	{name:'Artifact Holo Stamp', src:'/img/frames/m15/praetors/holo/a.png', bounds:bounds2},
-	{name:'Land Holo Stamp', src:'/img/frames/m15/praetors/holo/l.png', bounds:bounds2}
+	{name:'Land Holo Stamp', src:'/img/frames/m15/praetors/holo/l.png', bounds:bounds2},
+	{name:'White Rules (No Watermark)', src:'/img/frames/m15/praetors/wTextNoWatermark.png', bounds:bounds4},
+	{name:'Blue Rules (No Watermark)', src:'/img/frames/m15/praetors/uTextNoWatermark.png', bounds:bounds4},
+	{name:'Black Rules (No Watermark)', src:'/img/frames/m15/praetors/bTextNoWatermark.png', bounds:bounds4},
+	{name:'Red Rules (No Watermark)', src:'/img/frames/m15/praetors/rTextNoWatermark.png', bounds:bounds4},
+	{name:'Green Rules (No Watermark)', src:'/img/frames/m15/praetors/gTextNoWatermark.png', bounds:bounds4},
+	{name:'Multicolored Rules (No Watermark)', src:'/img/frames/m15/praetors/mTextNoWatermark.png', bounds:bounds4},
+	{name:'Artifact Rules (No Watermark)', src:'/img/frames/m15/praetors/aTextNoWatermark.png', bounds:bounds4},
+	{name:'Land Rules (No Watermark)', src:'/img/frames/m15/praetors/lTextNoWatermark.png', bounds:bounds4}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
