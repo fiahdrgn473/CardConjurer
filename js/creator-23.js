@@ -2518,6 +2518,7 @@ function writeText(textObject, targetContext) {
 					startingCurrentX += planechaseHeight * 1.3;
 				} else if (possibleCode == 'indent') {
 					startingCurrentX += currentX;
+					currentY -= 10;
 				} else if (possibleCode == '/indent') {
 					startingCurrentX = 0;
 				} else if (possibleCode.includes('elemid')) {
