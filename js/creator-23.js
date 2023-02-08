@@ -3303,7 +3303,13 @@ function changeCardIndex() {
 				}
 				flavorTextCounter ++;
 			}
-			card.text.rules.text += '{flavor}' + curlyQuotes(flavorText.replace('\n', '{lns}'));
+
+			if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
+				card.text.rules.text += '{i}';
+			} else {
+				card.text.rules.text += '{flavor}';
+			}
+			card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 		}
 	}
 	if (card.text.pt) {card.text.pt.text = cardToImport.power + '/' + cardToImport.toughness || '';}
