@@ -614,7 +614,7 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 	}
 
 	var innerCrown;
-	if (typeLine.includes('Artifact')) {
+	if (typeLine.includes('Artifact') && colors.length == 0) {
 		innerCrown = 'A';
 	} else {
 		innerCrown = typeTitle;
