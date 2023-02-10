@@ -14,7 +14,7 @@ availableFrames = [
 	{name:'Black Holo Stamp', src:'/img/frames/planeswalker/compleated/holo/b.png', bounds: bounds},
 	{name:'Red Holo Stamp', src:'/img/frames/planeswalker/compleated/holo/r.png', bounds: bounds},
 	{name:'Green Holo Stamp', src:'/img/frames/planeswalker/compleated/holo/g.png', bounds: bounds},
-	{name:'Multicolored Holo Stamp', src:'/img/frames/planeswalker/compleated/holo/mm.png', bounds: bounds},
+	{name:'Multicolored Holo Stamp', src:'/img/frames/planeswalker/compleated/holo/m.png', bounds: bounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
@@ -23,7 +23,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
 	//sets card version
-	card.version = 'planeswalkerTall';
+	card.version = 'planeswalkerCompleated';
 	card.onload = '/js/frames/versionPlaneswalker.js';
 	loadScript('/js/frames/versionPlaneswalker.js');
 	//art bounds
