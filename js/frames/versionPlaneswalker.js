@@ -38,7 +38,11 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 		<input id='planeswalker-invert' class='input margin-bottom' type='checkbox' onchange='invertPlaneswalkerColors();'>
 	</div>`;
 	if (!card.planeswalker) {
-		card.planeswalker = {abilities:['+1', '0', '-7', ''], abilityAdjust:[0, 0, 0, 0], count:3, x:0.1167, width:0.8094};
+		if (card.version.includes('Compleated')) {
+			card.planeswalker = {abilities:['+1', '0', '-7', ''], abilityAdjust:[0, 0, 0, 0], count:3, x:0.1167, width:0.8094};
+		} else {
+			card.planeswalker = {abilities:['', '+1', '0', '-7'], abilityAdjust:[0, 0, 0, 0], count:3, x:0.1167, width:0.8094};
+		}
 	}
 	if (card.version == 'planeswalkerSeventh') {
 		card.planeswalker.abilityAdjust = [-0.0143, -0.0143, -0.0143, -0.0143];
@@ -67,9 +71,9 @@ if (!loadedVersions.includes('/js/frames/versionPlaneswalker.js')) {
 function planeswalkerEdited() {
 	// manage text masks
 	var planeswalkerTall = 0;
-	if (card.version.includes('Tall')) {
+	if (card.version.includes('Tall') || card.version.includes('Compleated')) {
 		planeswalkerTall = 1;
-		if (!planeswalkerTextMask.src.includes('tall')) {
+		if (!(planeswalkerTextMask.src.includes('tall'))) {
 			setImageUrl(planeswalkerTextMask, '/img/frames/planeswalker/tall/planeswalkerTallMaskRules.png');
 		}
 	} else if (card.version == 'planeswalkerTransformFront') {

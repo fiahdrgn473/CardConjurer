@@ -2831,6 +2831,23 @@ function autoFitArt() {
 	}
 	artEdited();
 }
+
+function centerArtX() {
+	document.querySelector('#art-rotate').value = 0;
+	if (art.width / art.height > scaleWidth(card.artBounds.width) / scaleHeight(card.artBounds.height)) {
+		document.querySelector('#art-x').value = Math.round(scaleX(card.artBounds.x) - (document.querySelector('#art-zoom').value / 100 * art.width - scaleWidth(card.artBounds.width)) / 2 - scaleWidth(card.marginX));
+	} else {
+		document.querySelector('#art-x').value = Math.round(scaleX(card.artBounds.x) - scaleWidth(card.marginX));
+	}
+	artEdited();
+}
+
+function centerArtY() {
+	document.querySelector('#art-rotate').value = 0;
+	document.querySelector('#art-y').value = Math.round(scaleY(card.artBounds.y) - (document.querySelector('#art-zoom').value / 100 * art.height - scaleHeight(card.artBounds.height)) / 2 - scaleHeight(card.marginY));
+	artEdited();
+}
+
 function artFromScryfall(scryfallResponse) {
 	scryfallArt = []
 	const artIndex = document.querySelector('#art-index');
@@ -3328,7 +3345,7 @@ function changeCardIndex() {
 					planeswalkerAbility = ['', planeswalkerAbility[0]];
 				}
 				card.text['ability' + i].text = planeswalkerAbility[1].replace('(', '{i}(').replace(')', '){/i}');
-				if (card.version == 'planeswalkerTall') {
+				if (card.version == 'planeswalkerTall' || card.version == 'planeswalkerCompleated') {
 					document.querySelector('#planeswalker-height-' + i).value = Math.round(scaleHeight(0.3572) / planeswalkerAbilities.length);
 				} else {
 					document.querySelector('#planeswalker-height-' + i).value = Math.round(scaleHeight(0.2915) / planeswalkerAbilities.length);

@@ -74,6 +74,7 @@ const frameNames = new Map ([
 	['Planeswalker Extended Art', 'PlaneswalkerBoxTopper'],
 	['Planeswalker Tall', 'PlaneswalkerTall'],
 	['Planeswalker Tall Borderless', 'PlaneswalkerTallBorderless'],
+	['Planeswalker Compleated', 'PlaneswalkerCompleated'],
 	['Planeswalker Holo Stamps', 'PlaneswalkerHoloStamps'],
 	['Planeswalker Nickname', 'PlaneswalkerNickname'],
 	['Planeswalker Blackout (SDCC15)', 'PlaneswalkerSDCC15'],
