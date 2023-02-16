@@ -29,3 +29,5 @@ yarn-debug.log*
 cardconjurer.iml
 access.log
 error.log
+
+fly.toml
