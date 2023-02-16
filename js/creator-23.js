@@ -173,6 +173,16 @@ function getCardName() {
 	}
 	return imageName.replace(/\{[^}]+\}/g, '');
 }
+function getInlineCardName() {
+	if (card.text == undefined || card.text.title == undefined) {
+		return 'unnamed';
+	}
+	var imageName = card.text.title.text || 'unnamed';
+	if (card.text.nickname) {
+		imageName = card.text.nickname.text;
+	}
+	return imageName.replace(/\{[^}]+\}/g, '');
+}
 //UI
 function toggleCreatorTabs(event, target) {
 	Array.from(document.querySelector('#creator-menu-sections').children).forEach(element => element.classList.add('hidden'));
@@ -2287,7 +2297,7 @@ function writeText(textObject, targetContext) {
 		if (rawText == 'none') { rawText = ''; }
 	}
 	if (rawText.toLowerCase().includes('{cardname}') || rawText.toLowerCase().includes('~')) {
-		rawText = rawText.replace(/{cardname}|~/ig, getCardName());
+		rawText = rawText.replace(/{cardname}|~/ig, getInlineCardName());
 	}
 	if (document.querySelector('#info-artist').value == '') {
 		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
