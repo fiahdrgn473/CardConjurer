@@ -6,6 +6,7 @@ const frameNames = new Map ([
 	['Inner Crowns', 'M15InnerCrowns'],
 	['Miracle', 'M15Miracle'],
 	['Holo Stamps', 'M15HoloStamps'],
+	['Nicknames', 'M15Nickname2'],
 	['Dark Power/Toughness', 'M15DarkPT'],
 	['Colored Borders', 'M15Borders'],
 	['Color Identity Pips', 'M15CIPips'],
