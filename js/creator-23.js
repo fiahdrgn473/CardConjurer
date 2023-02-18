@@ -106,8 +106,9 @@ async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers
 
 		await loadBottomInfo({
 			midLeft: {text:'{elemidinfo-set} \u2022 {elemidinfo-language}  {savex}{fontbelerenbsc}{fontsize' + scaleHeight(0.001) + '}{upinline' + scaleHeight(0.0005) + '}\uFFEE{savex2}{elemidinfo-artist}', x:0.0647, y:0.9548, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
-			topLeft: {text:'{elemidinfo-number}  {loadx}{elemidinfo-rarity}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
+			topLeft: {text:'{elemidinfo-number}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			note: {text:'{loadx2}{elemidinfo-note}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
+			rarity: {text:'{loadx}{elemidinfo-rarity}', x:0.0647, y:0.9377, width:0.8707, height:0.0171, oneLine:true, font:'gothammedium', size:0.0171, color:'white', outlineWidth:0.003},
 			bottomLeft: {text:'NOT FOR SALE', x:0.0647, y:0.9719, width:0.8707, height:0.0143, oneLine:true, font:'gothammedium', size:0.0143, color:'white', outlineWidth:0.003},
 			wizards: {name:'wizards', text:'{ptshift0,0.0172}\u2122 & \u00a9 {elemidinfo-year} Wizards of the Coast', x:0.0647, y:0.9377, width:0.8707, height:0.0167, oneLine:true, font:'mplantin', size:0.0162, color:'white', align:'right', outlineWidth:0.003},
 			bottomRight: {text:'{ptshift0,0.0172}CardConjurer.com', x:0.0647, y:0.9548, width:0.8707, height:0.0143, oneLine:true, font:'mplantin', size:0.0143, color:'white', align:'right', outlineWidth:0.003}
@@ -2271,6 +2272,7 @@ async function drawText() {
 		drawCard();
 	}
 }
+var justifyWidth = 90;
 function writeText(textObject, targetContext) {
 	//Most bits of info about text loaded, with defaults when needed
 	var textX = scaleX(textObject.x) || scaleX(0);
@@ -2382,6 +2384,7 @@ function writeText(textObject, targetContext) {
 		var newLineSpacing = (textObject.lineSpacing || 0) * textSize;
 		var ptShift = [0, 0];
 		var permaShift = [0, 0];
+		var fillJustify = false;
 		//Finish prepping canvases
 		paragraphContext.clearRect(0, 0, paragraphCanvas.width, paragraphCanvas.height);
 		lineContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
@@ -2534,6 +2537,14 @@ function writeText(textObject, targetContext) {
 				} else if (possibleCode.includes('elemid')) {
 					if (document.querySelector('#' + word.replace('{elemid', '').replace('}', ''))) {
 						wordToWrite = document.querySelector('#' + word.replace('{elemid', '').replace('}', '')).value || '';
+					}
+					if (word.includes('set')) {
+						var bottomTextSubstring = card.bottomInfo.midLeft.text.substring(0, card.bottomInfo.midLeft.text.indexOf('  {savex}')).replace('{elemidinfo-set}', document.querySelector('#info-set').value || '').replace('{elemidinfo-language}', document.querySelector('#info-language').value || '');
+						justifyWidth = lineContext.measureText(bottomTextSubstring).width;
+						console.log(justifyWidth);
+					} else if (word.includes('number') && wordToWrite.includes('/')) {
+						fillJustify = true;
+						wordToWrite = Array.from(wordToWrite).join(' ');
 					}
 				} else if (possibleCode == 'savex') {
 					savedTextXPosition = currentX;
@@ -2700,15 +2711,33 @@ function writeText(textObject, targetContext) {
 			}
 			//if there's a word to write, it's not a space on a new line, and it's allowed to write words, then we write the word
 			if (wordToWrite && (currentX != startingCurrentX || wordToWrite != ' ') && !textManaCost) {
+				var justifySettings = {
+					maxSpaceSize: 6,
+					minSpaceSize: 0
+				};
+
 				if (textArcRadius > 0) {
 					lineContext.fillTextArc(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY, textArcRadius, textArcStart, currentX, textOutlineWidth);
 				} else {
 					if (textOutlineWidth >= 1) {
-						lineContext.strokeText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+						if (fillJustify) {
+							lineContext.strokeJustifyText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY, justifyWidth, justifySettings);
+						} else {
+							lineContext.strokeText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+						}
 					}
-					lineContext.fillText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+					if (fillJustify) {
+						lineContext.fillJustifyText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY, justifyWidth, justifySettings);
+					} else {
+						lineContext.fillText(wordToWrite, currentX + canvasMargin, canvasMargin + textSize * textFontHeightRatio + lineY);
+					}
 				}
-				currentX += lineContext.measureText(wordToWrite).width;
+
+				if (fillJustify) {
+					currentX += lineContext.measureJustifiedText(wordToWrite, justifyWidth, justifySettings);
+				} else {
+					currentX += lineContext.measureText(wordToWrite).width;
+				}
 			}
 			if (currentY > textHeight && textBounded && !textOneLine && startingTextSize > 1 && textArcRadius == 0) {
 				//doesn't fit... try again at a smaller text size?
@@ -2787,6 +2816,97 @@ CanvasRenderingContext2D.prototype.fillImage = function(image, x, y, width, heig
 	context.fillRect(0, 0, width + margin * 2, height + margin * 2);
 	this.drawImage(canvas, x - margin, y - margin, width + margin * 2, height + margin * 2);
 }
+
+const FILL = 0; //const to indicate filltext render
+const STROKE = 1;
+const MEASURE = 2;
+var maxSpaceSize = 3; // Multiplier for max space size. If greater then no justification applied
+var minSpaceSize = 0.5; // Multiplier for minimum space size
+function renderTextJustified(ctx, text, x, y, width, renderType) {
+	var splitChar = " ";
+
+	var words, wordsWidth, count, spaces, spaceWidth, adjSpace, renderer, i, textAlign, useSize, totalWidth;
+	textAlign = ctx.textAlign;
+	ctx.textAlign = "left";
+	wordsWidth = 0;
+	words = text.split(splitChar).map(word => {
+		var w = ctx.measureText(word).width;
+		wordsWidth += w;
+		return {
+			width: w,
+			word: word
+		};
+	});
+	// count = num words, spaces = number spaces, spaceWidth normal space size
+	// adjSpace new space size >= min size. useSize Reslting space size used to render
+	count = words.length;
+	spaces = count - 1;
+	spaceWidth = ctx.measureText(splitChar).width;
+	adjSpace = Math.max(spaceWidth * minSpaceSize, (width - wordsWidth) / spaces);
+	useSize = adjSpace > spaceWidth * maxSpaceSize ? spaceWidth : adjSpace;
+	totalWidth = wordsWidth + useSize * spaces;
+	if (renderType === MEASURE) { // if measuring return size
+		ctx.textAlign = textAlign;
+		return totalWidth;
+	}
+	renderer = renderType === FILL ? ctx.fillText.bind(ctx) : ctx.strokeText.bind(ctx); // fill or stroke
+	switch(textAlign) {
+	case "right":
+		x -= totalWidth;
+		break;
+	case "end":
+		x += width - totalWidth;
+		break;
+	case "center": // intentional fall through to default
+		x -= totalWidth / 2;
+	default:
+	}
+	if (useSize === spaceWidth) { // if space size unchanged
+		renderer(text, x, y);
+	} else {
+		for(i = 0; i < count; i += 1) {
+			renderer(words[i].word,x,y);
+			x += words[i].width;
+			x += useSize;
+		}
+	}
+	ctx.textAlign = textAlign;
+}
+
+// Parse vet and set settings object.
+function justifiedTextSettings(settings) {
+	var min,max;
+	var vetNumber = (num, defaultNum) => {
+		num = num !== null && num !== null && !isNaN(num) ? num : defaultNum;
+		if(num < 0){
+			num = defaultNum;
+		}
+		return num;
+	}
+	if(settings === undefined || settings === null){
+		return;
+	}
+	max = vetNumber(settings.maxSpaceSize, maxSpaceSize);
+	min = vetNumber(settings.minSpaceSize, minSpaceSize);
+	if(min > max){
+		return;
+	}
+	minSpaceSize = min;
+	maxSpaceSize = max;
+}
+CanvasRenderingContext2D.prototype.fillJustifyText = function(text, x, y, width, settings) {
+	justifiedTextSettings(settings);
+	renderTextJustified(this, text, x, y, width, FILL);
+}
+CanvasRenderingContext2D.prototype.strokeJustifyText = function(text, x, y, width, settings){
+	justifiedTextSettings(settings);
+	renderTextJustified(this, text, x, y, width, STROKE);
+}
+CanvasRenderingContext2D.prototype.measureJustifiedText = function(text, width, settings) {
+	justifiedTextSettings(settings);
+	renderTextJustified(this, text, 0, 0, width, MEASURE);
+}
+
 function widthToAngle(width, radius) {
 	return width / radius;
 }
