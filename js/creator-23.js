@@ -800,7 +800,7 @@ function autoFrame() {
 	}
 }
 async function autoUBFrame(colors, mana_cost, type_line, power) {
-	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp'));
+	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp') || frame.name.includes('Gold Holo Stamp'));
 
 	//clear the draggable frames
 	card.frames = [];

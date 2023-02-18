@@ -118,3 +118,8 @@ function bindInputs(query1, query2, checkbox = false) {
 		e2.oninput = (event) => {e1.value = e2.value;}
 	}
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+	document.body.dispatchEvent(new Event('doCreate'));
+})
+
