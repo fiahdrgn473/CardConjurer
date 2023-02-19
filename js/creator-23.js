@@ -3907,6 +3907,36 @@ function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '
 		console.log('Scryfall API search failed.')
 	}
 }
+
+function toggleTextTag(tag) {
+	var element = document.getElementById('text-editor');
+
+	var text = element.value;
+
+	var start = element.selectionStart;
+	var end = element.selectionEnd;
+	var selection = text.substring(start, end);
+
+	var openTag = '{' + tag + '}';
+	var closeTag = '{/' + tag + '}';
+
+	var prefix = text.substring(0, start);
+	var suffix = text.substring(end);
+
+	if (prefix.endsWith(openTag) && suffix.startsWith(closeTag)) {
+		prefix = prefix.substring(0, prefix.length-openTag.length);
+		suffix = suffix.substring(closeTag.length);
+	} else if (selection.startsWith(openTag) && selection.endsWith(closeTag)) {
+		selection = selection.substring(openTag.length, selection.length-closeTag.length);
+	} else {
+		selection = openTag + selection + closeTag;
+	}
+
+	element.value = prefix + selection + suffix;
+
+	textEdited();
+}
+
 // INITIALIZATION
 
 // auto load frame version (user defaults)
