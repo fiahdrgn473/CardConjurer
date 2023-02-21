@@ -2667,7 +2667,7 @@ function writeText(textObject, targetContext) {
 			}
 
 			if (lineContext.font.endsWith('belerenb')) {
-				wordToWrite = wordToWrite.replace(/f\b/g, '\ue006').replace(/h\b/g, '\ue007').replace(/m\b/g, '\ue008').replace(/n\b/g, '\ue009').replace(/mk\b/g, '\ue00a');
+				wordToWrite = wordToWrite.replace(/f(?:\s|$)/g, '\ue006').replace(/h(?:\s|$)/g, '\ue007').replace(/m(?:\s|$)/g, '\ue008').replace(/n(?:\s|$)/g, '\ue009').replace(/k(?:\s|$)/g, '\ue00a');
 			}
 
 			//if the word goes past the max line width, go to the next line
