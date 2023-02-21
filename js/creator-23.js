@@ -2666,7 +2666,7 @@ function writeText(textObject, targetContext) {
 				}
 			}
 
-			if (lineContext.font.endsWith('belerenb')) {
+			if (wordToWrite && lineContext.font.endsWith('belerenb')) {
 				wordToWrite = wordToWrite.replace(/f(?:\s|$)/g, '\ue006').replace(/h(?:\s|$)/g, '\ue007').replace(/m(?:\s|$)/g, '\ue008').replace(/n(?:\s|$)/g, '\ue009').replace(/k(?:\s|$)/g, '\ue00a');
 			}
 
