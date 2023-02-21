@@ -2541,7 +2541,6 @@ function writeText(textObject, targetContext) {
 					if (word.includes('set')) {
 						var bottomTextSubstring = card.bottomInfo.midLeft.text.substring(0, card.bottomInfo.midLeft.text.indexOf('  {savex}')).replace('{elemidinfo-set}', document.querySelector('#info-set').value || '').replace('{elemidinfo-language}', document.querySelector('#info-language').value || '');
 						justifyWidth = lineContext.measureText(bottomTextSubstring).width;
-						console.log(justifyWidth);
 					} else if (word.includes('number') && wordToWrite.includes('/')) {
 						fillJustify = true;
 						wordToWrite = Array.from(wordToWrite).join(' ');
@@ -2666,6 +2665,11 @@ function writeText(textObject, targetContext) {
 					wordToWrite = word;
 				}
 			}
+
+			if (lineContext.font.endsWith('belerenb')) {
+				wordToWrite = wordToWrite.replace(/f\b/g, '\ue006').replace(/h\b/g, '\ue007').replace(/m\b/g, '\ue008').replace(/n\b/g, '\ue009').replace(/mk\b/g, '\ue00a');
+			}
+
 			//if the word goes past the max line width, go to the next line
 			if (wordToWrite && lineContext.measureText(wordToWrite).width + currentX >= textWidth && textArcRadius == 0) {
 				if (textOneLine && startingTextSize > 1) {
