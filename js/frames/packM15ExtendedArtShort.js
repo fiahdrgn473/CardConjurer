@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/boxTopper/short/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/boxTopper/short/type.svg', name:'Type'}, {src:'/img/frames/m15/boxTopper/short/text.svg', name:'Rules'}, {src:'/img/frames/m15/boxTopper/short/frame.svg', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/boxTopper/short/pinline.svg', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/boxTopper/short/type.png', name:'Type'}, {src:'/img/frames/m15/boxTopper/short/text.svg', name:'Rules'}, {src:'/img/frames/m15/boxTopper/short/frame.svg', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
@@ -11,12 +11,12 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/m15/boxTopper/short/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/m15/boxTopper/short/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/boxTopper/short/l.png', masks:masks},
-	{name:'White Land Frame', src:'/img/frames/m15/boxTopper/short/lw.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/m15/boxTopper/short/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/boxTopper/short/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/boxTopper/short/lr.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/boxTopper/short/lg.png', masks:masks},
-	{name:'Multicolored Land Frame', src:'/img/frames/m15/boxTopper/short/lm.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/m15/boxTopper/short/wl.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/m15/boxTopper/short/ul.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/boxTopper/short/bl.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/boxTopper/short/rl.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/m15/boxTopper/short/gl.png', masks:masks},
+	{name:'Multicolored Land Frame', src:'/img/frames/m15/boxTopper/short/ml.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/regular/m15PTB.png', bounds:bounds},
