@@ -3520,7 +3520,18 @@ function changeCardIndex() {
 						number = '0' + number;
 					}
 
-					document.querySelector('#info-number').value = number + "/" + setObject.printed_size;
+					var printedSize = setObject.printed_size;
+					while (printedSize.length < 3) {
+						printedSize = '0' + printedSize;
+					}
+
+					if (parseInt(number) <= parseInt(printedSize)) {
+						document.querySelector('#info-number').value = number + "/" + printedSize;
+					} else {
+						document.querySelector('#info-number').value = number;
+					}
+
+					
 					bottomInfoEdited();
 				}
 			}
