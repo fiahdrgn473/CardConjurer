@@ -1466,6 +1466,8 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 				]
 			}
 		} else if (short && ['Frame', 'Rules', 'Type', 'Pinline'].includes(mask)) {
+			var extension = mask == 'Type' ? '.png' : '.svg';
+
 			frame.masks = [
 				{
 					'src': '/img/frames/m15/boxTopper/short/' + mask.toLowerCase().replace('rules', 'text') + '.svg',
@@ -3138,12 +3140,8 @@ function fetchSetSymbol() {
 		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
 		uploadSetSymbol('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, 'resetSetSymbol');
 	} else {
-		var extension = 'svg';
-		if (['one', 'onc'].includes(setCode.toLowerCase())) {
-			extension = 'png';
-		}
 		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
-		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.` + extension), 'resetSetSymbol');
+		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
 	}
 }
 function lockSetSymbolCode() {
