@@ -3874,6 +3874,31 @@ function stretchSVGReal(data, frameObject) {
 	});
 	return returnData;
 }
+function processScryfallCard(card, responseCards) {
+	if ('card_faces' in card) {
+		card.card_faces.forEach(face => {
+			face.set = card.set;
+			face.rarity = card.rarity;
+			if (card.lang != 'en') {
+				face.oracle_text = face.printed_text;
+				face.name = face.printed_name;
+				face.type_line = face.printed_type_line;
+			}
+			responseCards.push(face);
+			if (!face.image_uris) {
+				face.image_uris = card.image_uris;
+			}
+		});
+	} else {
+		if (card.lang != 'en') {
+			card.oracle_text = card.printed_text;
+			card.name = card.printed_name;
+			card.type_line = card.printed_type_line;
+		}
+		responseCards.push(card);
+	}
+}
+
 //SCRYFALL STUFF MAY BE CHANGED IN THE FUTURE
 function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '') {
 	var xhttp = new XMLHttpRequest();
@@ -3882,25 +3907,7 @@ function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '
 			responseCards = [];
 			importedCards = JSON.parse(this.responseText).data;
 			importedCards.forEach(card => {
-				if ('card_faces' in card) {
-					card.card_faces.forEach(face => {
-						face.set = card.set;
-						face.rarity = card.rarity;
-						if (card.lang != 'en') {
-							face.oracle_text = face.printed_text;
-							face.name = face.printed_name;
-							face.type_line = face.printed_type_line;
-						}
-						responseCards.push(face);
-					});
-				} else {
-					if (card.lang != 'en') {
-						card.oracle_text = card.printed_text;
-						card.name = card.printed_name;
-						card.type_line = card.printed_type_line;
-					}
-					responseCards.push(card);
-				}
+				processScryfallCard(card, responseCards);
 			});
 			callback(responseCards);
 		} else if (this.readyState == 4 && this.status == 404 && !searchUniqueArt && cardName != '') {
