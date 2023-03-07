@@ -1257,7 +1257,7 @@ function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = fal
 	if (mask == 'PT') {
 		if (letter.length > 1) {
 			letter = letter[0];
-		} else if (letter = 'C') {
+		} else if (letter == 'C') {
 			letter = 'L';
 		}
 	}
