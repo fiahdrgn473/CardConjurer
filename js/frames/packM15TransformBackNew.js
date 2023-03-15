@@ -4,20 +4,20 @@ var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/m15/transform/regular/new/backW.png', masks:masks},
-	// {name:'Blue Frame', src:'/img/frames/m15/transform/regular/backU.png', masks:masks},
-	// {name:'Black Frame', src:'/img/frames/m15/transform/regular/backB.png', masks:masks},
-	// {name:'Red Frame', src:'/img/frames/m15/transform/regular/backR.png', masks:masks},
-	// {name:'Green Frame', src:'/img/frames/m15/transform/regular/backG.png', masks:masks},
-	// {name:'Multicolored Frame', src:'/img/frames/m15/transform/regular/backM.png', masks:masks},
-	// {name:'Artifact Frame', src:'/img/frames/m15/transform/regular/backA.png', masks:masks},
-	// {name:'Land Frame', src:'/img/frames/m15/transform/regular/backL.png', masks:masks},
-	{name:'White Power/Toughness', src:'/img/frames/m15/transform/regular/ptW.png', bounds:bounds}
-	// {name:'Blue Power/Toughness', src:'/img/frames/m15/transform/regular/ptU.png', bounds:bounds},
-	// {name:'Black Power/Toughness', src:'/img/frames/m15/transform/regular/ptB.png', bounds:bounds},
-	// {name:'Red Power/Toughness', src:'/img/frames/m15/transform/regular/ptR.png', bounds:bounds},
-	// {name:'Green Power/Toughness', src:'/img/frames/m15/transform/regular/ptG.png', bounds:bounds},
-	// {name:'Multicolored Power/Toughness', src:'/img/frames/m15/transform/regular/ptM.png', bounds:bounds},
-	// {name:'Artifact Power/Toughness', src:'/img/frames/m15/transform/regular/ptA.png', bounds:bounds}
+	{name:'Blue Frame', src:'/img/frames/m15/transform/regular//new/backU.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/transform/regular/new/backB.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/transform/regular/new/backR.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/transform/regular/new/backG.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/transform/regular/new/backM.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/transform/regular/new/backA.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/transform/regular/new/backL.png', masks:masks},
+	{name:'White Power/Toughness', src:'/img/frames/m15/transform/regular/ptW.png', bounds:bounds},
+	{name:'Blue Power/Toughness', src:'/img/frames/m15/transform/regular/ptU.png', bounds:bounds},
+	{name:'Black Power/Toughness', src:'/img/frames/m15/transform/regular/ptB.png', bounds:bounds},
+	{name:'Red Power/Toughness', src:'/img/frames/m15/transform/regular/ptR.png', bounds:bounds},
+	{name:'Green Power/Toughness', src:'/img/frames/m15/transform/regular/ptG.png', bounds:bounds},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/transform/regular/ptM.png', bounds:bounds},
+	{name:'Artifact Power/Toughness', src:'/img/frames/m15/transform/regular/ptA.png', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
