@@ -88,6 +88,7 @@ const frameNames = new Map ([
 	//dfc
 	['Transform (Front)', 'M15TransformFront'],
 	['Transform (Back)', 'M15TransformBack'],
+	['Transform (Back) (New)', 'M15TransformBackNew'],
 	['Color Identity Pips', 'M15CIPips'],
 	['Transform Icons', 'M15TransformTypes'],
 	['Sagas (Front)', 'SagaDFC'],

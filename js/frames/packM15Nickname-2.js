@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks3 = [{src:'/img/frames/m15/nickname/m15NicknameMaskTrueName.png', name:'True Title'}];
+var masks3 = [{src:'/img/frames/m15/nickname/m15MaskNicknameTitleStrokeless.png', name:'Pinline'}, {src:'/img/frames/m15/nickname/m15NicknameMaskTrueName.png', name:'True Title'}];
 var bounds3 = {x:0.0494, y:0.0405, width:0.9014, height:0.1053};
 //defines available frames
 availableFrames = [
