@@ -10,6 +10,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/m15/transform/regular/new/backG.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/m15/transform/regular/new/backM.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/m15/transform/regular/new/backA.png', masks:masks},
+	{name:'Vehicle Frame', src:'/img/frames/m15/transform/regular/new/backV.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/transform/regular/new/backL.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/transform/regular/ptW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/transform/regular/ptU.png', bounds:bounds},
@@ -17,7 +18,8 @@ availableFrames = [
 	{name:'Red Power/Toughness', src:'/img/frames/m15/transform/regular/ptR.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/m15/transform/regular/ptG.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/m15/transform/regular/ptM.png', bounds:bounds},
-	{name:'Artifact Power/Toughness', src:'/img/frames/m15/transform/regular/ptA.png', bounds:bounds}
+	{name:'Artifact Power/Toughness', src:'/img/frames/m15/transform/regular/ptA.png', bounds:bounds},
+	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/transform/regular/ptV.png', bounds:bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
