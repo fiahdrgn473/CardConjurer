@@ -3432,6 +3432,61 @@ function importCard(cardObject) {
 	});
 	changeCardIndex();
 }
+
+function scryfallCardFromText(text) {
+	var lines = text.trim().split("\n");
+
+	if (lines.count == 0) {
+  		return {};
+	}
+
+	lines = lines.map(item => item.trim()).filter(item => item != "");
+  
+  	var name = lines.shift();
+  	var manaCost;
+  	var manaCostStartIndex = name.indexOf("{");
+  	if (manaCostStartIndex > 0) {
+  	  manaCost = name.substring(manaCostStartIndex).trim();
+  	  name = name.substring(0, manaCostStartIndex).trim();
+  	}
+  
+ 	 var cardObject = {
+ 	   "name": name,
+ 	   "lang": "en"
+ 	 };
+  	
+ 	 if (manaCost !== undefined) {
+  	  cardObject.mana_cost = manaCost;
+ 	 }
+  	
+  	if (lines.count == 0) {
+  	  return cardObject;
+  	}
+  	
+ 	 cardObject.type_line = lines.shift().trim();
+  
+  if (lines.count == 0) {
+    return cardObject;
+  }
+  
+  var regex = /[0-9+\-*]+\/[0-9+*]+/
+  var match = lines[lines.length-1].match(regex);
+  if (match) {
+    var pt = match[0].split("/");
+    cardObject.power = pt[0];
+    cardObject.toughness = pt[1];
+    lines.pop();
+  }
+  
+  if (lines.count == 0) {
+    return cardObject;
+  }
+  
+  cardObject.oracle_text = lines.join("\n");
+  
+  return cardObject;
+}
+
 function changeCardIndex() {
 	var cardToImport = scryfallCard[document.querySelector('#import-index').value];
 	//text
