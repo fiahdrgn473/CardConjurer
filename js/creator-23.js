@@ -3299,6 +3299,14 @@ function enableImportCollectorInfo() {
 }
 function setAutoFrame() {
 	localStorage.setItem('autoFrame', document.querySelector('#autoFrame').value);
+	var value = document.querySelector('#autoFrame').value;
+	localStorage.setItem('autoFrame', value);
+
+	if (value !== 'false') {
+		document.querySelector('#autoLoadFrameVersion').checked = true;
+		localStorage.setItem('autoLoadFrameVersion', 'true');
+	}
+
 	autoFrame();
 }
 function setAutofit() {
