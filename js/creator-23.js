@@ -3899,6 +3899,50 @@ function processScryfallCard(card, responseCards) {
 	}
 }
 
+function fetchScryfallCardByID(scryfallID, callback = console.log) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			responseCards = [];
+			importedCards = [JSON.parse(this.responseText)];
+			importedCards.forEach(card => {
+				processScryfallCard(card, responseCards);
+			});
+			callback(responseCards);
+		} else if (this.readyState == 4 && this.status == 404 && !searchUniqueArt && cardName != '') {
+			notify(`No card found for "${cardName}" in ${cardLanguageSelect.options[cardLanguageSelect.selectedIndex].text}.`, 5);
+		}
+	}
+	xhttp.open('GET', 'https://api.scryfall.com/cards/' + scryfallID, true);
+	try {
+		xhttp.send();
+	} catch {
+		console.log('Scryfall API search failed.')
+	}
+}
+
+function fetchScryfallCardByCodeNumber(code, number, callback = console.log) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			responseCards = [];
+			importedCards = [JSON.parse(this.responseText)];
+			importedCards.forEach(card => {
+				processScryfallCard(card, responseCards);
+			});
+			callback(responseCards);
+		} else if (this.readyState == 4 && this.status == 404 && !searchUniqueArt && cardName != '') {
+			notify('No card found for ' + code + ' #' + number, 5);
+		}
+	}
+	xhttp.open('GET', 'https://api.scryfall.com/cards/' + code + '/' + number, true);
+	try {
+		xhttp.send();
+	} catch {
+		console.log('Scryfall API search failed.')
+	}
+}
+
 //SCRYFALL STUFF MAY BE CHANGED IN THE FUTURE
 function fetchScryfallData(cardName, callback = console.log, searchUniqueArt = '') {
 	var xhttp = new XMLHttpRequest();
