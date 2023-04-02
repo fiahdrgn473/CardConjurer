@@ -1,6 +1,9 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/mysticalArchive/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/pinlineRight.svg', name:'Pinline (Right)'}];
 var bounds = {x:0, y:0, width:1, height:97/2100};
+var ptBounds = {x:1135/1500, y:1848/2100, width:317/1500, height:159/2100};
+// var ptMasks = [{src:'/img/frames/mysticalArchive/pt/maskOuter.png', name:'Outer'}, {src:'/img/frames/mysticalArchive/pt/maskInner.png', name:'Inner'}];
+var ptMasks = [];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/mysticalArchive/w.png', masks:masks},
@@ -11,7 +14,14 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/mysticalArchive/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/mysticalArchive/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/mysticalArchive/c.png', masks:masks},
-	{name:'Power/Toughness', src:'/img/frames/mysticalArchive/pt.png', bounds:{x:0.7014, y:0.8924, width:0.222, height:0.0520}},
+	{name:'White Power/Toughness', src:'/img/frames/mysticalArchive/pt/w.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Blue Power/Toughness', src:'/img/frames/mysticalArchive/pt/u.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Black Power/Toughness', src:'/img/frames/mysticalArchive/pt/b.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Red Power/Toughness', src:'/img/frames/mysticalArchive/pt/r.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Green Power/Toughness', src:'/img/frames/mysticalArchive/pt/g.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/mysticalArchive/pt/m.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Artifact Power/Toughness', src:'/img/frames/mysticalArchive/pt/a.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Land Power/Toughness', src:'/img/frames/mysticalArchive/pt/c.png', bounds:ptBounds, masks:ptMasks},
 	{name:'White Crown', src:'/img/frames/mysticalArchive/crowns/w.png', bounds: bounds},
 	{name:'Blue Crown', src:'/img/frames/mysticalArchive/crowns/u.png', bounds: bounds},
 	{name:'Black Crown', src:'/img/frames/mysticalArchive/crowns/b.png', bounds: bounds},
