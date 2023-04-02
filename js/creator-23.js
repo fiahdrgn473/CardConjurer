@@ -3544,7 +3544,13 @@ function changeCardIndex() {
 			card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 		}
 	}
-	if (card.text.pt) {card.text.pt.text = cardToImport.power + '/' + cardToImport.toughness || '';}
+	if (card.text.pt) {
+		if (card.version == 'invocation') {
+			card.text.pt.text = cardToImport.power + '\n' + cardToImport.toughness || '';
+		} else {
+			card.text.pt.text = cardToImport.power + '/' + cardToImport.toughness || '';
+		}
+	}
 	if (card.text.pt && card.text.pt.text == undefined + '/' + undefined) {card.text.pt.text = '';}
 	if (card.version.includes('planeswalker')) {
 		card.text.loyalty.text = cardToImport.loyalty || '';
