@@ -1,5 +1,6 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/mysticalArchive/pinline.svg', name:'Pinline'}, {src:'/img/frames/mysticalArchive/pinlineRight.svg', name:'Pinline (Right)'}];
+var bounds = {x:0, y:0, width:1, height:97/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/mysticalArchive/w.png', masks:masks},
@@ -11,14 +12,14 @@ availableFrames = [
 	{name:'Artifact Frame', src:'/img/frames/mysticalArchive/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/mysticalArchive/c.png', masks:masks},
 	{name:'Power/Toughness', src:'/img/frames/mysticalArchive/pt.png', bounds:{x:0.7014, y:0.8924, width:0.222, height:0.0520}},
-	{name:'White Crown', src:'/img/frames/mysticalArchive/crowns/w.svg'},
-	{name:'Blue Crown', src:'/img/frames/mysticalArchive/crowns/u.svg'},
-	{name:'Black Crown', src:'/img/frames/mysticalArchive/crowns/b.svg'},
-	{name:'Red Crown', src:'/img/frames/mysticalArchive/crowns/r.svg'},
-	{name:'Green Crown', src:'/img/frames/mysticalArchive/crowns/g.svg'},
-	{name:'Multicolored Crown', src:'/img/frames/mysticalArchive/crowns/m.svg'},
-	{name:'Artifact Crown', src:'/img/frames/mysticalArchive/crowns/a.svg'},
-	{name:'Land Crown', src:'/img/frames/mysticalArchive/crowns/l.svg'}
+	{name:'White Crown', src:'/img/frames/mysticalArchive/crowns/w.png', bounds: bounds},
+	{name:'Blue Crown', src:'/img/frames/mysticalArchive/crowns/u.png', bounds: bounds},
+	{name:'Black Crown', src:'/img/frames/mysticalArchive/crowns/b.png', bounds: bounds},
+	{name:'Red Crown', src:'/img/frames/mysticalArchive/crowns/r.png', bounds: bounds},
+	{name:'Green Crown', src:'/img/frames/mysticalArchive/crowns/g.png', bounds: bounds},
+	{name:'Multicolored Crown', src:'/img/frames/mysticalArchive/crowns/m.png', bounds: bounds},
+	{name:'Artifact Crown', src:'/img/frames/mysticalArchive/crowns/a.png', bounds: bounds},
+	{name:'Land Crown', src:'/img/frames/mysticalArchive/crowns/c.png', bounds: bounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
