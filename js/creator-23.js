@@ -2322,6 +2322,7 @@ function writeText(textObject, targetContext) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
 	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors') {
+	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors' || card.version == 'invocation') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');

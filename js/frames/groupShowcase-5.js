@@ -40,6 +40,7 @@ loadFramePacks([
 	{name:'Signature Spellbook (Jace/Gideon)', value:'SignatureSpellbook'},
 	{name:'Ixalan Maps', value:'Ixalan'},
 	{name:'Amonkhet Invocations (u/Smyris)', value:'Invocation'},
+	{name:'Amonkhet Invocations (Multiverse Legends)', value:'InvocationMUL'},
 	{name:'Kaladesh Inventions', value:'Invention'},
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ-1'},
 	{name:'SDCC15 (Blackout)', value:'SDCC15'},

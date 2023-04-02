@@ -65,6 +65,7 @@ const frameNames = new Map ([
 	['Signature Spellbook (Jace/Gideon)', 'SignatureSpellbook'],
 	['Ixalan Maps', 'Ixalan'],
 	['Amonkhet Invocations (u/Smyris)', 'Invocation'],
+	['Amonkhet Invocations (Multiverse Legends)', 'InvocationMUL'],
 	['Kaladesh Inventions', 'Invention'],
 	['BFZ Expeditions (2015)', 'ExpeditionBFZ-1'],
 	['SDCC15 (Blackout)', 'SDCC15'],

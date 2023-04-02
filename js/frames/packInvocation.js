@@ -1,16 +1,16 @@
 //Create objects for common properties across available frames
-// var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
+var masks = [{src:'img/frames/invocation/accents.png', name:'Accents'}];
 var bounds = {x:0.8587, y:0.8186, width:0.062, height:0.1258};
 var bounds2 = {x:0.0527, y:0.0496, width:0.8947, height:0.0515};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/invocation/w.png'},
-	{name:'Blue Frame', src:'/img/frames/invocation/u.png'},
-	{name:'Black Frame', src:'/img/frames/invocation/b.png'},
-	{name:'Red Frame', src:'/img/frames/invocation/r.png'},
-	{name:'Green Frame', src:'/img/frames/invocation/g.png'},
-	{name:'Multicolored Frame', src:'/img/frames/invocation/m.png'},
-	{name:'Artifact Frame', src:'/img/frames/invocation/a.png'},
+	{name:'White Frame', src:'/img/frames/invocation/w.png', masks: masks},
+	{name:'Blue Frame', src:'/img/frames/invocation/u.png', masks: masks},
+	{name:'Black Frame', src:'/img/frames/invocation/b.png', masks: masks},
+	{name:'Red Frame', src:'/img/frames/invocation/r.png', masks: masks},
+	{name:'Green Frame', src:'/img/frames/invocation/g.png', masks: masks},
+	{name:'Multicolored Frame', src:'/img/frames/invocation/m.png', masks: masks},
+	{name:'Artifact Frame', src:'/img/frames/invocation/a.png', masks: masks},
 	{name:'Power/Toughness', src:'/img/frames/invocation/pt.png', bounds:bounds},
 	{name:'Set Symbol Cover', src:'/img/frames/invocation/set.png', bounds:{x:0.8494, y:0.5705, width:0.0907, height:0.0434}},
 	{name:'Mana Bracket (1)', src:'/img/frames/invocation/mana/1.png', bounds:bounds2},
@@ -34,7 +34,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	card.version = 'invocation';
 	loadScript('/js/frames/manaSymbolsOutline.js');
 	//art bounds
-	card.artBounds = {x:0, y:0.1067, width:1, height:0.4386};
+	card.artBounds = {x:173/1500, y:313/2100, width:1150/1500, height:819/2100};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.8954, y:0.5910, width:0.06, height:0.0353, vertical:'center', horizontal: 'center'};
