@@ -3552,6 +3552,7 @@ function changeCardIndex() {
 		}
 	}
 	if (card.text.pt && card.text.pt.text == undefined + '/' + undefined) {card.text.pt.text = '';}
+	if (card.text.pt && card.text.pt.text == undefined + '\n' + undefined) {card.text.pt.text = '';}
 	if (card.version.includes('planeswalker')) {
 		card.text.loyalty.text = cardToImport.loyalty || '';
 		var planeswalkerAbilities = cardToImport.oracle_text.split('\n');
