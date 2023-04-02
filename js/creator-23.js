@@ -2321,7 +2321,6 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
-	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors') {
 	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors' || card.version == 'invocation') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
@@ -3593,6 +3592,17 @@ function changeCardIndex() {
 		setXhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var setObject = JSON.parse(this.responseText)
+				if (document.querySelector('#enableNewCollectorStyle').checked) {
+					var number = document.querySelector('#info-number').value;
+
+					while (number.length < 4) {
+						number = '0' + number;
+					}
+
+					document.querySelector('#info-number').value = number;
+
+					bottomInfoEdited();
+				} else if (setObject.printed_size) {
 					var number = document.querySelector('#info-number').value;
 
 					while (number.length < 3) {
