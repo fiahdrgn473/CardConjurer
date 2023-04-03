@@ -30,7 +30,9 @@ availableFrames = [
 	{name:'Green Crown', src:'/img/frames/ravnica/crowns/g.png', bounds:crownBounds},
 	{name:'Multicolored Crown', src:'/img/frames/ravnica/crowns/m.png', bounds:crownBounds},
 	{name:'Artifact Crown', src:'/img/frames/ravnica/crowns/a.png', bounds:crownBounds},
-	{name:'Colorless Crown', src:'/img/frames/ravnica/crowns/c.png', bounds:crownBounds}
+	{name:'Colorless Crown', src:'/img/frames/ravnica/crowns/c.png', bounds:crownBounds},
+
+	{name:'Holo Stamp', src:'/img/frames/ravnica/stamp.png', bounds:{x:656/1500, y:1886/2100, width:187/1500, height:96/2100}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
