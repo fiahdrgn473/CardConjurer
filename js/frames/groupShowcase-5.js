@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Ravnica (MOM)', value:'Ravnica'},
 	{name:'Oil Slick (ONE)', value:'OilSlick'},
 	{name:'Stained Glass (DMU)', value:'DMUStainedGlass'},
 	{name:'Golden Age (SNC)', value:'SNCGilded'},
