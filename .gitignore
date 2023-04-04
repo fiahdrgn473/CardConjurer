@@ -31,3 +31,6 @@ access.log
 error.log
 
 fly.toml
+
+img/frames/crystal/*
+js/frames/packCrystal.js
