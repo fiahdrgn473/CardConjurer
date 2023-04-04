@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Ikoria Crystal (MOM)', value:'Crystal'},
 	{name:'Ravnica Architecture (MOM)', value:'Ravnica'},
 	{name:'Oil Slick (ONE)', value:'OilSlick'},
 	{name:'Stained Glass (DMU)', value:'DMUStainedGlass'},

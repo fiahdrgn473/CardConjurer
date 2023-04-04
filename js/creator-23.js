@@ -3528,6 +3528,7 @@ function changeCardIndex() {
 		    return '{i}' + a + '{/i}';
 		});
 		rulesText = curlyQuotes(rulesText).replace(/{Q}/g, '{untap}').replace(/{\u221E}/g, "{inf}").replace(/• /g, '• {indent}');
+		rulesText = rulesText.replace('(If this card is your chosen companion, you may put it into your hand from outside the game for {3} any time you could cast a sorcery.)', '(If this card is your chosen companion, you may put it into your hand from outside the game for {3} as a sorcery.)')
 		card.text.rules.text = langFontCode + rulesText;
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;

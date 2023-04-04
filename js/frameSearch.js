@@ -28,6 +28,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
+	['Ikoria Crystal (MOM)', 'Crystal'],
 	['Ravnica Architecture (MOM)', 'Ravnica'],
 	['Oil Slick (ONE)', 'OilSlick'],
 	['Stained Glass (DMU)', 'DMUStainedGlass'],
