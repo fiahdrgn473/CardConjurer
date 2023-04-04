@@ -3404,13 +3404,20 @@ function drawCard() {
 	previewContext.drawImage(cardCanvas, 0, 0, previewCanvas.width, previewCanvas.height);
 }
 //DOWNLOADING
-function downloadCard(alt = false) {
+function downloadCard(alt = false, jpeg = false) {
 	if (card.infoArtist.replace(/ /g, '') == '' && !card.artSource.includes('/img/blank.png') && !card.artZoom == 0) {
 		notify('You must credit an artist before downloading!', 5);
 	} else {
 		// Prep file information
-		const imageDataURL = cardCanvas.toDataURL('image/png');
-		var imageName = getCardName() + '.png';
+		var imageDataURL;
+		var imageName = getCardName();
+		if (jpeg) {
+			imageDataURL = cardCanvas.toDataURL('image/jpeg', 0.8);
+			imageName = imageName + '.jpeg';
+		} else {
+			imageDataURL = cardCanvas.toDataURL('image/png');
+			imageName = imageName + '.png';
+		}
 		// Download image
 		if (alt) {
 			const newWindow = window.open('about:blank');
