@@ -1,8 +1,9 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/ravnica/maskRight.png', name:'Right Side'}, {src:'/img/frames/ravnica/maskTitle.png', name:'Title'}, {src:'/img/frames/ravnica/maskTitleInner.png', name:'Inner Title'}, {src:'/img/frames/ravnica/maskType.png', name:'Type'}, {src:'/img/frames/ravnica/maskTypeInner.png', name:'Inner Type'}, {src:'/img/frames/ravnica/maskRules.png', name:'Rules'}];
+var masks = [{src:'/img/frames/ravnica/maskRight.png', name:'Right Side'}, {src:'/img/frames/ravnica/maskTitleInner.png', name:'Title'}, {src:'/img/frames/ravnica/maskTypeInner.png', name:'Type'}, {src:'/img/frames/ravnica/maskRules.png', name:'Rules'}];
 var crownBounds = {x:91/1500, y:0, width:1318/1500, height:91/2100};
+var crownMasks = [{src:'/img/frames/ravnica/crowns/maskRight.png', name:'Right Side'}];
 var ptBounds = {x:1152/1500, y:1855/2100, width:287/1500, height:145/2100};
-var ptMasks = [];
+var ptMasks = [{src:'/img/frames/ravnica/pt/highlightsLeft.png', name:'Highlights (Left)'}, {src:'/img/frames/ravnica/pt/highlightsRight.png', name:'Highlights (Right)'}];
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/ravnica/w.png', masks:masks},
@@ -14,23 +15,23 @@ availableFrames = [
 	{name:'Artifact Frame', src:'/img/frames/ravnica/a.png', masks:masks},
 	{name:'Colorless Frame', src:'/img/frames/ravnica/c.png', masks:masks},
 
-	{name:'White Power/Toughness', src:'/img/frames/ravnica/pt/w.png', bounds:ptBounds},
-	{name:'Blue Power/Toughness', src:'/img/frames/ravnica/pt/u.png', bounds:ptBounds},
-	{name:'Black Power/Toughness', src:'/img/frames/ravnica/pt/b.png', bounds:ptBounds},
-	{name:'Red Power/Toughness', src:'/img/frames/ravnica/pt/r.png', bounds:ptBounds},
-	{name:'Green Power/Toughness', src:'/img/frames/ravnica/pt/g.png', bounds:ptBounds},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/ravnica/pt/m.png', bounds:ptBounds},
-	{name:'Artifact Power/Toughness', src:'/img/frames/ravnica/pt/a.png', bounds:ptBounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/ravnica/pt/c.png', bounds:ptBounds},
+	{name:'White Power/Toughness', src:'/img/frames/ravnica/pt/w.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Blue Power/Toughness', src:'/img/frames/ravnica/pt/u.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Black Power/Toughness', src:'/img/frames/ravnica/pt/b.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Red Power/Toughness', src:'/img/frames/ravnica/pt/r.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Green Power/Toughness', src:'/img/frames/ravnica/pt/g.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Multicolored Power/Toughness', src:'/img/frames/ravnica/pt/m.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Artifact Power/Toughness', src:'/img/frames/ravnica/pt/a.png', bounds:ptBounds, masks:ptMasks},
+	{name:'Colorless Power/Toughness', src:'/img/frames/ravnica/pt/c.png', bounds:ptBounds, masks:ptMasks},
 
-	{name:'White Crown', src:'/img/frames/ravnica/crowns/w.png', bounds:crownBounds},
-	{name:'Blue Crown', src:'/img/frames/ravnica/crowns/u.png', bounds:crownBounds},
-	{name:'Black Crown', src:'/img/frames/ravnica/crowns/b.png', bounds:crownBounds},
-	{name:'Red Crown', src:'/img/frames/ravnica/crowns/r.png', bounds:crownBounds},
-	{name:'Green Crown', src:'/img/frames/ravnica/crowns/g.png', bounds:crownBounds},
-	{name:'Multicolored Crown', src:'/img/frames/ravnica/crowns/m.png', bounds:crownBounds},
-	{name:'Artifact Crown', src:'/img/frames/ravnica/crowns/a.png', bounds:crownBounds},
-	{name:'Colorless Crown', src:'/img/frames/ravnica/crowns/c.png', bounds:crownBounds},
+	{name:'White Crown', src:'/img/frames/ravnica/crowns/w.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Blue Crown', src:'/img/frames/ravnica/crowns/u.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Black Crown', src:'/img/frames/ravnica/crowns/b.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Red Crown', src:'/img/frames/ravnica/crowns/r.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Green Crown', src:'/img/frames/ravnica/crowns/g.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Multicolored Crown', src:'/img/frames/ravnica/crowns/m.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Artifact Crown', src:'/img/frames/ravnica/crowns/a.png', bounds:crownBounds, masks:crownMasks},
+	{name:'Colorless Crown', src:'/img/frames/ravnica/crowns/c.png', bounds:crownBounds, masks:crownMasks},
 
 	{name:'Holo Stamp', src:'/img/frames/ravnica/stamp.png', bounds:{x:656/1500, y:1886/2100, width:187/1500, height:96/2100}}
 ];
