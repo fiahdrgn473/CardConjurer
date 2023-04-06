@@ -10,7 +10,8 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/invocation/mul/g.png', masks: masks},
 	{name:'Multicolored Frame', src:'/img/frames/invocation/mul/m.png', masks: masks},
 	{name:'Artifact Frame', src:'/img/frames/invocation/mul/a.png', masks: masks},
-	{name:'Power/Toughness', src:'/img/frames/invocation/mul/pt.png', bounds:bounds}
+	{name:'Power/Toughness', src:'/img/frames/invocation/mul/pt.png', bounds:bounds},
+	{name:'Holo Stamp', src:'/img/frames/invocation/mul/stamp.png', bounds:{x: 644/1500, y:1874/2100, width:212/1500, height:124/2100}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
