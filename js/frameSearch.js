@@ -63,6 +63,7 @@ const frameNames = new Map ([
 	['Universes Beyond', 'UB'],
 	['Full Text', 'FullText'],
 	['Etched (Commander Precons)', 'Etched'],
+	['Etched (Nyx)', 'EtchedNyx'],
 	['ZNR Expeditions (2020)', 'ExpeditionZNR-1'],
 	['Signature Spellbook (Jace/Gideon)', 'SignatureSpellbook'],
 	['Ixalan Maps', 'Ixalan'],

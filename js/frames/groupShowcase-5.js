@@ -36,6 +36,7 @@ loadFramePacks([
 	{name:'Universes Beyond', value:'UB'},
 	{name:'Full Text', value:'FullText'},
 	{name:'Etched (Commander Precons)', value:'Etched'},
+	{name:'Etched (Nyx)', value:'EtchedNyx'},
 	{name:'Masterpieces/Other', value:'disabled'},
 	{name:'Phyrexian', value:'Praetors'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
