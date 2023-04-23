@@ -9,7 +9,7 @@ availableFrames = [
 	{name:'Red Frame', src:'/img/frames/tarkir/r.png', masks:masks},
 	{name:'Green Frame', src:'/img/frames/tarkir/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/tarkir/m.png', masks:masks},
-	// {name:'Artifact Frame', src:'/img/frames/tarkir/a.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/tarkir/a.png', masks:masks},
 	// {name:'Colorless Frame', src:'/img/frames/tarkir/c.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/tarkir/pt/w.png', bounds:ptBounds},
@@ -18,7 +18,7 @@ availableFrames = [
 	{name:'Red Power/Toughness', src:'/img/frames/tarkir/pt/r.png', bounds:ptBounds},
 	{name:'Green Power/Toughness', src:'/img/frames/tarkir/pt/g.png', bounds:ptBounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/tarkir/pt/m.png', bounds:ptBounds},
-	// {name:'Artifact Power/Toughness', src:'/img/frames/tarkir/pt/a.png', bounds:ptBounds},
+	{name:'Artifact Power/Toughness', src:'/img/frames/tarkir/pt/a.png', bounds:ptBounds},
 	// {name:'Colorless Power/Toughness', src:'/img/frames/tarkir/pt/c.png', bounds:ptBounds},
 
 	{name:'Holo Stamp', src:'/img/frames/tarkir/stamp.png', bounds:{x:638/1500, y:1888/2100, width:225/1500, height:101/2100}}
