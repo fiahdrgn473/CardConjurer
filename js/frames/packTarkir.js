@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'img/frames/tarkir/maskFrame.png', name:'Frame (No Art Shadow)'}];
+var masks = [];
 var ptBounds = {x:1155/1500, y:1850/2100, width:274/1500, height:150/2100};
 //defines available frames
 availableFrames = [
@@ -30,6 +30,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	// notify("To change the color of your mana cost, use {manacolor#}, but replace '#' with your desired color. 'white', 'blue', 'black', 'red', and 'green', as well as hex/html color codes are currently supported.", 15)
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
+	replacementMasks = {'Right Half':'img/frames/tarkir/maskFrame.png'};
 	//sets card version
 	card.version = 'tarkir';
 	//art bounds
