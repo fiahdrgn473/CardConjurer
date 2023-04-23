@@ -30,6 +30,7 @@ const frameNames = new Map ([
 	//showcase
 	['Ikoria Crystal (MOM)', 'Crystal'],
 	['Ravnica Architecture (MOM)', 'Ravnica'],
+	['Tarkir Sketch (MOM)', 'Tarkir'],
 	['Oil Slick (ONE)', 'OilSlick'],
 	['Stained Glass (DMU)', 'DMUStainedGlass'],
 	['Golden Age (SNC)', 'SNCGilded'],
