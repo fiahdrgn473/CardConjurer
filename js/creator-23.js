@@ -3321,6 +3321,7 @@ function enableNewCollectorInfoStyle() {
 function enableCollectorInfo() {
 	localStorage.setItem('enableCollectorInfo', document.querySelector('#enableCollectorInfo').checked);
 	bottomInfoEdited();
+}
 function enableImportCollectorInfo() {
 	localStorage.setItem('enableImportCollectorInfo', document.querySelector('#enableImportCollectorInfo').checked);
 }
