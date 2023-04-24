@@ -2318,6 +2318,9 @@ function writeText(textObject, targetContext) {
 	if (document.querySelector('#info-artist').value == '') {
 		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
 	}
+	if (rawText.includes('///')) {
+		rawText = rawText.replace(/\/\/\//g, '{flavor}');
+	}
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
