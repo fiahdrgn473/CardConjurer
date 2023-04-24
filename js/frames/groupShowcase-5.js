@@ -35,6 +35,7 @@ loadFramePacks([
 	{name:'Extended Art (Shorter Textbox)', value:'M15ExtendedArtShort'},
 	{name:'FNM Promo (Inverted Promos)', value:'FNM'},
 	{name:'Universes Beyond', value:'UB'},
+	{name:'Universes Beyond (Full art)', value:'UBFull'},
 	{name:'Full Text', value:'FullText'},
 	{name:'Etched (Commander Precons)', value:'Etched'},
 	{name:'Etched (Nyx)', value:'EtchedNyx'},

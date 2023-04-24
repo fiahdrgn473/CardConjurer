@@ -62,6 +62,7 @@ const frameNames = new Map ([
 	['Extended Art (Shorter Textbox)', 'M15ExtendedArtShort'],
 	['FNM Promo (Inverted Promos)', 'FNM'],
 	['Universes Beyond', 'UB'],
+	['Universes Beyond (Full art)', 'UBFull'],
 	['Full Text', 'FullText'],
 	['Etched (Commander Precons)', 'Etched'],
 	['Etched (Nyx)', 'EtchedNyx'],
@@ -143,6 +144,7 @@ const frameNames = new Map ([
 	['Playtest Cards', 'Playtest'],
 	['Dungeon (AFR)', 'Dungeon'],
 	['Planechase', 'Planechase'],
+	['Battles', 'Battle'],
 	['Vanguard', 'Vanguard'],
 	['Cardback', 'Cardback'],
 	//promo
