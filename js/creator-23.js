@@ -3920,7 +3920,7 @@ function imageURL(url, destination, otherParams) {
 	} else if (params.get('noproxy') != '') {
 		//CORS PROXY LINKS
 		//Previously: https://cors.bridged.cc/
-		imageurl = 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url);
+		imageurl = 'https://corsproxy.io/?' + encodeURIComponent(url);
 	}
 	destination(imageurl, otherParams);
 }
