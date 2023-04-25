@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Ixalan Coin (MOM)', value:'IxalanCoin'},
 	{name:'Tarkir Sketch (MOM)', value:'Tarkir'},
 	{name:'Ikoria Crystal (MOM)', value:'Crystal'},
 	{name:'Ravnica Architecture (MOM)', value:'Ravnica'},
