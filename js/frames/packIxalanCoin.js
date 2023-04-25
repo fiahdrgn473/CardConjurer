@@ -31,6 +31,8 @@ availableFrames = [
 	// {name:'Artifact Legendary Crown', src:'/img/frames/ixalanCoin/crown/a.png', bounds:crownBounds},
 	// {name:'Colorless Legendary Crown', src:'/img/frames/ixalanCoin/crown/c.png', bounds:crownBounds},
 
+	{name:'Coin Background', src:'/img/frames/ixalanCoin/coinCover.png'},
+	{name:'Coin', src:'/img/frames/ixalanCoin/coin.png'},
 	{name:'Holo Stamp', src:'/img/frames/ixalanCoin/stamp.png'}
 ];
 //disables/enables the "Load Frame Version" button
@@ -47,7 +49,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	card.artBounds = {x:131/1500, y:233/2100, width:1235 /1500, height:926/2100};
 	autoFitArt();
 	//set symbol bounds
-	card.setSymbolBounds = {x:1386/1500, y:1234/2100, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
+	card.setSymbolBounds = {x:1376/1500, y:1242/2100, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
 	resetSetSymbol();
 	//watermark bounds
 	card.watermarkBounds = {x:0.5, y:0.7762, width:0.75, height:0.2305};
