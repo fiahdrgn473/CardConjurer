@@ -64,6 +64,7 @@ const frameNames = new Map ([
 	['FNM Promo (Inverted Promos)', 'FNM'],
 	['Universes Beyond', 'UB'],
 	['Universes Beyond (Full art)', 'UBFull'],
+	['Universes Beyond (Extended art)', 'UBExtendedArt'],
 	['Full Text', 'FullText'],
 	['Etched (Commander Precons)', 'Etched'],
 	['Etched (Nyx)', 'EtchedNyx'],
