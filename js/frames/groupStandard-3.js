@@ -14,6 +14,7 @@ loadFramePacks([
 	{name:'Other Frames', value:'disabled'},
 	{name:'Lands', value:'M15Lands'},
 	{name:'Prototype (Brothers\' War)', value:'Prototype'},
+	{name:'Prototype (Extended Art) (Brothers\' War)', value:'PrototypeExtended'},
 	{name:'Class (D&D)', value:'Class'},
 	{name:'Snow (Kaldheim)', value:'M15Snow'},
 	{name:'Mutate (Ikoria)', value:'M15Mutate'},
