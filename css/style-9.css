@@ -95,6 +95,22 @@
 	font-family: amanda;
 	src: url('../fonts/Amanda Std Regular.otf') format('opentype');
 }
+@font-face {
+	font-family: gillsans;
+	src: url('../fonts/Gill Sans Medium.otf') format('opentype');
+}
+@font-face {
+	font-family: gillsansbold;
+	src: url('../fonts/Gill Sans Condensed Bold.otf') format('opentype');
+}
+@font-face {
+	font-family: gillsansitalic;
+	src: url('../fonts/Gill Sans Medium Italic') format('opentype');
+}
+@font-face {
+	font-family: gillsansbolditalic;
+	src: url('../fonts/Gill Sans Bold Italic.otf') format('opentype');
+}
 /*Variables*/
 :root {
 	--site-background: url('../img/lowpolyBackground.svg');

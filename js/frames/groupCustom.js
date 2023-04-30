@@ -34,5 +34,6 @@ loadFramePacks([
 	{name:'Ixalan - @feuer_ameise', value:'FeuerAmeiseIxalan'},
 	{name:'Kaldheim, Fullart - @feuer_ameise', value:'FeuerAmeiseKaldheim'},
 	{name:'Celid\'s Asap', value:'CustomCelidAsap'},
-	{name:'Magrao\'s Kaldheim', value:'CustomMagraoKaldheim'}
+	{name:'Magrao\'s Kaldheim', value:'CustomMagraoKaldheim'},
+	{name:'Pokemon', value:'Pokemon'}
 ])

@@ -2324,7 +2324,9 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
-	if (autoFramePack == 'Seventh' || autoFramePack == '8th' || autoFramePack == 'Praetors' || card.version == 'invocation') {
+	if (card.version == 'pokemon') {
+		rawText = rawText.replace(/{flavor}/g, '{oldflavor}{fontsize-20}{fontgillsansbolditalic}');
+	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
@@ -2448,7 +2450,9 @@ function writeText(textObject, targetContext) {
 					}
 					lineContext.drawImage(getManaSymbol(barImageName).image, canvasMargin + (textWidth - barWidth) / 2, canvasMargin + barDistance * textSize, barWidth, barHeight);
 				} else if (possibleCode == 'i') {
-					if (textFont == 'mplantin') {
+					if (textFont == 'gilllsans') {
+						textFontExtension = 'italic';
+					} else if (textFont == 'mplantin') {
 						textFontExtension = 'i';
 						textFontStyle = textFontStyle.replace('italic ', '');
 					} else {
@@ -2461,10 +2465,18 @@ function writeText(textObject, targetContext) {
 					textFontStyle = textFontStyle.replace('italic ', '');
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode == 'bold') {
-					if (!textFontStyle.includes('bold')) {textFontStyle += 'bold ';}
+					if (textFont == 'gillsans') {
+						textFontExtension = 'bold';
+					} else {
+						if (!textFontStyle.includes('bold')) {textFontStyle += 'bold ';}
+					}
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode == '/bold') {
-					textFontStyle = textFontStyle.replace('bold ', '');
+					if (textFont == 'gillsans') {
+						textFontExtension = '';
+					} else {
+						textFontStyle = textFontStyle.replace('bold ', '');
+					}
 					lineContext.font = textFontStyle + textSize + 'px ' + textFont + textFontExtension;
 				} else if (possibleCode == 'left') {
 					textAlign = 'left';
@@ -2558,7 +2570,7 @@ function writeText(textObject, targetContext) {
 					if (word.includes('set')) {
 						var bottomTextSubstring = card.bottomInfo.midLeft.text.substring(0, card.bottomInfo.midLeft.text.indexOf('  {savex}')).replace('{elemidinfo-set}', document.querySelector('#info-set').value || '').replace('{elemidinfo-language}', document.querySelector('#info-language').value || '');
 						justifyWidth = lineContext.measureText(bottomTextSubstring).width;
-					} else if (word.includes('number') && wordToWrite.includes('/')) {
+					} else if (word.includes('number') && wordToWrite.includes('/') && card.version != 'pokemon') {
 						fillJustify = true;
 						wordToWrite = Array.from(wordToWrite).join(' ');
 					}
@@ -3155,8 +3167,12 @@ function fetchSetSymbol() {
 		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
 		uploadSetSymbol('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, 'resetSetSymbol');
 	} else {
+		var extension = 'svg';
+		if (['moc', 'ltr'].includes(setCode.toLowerCase())) {
+			extension = 'png';
+		}
 		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
-		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
+		uploadSetSymbol(fixUri(`/img/setSymbols/official/${setCode.toLowerCase()}-${setRarity}.` + extension), 'resetSetSymbol');
 	}
 }
 function lockSetSymbolCode() {
@@ -3540,7 +3556,35 @@ function changeCardIndex() {
 		});
 		rulesText = curlyQuotes(rulesText).replace(/{Q}/g, '{untap}').replace(/{\u221E}/g, "{inf}").replace(/• /g, '• {indent}');
 		rulesText = rulesText.replace('(If this card is your chosen companion, you may put it into your hand from outside the game for {3} any time you could cast a sorcery.)', '(If this card is your chosen companion, you may put it into your hand from outside the game for {3} as a sorcery.)')
-		card.text.rules.text = langFontCode + rulesText;
+		
+		if (card.version == 'pokemon') {
+			if (cardToImport.type_line.toLowerCase().includes('creature')) {
+				card.text.rules.text = langFontCode + rulesText;
+				card.text.rulesnoncreature.text = '';
+
+				card.text.middleStatTitle.text = 'power';
+				card.text.rightStatTitle.text = 'toughness';
+
+			} else if (cardToImport.type_line.toLowerCase().includes('planeswalker')) {
+				card.text.rules.text = langFontCode + rulesText;
+				card.text.rulesnoncreature.text = '';
+
+				card.text.pt.text = '{' + (cardToImport.loyalty || '' + '}');
+
+				card.text.middleStatTitle.text = '';
+				card.text.rightStatTitle.text = 'loyalty';
+			} else {
+				card.text.rulesnoncreature.text = langFontCode + rulesText;
+				card.text.rules.text = '';
+
+				card.text.middleStatTitle.text = '';
+				card.text.rightStatTitle.text = '';
+			}
+			
+		} else {
+			card.text.rules.text = langFontCode + rulesText;
+		}
+		
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
 			var flavorTextCounter = 1;
@@ -3555,23 +3599,49 @@ function changeCardIndex() {
 				flavorTextCounter ++;
 			}
 
-			if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
-				card.text.rules.text += '{i}';
+			if (card.version == 'pokemon') {
+				if (cardToImport.type_line.toLowerCase().includes('creature')) {
+					if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
+						card.text.rules.text += '{i}';
+					} else {
+						card.text.rules.text += '{flavor}';
+					}
+				} else {
+					if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
+						card.text.rulesnoncreature.text += '{i}';
+					} else {
+						card.text.rulesnoncreature.text += '{flavor}';
+					}
+				}
+				card.text.rulesnoncreature.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 			} else {
-				card.text.rules.text += '{flavor}';
+				if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
+					card.text.rules.text += '{i}';
+				} else {
+					card.text.rules.text += '{flavor}';
+				}
+				card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 			}
-			card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
+
+			
 		}
 	}
+
 	if (card.text.pt) {
 		if (card.version == 'invocation') {
 			card.text.pt.text = cardToImport.power + '\n' + cardToImport.toughness || '';
+		} else if (card.version == 'pokemon') {
+			card.text.middleStat.text = '{' + (cardToImport.power || '') + '}';
+			card.text.pt.text = '{' + (cardToImport.toughness || '') + '}';
+
+			if (card.text.middleStat && card.text.middleStat.text == '{}') {card.text.middleStat.text = '';}
 		} else {
 			card.text.pt.text = cardToImport.power + '/' + cardToImport.toughness || '';
 		}
 	}
 	if (card.text.pt && card.text.pt.text == undefined + '/' + undefined) {card.text.pt.text = '';}
 	if (card.text.pt && card.text.pt.text == undefined + '\n' + undefined) {card.text.pt.text = '';}
+	if (card.text.pt && card.text.pt.text == '{}') {card.text.pt.text = '';}
 	if (card.version.includes('planeswalker')) {
 		card.text.loyalty.text = cardToImport.loyalty || '';
 		var planeswalkerAbilities = cardToImport.oracle_text.split('\n');

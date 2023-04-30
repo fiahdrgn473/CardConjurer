@@ -206,7 +206,10 @@
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='margin-bottom padding input-description'>Enter card text</h5>
 							<textarea id='text-editor' class='input margin-bottom' oninput='textEdited();'></textarea>
-							<button class='input' onclick="toggleTextTag('i');">Italic</button>
+							<div class='padding input-grid'>
+								<button class='input' onclick="toggleTextTag('i');">Italic</button>
+								<button class='input' onclick="toggleTextTag('bold');">Bold</button>
+							</div>
 							<h5 class='margin-bottom padding input-description'>Edit the placement and size of the selected textbox</h5>
 							<button class='input' onclick='textboxEditor();'>Edit Bounds</button>
 							<h5 class='margin-bottom padding input-description'>Adjust font size</h5>
