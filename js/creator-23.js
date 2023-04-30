@@ -3606,14 +3606,16 @@ function changeCardIndex() {
 					} else {
 						card.text.rules.text += '{flavor}';
 					}
+					card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 				} else {
 					if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
 						card.text.rulesnoncreature.text += '{i}';
 					} else {
 						card.text.rulesnoncreature.text += '{flavor}';
 					}
+					card.text.rulesnoncreature.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 				}
-				card.text.rulesnoncreature.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
+				
 			} else {
 				if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
 					card.text.rules.text += '{i}';
