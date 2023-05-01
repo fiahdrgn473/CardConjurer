@@ -1,19 +1,19 @@
 //Create objects for common properties across available frames
 // var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/m15/regular/m15MaskFrame.png', name:'Frame'}, {src:'/img/frames/m15/regular/m15MaskBorder.png', name:'Border'}];
-var masks = [];
+var masks = [{src:'/img/frames/custom/pokemon/border.png', name:'Border'}, {src:'/img/frames/custom/pokemon/background.png', name:'Background'}];
 var boomerangMasks = [{src:'/img/frames/custom/pokemon/boomerangs/div.png', name:'Divider'}, {src:'/img/frames/custom/pokemon/boomerangs/left.png', name:'Left'}, {src:'/img/frames/custom/pokemon/boomerangs/right.png', name:'Right'}];
 // var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name: 'Psychic Frame', src:'/img/frames/custom/pokemon/psychic.png'},
-	{name: 'Water Frame', src:'/img/frames/custom/pokemon/water.png'},
-	{name: 'Lightning Frame', src:'/img/frames/custom/pokemon/lightning.png'},
-	{name: 'Metal Frame', src:'/img/frames/custom/pokemon/metal.png'},
-	{name: 'Fighting Frame', src:'/img/frames/custom/pokemon/fighting.png'},
-	{name: 'Fire Frame', src:'/img/frames/custom/pokemon/fire.png'},
-	{name: 'Grass Frame', src:'/img/frames/custom/pokemon/grass.png'},
-	{name: 'Colorless Frame', src:'/img/frames/custom/pokemon/colorless.png'},
-	{name: 'Darkness Frame', src:'/img/frames/custom/pokemon/dark.png'},
+	{name: 'Psychic Frame', src:'/img/frames/custom/pokemon/psychic.png', masks:masks},
+	{name: 'Water Frame', src:'/img/frames/custom/pokemon/water.png', masks:masks},
+	{name: 'Lightning Frame', src:'/img/frames/custom/pokemon/lightning.png', masks:masks},
+	{name: 'Metal Frame', src:'/img/frames/custom/pokemon/metal.png', masks:masks},
+	{name: 'Fighting Frame', src:'/img/frames/custom/pokemon/fighting.png', masks:masks},
+	{name: 'Fire Frame', src:'/img/frames/custom/pokemon/fire.png', masks:masks},
+	{name: 'Grass Frame', src:'/img/frames/custom/pokemon/grass.png', masks:masks},
+	{name: 'Colorless Frame', src:'/img/frames/custom/pokemon/colorless.png', masks:masks},
+	{name: 'Darkness Frame', src:'/img/frames/custom/pokemon/dark.png', masks:masks},
 
 	{name: 'Nickname Bar', src:'/img/frames/custom/pokemon/nickname.png'},
 	{name: 'Nickname Bar 2', src:'/img/frames/custom/pokemon/nickname2.png'},
@@ -53,7 +53,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	loadTextOptions({
 		mana: {name:'Mana Cost', text:'', x:758/1500, y:142/2100, width:597/1500, height:102/2100, oneLine:true, size:64/1500, align:'right', manaCost:true, manaSpacing:0, manaPrefix:'pokemon'},
 		title: {name:'Title', text:'', x:146/1500, y:153/2100, width:1195/1500, height:71/2100, oneLine:true, font:'gillsansbold', size:71/1500},
-		nickname: {name:'Nickname', text:'', x:759/1500, y:221/2100, width:571/1500, height:44/2100, oneLine:true, font:'gillsansbolditalic', size:29/1500, align:'right'},
+		nickname: {name:'Nickname', text:'', x:759/1500, y:219/2100, width:571/1500, height:44/2100, oneLine:true, font:'gillsansbolditalic', size:28/1500, align:'right'},
 		type: {name:'Type', text:'', x:251/1500, y:1122/2100, width:1001/1500, height:42/2100, oneLine:true, font:'gillsansbolditalic', size:28/1500, align:'center'},
 		rules: {name:'Rules Text', text:'', x:150/1500, y:1185/2100, width:1205/1500, height:629/2100, size:47/1500, font:'gillsans', manaPrefix:'pokemon'},
 		rulesnoncreature: {name:'Rules Text (noncreature)', text:'', x:150/1500, y:1185/2100, width:1205/1500, height:785/2100, size:47/1500, font:'gillsans', manaPrefix:'pokemon'},
@@ -67,7 +67,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	});
 
 	loadBottomInfo({
-		top: {text:'Illus. {elemidinfo-artist}', x:85/1500, y:1969/2100, width:411/1500, height:25/2100, oneLine:true, font:'gillsansbold', size:25/1500, align:'left'},
+		top: {text:'Illus. {elemidinfo-artist}', x:85/1500, y:1969/2100, width:600/1500, height:25/2100, oneLine:true, font:'gillsansbold', size:25/1500, align:'left'},
 		bottom: {text:'{elemidinfo-number} {elemidinfo-rarity}', x:1005/1500, y:1969/2100, width:411/1500, height:25/2100, oneLine:true, font:'gillsansbold', size:25/1500, align:'right'},
 	});
 }
