@@ -15,6 +15,10 @@ availableFrames = [
 	{name: 'Colorless Frame', src:'/img/frames/custom/pokemon/colorless.png'},
 	{name: 'Darkness Frame', src:'/img/frames/custom/pokemon/dark.png'},
 
+	{name: 'Nickname Bar', src:'/img/frames/custom/pokemon/nickname.png'},
+	{name: 'Nickname Bar 2', src:'/img/frames/custom/pokemon/nickname2.png'},
+	{name: 'Nickname Bar 3', src:'/img/frames/custom/pokemon/nickname3.png'},
+
 	{name: 'Psychic Boomerangs', src:'/img/frames/custom/pokemon/boomerangs/psychic.png', masks:boomerangMasks},
 	{name: 'Water Boomerangs', src:'/img/frames/custom/pokemon/boomerangs/water.png', masks:boomerangMasks},
 	{name: 'Lightning Boomerangs', src:'/img/frames/custom/pokemon/boomerangs/lightning.png', masks:boomerangMasks},
@@ -49,6 +53,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	loadTextOptions({
 		mana: {name:'Mana Cost', text:'', x:758/1500, y:142/2100, width:597/1500, height:102/2100, oneLine:true, size:64/1500, align:'right', manaCost:true, manaSpacing:0, manaPrefix:'pokemon'},
 		title: {name:'Title', text:'', x:146/1500, y:153/2100, width:1195/1500, height:71/2100, oneLine:true, font:'gillsansbold', size:71/1500},
+		nickname: {name:'Nickname', text:'', x:759/1500, y:221/2100, width:571/1500, height:44/2100, oneLine:true, font:'gillsansbolditalic', size:29/1500, align:'right'},
 		type: {name:'Type', text:'', x:251/1500, y:1122/2100, width:1001/1500, height:42/2100, oneLine:true, font:'gillsansbolditalic', size:28/1500, align:'center'},
 		rules: {name:'Rules Text', text:'', x:150/1500, y:1185/2100, width:1205/1500, height:629/2100, size:47/1500, font:'gillsans', manaPrefix:'pokemon'},
 		rulesnoncreature: {name:'Rules Text (noncreature)', text:'', x:150/1500, y:1185/2100, width:1205/1500, height:785/2100, size:47/1500, font:'gillsans', manaPrefix:'pokemon'},
@@ -59,7 +64,6 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 		middleStat: {name:'Middle Stat', text:'', x:585/1500, y:1872/2100, width: 300/1500, height: 102/2100, size: 79/1500, font:'gillsansbold', align:'center', manaPrefix:'pokemon'},
 		pt: {name:'Right Stat', text:'', x:1098/1500, y:1872/2100, width: 300/1500, height: 102/2100, size: 79/1500, font:'gillsansbold', align:'center', manaPrefix:'pokemon'},
 		// pt: {name:'Power/Toughness', text:'', x:1189/1500, y:1894/2100, width:205/1500, height:78/2100, size:61/1500, font:'gillsansbold', oneLine:true, align:'center'}
-
 	});
 
 	loadBottomInfo({
