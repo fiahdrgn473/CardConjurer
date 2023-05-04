@@ -624,6 +624,8 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 		} else if (style == 'Etched') {
 			if (colors.length > 2) {
 				typeTitle = 'M';
+			} else if (colors.length == 1) {
+				typeTitle = colors[0];
 			} else {
 				typeTitle = 'L';
 			}
@@ -1633,10 +1635,6 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 	return frame;
 }
 function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) {
-	if (letter == 'L') {
-		letter = 'C';
-	}
-
 	letter = letter.toUpperCase();
 	var frameNames = {
 		'W': 'White',
