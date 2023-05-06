@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [{src:'/img/frames/crystal/pinline.png', name:'Pinline'}, {src:'/img/frames/crystal/title.png', name:'Title'}, {src:'/img/frames/crystal/type.png', name:'Type'}, {src:'/img/frames/crystal/rules.png', name:'Rules'}, {src:'/img/frames/crystal/border.png', name:'Border'}];
 var bounds = {x:1157/1500, y:1847/2100, width:294/1500, height:170/2100};
+var crownBounds = {x:0, y:0, width:1, height:107/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/crystal/w.png', masks:masks},
@@ -10,6 +11,7 @@ availableFrames = [
 	{name:'Green Frame', src:'/img/frames/crystal/g.png', masks:masks},
 	{name:'Multicolored Frame', src:'/img/frames/crystal/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/crystal/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/crystal/l.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/crystal/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/crystal/pt/u.png', bounds:bounds},
@@ -18,7 +20,18 @@ availableFrames = [
 	{name:'Green Power/Toughness', src:'/img/frames/crystal/pt/g.png', bounds:bounds},
 	{name:'Multicolored Power/Toughness', src:'/img/frames/crystal/pt/m.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/crystal/pt/a.png', bounds:bounds},
-	{name:'Colorless Power/Toughness', src:'/img/frames/crystal/pt/c.png', bounds:bounds}
+	{name:'Colorless Power/Toughness', src:'/img/frames/crystal/pt/c.png', bounds:bounds},
+	{name:'Land Power/Toughness', src:'/img/frames/crystal/pt/l.png', bounds:bounds},
+
+	{name:'White Legend Crown', src:'/img/frames/crystal/crowns/w.png', bounds:crownBounds},
+	{name:'Blue Legend Crown', src:'/img/frames/crystal/crowns/u.png', bounds:crownBounds},
+	{name:'Black Legend Crown', src:'/img/frames/crystal/crowns/b.png', bounds:crownBounds},
+	{name:'Red Legend Crown', src:'/img/frames/crystal/crowns/r.png', bounds:crownBounds},
+	{name:'Green Legend Crown', src:'/img/frames/crystal/crowns/g.png', bounds:crownBounds},
+	{name:'Multicolored Legend Crown', src:'/img/frames/crystal/crowns/m.png', bounds:crownBounds},
+	{name:'Artifact Legend Crown', src:'/img/frames/crystal/crowns/a.png', bounds:crownBounds},
+	{name:'Colorless Legend Crown', src:'/img/frames/crystal/crowns/c.png', bounds:crownBounds},
+	{name:'Land Legend Crown', src:'/img/frames/crystal/crowns/l.png', bounds:crownBounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
