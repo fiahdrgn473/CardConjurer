@@ -39,6 +39,7 @@ document.querySelector('#loadFrameVersion').disabled = false;
 document.querySelector('#loadFrameVersion').onclick = async function() {
 	//resets things so that every frame doesn't have to
 	await resetCardIrregularities();
+	replacementMasks = {'Right Half':'img/frames/crystal/maskRightHalf.png'};
 	//sets card version
 	card.version = 'crystal';
 	//art bounds
