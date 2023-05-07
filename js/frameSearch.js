@@ -124,6 +124,7 @@ const frameNames = new Map ([
 	//token
 	['Regular Tokens', 'TokenRegular-1'],
 	['Textless Tokens', 'TokenTextless-1'],
+	['Borderless Textless Tokens', 'TokenTextlessBorderless'],
 	['Tall Tokens', 'TokenTall-1'],
 	['Monarch Token', 'TokenMonarch'],
 	['Initiative Token', 'TokenInitiative'],

@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Regular', value:'TokenRegular-1'},
 	{name:'Textless', value:'TokenTextless-1'},
+	{name:'Textless (Borderless)', value:'TokenTextlessBorderless'},
 	{name:'Tall', value:'TokenTall-1'},
 	{name:'Monarch Token', value:'TokenMonarch'},
 	{name:'Initiative Token', value:'TokenInitiative'},
