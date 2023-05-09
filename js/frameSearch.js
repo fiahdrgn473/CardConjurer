@@ -12,6 +12,7 @@ const frameNames = new Map ([
 	['Color Identity Pips', 'M15CIPips'],
 	['"The List" Stamp', 'TheList'],
 	['Lands', 'M15Lands'],
+	['Battles (March of the Machine)', 'Battle'],
 	['Prototype (Brothers\' War)', 'Prototype'],
 	['Prototype (Extended Art) (Brothers\' War)', 'PrototypeExtended'],
 	['Class (D&D)', 'Class'],
@@ -148,7 +149,6 @@ const frameNames = new Map ([
 	['Playtest Cards', 'Playtest'],
 	['Dungeon (AFR)', 'Dungeon'],
 	['Planechase', 'Planechase'],
-	['Battles', 'Battle'],
 	['Vanguard', 'Vanguard'],
 	['Cardback', 'Cardback'],
 	//promo

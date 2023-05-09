@@ -81,6 +81,9 @@ var loadedVersions = [];
 async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers = true} = {}) {
 	//misc details
 	card.margins = false;
+	card.bottomInfoTranslate = {x:0, y:0};
+	card.bottomInfoRotate = 0;
+	card.bottomInfoZoom = 1;
 	replacementMasks = {};
 	//rotation
 	if (card.landscape) {
@@ -3411,17 +3414,29 @@ function drawCard() {
 	// set symbol
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
 	// bottom info
-	cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	if (card.bottomInfoTranslate) {
+		cardContext.save();
+		cardContext.rotate(Math.PI / 180 * (card.bottomInfoRotate || 0));
+		cardContext.translate(card.bottomInfoTranslate.x || 0, card.bottomInfoTranslate.y || 0);
+		cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width * (card.bottomInfoZoom || 1), cardCanvas.height * (card.bottomInfoZoom || 1));
+		cardContext.restore();
+	} else {
+		cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
+	}
+	
+	
 	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
 	if (!card.noCorners && (card.marginX == 0 && card.marginY == 0)) {
-		cardContext.drawImage(corner, 0, 0, scaleWidth(59/1500), scaleWidth(59/1500));
+		var w = card.version == 'battle' ? 2100 : 1500;
+
+		cardContext.drawImage(corner, 0, 0, scaleWidth(59/w), scaleWidth(59/w));
 		cardContext.rotate(Math.PI / 2);
-		cardContext.drawImage(corner, 0, -card.width, scaleWidth(59/1500), scaleWidth(59/1500));
+		cardContext.drawImage(corner, 0, -card.width, scaleWidth(59/w), scaleWidth(59/w));
 		cardContext.rotate(Math.PI / 2);
-		cardContext.drawImage(corner, -card.width, -card.height, scaleWidth(59/1500), scaleWidth(59/1500));
+		cardContext.drawImage(corner, -card.width, -card.height, scaleWidth(59/w), scaleWidth(59/w));
 		cardContext.rotate(Math.PI / 2);
-		cardContext.drawImage(corner, -card.height, 0, scaleWidth(59/1500), scaleWidth(59/1500));
+		cardContext.drawImage(corner, -card.height, 0, scaleWidth(59/w), scaleWidth(59/w));
 		cardContext.rotate(Math.PI / 2);
 	}
 	// show preview
@@ -3571,6 +3586,14 @@ function changeCardIndex() {
 
 				card.text.middleStatTitle.text = '';
 				card.text.rightStatTitle.text = 'loyalty';
+			} else if (cardToImport.type_line.toLowerCase().includes('battle')) {
+				card.text.rules.text = langFontCode + rulesText;
+				card.text.rulesnoncreature.text = '';
+
+				card.text.pt.text = '{' + (cardToImport.defense || '' + '}');
+
+				card.text.middleStatTitle.text = '';
+				card.text.rightStatTitle.text = 'defense';
 			} else {
 				card.text.rulesnoncreature.text = langFontCode + rulesText;
 				card.text.rules.text = '';
@@ -3670,6 +3693,8 @@ function changeCardIndex() {
 		planeswalkerEdited();
 	} else if (card.version.includes('saga')) {
 		card.text.ability0.text = cardToImport.oracle_text.replace('(', '{i}(').replace(')', '){/i}') || '';
+	} else if (card.version.includes('battle')) {
+		card.text.defense.text = cardToImport.defense || '';
 	}
 	document.querySelector('#text-editor').value = card.text[Object.keys(card.text)[selectedTextIndex]].text;
 	document.querySelector('#text-editor-font-size').value = 0;
@@ -4064,6 +4089,8 @@ function processScryfallCard(card, responseCards) {
 		card.card_faces.forEach(face => {
 			face.set = card.set;
 			face.rarity = card.rarity;
+			face.collector_number = card.collector_number;
+			face.lang = card.lang;
 			if (card.lang != 'en') {
 				face.oracle_text = face.printed_text;
 				face.name = face.printed_name;
