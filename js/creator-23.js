@@ -775,7 +775,7 @@ function autoFrame() {
 			}
 		}
 
-		if (rules.includes('any color') || rules.includes('any one color') || rules.includes('chosen color') || rules.includes('any combination of colors')) {
+		if (rules.includes('any color') || rules.includes('any one color') || rules.includes('choose a color') || rules.includes('any combination of colors')) {
 			colors = ['W', 'U', 'B', 'R', 'G'];
 		}
 
