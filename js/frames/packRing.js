@@ -41,7 +41,6 @@ availableFrames = [
 	{name:'Artifact Holo Stamp', src:'/img/frames/lotr/stamp/a.png', bounds:stampBounds},
 	{name:'Land Holo Stamp', src:'/img/frames/lotr/stamp/l.png', bounds:stampBounds},
 	{name:'Gray Holo Stamp', src:'/img/frames/lotr/stamp/gray.png', bounds:stampBounds},
-	{name:'Gold Holo Stamp', src:'/img/frames/lotr/stamp/gold.png', bounds:stampBounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
