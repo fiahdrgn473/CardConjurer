@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Generic Margins', value:'Margin-1'},
+	{name:'LTR Ring Margins', value:'MarginRing'},
 	{name:'D&D Module Margins', value:'MarginDNDModule'},
 	{name:'Mystical Archive Margins', value:'MarginMysticalArchive'},
 	{name:'Unstable Basics Margins', value:'MarginUnstable'},

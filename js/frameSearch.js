@@ -30,6 +30,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
+	['Ring (LTR)', 'Ring'],
 	['Ixalan Coin (MOM)', 'IxalanCoin'],
 	['Ikoria Crystal (MOM)', 'Crystal'],
 	['Ravnica Architecture (MOM)', 'Ravnica'],
