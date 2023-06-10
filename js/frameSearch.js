@@ -98,6 +98,7 @@ const frameNames = new Map ([
 	['Planeswalker Transform Icons', 'PlaneswalkerTransformIcons'],
 	//saga
 	['Sagas', 'SagaRegular'],
+	['Sagas (Universes Beyond)', 'SagaUB'],
 	//dfc
 	['Transform (Front)', 'M15TransformFront'],
 	['Transform (Back)', 'M15TransformBack'],
