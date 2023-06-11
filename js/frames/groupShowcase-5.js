@@ -57,6 +57,7 @@ loadFramePacks([
 	{name:'Future Shifted', value:'FutureRegular'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
+	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Nicknames', value:'M15Nickname-2'},

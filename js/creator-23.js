@@ -829,10 +829,10 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 
 	if (type_line.toLowerCase().includes('legendary')) {
 		if (properties.pinlineRight) {
-			frames.push(makeM15FrameByLetter(properties.pinlineRight, 'Crown', true));
+			frames.push(makeUBFrameByLetter(properties.pinlineRight, 'Crown', true));
 		}
-		frames.push(makeM15FrameByLetter(properties.pinline, "Crown", false));
-		frames.push(makeM15FrameByLetter(properties.pinline, "Crown Border Cover", false));
+		frames.push(makeUBFrameByLetter(properties.pinline, "Crown", false));
+		frames.push(makeUBFrameByLetter(properties.pinline, "Crown Border Cover", false));
 	}
 	if (properties.pinlineRight) {
 		frames.push(makeUBFrameByLetter(properties.pinlineRight, 'Stamp', true));
@@ -1561,7 +1561,7 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 	if (mask == "Crown") {
 		var frame = {
 			'name': frameName + ' Legend Crown',
-			'src': '/img/frames/m15/crowns/m15Crown' + letter + '.png',
+			'src': '/img/frames/m15/ub/crowns/m15Crown' + letter + '.png',
 			'masks': [],
 			'bounds': {
 				'height': 0.1667,

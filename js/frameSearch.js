@@ -70,6 +70,7 @@ const frameNames = new Map ([
 	['Universes Beyond', 'UB'],
 	['Universes Beyond (Full art)', 'UBFull'],
 	['Universes Beyond (Extended art)', 'UBExtendedArt'],
+	['Universes Beyond legend crowns', 'UBLegendCrowns'],
 	['Full Text', 'FullText'],
 	['Etched (Commander Precons)', 'Etched'],
 	['Etched (Nyx)', 'EtchedNyx'],
