@@ -1,6 +1,7 @@
 debug.log
 CORS.json
 *.bat
+*.bak
 dev/*
 
 # dependencies
