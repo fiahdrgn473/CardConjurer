@@ -2,6 +2,7 @@ loadFramePacks([
 	{name:'Regular Frames', value:'SagaRegular'},
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
+	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Holo Stamps', value:'M15HoloStamps'},
 	{name:'Colored Borders', value:'M15Borders'},
