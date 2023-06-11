@@ -12,7 +12,7 @@ availableFrames = [
 	{name:'Land Frame', src:'/img/frames/m15/battle/l.png', masks:masks},
 	{name:'Colorless Frame', src:'/img/frames/m15/battle/c.png', masks:masks},
 
-	{name:'Holo Stamp', src:'/img/frames/m15/battle/holoStamp.png', bounds:{x:103/2100, y:657/1500, width:93/2100, height:186/1500}}
+	{name:'Holo Stamp', src:'/img/frames/m15/battle/holostamp.png', bounds:{x:103/2100, y:657/1500, width:93/2100, height:186/1500}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
