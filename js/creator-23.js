@@ -839,7 +839,7 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeUBFrameByLetter(properties.pinline, "Stamp", false));
 	if (properties.pt) {
-		frames.push(makeM15FrameByLetter(properties.pt, 'PT', false));
+		frames.push(makeUBFrameByLetter(properties.pt, 'PT', false));
 	}
 	if (properties.pinlineRight) {
 		frames.push(makeUBFrameByLetter(properties.pinlineRight, 'Pinline', true));
@@ -1601,7 +1601,7 @@ function makeUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
 	if (mask == 'PT') {
 		return {
 			'name': frameName + ' Power/Toughness',
-			'src': '/img/frames/m15/regular/m15PT' + letter + '.png',
+			'src': '/img/frames/m15/ub/pt/' + (letter == 'L' ? 'C' : letter).toLowerCase() + '.png',
 			'masks': [],
 			'bounds': {
 				'height': 0.0733,
