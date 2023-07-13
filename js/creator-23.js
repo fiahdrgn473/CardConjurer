@@ -809,6 +809,9 @@ function autoFrame() {
 	} else if (frame == '8th') {
 		group = 'Misc-2';
 		auto8thEditionFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text, false);
+	} else if (frame == 'Borderless') {
+		group = 'Showcase-5';
+		autoBorderlessFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 	}
 
 	if (autoFramePack != frame) {
@@ -915,6 +918,53 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
 	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoBorderlessFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+	var style = 'regular';
+	if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+		style = 'Nyx';
+	}
+
+	// Set frames
+	if (type_line.includes('Legendary')) {
+		if (style == 'Nyx') {
+			frames.push(makeM15FrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+		}
+
+		if (properties.pinlineRight) {
+			frames.push(makeBorderlessFrameByLetter(properties.pinlineRight, 'Crown', true));
+		}
+		frames.push(makeBorderlessFrameByLetter(properties.pinline, "Crown", false, style));
+		frames.push(makeBorderlessFrameByLetter(properties.pinline, "Legend Crown Outline", false))
+		frames.push(makeBorderlessFrameByLetter(properties.pinline, "Crown Border Cover", false));
+	}
+	if (properties.pt) {
+		frames.push(makeBorderlessFrameByLetter(properties.pt, 'PT', false));
+	}
+	if (properties.pinlineRight) {
+		frames.push(makeBorderlessFrameByLetter(properties.pinlineRight, 'Pinline', true));
+	}
+	frames.push(makeBorderlessFrameByLetter(properties.pinline, 'Pinline', false));
+	frames.push(makeBorderlessFrameByLetter(properties.typeTitle, 'Type', false));
+	frames.push(makeBorderlessFrameByLetter(properties.typeTitle, 'Title', false));
+	frames.push(makeBorderlessFrameByLetter(properties.rules, 'Rules', false));
+	frames.push(makeBorderlessFrameByLetter(properties.frame, 'Border', false));
+
+	// if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
+	// 	card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
+	// }
 
 	card.frames = frames;
 	card.frames.reverse();
@@ -1251,6 +1301,159 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 
 	return frame;
 }
+function makeBorderlessFrameByLetter(letter, mask = false, maskToRightHalf = false, style) {
+	letter = letter.toUpperCase();
+
+	if (letter == 'C' || letter == 'V') {
+		letter = 'L';
+	}
+
+	if (letter == 'ML') {
+		letter = 'M';
+	} else if (letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land'
+	}
+
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Legend Crown Outline") {
+		return {
+			'name': 'Legend Crown Outline',
+			'src': '/img/frames/m15/crowns/m15CrownFloatingOutline.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1062,
+				'width': 0.944,
+				'x': 0.028,
+				'y': 0.0172
+			}
+		};
+	}
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Border Cover',
+			'erase': true,
+			'src': '/img/black.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0177,
+				'width': 0.9214,
+				'x': 0.0394,
+				'y': 0.0277
+			}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/m15/crowns/m15Crown' + letter + 'Floating.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1024,
+				'width': 0.9387,
+				'x': 0.0307,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == "Inner Crown") {
+		var frame = {
+			'name': frameName + ' ' + mask + ' (' + style + ')',
+			'src': '/img/frames/m15/innerCrowns/m15InnerCrown' + letter + style + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0239,
+				'width': 0.672,
+				'x': 0.164,
+				'y': 0.0239
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/borderless/pt/' + letter.toLowerCase() + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.066666666666,
+				'width': 0.182666666666,
+				'x': 0.764,
+				'y': 0.8861904761904762
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/m15/borderless/m15GenericShowcaseFrame' + letter + '.png',
+	}
+
+	if (letter.includes('L') && letter.length > 1) {
+		frame.src = frame.src.replace(('m15GenericShowcaseFrame' + letter), 'l' + letter[0].toLowerCase())
+	}
+
+	if (mask) {
+		if (mask == 'Pinline') {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/genericShowcase/m15GenericShowcaseMask' + mask + '.png',
+					'name': mask
+				}
+			];
+		} else {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+					'name': mask
+				}
+			];
+		}
+
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
 function make8thEditionFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
 	letter = letter.toUpperCase();
 	var frameNames = {
@@ -1371,6 +1574,20 @@ function makeExtendedArtFrameByLetter(letter, mask = false, maskToRightHalf = fa
 				'y': 0.0277
 			}
 		}
+	}
+
+	if (mask == "Legend Crown Outline") {
+		return {
+			'name': 'Legend Crown Outline',
+			'src': '/img/frames/m15/crowns/m15CrownFloatingOutline.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1062,
+				'width': 0.944,
+				'x': 0.028,
+				'y': 0.0172
+			}
+		};
 	}
 
 	if (mask == "Crown") {
