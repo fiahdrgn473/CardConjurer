@@ -62,6 +62,7 @@ const frameNames = new Map ([
 	['Theros Beyond Death (THB)', 'M15NyxShowcase'],
 	['Eldraine Storybooks (ELD)', 'Storybook'],
 	['Borderless', 'GenericShowcase'],
+	['Borderless (Alt)', 'Borderless'],
 	['Fullart', 'M15ClearTextboxes'],
 	['Nickname ("Godzilla")', 'M15Nickname'],
 	['Extended Art (Regular)', 'M15BoxTopper'],
