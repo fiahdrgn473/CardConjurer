@@ -1,6 +1,7 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
 	{name:'Ring (LTR)', value:'Ring'},
+	{name:'Eldraine Storybooks (MOM)', value:'StorybookMUL'},
 	{name:'Ixalan Coin (MOM)', value:'IxalanCoin'},
 	{name:'Tarkir Sketch (MOM)', value:'Tarkir'},
 	{name:'Ikoria Crystal (MOM)', value:'Crystal'},
@@ -30,7 +31,7 @@ loadFramePacks([
 	{name:'Zendikar Rising (ZNR)', value:'ZendikarRising'},
 	{name:'M21 Signature Spellbooks (M21)', value:'M21'},
 	{name:'Theros Beyond Death (THB)', value:'M15NyxShowcase'},
-	{name:'Eldraine Storybooks (ELD)', value:'Storybook'},
+	{name:'Eldraine Storybooks: Adventures (ELD)', value:'Storybook'},
 	{name:'Generic Showcase Frames', value:'disabled'},
 	{name:'Borderless', value:'GenericShowcase'},
 	{name:'Borderless (Alt)', value:'Borderless'},

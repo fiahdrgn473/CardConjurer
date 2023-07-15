@@ -2544,7 +2544,7 @@ function writeText(textObject, targetContext) {
 	}
 	if (card.version == 'pokemon') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}{fontsize-20}{fontgillsansbolditalic}');
-	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation') {
+	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation' || card.version == "storybook_mul") {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
