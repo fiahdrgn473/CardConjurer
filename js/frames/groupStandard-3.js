@@ -16,6 +16,7 @@ loadFramePacks([
 	{name:'Battle (March of the Machine)', value:'Battle'},
 	{name:'Prototype (Brothers\' War)', value:'Prototype'},
 	{name:'Prototype (Extended Art) (Brothers\' War)', value:'PrototypeExtended'},
+	{name:'Attractions (Unfinity)', value:'Attraction'},
 	{name:'Class (D&D)', value:'Class'},
 	{name:'Snow (Kaldheim)', value:'M15Snow'},
 	{name:'Mutate (Ikoria)', value:'M15Mutate'},

@@ -15,6 +15,7 @@ const frameNames = new Map ([
 	['Battles (March of the Machine)', 'Battle'],
 	['Prototype (Brothers\' War)', 'Prototype'],
 	['Prototype (Extended Art) (Brothers\' War)', 'PrototypeExtended'],
+	['Attractions (Unfinity)', 'Attraction'],
 	['Class (D&D)', 'Class'],
 	['Snow (Kaldheim)', 'M15Snow'],
 	['Mutate (Ikoria)', 'M15Mutate'],
