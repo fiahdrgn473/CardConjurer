@@ -169,6 +169,7 @@ const frameNames = new Map ([
 	//textless
 	['Kamigawa Basics (NEO)', 'NeoBasics'],
 	['Fullart Basics (2022)', 'TextlessBasics2022'],
+	['Fullart Basics (Universes Beyond)', 'TextlessBasics2022UB'],
 	['Fullart Basics (SNC)', 'TextlessBasicsSNC'],
 	['Fullart Basics (THB)', 'TextlessBasics'],
 	['Fullart Basics (ZEN)', 'ZendikarBasic-1'],
