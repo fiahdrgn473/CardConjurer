@@ -187,6 +187,7 @@ const frameNames = new Map ([
 	['Textless Duals', 'CustomDualLands'],
 	['Seventh Edition Planeswalkers', 'PlaneswalkerSeventh'],
 	['Seventh Edition Sagas', 'OldSaga'],
+	['Seventh Edition Snow Lands', 'SeventhSnowLands'],
 	['Floating Old Border', 'OldFloating'],
 	['Floating Old Border (Short)', 'OldFloatingShort'],
 	['Classicshifted', 'Classicshifted'],
