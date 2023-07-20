@@ -588,6 +588,8 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 			}
 		} else if (colors.length != 0) {
 			rules = colors[0];
+		} else if (style == 'Borderless' && !typeLine.includes('Artifact')) {
+			rules = 'C';
 		} else {
 			rules = 'A';
 		}
@@ -637,6 +639,8 @@ function cardFrameProperties(colors, manaCost, typeLine, power, style) {
 		}
 	} else if (colors.length == 1) {
 		typeTitle = colors[0];
+	} else if (style == 'Borderless' && !typeLine.includes('Artifact')) {
+		typeTitle = 'C';
 	} else {
 		typeTitle = 'A';
 	}
@@ -980,7 +984,7 @@ async function autoBorderlessFrame(colors, mana_cost, type_line, power) {
 	card.frames = [];
 	document.querySelector('#frame-list').innerHTML = null;
 
-	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Borderless');
 	var style = 'regular';
 	if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
 		style = 'Nyx';
@@ -1353,8 +1357,8 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 function makeBorderlessFrameByLetter(letter, mask = false, maskToRightHalf = false, style) {
 	letter = letter.toUpperCase();
 
-	if (letter == 'C' || letter == 'V') {
-		letter = 'L';
+	if (letter == 'V') {
+		letter = 'A';
 	}
 
 	if (letter == 'ML') {
@@ -1371,7 +1375,8 @@ function makeBorderlessFrameByLetter(letter, mask = false, maskToRightHalf = fal
 		'G': 'Green',
 		'M': 'Multicolored',
 		'A': 'Artifact',
-		'L': 'Land'
+		'L': 'Land',
+		'C': 'Colorless'
 	}
 
 	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {

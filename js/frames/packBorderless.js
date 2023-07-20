@@ -11,6 +11,7 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/m15/borderless/m15GenericShowcaseFrameM.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/m15/borderless/m15GenericShowcaseFrameA.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/borderless/m15GenericShowcaseFrameL.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/m15/borderless/m15GenericShowcaseFrameC.png', masks:masks},
 	{name:'White Power/Toughness', src:'/img/frames/m15/borderless/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/borderless/pt/u.png', bounds:bounds},
 	{name:'Black Power/Toughness', src:'/img/frames/m15/borderless/pt/b.png', bounds:bounds},
