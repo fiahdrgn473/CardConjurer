@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'TARDIS (WHO)', value:'TARDIS'},
 	{name:'Ring (LTR)', value:'Ring'},
 	{name:'Eldraine Storybooks (MOM)', value:'StorybookMUL'},
 	{name:'Ixalan Coin (MOM)', value:'IxalanCoin'},

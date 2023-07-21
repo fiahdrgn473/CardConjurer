@@ -2676,6 +2676,7 @@ function writeText(textObject, targetContext) {
 	var textBounded = textObject.bounded || true;
 	var textOneLine = textObject.oneLine || false;
 	var textManaCost = textObject.manaCost || false;
+	var textAllCaps = textObject.allCaps || false;
 	var textManaSpacing = scaleWidth(textObject.manaSpacing) || 0;
 	//Buffers the canvases accordingly
 	var canvasMargin = 300;
@@ -2686,6 +2687,9 @@ function writeText(textObject, targetContext) {
 	//Preps the text string
 	var splitString = '6GJt7eL8';
 	var rawText = textObject.text
+	if (textAllCaps) {
+		rawText = rawText.toUpperCase();
+	}
 	if ((textObject.name == 'wizards' || textObject.name == 'copyright') && params.get('copyright') != null && (params.get('copyright') != '' || card.margins)) {
 		rawText = params.get('copyright'); //so people using CC for custom card games without WotC's IP can customize their copyright info
 		if (rawText == 'none') { rawText = ''; }
@@ -2704,7 +2708,7 @@ function writeText(textObject, targetContext) {
 	}
 	if (card.version == 'pokemon') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}{fontsize-20}{fontgillsansbolditalic}');
-	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation' || card.version == "storybook_mul") {
+	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation' || card.version == "storybook_mul" || card.version == 'tardis') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
