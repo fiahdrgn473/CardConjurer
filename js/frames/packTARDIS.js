@@ -1,6 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [];
 var bounds = {x:115/1500, y:45/2100, width:1270/1500, height:450/2100};
+var stampBounds = {x:662/1500, y:1909/2100, width:176/1500, height:80/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/tardis/w.png', masks:masks},
@@ -19,7 +20,9 @@ availableFrames = [
 	{name:'Green Legendary Crown', src:'/img/frames/tardis/crowns/g.png', bounds:bounds},
 	{name:'Multicolored Legendary Crown', src:'/img/frames/tardis/crowns/m.png', bounds:bounds},
 	{name:'Artifact Legendary Crown', src:'/img/frames/tardis/crowns/a.png', bounds:bounds},
-	{name:'Land Legendary Crown', src:'/img/frames/tardis/crowns/l.png', bounds:bounds}
+	{name:'Land Legendary Crown', src:'/img/frames/tardis/crowns/l.png', bounds:bounds},
+	{name:'Gold Holo Stamp', src: '/img/frames/tardis/stamp.png', bounds:stampBounds},
+	{name:'Gray Holo Stamp', src: '/img/frames/tardis/grayStamp.png', bounds:stampBounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
