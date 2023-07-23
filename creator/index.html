@@ -303,7 +303,7 @@
 								</div>
 							</div>
 							<h5 class='margin-bottom padding input-description'>Or enter a card name</h5>
-							<input id='art-name' type='text' placeholder='Enter Card Name' class='input margin-bottom' onchange='fetchScryfallData(this.value, artFromScryfall, true);'>
+							<input id='art-name' type='text' placeholder='Enter Card Name' class='input margin-bottom' onchange="fetchScryfallData(this.value, artFromScryfall, 'art');">
 							<h5 class='padding margin-bottom input-description'>Select a specific card art to load</h5>
 							<select class='input margin-bottom' id='art-index' onchange='changeArtIndex();'></select>
 							<h5 class='margin-bottom padding input-description'>And credit the artist</h5>
@@ -599,11 +599,15 @@
 					<div id='creator-menu-import' class='hidden'>
 						<div class='readable-background margin-bottom padding'>
 							<h5 class='padding margin-bottom input-description'>Import a real card by name</h5>
-							<input id='import-name' class='input margin-bottom' type='text' onchange='fetchScryfallData(this.value, importCard);' placeholder='Enter Card Name'>
+							<input id='import-name' class='input margin-bottom' type='text' onchange='importChanged();' placeholder='Enter Card Name'>
+							<label class='checkbox-container input margin-bottom'>Include all unique prints as options
+								<input id='importAllPrints' type='checkbox' onchange="importChanged();">
+								<span class='checkmark'></span>
+							</label>
 							<h5 class='padding margin-bottom input-description'>Select a specific card to import</h5>
 							<select class='input margin-bottom' id='import-index' onchange='changeCardIndex();'></select>
 							<h5 class='padding input-description'>Select a language for card imports (not all languages will always be available)</h5>
-							<select class='input' id='import-language' onchange='fetchScryfallData(document.querySelector("#import-name").value, importCard);'>
+							<select class='input' id='import-language' onchange='importChanged();'>
 								<option value="en">English</option>
 								<option value="es">Spanish</option>
 								<option value="fr">French</option>
