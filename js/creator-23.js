@@ -2696,7 +2696,7 @@ function writeText(textObject, targetContext) {
 			rulesText = rawText.substring(0, flavorIndex);
 		}
 
-		rulesText = rulesText.replace(/\([^\)]+\)/, '');
+		rulesText = rulesText.replace(/\([^\)]+\)/g, '');
 
 		rawText = rulesText + flavorText;
 	}
