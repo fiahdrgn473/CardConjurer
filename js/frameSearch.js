@@ -2,6 +2,7 @@ const frameNames = new Map ([
 	//standard
 	['Regular Frames', 'M15Regular-1'],
 	['Legend Crowns', 'M15LegendCrowns'],
+	['Legend Crowns (Etched)', 'LegendCrownsEtched'],
 	['Floating Legend Crowns', 'M15LegendCrownsFloating'],
 	['Inner Crowns', 'M15InnerCrowns'],
 	['Miracle', 'M15Miracle'],
@@ -78,6 +79,7 @@ const frameNames = new Map ([
 	['Full Text', 'FullText'],
 	['Etched (Commander Precons)', 'Etched'],
 	['Etched (Nyx)', 'EtchedNyx'],
+	['Etched (Snow)', 'EtchedSnow'],
 	['ZNR Expeditions (2020)', 'ExpeditionZNR-1'],
 	['Signature Spellbook (Jace/Gideon)', 'SignatureSpellbook'],
 	['Ixalan Maps', 'Ixalan'],
