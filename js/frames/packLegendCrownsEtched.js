@@ -1,7 +1,7 @@
 //Create objects for common properties across available frames
 var masks = [];
 var bounds = {x:0.0307, y:0.0191, width:0.9387, height:0.092};
-var innerCrownBounds = {x:244/1500, y:51/2100, width:1021/1500, height:64/2100};
+var innerCrownBounds = {x:244/1500, y:51/2100, width:1012/1500, height:64/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Legend Crown', src:'/img/frames/etched/regular/crowns/w.png', bounds:bounds, complementary:9},

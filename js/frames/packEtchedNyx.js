@@ -3,7 +3,7 @@ var masks = [{src:'/img/frames/etched/regular/nyx/frame.png', name:'Frame'}, {sr
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:0.42, y:0.9062, width:0.16, height:0.0453};
 var bounds3 = {x:0.0307, y:0.0191, width:0.9387, height:0.092};
-var bounds4 = {x:244/1500, y:51/2100, width:1021/1500, height:64/2100};
+var bounds4 = {x:244/1500, y:51/2100, width:1012/1500, height:64/2100};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/etched/regular/nyx/w.png', masks:masks},
