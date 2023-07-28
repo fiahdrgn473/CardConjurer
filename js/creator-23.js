@@ -2037,6 +2037,8 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 		letter = 'M';
 	} else if (letter.includes('L') && letter.length > 1) {
 		letter = letter[0];
+	} else if (letter == 'V' && mask == 'Crown') {
+		letter = 'A';
 	}
 
 	var frameName = frameNames[letter];
