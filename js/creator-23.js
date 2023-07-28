@@ -1125,10 +1125,20 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	document.querySelector('#frame-list').innerHTML = null;
 
 	var properties = cardFrameProperties(colors, mana_cost, type_line, power, 'Etched');
+	var style = 'regular';
+	if (type_line.toLowerCase().includes('snow')) {
+		style = 'snow';
+	} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+		style = 'Nyx';
+	}
 
 	// Set frames
 
 	if (type_line.includes('Legendary')) {
+		if (style == 'Nyx') {
+			frames.push(makeEtchedFrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+		}
+
 		if (properties.frameRight) {
 			frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Crown', true));
 		}
@@ -1145,9 +1155,9 @@ async function autoEtchedFrame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeEtchedFrameByLetter(properties.rules, 'Rules', false));
 	if (properties.frameRight) {
-		frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Frame', true));
+		frames.push(makeEtchedFrameByLetter(properties.frameRight, 'Frame', true, style));
 	}
-	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false));
+	frames.push(makeEtchedFrameByLetter(properties.frame, 'Frame', false, style));
 	frames.push(makeEtchedFrameByLetter(properties.frame, 'Border', false));
 
 	card.frames = frames;
@@ -2014,7 +2024,7 @@ function makeCircuitFrameByLetter(letter, mask = false, maskToRightHalf = false)
 
 	return frame;
 }
-function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
 	letter = letter.toUpperCase();
 	var frameNames = {
 		'W': 'White',
@@ -2073,6 +2083,22 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 		return frame;
 	}
 
+	if (mask == "Inner Crown") {
+		var frame = {
+			'name': frameName + ' Inner Crown',
+			'src': '/img/frames/etched/regular/innerCrowns/' + style.toLowerCase() + '/' + letter.toLowerCase() + '.png',
+			'masks': [],
+			'bounds': {x:244/1500, y:51/2100, width:1012/1500, height:64/2100}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
 	if (mask == 'PT') {
 		return {
 			'name': frameName + ' Power/Toughness',
@@ -2090,6 +2116,11 @@ function makeEtchedFrameByLetter(letter, mask = false, maskToRightHalf = false) 
 	var frame = {
 		'name': frameName + ' Frame',
 		'src': '/img/frames/etched/regular/' + letter.toLowerCase() + '.png',
+	}
+
+	if (style != 'regular') {
+		frame.src = frame.src.replace('/regular/', '/regular/' + style.toLowerCase() + '/');
+		frame.name = frame.name += ' (' + style +')';
 	}
 
 	if (mask) {

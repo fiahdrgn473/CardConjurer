@@ -33,6 +33,7 @@ loadFramePacks([
 	{name:'M21 Signature Spellbooks (M21)', value:'M21'},
 	{name:'Theros Beyond Death (THB)', value:'M15NyxShowcase'},
 	{name:'Eldraine Storybooks: Adventures (ELD)', value:'Storybook'},
+
 	{name:'Generic Showcase Frames', value:'disabled'},
 	{name:'Borderless', value:'GenericShowcase'},
 	{name:'Borderless (Alt)', value:'Borderless'},
@@ -42,13 +43,19 @@ loadFramePacks([
 	{name:'Extended Art (Shorter Textbox)', value:'M15ExtendedArtShort'},
 	{name:'FNM Promo (Inverted Promos)', value:'FNM'},
 	{name:'Full Text', value:'FullText'},
-	{name:'Etched (Commander Precons)', value:'Etched'},
+
+	{name:'Foil-Etched', value:'disabled'},
+	{name:'Etched', value:'Etched'},
 	{name:'Etched (Nyx)', value:'EtchedNyx'},
 	{name:'Etched (Snow)', value:'EtchedSnow'},
+	{name:'Legend Crowns (Etched)', value:'LegendCrownsEtched'},
+	{name:'Inner Crowns (Etched)', value:'InnerCrownsEtched'},
+
 	{name:'Universes Beyond', value:'disabled'},
 	{name:'Universes Beyond', value:'UB'},
 	{name:'Universes Beyond (Full art)', value:'UBFull'},
 	{name:'Universes Beyond (Extended art)', value:'UBExtendedArt'},
+
 	{name:'Masterpieces/Other', value:'disabled'},
 	{name:'Phyrexian', value:'Praetors'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
@@ -60,10 +67,10 @@ loadFramePacks([
 	{name:'BFZ Expeditions (2015)', value:'ExpeditionBFZ-1'},
 	{name:'SDCC15 (Blackout)', value:'SDCC15'},
 	{name:'Future Shifted', value:'FutureRegular'},
+
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
-	{name:'Legend Crowns (Etched)', value:'LegendCrownsEtched'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Nicknames', value:'M15Nickname-2'},
@@ -72,6 +79,7 @@ loadFramePacks([
 	{name:'Colored Borders', value:'M15Borders'},
 	{name:'Color Identity Pips', value:'M15CIPips'},
 	{name:'"The List" Stamp', value:'TheList'},
+
 	{name:'Custom Addons', value:'disabled'},
 	{name:'Brawl Legend Crowns', value:'Brawl'}
 ])
