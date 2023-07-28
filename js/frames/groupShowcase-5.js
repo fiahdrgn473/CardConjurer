@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Enchanting Tales (WOT)', value:'EnchantingTales'},
 	{name:'TARDIS (WHO)', value:'TARDIS'},
 	{name:'Ring (LTR)', value:'Ring'},
 	{name:'Eldraine Storybooks (MOM)', value:'StorybookMUL'},
