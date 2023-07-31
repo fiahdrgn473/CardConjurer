@@ -73,6 +73,7 @@ loadFramePacks([
 	{name:'Legend Crowns', value:'M15LegendCrowns'},
 	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
 	{name:'Floating Legend Crowns', value:'M15LegendCrownsFloating'},
+	{name:'Floating Legend Crowns (Universes Beyond)', value:'UBLegendCrownsFloating'}
 	{name:'Inner Crowns', value:'M15InnerCrowns'},
 	{name:'Nicknames', value:'M15Nickname-2'},
 	{name:'Holo Stamps', value:'M15HoloStamps'},
