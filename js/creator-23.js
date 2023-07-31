@@ -21,8 +21,27 @@ function setImageUrl(image, source) {
 	image.crossOrigin = 'anonymous';
 	image.src = fixUri(source);
 }
+
+const baseWidth = 1500;
+const baseHeight = 2100;
+const highResScale = 1.34;
+function getStandardWidth() {
+	var value = baseWidth;
+	if (localStorage.getItem('high-res') == 'true') {
+		value *= highResScale;
+	}
+	return value;
+}
+function getStandardHeight() {
+	var value = baseHeight;
+	if (localStorage.getItem('high-res') == 'true') {
+		value *= highResScale;
+	}
+	return value;
+}
+
 //card object
-var card = {width:1500, height:2100, marginX:0, marginY:0, frames:[], artSource:fixUri('/img/blank.png'), artX:0, artY:0, artZoom:1, artRotate:0, setSymbolSource:fixUri('/img/blank.png'), setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:fixUri('/img/blank.png'), watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
+var card = {width:getStandardWidth(), height:getStandardHeight(), marginX:0, marginY:0, frames:[], artSource:fixUri('/img/blank.png'), artX:0, artY:0, artZoom:1, artRotate:0, setSymbolSource:fixUri('/img/blank.png'), setSymbolX:0, setSymbolY:0, setSymbolZoom:1, watermarkSource:fixUri('/img/blank.png'), watermarkX:0, watermarkY:0, watermarkZoom:1, watermarkLeft:'none', watermarkRight:'none', watermarkOpacity:0.4, version:'', manaSymbols:[]};
 //core images/masks
 const black = new Image(); black.crossOrigin = 'anonymous'; black.src = fixUri('/img/black.png');
 const blank = new Image(); blank.crossOrigin = 'anonymous'; blank.src = fixUri('/img/blank.png');
@@ -76,9 +95,10 @@ var date = new Date();
 card.infoYear = date.getFullYear();
 document.querySelector("#info-year").value = card.infoYear;
 //to avoid rerunning special scripts (planeswalker, saga, etc...)
+
 var loadedVersions = [];
 //Card Object managament
-async function resetCardIrregularities({canvas = [1500, 2100, 0, 0], resetOthers = true} = {}) {
+async function resetCardIrregularities({canvas = [getStandardWidth(), getStandardHeight(), 0, 0], resetOthers = true} = {}) {
 	//misc details
 	card.margins = false;
 	card.bottomInfoTranslate = {x:0, y:0};
@@ -3878,7 +3898,7 @@ function drawCard() {
 	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
 	if (!card.noCorners && (card.marginX == 0 && card.marginY == 0)) {
-		var w = card.version == 'battle' ? 2100 : 1500;
+		var w = card.version == 'battle' ? 2100 : getStandardWidth();
 
 		cardContext.drawImage(corner, 0, 0, scaleWidth(59/w), scaleWidth(59/w));
 		cardContext.rotate(Math.PI / 2);
@@ -4678,6 +4698,11 @@ function toggleTextTag(tag) {
 	textEdited();
 }
 
+function toggleHighRes() {
+	localStorage.setItem('high-res', document.querySelector('#high-res').checked);
+	drawCard();
+}
+
 // INITIALIZATION
 
 // auto load frame version (user defaults)
@@ -4685,6 +4710,7 @@ if (!localStorage.getItem('autoLoadFrameVersion')) {
 	localStorage.setItem('autoLoadFrameVersion', document.querySelector('#autoLoadFrameVersion').checked);
 }
 document.querySelector('#autoLoadFrameVersion').checked = 'true' == localStorage.getItem('autoLoadFrameVersion');
+// document.querySelector('#high-res').checked = 'true' == localStorage.getItem('high-res');
 
 // collector info (user defaults)
 var defaultCollector = JSON.parse(localStorage.getItem('defaultCollector') || '{}');

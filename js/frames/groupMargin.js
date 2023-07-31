@@ -13,7 +13,7 @@ loadFramePacks([
 //For multiple Margin packs
 var loadMarginVersion = async () => {
 	//resets things so that every frame doesn't have to
-	await resetCardIrregularities({canvas:[1500, 2100, 0.044, 1/35], resetOthers:false});
+	await resetCardIrregularities({canvas:[getStandardWidth(), getStandardHeight(), 0.044, 1/35], resetOthers:false});
 	//sets card version
 	// card.version = 'margin';
 	card.margins = true;
