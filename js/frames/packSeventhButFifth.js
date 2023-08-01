@@ -47,6 +47,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'fifth';
+	card.showsFlavorBar = false;
 	//art bounds
 	card.artBounds = {x:0.12, y:0.0991, width:0.7667, height:0.4429};
 	autoFitArt();

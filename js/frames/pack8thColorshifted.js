@@ -24,6 +24,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = '8thColorshifted';
+	card.showsFlavorBar = false;
 	//art bounds
 	card.artBounds = {x:0.088, y:0.12, width:0.824, height:0.4348};
 	autoFitArt();

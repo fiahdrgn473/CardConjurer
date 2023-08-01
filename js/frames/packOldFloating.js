@@ -28,6 +28,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'oldFloating';
+	card.showsFlavorBar = false;
 	//art bounds
 	card.artBounds = {x:0, y:0, width:1, height:1};
 	autoFitArt();

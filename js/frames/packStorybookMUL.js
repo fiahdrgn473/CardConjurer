@@ -39,6 +39,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	replacementMasks = {'Right Half':'img/frames/storybook/mul/rightHalf.png'};
 	//sets card version
 	card.version = 'storybook_mul';
+	card.showsFlavorBar = false;
 	//art bounds
 	card.artBounds = {x:54/1500, y:62/2100, width:1398/1500, height:1157/2100};
 	autoFitArt();

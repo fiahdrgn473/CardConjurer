@@ -106,6 +106,7 @@ async function resetCardIrregularities({canvas = [getStandardWidth(), getStandar
 	card.bottomInfoZoom = 1;
 	replacementMasks = {};
 	card.hideBottomInfoBorder = false;
+	card.showsFlavorBar = true;
 	//rotation
 	if (card.landscape) {
 		// previewContext.scale(card.width/card.height, card.height/card.width);
@@ -2775,7 +2776,7 @@ function writeText(textObject, targetContext) {
 	}
 	if (card.version == 'pokemon') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}{fontsize-20}{fontgillsansbolditalic}');
-	} else if (autoFramePack == 'Seventh' || autoFramePack == '8th' || card.version == 'invocation' || card.version == "storybook_mul" || card.version == 'tardis') {
+	} else if (!card.showsFlavorBar) {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');

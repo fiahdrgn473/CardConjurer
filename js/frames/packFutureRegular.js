@@ -33,6 +33,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'futureRegular';
+	card.showsFlavorBar = false;
 	loadScript('/js/frames/manaSymbolsFuture.js');
 	// notify('The Future version adds special mana symbols. To use them, place an "F" before the following mana symbols: wubrg, 0-20, x, and hybrid mana symbols.');
 	//art bounds

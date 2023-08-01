@@ -10,6 +10,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'legends';
+	card.showsFlavorBar = false;
 	loadScript('/js/frames/manaSymbolsOld.js');
 	//art bounds
 	card.artBounds = {x:0.1074, y:0.0924, width:0.7854, height:0.4524};

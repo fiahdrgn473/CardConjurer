@@ -32,6 +32,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'invocation';
+	card.showsFlavorBar = false;
 	loadScript('/js/frames/manaSymbolsOutline.js');
 	//art bounds
 	card.artBounds = {x:173/1500, y:313/2100, width:1150/1500, height:819/2100};

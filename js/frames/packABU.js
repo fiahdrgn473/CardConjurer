@@ -28,6 +28,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'abu';
+	card.showsFlavorBar = false;
 	loadScript('/js/frames/manaSymbolsOld.js');
 	//art bounds
 	card.artBounds = {x:0.116, y:0.1043, width:0.7654, height:0.441};

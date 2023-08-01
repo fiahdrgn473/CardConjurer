@@ -32,6 +32,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'tardis';
+	card.showsFlavorBar = false;
 	//art bounds
 	card.artBounds = {x:115/1500, y:264/2100, width:1271/1500, height:898/2100};
 	autoFitArt();
