@@ -19,6 +19,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	await resetCardIrregularities();
 	//sets card version
 	card.version = 'enchantingTales';
+	card.hideBottomInfoBorder = true;
 	//art bounds
 	card.artBounds = {x:0, y:111/2100, width:1, height:1821/2100};
 	autoFitArt();
