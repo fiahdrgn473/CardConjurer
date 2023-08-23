@@ -814,6 +814,12 @@ function autoFrame() {
 	if (frame == 'M15Regular-1') {
 		autoM15Frame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 		group = 'Standard-3';
+	} else if (frame == 'M15Eighth') {
+		autoM15EighthFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		group = 'Custom';
+	} else if (frame == 'M15EighthUB') {
+		autoM15EighthUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		group = 'Custom';
 	} else if (frame == 'UB') {
 		autoUBFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 		group = 'Showcase-5';
@@ -989,6 +995,116 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	}
 	frames.push(makeM15FrameByLetter(properties.frame, 'Frame', false, style));
 	frames.push(makeM15FrameByLetter(properties.frame, 'Border', false, style));
+
+	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
+		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
+	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoM15EighthFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+	var style = 'regular';
+	if (type_line.toLowerCase().includes('snow')) {
+		style = 'snow';
+	} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+		style = 'Nyx';
+	}
+
+	// Set frames
+	if (type_line.includes('Legendary')) {
+		if (style == 'Nyx') {
+			frames.push(makeM15FrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+		}
+
+		if (properties.pinlineRight) {
+			frames.push(makeM15FrameByLetter(properties.pinlineRight, 'Crown', true, style));
+		}
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown", false, style));
+		frames.push(makeM15FrameByLetter(properties.pinline, "Crown Border Cover", false, style));
+	}
+	if (properties.pt) {
+		frames.push(makeM15EighthFrameByLetter(properties.pt, 'PT', false, style));
+	}
+	if (properties.pinlineRight) {
+		frames.push(makeM15EighthFrameByLetter(properties.pinlineRight, 'Pinline', true, style));
+	}
+	frames.push(makeM15EighthFrameByLetter(properties.pinline, 'Pinline', false, style));
+	frames.push(makeM15EighthFrameByLetter(properties.typeTitle, 'Type', false, style));
+	frames.push(makeM15EighthFrameByLetter(properties.typeTitle, 'Title', false, style));
+	if (properties.pinlineRight) {
+		frames.push(makeM15EighthFrameByLetter(properties.rulesRight, 'Rules', true, style));
+	}
+	frames.push(makeM15EighthFrameByLetter(properties.rules, 'Rules', false, style));
+	if (properties.frameRight) {
+		frames.push(makeM15EighthFrameByLetter(properties.frameRight, 'Frame', true, style));
+	}
+	frames.push(makeM15EighthFrameByLetter(properties.frame, 'Frame', false, style));
+	frames.push(makeM15EighthFrameByLetter(properties.frame, 'Border', false, style));
+
+	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
+		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
+	}
+
+	card.frames = frames;
+	card.frames.reverse();
+	await card.frames.forEach(item => addFrame([], item));
+	card.frames.reverse();
+}
+async function autoM15EighthUBFrame(colors, mana_cost, type_line, power) {
+	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+
+	//clear the draggable frames
+	card.frames = [];
+	document.querySelector('#frame-list').innerHTML = null;
+
+	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
+	var style = 'regular';
+	if (type_line.toLowerCase().includes('snow')) {
+		style = 'snow';
+	} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+		style = 'Nyx';
+	}
+
+	// Set frames
+	if (type_line.includes('Legendary')) {
+		if (style == 'Nyx') {
+			frames.push(makeM15FrameByLetter(properties.innerCrown, 'Inner Crown', false, style));
+		}
+
+		if (properties.pinlineRight) {
+			frames.push(makeM15EighthUBFrameByLetter(properties.pinlineRight, 'Crown', true, style));
+		}
+		frames.push(makeM15EighthUBFrameByLetter(properties.pinline, "Crown", false, style));
+		frames.push(makeM15EighthUBFrameByLetter(properties.pinline, "Crown Border Cover", false, style));
+	}
+	if (properties.pt) {
+		frames.push(makeM15EighthUBFrameByLetter(properties.pt, 'PT', false, style));
+	}
+	if (properties.pinlineRight) {
+		frames.push(makeM15EighthUBFrameByLetter(properties.pinlineRight, 'Pinline', true, style));
+	}
+	frames.push(makeM15EighthUBFrameByLetter(properties.pinline, 'Pinline', false, style));
+	frames.push(makeM15EighthUBFrameByLetter(properties.typeTitle, 'Type', false, style));
+	frames.push(makeM15EighthUBFrameByLetter(properties.typeTitle, 'Title', false, style));
+	if (properties.pinlineRight) {
+		frames.push(makeM15EighthUBFrameByLetter(properties.rulesRight, 'Rules', true, style));
+	}
+	frames.push(makeM15EighthUBFrameByLetter(properties.rules, 'Rules', false, style));
+	if (properties.frameRight) {
+		frames.push(makeM15EighthUBFrameByLetter(properties.frameRight, 'Frame', true, style));
+	}
+	frames.push(makeM15EighthUBFrameByLetter(properties.frame, 'Frame', false, style));
+	frames.push(makeM15EighthUBFrameByLetter(properties.frame, 'Border', false, style));
 
 	if (card.text.pt && type_line.includes('Vehicle') && !card.text.pt.text.includes('fff')) {
 		card.text.pt.text = '{fontcolor#fff}' + card.text.pt.text;
@@ -1373,6 +1489,272 @@ function makeM15FrameByLetter(letter, mask = false, maskToRightHalf = false, sty
 				'name': mask
 			}
 		]
+
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeM15EighthFrameByLetter(letter, mask = false, maskToRightHalf = false, style = 'regular') {
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Border Cover',
+			'src': '/img/black.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0177,
+				'width': 0.9214,
+				'x': 0.0394,
+				'y': 0.0277
+			}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/m15/crowns/m15Crown' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1667,
+				'width': 0.9454,
+				'x': 0.0274,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == "Inner Crown") {
+		var frame = {
+			'name': frameName + ' ' + mask + ' (' + style + ')',
+			'src': '/img/frames/m15/innerCrowns/m15InnerCrown' + letter + style + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0239,
+				'width': 0.672,
+				'x': 0.164,
+				'y': 0.0239
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/regular/m15PT' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0733,
+				'width': 0.188,
+				'x': 0.7573,
+				'y': 1901/2100
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/custom/m15-eighth/' + style.toLowerCase() + '/' + letter.toLowerCase() + '.png',
+	}
+
+	if (style != 'regular') {
+		frame.name = style.charAt(0).toUpperCase() + style.slice(1) + ' ' + frame.name;
+	}
+
+	if (mask) {
+		if (mask.toLowerCase() == 'border' || mask.toLowerCase() == 'frame') {
+			frame.masks = [
+				{
+					'src': '/img/frames/custom/m15-eighth/regular/' + mask + '.png',
+					'name': mask
+				}
+			]
+		} else {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+					'name': mask
+				}
+			]
+		}
+
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+	} else {
+		frame.masks = [];
+	}
+
+	return frame;
+}
+function makeM15EighthUBFrameByLetter(letter, mask = false, maskToRightHalf = false) {
+	letter = letter.toUpperCase();
+	var frameNames = {
+		'W': 'White',
+		'U': 'Blue',
+		'B': 'Black',
+		'R': 'Red',
+		'G': 'Green',
+		'M': 'Multicolored',
+		'A': 'Artifact',
+		'L': 'Land',
+		'C': 'Colorless',
+		'V': 'Vehicle',
+		'WL': 'White Land',
+		'UL': 'Blue Land',
+		'BL': 'Black Land',
+		'RL': 'Red Land',
+		'GL': 'Green Land',
+		'ML': 'Multicolored Land'
+	}
+
+	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
+		letter = letter[0];
+	}
+
+	var frameName = frameNames[letter];
+
+	if (mask == "Crown Border Cover") {
+		return {
+			'name': 'Legend Crown Border Cover',
+			'src': '/img/black.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0177,
+				'width': 0.9214,
+				'x': 0.0394,
+				'y': 0.0277
+			}
+		}
+	}
+
+	if (mask == "Crown") {
+		var frame = {
+			'name': frameName + ' Legend Crown',
+			'src': '/img/frames/m15/ub/crowns/m15Crown' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.1667,
+				'width': 0.9454,
+				'x': 0.0274,
+				'y': 0.0191
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == "Inner Crown") {
+		var frame = {
+			'name': frameName + ' ' + mask + ' (' + style + ')',
+			'src': '/img/frames/m15/innerCrowns/m15InnerCrown' + letter + style + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0239,
+				'width': 0.672,
+				'x': 0.164,
+				'y': 0.0239
+			}
+		}
+		if (maskToRightHalf) {
+			frame.masks.push({
+				'src': '/img/frames/maskRightHalf.png',
+				'name': 'Right Half'
+			});
+		}
+		return frame;
+	}
+
+	if (mask == 'PT') {
+		return {
+			'name': frameName + ' Power/Toughness',
+			'src': '/img/frames/m15/ub/pt/' + letter + '.png',
+			'masks': [],
+			'bounds': {
+				'height': 0.0733,
+				'width': 0.188,
+				'x': 0.7573,
+				'y': 1901/2100
+			}
+		}
+	}
+
+	var frame = {
+		'name': frameName + ' Frame',
+		'src': '/img/frames/custom/m15-eighth/ub/' + letter.toLowerCase() + '.png',
+	}
+
+	if (mask) {
+		if (mask.toLowerCase() == 'border' || mask.toLowerCase() == 'frame') {
+			frame.masks = [
+				{
+					'src': '/img/frames/custom/m15-eighth/regular/' + mask + '.png',
+					'name': mask
+				}
+			]
+		} else {
+			frame.masks = [
+				{
+					'src': '/img/frames/m15/regular/m15Mask' + mask + '.png',
+					'name': mask
+				}
+			]
+		}
 
 		if (maskToRightHalf) {
 			frame.masks.push({
