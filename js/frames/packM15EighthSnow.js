@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/custom/m15-eighth/regular/frame.png', name:'Frame'}, {src:'/img/frames/custom/m15-eighth/regular/border.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/m15MaskTitle.png', name:'Title'}, {src:'/img/frames/m15/regular/m15MaskType.png', name:'Type'}, {src:'/img/frames/m15/regular/m15MaskRules.png', name:'Rules'}, {src:'/img/frames/custom/m15-eighth/regular/Frame.png', name:'Frame'}, {src:'/img/frames/custom/m15-eighth/regular/Border.png', name:'Border'}];
 var bounds = {x:0.7573, y:1901/2100, width:0.188, height:0.0733};
 var watermarkBounds = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
 //defines available frames
