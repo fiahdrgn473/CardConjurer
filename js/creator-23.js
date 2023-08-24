@@ -25,19 +25,25 @@ function setImageUrl(image, source) {
 const baseWidth = 1500;
 const baseHeight = 2100;
 const highResScale = 1.34;
+// function getStandardWidth() {
+// 	var value = baseWidth;
+// 	if (localStorage.getItem('high-res') == 'true') {
+// 		value *= highResScale;
+// 	}
+// 	return value;
+// }
+// function getStandardHeight() {
+// 	var value = baseHeight;
+// 	if (localStorage.getItem('high-res') == 'true') {
+// 		value *= highResScale;
+// 	}
+// 	return value;
+// }
 function getStandardWidth() {
-	var value = baseWidth;
-	if (localStorage.getItem('high-res') == 'true') {
-		value *= highResScale;
-	}
-	return value;
+	return 2010;
 }
 function getStandardHeight() {
-	var value = baseHeight;
-	if (localStorage.getItem('high-res') == 'true') {
-		value *= highResScale;
-	}
-	return value;
+	return 2814;
 }
 
 //card object
