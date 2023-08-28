@@ -13,6 +13,7 @@ availableFrames = [
 	{name:'Artifact Frame', src:'/img/frames/m15/ub/regular/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/ub/regular/l.png', masks:masks},
 	{name:'Vehicle Frame', src:'/img/frames/m15/ub/regular/v.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/m15/ub/regular/c.png', masks:masks},
 	{name:'White Land Frame', src:'/img/frames/m15/ub/regular/wl.png', masks:masks},
 	{name:'Blue Land Frame', src:'/img/frames/m15/ub/regular/ul.png', masks:masks},
 	{name:'Black Land Frame', src:'/img/frames/m15/ub/regular/bl.png', masks:masks},
