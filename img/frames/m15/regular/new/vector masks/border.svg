@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2015" height="2814" viewBox="0 0 2015 2814">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Border" class="cls-1" d="M0,2814V0H2015V2814H0Zm1935-552V118a38,38,0,0,0-38-38H118a38,38,0,0,0-38,38V2354a195.292,195.292,0,0,0,53,134.02V2613H1882V2488.02A195.315,195.315,0,0,0,1935,2354v-92Z"/>
+</svg>
