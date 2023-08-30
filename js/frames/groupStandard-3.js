@@ -23,6 +23,7 @@ loadFramePacks([
 	{name:'Attractions (Unfinity)', value:'Attraction'},
 	{name:'Class (D&D)', value:'Class'},
 	{name:'Snow (Kaldheim)', value:'M15Snow'},
+	{name:'Snow (Kaldheim) (Redone)', value:'SnowNew'},
 	{name:'Mutate (Ikoria)', value:'M15Mutate'},
 	{name:'Nyx (Theros)', value:'M15Nyx'},
 	{name:'Nyx (Theros) (Redone)', value:'M15NyxNew'},

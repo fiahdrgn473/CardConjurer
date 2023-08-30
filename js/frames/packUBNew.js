@@ -17,8 +17,8 @@ availableFrames = [
 
 	{name:'White Land Frame', src:'/img/frames/m15/regular/new/ub/lw.png', masks:masks},
 	{name:'Blue Land Frame', src:'/img/frames/m15/regular/new/ub/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/ub/regular/new/ub/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/new/ub/lr.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/regular/new/ub/lb.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/regular/new/ub/lr.png', masks:masks},
 	{name:'Green Land Frame', src:'/img/frames/m15/regular/new/ub/lg.png', masks:masks},
 	{name:'Multicolored Land Frame', src:'/img/frames/m15/regular/new/ub/lm.png', masks:masks},
 
