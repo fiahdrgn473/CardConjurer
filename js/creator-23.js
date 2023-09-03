@@ -133,7 +133,7 @@ async function resetCardIrregularities({canvas = [getStandardWidth(), getStandar
 		}
 	});
 	if (resetOthers) {
-		setBottomInfoStyle();		
+		setBottomInfoStyle();
 		//onload
 		card.onload = null;
 	}
@@ -3808,7 +3808,11 @@ async function addTextbox(textboxType) {
 }
 //ART TAB
 function uploadArt(imageSource, otherParams) {
-	art.src = imageSource;
+	if (!imageSource.includes('http')) {
+		art.src = '/local_art/' + imageSource;
+	} else {
+		art.src = imageSource;
+	}
 	if (otherParams && otherParams == 'autoFit') {
 		art.onload = function() {
 			autoFitArt();
@@ -4289,8 +4293,8 @@ function drawCard() {
 	} else {
 		cardContext.drawImage(bottomInfoCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	}
-	
-	
+
+
 	// cutout the corners
 	cardContext.globalCompositeOperation = 'destination-out';
 	if (!card.noCorners && (card.marginX == 0 && card.marginY == 0)) {
@@ -4376,7 +4380,7 @@ function scryfallCardFromText(text) {
 	}
 
 	lines = lines.map(item => item.trim()).filter(item => item != "");
-  
+
   	var name = lines.shift();
   	var manaCost;
   	var manaCostStartIndex = name.indexOf("{");
@@ -4384,26 +4388,26 @@ function scryfallCardFromText(text) {
   	  manaCost = name.substring(manaCostStartIndex).trim();
   	  name = name.substring(0, manaCostStartIndex).trim();
   	}
-  
+
  	 var cardObject = {
  	   "name": name,
  	   "lang": "en"
  	 };
-  	
+
  	 if (manaCost !== undefined) {
   	  cardObject.mana_cost = manaCost;
  	 }
-  	
+
   	if (lines.count == 0) {
   	  return cardObject;
   	}
-  	
+
  	 cardObject.type_line = lines.shift().trim();
-  
+
   if (lines.count == 0) {
     return cardObject;
   }
-  
+
   var regex = /[0-9+\-*]+\/[0-9+*]+/
   var match = lines[lines.length-1].match(regex);
   if (match) {
@@ -4412,13 +4416,13 @@ function scryfallCardFromText(text) {
     cardObject.toughness = pt[1];
     lines.pop();
   }
-  
+
   if (lines.count == 0) {
     return cardObject;
   }
-  
+
   cardObject.oracle_text = lines.join("\n");
-  
+
   return cardObject;
 }
 
@@ -4441,7 +4445,7 @@ function changeCardIndex() {
 		});
 		rulesText = curlyQuotes(rulesText).replace(/{Q}/g, '{untap}').replace(/{\u221E}/g, "{inf}").replace(/• /g, '• {indent}');
 		rulesText = rulesText.replace('(If this card is your chosen companion, you may put it into your hand from outside the game for {3} any time you could cast a sorcery.)', '(If this card is your chosen companion, you may put it into your hand from outside the game for {3} as a sorcery.)')
-		
+
 		if (card.version == 'pokemon') {
 			if (cardToImport.type_line.toLowerCase().includes('creature')) {
 				card.text.rules.text = langFontCode + rulesText;
@@ -4473,11 +4477,11 @@ function changeCardIndex() {
 				card.text.middleStatTitle.text = '';
 				card.text.rightStatTitle.text = '';
 			}
-			
+
 		} else {
 			card.text.rules.text = langFontCode + rulesText;
 		}
-		
+
 		if (cardToImport.flavor_text) {
 			var flavorText = cardToImport.flavor_text;
 			var flavorTextCounter = 1;
@@ -4508,7 +4512,7 @@ function changeCardIndex() {
 					}
 					card.text.rulesnoncreature.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 				}
-				
+
 			} else {
 				if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
 					card.text.rules.text += '{i}';
@@ -4518,7 +4522,7 @@ function changeCardIndex() {
 				card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 			}
 
-			
+
 		}
 	}
 
@@ -4613,7 +4617,7 @@ function changeCardIndex() {
 						document.querySelector('#info-number').value = number;
 					}
 
-					
+
 					bottomInfoEdited();
 				}
 			}
