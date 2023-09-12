@@ -1017,7 +1017,7 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	card.frames.reverse();
 }
 async function autoM15NewFrame(colors, mana_cost, type_line, power, isUB = false) {
-	var frames = card.frames.filter(frame => frame.name.includes('Extension'));
+	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp'));
 
 	//clear the draggable frames
 	card.frames = [];
@@ -1049,6 +1049,14 @@ async function autoM15NewFrame(colors, mana_cost, type_line, power, isUB = false
 		frames.push(makeM15NewFrameByLetter(properties.pinline, "Crown", false, style));
 		frames.push(makeM15NewFrameByLetter(properties.pinline, "Crown Border Cover", false, style));
 	}
+
+	if (style == 'ub') {
+		if (properties.pinlineRight) {
+			frames.push(makeM15NewFrameByLetter(properties.pinlineRight, 'Stamp', true, style));
+		}
+		frames.push(makeM15NewFrameByLetter(properties.pinline, "Stamp", false, style));
+	}
+
 	if (properties.pt) {
 		frames.push(makeM15NewFrameByLetter(properties.pt, 'PT', false, style));
 	}
@@ -1664,6 +1672,22 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 			});
 		}
 		return frame;
+	} else if (mask == "Stamp") {
+		if (style == 'ub') {
+			var frame = {
+				'name': frameName + ' Holo Stamp',
+				'src': '/img/frames/m15/regular/new/ub/stamp/' + letter.toLowerCase() + '.png',
+				'masks': [],
+				'bounds': {x:857/2015, y:2534/2814, width:299/2015, height:137/2814}
+			}
+			if (maskToRightHalf) {
+				frame.masks.push({
+					'src': '/img/frames/maskRightHalf.png',
+					'name': 'Right Half'
+				});
+			}
+			return frame;
+		}
 	}
 
 	if (mask == 'PT') {
