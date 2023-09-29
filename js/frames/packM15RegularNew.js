@@ -11,7 +11,7 @@ availableFrames = [
 	{name:'Multicolored Frame', src:'/img/frames/m15/regular/new/m.png', masks:masks},
 	{name:'Artifact Frame', src:'/img/frames/m15/regular/new/a.png', masks:masks},
 	{name:'Land Frame', src:'/img/frames/m15/regular/new/l.png', masks:masks},
-	{name:'Eldrazi Frame', src:'/img/frames/m15/regular/c.png', masks:masks},
+	{name:'Eldrazi Frame', src:'/img/frames/m15/regular/new/c.png', masks:masks},
 	{name:'Vehicle Frame', src:'/img/frames/m15/regular/new/v.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
