@@ -111,8 +111,6 @@ async function resetCardIrregularities({canvas = [getStandardWidth(), getStandar
 	card.bottomInfoRotate = 0;
 	card.bottomInfoZoom = 1;
 	replacementMasks = {};
-	card.hideBottomInfoBorder = false;
-	card.showsFlavorBar = true;
 	//rotation
 	if (card.landscape) {
 		// previewContext.scale(card.width/card.height, card.height/card.width);
@@ -136,6 +134,9 @@ async function resetCardIrregularities({canvas = [getStandardWidth(), getStandar
 		setBottomInfoStyle();		
 		//onload
 		card.onload = null;
+		
+		card.hideBottomInfoBorder = false;
+		card.showsFlavorBar = true;
 	}
 }
 async function setBottomInfoStyle() {
