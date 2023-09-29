@@ -44,19 +44,20 @@ loadFramePacks([
 	{name:'Extended Art (Shorter Textbox)', value:'M15ExtendedArtShort'},
 	{name:'FNM Promo (Inverted Promos)', value:'FNM'},
 	{name:'Full Text', value:'FullText'},
-
 	{name:'Foil-Etched', value:'disabled'},
 	{name:'Etched', value:'Etched'},
 	{name:'Etched (Nyx)', value:'EtchedNyx'},
 	{name:'Etched (Snow)', value:'EtchedSnow'},
 	{name:'Legend Crowns (Etched)', value:'LegendCrownsEtched'},
 	{name:'Inner Crowns (Etched)', value:'InnerCrownsEtched'},
-
+	
 	{name:'Universes Beyond', value:'disabled'},
 	{name:'Universes Beyond', value:'UB'},
 	{name:'Universes Beyond (Full art)', value:'UBFull'},
 	{name:'Universes Beyond (Extended art)', value:'UBExtendedArt'},
-
+	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
+	{name:'Floating Legend Crowns (Universes Beyond)', value:'UBLegendCrownsFloating'},
+	
 	{name:'Masterpieces/Other', value:'disabled'},
 	{name:'Phyrexian', value:'Praetors'},
 	{name:'ZNR Expeditions (2020)', value:'ExpeditionZNR-1'},
