@@ -815,7 +815,7 @@ function autoFrame() {
 		group = 'Standard-3';
 	} else if (frame == 'M15RegularNew') {
 		autoM15NewFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
-		group = 'Standard-3';
+		group = 'Accurate';
 	} else if (frame == 'M15Eighth') {
 		autoM15EighthFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 		group = 'Custom';
@@ -827,7 +827,10 @@ function autoFrame() {
 		group = 'Showcase-5';
 	} else if (frame == 'UBNew') {
 		autoUBNewFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
-		group = 'Showcase-5';
+		group = 'Accurate';
+	} else if (frame == 'FullArtNew') {
+		autoFullArtNewFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
+		group = 'Accurate';
 	} else if (frame == 'Circuit') {
 		autoCircuitFrame(colors, card.text.mana.text, card.text.type.text, card.text.pt.text);
 		group = 'Custom';
@@ -910,7 +913,10 @@ async function autoUBFrame(colors, mana_cost, type_line, power) {
 	card.frames.reverse();
 }
 async function autoUBNewFrame(colors, mana_cost, type_line, power) {
-	autoM15NewFrame(colors, mana_cost, type_line, power, true);
+	autoM15NewFrame(colors, mana_cost, type_line, power, 'ub');
+}
+async function autoFullArtNewFrame(colors, mana_cost, type_line, power) {
+	autoM15NewFrame(colors, mana_cost, type_line, power, 'fullart');
 }
 async function autoCircuitFrame(colors, mana_cost, type_line, power) {
 	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp') || frame.name.includes('Gold Holo Stamp'));
@@ -1016,21 +1022,25 @@ async function autoM15Frame(colors, mana_cost, type_line, power) {
 	await card.frames.forEach(item => addFrame([], item));
 	card.frames.reverse();
 }
-async function autoM15NewFrame(colors, mana_cost, type_line, power, isUB = false) {
-	var frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp'));
+async function autoM15NewFrame(colors, mana_cost, type_line, power, style = 'regular') {
+	var frames;
+	if (style == 'ub') {
+		frames = card.frames.filter(frame => frame.name.includes('Extension') || frame.name.includes('Gray Holo Stamp'));
+	} else {
+		frames = card.frames.filter(frame => frame.name.includes('Extension'));
+	}
 
 	//clear the draggable frames
 	card.frames = [];
 	document.querySelector('#frame-list').innerHTML = null;
 
 	var properties = cardFrameProperties(colors, mana_cost, type_line, power);
-	var style = 'regular';
-	if (isUB) {
-		style = 'ub';
-	} else if (type_line.toLowerCase().includes('snow')) {
-		style = 'snow';
-	} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
-		style = 'Nyx';
+	if (style != 'ub' && style != 'fullart') {
+	 	if (type_line.toLowerCase().includes('snow')) {
+			style = 'snow';
+		} else if (type_line.toLowerCase().includes('enchantment creature') || type_line.toLowerCase().includes('enchantment artifact')) {
+			style = 'Nyx';
+		}
 	}
 
 	// Set frames
@@ -1624,7 +1634,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 	}
 
 	if ((mask.includes('Crown') || mask == 'PT' || mask.includes('Stamp')) && letter.includes('L') && letter.length > 1) {
-		letter = letter[0];
+		letter = letter[1];
 	}
 
 	var frameName = frameNames[letter];

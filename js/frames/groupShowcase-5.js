@@ -53,11 +53,9 @@ loadFramePacks([
 	
 	{name:'Universes Beyond', value:'disabled'},
 	{name:'Universes Beyond', value:'UB'},
-	{name:'Universes Beyond (Redone)', value:'UBNew'},
 	{name:'Universes Beyond (Full art)', value:'UBFull'},
 	{name:'Universes Beyond (Extended art)', value:'UBExtendedArt'},
 	{name:'Legend Crowns (Universes Beyond)', value:'UBLegendCrowns'},
-	{name:'Legend Crowns (Universes Beyond) (Redone)', value:'UBLegendCrownsNew'},
 	{name:'Floating Legend Crowns (Universes Beyond)', value:'UBLegendCrownsFloating'},
 	
 	{name:'Masterpieces/Other', value:'disabled'},
