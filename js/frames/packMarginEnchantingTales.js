@@ -8,6 +8,7 @@ availableFrames = [
 	{name:'Black Extension', src:'/img/frames/enchantingTales/margin/b.png', bounds:bounds, ogBounds:ogBounds},
 	{name:'Red Extension', src:'/img/frames/enchantingTales/margin/r.png', bounds:bounds, ogBounds:ogBounds},
 	{name:'Green Extension', src:'/img/frames/enchantingTales/margin/g.png', bounds:bounds, ogBounds:ogBounds},
+	{name:'Multicolored Extension', src:'/img/frames/enchantingTales/margin/m.png', bounds:bounds, ogBounds:ogBounds},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
