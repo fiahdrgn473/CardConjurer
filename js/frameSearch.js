@@ -68,6 +68,7 @@ const frameNames = new Map ([
 	['M21 Signature Spellbooks (M21)', 'M21'],
 	['Theros Beyond Death (THB)', 'M15NyxShowcase'],
 	['Eldraine Storybooks: Adventures (ELD)', 'Storybook'],
+	['Eldraine Storybooks: Adventures (WOE)', 'StorybookWOE'],
 	['Eldraine Storybooks (MOM)', 'StorybookMUL'],
 	['Borderless', 'GenericShowcase'],
 	['Borderless (Alt)', 'Borderless'],
