@@ -1,23 +1,23 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/new/title.png', name:'Title'}, {src:'/img/frames/m15/regular/new/type.png', name:'Type'}, {src:'/img/frames/m15/regular/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/regular/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/regular/new/border.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/new/title.png', name:'Title'}, {src:'/img/frames/m15/new/type.png', name:'Type'}, {src:'/img/frames/m15/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/new/border.png', name:'Border'}];
 var bounds = {x:0.3267, y:0.6491, width:0.3474, height:0.2496};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/regular/new/snow/w.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/regular/new/snow/u.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/regular/new/snow/b.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/regular/new/snow/r.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/regular/new/snow/g.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/regular/new/snow/m.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/regular/new/snow/a.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/m15/regular/new/snow/l.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/m15/new/snow/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/new/snow/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/new/snow/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/new/snow/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/new/snow/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/new/snow/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/new/snow/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/new/snow/l.png', masks:masks},
 
-	{name:'White Land Frame', src:'/img/frames/m15/regular/new/snow/lw.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/m15/regular/new/snow/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/regular/new/snow/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/regular/new/snow/lr.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/regular/new/snow/lg.png', masks:masks},
-	{name:'Multicolored Land Frame', src:'/img/frames/m15/regular/new/snow/lm.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/m15/new/snow/lw.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/m15/new/snow/lu.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/new/snow/lb.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/new/snow/lr.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/m15/new/snow/lg.png', masks:masks},
+	{name:'Multicolored Land Frame', src:'/img/frames/m15/new/snow/lm.png', masks:masks},
 
 	{name:'Green Land Frame', src:'/img/frames/m15/snow/gl.png', masks:masks},
 	{name:'Plains Watermark', src:'/img/frames/snow/watermarks/w.png', bounds:bounds},

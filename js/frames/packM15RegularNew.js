@@ -1,18 +1,18 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/new/title.png', name:'Title'}, {src:'/img/frames/m15/regular/new/type.png', name:'Type'}, {src:'/img/frames/m15/regular/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/regular/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/regular/new/border.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/new/title.png', name:'Title'}, {src:'/img/frames/m15/new/type.png', name:'Type'}, {src:'/img/frames/m15/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/new/border.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/regular/new/w.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/regular/new/u.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/regular/new/b.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/regular/new/r.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/regular/new/g.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/regular/new/m.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/regular/new/a.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/m15/regular/new/l.png', masks:masks},
-	{name:'Eldrazi Frame', src:'/img/frames/m15/regular/new/c.png', masks:masks},
-	{name:'Vehicle Frame', src:'/img/frames/m15/regular/new/v.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/m15/new/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/new/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/new/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/new/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/new/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/new/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/new/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/new/l.png', masks:masks},
+	{name:'Eldrazi Frame', src:'/img/frames/m15/new/c.png', masks:masks},
+	{name:'Vehicle Frame', src:'/img/frames/m15/new/v.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
@@ -24,12 +24,12 @@ availableFrames = [
 	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds},
 	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/regular/m15PTV.png', bounds:bounds},
 
-	{name:'White Land Frame', src:'/img/frames/m15/regular/new/lw.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/m15/regular/new/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/regular/new/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/regular/new/lr.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/regular/new/lg.png', masks:masks},
-	{name:'Multicolored Land Frame', src:'/img/frames/m15/regular/new/lm.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/m15/new/lw.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/m15/new/lu.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/new/lb.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/new/lr.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/m15/new/lg.png', masks:masks},
+	{name:'Multicolored Land Frame', src:'/img/frames/m15/new/lm.png', masks:masks},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

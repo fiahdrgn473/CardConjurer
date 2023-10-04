@@ -1,26 +1,26 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/new/title.png', name:'Title'}, {src:'/img/frames/m15/regular/new/type.png', name:'Type'}, {src:'/img/frames/m15/regular/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/regular/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/regular/new/border.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/new/title.png', name:'Title'}, {src:'/img/frames/m15/new/type.png', name:'Type'}, {src:'/img/frames/m15/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/new/border.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 var bounds2 = {x:857/2015, y:2534/2814, width:299/2015, height:137/2814};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/regular/new/ub/w.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/regular/new/ub/u.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/regular/new/ub/b.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/regular/new/ub/r.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/regular/new/ub/g.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/regular/new/ub/m.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/regular/new/ub/a.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/m15/regular/new/ub/l.png', masks:masks},
-	{name:'Vehicle Frame', src:'/img/frames/m15/regular/new/ub/v.png', masks:masks},
-	{name:'Colorless Frame', src:'/img/frames/m15/regular/new/ub/c.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/m15/new/ub/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/new/ub/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/new/ub/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/new/ub/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/new/ub/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/new/ub/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/new/ub/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/new/ub/l.png', masks:masks},
+	{name:'Vehicle Frame', src:'/img/frames/m15/new/ub/v.png', masks:masks},
+	{name:'Colorless Frame', src:'/img/frames/m15/new/ub/c.png', masks:masks},
 
-	{name:'White Land Frame', src:'/img/frames/m15/regular/new/ub/lw.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/m15/regular/new/ub/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/regular/new/ub/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/regular/new/ub/lr.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/regular/new/ub/lg.png', masks:masks},
-	{name:'Multicolored Land Frame', src:'/img/frames/m15/regular/new/ub/lm.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/m15/new/ub/lw.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/m15/new/ub/lu.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/new/ub/lb.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/new/ub/lr.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/m15/new/ub/lg.png', masks:masks},
+	{name:'Multicolored Land Frame', src:'/img/frames/m15/new/ub/lm.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/m15/ub/pt/w.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/ub/pt/u.png', bounds:bounds},
@@ -32,15 +32,15 @@ availableFrames = [
 	{name:'Colorless Power/Toughness', src:'/img/frames/m15/ub/pt/c.png', bounds:bounds},
 	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/ub/pt/v.png', bounds:bounds},
 
-	{name:'White Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/w.png', bounds:bounds2},
-	{name:'Blue Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/u.png', bounds:bounds2},
-	{name:'Black Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/b.png', bounds:bounds2},
-	{name:'Red Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/r.png', bounds:bounds2},
-	{name:'Green Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/g.png', bounds:bounds2},
-	{name:'Multicolored Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/m.png', bounds:bounds2},
-	{name:'Artifact Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/a.png', bounds:bounds2},
-	{name:'Land Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/l.png', bounds:bounds2},
-	{name:'Gray Holo Stamp', src:'/img/frames/m15/regular/new/ub/stamp/gray.png', bounds:bounds2}
+	{name:'White Holo Stamp', src:'/img/frames/m15/new/ub/stamp/w.png', bounds:bounds2},
+	{name:'Blue Holo Stamp', src:'/img/frames/m15/new/ub/stamp/u.png', bounds:bounds2},
+	{name:'Black Holo Stamp', src:'/img/frames/m15/new/ub/stamp/b.png', bounds:bounds2},
+	{name:'Red Holo Stamp', src:'/img/frames/m15/new/ub/stamp/r.png', bounds:bounds2},
+	{name:'Green Holo Stamp', src:'/img/frames/m15/new/ub/stamp/g.png', bounds:bounds2},
+	{name:'Multicolored Holo Stamp', src:'/img/frames/m15/new/ub/stamp/m.png', bounds:bounds2},
+	{name:'Artifact Holo Stamp', src:'/img/frames/m15/new/ub/stamp/a.png', bounds:bounds2},
+	{name:'Land Holo Stamp', src:'/img/frames/m15/new/ub/stamp/l.png', bounds:bounds2},
+	{name:'Gray Holo Stamp', src:'/img/frames/m15/new/ub/stamp/gray.png', bounds:bounds2}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

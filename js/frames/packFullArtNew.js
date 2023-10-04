@@ -1,18 +1,18 @@
 //Create objects for common properties across available frames
-var masks = [{src:'/img/frames/m15/regular/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/regular/new/title.png', name:'Title'}, {src:'/img/frames/m15/regular/new/type.png', name:'Type'}, {src:'/img/frames/m15/regular/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/regular/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/regular/new/border.png', name:'Border'}];
+var masks = [{src:'/img/frames/m15/new/pinline.png', name:'Pinline'}, {src:'/img/frames/m15/new/title.png', name:'Title'}, {src:'/img/frames/m15/new/type.png', name:'Type'}, {src:'/img/frames/m15/new/rules.png', name:'Rules'}, {src:'/img/frames/m15/new/frame.png', name:'Frame'}, {src:'/img/frames/m15/new/border.png', name:'Border'}];
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'White Frame', src:'/img/frames/m15/regular/new/fullart/w.png', masks:masks},
-	{name:'Blue Frame', src:'/img/frames/m15/regular/new/fullart/u.png', masks:masks},
-	{name:'Black Frame', src:'/img/frames/m15/regular/new/fullart/b.png', masks:masks},
-	{name:'Red Frame', src:'/img/frames/m15/regular/new/fullart/r.png', masks:masks},
-	{name:'Green Frame', src:'/img/frames/m15/regular/new/fullart/g.png', masks:masks},
-	{name:'Multicolored Frame', src:'/img/frames/m15/regular/new/fullart/m.png', masks:masks},
-	{name:'Artifact Frame', src:'/img/frames/m15/regular/new/fullart/a.png', masks:masks},
-	{name:'Land Frame', src:'/img/frames/m15/regular/new/fullart/l.png', masks:masks},
-	{name:'Eldrazi Frame', src:'/img/frames/m15/regular/new/fullart/c.png', masks:masks},
-	{name:'Vehicle Frame', src:'/img/frames/m15/regular/new/fullart/v.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/m15/new/fullart/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/new/fullart/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/new/fullart/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/new/fullart/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/new/fullart/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/new/fullart/m.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/new/fullart/a.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/new/fullart/l.png', masks:masks},
+	{name:'Eldrazi Frame', src:'/img/frames/m15/new/fullart/c.png', masks:masks},
+	{name:'Vehicle Frame', src:'/img/frames/m15/new/fullart/v.png', masks:masks},
 
 	{name:'White Power/Toughness', src:'/img/frames/m15/regular/m15PTW.png', bounds:bounds},
 	{name:'Blue Power/Toughness', src:'/img/frames/m15/regular/m15PTU.png', bounds:bounds},
@@ -24,12 +24,12 @@ availableFrames = [
 	{name:'Colorless Power/Toughness', src:'/img/frames/m15/regular/m15PTC.png', bounds:bounds},
 	{name:'Vehicle Power/Toughness', src:'/img/frames/m15/regular/m15PTV.png', bounds:bounds},
 
-	{name:'White Land Frame', src:'/img/frames/m15/regular/new/fullart/lw.png', masks:masks},
-	{name:'Blue Land Frame', src:'/img/frames/m15/regular/new/fullart/lu.png', masks:masks},
-	{name:'Black Land Frame', src:'/img/frames/m15/regular/new/fullart/lb.png', masks:masks},
-	{name:'Red Land Frame', src:'/img/frames/m15/regular/new/fullart/lr.png', masks:masks},
-	{name:'Green Land Frame', src:'/img/frames/m15/regular/new/fullart/lg.png', masks:masks},
-	{name:'Multicolored Land Frame', src:'/img/frames/m15/regular/new/fullart/lm.png', masks:masks},
+	{name:'White Land Frame', src:'/img/frames/m15/new/fullart/lw.png', masks:masks},
+	{name:'Blue Land Frame', src:'/img/frames/m15/new/fullart/lu.png', masks:masks},
+	{name:'Black Land Frame', src:'/img/frames/m15/new/fullart/lb.png', masks:masks},
+	{name:'Red Land Frame', src:'/img/frames/m15/new/fullart/lr.png', masks:masks},
+	{name:'Green Land Frame', src:'/img/frames/m15/new/fullart/lg.png', masks:masks},
+	{name:'Multicolored Land Frame', src:'/img/frames/m15/new/fullart/lm.png', masks:masks},
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;

@@ -1686,7 +1686,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 		if (style == 'ub') {
 			var frame = {
 				'name': frameName + ' Holo Stamp',
-				'src': '/img/frames/m15/regular/new/ub/stamp/' + letter.toLowerCase() + '.png',
+				'src': '/img/frames/m15/new/ub/stamp/' + letter.toLowerCase() + '.png',
 				'masks': [],
 				'bounds': {x:857/2015, y:2534/2814, width:299/2015, height:137/2814}
 			}
@@ -1724,7 +1724,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 	}
 	var frame = {
 		'name': frameName + ' Frame',
-		'src': '/img/frames/m15/regular/new/' + stylePath + letter + '.png',
+		'src': '/img/frames/m15/new/' + stylePath + letter + '.png',
 	}
 
 	// if (letter.includes('L') && letter.length > 1) {
@@ -1734,7 +1734,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 	if (mask) {
 		frame.masks = [
 			{
-				'src': '/img/frames/m15/regular/new/' + mask.toLowerCase() + '.png',
+				'src': '/img/frames/m15/new/' + mask.toLowerCase() + '.png',
 				'name': mask
 			}
 		]
