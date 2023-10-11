@@ -50,6 +50,7 @@ const frameNames = new Map ([
 	['Ninja (NEO)', 'NeoNinja'],
 	['Samurai (NEO)', 'NeoSamurai'],
 	['Neon (NEO)', 'NeoNeon'],
+	['Double Feature (DBL)', 'DoubleFeature'],
 	['Fang (VOW)', 'Fang'],
 	['Equinox: Single-faced (MID)', 'Equinox'],
 	['Equinox: DFC Front (MID)', 'EquinoxFront'],

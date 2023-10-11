@@ -17,6 +17,7 @@ loadFramePacks([
 	{name:'Ninja (NEO)', value:'NeoNinja'},
 	{name:'Samurai (NEO)', value:'NeoSamurai'},
 	{name:'Neon (NEO)', value:'NeoNeon'},
+	{name:'Double Feature (DBL)', value:'DoubleFeature'},
 	{name:'Fang (VOW)', value:'Fang'},
 	{name:'Equinox: Single-faced (MID)', value:'Equinox'},
 	{name:'Equinox: DFC Front (MID)', value:'EquinoxFront'},
