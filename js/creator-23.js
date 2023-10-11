@@ -4490,6 +4490,9 @@ function drawCard() {
 	cardContext.save();
 	cardContext.translate(scaleX(card.artX), scaleY(card.artY));
 	cardContext.rotate(Math.PI / 180 * (card.artRotate || 0));
+	if (document.querySelector('#grayscale-art').checked) {
+		cardContext.filter='grayscale(1)';
+	}
 	cardContext.drawImage(art, 0, 0, art.width * card.artZoom, art.height * card.artZoom);
 	cardContext.restore();
 	// frame elements
