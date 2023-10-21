@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Regular Frames', value:'M15RegularNew'},
+	{name:'Extended Art Frames', value:'M15ExtendedArtNew'},
 
 	{name:'Addons', value:'disabled'},
 	{name:'Legend Crowns', value:'M15LegendCrownsNew'},
