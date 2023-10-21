@@ -3,8 +3,18 @@ var masks = [{src:'/img/frames/m15/regular/m15MaskPinline.png', name:'Pinline'},
 var bounds = {x:0.7573, y:0.8848, width:0.188, height:0.0733};
 //defines available frames
 availableFrames = [
-	{name:'Invention Frame', src:'/img/frames/m15/invention/inventionFrameA.png', masks:masks},
+	{name:'Artifact Frame', src:'/img/frames/m15/invention/mul/a.png', masks:masks},
+	{name:'White Frame', src:'/img/frames/m15/invention/mul/w.png', masks:masks},
+	{name:'Blue Frame', src:'/img/frames/m15/invention/mul/u.png', masks:masks},
+	{name:'Black Frame', src:'/img/frames/m15/invention/mul/b.png', masks:masks},
+	{name:'Red Frame', src:'/img/frames/m15/invention/mul/r.png', masks:masks},
+	{name:'Green Frame', src:'/img/frames/m15/invention/mul/g.png', masks:masks},
+	{name:'Multicolored Frame', src:'/img/frames/m15/invention/mul/m.png', masks:masks},
+	{name:'Land Frame', src:'/img/frames/m15/invention/mul/l.png', masks:masks},
+
 	{name:'Invention Power/Toughness', src:'/img/frames/m15/invention/inventionPT.png', bounds:bounds},
+
+	{name:'Original Invention Frame', src:'/img/frames/m15/invention/inventionFrameA.png', masks:masks},
 	{name:'Silver Frame', src:'/img/frames/m15/invention/a.png', masks:masks},
 	{name:'Silver Power/Toughness', src:'/img/frames/m15/invention/apt.png', bounds:bounds},
 	{name:'Phyrexian Frame', src:'/img/frames/m15/invention/phyrexian.png', masks:masks},
@@ -32,10 +42,10 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//text
 	loadTextOptions({
 		mana: {name:'Mana Cost', text:'', y:0.0613, width:0.9292, height:71/2100, oneLine:true, size:71/1638, align:'right', shadowX:-0.001, shadowY:0.0029, manaCost:true, manaSpacing:0},
-		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0381, shadow:'white', shadowX:-0.0007, shadowY:0.0005},
-		type: {name:'Type', text:'', x:0.0854, y:0.5664, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0324, shadow:'white', shadowX:-0.0007, shadowY:0.0005},
+		title: {name:'Title', text:'', x:0.0854, y:0.0522, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0381},
+		type: {name:'Type', text:'', x:0.0854, y:0.5664, width:0.8292, height:0.0543, oneLine:true, font:'belerenb', size:0.0324},
 		rules: {name:'Rules Text', text:'', x:0.086, y:0.6303, width:0.828, height:0.2875, size:0.0362},
-		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center', shadow:'white', shadowX:-0.0007, shadowY:0.0005}
+		pt: {name:'Power/Toughness', text:'', x:0.7928, y:0.902, width:0.1367, height:0.0372, size:0.0372, font:'belerenbsc', oneLine:true, align:'center'}
 	});
 }
 //loads available frames
