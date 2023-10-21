@@ -18,7 +18,7 @@ availableFrames = [
 	{name:'Black Power/Toughness', src:'/img/frames/doubleFeature/pt/b.png', bounds:bounds},
 	{name:'Red Power/Toughness', src:'/img/frames/doubleFeature/pt/r.png', bounds:bounds},
 	{name:'Green Power/Toughness', src:'/img/frames/doubleFeature/pt/g.png', bounds:bounds},
-	{name:'Multicolored Power/Toughness', src:'/img/frames/doubleFeature/pt/m.png', bounds:bounds},
+	{name:'Green Power/Toughness', src:'/img/frames/doubleFeature/pt/m.png', bounds:bounds},
 	{name:'Artifact Power/Toughness', src:'/img/frames/doubleFeature/pt/a.png', bounds:bounds},
 	{name:'Land Power/Toughness', src:'/img/frames/doubleFeature/pt/l.png', bounds:bounds},
 
@@ -47,7 +47,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	//sets card version
 	card.version = 'm15DBL';
 	//art bounds
-	card.artBounds = {x:0.0767, y:0.1129, width:0.8476, height:0.4429};
+	card.artBounds = {x:155/2010, y:319/2814, width:1700/2010, height:1242/2814};
 	autoFitArt();
 	//set symbol bounds
 	card.setSymbolBounds = {x:0.9213, y:0.5910, width:0.12, height:0.0410, vertical:'center', horizontal: 'right'};
