@@ -35,6 +35,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
+	['Scrolls of Middle-earth (LTR)', 'Scroll'],
 	['Enchanting Tales (WOT)', 'EnchantingTales'],
 	['TARDIS (WHO)', 'TARDIS'],
 	['Ring (LTR)', 'Ring'],
@@ -112,6 +113,7 @@ const frameNames = new Map ([
 	//saga
 	['Sagas', 'SagaRegular'],
 	['Sagas (Universes Beyond)', 'SagaUB'],
+	['Sagas (Scrolls of Middle-earth) (LTR)', 'SagaLTR'],
 	//dfc
 	['Transform (Front)', 'M15TransformFront'],
 	['Transform (Back)', 'M15TransformBack'],

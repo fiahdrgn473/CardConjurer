@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Scrolls of Middle-earth (LTR)', value:'Scroll'},
 	{name:'Enchanting Tales (WOT)', value:'EnchantingTales'},
 	{name:'Eldraine Storybooks: Adventures (WOE)', value:'StorybookWOE'},
 	{name:'TARDIS (WHO)', value:'TARDIS'},
