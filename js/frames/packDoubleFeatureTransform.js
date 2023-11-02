@@ -4,6 +4,7 @@ var ciMasks = [{src:'/img/frames/m15/ciPips/firstHalf.svg', name:'First Half'}, 
 var bounds = {x:1555/2010, y:2492/2814, width:353/2010, height:179/2814};
 var crownBounds = {x:0, y:0, width:1, height:341/2814};
 var iconBounds = {x:0.0594, y:0.0505, width:0.0734, height:0.0524};
+var stampBounds = {x:873/2010, y:2539/2814, width:264/2010, height:131/2814};
 //defines available frames
 availableFrames = [
 	{name:'White Frame', src:'/img/frames/doubleFeature/transform/w.png', masks:masks},
@@ -53,7 +54,15 @@ availableFrames = [
 	{name:'Black Pip', src:'/img/frames/m15/ciPips/b.svg', masks:ciMasks, complementary:43},
 	{name:'Red Pip', src:'/img/frames/m15/ciPips/r.svg', masks:ciMasks, complementary:43},
 	{name:'Green Pip', src:'/img/frames/m15/ciPips/g.svg', masks:ciMasks, complementary:43},
-	{name:'Color Identity Pip Base', src:'/img/frames/m15/ciPips/base.png', bounds:{x:0.0767, y:0.5748, width:0.0467, height:0.0334}}
+	{name:'Color Identity Pip Base', src:'/img/frames/m15/ciPips/base.png', bounds:{x:0.0767, y:0.5748, width:0.0467, height:0.0334}},
+
+	{name:'Holo Stamp', src:'/img/frames/doubleFeature/stamps/stamp.png', bounds:stampBounds},
+	{name:'White Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/w.png', bounds:stampBounds},
+	{name:'Blue Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/u.png', bounds:stampBounds},
+	{name:'Black Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/b.png', bounds:stampBounds},
+	{name:'Red Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/r.png', bounds:stampBounds},
+	{name:'Green Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/g.png', bounds:stampBounds},
+	{name:'Multicolored Land Holo Stamp', src:'/img/frames/doubleFeature/stamps/m.png', bounds:stampBounds}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
