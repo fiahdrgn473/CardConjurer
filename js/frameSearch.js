@@ -95,6 +95,7 @@ const frameNames = new Map ([
 	['Kaladesh Inventions', 'Invention'],
 	['BFZ Expeditions (2015)', 'ExpeditionBFZ-1'],
 	['SDCC15 (Blackout)', 'SDCC15'],
+	['Innistrad: Double Feature Planeswalkers', 'PlaneswalkerDBL'],
 	['Future Shifted', 'FutureRegular'],
 	//planeswalker
 	['Planeswalker', 'PlaneswalkerRegular'],
