@@ -3,6 +3,7 @@ loadFramePacks([
 	{name:'Textless', value:'TokenTextless-1'},
 	{name:'Textless (Borderless)', value:'TokenTextlessBorderless'},
 	{name:'Tall', value:'TokenTall-1'},
+	{name:'Short', value:'TokenShort-1'},
 	{name:'Monarch Token', value:'TokenMonarch'},
 	{name:'Initiative Token', value:'TokenInitiative'},
 	{name:'Day/Night Marker', value:'TokenDayNight'},

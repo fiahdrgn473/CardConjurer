@@ -147,6 +147,7 @@ const frameNames = new Map ([
 	['Textless Tokens', 'TokenTextless-1'],
 	['Borderless Textless Tokens', 'TokenTextlessBorderless'],
 	['Tall Tokens', 'TokenTall-1'],
+	['Short Tokens', 'TokenShort-1'],
 	['Monarch Token', 'TokenMonarch'],
 	['Initiative Token', 'TokenInitiative'],
 	['Day/Night Marker', 'TokenDayNight'],
