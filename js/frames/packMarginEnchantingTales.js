@@ -1,5 +1,5 @@
 //Create objects for common properties across available frames
-var bounds = {x:-0.044, y:-1/35, width:1.088, height:37/35};
+var bounds = {x:-0.044, y:-1/35, width:2186/2010, height:2974/2814};
 var ogBounds = {x:0, y:0, width:1, height:1};
 //defines available frames
 availableFrames = [
