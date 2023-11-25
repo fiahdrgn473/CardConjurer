@@ -21,7 +21,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	// Notification
 	//resets things so that every frame doesn't have to
 	var previousCardHeight = card.height
-	await resetCardIrregularities({canvas:[2100, 1500, 0, 0]});
+	await resetCardIrregularities({canvas:[2814, 2010, 0, 0]});
 	replacementMasks = {'Right Half':'/img/frames/m15/battle/maskRightHalf.png'};
 	//sets card version
 	card.version = 'battle';
@@ -51,7 +51,7 @@ document.querySelector('#loadFrameVersion').onclick = async function() {
 	if (card.text.rules.text == '') {
 		card.text.rules.text = '{i}(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it’s defeated, exile it, then cast it transformed.){/i}\n';
 	}
-	card.bottomInfoTranslate = {x: -92, y:-2100};
+	card.bottomInfoTranslate = {x: -123, y:-2814};
 	card.bottomInfoRotate = 90;
 	card.bottomInfoZoom = 1.4;
 }
