@@ -4220,6 +4220,13 @@ function artStopDrag(e) {
 //SET SYMBOL TAB
 function uploadSetSymbol(imageSource, otherParams) {
 	setSymbol.src = imageSource;
+	// For "height=100% width=100%" svgs
+	if (setSymbol.width == 0) {
+		setSymbol.width = 100
+	}
+	if (setSymbol.height == 0) {
+		setSymbol.height = 100
+	}
 	if (otherParams && otherParams == 'resetSetSymbol') {
 		setSymbol.onload = function() {
 			resetSetSymbol();
