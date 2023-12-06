@@ -4220,13 +4220,6 @@ function artStopDrag(e) {
 //SET SYMBOL TAB
 function uploadSetSymbol(imageSource, otherParams) {
 	setSymbol.src = imageSource;
-	// For "height=100% width=100%" svgs
-	if (setSymbol.width == 0) {
-		setSymbol.width = 100
-	}
-	if (setSymbol.height == 0) {
-		setSymbol.height = 100
-	}
 	if (otherParams && otherParams == 'resetSetSymbol') {
 		setSymbol.onload = function() {
 			resetSetSymbol();
@@ -4251,21 +4244,25 @@ function resetSetSymbol() {
 	document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x));
 	document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y));
 	var setSymbolZoom;
-	if (setSymbol.width / setSymbol.height > scaleWidth(card.setSymbolBounds.width) / scaleHeight(card.setSymbolBounds.height)) {
-		setSymbolZoom = (scaleWidth(card.setSymbolBounds.width) / setSymbol.width * 100).toFixed(1);
+	var setSymbolWidth = setSymbol.width;
+	if (setSymbolWidth == 0) setSymbolWidth = 100;
+	var setSymbolHeight = setSymbol.height;
+	if (setSymbolHeight == 0) setSymbolHeight = 100;
+	if (setSymbol.width / setSymbolHeight > scaleWidth(card.setSymbolBounds.width) / scaleHeight(card.setSymbolBounds.height)) {
+		setSymbolZoom = (scaleWidth(card.setSymbolBounds.width) / setSymbolWidth * 100).toFixed(1);
 	} else {
-		setSymbolZoom = (scaleHeight(card.setSymbolBounds.height) / setSymbol.height * 100).toFixed(1);
+		setSymbolZoom = (scaleHeight(card.setSymbolBounds.height) / setSymbolHeight * 100).toFixed(1);
 	}
 	document.querySelector('#setSymbol-zoom').value = setSymbolZoom;
 	if (card.setSymbolBounds.horizontal == 'center') {
-		document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x) - (setSymbol.width * setSymbolZoom / 100) / 2 - scaleWidth(card.marginX));
+		document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x) - (setSymbolWidth * setSymbolZoom / 100) / 2 - scaleWidth(card.marginX));
 	} else if (card.setSymbolBounds.horizontal == 'right') {
-		document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x) - (setSymbol.width * setSymbolZoom / 100) - scaleWidth(card.marginX));
+		document.querySelector('#setSymbol-x').value = Math.round(scaleX(card.setSymbolBounds.x) - (setSymbolWidth * setSymbolZoom / 100) - scaleWidth(card.marginX));
 	}
 	if (card.setSymbolBounds.vertical == 'center') {
-		document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y) - (setSymbol.height * setSymbolZoom / 100) / 2 - scaleHeight(card.marginY));
+		document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y) - (setSymbolHeight * setSymbolZoom / 100) / 2 - scaleHeight(card.marginY));
 	} else if (card.setSymbolBounds.vertical == 'bottom') {
-		document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y) - (setSymbol.height * setSymbolZoom / 100) - scaleHeight(card.marginY));
+		document.querySelector('#setSymbol-y').value = Math.round(scaleY(card.setSymbolBounds.y) - (setSymbolHeight * setSymbolZoom / 100) - scaleHeight(card.marginY));
 	}
 	setSymbolEdited();
 }
@@ -4531,7 +4528,11 @@ function drawCard() {
 	// text
 	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// set symbol
-	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
+	var setSymbolWidth = setSymbol.width;
+	if (setSymbolWidth == 0) setSymbolWidth = 100;
+	var setSymbolHeight = setSymbol.height;
+	if (setSymbolHeight == 0) setSymbolHeight = 100;
+	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbolWidth * card.setSymbolZoom, setSymbolHeight * card.setSymbolZoom)
 	// bottom info
 	if (card.bottomInfoTranslate) {
 		cardContext.save();
