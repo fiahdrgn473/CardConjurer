@@ -42,7 +42,7 @@ const frameNames = new Map ([
 	['Ring (LTR)', 'Ring'],
 	['Ixalan Coin (MOM)', 'IxalanCoin'],
 	['Ikoria Crystal (MOM)', 'Crystal'],
-	['Ravnica Architecture (MOM)', 'Ravnica'],
+	['Ravnica City (MOM)', 'Ravnica'],
 	['Tarkir Sketch (MOM)', 'Tarkir'],
 	['Oil Slick (ONE)', 'OilSlick'],
 	['Stained Glass (DMU)', 'DMUStainedGlass'],

@@ -9,7 +9,7 @@ loadFramePacks([
 	{name:'Ixalan Coin (MOM)', value:'IxalanCoin'},
 	{name:'Tarkir Sketch (MOM)', value:'Tarkir'},
 	{name:'Ikoria Crystal (MOM)', value:'Crystal'},
-	{name:'Ravnica Architecture (MOM)', value:'Ravnica'},
+	{name:'Ravnica City (MOM)', value:'Ravnica'},
 	{name:'Oil Slick (ONE)', value:'OilSlick'},
 	{name:'Stained Glass (DMU)', value:'DMUStainedGlass'},
 	{name:'Golden Age (SNC)', value:'SNCGilded'},
