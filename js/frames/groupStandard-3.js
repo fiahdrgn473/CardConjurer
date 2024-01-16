@@ -13,6 +13,7 @@ loadFramePacks([
 	{name:'"The List" Stamp', value:'TheList'},
 	{name:'Other Frames', value:'disabled'},
 	{name:'Lands', value:'M15Lands'},
+	{name:'Cases (Murders at Karlov Manor)', value:'Case'},
 	{name:'Battle (March of the Machine)', value:'Battle'},
 	{name:'Prototype (Brothers\' War)', value:'Prototype'},
 	{name:'Prototype (Extended Art) (Brothers\' War)', value:'PrototypeExtended'},
