@@ -4679,8 +4679,8 @@ function changeCardIndex() {
 	if (card.text.nickname) {card.text.nickname.text = cardToImport.flavor_name || '';}
 	if (card.text.mana) {card.text.mana.text = cardToImport.mana_cost || '';}
 	if (card.text.type) {card.text.type.text = langFontCode + cardToImport.type_line || '';}
-	if (card.text.rules) {
-		var italicExemptions = ['Boast', 'Cycling', 'Visit', 'Prize', 'I', 'II', 'III', 'IV', 'I, II', 'II, III', 'III, IV', 'I, II, III', 'II, III, IV', 'I, II, III, IV', '• Khans', '• Dragons', '• Mirran', '• Phyrexian', 'Prototype', 'Companion'];
+	if (card.text.rules || card.text.case) {
+		var italicExemptions = ['Boast', 'Cycling', 'Visit', 'Prize', 'I', 'II', 'III', 'IV', 'I, II', 'II, III', 'III, IV', 'I, II, III', 'II, III, IV', 'I, II, III, IV', '• Khans', '• Dragons', '• Mirran', '• Phyrexian', 'Prototype', 'Companion', 'To solve', 'Solved'];
 		var rulesText = (cardToImport.oracle_text || '').replace(/(?:\((?:.*?)\)|[^"\n]+(?= — ))/g, function(a){
 		    if (italicExemptions.includes(a)) {return a;}
 		    return '{i}' + a + '{/i}';
@@ -4720,6 +4720,9 @@ function changeCardIndex() {
 				card.text.rightStatTitle.text = '';
 			}
 			
+		} else if (card.version == 'case') {
+			rulesText = rulesText.replace(/(\r\n|\r|\n)/g, '//{bar}//');
+			card.text.case.text = langFontCode + rulesText;
 		} else {
 			card.text.rules.text = langFontCode + rulesText;
 		}

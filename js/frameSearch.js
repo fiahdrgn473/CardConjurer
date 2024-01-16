@@ -16,6 +16,7 @@ const frameNames = new Map ([
 	['Color Identity Pips', 'M15CIPips'],
 	['"The List" Stamp', 'TheList'],
 	['Lands', 'M15Lands'],
+	['Cases (Murders at Karlov Manor)', 'Case'],
 	['Battles (March of the Machine)', 'Battle'],
 	['Prototype (Brothers\' War)', 'Prototype'],
 	['Prototype (Extended Art) (Brothers\' War)', 'PrototypeExtended'],
