@@ -36,6 +36,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
+	['Dossier (MKM)', 'Dossier'],
 	['Scrolls of Middle-earth (LTR)', 'Scroll'],
 	['Enchanting Tales (WOT)', 'EnchantingTales'],
 	['TARDIS (WHO)', 'TARDIS'],

@@ -111,6 +111,10 @@
 	font-family: gillsansbolditalic;
 	src: url('../fonts/Gill Sans Bold Italic.otf') format('opentype');
 }
+@font-face {
+	font-family: specialelite;
+	src: url('../fonts/SpecialElite-Regular.ttf') format('truetype');
+}
 /*Variables*/
 :root {
 	--site-background: url('../img/lowpolyBackground.svg');
