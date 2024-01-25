@@ -17,7 +17,9 @@ availableFrames = [
 	{name:'Black Legendary Crown', src:'/img/frames/dossier/crown/b.png', bounds: crownBounds},
 	{name:'Red Legendary Crown', src:'/img/frames/dossier/crown/r.png', bounds: crownBounds},
 	{name:'Green Legendary Crown', src:'/img/frames/dossier/crown/g.png', bounds: crownBounds},
-	{name:'Artifact Legendary Crown', src:'/img/frames/dossier/crown/a.png', bounds: crownBounds}
+	{name:'Artifact Legendary Crown', src:'/img/frames/dossier/crown/a.png', bounds: crownBounds},
+
+	{name:'Holo Stamp', src:'/img/frames/dossier/stamp.png', bounds: {x:857/2010, y:2540/2814, width:295/2010, height:134/2814}}
 ];
 //disables/enables the "Load Frame Version" button
 document.querySelector('#loadFrameVersion').disabled = false;
