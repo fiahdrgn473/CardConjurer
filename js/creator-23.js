@@ -3397,7 +3397,7 @@ function writeText(textObject, targetContext) {
 		rawText = rawText.replace(/{cardname}|~/ig, getInlineCardName());
 	}
 	if (document.querySelector('#info-artist').value == '') {
-		rawText = rawText.replace('\uFFEE{elemidinfo-artist}', '');
+		rawText = rawText.replace('\uFFEE{savex2}{elemidinfo-artist}', '');
 	}
 	if (rawText.includes('///')) {
 		rawText = rawText.replace(/\/\/\//g, '{flavor}');
