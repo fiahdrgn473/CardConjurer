@@ -1724,7 +1724,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 	}
 	var frame = {
 		'name': frameName + ' Frame',
-		'src': '/img/frames/m15/new/' + stylePath + letter + '.png',
+		'src': '/img/frames/m15/new/' + stylePath + letter.toLowerCase() + '.png',
 	}
 
 	// if (letter.includes('L') && letter.length > 1) {
