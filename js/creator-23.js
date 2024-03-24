@@ -1704,6 +1704,7 @@ function makeM15NewFrameByLetter(letter, mask = false, maskToRightHalf = false, 
 		var path = '/img/frames/m15/regular/m15PT';
 		if (style == 'ub') {
 			path = '/img/frames/m15/ub/pt/';
+			letter = letter.toLowerCase();
 		}
 		return {
 			'name': frameName + ' Power/Toughness',
