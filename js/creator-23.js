@@ -4235,6 +4235,7 @@ function setSymbolEdited() {
 	if (document.querySelector('#lockSetSymbolURL').checked) {
 		localStorage.setItem('lockSetSymbolURL', card.setSymbolSource);
 	}
+	localStorage.setItem('set-symbol-source', document.querySelector('#set-symbol-source').value);
 	card.setSymbolX = document.querySelector('#setSymbol-x').value / card.width;
 	card.setSymbolY = document.querySelector('#setSymbol-y').value / card.height;
 	card.setSymbolZoom = document.querySelector('#setSymbol-zoom').value / 100;
@@ -4275,9 +4276,12 @@ function fetchSetSymbol() {
 		uploadSetSymbol(fixUri(`/img/setSymbols/custom/${setCode.toLowerCase()}-${setRarity}.png`), 'resetSetSymbol');
 	} else if (['cc', 'logan', 'joe'].includes(setCode.toLowerCase())) {
 		uploadSetSymbol(fixUri(`/img/setSymbols/custom/${setCode.toLowerCase()}-${setRarity}.svg`), 'resetSetSymbol');
-	} else if (document.querySelector("#fetchSetSymbolFromGatherer").checked) {
+	} else if (document.querySelector("#set-symbol-source").value == 'gatherer') {
 		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
 		uploadSetSymbol('http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set=' + setCode + '&size=large&rarity=' + setRarity, 'resetSetSymbol');
+	} else if (document.querySelector("#set-symbol-source").value == 'hexproof') {
+		if (setSymbolAliases.has(setCode.toLowerCase())) setCode = setSymbolAliases.get(setCode.toLowerCase());
+		uploadSetSymbol('https://api.hexproof.io/symbols/set/' + setCode + '/' + setRarity, 'resetSetSymbol');
 	} else {
 		var extension = 'svg';
 		if (['moc', 'ltr', 'ltc', 'cmm', 'who', 'scd', 'woe', 'wot', 'woc', 'lci', 'lcc'].includes(setCode.toLowerCase())) {
@@ -5402,6 +5406,9 @@ if (!localStorage.getItem('autoFit')) {
 // lock set symbol code (user defaults)
 if (!localStorage.getItem('lockSetSymbolCode')) {
 	localStorage.setItem('lockSetSymbolCode', '');
+}
+if (localStorage.getItem('set-symbol-source')) {
+	document.querySelector('#set-symbol-source').value = localStorage.getItem('set-symbol-source');
 }
 document.querySelector('#lockSetSymbolCode').checked = '' != localStorage.getItem('lockSetSymbolCode');
 if (document.querySelector('#lockSetSymbolCode').checked) {
