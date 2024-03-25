@@ -4127,11 +4127,9 @@ function artFromScryfall(scryfallResponse) {
 
 		// Find the art that matches the selected print
 		var index = artIllustrations.indexOf(illustrationID);
-		if (index >= 0) {
-			console.log("Art index should be " + index);
-		} else {
+		if (index < 0) {
+			// Couldn't find art
 			index = 0;
-			console.log("Couldn't find art")
 		}
 
 		// Use that art
