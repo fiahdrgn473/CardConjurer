@@ -1,5 +1,6 @@
 loadFramePacks([
 	{name:'Generic Margins', value:'Margin-1'},
+	{name:'Wanted Margin', value:'MarginWanted'},
 	{name:'Enchanting Tales Margins', value:'MarginEnchantingTales'},
 	{name:'LTR Ring Margins', value:'MarginRing'},
 	{name:'D&D Module Margins', value:'MarginDNDModule'},
