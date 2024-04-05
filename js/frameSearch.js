@@ -38,7 +38,7 @@ const frameNames = new Map ([
 	['Colorshifted (Planar Chaos)', 'Colorshifted'],
 	['Brawl Legend Crowns', 'Brawl'],
 	//showcase
-	['Wanted (OTJ)', 'Wanted'],
+	['Wanted Poster (OTJ)', 'Wanted'],
 	['Dossier (MKM)', 'Dossier'],
 	['Scrolls of Middle-earth (LTR)', 'Scroll'],
 	['Pip-Boy (PIP)', 'Pipboy'],
