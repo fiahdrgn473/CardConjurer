@@ -1,5 +1,10 @@
 loadFramePacks([
 	{name:'Set Showcase Frames (Chronological)', value:'disabled'},
+	{name:'Breaking News (OTP)', value:'BreakingNews'},
+	{name:'Vault (BIG)', value:'Vault'},
+	{name:'Wanted Poster (OTJ)', value:'Wanted'},
+	{name:'Pip-Boy (PIP)', value:'Pipboy'},
+	{name:'Dossier (MKM)', value:'Dossier'},
 	{name:'Scrolls of Middle-earth (LTR)', value:'Scroll'},
 	{name:'Enchanting Tales (WOT)', value:'EnchantingTales'},
 	{name:'Eldraine Storybooks: Adventures (WOE)', value:'StorybookWOE'},
