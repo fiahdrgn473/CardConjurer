@@ -3737,7 +3737,7 @@ function writeText(textObject, targetContext) {
 					}
 
 					var origManaSymbolColor = manaSymbolColor;
-					if (manaSymbol.matchColor && manaSymbolColor !== undefined) {
+					if (manaSymbol.matchColor && !manaSymbolColor && textColor !== 'black') {
 						manaSymbolColor = textColor;
 					}
 
