@@ -318,19 +318,27 @@ const setSymbolAliases = new Map([
 	["pmei", "sld"],
 ]);
 //Mana Symbols
-const mana = new Map();""
+const mana = new Map();
 // var manaSymbols = [];
 loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 'e', 's', 'oldtap', 'originaltap', 'purple', "a", "inf", "alchemy"]);
+				 'w', 'u', 'b', 'r', 'g', 'c', 'x', 'y', 'z', 't', 'untap', 's', 'oldtap', 'originaltap', 'purple', "inf", "alchemy"]);
+loadManaSymbols(true, ['e', 'a']);
 loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p',
 				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup', 'purplew', 'purpleu', 'purpleb', 'purpler', 'purpleg',
 				 '2purple', 'purplep'], [1.2, 1.2]);
 loadManaSymbols(['bar.png', 'whitebar.png']);
-loadManaSymbols(['chaos'], [1.2, 1]);
-loadManaSymbols(['tk'], [0.8, 1]);
-loadManaSymbols(['planeswalker'], [0.6, 1.2]);
-loadManaSymbols(['+1', '+2', '+3', '+4', '+5', '+6', '+7', '+8', '+9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '+0'], [1.6, 1]);
-function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
+loadManaSymbols(true, ['chaos'], [1.2, 1]);
+loadManaSymbols(true, ['tk'], [0.8, 1]);
+loadManaSymbols(true, ['planeswalker'], [0.6, 1.2]);
+loadManaSymbols(true, ['+1', '+2', '+3', '+4', '+5', '+6', '+7', '+8', '+9', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '+0'], [1.6, 1]);
+function loadManaSymbols(matchColor, manaSymbolPaths, size = [1, 1]) {
+	if (typeof matchColor === 'object') {
+		// Hacky way to add a default argument for matchColor without breaking the function call from other places
+		size = manaSymbolPaths || [1,1];
+		manaSymbolPaths = matchColor;
+		matchColor = false;
+	}
+
 	manaSymbolPaths.forEach(item => {
 		var manaSymbol = {};
 		if (typeof item == 'string') {
@@ -351,6 +359,9 @@ function loadManaSymbols(manaSymbolPaths, size = [1, 1]) {
 				loadManaSymbols([manaSymbol.path.replace(manaSymbol.name, 'back' + i + item[1])])
 			}
 		}
+
+		manaSymbol.matchColor = matchColor;
+
 		manaSymbol.width = size[0];
 		manaSymbol.height = size[1];
 		manaSymbol.image = new Image();
@@ -3724,6 +3735,12 @@ function writeText(textObject, targetContext) {
 					} else {
 						manaSymbol = getManaSymbol(possibleCode) || getManaSymbol(possibleCode.split('').reverse().join(''));
 					}
+
+					var origManaSymbolColor = manaSymbolColor;
+					if (manaSymbol.matchColor && manaSymbolColor !== undefined) {
+						manaSymbolColor = textColor;
+					}
+
 					var manaSymbolSpacing = textSize * 0.04 + textManaSpacing;
 					var manaSymbolWidth = manaSymbol.width * textSize * 0.78;
 					var manaSymbolHeight = manaSymbol.height * textSize * 0.78;
@@ -3784,6 +3801,8 @@ function writeText(textObject, targetContext) {
 					lineContext.drawImage(fakeShadow, 0, 0);
 					//fake shadow ends (thanks, safari)
 					currentX += manaSymbolWidth + manaSymbolSpacing * 2;
+
+					manaSymbolColor = origManaSymbolColor;
 				} else {
 					wordToWrite = word;
 				}
