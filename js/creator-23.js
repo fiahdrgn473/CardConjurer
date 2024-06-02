@@ -325,7 +325,7 @@ loadManaSymbols(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '
 loadManaSymbols(true, ['e', 'a']);
 loadManaSymbols(['wu', 'wb', 'ub', 'ur', 'br', 'bg', 'rg', 'rw', 'gw', 'gu', '2w', '2u', '2b', '2r', '2g', 'wp', 'up', 'bp', 'rp', 'gp', 'p',
 				 'wup', 'wbp', 'ubp', 'urp', 'brp', 'bgp', 'rgp', 'rwp', 'gwp', 'gup', 'purplew', 'purpleu', 'purpleb', 'purpler', 'purpleg',
-				 '2purple', 'purplep'], [1.2, 1.2]);
+				 '2purple', 'purplep', 'cw', 'cu', 'cb', 'cr', 'cg'], [1.2, 1.2]);
 loadManaSymbols(['bar.png', 'whitebar.png']);
 loadManaSymbols(true, ['chaos'], [1.2, 1]);
 loadManaSymbols(true, ['tk'], [0.8, 1]);
