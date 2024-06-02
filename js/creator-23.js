@@ -3395,7 +3395,7 @@ function writeText(textObject, targetContext) {
 			rulesText = rawText.substring(0, flavorIndex);
 		}
 
-		rulesText = rulesText.replace(/\([^\)]+\)/g, '');
+		rulesText = rulesText.replace(/ ?{i}\([^\)]+\){\/i}/g, '');
 
 		rawText = rulesText + flavorText;
 	}
@@ -3418,17 +3418,27 @@ function writeText(textObject, targetContext) {
 	if (rawText.includes('//')) {
 		rawText = rawText.replace(/\/\//g, '{lns}');
 	}
+
 	if (card.version == 'pokemon') {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}{fontsize-20}{fontgillsansbolditalic}');
 	} else if (card.version == 'dossier') {
 		rawText = rawText.replace(/{flavor}(.*)/g, function(v) { return '{/indent}{lns}{bar}{lns}{fixtextalign}' + v.replace(/{flavor}/g, '').toUpperCase(); });
 	} else if (!card.showsFlavorBar) {
 		rawText = rawText.replace(/{flavor}/g, '{oldflavor}');
-	} else if (textObject.font == 'saloongirl') {
+	}
+
+	if (textObject.font == 'saloongirl') {
 		rawText = rawText.replace(/\*/g, '{fontbelerenbsc}*{fontsaloongirl}');
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
-	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}').replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}').replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}');
+	if (rawText.trim().startsWith('{flavor}')) {
+		splitText = splitText.replace(/{flavor}/g, '{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}');
+	} else {
+		splitText = splitText.replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{i}');
+	}
+	splitText = splitText.replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
+
 	splitText = splitText.filter(item => item);
 	if (textObject.manaCost) {
 		splitText = splitText.filter(item => item != ' ');
@@ -4787,27 +4797,15 @@ function changeCardIndex() {
 
 			if (card.version == 'pokemon') {
 				if (cardToImport.type_line.toLowerCase().includes('creature')) {
-					if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
-						card.text.rules.text += '{i}';
-					} else {
-						card.text.rules.text += '{flavor}';
-					}
+					card.text.rules.text += '{flavor}';
 					card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 				} else {
-					if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
-						card.text.rulesnoncreature.text += '{i}';
-					} else {
-						card.text.rulesnoncreature.text += '{flavor}';
-					}
+					card.text.rules.text += '{flavor}';
 					card.text.rulesnoncreature.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 				}
 				
 			} else {
-				if (!cardToImport.oracle_text || cardToImport.oracle_text == '') {
-					card.text.rules.text += '{i}';
-				} else {
-					card.text.rules.text += '{flavor}';
-				}
+				card.text.rules.text += '{flavor}';
 				card.text.rules.text += curlyQuotes(flavorText.replace('\n', '{lns}'));
 			}
 
