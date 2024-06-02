@@ -54,6 +54,7 @@ const blank = new Image(); blank.crossOrigin = 'anonymous'; blank.src = fixUri('
 const right = new Image(); right.crossOrigin = 'anonymous'; right.src = fixUri('/img/frames/maskRightHalf.png');
 const middle = new Image(); middle.crossOrigin = 'anonymous'; middle.src = fixUri('/img/frames/maskMiddleThird.png');
 const corner = new Image(); corner.crossOrigin = 'anonymous'; corner.src = fixUri('/img/frames/cornerCutout.png');
+const serial = new Image(); serial.crossOrigin = 'anonymous'; serial.src = fixUri('/img/frames/serial.png');
 //art
 art = new Image(); art.crossOrigin = 'anonymous'; art.src = blank.src;
 art.onerror = function() {if (!this.src.includes('/img/blank.png')) {this.src = fixUri('/img/blank.png');}}
@@ -4461,6 +4462,28 @@ async function bottomInfoEdited() {
 
 	drawCard();
 }
+async function serialInfoEdited() {
+	card.serialNumber = document.querySelector('#serial-number').value;
+	card.serialTotal = document.querySelector('#serial-total').value;
+	card.serialX = document.querySelector('#serial-x').value;
+	card.serialY = document.querySelector('#serial-y').value;
+	card.serialScale = document.querySelector('#serial-scale').value;
+
+	drawCard();
+}
+
+async function resetSerial() {
+	card.serialX = scaleX(172/2010);
+	card.serialY = scaleY(1383/2814);
+	card.serialScale = 1.0;
+
+	document.querySelector('#serial-x').value = card.serialX;
+	document.querySelector('#serial-y').value = card.serialY;
+	document.querySelector('#serial-scale').value = card.serialScale;
+
+	drawCard();
+}
+
 function artistEdited(value) {
 	document.querySelector('#art-artist').value = value;
 	document.querySelector('#info-artist').value = value;
@@ -4564,6 +4587,45 @@ function drawCard() {
 	cardContext.drawImage(textCanvas, 0, 0, cardCanvas.width, cardCanvas.height);
 	// set symbol
 	cardContext.drawImage(setSymbol, scaleX(card.setSymbolX), scaleY(card.setSymbolY), setSymbol.width * card.setSymbolZoom, setSymbol.height * card.setSymbolZoom)
+	// serial
+	if (card.serialNumber || card.serialTotal) {
+		var x = parseInt(card.serialX) || 172;
+		var y = parseInt(card.serialY) || 1383;
+		var scale = parseFloat(card.serialScale) || 1.0;
+
+		cardContext.drawImage(serial, scaleX(x/2010), scaleY(y/2814), scaleX(464/2010) * scale, scaleY(143/2814) * scale);
+
+		var number = {
+			name:"Number",
+			text: '{kerning3}' + card.serialNumber || '',
+			x: (x+(30 * scale))/2010,
+			y: (y+(52 * scale))/2814,
+			width: (190 * scale)/2010,
+			height: (55 * scale)/2814,
+			oneLine: true,
+			font: 'gothambold',
+			color: 'white',
+			size: (55 * scale)/2010,
+			align: 'center'
+		};
+
+		var total = {
+			name:"Number",
+			text: '{kerning3}' + card.serialTotal || '',
+			x: (x+(251 * scale))/2010,
+			y: (y+(52 * scale))/2814,
+			width: (190 * scale)/2010,
+			height: (55 * scale)/2814,
+			oneLine: true,
+			font: 'gothambold',
+			color: 'white',
+			size: (55 * scale)/2010,
+			align: 'center'
+		};
+
+		writeText(number, cardContext);
+		writeText(total, cardContext);
+	}
 	// bottom info
 	if (card.bottomInfoTranslate) {
 		cardContext.save();
@@ -5032,6 +5094,13 @@ async function loadCard(selectedCardKey) {
 		document.querySelector('#watermark-opacity').value = card.watermarkOpacity * 100;
 		document.getElementById("rounded-corners").checked = !card.noCorners;
 		uploadWatermark(card.watermarkSource);
+		document.querySelector('#serial-number').value = card.serialNumber;
+		document.querySelector('#serial-total').value = card.serialTotal;
+		document.querySelector('#serial-x').value = card.serialX;
+		document.querySelector('#serial-y').value = card.serialY;
+		document.querySelector('#serial-scale').value = card.serialScale;
+		serialInfoEdited();
+
 		card.frames.reverse();
 		await card.frames.forEach(item => addFrame([], item));
 		card.frames.reverse();

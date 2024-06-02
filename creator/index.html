@@ -574,7 +574,7 @@
 								<input id='info-language' type='text' class='input' oninput='bottomInfoEdited();' placeholder='Language' value='EN'>
 								<input id='info-artist' type='text' class='input' oninput='artistEdited(this.value);' placeholder='Artist'>
 							</div>
-							<div cl<!-- ass='padding input-grid'>
+							<div class='padding input-grid'>
 								<input id='info-year' type='number' class='input' oninput='bottomInfoEdited();' placeholder='0' value='1993'>
 							</div>
 						</div>
@@ -599,6 +599,25 @@
 								<span class='checkmark'></span>
 							</label>
 						</div>
+
+						<div class='readable-background padding margin-bottom'>
+							<h5 class='padding input-description'>Serial Number (leave both blank to hide)</h5>
+							<div class='padding input-grid'>
+								<input id='serial-number' type='number' class='input' oninput='serialInfoEdited();' placeholder='001' min='0' value=''>
+								<input id='serial-total' type='number' class='input' oninput='serialInfoEdited();' placeholder='500' min='0' value=''>
+							</div>
+
+							<h5 class='padding input-description'>Placement (X, Y, Scale)</h5>
+							<div class='padding input-grid'>
+								<input id='serial-x' type='number' class='input' oninput='serialInfoEdited();' min='0' value='172'>
+								<input id='serial-y' type='number' class='input' oninput='serialInfoEdited();' min='0' value='1383'>
+								<input id='serial-scale' type='number' class='input' oninput='serialInfoEdited();' min='0' step='0.01' value='1'>
+							</div>
+							<div class='padding input-grid'>
+								<button class='input' onclick='resetSerial();'>Reset Serial Number Placement</button>
+							</div>
+						</div>
+
 						<div class='readable-background padding margin-bottom'>
 							<h5 class='input-description padding margin-bottom'>Toggle between star (seen on foils) and dot (seen on regular cards)</h5>
 							<div class='padding'>
