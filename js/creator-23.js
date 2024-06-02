@@ -3433,10 +3433,10 @@ function writeText(textObject, targetContext) {
 	}
 	rawText = rawText.replace(/ - /g, ' — ');
 	var splitText = rawText.replace(/\n/g, '{line}').replace(/{-}/g, '\u2014').replace(/{divider}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}');
-	if (rawText.trim().startsWith('{flavor}')) {
-		splitText = splitText.replace(/{flavor}/g, '{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}');
+	if (rawText.trim().startsWith('{flavor}') || rawText.trim().startsWith('{oldflavor}')) {
+		splitText = splitText.replace(/{flavor}/g, '{i}').replace(/{oldflavor}/g, '{i}');
 	} else {
-		splitText = splitText.replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{i}');
+		splitText = splitText.replace(/{flavor}/g, '{/indent}{lns}{bar}{lns}{fixtextalign}{i}').replace(/{oldflavor}/g, '{/indent}{lns}{lns}{up30}{i}');
 	}
 	splitText = splitText.replace(/{/g, splitString + '{').replace(/}/g, '}' + splitString).replace(/ /g, splitString + ' ' + splitString).split(splitString);
 
